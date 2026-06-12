@@ -20,13 +20,6 @@ const config = {
         }
     },
 
-    // DISCORD SERVER (For Real-time Status)
-    discordServer: {
-        serverId: "1375075125216677929",
-        inviteCode: "yZ9GFWXpzr",
-        username: "0fearz_"
-    },
-
     // BACKGROUND
     background: {
         color: "#0f0f0f",
@@ -64,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 1. PROFILE INITIALIZATION
 function initProfile() {
+    // Background
     if (config.background.customImage) {
         document.body.style.background = `url('${config.background.customImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = 'cover';
@@ -73,14 +67,23 @@ function initProfile() {
     }
     document.body.style.backgroundColor = config.background.color;
 
-    // Set avatar - try different Discord avatar URLs
+    // Discord Avatar - try different URLs
     const avatar = document.getElementById('profile-avatar');
-    avatar.src = `https://cdn.discordapp.com/avatars/745985998479163443/a_745985998479163443.gif?size=512&quality=lossless`;
+    const userId = config.profile.discord.userId;
+    
+    // Try animated avatar first (if user has nitro), then static
+    avatar.src = `https://cdn.discordapp.com/avatars/${userId}/a_${userId}.gif?size=512`;
+    
     avatar.onerror = function() {
-        this.src = `https://cdn.discordapp.com/avatars/745985998479163443.png?size=512`;
+        this.src = `https://cdn.discordapp.com/avatars/${userId}.png?size=512`;
     };
+    
     avatar.onerror = function() {
-        this.src = "https://ui-avatars.com/api/?name=Dx&background=0D8ABC&color=fff&size=512";
+        this.src = `https://cdn.discordapp.com/avatars/${userId}/default.png?size=512`;
+    };
+    
+    avatar.onerror = function() {
+        this.src = `https://ui-avatars.com/api/?name=Dx&background=0D8ABC&color=fff&size=512`;
     };
 
     document.getElementById('profile-username').textContent = config.profile.username;
@@ -104,68 +107,9 @@ function initProfile() {
     avatarWrapper.onclick = () => {
         window.open(config.profile.discord.profileUrl, '_blank');
     };
-
-    // Load Discord Status with CORS proxy
-    loadDiscordStatus();
 }
 
-// 2. LOAD DISCORD STATUS (Real-time)
-async function loadDiscordStatus() {
-    const statusElement = document.getElementById('profile-bio');
-    const avatar = document.getElementById('profile-avatar');
-
-    // Use cors proxy
-    const proxyUrl = "https://api.allorigins.win/get?url=";
-    const widgetUrl = encodeURIComponent(`https://discord.com/api/guilds/${config.discordServer.serverId}/widget.json`);
-
-    try {
-        // Try with proxy
-        const response = await fetch(proxyUrl + widgetUrl);
-        const jsonData = await response.json();
-        const data = JSON.parse(jsonData.contents);
-
-        console.log("Discord Widget Data:", data);
-
-        if (!data.enabled) {
-            console.log("Widget not enabled");
-            return;
-        }
-
-        console.log("Online members:", data.presence);
-
-        const member = data.presence.find(m => 
-            m.username.toLowerCase() === config.discordServer.username.toLowerCase() ||
-            m.nick?.toLowerCase() === config.discordServer.username.toLowerCase()
-        );
-
-        if (member) {
-            console.log("Found member:", member);
-            switch (member.status) {
-                case "online":
-                    statusElement.innerHTML = '<span style="color:#00ff00">●</span> Online';
-                    avatar.style.boxShadow = "0 0 20px #00ff00";
-                    break;
-                case "idle":
-                    statusElement.innerHTML = '<span style="color:#ffa500">●</span> Idle';
-                    avatar.style.boxShadow = "0 0 20px #ffa500";
-                    break;
-                case "dnd":
-                    statusElement.innerHTML = '<span style="color:#ff0000">●</span> DND';
-                    avatar.style.boxShadow = "0 0 20px #ff0000";
-                    break;
-                default:
-                    statusElement.innerHTML = '<span style="color:#808080">●</span> Offline';
-            }
-        } else {
-            console.log("User not found in server");
-            statusElement.innerHTML = '<span style="color:#808080">●</span> Offline';
-        }
-    } catch (err) {
-        console.log("Error loading status:", err);
-    }
-}
-
-// 3. SPLASH SCREEN (TAP TO ENTER)
+// 2. SPLASH SCREEN (TAP TO ENTER)
 function initSplash() {
     const splashScreen = document.getElementById('splash-screen');
     const splashLogo = document.getElementById('splash-logo');
@@ -185,6 +129,7 @@ function initSplash() {
             splashScreen.style.display = 'none';
         }, 800);
 
+        // Play music
         if (config.music.src) {
             const audio = new Audio(config.music.src);
             audio.loop = true;
@@ -194,7 +139,7 @@ function initSplash() {
     }
 }
 
-// 4. TITLE ANIMATION
+// 3. TITLE ANIMATION
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
