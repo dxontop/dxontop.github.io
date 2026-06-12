@@ -73,13 +73,12 @@ function initProfile() {
     }
     document.body.style.backgroundColor = config.background.color;
 
-    // Set avatar
+    // Set avatar - try different Discord avatar URLs
     const avatar = document.getElementById('profile-avatar');
-    avatar.src = config.profile.discord.userId 
-        ? `https://cdn.discordapp.com/avatars/${config.profile.discord.userId}/default.png?size=512`
-        : config.profile.avatar || "https://ui-avatars.com/api/?name=Dx&background=0D8ABC&color=fff&size=512";
-    
-    // Fallback callback
+    avatar.src = `https://cdn.discordapp.com/avatars/745985998479163443/a_745985998479163443.gif?size=512&quality=lossless`;
+    avatar.onerror = function() {
+        this.src = `https://cdn.discordapp.com/avatars/745985998479163443.png?size=512`;
+    };
     avatar.onerror = function() {
         this.src = "https://ui-avatars.com/api/?name=Dx&background=0D8ABC&color=fff&size=512";
     };
@@ -100,15 +99,13 @@ function initProfile() {
     });
 
     // Click avatar to open Discord
-    if (config.profile.discord && config.profile.discord.profileUrl) {
-        const avatarWrapper = avatar.parentElement;
-        avatarWrapper.style.cursor = 'pointer';
-        avatarWrapper.onclick = () => {
-            window.open(config.profile.discord.profileUrl, '_blank');
-        };
-    }
+    const avatarWrapper = avatar.parentElement;
+    avatarWrapper.style.cursor = 'pointer';
+    avatarWrapper.onclick = () => {
+        window.open(config.profile.discord.profileUrl, '_blank');
+    };
 
-    // Load Discord Status
+    // Load Discord Status with CORS proxy
     loadDiscordStatus();
 }
 
@@ -117,51 +114,51 @@ async function loadDiscordStatus() {
     const statusElement = document.getElementById('profile-bio');
     const avatar = document.getElementById('profile-avatar');
 
-    try {
-        const response = await fetch(`https://discord.com/api/guilds/${config.discordServer.serverId}/widget.json`);
-        const data = await response.json();
+    // Use cors proxy
+    const proxyUrl = "https://api.allorigins.win/get?url=";
+    const widgetUrl = encodeURIComponent(`https://discord.com/api/guilds/${config.discordServer.serverId}/widget.json`);
 
-        // Debug: log the data to console
+    try {
+        // Try with proxy
+        const response = await fetch(proxyUrl + widgetUrl);
+        const jsonData = await response.json();
+        const data = JSON.parse(jsonData.contents);
+
         console.log("Discord Widget Data:", data);
 
         if (!data.enabled) {
-            console.log("Widget not enabled on server");
+            console.log("Widget not enabled");
             return;
         }
 
-        // Log who's online
         console.log("Online members:", data.presence);
 
-        // Find user
         const member = data.presence.find(m => 
-            (m.username && m.username.toLowerCase() === config.discordServer.username.toLowerCase()) ||
-            (m.nick && m.nick.toLowerCase() === config.discordServer.username.toLowerCase())
+            m.username.toLowerCase() === config.discordServer.username.toLowerCase() ||
+            m.nick?.toLowerCase() === config.discordServer.username.toLowerCase()
         );
 
         if (member) {
             console.log("Found member:", member);
-            
             switch (member.status) {
                 case "online":
-                    statusElement.innerHTML = `<span style="color:#00ff00">●</span> Online`;
-                    avatar.style.boxShadow = "0 0 20px #00ff0080";
+                    statusElement.innerHTML = '<span style="color:#00ff00">●</span> Online';
+                    avatar.style.boxShadow = "0 0 20px #00ff00";
                     break;
                 case "idle":
-                    statusElement.innerHTML = `<span style="color:#ffa500">●</span> Idle`;
-                    avatar.style.boxShadow = "0 0 20px #ffa50080";
+                    statusElement.innerHTML = '<span style="color:#ffa500">●</span> Idle';
+                    avatar.style.boxShadow = "0 0 20px #ffa500";
                     break;
                 case "dnd":
-                    statusElement.innerHTML = `<span style="color:#ff0000">●</span> DND`;
-                    avatar.style.boxShadow = "0 0 20px #ff000080";
+                    statusElement.innerHTML = '<span style="color:#ff0000">●</span> DND';
+                    avatar.style.boxShadow = "0 0 20px #ff0000";
                     break;
                 default:
-                    statusElement.innerHTML = `<span style="color:#808080">●</span> Offline`;
-                    avatar.style.boxShadow = "0 0 15px #80808080";
+                    statusElement.innerHTML = '<span style="color:#808080">●</span> Offline';
             }
         } else {
             console.log("User not found in server");
-            statusElement.innerHTML = `<span style="color:#808080">●</span> Offline`;
-            avatar.style.boxShadow = "0 0 15px #80808080";
+            statusElement.innerHTML = '<span style="color:#808080">●</span> Offline';
         }
     } catch (err) {
         console.log("Error loading status:", err);
