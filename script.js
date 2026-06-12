@@ -5,15 +5,20 @@ const config = {
     // SPLASH SCREEN
     splash: {
         logo: "https://ui-avatars.com/api/?name=LOGO&background=0D8ABC&color=fff&size=128", // REPLACE WITH YOUR LOGO URL
-        title: "ENTERING THE GRID" // Text shown on splash
+        title: "Dx On Top" // Text shown on splash
     },
 
     // PROFILE INFO
     profile: {
-        username: "@0fearz", // YOUR USERNAME
-        bio: "Clan Member | Halo & CoD", // YOUR BIO
-        avatar: "https://ui-avatars.com/api/?name=0fearz&background=0D8ABC&color=fff&size=128", // REPLACE WITH YOUR AVATAR URL
-        footerName: "0fearz"
+        username: "Dx", // YOUR USERNAME
+        bio: "Fear No One", // YOUR BIO
+        avatar: "", // Leave empty - uses Discord avatar
+        footerName: "Dx",
+        // DISCORD SETTINGS
+        discord: {
+            userId: "745985998479163443", // Your Discord user ID
+            profileUrl: "https://discord.com/users/745985998479163443"
+        }
     },
 
     // BACKGROUND
@@ -26,10 +31,8 @@ const config = {
 
     // LINKS
     links: [
-        { name: "Twitch", url: "#" },
-        { name: "Discord Server", url: "#" },
-        { name: "YouTube", url: "#" },
-        { name: "Join the Clan", url: "#" }
+        { name: "Dx", url: "https://discord.com/users/745985998479163443" },
+        { name: "Join us", url: "https://discord.gg/1998x"}
     ],
 
     // MUSIC
@@ -40,8 +43,8 @@ const config = {
     // TITLE ANIMATION
     titleAnimation: {
         enabled: true,
-        texts: ["0fearz", "Clan Member", "Online"],
-        speed: 500
+        texts: ["dxontop"],
+        speed: 300
     }
 };
 
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 1. PROFILE INITIALIZATION
 function initProfile() {
+    // Background
     if (config.background.customImage) {
         document.body.style.background = `url('${config.background.customImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = 'cover';
@@ -64,12 +68,19 @@ function initProfile() {
     }
     document.body.style.backgroundColor = config.background.color;
 
-    document.getElementById('profile-avatar').src = config.profile.avatar;
+    // Discord Avatar
+    if (config.profile.discord && config.profile.discord.userId) {
+        loadDiscordAvatar(config.profile.discord.userId);
+    } else {
+        document.getElementById('profile-avatar').src = config.profile.avatar;
+    }
+
     document.getElementById('profile-username').textContent = config.profile.username;
     document.getElementById('profile-bio').textContent = config.profile.bio;
     document.getElementById('footer-name').textContent = config.profile.footerName;
     document.getElementById('footer-name').style.color = '#00ff88';
 
+    // Links
     const linksContainer = document.getElementById('links-container');
     config.links.forEach(link => {
         const a = document.createElement('a');
@@ -78,9 +89,28 @@ function initProfile() {
         a.textContent = link.name;
         linksContainer.appendChild(a);
     });
+
+    // Click avatar to open Discord
+    if (config.profile.discord && config.profile.discord.profileUrl) {
+        const avatar = document.getElementById('profile-avatar');
+        avatar.parentElement.style.cursor = 'pointer';
+        avatar.parentElement.onclick = () => {
+            window.open(config.profile.discord.profileUrl, '_blank');
+        };
+    }
 }
 
-// 2. SPLASH SCREEN (TAP TO ENTER)
+// 2. LOAD DISCORD AVATAR
+function loadDiscordAvatar(userId) {
+    const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/.png?size=512`;
+    document.getElementById('profile-avatar').src = avatarUrl;
+    document.getElementById('profile-avatar').onerror = () => {
+        // Fallback if avatar load fails
+        document.getElementById('profile-avatar').src = "https://ui-avatars.com/api/?name=Avatar&background=0D8ABC&color=fff&size=128";
+    };
+}
+
+// 3. SPLASH SCREEN (TAP TO ENTER)
 function initSplash() {
     const splashScreen = document.getElementById('splash-screen');
     const splashLogo = document.getElementById('splash-logo');
@@ -93,7 +123,6 @@ function initSplash() {
     splashScreen.addEventListener('touchstart', enterSite);
 
     function enterSite() {
-        // Hide splash
         splashScreen.classList.add('hidden');
         document.querySelector('.container').classList.add('visible');
 
@@ -101,7 +130,6 @@ function initSplash() {
             splashScreen.style.display = 'none';
         }, 800);
 
-        // PLAY MUSIC AFTER TAP - NO BUTTON
         if (config.music.src) {
             const audio = new Audio(config.music.src);
             audio.loop = true;
@@ -111,7 +139,7 @@ function initSplash() {
     }
 }
 
-// 3. TITLE ANIMATION
+// 4. TITLE ANIMATION
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
