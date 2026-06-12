@@ -5,7 +5,7 @@ const config = {
     // SPLASH SCREEN
     splash: {
         logo: "https://ui-avatars.com/api/?name=LOGO&background=0D8ABC&color=fff&size=128", // REPLACE WITH YOUR LOGO URL
-        title: "Dx On Top" // Text shown on splash
+        title: "DxOnTop" // Text shown on splash
     },
 
     // PROFILE INFO
@@ -19,6 +19,13 @@ const config = {
             userId: "745985998479163443", // Your Discord user ID
             profileUrl: "https://discord.com/users/745985998479163443"
         }
+    },
+
+    // DISCORD SERVER (For Real-time Status)
+    discordServer: {
+        serverId: "1375075125216677929",
+        inviteCode: "yZ9GFWXpzr",
+        username: "0fearz_" // Your EXACT Discord username in the server
     },
 
     // BACKGROUND
@@ -98,6 +105,11 @@ function initProfile() {
             window.open(config.profile.discord.profileUrl, '_blank');
         };
     }
+
+    // Load Discord Status (Real-time)
+    if (config.discordServer && config.discordServer.serverId) {
+        loadDiscordStatus();
+    }
 }
 
 // 2. LOAD DISCORD AVATAR
@@ -105,12 +117,68 @@ function loadDiscordAvatar(userId) {
     const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/.png?size=512`;
     document.getElementById('profile-avatar').src = avatarUrl;
     document.getElementById('profile-avatar').onerror = () => {
-        // Fallback if avatar load fails
         document.getElementById('profile-avatar').src = "https://ui-avatars.com/api/?name=Avatar&background=0D8ABC&color=fff&size=128";
     };
 }
 
-// 3. SPLASH SCREEN (TAP TO ENTER)
+// 3. LOAD DISCORD STATUS (Real-time)
+async function loadDiscordStatus() {
+    try {
+        const response = await fetch(`https://discord.com/api/guilds/${config.discordServer.serverId}/widget.json`);
+        const data = await response.json();
+        
+        const member = data.presence.find(m => 
+            m.username === config.discordServer.username || 
+            m.nick === config.discordServer.username
+        );
+        
+        const statusElement = document.getElementById('profile-bio');
+        const avatar = document.getElementById('profile-avatar');
+        
+        if (!data.enabled) {
+            statusElement.textContent = config.profile.bio;
+            return;
+        }
+        
+        if (member) {
+            let statusText = "Online";
+            let statusColor = "#00ff00";
+            let glowColor = "#00ff0080";
+            
+            switch (member.status) {
+                case "online":
+                    statusText = "Online";
+                    statusColor = "#00ff00";
+                    glowColor = "#00ff0080";
+                    break;
+                case "idle":
+                    statusText = "Idle";
+                    statusColor = "#ffa500";
+                    glowColor = "#ffa50080";
+                    break;
+                case "dnd":
+                    statusText = "DND";
+                    statusColor = "#ff0000";
+                    glowColor = "#ff000080";
+                    break;
+                default:
+                    statusText = "Offline";
+                    statusColor = "#808080";
+                    glowColor = "#80808080";
+            }
+            
+            statusElement.innerHTML = `<span style="color:${statusColor}">●</span> ${statusText}`;
+            avatar.style.boxShadow = `0 0 20px ${glowColor}`;
+        } else {
+            statusElement.innerHTML = `<span style="color:#808080">●</span> Offline`;
+            avatar.style.boxShadow = `0 0 15px #80808080`;
+        }
+    } catch (err) {
+        console.log("Discord status not available");
+    }
+}
+
+// 4. SPLASH SCREEN (TAP TO ENTER)
 function initSplash() {
     const splashScreen = document.getElementById('splash-screen');
     const splashLogo = document.getElementById('splash-logo');
@@ -139,7 +207,7 @@ function initSplash() {
     }
 }
 
-// 4. TITLE ANIMATION
+// 5. TITLE ANIMATION
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
