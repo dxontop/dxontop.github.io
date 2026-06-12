@@ -34,8 +34,7 @@ const config = {
 
     // MUSIC
     music: {
-        src: "https://raw.githubusercontent.com/dxontop/dxontop.github.io/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3", // YOUR MUSIC URL
-        autoPlay: true // Music plays automatically after tapping
+        src: "https://raw.githubusercontent.com/dxontop/dxontop.github.io/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3"
     },
 
     // TITLE ANIMATION
@@ -56,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 1. PROFILE INITIALIZATION
 function initProfile() {
-    // Set background
     if (config.background.customImage) {
         document.body.style.background = `url('${config.background.customImage}') no-repeat center center fixed`;
         document.body.style.backgroundSize = 'cover';
@@ -66,14 +64,12 @@ function initProfile() {
     }
     document.body.style.backgroundColor = config.background.color;
 
-    // Set profile info
     document.getElementById('profile-avatar').src = config.profile.avatar;
     document.getElementById('profile-username').textContent = config.profile.username;
     document.getElementById('profile-bio').textContent = config.profile.bio;
     document.getElementById('footer-name').textContent = config.profile.footerName;
     document.getElementById('footer-name').style.color = '#00ff88';
 
-    // Generate links
     const linksContainer = document.getElementById('links-container');
     config.links.forEach(link => {
         const a = document.createElement('a');
@@ -84,17 +80,15 @@ function initProfile() {
     });
 }
 
-// 2. SPLASH SCREEN (TAP TO ENTER + AUTO PLAY MUSIC)
+// 2. SPLASH SCREEN (TAP TO ENTER)
 function initSplash() {
     const splashScreen = document.getElementById('splash-screen');
     const splashLogo = document.getElementById('splash-logo');
     const splashTitle = document.getElementById('splash-title');
 
-    // Set splash content
     splashLogo.src = config.splash.logo;
     splashTitle.textContent = config.splash.title;
 
-    // Add tap/click event to enter
     splashScreen.addEventListener('click', enterSite);
     splashScreen.addEventListener('touchstart', enterSite);
 
@@ -103,32 +97,21 @@ function initSplash() {
         splashScreen.classList.add('hidden');
         document.querySelector('.container').classList.add('visible');
 
-        // Remove splash from DOM after animation
         setTimeout(() => {
             splashScreen.style.display = 'none';
-            // Play music after user taps (bypasses browser block)
-            playMusic();
         }, 800);
+
+        // PLAY MUSIC AFTER TAP - NO BUTTON
+        if (config.music.src) {
+            const audio = new Audio(config.music.src);
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch(() => {});
+        }
     }
 }
 
-// 3. MUSIC (NO BUTTON - AUTO PLAY)
-function playMusic() {
-    if (!config.music.src || !config.music.autoPlay) return;
-
-    const audio = new Audio(config.music.src);
-    audio.loop = true;
-    audio.volume = 0.5; // 50% volume
-    
-    // Play after user interaction (this bypasses browser block)
-    audio.play().then(() => {
-        console.log('Music playing');
-    }).catch(err => {
-        console.log('Music blocked:', err);
-    });
-}
-
-// 4. TITLE ANIMATION (BROWSER TAB)
+// 3. TITLE ANIMATION
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
