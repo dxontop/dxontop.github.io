@@ -34,9 +34,8 @@ const config = {
 
     // MUSIC
     music: {
-        src: "https://cdn.pixabay.com/audio/2026/06/12/audio_ce3aa6bf19.mp3", // YOUR MUSIC URL
-        autoPlay: true, // Set to true - but browser may block it
-        showButton: true // Show play button for user to click manually
+        src: "https://raw.githubusercontent.com/dxontop/dxontop.github.io/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3", // YOUR MUSIC URL
+        autoPlay: true // Music plays automatically after tapping
     },
 
     // TITLE ANIMATION
@@ -52,7 +51,6 @@ const config = {
 document.addEventListener('DOMContentLoaded', () => {
     initProfile();
     initSplash();
-    initMusic();
     initTitleAnimation();
 });
 
@@ -86,7 +84,7 @@ function initProfile() {
     });
 }
 
-// 2. SPLASH SCREEN (TAP TO ENTER)
+// 2. SPLASH SCREEN (TAP TO ENTER + AUTO PLAY MUSIC)
 function initSplash() {
     const splashScreen = document.getElementById('splash-screen');
     const splashLogo = document.getElementById('splash-logo');
@@ -108,81 +106,26 @@ function initSplash() {
         // Remove splash from DOM after animation
         setTimeout(() => {
             splashScreen.style.display = 'none';
+            // Play music after user taps (bypasses browser block)
+            playMusic();
         }, 800);
     }
 }
 
-// 3. MUSIC (WITH CONTROL BUTTON)
-function initMusic() {
-    if (!config.music.src) return;
+// 3. MUSIC (NO BUTTON - AUTO PLAY)
+function playMusic() {
+    if (!config.music.src || !config.music.autoPlay) return;
 
-    // Create audio element
-    const audio = document.createElement('audio');
-    audio.src = config.music.src;
+    const audio = new Audio(config.music.src);
     audio.loop = true;
-    audio.id = 'bg-music';
-    document.body.appendChild(audio);
-
-    // Create control button
-    const btn = document.createElement('button');
-    btn.id = 'music-btn';
-    btn.textContent = 'Play Music';
-    btn.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: transparent;
-        border: 1px solid #333;
-        color: #555;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-size: 12px;
-        cursor: pointer;
-        font-family: inherit;
-        transition: all 0.3s ease;
-        z-index: 100;
-    `;
+    audio.volume = 0.5; // 50% volume
     
-    // Hover effect
-    btn.onmouseenter = () => {
-        btn.style.borderColor = '#00ff88';
-        btn.style.color = '#00ff88';
-    };
-    btn.onmouseleave = () => {
-        btn.style.borderColor = '#333';
-        btn.style.color = '#555';
-    };
-    
-    document.body.appendChild(btn);
-
-    let isPlaying = false;
-
-    // Try auto-play (may be blocked)
-    if (config.music.autoPlay) {
-        audio.play().then(() => {
-            isPlaying = true;
-            btn.textContent = 'Pause Music';
-        }).catch(() => {
-            console.log('Auto-play blocked');
-        });
-    }
-
-    // Button click to play/pause
-    btn.addEventListener('click', () => {
-        if (isPlaying) {
-            audio.pause();
-            btn.textContent = 'Play Music';
-        } else {
-            audio.play();
-            btn.textContent = 'Pause Music';
-        }
-        isPlaying = !isPlaying;
+    // Play after user interaction (this bypasses browser block)
+    audio.play().then(() => {
+        console.log('Music playing');
+    }).catch(err => {
+        console.log('Music blocked:', err);
     });
-
-    // Hide button if disabled
-    if (!config.music.showButton) {
-        btn.style.display = 'none';
-    }
 }
 
 // 4. TITLE ANIMATION (BROWSER TAB)
