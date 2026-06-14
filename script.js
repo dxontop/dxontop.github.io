@@ -1,179 +1,483 @@
-/* ==================== CONFIGURATION ==================== */
-// Edit this section to customize your profile
+/* ============================================================
+   script.js — dx personal site
+   ============================================================ */
 
-const config = {
-    // SPLASH SCREEN
-    splash: {
-        logo: "https://ui-avatars.com/api/?name=LOGO&background=0D8ABC&color=fff&size=128",
-        title: "DxOnTop"
-    },
+/* ════════════════════════════════════════════════════════════
+   ★ EDITABLE — YOUR DISCORD USER ID
+   
+   HOW TO GET YOUR DISCORD USER ID:
+   1. Discord → Settings → Advanced → Enable Developer Mode
+   2. Right-click your profile anywhere → "Copy User ID"
+   
+   HOW TO CONNECT (one step):
+   1. Join discord.gg/lanyard — done.
+   ════════════════════════════════════════════════════════════ */
+var PROFILE_ID = '745985998479163443'; /* ★ YOUR Discord User ID */
 
-    // PROFILE INFO
-    profile: {
-        username: "Dx",
-        bio: "Fear No One",
-        avatar: "",
-        footerName: "Dx",
-        discord: {
-            userId: "745985998479163443",
-            profileUrl: "https://discord.com/users/745985998479163443"
-        }
-    },
+/* ════════════════════════════════════════════════════════════
+   ★ EDITABLE — HOF MEMBERS
+   Add each person's Discord User ID + name/role.
+   IDs come from Discord Developer Mode (right-click → Copy ID).
+   If someone hasn't joined the Lanyard server, their avatar
+   won't load but their name/role will still show.
+   ════════════════════════════════════════════════════════════ */
+var HOF_MEMBERS = [
+  { id: '000000000000000000', name: 'dx',     role: 'founder · since 2025' },
+  { id: '000000000000000000', name: 'Name 2', role: 'elite'                },
+  { id: '000000000000000000', name: 'Name 3', role: 'legend'               },
+  { id: '000000000000000000', name: 'Name 4', role: 'dedicated'            },
+  { id: '000000000000000000', name: 'Name 5', role: 'respected'            },
+  { id: '000000000000000000', name: 'Name 6', role: 'recognized'           },
+];
 
-    // BACKGROUND
-    background: {
-        color: "#0f0f0f",
-        dots: true,
-        dotColor: "#1a1a1a",
-        customImage: ""
-    },
+/* ════════════════════════════════════════════════════════════
+   ★ EDITABLE — MUSIC
+   Path to your audio file. Leave empty ('') to disable.
+   ════════════════════════════════════════════════════════════ */
+var MUSIC_SRC = 'https://raw.githubusercontent.com/dxontop/dxontop.github.io/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3'; /* ★ your .mp3 path */
+var MUSIC_VOL = 0.4;
 
-    // LINKS
-    links: [
-        { name: "Dx", url: "https://discord.com/users/745985998479163443" },
-        { name: "Join us", url: "https://discord.gg/yZ9GFWXpzr"}
-    ],
-
-    // MUSIC
-    music: {
-        src: "https://raw.githubusercontent.com/dxontop/dxontop.github.io/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3"
-    },
-
-    // TITLE ANIMATION
-    titleAnimation: {
-        enabled: true,
-        texts: ["dxontop"],
-        speed: 300
-    }
+/* ════════════════════════════════════════════════════════════
+   ★ EDITABLE — TERMINAL INFO
+   ════════════════════════════════════════════════════════════ */
+var TERM = {
+  user:     'dx',
+  host:     'personal',
+  server:   'dx personal',
+  role:     'founder',
+  since:    '2025',
+  location: 'earth',
+  discord:  'dx',
+  twitter:  '@dx',
+  github:   'github.com/dx',
 };
 
-/* ==================== MAIN CODE ==================== */
+/* ============================================================
+   — INTERNALS — do not edit below —
+   ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    initProfile();
-    initSplash();
-    initTitleAnimation();
+var STATUS_COLOR = { online:'#3ba55d', idle:'#faa61a', dnd:'#ed4245', offline:'#747f8d' };
+var STATUS_LABEL = { online:'online',  idle:'idle',    dnd:'do not disturb', offline:'offline' };
+
+function lanyard(id) {
+  return fetch('https://api.lanyard.rest/v1/users/' + id)
+    .then(function(r){ return r.json(); })
+    .then(function(j){ return j.success ? j.data : null; })
+    .catch(function(){ return null; });
+}
+
+function avatarUrl(id, hash, size) {
+  size = size || 256;
+  var ext = hash && hash.indexOf('a_') === 0 ? 'gif' : 'webp';
+  return 'https://cdn.discordapp.com/avatars/' + id + '/' + hash + '.' + ext + '?size=' + size;
+}
+
+function bannerUrl(id, hash) {
+  var ext = hash && hash.indexOf('a_') === 0 ? 'gif' : 'webp';
+  return 'https://cdn.discordapp.com/banners/' + id + '/' + hash + '.' + ext + '?size=600';
+}
+
+/* ── SPLASH + MUSIC ── */
+window._bootTime = Date.now();
+
+document.getElementById('splash').addEventListener('click', function() {
+  var splash = this;
+  splash.classList.add('clicked');
+
+  if (MUSIC_SRC) {
+    var audio = new Audio(MUSIC_SRC);
+    audio.volume = MUSIC_VOL;
+    audio.loop = true;
+    audio.play().catch(function(){});
+  }
+
+  setTimeout(function() { splash.classList.add('hide'); }, 400);
 });
 
-// 1. PROFILE INITIALIZATION
-function initProfile() {
-    // Background
-    if (config.background.customImage) {
-        document.body.style.background = `url('${config.background.customImage}') no-repeat center center fixed`;
-        document.body.style.backgroundSize = 'cover';
-    } else if (config.background.dots) {
-        document.body.style.backgroundImage = `radial-gradient(${config.background.dotColor} 1px, transparent 1px)`;
-        document.body.style.backgroundSize = '20px 20px';
+/* ── SCROLL REVEAL ── */
+var revealEls = document.querySelectorAll('.reveal');
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(function(el) { revealObs.observe(el); });
+
+/* ── PROFILE CARD ── */
+function loadProfile() {
+  lanyard(PROFILE_ID).then(function(data) {
+    if (!data) return;
+
+    var u  = data.discord_user;
+    var st = data.discord_status || 'offline';
+    var acts = data.activities || [];
+
+    /* avatar */
+    var avatarEl = document.querySelector('.halo-avatar');
+    if (u.avatar) {
+      avatarEl.innerHTML = '<img src="' + avatarUrl(u.id, u.avatar) + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
     }
-    document.body.style.backgroundColor = config.background.color;
 
-    // Discord Avatar - try different URLs
-    const avatar = document.getElementById('profile-avatar');
-    const userId = config.profile.discord.userId;
-    
-    // Try animated avatar first (if user has nitro), then static
-    avatar.src = `https://cdn.discordapp.com/avatars/${userId}/a_${userId}.gif?size=512`;
-    
-    avatar.onerror = function() {
-        this.src = `https://cdn.discordapp.com/avatars/${userId}.png?size=512`;
-    };
-    
-    avatar.onerror = function() {
-        this.src = `https://cdn.discordapp.com/avatars/${userId}/default.png?size=512`;
-    };
-    
-    avatar.onerror = function() {
-        this.src = `https://ui-avatars.com/api/?name=Dx&background=0D8ABC&color=fff&size=512`;
-    };
+    /* username */
+    var nameEl = document.querySelector('.halo-username');
+    var badge  = nameEl.querySelector('.halo-badge');
+    nameEl.childNodes[0].textContent = u.global_name || u.username;
 
-    document.getElementById('profile-username').textContent = config.profile.username;
-    document.getElementById('profile-bio').textContent = config.profile.bio;
-    document.getElementById('footer-name').textContent = config.profile.footerName;
-    document.getElementById('footer-name').style.color = '#00ff88';
+    /* status pill */
+    var dot  = document.querySelector('.status-dot');
+    var pill = document.querySelector('.halo-status-pill');
+    var col  = STATUS_COLOR[st] || STATUS_COLOR.offline;
+    dot.style.background = col;
+    dot.style.boxShadow  = '0 0 6px ' + col;
+    /* update text node (second child after the dot div) */
+    var textNode = pill.childNodes[pill.childNodes.length - 1];
+    if (textNode) textNode.textContent = ' ' + (STATUS_LABEL[st] || 'offline');
 
-    // Links
-    const linksContainer = document.getElementById('links-container');
-    config.links.forEach(link => {
-        const a = document.createElement('a');
-        a.href = link.url;
-        a.className = 'link-btn';
-        a.textContent = link.name;
-        linksContainer.appendChild(a);
+    /* discord block */
+    var activity = null;
+    for (var i = 0; i < acts.length; i++) {
+      if (acts[i].type === 0 || acts[i].type === 4) { activity = acts[i]; break; }
+    }
+    document.querySelector('.discord-name').textContent     = u.username;
+    document.querySelector('.discord-activity').textContent = activity
+      ? (activity.name || activity.state || 'No activity')
+      : 'No activity';
+
+    /* banner */
+    var bannerEl = document.querySelector('.halo-banner');
+    if (u.banner) {
+      bannerEl.style.background = 'url(' + bannerUrl(u.id, u.banner) + ') center/cover no-repeat';
+    } else if (u.accent_color) {
+      var hex = '#' + u.accent_color.toString(16).padStart(6, '0');
+      bannerEl.style.background = 'linear-gradient(135deg,' + hex + '33,' + hex + '11)';
+    }
+  });
+}
+
+/* ── HOF CARDS ── */
+function loadHOF() {
+  var cards = document.querySelectorAll('.hof-card');
+
+  cards.forEach(function(card, i) {
+    var member = HOF_MEMBERS[i];
+    if (!member) return;
+
+    card.querySelector('.hof-name').textContent = member.name;
+    card.querySelector('.hof-role').textContent = member.role;
+
+    if (!member.id || member.id === '000000000000000000') return;
+
+    lanyard(member.id).then(function(data) {
+      if (!data) return;
+      var u  = data.discord_user;
+      var st = data.discord_status || 'offline';
+
+      /* real avatar as card background */
+      if (u.avatar) {
+        var fill = card.querySelector('.hof-phfill');
+        if (fill) {
+          var img = document.createElement('img');
+          img.className = 'hof-bg';
+          img.src = avatarUrl(u.id, u.avatar, 512);
+          img.alt = u.username;
+          fill.parentNode.replaceChild(img, fill);
+        }
+      }
+
+      /* live status dot on card */
+      var col   = STATUS_COLOR[st] || STATUS_COLOR.offline;
+      var badge = document.createElement('div');
+      badge.style.cssText = [
+        'position:absolute', 'top:0.75rem', 'left:0.75rem',
+        'width:9px', 'height:9px', 'border-radius:50%',
+        'background:' + col, 'box-shadow:0 0 6px ' + col,
+        'border:2px solid #000', 'z-index:4'
+      ].join(';');
+      card.appendChild(badge);
+
+      /* update name to real display name */
+      card.querySelector('.hof-name').textContent = u.global_name || u.username;
     });
-
-    // Click avatar to open Discord
-    const avatarWrapper = avatar.parentElement;
-    avatarWrapper.style.cursor = 'pointer';
-    avatarWrapper.onclick = () => {
-        window.open(config.profile.discord.profileUrl, '_blank');
-    };
+  });
 }
 
-// 2. SPLASH SCREEN (TAP TO ENTER)
-function initSplash() {
-    const splashScreen = document.getElementById('splash-screen');
-    const splashLogo = document.getElementById('splash-logo');
-    const splashTitle = document.getElementById('splash-title');
+/* ════════════════════════════════════════════════════════════
+   WORKING TERMINAL
+   ════════════════════════════════════════════════════════════ */
+var termOutput  = document.getElementById('term-output');
+var termInput   = document.getElementById('term-input');
+var termForm    = document.getElementById('term-form');
+var termPromptEl = document.getElementById('term-prompt-text');
 
-    splashLogo.src = config.splash.logo;
-    splashTitle.textContent = config.splash.title;
+var cmdHistory = [];
+var histIdx    = -1;
 
-    splashScreen.addEventListener('click', enterSite);
-    splashScreen.addEventListener('touchstart', enterSite);
+/* set prompt */
+termPromptEl.textContent = TERM.user + '@' + TERM.host + ':~$';
 
-    function enterSite() {
-        splashScreen.classList.add('hidden');
-        document.querySelector('.container').classList.add('visible');
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 
-        setTimeout(() => {
-            splashScreen.style.display = 'none';
-        }, 800);
+function pad(s, n) {
+  s = String(s);
+  while (s.length < n) s += ' ';
+  return s;
+}
 
-        // Play music
-        if (config.music.src) {
-            const audio = new Audio(config.music.src);
-            audio.loop = true;
-            audio.volume = 0.5;
-            audio.play().catch(() => {});
-        }
+/* command handlers — return HTML string or Promise<string> */
+var COMMANDS = {
+
+  help: function() {
+    return [
+      '<span class="t-yellow">available commands</span>',
+      '<span class="t-gray">────────────────────────────────</span>',
+      '<span class="t-green">whoami</span>           who you are',
+      '<span class="t-green">id</span>               uid / gid info',
+      '<span class="t-green">cat identity</span>     full profile',
+      '<span class="t-green">ls</span>               list directories',
+      '<span class="t-green">ls links</span>         social links',
+      '<span class="t-green">ls hof</span>           hall of fame list',
+      '<span class="t-green">neofetch</span>         system info card',
+      '<span class="t-green">status</span>           live discord status',
+      '<span class="t-green">uptime</span>           session uptime',
+      '<span class="t-green">date</span>             current datetime',
+      '<span class="t-green">clear</span>            clear terminal',
+      '<span class="t-green">history</span>          command history',
+      '<span class="t-gray">────────────────────────────────</span>',
+    ].join('\n');
+  },
+
+  whoami: function() {
+    return '<span class="t-bright">' + esc(TERM.user) + '</span>';
+  },
+
+  id: function() {
+    return 'uid=1000(<span class="t-green">' + esc(TERM.user) + '</span>) gid=1000(<span class="t-green">' + esc(TERM.user) + '</span>) groups=1000(<span class="t-green">' + esc(TERM.user) + '</span>),27(sudo)';
+  },
+
+  'cat identity': function() {
+    return [
+      '<span class="t-gray">name' + '         </span><span class="t-white">' + esc(TERM.user) + '</span>',
+      '<span class="t-gray">server       </span><span class="t-white">' + esc(TERM.server) + '</span>',
+      '<span class="t-gray">role         </span><span class="t-red">' + esc(TERM.role) + '</span>',
+      '<span class="t-gray">status       </span><span class="t-green">active</span>',
+      '<span class="t-gray">since        </span><span class="t-white">' + esc(TERM.since) + '</span>',
+      '<span class="t-gray">location     </span><span class="t-white">' + esc(TERM.location) + '</span>',
+    ].join('\n');
+  },
+
+  ls: function() {
+    return '<span class="t-blue">links/</span>   <span class="t-blue">hof/</span>   <span class="t-blue">servers/</span>   <span class="t-gray">identity</span>   <span class="t-gray">readme.md</span>';
+  },
+
+  'ls links': function() {
+    return [
+      '<span class="t-muted">drwxr-xr-x</span>  <span class="t-blue">discord</span>   <span class="t-gray">→  ' + esc(TERM.discord) + '</span>',
+      '<span class="t-muted">drwxr-xr-x</span>  <span class="t-blue">twitter</span>   <span class="t-gray">→  ' + esc(TERM.twitter) + '</span>',
+      '<span class="t-muted">drwxr-xr-x</span>  <span class="t-blue">github</span>    <span class="t-gray">→  ' + esc(TERM.github) + '</span>',
+    ].join('\n');
+  },
+
+  'ls hof': function() {
+    var rows = HOF_MEMBERS.map(function(m, i) {
+      return '<span class="t-gray">' + String(i+1).padStart(2,'0') + '</span>  <span class="t-bright">' + pad(esc(m.name), 16) + '</span><span class="t-muted">' + esc(m.role) + '</span>';
+    });
+    return ['<span class="t-yellow">hall of fame</span>', '<span class="t-gray">────────────────────────────────</span>'].concat(rows).join('\n');
+  },
+
+  neofetch: function() {
+    var up   = Math.floor((Date.now() - window._bootTime) / 1000);
+    var mins = Math.floor(up / 60);
+    var secs = up % 60;
+    return [
+      '<span class="t-red">        .__ ___  </span>   <span class="t-bright">' + esc(TERM.user) + '</span><span class="t-gray">@</span><span class="t-bright">' + esc(TERM.host) + '</span>',
+      '<span class="t-red">        |  Y  \\  </span>   <span class="t-gray">──────────────────</span>',
+      '<span class="t-red">   _____|  |  /  </span>   <span class="t-green">OS:    </span><span class="t-white">dx-personal 1.0</span>',
+      '<span class="t-red">  |  _  \\    \\   </span>   <span class="t-green">Host:  </span><span class="t-white">' + esc(TERM.server) + '</span>',
+      '<span class="t-red">  |_____/__|  \\  </span>   <span class="t-green">Shell: </span><span class="t-white">dx-sh 1.0</span>',
+      '<span class="t-red">          Dx     </span>   <span class="t-green">Role:  </span><span class="t-white">' + esc(TERM.role) + '</span>',
+      '                     <span class="t-green">Since: </span><span class="t-white">' + esc(TERM.since) + '</span>',
+      '                     <span class="t-green">Up:    </span><span class="t-white">' + mins + 'm ' + secs + 's</span>',
+    ].join('\n');
+  },
+
+  status: function() {
+    return lanyard(PROFILE_ID).then(function(data) {
+      if (!data) return '<span class="t-red">error:</span> <span class="t-white">could not reach Lanyard. have you joined discord.gg/lanyard?</span>';
+      var u   = data.discord_user;
+      var st  = data.discord_status || 'offline';
+      var col = STATUS_COLOR[st] || STATUS_COLOR.offline;
+      var acts = data.activities || [];
+      var act  = null;
+      for (var i = 0; i < acts.length; i++) {
+        if (acts[i].type === 0 || acts[i].type === 4) { act = acts[i]; break; }
+      }
+      return [
+        '<span class="t-gray">user      </span><span class="t-bright">' + esc(u.username) + '</span>',
+        '<span class="t-gray">status    </span><span style="color:' + col + '">' + st + '</span>',
+        '<span class="t-gray">activity  </span><span class="t-white">' + (act ? esc(act.name || act.state || 'none') : 'none') + '</span>',
+      ].join('\n');
+    });
+  },
+
+  uptime: function() {
+    var up   = Math.floor((Date.now() - window._bootTime) / 1000);
+    var h    = Math.floor(up / 3600);
+    var m    = Math.floor((up % 3600) / 60);
+    var s    = up % 60;
+    return 'up <span class="t-white">' + h + 'h ' + m + 'm ' + s + 's</span>  load: <span class="t-green">0.00</span>';
+  },
+
+  date: function() {
+    return '<span class="t-white">' + new Date().toString() + '</span>';
+  },
+
+  history: function() {
+    if (!cmdHistory.length) return '<span class="t-muted">no commands yet</span>';
+    return cmdHistory.map(function(c, i) {
+      return '  <span class="t-gray">' + String(i+1).padStart(3,' ') + '</span>  <span class="t-white">' + esc(c) + '</span>';
+    }).join('\n');
+  },
+
+  clear: function() { return '__CLEAR__'; },
+};
+
+function appendLine(cmdText, outputHtml) {
+  /* command echo */
+  var cmdDiv = document.createElement('div');
+  cmdDiv.className = 'tl';
+  cmdDiv.innerHTML = '<span class="t-prompt">' + esc(termPromptEl.textContent) + '</span> <span class="t-cmd">' + esc(cmdText) + '</span>';
+  termOutput.appendChild(cmdDiv);
+
+  /* output */
+  if (outputHtml && outputHtml !== '__CLEAR__') {
+    var outDiv = document.createElement('div');
+    outDiv.className = 'tl term-out';
+    outDiv.innerHTML = outputHtml;
+    termOutput.appendChild(outDiv);
+  }
+
+  /* scroll */
+  var body = termOutput.closest('.term-body');
+  if (body) body.scrollTop = body.scrollHeight;
+}
+
+function runCommand(raw) {
+  var cmd = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+  if (!cmd) return Promise.resolve();
+
+  cmdHistory.push(raw.trim());
+  histIdx = cmdHistory.length;
+
+  if (cmd === 'clear') {
+    appendLine(raw, '');
+    termOutput.innerHTML = '';
+    return Promise.resolve();
+  }
+
+  var handler = COMMANDS[cmd];
+  if (!handler) {
+    appendLine(raw, '<span class="t-red">bash:</span> <span class="t-white">' + esc(cmd) + '</span><span class="t-gray">: command not found — type </span><span class="t-green">help</span>');
+    return Promise.resolve();
+  }
+
+  var result = handler();
+
+  if (result && typeof result.then === 'function') {
+    /* async: echo command immediately, await output */
+    var cmdDiv = document.createElement('div');
+    cmdDiv.className = 'tl';
+    cmdDiv.innerHTML = '<span class="t-prompt">' + esc(termPromptEl.textContent) + '</span> <span class="t-cmd">' + esc(raw) + '</span>';
+    termOutput.appendChild(cmdDiv);
+
+    return result.then(function(html) {
+      if (html) {
+        var outDiv = document.createElement('div');
+        outDiv.className = 'tl term-out';
+        outDiv.innerHTML = html;
+        termOutput.appendChild(outDiv);
+      }
+      var body = termOutput.closest('.term-body');
+      if (body) body.scrollTop = body.scrollHeight;
+    });
+  }
+
+  appendLine(raw, result);
+  return Promise.resolve();
+}
+
+termForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var val = termInput.value;
+  termInput.value = '';
+  runCommand(val);
+});
+
+termInput.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (histIdx > 0) histIdx--;
+    termInput.value = cmdHistory[histIdx] || '';
+  }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (histIdx < cmdHistory.length - 1) { histIdx++; termInput.value = cmdHistory[histIdx] || ''; }
+    else { histIdx = cmdHistory.length; termInput.value = ''; }
+  }
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    var val = termInput.value.toLowerCase();
+    var keys = Object.keys(COMMANDS);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].indexOf(val) === 0) { termInput.value = keys[i]; break; }
     }
-}
+  }
+});
 
-// 3. TITLE ANIMATION
-let titleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+document.querySelector('.term-body').addEventListener('click', function() {
+  termInput.focus();
+});
 
-function initTitleAnimation() {
-    if (!config.titleAnimation.enabled) return;
+/* boot message */
+(function() {
+  var bootDiv = document.createElement('div');
+  bootDiv.className = 'tl';
+  bootDiv.innerHTML = [
+    '<span class="t-comment"># ──────────────────────────────────────</span>',
+    '<span class="t-comment">#              ·  DX 1of1  ·  ' + esc(TERM.since) + '</span>',
+    '<span class="t-comment"># ──────────────────────────────────────</span>',
+    '<span class="t-muted">type </span><span class="t-green">help</span><span class="t-muted"> to see available commands</span>',
+    '',
+  ].join('\n');
+  termOutput.appendChild(bootDiv);
+})();
 
-    const texts = config.titleAnimation.texts;
-    const speed = config.titleAnimation.speed;
+/* ── INIT ── */
+loadProfile();
+loadHOF();
+setInterval(function() { loadProfile(); }, 30000);
 
-    function typeEffect() {
-        const currentText = texts[titleIndex];
-        
-        if (isDeleting) {
-            document.title = currentText.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            document.title = currentText.substring(0, charIndex + 1);
-            charIndex++;
-        }
+/* ════════════════════════════════════════════════════════════
+   SERVER TRAIN CAROUSEL — infinite seamless scroll
+   ════════════════════════════════════════════════════════════ */
+(function() {
+  var train = document.getElementById('srvTrain');
+  if (!train) return;
 
-        let typeSpeed = speed;
-        
-        if (!isDeleting && charIndex === currentText.length) {
-            typeSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            titleIndex = (titleIndex + 1) % texts.length;
-            typeSpeed = 500;
-        }
+  /* clone the set of cards to fill the track twice → seamless loop */
+  var clone = train.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  train.parentNode.appendChild(clone);
 
-        setTimeout(typeEffect, typeSpeed);
-    }
-
-    typeEffect();
-}
+  /* pause on hover */
+  var wrap = document.querySelector('.srv-train-wrap');
+  wrap.addEventListener('mouseenter', function() {
+    train.style.animationPlayState = 'paused';
+    clone.style.animationPlayState = 'paused';
+  });
+  wrap.addEventListener('mouseleave', function() {
+    train.style.animationPlayState = 'running';
+    clone.style.animationPlayState = 'running';
+  });
+})();
