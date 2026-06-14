@@ -288,7 +288,7 @@ function loadServerStats() {
 (function(){
   ['srvRow1','srvRow2'].forEach(function(id){
     var train=document.getElementById(id); if(!train) return;
-    var clone=train.cloneNode(true); clone.id=''; clone.setAttribute('aria-hidden','true');
+    var clone=train.cloneNode(false); clone.id=''; clone.setAttribute('aria-hidden','true');
     train.parentNode.appendChild(clone);
     var wrap=train.closest('.srv-train-wrap');
     function pause(){ train.style.animationPlayState='paused'; clone.style.animationPlayState='paused'; }
