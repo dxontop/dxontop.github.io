@@ -34,7 +34,7 @@ var SERVER_DESC = 'Welcome to 1998 — where the most skillful, undefeated minds
    ★ ANIMATED TAB TITLE FRAMES
    Cycles through these in the browser tab.
    ════════════════════════════════════════════════ */
-var TAB_FRAMES = ['dx', 'd', ''];
+var TAB_FRAMES = ['dxontop', 'dxonto', 'dxont', 'dxon', 'dxo', 'dx', 'd'];
 var TAB_INTERVAL = 900; /* ★ ms per frame */
 
 /* ════════════════════════════════════════════════
