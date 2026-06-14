@@ -358,46 +358,80 @@ nav{
 .srv-feat-btn:hover{background:var(--purple2);color:#fff;transform:scale(1.03);box-shadow:0 0 30px rgba(155,110,240,0.4)}
 
 /* ══════════════════════════════════════════════════════════
-   SERVER TRAIN
+   SERVER TRAIN — DUAL ROWS
    ══════════════════════════════════════════════════════════ */
 .srv-section-head{padding:0 2.5rem;max-width:1200px;margin:0 auto 1.5rem}
+
 .srv-train-wrap{
-  position:relative;overflow:hidden;padding-bottom:5rem;
-  mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+  position:relative;overflow:hidden;
+  mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);
 }
-/* ★ EDITABLE: train speed — lower number = faster */
-.srv-train{display:flex;gap:1px;width:max-content;animation:train-scroll 10s linear infinite}
-.srv-train.clone{animation:train-scroll 10s linear infinite}
-@keyframes train-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* row scrolling LEFT (default) — ★ speed: lower = faster */
+.srv-row-left{
+  display:flex;gap:1px;width:max-content;
+  animation:train-left 28s linear infinite;
+}
+/* row scrolling RIGHT */
+.srv-row-right{
+  display:flex;gap:1px;width:max-content;
+  animation:train-right 28s linear infinite;
+}
+
+@keyframes train-left {0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes train-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+
+.srv-train-wrap:hover .srv-row-left,
+.srv-train-wrap:hover .srv-row-right{animation-play-state:paused}
+
+/* card */
 .srv-card{
-  flex-shrink:0;width:270px;
-  background:rgba(12,10,22,0.8);border:1px solid rgba(108,63,197,0.1);
-  padding:1.4rem 1.3rem;
+  flex-shrink:0;width:280px;
+  background:rgba(10,8,20,0.85);
+  border:1px solid rgba(108,63,197,0.1);
+  padding:1.2rem 1.2rem;
   display:flex;align-items:center;gap:1rem;
   text-decoration:none;color:inherit;
-  transition:background .2s,border-color .2s;
+  transition:background .2s,border-color .2s,transform .2s;
   position:relative;overflow:hidden;
 }
 .srv-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--purple2);transition:height .3s}
-.srv-card:hover{background:rgba(108,63,197,0.08);border-color:rgba(108,63,197,0.25)}
+.srv-card:hover{background:rgba(108,63,197,0.1);border-color:rgba(108,63,197,0.3);transform:translateY(-1px)}
 .srv-card:hover::before{height:100%}
-.srv-icon{
-  width:46px;height:46px;flex-shrink:0;border-radius:12px;
-  background:linear-gradient(135deg,#18103a,#0c0a20);
-  border:1px solid rgba(108,63,197,0.2);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Cinzel',serif;font-size:0.85rem;font-weight:900;
-  color:rgba(155,110,240,0.4);overflow:hidden;
+
+/* server icon — square with rounded corners like discord */
+.srv-icon-img{
+  width:48px;height:48px;flex-shrink:0;
+  border-radius:14px;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:border-radius .2s;
 }
-.srv-icon img{width:100%;height:100%;object-fit:cover;border-radius:11px}
+.srv-card:hover .srv-icon-img{border-radius:50%}
+.srv-icon-img img{width:100%;height:100%;object-fit:cover;display:block}
+
 .srv-info{flex:1;min-width:0}
-.srv-name{font-family:'Cinzel',serif;font-size:0.88rem;font-weight:700;letter-spacing:0.04em;color:rgba(255,255,255,0.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.3rem}
-.srv-meta{display:flex;align-items:center;gap:8px}
-.srv-dot{width:6px;height:6px;border-radius:50%;background:#3ba55d;box-shadow:0 0 5px rgba(59,165,93,0.7);flex-shrink:0}
-.srv-count{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;color:rgba(255,255,255,0.25)}
-.srv-arrow{font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(108,63,197,0.3);flex-shrink:0;transition:color .2s}
+.srv-name{
+  font-family:'Cinzel',serif;font-size:0.88rem;font-weight:700;
+  letter-spacing:0.04em;color:rgba(255,255,255,0.85);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.3rem;
+}
+.srv-meta{display:flex;align-items:center;gap:7px}
+.srv-dot{width:6px;height:6px;border-radius:50%;background:#3ba55d;box-shadow:0 0 5px rgba(59,165,93,0.7);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 4px rgba(59,165,93,0.6)}50%{box-shadow:0 0 8px rgba(59,165,93,1)}}
+.srv-count{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:rgba(255,255,255,0.22)}
+.srv-arrow{font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(108,63,197,0.35);flex-shrink:0;transition:color .2s}
 .srv-card:hover .srv-arrow{color:var(--purple2)}
+
+/* featured server stats */
+.srv-feat-stats{
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  margin-bottom:1.6rem;
+}
+.srv-stat{display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
+.srv-stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.srv-stat-dot.online{background:#3ba55d;box-shadow:0 0 6px rgba(59,165,93,0.7);animation:pulse-dot 2s ease-in-out infinite}
+.srv-stat-sep{color:rgba(255,255,255,0.15);font-size:0.7rem}
 
 /* ══════════════════════════════════════════════════════════
    TERMINAL
