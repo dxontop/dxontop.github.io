@@ -367,8 +367,8 @@ nav{
   -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
 }
 /* ★ EDITABLE: train speed — lower number = faster */
-.srv-train{display:flex;gap:1px;width:max-content;animation:train-scroll 30s linear infinite}
-.srv-train.clone{animation:train-scroll 30s linear infinite}
+.srv-train{display:flex;gap:1px;width:max-content;animation:train-scroll 10s linear infinite}
+.srv-train.clone{animation:train-scroll 10s linear infinite}
 @keyframes train-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .srv-card{
   flex-shrink:0;width:270px;
