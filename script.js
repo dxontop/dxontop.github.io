@@ -22,8 +22,8 @@ var PROFILE_ID = '745985998479163443'; /* ★ YOUR Discord User ID */
    won't load but their name/role will still show.
    ════════════════════════════════════════════════════════════ */
 var HOF_MEMBERS = [
-  { id: '745985998479163443', name: 'dx',     role: 'founder · since 2025' },
-  { id: '000000000000000000', name: 'Name 2', role: 'elite'                },
+  { id: '780737657910984704', name: 'sewuser',     role: 'Founder of 1998' },
+  { id: '720212864396427314', name: 'daz', role: 'Founder of ATK'          },
   { id: '000000000000000000', name: 'Name 3', role: 'legend'               },
   { id: '000000000000000000', name: 'Name 4', role: 'dedicated'            },
   { id: '000000000000000000', name: 'Name 5', role: 'respected'            },
