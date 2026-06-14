@@ -34,8 +34,8 @@ var SERVER_DESC = 'Welcome to 1998 — where the most skillful, undefeated minds
    ★ ANIMATED TAB TITLE FRAMES
    Cycles through these in the browser tab.
    ════════════════════════════════════════════════ */
-var TAB_FRAMES = ['dxontop', 'dxonto', 'dxont', 'dxon', 'dxo', 'dx', 'd'];
-var TAB_INTERVAL = 900; /* ★ ms per frame */
+var TAB_FRAMES = ['dxontop', 'dxonto', 'dxont', 'dxon', 'dxo', 'dx', 'd', 'dx', 'dxo', 'dxon', 'dxont', 'dxonto', 'dxontop'];
+var TAB_INTERVAL = 300; /* ★ ms per frame */
 
 /* ════════════════════════════════════════════════
    ★ MUSIC (plays on splash tap)
@@ -79,9 +79,9 @@ var AUTO_SCRIPT = [
   { text:'[$] scan complete — 3 open ports detected',           delay:200,  cls:'t-green'  },
   { text:'[>] checking identity...',                             delay:200,  cls:'t-yellow' },
   { text:'[$] user confirmed — dx',                             delay:200,  cls:'t-green'  },
-  { text:'[$] threat level — world threat',                       delay:300,  cls:'t-green'  },
+  { text:'[$] threat level — world threat',                       delay:300,  cls:'t-red'  },
   { text:'',                                                      delay:200,  cls:''         },
-  { text:'root@dx : ~/personal $',                              delay:200,  cls:'t-bright' },
+  { text:'root@dx : ~/wrldthreat $',                              delay:200,  cls:'t-bright' },
 ];
 
 /* ──────────────────────────────────────────────
@@ -335,12 +335,12 @@ var COMMANDS = {
   neofetch: function(){
     var up=Math.floor((Date.now()-window._bootTime)/1000),m=Math.floor(up/60),s=up%60;
     return [
-      '<span class="t-purple">     ██████╗ ██╗  ██╗  </span>  <span class="t-bright">'+esc(TERM.user)+'</span><span class="t-gray">@</span><span class="t-bright">'+esc(TERM.host)+'</span>',
-      '<span class="t-purple">     ██╔══██╗╚██╗██╔╝  </span>  <span class="t-gray">──────────────────────</span>',
-      '<span class="t-purple">     ██║  ██║ ╚███╔╝   </span>  <span class="t-green">OS:</span>    <span class="t-white">dx-personal 1.0</span>',
-      '<span class="t-purple">     ██║  ██║ ██╔██╗   </span>  <span class="t-green">Role:</span>  <span class="t-white">'+esc(TERM.role)+'</span>',
-      '<span class="t-purple">     ██████╔╝██╔╝ ██╗  </span>  <span class="t-green">Since:</span> <span class="t-white">'+esc(TERM.since)+'</span>',
-      '<span class="t-purple">     ╚═════╝ ╚═╝  ╚═╝  </span>  <span class="t-green">Up:</span>    <span class="t-white">'+m+'m '+s+'s</span>',
+      '<span class="t-red">     ██████╗ ██╗  ██╗  </span>  <span class="t-bright">'+esc(TERM.user)+'</span><span class="t-gray">@</span><span class="t-bright">'+esc(TERM.host)+'</span>',
+      '<span class="t-red">     ██╔══██╗╚██╗██╔╝  </span>  <span class="t-gray">──────────────────────</span>',
+      '<span class="t-red">     ██║  ██║ ╚███╔╝   </span>  <span class="t-green">OS:</span>    <span class="t-white">dx-personal 1.0</span>',
+      '<span class="t-red">     ██║  ██║ ██╔██╗   </span>  <span class="t-green">Role:</span>  <span class="t-white">'+esc(TERM.role)+'</span>',
+      '<span class="t-red">     ██████╔╝██╔╝ ██╗  </span>  <span class="t-green">Since:</span> <span class="t-white">'+esc(TERM.since)+'</span>',
+      '<span class="t-red">     ╚═════╝ ╚═╝  ╚═╝  </span>  <span class="t-green">Up:</span>    <span class="t-white">'+m+'m '+s+'s</span>',
     ].join('\n');
   },
   status: function(){
