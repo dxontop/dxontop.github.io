@@ -68,12 +68,13 @@ var HOF_MEMBERS = [
    How to get: Server Settings → Widget → Enable → copy Server ID
    Put the same ID in each srv-card's data-guild-id in HTML.
    ════════════════════════════════════════════════ */
-var MAIN_GUILD_ID = 'YOUR_GUILD_ID_HERE'; /* ★ your main server Guild ID */
+var MAIN_GUILD_ID = '1126468379784515705'; /* ★ your main server Guild ID */
 
 /* ════════════════════════════════════════════════
    ★ FEATURED SERVER DESCRIPTION (types itself out)
    ════════════════════════════════════════════════ */
-var SERVER_DESC = 'Welcome to 1998 — where the most skillful, undefeated minds converge. Pure skill, elite execution, unmatched presence. We don\'t end debates... we end eras.'; /* ★ */
+var SERVER_DESC = 'Welcome to 1998 — where talent meets discipline. Elite execution, unwavering focus, unmatched standards. Together, we conquer all.
+'; /* ★ */
 
 /* ════════════════════════════════════════════════
    ★ ANIMATED TAB TITLE
@@ -84,7 +85,7 @@ var TAB_INTERVAL = 200; /* ★ ms between frames */
 /* ════════════════════════════════════════════════
    ★ MUSIC (plays on splash tap — leave '' to disable)
    ════════════════════════════════════════════════ */
-var MUSIC_SRC = 'https://github.com/dxontop/dxontop.github.io/blob/main/2.%20%20SINALOA%20-%20BUDDAHBEADS%2C%20LEXUS%2C%20EJAC%20(YELLOWTAPES%20VOL.1).mp3'; /* ★ path to your .mp3 */
+var MUSIC_SRC = ''; /* ★ path to your .mp3 */
 var MUSIC_VOL = 0.5;               /* ★ 0.0 – 1.0 */
 
 /* ════════════════════════════════════════════════
@@ -112,7 +113,7 @@ var AUTO_SCRIPT = [
   { text:'  ██║  ██║ ╚███╔╝ ',                                delay:0,   cls:'t-red' },
   { text:'  ██║  ██║ ██╔██╗ ',                                delay:0,   cls:'t-red' },
   { text:'  ██████╔╝██╔╝ ██╗',                                delay:0,   cls:'t-red' },
-  { text:'  ╚═════╝ ╚═╝  ╚═╝  ',            delay:0,   cls:'t-purple' },
+  { text:'  ╚═════╝ ╚═╝  ╚═╝  ',            delay:0,   cls:'t-red' },
   { text:'',                                                   delay:300, cls:''         },
   { text:'[$] target: dx ',  delay:400, cls:'t-green'  },
   { text:'[$] geolocation: resolving...',                     delay:600, cls:'t-green'  },
