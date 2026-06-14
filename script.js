@@ -48,7 +48,7 @@
    How to get: Discord → Settings → Advanced → Developer Mode ON
                Right-click your name → Copy User ID
    ════════════════════════════════════════════════ */
-var PROFILE_ID = '000000000000000000'; /* ★ paste your User ID here */
+var PROFILE_ID = '745985998479163443'; /* ★ paste your User ID here */
 
 /* ════════════════════════════════════════════════
    ★ HOF MEMBERS — Discord User IDs + display info
@@ -73,19 +73,19 @@ var MAIN_GUILD_ID = 'YOUR_GUILD_ID_HERE'; /* ★ your main server Guild ID */
 /* ════════════════════════════════════════════════
    ★ FEATURED SERVER DESCRIPTION (types itself out)
    ════════════════════════════════════════════════ */
-var SERVER_DESC = 'Welcome to Dx — where the most skillful, undefeated minds converge. Pure skill, elite execution, unmatched presence. We don\'t end debates... we end eras.'; /* ★ */
+var SERVER_DESC = 'Welcome to 1998 — where the most skillful, undefeated minds converge. Pure skill, elite execution, unmatched presence. We don\'t end debates... we end eras.'; /* ★ */
 
 /* ════════════════════════════════════════════════
    ★ ANIMATED TAB TITLE
    ════════════════════════════════════════════════ */
-var TAB_FRAMES = ['dx', 'D x', 'Dx ·', '· dx', 'dx ·', '· Dx']; /* ★ */
-var TAB_INTERVAL = 900; /* ★ ms between frames */
+var TAB_FRAMES = [ 'dxontop', 'dxonto', 'dxont', 'dxon', 'dxo', 'dx', 'd', 'd', 'dx', 'dxo', 'dxon', 'dxont', 'dxonto', 'dxontop' ]; /* ★ */
+var TAB_INTERVAL = 200; /* ★ ms between frames */
 
 /* ════════════════════════════════════════════════
    ★ MUSIC (plays on splash tap — leave '' to disable)
    ════════════════════════════════════════════════ */
 var MUSIC_SRC = 'music/track.mp3'; /* ★ path to your .mp3 */
-var MUSIC_VOL = 0.4;               /* ★ 0.0 – 1.0 */
+var MUSIC_VOL = 0.5;               /* ★ 0.0 – 1.0 */
 
 /* ════════════════════════════════════════════════
    ★ TERMINAL INFO
@@ -107,18 +107,18 @@ var TERM = {
    ════════════════════════════════════════════════ */
 var AUTO_SCRIPT = [
   { text:'',                                                   delay:200, cls:''         },
-  { text:'  ██████╗ ██╗  ██╗',                                delay:0,   cls:'t-purple' },
-  { text:'  ██╔══██╗╚██╗██╔╝',                                delay:0,   cls:'t-purple' },
-  { text:'  ██║  ██║ ╚███╔╝ ',                                delay:0,   cls:'t-purple' },
-  { text:'  ██║  ██║ ██╔██╗ ',                                delay:0,   cls:'t-purple' },
-  { text:'  ██████╔╝██╔╝ ██╗',                                delay:0,   cls:'t-purple' },
-  { text:'  ╚═════╝ ╚═╝  ╚═╝  personal terminal',            delay:0,   cls:'t-purple' },
+  { text:'  ██████╗ ██╗  ██╗',                                delay:0,   cls:'t-red' },
+  { text:'  ██╔══██╗╚██╗██╔╝',                                delay:0,   cls:'t-red' },
+  { text:'  ██║  ██║ ╚███╔╝ ',                                delay:0,   cls:'t-red' },
+  { text:'  ██║  ██║ ██╔██╗ ',                                delay:0,   cls:'t-red' },
+  { text:'  ██████╔╝██╔╝ ██╗',                                delay:0,   cls:'t-red' },
+  { text:'  ╚═════╝ ╚═╝  ╚═╝  ',            delay:0,   cls:'t-purple' },
   { text:'',                                                   delay:300, cls:''         },
-  { text:'[$] target: dx personal — discord.gg/c22NWFfMEN',  delay:400, cls:'t-green'  },
+  { text:'[$] target: dx ',  delay:400, cls:'t-green'  },
   { text:'[$] geolocation: resolving...',                     delay:600, cls:'t-green'  },
-  { text:'[$] ISP: personal · user: dx',                     delay:500, cls:'t-green'  },
+  { text:'[$] ISP: 1of1 · user: dx',                     delay:500, cls:'t-green'  },
   { text:'',                                                   delay:300, cls:''         },
-  { text:'[>] running port scan... (0-65535)',                delay:800, cls:'t-yellow' },
+  { text:'[>] running port scan... (0-1998)',                delay:800, cls:'t-yellow' },
   { text:'  22/tcp   open  ssh',                              delay:300, cls:'t-muted'  },
   { text:'  80/tcp   open  http',                             delay:200, cls:'t-muted'  },
   { text:'  443/tcp  open  https',                            delay:200, cls:'t-muted'  },
@@ -126,10 +126,9 @@ var AUTO_SCRIPT = [
   { text:'[$] scan complete — 3 open ports detected',        delay:500, cls:'t-green'  },
   { text:'[>] checking identity...',                          delay:600, cls:'t-yellow' },
   { text:'[$] user confirmed — dx',                          delay:400, cls:'t-green'  },
-  { text:'[$] role — founder',                               delay:300, cls:'t-green'  },
-  { text:'[$] threat level — UNDEFEATED',                    delay:300, cls:'t-green'  },
+  { text:'[$] threat level — world threat',                    delay:300, cls:'t-red'  },
   { text:'',                                                   delay:400, cls:''         },
-  { text:'root@dx : ~/personal $',                           delay:200, cls:'t-bright' },
+  { text:'root@dx : ~ $',                           delay:200, cls:'t-bright' },
 ];
 
 /* ─────────────────────────────────────────────
