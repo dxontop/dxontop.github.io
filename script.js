@@ -84,7 +84,7 @@ var TAB_INTERVAL = 200; /* ★ ms between frames */
 /* ════════════════════════════════════════════════
    ★ MUSIC (plays on splash tap — leave '' to disable)
    ════════════════════════════════════════════════ */
-var MUSIC_SRC = 'https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Mossa%20Downtown%20feat.%20gins%26melodies%20(Official%20Music%20Video).mp3)'; /* ★ path to your .mp3 */
+var MUSIC_SRC = 'https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Mossa%20Downtown%20feat.%20gins%26melodies%20(Official%20Music%20Video).mp3'; /* ★ path to your .mp3 */
 var MUSIC_VOL = 0.5;               /* ★ 0.0 – 1.0 */
 
 /* ════════════════════════════════════════════════
