@@ -36,7 +36,7 @@ window.addEventListener("load", () => {
     entered = true;
 
     /* Music starts on tap — guaranteed autoplay */
-    if (music) { music.volume = 0.3; music.play(); }
+    if (music) { music.volume = 0.5; music.play(); }
 
     /* Slide splash off the top */
     splash.classList.add("up");
