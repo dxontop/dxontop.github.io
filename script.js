@@ -1,8 +1,6 @@
-// ════════════════════════════════════════════════════
-//  1998 — SCRIPT.JS
-// ════════════════════════════════════════════════════
+// 1998 script
 
-// ── TAB TITLE TYPING ──
+// tab title
 (function(){
   const el=document.getElementById('tab-title');
   const txt='1998'; let i=0,erase=false,out='';
@@ -17,7 +15,7 @@
   step();
 })();
 
-// ── SPLASH ──
+// splash to
 window.addEventListener('load',()=>{
   const splash=document.getElementById('splash');
   const btn=document.getElementById('enter-btn');
@@ -42,7 +40,7 @@ window.addEventListener('load',()=>{
   splash.addEventListener('click',enter);
 });
 
-// ── NAV ──
+// nav
 const NAV_IDS=['hof','tte','exclusive','servers','terminal'];
 function updateNav(){
   const mid=window.scrollY+window.innerHeight*.45;
@@ -121,7 +119,7 @@ async function fetchPresence(uid){
   return null;
 }
 
-// ── HOF: fills both the small front card AND the hover Discord card ──
+// hof
 async function loadHOF(card){
   const uid=card.dataset.uid;
   if(!uid||uid.startsWith('0000'))return;
@@ -180,7 +178,7 @@ async function loadHOF(card){
   if(ha)ha.textContent=act||'';
 }
 
-// ── TTE: avatar + banner background + status ──
+// tte
 async function loadTTE(card){
   const uid=card.dataset.uid;
   if(!uid||uid.startsWith('0000'))return;
@@ -316,7 +314,7 @@ function initServers(){
 }
 
 // ── SERVERS TYPING ──
-const SRV_TXT=`Welcome to 1998 — where the most skillful, undefeated minds converge. Pure skill, elite execution, unmatched presence. We don't end debates... we end eras. Bring your vision and undeniable talent — everyone's welcome, but only the skillful endure and the undefeated define what's next.`;
+const SRV_TXT=`Welcome to 1998 — where power isn't earned, it's embodied. The strongest gather here, the fearless thrive here, and the ordinary are forgotten here. Every move shapes the future, every name carries weight, and every presence leaves a mark. We don't compete for greatness — we define it.`;
 function initServersTyping(){
   const el=document.getElementById('srv-desc');
   if(!el)return;
@@ -328,7 +326,7 @@ function initServersTyping(){
   obs.observe(el);
 }
 
-// ── SCROLL REVEAL ──
+
 function initScrollReveal(){
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach((e,idx)=>{
@@ -341,7 +339,7 @@ function initScrollReveal(){
   document.querySelectorAll('.tte-card,.excl-card').forEach(el=>obs.observe(el));
 }
 
-// ── TERMINAL ──
+// termi
 const ASCII_ART=
 ` ██╗ █████╗  █████╗  █████╗ 
 ███║██╔══██╗██╔══██╗██╔══██╗
