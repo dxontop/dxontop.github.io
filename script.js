@@ -317,7 +317,7 @@ function initServers(){
 }
 
 // ── SERVERS TYPING ─────────────────────────────────────
-const SRV_TXT=`Welcome to 1998 — where the most skillful, undefeated minds converge. Pure skill, elite execution, unmatched presence. We don't end debates... we end eras. Bring your vision and undeniable talent — everyone's welcome, but only the skillful endure and the undefeated define what's next.`;
+const SRV_TXT=`Welcome to 1998 — where power isn't earned, it's embodied. The strongest gather here, the fearless thrive here, and the ordinary are forgotten. Every move shapes the future, every name carries weight, and every presence leaves a mark. We don't compete for greatness—we define it. Empires crumble, legacies fade, and entire eras come to an end at our command. What others call impossible, we call routine.`;
 function initServersTyping(){
   const el=document.getElementById('srv-desc');
   if(!el)return;
