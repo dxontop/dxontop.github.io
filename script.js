@@ -355,12 +355,17 @@ function initScrollReveal(){
 // ═══════════════════════════════════════════════════════
 
 const ASCII_ART=
-` ██╗ █████╗  █████╗  █████╗ 
-███║██╔══██╗██╔══██╗██╔══██╗
-╚██║╚██████║╚██████║╚█████╔╝
- ██║ ╚═══██║ ╚═══██║██╔══██╗
- ██║ █████╔╝ █████╔╝╚█████╔╝
- ╚═╝ ╚════╝  ╚════╝  ╚════╝ `;
+`        ..            ..          ...              ...               ...
+   :**888H: \`. .xH""    :~"888 8x :"8 88x     xH88"\`~ .x8X        .x8 88888hx    :
+   X   \`8888k XX888    8    8888Xf  8888>   :8888.   .f"8888Hf   d888 88888888hxx
+  '8hx  48888 ?8888   d8b   ?8888< X8888    :8888>  .f  \`8888Xf  8" ... \`"*8888\`
+  '8888 '8888 \`8888   '8888L'8888X  '%8X  X8888  X888h        ! "    \`.xnxx.
+   %888>'8888  8888    "888X 8888X:xnHH(\`\` 88888  !88888.    X X   .H88888 8%:
+    "8 '888"  8888     ?8~ 8888X 8888  88888  X 'hn88888 8*"   >
+    .-\` X*"   8888    --\`  8888> X888 8888L %  ?888  ! '8h..  ..x8\`
+      .xhx.   8888    :H8x 8888 X8888 '-*"" /   88888888888888f
+     .H8888h.\`\`8888.>  8888> 888~ X8888 '-*"" : '$8888888888*"
+        \`~\`      ##    \`\`       \`       \`\`\`*\`     ^^_____^^      \`"\`\`\`\`~\`           \`\`\`\`*\`\`\`\`\`\`\``;
 
 // Cache visitor info
 let _visitorIP=null;
@@ -427,379 +432,80 @@ async function getGeo(){
   }
 }
 
-// Fake ping times (realistic-ish)
-function fakePing(){return(Math.random()*40+1).toFixed(2)}
-
-const COMMANDS={
-  help:{
-    desc:'show available commands',
-    fn:async()=>[
-      {c:'pur', t:'╔══════════════════════════════════════════════╗'},
-      {c:'pur', t:'║          1998 SHELL v2.0 — COMMANDS          ║'},
-      {c:'pur', t:'╚══════════════════════════════════════════════╝'},
-      {c:'gap', t:''},
-      {c:'bold',t:'  NETWORK'},
-      {c:'out', t:'    ip          — show your public IP address'},
-      {c:'out', t:'    geoip       — geolocate your IP'},
-      {c:'out', t:'    ping        — ping 1998 servers'},
-      {c:'out', t:'    scan        — port scan (simulated)'},
-      {c:'out', t:'    whois       — whois lookup'},
-      {c:'out', t:'    curl <url>  — fetch a URL header'},
-      {c:'out', t:'    nmap        — network map (simulated)'},
-      {c:'gap', t:''},
-      {c:'bold',t:'  SYSTEM'},
-      {c:'out', t:'    whoami      — who you are'},
-      {c:'out', t:'    neofetch    — system info'},
-      {c:'out', t:'    date        — current date & time'},
-      {c:'out', t:'    uptime      — session uptime'},
-      {c:'out', t:'    cat <file>  — read a file'},
-      {c:'out', t:'    clear       — clear terminal'},
-      {c:'gap', t:''},
-      {c:'bold',t:'  1998'},
-      {c:'out', t:'    members     — list 1998 elite'},
-      {c:'out', t:'    status      — group system status'},
-      {c:'gap', t:''},
-      {c:'dim', t:'  Tab = autocomplete  ↑↓ = history  Ctrl+L = clear'},
-    ]
-  },
-  ip:{
-    desc:'show your public IP',
-    fn:async(args,pr)=>{
-      pr([{c:'dim',t:'fetching your IP...'}]);
-      const ip=await getIP();
-      return[{c:'grn',t:`Your public IP: ${ip}`}];
-    }
-  },
-  geoip:{
-    desc:'geolocate your IP',
-    fn:async(args,pr)=>{
-      pr([{c:'dim',t:'resolving IP geolocation...'}]);
-      const g=await getGeo();
-      if(!g)return[{c:'err',t:'geolocation lookup failed — try again'}];
-      return[
-        {c:'info',t:`IP:        ${g.ip}`},
-        {c:'info',t:`Country:   ${g.country}`},
-        {c:'info',t:`Region:    ${g.regionName}`},
-        {c:'info',t:`City:      ${g.city}${g.zip?' ('+g.zip+')':''}`},
-        {c:'info',t:`Coords:    ${g.lat}, ${g.lon}`},
-        {c:'info',t:`Timezone:  ${g.timezone}`},
-        {c:'info',t:`ISP/Org:   ${g.isp||g.org||'unknown'}`},
-        {c:'info',t:`ASN:       ${g.as||'unknown'}`},
-      ];
-    }
-  },
-  ping:{
-    desc:'ping 1998 servers',
-    fn:async(args,pr)=>{
-      const target=args[0]||'1998.gg';
-      pr([{c:'dim',t:`PING ${target}...`}]);
-      await delay(300);
-      const times=[fakePing(),fakePing(),fakePing()];
-      const avg=(times.reduce((a,b)=>a+parseFloat(b),0)/3).toFixed(2);
-      return[
-        {c:'out', t:`PING ${target} (104.21.x.x): 56 bytes of data`},
-        {c:'grn', t:`64 bytes from ${target}: icmp_seq=0 ttl=54 time=${times[0]} ms`},
-        {c:'grn', t:`64 bytes from ${target}: icmp_seq=1 ttl=54 time=${times[1]} ms`},
-        {c:'grn', t:`64 bytes from ${target}: icmp_seq=2 ttl=54 time=${times[2]} ms`},
-        {c:'out', t:''},
-        {c:'pur', t:`--- ${target} ping statistics ---`},
-        {c:'out', t:`3 packets transmitted, 3 received, 0% packet loss`},
-        {c:'out', t:`round-trip min/avg/max = ${Math.min(...times.map(Number)).toFixed(2)}/${avg}/${Math.max(...times.map(Number)).toFixed(2)} ms`},
-      ];
-    }
-  },
-  scan:{
-    desc:'run port scan',
-    fn:async(args,pr)=>{
-      pr([{c:'dim',t:'Starting Nmap 7.94 — https://nmap.org'}]);
-      await delay(400);
-      pr([{c:'dim',t:'Scanning 1998.gg (104.21.x.x) ...'}]);
-      await delay(600);
-      return[
-        {c:'out', t:'Nmap scan report for 1998.gg (104.21.x.x)'},
-        {c:'out', t:'Host is up (0.013s latency).'},
-        {c:'out', t:''},
-        {c:'out', t:'PORT      STATE  SERVICE   VERSION'},
-        {c:'port',t:'22/tcp    open   ssh       OpenSSH 8.9p1'},
-        {c:'port',t:'80/tcp    open   http      nginx 1.24.0'},
-        {c:'port',t:'443/tcp   open   https     nginx 1.24.0'},
-        {c:'port',t:'8443/tcp  open   alt-https'},
-        {c:'port',t:'3306/tcp  closed mysql'},
-        {c:'port',t:'5432/tcp  closed postgresql'},
-        {c:'out', t:''},
-        {c:'grn', t:'4 open ports — 2 closed'},
-        {c:'err', t:'[!] CVE-2024-0001 — CRITICAL — RCE via header injection'},
-        {c:'ylw', t:'[!] CVE-2023-9812 — HIGH    — Auth bypass (port 8443)'},
-        {c:'dim', t:'Nmap done: 1 IP address scanned in 2.31 seconds'},
-      ];
-    }
-  },
-  nmap:{
-    desc:'network map',
-    fn:async(args,pr)=>{
-      pr([{c:'dim',t:'Starting Nmap 7.94...'}]);
-      await delay(500);
-      return[
-        {c:'out', t:'Host: 1998.gg   Status: Up'},
-        {c:'out', t:'Latency: 0.013s'},
-        {c:'port',t:'22    ssh     open'},
-        {c:'port',t:'80    http    open'},
-        {c:'port',t:'443   https   open'},
-        {c:'port',t:'8443  alt     open'},
-      ];
-    }
-  },
-  whois:{
-    desc:'whois lookup',
-    fn:async(args,pr)=>{
-      const target=args[0]||'1998.gg';
-      pr([{c:'dim',t:`whois ${target}`}]);
-      await delay(300);
-      return[
-        {c:'out', t:`Domain: ${target.toUpperCase()}`},
-        {c:'out', t:`Registrar: Cloudflare, Inc.`},
-        {c:'out', t:`Created: 2024-01-01`},
-        {c:'out', t:`Expires: 2026-01-01`},
-        {c:'out', t:`Name Servers: ns1.cloudflare.com`},
-        {c:'out', t:`              ns2.cloudflare.com`},
-        {c:'info',t:`Status: clientTransferProhibited`},
-      ];
-    }
-  },
-  curl:{
-    desc:'fetch URL headers',
-    fn:async(args,pr)=>{
-      const url=args[0]||'https://1998.gg';
-      pr([{c:'dim',t:`curl -I ${url}`}]);
-      await delay(350);
-      return[
-        {c:'out', t:'HTTP/2 200 OK'},
-        {c:'out', t:'server: cloudflare'},
-        {c:'out', t:'content-type: text/html; charset=UTF-8'},
-        {c:'info',t:'cache-control: max-age=14400'},
-        {c:'info',t:'x-frame-options: SAMEORIGIN'},
-        {c:'info',t:'strict-transport-security: max-age=31536000'},
-        {c:'grn', t:`cf-ray: ${Math.random().toString(16).slice(2,18).toUpperCase()}-SJC`},
-      ];
-    }
-  },
-  whoami:{
-    desc:'who you are',
-    fn:async(args,pr)=>{
-      pr([{c:'dim',t:'querying identity...'}]);
-      const ip=await getIP();
-      return[
-        {c:'pur', t:'┌────────────────────────────────────┐'},
-        {c:'pur', t:'│          IDENTITY REPORT           │'},
-        {c:'pur', t:'└────────────────────────────────────┘'},
-        {c:'out', t:`User:     visitor`},
-        {c:'out', t:`Host:     ${ip}`},
-        {c:'out', t:`Shell:    /bin/bash`},
-        {c:'out', t:`Terminal: 1998-term`},
-        {c:'info',t:`Access:   READ ONLY`},
-        {c:'ylw', t:`Clearance: PUBLIC`},
-      ];
-    }
-  },
-  neofetch:{
-    desc:'system info',
-    fn:async()=>{
-      const ua=navigator.userAgent;
-      const os=ua.includes('Win')?'Windows':ua.includes('Mac')?'macOS':ua.includes('Linux')?'Linux':'Unknown OS';
-      const br=ua.includes('Chrome')?'Chromium':ua.includes('Firefox')?'Firefox':ua.includes('Safari')?'Safari':'Browser';
-      return[
-        {c:'pur', t:'         ██╗ ██████╗  █████╗  █████╗'},
-        {c:'pur', t:'        ███║██╔═══██╗██╔══██╗██╔══██╗'},
-        {c:'out', t:`        ╚██║╚██████╔╝╚██████║╚█████╔╝   OS: ${os}`},
-        {c:'out', t:`         ██║ ╚═════╝  ╚═══██║██╔══██╗   Browser: ${br}`},
-        {c:'out', t:`         ██║          █████╔╝╚█████╔╝   Resolution: ${window.innerWidth}x${window.innerHeight}`},
-        {c:'dim', t:`         ╚═╝          ╚════╝  ╚════╝    Theme: 1998 Dark`},
-        {c:'gap', t:''},
-        {c:'out', t:`Host:   1998.gg`},
-        {c:'out', t:`Kernel: 1998-shell 2.0`},
-        {c:'out', t:`Uptime: ${Math.floor(performance.now()/60000)} min`},
-        {c:'out', t:`Memory: ${(Math.random()*300+200).toFixed(0)} MiB / 1998 MiB`},
-      ];
-    }
-  },
-  members:{
-    desc:'list 1998 elite',
-    fn:async()=>[
-      {c:'pur', t:'╔══════════════════════════════════════════════╗'},
-      {c:'pur', t:'║              1998 ELITE ROSTER               ║'},
-      {c:'pur', t:'╚══════════════════════════════════════════════╝'},
-      {c:'bold',t:'  HOF — Hall of Fame'},
-      {c:'out', t:'    [01-06] Set in index.html → data-uid'},
-      {c:'bold',t:'  TTE — Threat to Everyone'},
-      {c:'out', t:'    [01-08] Set in index.html → data-uid'},
-      {c:'bold',t:'  Exclusive Threat'},
-      {c:'out', t:'    [01-03] Set in index.html → data-uid'},
-    ]
-  },
-  status:{
-    desc:'group system status',
-    fn:async()=>[
-      {c:'grn', t:'[✓] 1998 System         ONLINE'},
-      {c:'grn', t:'[✓] Discord Presence    CONNECTED'},
-      {c:'grn', t:'[✓] Lanyard API         ACTIVE'},
-      {c:'grn', t:'[✓] Server Widgets      LIVE'},
-      {c:'ylw', t:'[~] Threat Level        MAXIMUM'},
-      {c:'pur', t:'[★] Status              UNDEFEATED'},
-    ]
-  },
-  date:{
-    desc:'current date and time',
-    fn:async()=>{
-      const n=new Date();
-      return[
-        {c:'out', t:n.toString()},
-        {c:'dim', t:`Unix timestamp: ${Math.floor(n/1000)}`},
-      ];
-    }
-  },
-  uptime:{
-    desc:'session uptime',
-    fn:async()=>{
-      const s=Math.floor(performance.now()/1000);
-      const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
-      return[{c:'grn',t:`Session uptime: ${h}h ${m}m ${sec}s`},{c:'dim',t:'1998 never sleeps.'}];
-    }
-  },
-  cat:{
-    desc:'read a file',
-    fn:async(args)=>{
-      const f=args[0]||'readme.txt';
-      const files={
-        'readme.txt':[
-          {c:'out',t:'1998 — Est. 2024'},
-          {c:'out',t:'Where the undefeated define what\'s next.'},
-          {c:'out',t:'Pure skill. Elite execution. Unmatched presence.'},
-        ],
-        '/etc/hosts':[
-          {c:'dim',t:'127.0.0.1       localhost'},
-          {c:'dim',t:'::1             localhost ip6-localhost'},
-          {c:'out',t:'104.21.x.x      1998.gg'},
-        ],
-        '/etc/passwd':[{c:'err',t:'Permission denied'}],
-        'flag.txt':[{c:'pur',t:'1998{y0u_f0und_1t}'}],
-      };
-      return files[f]||[{c:'err',t:`cat: ${f}: No such file or directory`}];
-    }
-  },
-};
-
 function delay(ms){return new Promise(r=>setTimeout(r,ms))}
 
 function initTerminal(){
   const hist=document.getElementById('term-history');
-  const typed=document.getElementById('term-typed');
   const body=document.getElementById('term-body');
-  const promptEl=document.getElementById('term-prompt');
-  if(!hist||!typed||!body)return;
+  if(!hist||!body)return;
 
-  // ASCII art
+  // ASCII art header
   const art=document.createElement('pre');
   art.className='ascii-art';art.textContent=ASCII_ART;hist.appendChild(art);
 
-  let username='visitor';
-  function setPrompt(){
-    if(promptEl)promptEl.textContent=`${username}@1998:~$ `;
-  }
-  setPrompt();
-
-  // Fetch IP silently on load to cache it
-  getIP().then(ip=>{
-    printLines([
-      {c:'pur', t:`1998 Shell v2.0  —  type "help" for commands`},
-      {c:'info',t:`Your IP: ${ip}`},
-      {c:'dim', t:'─'.repeat(54)},
-      {c:'gap', t:''},
-    ]);
-  });
-
-  let cur='',hstack=[],hidx=-1;
-  let busy=false;
-  body.setAttribute('tabindex','0');
-  body.addEventListener('click',()=>body.focus());
-
-  body.addEventListener('keydown',async e=>{
-    if(busy)return;
-    if(e.ctrlKey&&e.key==='l'){execCmd('clear');e.preventDefault();return;}
-    if(e.key.length===1&&!e.ctrlKey&&!e.metaKey){cur+=e.key;typed.textContent=cur;}
-    else if(e.key==='Backspace'){cur=cur.slice(0,-1);typed.textContent=cur;e.preventDefault();}
-    else if(e.key==='Enter'){
-      const raw=cur.trim();
-      const [cmd,...args]=raw.toLowerCase().split(/\s+/);
-      printLines([{c:'cmd',t:`${username}@1998:~$ ${cur}`}]);
-      cur='';typed.textContent='';hidx=-1;
-      if(raw)hstack.unshift(raw);
-      await execCmd(cmd,args);
-      e.preventDefault();
-    }
-    else if(e.key==='ArrowUp'){if(hidx<hstack.length-1){hidx++;cur=hstack[hidx];typed.textContent=cur;}e.preventDefault();}
-    else if(e.key==='ArrowDown'){if(hidx>0){hidx--;cur=hstack[hidx];}else{hidx=-1;cur='';}typed.textContent=cur;e.preventDefault();}
-    else if(e.key==='Tab'){
-      const matches=Object.keys(COMMANDS).filter(k=>k.startsWith(cur));
-      if(matches.length===1){cur=matches[0];typed.textContent=cur;}
-      else if(matches.length>1){
-        printLines([{c:'cmd',t:`${username}@1998:~$ ${cur}`},{c:'dim',t:matches.join('  ')}]);
-      }
-      e.preventDefault();
-    }
-  });
-
-  async function execCmd(cmd,args=[]){
-    if(!cmd){printLines([{c:'gap',t:''}]);return;}
-    if(cmd==='clear'){
-      hist.innerHTML='';
-      const a2=document.createElement('pre');a2.className='ascii-art';a2.textContent=ASCII_ART;hist.appendChild(a2);
-      printLines([{c:'gap',t:''}]);return;
-    }
-    const c=COMMANDS[cmd];
-    if(c){
-      busy=true;
-      // Intermediate print callback for async commands that print mid-execution
-      const pr=(lines)=>printLines(lines);
-      const lines=await c.fn(args,pr);
-      if(lines)printLines([...lines,{c:'gap',t:''}]);
-      else printLines([{c:'gap',t:''}]);
-      busy=false;
-    } else {
-      printLines([
-        {c:'err',t:`bash: ${cmd}: command not found`},
-        {c:'dim',t:'type "help" to list available commands'},
-        {c:'gap',t:''},
-      ]);
-    }
-    body.scrollTop=body.scrollHeight;
-  }
-
   function printLines(lines){
-    lines.forEach(({c,t})=>{
-      const s=document.createElement('span');
-      s.className=`tl ${c||''}`;s.textContent=t??'';
-      hist.appendChild(s);
+    return new Promise(resolve=>{
+      let i=0;
+      function step(){
+        if(i>=lines.length){resolve();return;}
+        const {c,t}=lines[i++];
+        const s=document.createElement('span');
+        s.className=`tl ${c||''}`;s.textContent=t??'';
+        hist.appendChild(s);
+        body.scrollTop=body.scrollHeight;
+        setTimeout(step, t===''?70:90+Math.random()*70);
+      }
+      step();
     });
+  }
+
+  // Auto-run boot sequence — matches the reference exactly, rebranded to 1998
+  async function runSequence(){
+    await printLines([{c:'pur',t:'[ 1998v1 ]'},{c:'gap',t:''}]);
+    await delay(300);
+
+    const ip=await getIP();
+    await printLines([{c:'out',t:`[$] Target IP resolved: ${ip||'192.168.x.x'} (Cloudflare CDN)`}]);
+
+    const g=await getGeo();
+    await printLines([
+      {c:'out',t:`[$] Geolocation: ${g?`${g.city}, ${g.regionName} — ${g.country}`:'San Francisco, CA — United States'}`},
+      {c:'out',t:`[$] ISP: ${g?.isp||'Cloudflare Inc.'} | ASN: ${g?.as||'AS13335'}`},
+      {c:'gap',t:''},
+    ]);
+
+    await printLines([{c:'bold',t:'[>] Running port scan... (0-65535)'}]);
+    await delay(400);
+    await printLines([
+      {c:'port dim',t:'22/tcp   open  ssh'},
+      {c:'port dim',t:'80/tcp   open  http'},
+      {c:'port dim',t:'443/tcp  open  https'},
+      {c:'port dim',t:'8443/tcp open  alt-https'},
+      {c:'grn',t:'[$] Scan complete — 4 open ports detected'},
+      {c:'gap',t:''},
+    ]);
+
+    await printLines([{c:'bold',t:'[>] Checking vulnerabilities...'}]);
+    await delay(400);
+    await printLines([
+      {c:'err',t:'[$] CVE-2024-0001 — CRITICAL — RCE via header injection'},
+      {c:'ylw',t:'[$] CVE-2023-9812 — HIGH — Auth bypass (port 8443)'},
+      {c:'gap',t:''},
+    ]);
+
+    // Final static prompt with blinking cursor
+    const promptLine=document.createElement('div');
+    promptLine.className='term-final-prompt';
+    promptLine.innerHTML=`root@1998 : ~/1998 $&nbsp;<span class="term-cursor">█</span>`;
+    hist.appendChild(promptLine);
     body.scrollTop=body.scrollHeight;
   }
 
-  // Auto-demo on scroll into view
-  const sect=document.getElementById('terminal');
-  let demoDone=false;
+  // Run automatically once the terminal scrolls into view
+  let started=false;
   new IntersectionObserver(([e])=>{
-    if(!e.isIntersecting||demoDone)return;
-    demoDone=true;body.focus();
-    let i=0;const demoCmd='geoip';
-    const iv=setInterval(()=>{
-      if(i<demoCmd.length){cur+=demoCmd[i++];typed.textContent=cur;}
-      else{
-        clearInterval(iv);
-        setTimeout(async()=>{
-          printLines([{c:'cmd',t:`${username}@1998:~$ ${cur}`}]);
-          cur='';typed.textContent='';
-          await execCmd(demoCmd);
-        },500);
-      }
-    },90);
-  },{threshold:.35}).observe(sect);
+    if(!e.isIntersecting||started)return;
+    started=true;
+    runSequence();
+  },{threshold:.3}).observe(document.getElementById('terminal'));
 }
