@@ -160,7 +160,7 @@ async function loadHOF(card){
   }
 
   // Hover Discord card
-  const hov=card.querySelector('.hof-hover-card');
+  const hov=card.querySelector('.hof-spread-panel');
   if(!hov)return;
 
   const banSrc=resolveBanner(card,uid,u.banner,avSrc);
@@ -381,13 +381,55 @@ async function getIP(){
   }catch(e){return'[unavailable]'}
 }
 
-async function getGeo(ip){
+async function getGeo(){
   if(_visitorGeo)return _visitorGeo;
   try{
-    const r=await fetch(`http://ip-api.com/json/${ip||''}?fields=status,country,regionName,city,zip,isp,org,as,lat,lon,timezone,mobile,proxy,hosting`);
-    _visitorGeo=await r.json();
+    // ipapi.co — HTTPS, no key required, returns IP + full geolocation in one call
+    const r=await fetch('https://ipapi.co/json/');
+    const j=await r.json();
+    if(j.error)throw new Error(j.reason||'lookup failed');
+    _visitorGeo={
+      status:'success',
+      ip:j.ip,
+      country:j.country_name,
+      regionName:j.region,
+      city:j.city,
+      zip:j.postal,
+      isp:j.org,
+      org:j.org,
+      as:j.asn,
+      lat:j.latitude,
+      lon:j.longitude,
+      timezone:j.timezone,
+    };
+    if(!_visitorIP)_visitorIP=j.ip;
     return _visitorGeo;
-  }catch(e){return null}
+  }catch(e){
+    // Fallback provider if ipapi.co rate-limits or fails
+    try{
+      const ip=await getIP();
+      const r2=await fetch(`https://ipwho.is/${ip}`);
+      const j2=await r2.json();
+      if(!j2.success)throw new Error('fallback failed');
+      _visitorGeo={
+        status:'success',
+        ip:j2.ip,
+        country:j2.country,
+        regionName:j2.region,
+        city:j2.city,
+        zip:j2.postal,
+        isp:j2.connection?.isp,
+        org:j2.connection?.org,
+        as:j2.connection?.asn,
+        lat:j2.latitude,
+        lon:j2.longitude,
+        timezone:j2.timezone?.id,
+      };
+      return _visitorGeo;
+    }catch(e2){
+      return null;
+    }
+  }
 }
 
 // Fake ping times (realistic-ish)
@@ -437,20 +479,17 @@ const COMMANDS={
     desc:'geolocate your IP',
     fn:async(args,pr)=>{
       pr([{c:'dim',t:'resolving IP geolocation...'}]);
-      const ip=await getIP();
-      const g=await getGeo(ip);
-      if(!g||g.status==='fail')return[{c:'err',t:'geolocation lookup failed'}];
+      const g=await getGeo();
+      if(!g)return[{c:'err',t:'geolocation lookup failed — try again'}];
       return[
-        {c:'info',t:`IP:        ${ip}`},
+        {c:'info',t:`IP:        ${g.ip}`},
         {c:'info',t:`Country:   ${g.country}`},
         {c:'info',t:`Region:    ${g.regionName}`},
         {c:'info',t:`City:      ${g.city}${g.zip?' ('+g.zip+')':''}`},
         {c:'info',t:`Coords:    ${g.lat}, ${g.lon}`},
         {c:'info',t:`Timezone:  ${g.timezone}`},
-        {c:'info',t:`ISP:       ${g.isp}`},
-        {c:'info',t:`Org:       ${g.org}`},
-        {c:'info',t:`ASN:       ${g.as}`},
-        {c:'ylw', t:`Proxy:     ${g.proxy?'YES ⚠':'No'}  Hosting: ${g.hosting?'YES':'No'}  Mobile: ${g.mobile?'Yes':'No'}`},
+        {c:'info',t:`ISP/Org:   ${g.isp||g.org||'unknown'}`},
+        {c:'info',t:`ASN:       ${g.as||'unknown'}`},
       ];
     }
   },

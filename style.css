@@ -1,10 +1,7 @@
 /* ═══════════════════════════════════════════════════════
    1998 — STYLE.CSS
    ── Fonts ───────────────────────────────────────────────
-   Playfair Display  → editorial serif, elegant display titles
-   DM Sans           → clean modern body text
-   JetBrains Mono    → terminal / labels
-   Cinzel            → logo only (gothic serif)
+   Cinzel → used everywhere (titles, body, labels, terminal)
    ── Theme ───────────────────────────────────────────────
    Black + Electric Purple #7c3aed
    ═══════════════════════════════════════════════════════ */
@@ -20,11 +17,11 @@
   --white:   #ffffff;
   --off:     rgba(255,255,255,0.55);
   --muted:   rgba(255,255,255,0.32);
-  /* ─── Fonts ─── */
+  /* ─── Fonts — all Cinzel ─── */
   --f-logo:  'Cinzel', serif;
-  --f-title: 'Playfair Display', Georgia, serif;
-  --f-body:  'DM Sans', system-ui, sans-serif;
-  --f-mono:  'JetBrains Mono', 'Courier New', monospace;
+  --f-title: 'Cinzel', serif;
+  --f-body:  'Cinzel', serif;
+  --f-mono:  'Cinzel', serif;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -84,16 +81,12 @@ img{display:block}
 }
 #enter-btn:focus{outline:none}
 
-.ea{
-  font-size:1.25rem;color:var(--p2);display:block;
-  animation:pulseArrow 2s ease-in-out infinite;
-}
-@keyframes pulseArrow{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px);text-shadow:0 0 16px var(--p2)}}
-
 .el{
-  font-family:var(--f-mono);font-size:.52rem;letter-spacing:.6em;
-  color:rgba(255,255,255,.18);display:block;text-transform:uppercase;
+  font-family:var(--f-mono);font-size:.58rem;letter-spacing:.6em;
+  color:rgba(255,255,255,.25);display:block;text-transform:uppercase;
+  animation:pulseText 2.2s ease-in-out infinite;
 }
+@keyframes pulseText{0%,100%{opacity:.25;text-shadow:none}50%{opacity:.9;text-shadow:0 0 18px var(--p2)}}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes floatBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
@@ -137,18 +130,25 @@ section{position:relative;overflow:hidden;min-height:100vh}
 .sec-title{
   font-family:var(--f-title);
   font-size:clamp(2.4rem,5.5vw,4rem);font-weight:700;
-  letter-spacing:-.01em;font-style:italic;
+  letter-spacing:-.01em;
   color:var(--white);margin-bottom:3rem;
   text-shadow:0 2px 40px rgba(124,58,237,.15);
 }
 
 /* ════════════════════════════════════════════
    HOF
+   ─────────────────────────────────────────────
+   ★ HOW TO CHANGE THIS SECTION'S BACKGROUND ★
+   Add a background image to #hof below, e.g.:
+     background: url('your-image.jpg') center/cover no-repeat, var(--dark);
+   Keep ", var(--dark)" as a fallback color.
 ════════════════════════════════════════════ */
 #hof{
   background:var(--dark);
   display:flex;flex-direction:column;align-items:center;
-  /* TO ADD SECTION BACKGROUND: background:url('bg.jpg') center/cover; */
+  /* ↓ UNCOMMENT AND EDIT THIS LINE TO SET A BACKGROUND IMAGE ↓
+  background:url('your-image.jpg') center/cover no-repeat, var(--dark);
+  */
 }
 .hof-overlay{
   position:absolute;inset:0;
@@ -165,17 +165,30 @@ section{position:relative;overflow:hidden;min-height:100vh}
 
 .hof-row{
   position:relative;z-index:2;
-  display:flex;gap:10px;padding:0 2rem 4rem;
+  display:flex;gap:8px;padding:0 2rem 4rem;
   align-items:flex-end;justify-content:center;width:100%;
+  max-width:1300px;margin:0 auto;
 }
 
-/* Phone-shaped cards like the arcsendo reference photo */
+/* Phone-shaped cards — SPREAD effect: hovered card grows wide,
+   siblings shrink, all animated with flex-grow + width transition */
 .hof-card{
-  position:relative;width:162px;height:310px;
-  border-radius:22px;overflow:visible;
-  flex-shrink:0;cursor:pointer;
+  position:relative;
+  flex:1 1 162px;
+  max-width:162px;
+  height:310px;
+  border-radius:22px;overflow:hidden;
+  cursor:pointer;
+  transition:flex-grow .45s cubic-bezier(.22,.61,.36,1),
+             max-width .45s cubic-bezier(.22,.61,.36,1),
+             transform .45s ease;
 }
 .hof-card:nth-child(even){transform:translateY(24px)}
+.hof-card:hover{transform:translateY(0)}
+
+/* When any card in the row is hovered, shrink the non-hovered ones */
+.hof-row:hover .hof-card{max-width:120px;flex-grow:.6}
+.hof-row:hover .hof-card:hover{max-width:340px;flex-grow:2.4;z-index:10}
 
 .hof-card-bg{
   position:absolute;inset:0;border-radius:22px;overflow:hidden;
@@ -184,23 +197,24 @@ section{position:relative;overflow:hidden;min-height:100vh}
   transition:border-color .3s;
   /* Custom bg: add data-bg attr in HTML, JS applies it automatically */
 }
-.hof-card:hover .hof-card-bg{border-color:rgba(124,58,237,.55)}
+.hof-card:hover .hof-card-bg{border-color:rgba(124,58,237,.6)}
 
+/* Front content — collapsed state (avatar + name at bottom) */
 .hof-card-front{
   position:absolute;inset:0;z-index:2;border-radius:22px;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
   padding-bottom:18px;
   background:linear-gradient(to top,rgba(6,4,15,.94) 0%,rgba(6,4,15,.0) 52%);
-  transition:opacity .28s ease;
+  transition:opacity .3s ease;
 }
-.hof-card:hover .hof-card-front{opacity:0;pointer-events:none}
+.hof-row:hover .hof-card:hover .hof-card-front{opacity:0;pointer-events:none}
 
 .hof-num{
   position:absolute;top:14px;right:14px;z-index:3;
   font-family:var(--f-mono);font-size:.42rem;letter-spacing:.25em;
   color:rgba(255,255,255,.1);writing-mode:vertical-rl;
 }
-.hof-front-av-wrap{position:relative;margin-bottom:10px}
+.hof-front-av-wrap{position:relative;margin-bottom:10px;flex-shrink:0}
 .hof-avatar{
   width:58px;height:58px;border-radius:50%;object-fit:cover;
   border:2px solid rgba(124,58,237,.3);background:var(--panel);
@@ -210,68 +224,68 @@ section{position:relative;overflow:hidden;min-height:100vh}
   width:13px;height:13px;border-radius:50%;border:2.5px solid var(--dark);
 }
 .hof-front-name{
-  font-family:var(--f-title);font-size:.78rem;font-weight:700;font-style:italic;
+  font-family:var(--f-title);font-size:.78rem;font-weight:700;
   color:rgba(255,255,255,.82);text-align:center;letter-spacing:.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90%;
 }
 
-/* ── HOF HOVER CARD — full Discord profile popup ── */
-.hof-hover-card{
-  position:absolute;bottom:calc(100% + 14px);left:50%;
-  transform:translateX(-50%) translateY(8px) scale(.96);
-  width:230px;background:#1a1630;
-  border-radius:14px;overflow:hidden;
-  border:1px solid rgba(124,58,237,.25);
-  box-shadow:0 24px 70px rgba(0,0,0,.85),0 0 50px rgba(124,58,237,.12);
-  opacity:0;pointer-events:none;
-  transition:opacity .22s ease,transform .22s ease;
-  z-index:200;
+/* ── SPREAD PANEL — Discord profile content revealed INSIDE the
+   card itself once it expands (no popup, fills the wide card) ── */
+.hof-spread-panel{
+  position:absolute;inset:0;z-index:5;
+  border-radius:22px;overflow:hidden;
+  background:#15102a;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .3s ease .08s,transform .3s ease .08s;
+  pointer-events:none;
+  display:flex;flex-direction:column;
 }
-.hof-card:hover .hof-hover-card{
-  opacity:1;pointer-events:auto;
-  transform:translateX(-50%) translateY(0) scale(1);
+.hof-row:hover .hof-card:hover .hof-spread-panel{
+  opacity:1;transform:translateY(0);pointer-events:auto;
 }
 
-/* Banner — auto-filled from Discord or data-banner attr */
 .hof-banner{
-  width:100%;height:76px;
+  width:100%;height:90px;flex-shrink:0;
   background:linear-gradient(135deg,var(--p1) 0%,#3b0d99 100%);
   background-size:cover;background-position:center top;
 }
 
-.hof-hover-body{padding:0 14px 14px}
+.hof-hover-body{padding:0 18px 16px;flex:1;display:flex;flex-direction:column}
 
 .hof-hover-av-wrap{
   position:relative;display:inline-block;
-  margin-top:-28px;margin-bottom:6px;
+  margin-top:-32px;margin-bottom:8px;flex-shrink:0;
 }
 .hof-hover-av{
-  width:58px;height:58px;border-radius:50%;object-fit:cover;
-  border:3px solid #1a1630;background:var(--panel);
+  width:64px;height:64px;border-radius:50%;object-fit:cover;
+  border:3px solid #15102a;background:var(--panel);
 }
 .hof-hover-sdot{
   position:absolute;bottom:2px;right:2px;
-  width:13px;height:13px;border-radius:50%;border:2.5px solid #1a1630;
+  width:14px;height:14px;border-radius:50%;border:2.5px solid #15102a;
 }
 
 .hof-hover-name{
-  font-family:var(--f-title);font-size:.9rem;font-weight:700;font-style:italic;
+  font-family:var(--f-title);font-size:1rem;font-weight:700;
   color:var(--white);letter-spacing:.02em;margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .hof-hover-tag{
-  font-family:var(--f-mono);font-size:.5rem;
-  color:rgba(255,255,255,.3);margin-top:2px;
+  font-family:var(--f-mono);font-size:.55rem;
+  color:rgba(255,255,255,.32);margin-top:2px;
 }
 .hof-hover-sep{
   width:100%;height:1px;
-  background:rgba(255,255,255,.06);margin:10px 0 8px;
+  background:rgba(255,255,255,.07);margin:12px 0 10px;flex-shrink:0;
 }
-.hof-hover-status-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
-.hof-hover-sdot-inline{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.hof-hover-status-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.hof-hover-sdot-inline{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 .hof-hover-status-text{
-  font-family:var(--f-body);font-size:.7rem;color:rgba(255,255,255,.4);
+  font-family:var(--f-body);font-size:.74rem;color:rgba(255,255,255,.45);
 }
 .hof-hover-activity{
-  font-family:var(--f-mono);font-size:.5rem;color:var(--p2);opacity:.75;
+  font-family:var(--f-mono);font-size:.54rem;color:var(--p2);opacity:.8;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 
@@ -284,6 +298,8 @@ section{position:relative;overflow:hidden;min-height:100vh}
 /* ════════════════════════════════════════════
    TTE
 ════════════════════════════════════════════ */
+/* ★ HOW TO CHANGE THIS SECTION'S BACKGROUND ★
+   #tte{ background:url('your-image.jpg') center/cover no-repeat, var(--black); } */
 #tte{background:var(--black)}
 
 .tte-grid{
@@ -328,7 +344,7 @@ section{position:relative;overflow:hidden;min-height:100vh}
   width:11px;height:11px;border-radius:50%;border:2px solid var(--panel);
 }
 .tte-name{
-  font-family:var(--f-title);font-size:.85rem;font-weight:700;font-style:italic;
+  font-family:var(--f-title);font-size:.85rem;font-weight:700;
   letter-spacing:.02em;color:var(--white);
 }
 .tte-act{
@@ -340,6 +356,8 @@ section{position:relative;overflow:hidden;min-height:100vh}
 /* ════════════════════════════════════════════
    EXCLUSIVE
 ════════════════════════════════════════════ */
+/* ★ HOW TO CHANGE THIS SECTION'S BACKGROUND ★
+   #exclusive{ background:url('your-image.jpg') center/cover no-repeat, var(--dark); ...rest stays the same } */
 #exclusive{background:var(--dark);min-height:80vh;display:flex;align-items:center}
 .excl-ghost{
   font-size:clamp(5rem,15vw,14rem);letter-spacing:.5em;
@@ -370,7 +388,7 @@ section{position:relative;overflow:hidden;min-height:100vh}
   width:14px;height:14px;border-radius:50%;border:2.5px solid var(--dark);
 }
 .excl-name{
-  font-family:var(--f-title);font-size:.95rem;font-weight:700;font-style:italic;
+  font-family:var(--f-title);font-size:.95rem;font-weight:700;
   letter-spacing:.02em;color:var(--white);text-align:center;
 }
 .excl-act{
@@ -459,7 +477,7 @@ section{position:relative;overflow:hidden;min-height:100vh}
 
 .srv-info{display:flex;flex-direction:column;gap:4px;min-width:0}
 .srv-cname{
-  font-family:var(--f-title);font-size:.8rem;font-weight:700;font-style:italic;
+  font-family:var(--f-title);font-size:.8rem;font-weight:700;
   color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .srv-stats{
@@ -544,8 +562,9 @@ section{position:relative;overflow:hidden;min-height:100vh}
 @media(max-width:1100px){.tte-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
   .hof-row{flex-wrap:wrap;justify-content:center}
-  .hof-card{width:145px;height:270px}
-  .hof-hover-card{bottom:calc(100% + 8px)}
+  .hof-card{flex:0 0 130px;max-width:130px;height:250px}
+  .hof-row:hover .hof-card{max-width:130px;flex-grow:0}
+  .hof-row:hover .hof-card:hover{max-width:260px;flex-grow:0}
   .excl-row{gap:32px}
   .tte-grid{grid-template-columns:1fr 1fr}
   #nav{padding:14px 18px}
