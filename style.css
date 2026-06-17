@@ -231,63 +231,79 @@ section{position:relative;overflow:hidden;min-height:100vh}
 }
 
 /* ── SPREAD PANEL — Discord profile content revealed INSIDE the
-   card itself once it expands (no popup, fills the wide card) ── */
+   card itself once it expands. Matches reference: small logo top,
+   circular avatar centered in the middle, name + handle below,
+   status pill at the bottom ── */
 .hof-spread-panel{
   position:absolute;inset:0;z-index:5;
   border-radius:22px;overflow:hidden;
-  background:#15102a;
+  background:#0c0a16;
   opacity:0;
   transform:translateY(6px);
   transition:opacity .3s ease .08s,transform .3s ease .08s;
   pointer-events:none;
   display:flex;flex-direction:column;
+  align-items:center;
+  padding:22px 16px 20px;
 }
 .hof-row:hover .hof-card:hover .hof-spread-panel{
   opacity:1;transform:translateY(0);pointer-events:auto;
 }
 
-.hof-banner{
-  width:100%;height:90px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--p1) 0%,#3b0d99 100%);
-  background-size:cover;background-position:center top;
+/* Small server/brand mark at top of the panel */
+.hof-panel-mark{
+  flex-shrink:0;
+  font-family:var(--f-logo);font-size:.95rem;font-weight:900;
+  letter-spacing:.06em;color:rgba(255,255,255,.55);
+  margin-bottom:auto;
+  text-align:center;
 }
 
-.hof-hover-body{padding:0 18px 16px;flex:1;display:flex;flex-direction:column}
+/* Centered avatar block — vertically centered in the card */
+.hof-hover-body{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  width:100%;
+  margin-top:-1.2rem;
+}
 
 .hof-hover-av-wrap{
   position:relative;display:inline-block;
-  margin-top:-32px;margin-bottom:8px;flex-shrink:0;
+  margin-bottom:12px;
 }
 .hof-hover-av{
-  width:64px;height:64px;border-radius:50%;object-fit:cover;
-  border:3px solid #15102a;background:var(--panel);
+  width:72px;height:72px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(255,255,255,.12);background:var(--panel);
 }
 .hof-hover-sdot{
-  position:absolute;bottom:2px;right:2px;
-  width:14px;height:14px;border-radius:50%;border:2.5px solid #15102a;
+  position:absolute;bottom:-1px;right:-1px;
+  width:15px;height:15px;border-radius:50%;border:2.5px solid #0c0a16;
 }
 
 .hof-hover-name{
-  font-family:var(--f-title);font-size:1rem;font-weight:700;
-  color:var(--white);letter-spacing:.02em;margin-top:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-family:var(--f-title);font-size:.92rem;font-weight:700;
+  color:var(--white);letter-spacing:.02em;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90%;
 }
 .hof-hover-tag{
-  font-family:var(--f-mono);font-size:.55rem;
-  color:rgba(255,255,255,.32);margin-top:2px;
+  font-family:var(--f-mono);font-size:.56rem;
+  color:rgba(255,255,255,.35);margin-top:3px;text-align:center;
 }
-.hof-hover-sep{
-  width:100%;height:1px;
-  background:rgba(255,255,255,.07);margin:12px 0 10px;flex-shrink:0;
+
+/* Status pill at the bottom, like "● Offline" in the reference */
+.hof-hover-status-row{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:6px;
+  margin-top:auto;
 }
-.hof-hover-status-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
-.hof-hover-sdot-inline{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.hof-hover-sdot-inline{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .hof-hover-status-text{
-  font-family:var(--f-body);font-size:.74rem;color:rgba(255,255,255,.45);
+  font-family:var(--f-body);font-size:.7rem;color:rgba(255,255,255,.4);
 }
 .hof-hover-activity{
-  font-family:var(--f-mono);font-size:.54rem;color:var(--p2);opacity:.8;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-family:var(--f-mono);font-size:.5rem;color:var(--p2);opacity:.75;
+  margin-top:4px;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90%;
 }
 
 /* ─── Status dot colors (all shared) ─── */

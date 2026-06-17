@@ -147,6 +147,10 @@ async function loadHOF(card){
   const fn=card.querySelector('.hof-front-name');
   if(fn)fn.textContent=name;
 
+  // Panel mark — uses data-mark attr if set, otherwise default "1998"
+  const markEl=card.querySelector('.hof-panel-mark');
+  if(markEl&&card.dataset.mark)markEl.textContent=card.dataset.mark;
+
   // Card bg (data-bg attr overrides, else use Discord banner)
   const bgEl=card.querySelector('.hof-card-bg');
   if(bgEl){
@@ -159,25 +163,16 @@ async function loadHOF(card){
     }
   }
 
-  // Hover Discord card
+  // Hover Discord card (centered profile panel)
   const hov=card.querySelector('.hof-spread-panel');
   if(!hov)return;
 
+  // Subtle glow behind the panel using the avatar/banner color (no visible image)
   const banSrc=resolveBanner(card,uid,u.banner,avSrc);
-  const banEl=hov.querySelector('.hof-banner');
-  if(banEl){
-    if(banSrc){
-      banEl.style.backgroundImage=`url('${banSrc}')`;
-      banEl.style.backgroundSize='cover';
-      banEl.style.backgroundPosition='center top';
-      banEl.style.filter='none';
-    } else {
-      // blurred avatar as banner fallback (Discord style)
-      banEl.style.backgroundImage=`url('${avSrc}')`;
-      banEl.style.backgroundSize='cover';
-      banEl.style.backgroundPosition='center';
-      banEl.style.filter='blur(14px) brightness(.45) saturate(.6)';
-    }
+  if(banSrc){
+    hov.style.backgroundImage=`linear-gradient(rgba(12,10,22,.92),rgba(12,10,22,.92)), url('${banSrc}')`;
+    hov.style.backgroundSize='cover';
+    hov.style.backgroundPosition='center';
   }
 
   const hav=hov.querySelector('.hof-hover-av');
