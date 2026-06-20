@@ -364,10 +364,10 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   max-width:1280px;
   margin:0 auto;
 }
-/* ── Member card — banner-style layout ── */
+/* ── Member card — banner-style layout (matches reference: wide card, centered avatar) ── */
 .card{
   position:relative;
-  aspect-ratio:3/4;
+  aspect-ratio:3/2;
   border:1px solid var(--line);
   background:#0c0c0c;
   overflow:hidden;
@@ -401,20 +401,22 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   flex:1;
   background:#0c0c0c;
   position:relative;
-  padding:0 12px 12px 12px;
+  padding:0 10px 10px 10px;
   display:flex;
   flex-direction:column;
+  align-items:center;
   justify-content:flex-end;
 }
 
-/* avatar sits on the seam between banner and body */
+/* avatar sits centered on the seam between banner and body */
 .card .avatar-wrap{
   position:absolute;
-  left:12px;
-  top:-22px; /* half out of card-body, half in banner */
+  left:50%;
+  top:-23px; /* half out of card-body, half in banner */
+  transform:translateX(-50%);
 }
 .card .avatar{
-  width:44px;height:44px;
+  width:46px;height:46px;
   border-radius:6px;
   overflow:hidden;
   border:2px solid #0c0c0c;
@@ -432,16 +434,20 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .card .status{
   position:absolute;
-  right:-3px;bottom:-3px;
+  right:-4px;bottom:-4px;
+  width:13px;height:13px;
+  border-radius:3px;
 }
 .status-on{background:#3fd16a;box-shadow:0 0 6px rgba(63,209,106,.6);}
 .status-idle{background:#e7a33e;box-shadow:0 0 6px rgba(231,163,62,.6);}
 .status-dnd{background:#e0444b;box-shadow:0 0 6px rgba(224,68,75,.6);}
 .status-off{background:#5a5a58;box-shadow:none;}
 
-/* text info — left-aligned, below avatar */
+/* text info — centered, below avatar */
 .card .info{
-  padding-top:30px; /* clear the avatar */
+  padding-top:26px; /* clear the avatar */
+  text-align:center;
+  width:100%;
 }
 .card .uname{
   font-family:var(--disp);
@@ -450,6 +456,9 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   color:#fff;
   margin-bottom:2px;
   line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .card .handle{
   font-size:9px;
@@ -457,12 +466,18 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   letter-spacing:.5px;
   margin-bottom:2px;
   opacity:.85;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .card .tag{
   font-size:8px;
   letter-spacing:1px;
   color:var(--bone-dim);
   text-transform:uppercase;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 
@@ -1058,43 +1073,75 @@ function normalise(entry, prefix, i){
   };
 }
 
-/* ── MEMBERS — put as many objects as you want ── */
+/* ── MEMBERS — put as many objects as you want.
+ *  Only discordId is required — avatar, banner & online
+ *  status are pulled live from Discord automatically.
+ *  name / handle / tag are optional overrides:
+ *    name   -> bold title on the card (e.g. "WAY2KRAM")
+ *    handle -> small cyan line (e.g. "@lvr.krammy")
+ *    tag    -> bottom caption (e.g. "HIGH AUTHORITY")
+ *  Leave any of them "" to fall back to a placeholder.
+ */
 const MEMBERS_RAW = [
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { slug: "member-1",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-2",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-3",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-4",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-5",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-6",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-7",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[6],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-8",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[7],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-9",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[8],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-10", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[9],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-11", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[10], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-12", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[11], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-13", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[12], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-14", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[13], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-15", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0],  discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "member-16", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1],  discordId: "PUT_DISCORD_ID_HERE" },
 ];
 const MEMBERS = MEMBERS_RAW.map((e,i) => normalise(e, 'member', i));
 
 /* ── HALL OF FAME ── */
 const HOF_RAW = [
-  { discordId: '1415996915329400872', name: 'Threat',      handle: '@threat',      role: 'Founder'    },
-  { discordId: '1512675755459612835', name: 'Highcaliber', handle: '@highcaliber', role: 'Co-Founder' },
-  { discordId: '1511025106284183712', name: 'Mir',         handle: '@mir',         role: 'Co-Founder' },
+  {
+    slug: "threat",
+    name: "Threat",
+    handle: "@threat",
+    role: "Founder",
+    img: "",
+    glow: GLOW_CYCLE[0],
+    discordId: "1415996915329400872"
+  },
+  {
+    slug: "highcaliber",
+    name: "Highcaliber",
+    handle: "@highcaliber",
+    role: "Co-Founder",
+    img: "",
+    glow: GLOW_CYCLE[1],
+    discordId: "1512675755459612835"
+  },
+  {
+    slug: "mir",
+    name: "Mir",
+    handle: "@mir",
+    role: "Co-Founder",
+    img: "",
+    glow: GLOW_CYCLE[2],
+    discordId: "1511025106284183712"
+  }
 ];
 const HOF = HOF_RAW.map((e,i) => normalise(e, 'hof', i));
 
 /* ── DAY 1'S ── */
 const DAY1_RAW = [
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
-  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { slug: "day1-1", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-2", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-3", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-4", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-5", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-6", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5], discordId: "PUT_DISCORD_ID_HERE" },
 ];
 const DAY1 = DAY1_RAW.map((e,i) => normalise(e, 'day1', i));
 
