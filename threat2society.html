@@ -45,7 +45,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 ::-webkit-scrollbar-thumb{background:#222;}
 ::-webkit-scrollbar-thumb:hover{background:var(--threat-dim);}
 
-/* ============ NOISE / SCANLINE LAYER ============ */
+
 .grain{
   position:fixed;inset:0;
   pointer-events:none;
@@ -74,7 +74,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
 }
 
-/* ============ SPLASH ============ */
+
 #splash{
   position:fixed;inset:0;
   background:#000;
@@ -175,7 +175,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   text-transform:uppercase;
 }
 
-/* ============ NAV ============ */
+
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -234,7 +234,7 @@ nav a::after{
 nav a:hover::after, nav a.active::after{width:100%;}
 .nav-toggle{display:none;}
 
-/* ============ MAIN VIEWS ============ */
+
 #app{display:none;}
 #app.show{display:block;}
 .view{display:none;}
@@ -244,7 +244,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
   to{opacity:1;transform:translateY(0);}
 }
 
-/* ============ HOME / HERO ============ */
+
 .hero-runway{
   position:relative;
   height:160vh;
@@ -325,7 +325,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
 
 section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 
-/* ============ SCROLL REVEAL ============ */
+
 .reveal{
   opacity:0;
   transform:translateY(28px);
@@ -338,7 +338,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .card.reveal.in-view:hover{transform:translateY(-4px);}
 
-/* ============ PLACEHOLDER AVATAR (blank slot) ============ */
+
 .bgimg-empty{
   background:
     linear-gradient(135deg, #111 0%, #161616 100%);
@@ -367,7 +367,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .hof-card .bgimg-empty .placeholder-avatar span{font-size:26px;}
 
-/* ============ MEMBERS GRID ============ */
+
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -452,7 +452,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-transform:uppercase;
 }
 
-/* ============ HOF (cinematic vertical reveal cards) ============ */
+
 .hof-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -524,7 +524,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-transform:uppercase;
 }
 
-/* ============ DAY1 (album-style tiles) ============ */
+
 .d1-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -589,7 +589,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border:2px solid #0a0a0a;
 }
 
-/* ============ ABOUT ============ */
+
 .about-wrap{
   max-width:760px;
   margin:0 auto;
@@ -654,7 +654,7 @@ footer{
   color:#2c2c2c;
 }
 
-/* ============ MEMBER PROFILE VIEW ============ */
+
 .profile-view{
   min-height:100vh;
   display:flex;
@@ -787,7 +787,7 @@ footer{
   z-index:1;
 }
 
-/* ============ MUSIC TOGGLE ============ */
+
 .music-toggle{
   position:fixed;
   right:24px;bottom:24px;
@@ -819,7 +819,7 @@ footer{
   50%{height:100%;}
 }
 
-/* ============ RESPONSIVE ============ */
+
 @media (max-width:980px){
   .grid{grid-template-columns:repeat(3,1fr);}
   .d1-grid{grid-template-columns:1fr;}
@@ -860,7 +860,7 @@ footer{
   .grid{grid-template-columns:repeat(2,1fr);}
 }
 
-/* reduced motion */
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
 }
@@ -877,7 +877,7 @@ footer{
 <div class="scanlines"></div>
 <div class="vignette"></div>
 
-<!-- SPLASH -->
+
 <div id="splash">
   <div class="wordmark flicker">
     <div class="wordmark-line">
@@ -888,7 +888,7 @@ footer{
   <div class="splash-sub">CLICK ANYWHERE TO CONTINUE</div>
 </div>
 
-<!-- APP -->
+
 <div id="app">
 
   <header id="siteHeader">
@@ -903,7 +903,7 @@ footer{
     </nav>
   </header>
 
-  <!-- HOME VIEW -->
+
   <div class="view active" id="view-home">
     <section class="hero-runway" id="home">
       <div class="hero-stage">
@@ -936,14 +936,14 @@ footer{
     </section>
   </div>
 
-  <!-- ABOUT VIEW -->
+ 
   <div class="view" id="view-about">
     <section style="padding-top:160px;min-height:80vh;">
       <div class="about-wrap">
         <div class="about-eyebrow">Introducing Threat2Society</div>
         <div class="about-body">
           <strong>THREAT2SOCIETY</strong> is an underground digital crew built on loyalty, presence, and noise.
-          What started as a few names in the same group chat turned into a wall — a place where everyone knows
+          What started as a few names in the same server turned into a wall — a place where everyone knows
           everyone, and everyone moves the same. We don't chase clout, we build it. No fillers, no fronting —
           just a circle that shows up for each other on and off the screen.
         </div>
@@ -957,7 +957,7 @@ footer{
     </section>
   </div>
 
-  <!-- PROFILE VIEW -->
+
   <div class="view" id="view-profile">
     <div class="profile-view">
       <div class="profile-bg-glow" id="profileGlow"></div>
@@ -982,8 +982,8 @@ footer{
   <footer>THREAT2SOCIETY.COM</footer>
 </div>
 
-<!-- Drop your track's URL into src="" below to enable music -->
-<audio id="bgMusic" loop preload="auto" src=""></audio>
+
+<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Ya%20Dig_%20Freestyle%20feat.%20gins%26melodies.mp3"></audio>
 
 <button class="music-toggle paused" id="musicToggle">
   <span class="bars"><span></span><span></span><span></span></span>
@@ -991,12 +991,7 @@ footer{
 </button>
 
 <script>
-/* ============================================================
-   DATA
-   Blank roster — every card is a placeholder labeled in order
-   (Member 1, Member 2, ...) so you can swap in real names,
-   handles, tags, photos, and Discord IDs as you build the crew.
-   ============================================================ */
+
 const GLOW_CYCLE = [
   'rgba(122,15,18,.5)', 'rgba(40,30,90,.5)', 'rgba(10,40,90,.5)', 'rgba(60,10,10,.5)',
   'rgba(20,20,20,.6)',  'rgba(60,5,5,.55)',  'rgba(15,15,15,.6)', 'rgba(90,10,50,.5)',
@@ -1048,9 +1043,7 @@ function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
 }
 
-/* ============================================================
-   RENDER MEMBERS GRID
-   ============================================================ */
+
 const membersGrid = document.getElementById('membersGrid');
 MEMBERS.forEach((m,i)=>{
   const card = document.createElement('div');
@@ -1085,9 +1078,7 @@ MEMBERS.forEach((m,i)=>{
   membersGrid.appendChild(card);
 });
 
-/* ============================================================
-   RENDER HOF GRID (3 only)
-   ============================================================ */
+
 const hofGrid = document.getElementById('hofGrid');
 HOF.forEach((h,i)=>{
   const card = document.createElement('div');
@@ -1112,9 +1103,7 @@ HOF.forEach((h,i)=>{
   hofGrid.appendChild(card);
 });
 
-/* ============================================================
-   RENDER DAY1 GRID
-   ============================================================ */
+
 const d1Grid = document.getElementById('d1Grid');
 DAY1.forEach((d,i)=>{
   const card = document.createElement('div');
@@ -1140,9 +1129,7 @@ DAY1.forEach((d,i)=>{
   d1Grid.appendChild(card);
 });
 
-/* ============================================================
-   SPLASH -> APP
-   ============================================================ */
+
 const splash = document.getElementById('splash');
 const app = document.getElementById('app');
 const bgMusic = document.getElementById('bgMusic');
@@ -1151,21 +1138,20 @@ function enterSite(){
   if(splash.classList.contains('leaving')) return;
   splash.classList.add('leaving');
 
-  // This click is a real user gesture, so it's safe to start audio here —
-  // browsers block autoplay-with-sound until a gesture like this happens.
+
   if(bgMusic && bgMusic.getAttribute('src')){
     bgMusic.volume = 0.5;
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{ /* still blocked for some reason — toggle stays available */ });
+    }).catch(()=>{ });
   }
 
   setTimeout(()=>{
     splash.style.display='none';
     app.classList.add('show');
-    observeReveals(); // cards were hidden (display:none) until now — recheck them
-    updateHeroZoom();  // hero runway had zero height until now — recalc once visible
+    observeReveals(); 
+    updateHeroZoom(); 
   }, 600);
 }
 splash.addEventListener('click', enterSite);
@@ -1173,9 +1159,7 @@ window.addEventListener('keydown', e=>{
   if(e.key==='Enter' && app && !app.classList.contains('show')) enterSite();
 });
 
-/* ============================================================
-   ROUTING (hash-based)
-   ============================================================ */
+
 const views = {
   home:  document.getElementById('view-home'),
   about: document.getElementById('view-about'),
@@ -1222,7 +1206,7 @@ function route(){
     setActiveNav('');
     return;
   }
-  // home + anchors (home/hof/day1/members) all live in the home view
+ 
   showView('home');
   const anchorKey = ['hof','day1','members'].includes(hash) ? hash : 'home';
   setActiveNav(anchorKey);
@@ -1314,19 +1298,13 @@ document.querySelectorAll('.nav-link').forEach(link=>{
 window.addEventListener('hashchange', route);
 window.addEventListener('load', route);
 
-/* ============================================================
-   HEADER SCROLL STATE
-   ============================================================ */
+
 const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', ()=>{
   header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-/* ============================================================
-   HERO ZOOM — the wordmark grows larger as you scroll down
-   through the hero runway, peaking right as the HOF section
-   arrives, then fades out of the way.
-   ============================================================ */
+
 const heroRunway = document.querySelector('.hero-runway');
 const heroStage = document.querySelector('.hero-stage');
 let heroTicking = false;
@@ -1338,15 +1316,15 @@ function updateHeroZoom(){
   const runwayHeight = heroRunway.offsetHeight - window.innerHeight;
   if(runwayHeight <= 0) return;
 
-  // progress: 0 when runway top is at viewport top, 1 when runway is fully scrolled past
+
   let progress = -rect.top / runwayHeight;
   progress = Math.max(0, Math.min(1, progress));
 
-  // ease the whole curve so it feels deliberate, not linear
-  const eased = progress * progress * (3 - 2 * progress); // smoothstep
 
-  const scale = 1 + eased * 0.9;        // grows gently up to ~1.9x — stays readable, never flies off-frame
-  const fade = 1 - eased;               // dissolves in lockstep with the growth, finishing exactly as HOF arrives
+  const eased = progress * progress * (3 - 2 * progress); 
+
+  const scale = 1 + eased * 0.9;        
+  const fade = 1 - eased;              
 
   heroStage.style.setProperty('--hero-scale', scale.toFixed(3));
   heroStage.style.setProperty('--hero-fade', Math.max(0, Math.min(1, fade)).toFixed(3));
@@ -1362,9 +1340,7 @@ window.addEventListener('scroll', onHeroScroll, { passive: true });
 window.addEventListener('resize', onHeroScroll);
 updateHeroZoom();
 
-/* ============================================================
-   SCROLL REVEAL — cards fade + rise into place as they enter view
-   ============================================================ */
+
 const revealObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -1379,16 +1355,8 @@ function observeReveals(root = document){
 }
 observeReveals();
 
-// Safety net: re-attach observation whenever the app becomes visible or the
-// window resizes, so cards that were unmeasurable (parent was display:none)
-// at the time they were first observed still get checked once they have
-// real geometry. This does NOT force-reveal off-screen cards — it only
-// re-registers them so the normal scroll-triggered reveal can do its job.
 window.addEventListener('resize', ()=>observeReveals());
 
-/* ============================================================
-   MOBILE NAV
-   ============================================================ */
 const navToggle = document.getElementById('navToggle');
 const mainNav = document.getElementById('mainNav');
 navToggle.addEventListener('click', ()=>{
@@ -1396,16 +1364,12 @@ navToggle.addEventListener('click', ()=>{
 });
 function closeMobileNav(){ mainNav.classList.remove('open'); }
 
-/* ============================================================
-   MUSIC TOGGLE — controls real playback once a track is set in
-   the <audio id="bgMusic"> src attribute up above
-   ============================================================ */
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = document.getElementById('musicLabel');
 let playing = false;
 musicToggle.addEventListener('click', ()=>{
   if(!bgMusic.getAttribute('src')){
-    // No track configured yet — keep the button visually inert.
+
     return;
   }
   if(playing){
@@ -1416,27 +1380,20 @@ musicToggle.addEventListener('click', ()=>{
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{ /* blocked — user can try again, e.g. after another gesture */ });
+    }).catch(()=>{});
   }
 });
 
-/* ============================================================
-   LANYARD — live Discord presence for members, HOF, day 1's
-   Docs: https://github.com/Phineas/lanyard
-   Each person needs: (1) a real Discord user ID dropped into
-   their `discordId` field above, and (2) to have joined the
-   Lanyard discord.gg/lanyard server at least once so the bot
-   can see + cache their presence.
-   ============================================================ */
+
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
-const lanyardCache = new Map(); // discordId -> presence data
+const lanyardCache = new Map(); // 
 const PLACEHOLDER_ID = 'PUT_DISCORD_ID_HERE';
 
 function discordStatusToClass(status){
   if(status==='online') return 'status-on';
   if(status==='idle') return 'status-idle';
   if(status==='dnd') return 'status-dnd';
-  return 'status-off'; // offline / invisible / unknown
+  return 'status-off'; 
 }
 
 function activityLabel(data){
@@ -1487,7 +1444,7 @@ async function refreshLanyardDOM(){
   }));
 }
 
-// Initial paint + background poll every 30s so dots stay live without a reload
+
 refreshLanyardDOM();
 setInterval(refreshLanyardDOM, 30000);
 </script>
