@@ -375,39 +375,59 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   max-width:1280px;
   margin:0 auto;
 }
+/* ── Member card — banner-style layout ── */
 .card{
   position:relative;
-  aspect-ratio:4/5;
+  aspect-ratio:3/4;
   border:1px solid var(--line);
   background:#0c0c0c;
   overflow:hidden;
   cursor:pointer;
+  display:flex;
+  flex-direction:column;
   transition:transform .4s cubic-bezier(.16,.8,.3,1), border-color .3s, box-shadow .4s;
 }
-.card:hover{transform:translateY(-6px) scale(1.012);border-color:#3a3a3a;box-shadow:0 16px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);}
-.card .bgimg{
-  position:absolute;inset:0;
+.card:hover{transform:translateY(-6px) scale(1.012);border-color:#3a3a3a;box-shadow:0 16px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);}
+
+/* top banner zone */
+.card .card-banner{
+  width:100%;
+  flex:0 0 58%;
+  background:#111;
   background-size:cover;
   background-position:center;
-  opacity:.85;
-  transition:transform .6s cubic-bezier(.16,.8,.3,1), opacity .4s;
+  transition:transform .6s cubic-bezier(.16,.8,.3,1);
+  position:relative;
 }
-.card:hover .bgimg{transform:scale(1.08);opacity:1;}
-.card .shade{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
+.card:hover .card-banner{transform:scale(1.05);}
+
+/* bottom info zone */
+.card .card-body{
+  flex:1;
+  background:#0c0c0c;
+  position:relative;
+  padding:0 12px 12px 12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+/* avatar sits on the seam between banner and body */
+.card .avatar-wrap{
+  position:absolute;
+  left:12px;
+  top:-22px; /* half out of card-body, half in banner */
 }
 .card .avatar{
-  position:absolute;
-  left:50%;top:46%;
-  transform:translate(-50%,-50%);
-  width:54px;height:54px;
+  width:44px;height:44px;
   border-radius:6px;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.18);
+  border:2px solid #0c0c0c;
   background:#222;
+  position:relative;
 }
 .card .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+
 .status{
   display:inline-block;
   width:9px;height:9px;
@@ -423,31 +443,29 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .status-idle{background:#e7a33e;box-shadow:0 0 6px rgba(231,163,62,.6);}
 .status-dnd{background:#e0444b;box-shadow:0 0 6px rgba(224,68,75,.6);}
 .status-off{background:#5a5a58;box-shadow:none;}
-.avatar-wrap{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);}
 
+/* text info — left-aligned, below avatar */
 .card .info{
-  position:absolute;
-  left:0;right:0;bottom:0;
-  padding:14px 14px 16px;
-  text-align:center;
+  padding-top:30px; /* clear the avatar */
 }
 .card .uname{
   font-family:var(--disp);
-  font-size:14px;
+  font-size:13px;
   letter-spacing:.5px;
   color:#fff;
-  margin-bottom:3px;
+  margin-bottom:2px;
+  line-height:1.1;
 }
 .card .handle{
-  font-size:10px;
+  font-size:9px;
   color:var(--cyan);
   letter-spacing:.5px;
-  margin-bottom:3px;
+  margin-bottom:2px;
   opacity:.85;
 }
 .card .tag{
-  font-size:9px;
-  letter-spacing:1.5px;
+  font-size:8px;
+  letter-spacing:1px;
   color:var(--bone-dim);
   text-transform:uppercase;
 }
@@ -509,6 +527,22 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   top:18px;right:18px;
   border:2px solid #0a0a0a;
 }
+.hof-avatar-wrap{
+  position:absolute;
+  left:16px;
+  bottom:52px;
+}
+.hof-avatar{
+  width:52px;height:52px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,.18);
+  background:#1a1a1a;
+  position:relative;
+}
+.hof-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.hof-avatar .placeholder-avatar{width:100%;height:100%;border-radius:50%;}
+
 .hof-card .name{
   position:absolute;left:18px;bottom:20px;
   font-family:var(--disp);
@@ -1088,28 +1122,25 @@ MEMBERS.forEach((m,i)=>{
   card.setAttribute('aria-label', m.name);
   card.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
 
-  const bg = m.img ? `<div class="bgimg" style="background-image:url('${m.img}')"></div>` : '<div class="bgimg bgimg-empty"></div>';
-  let avatarInner;
-  if(m.discordId && m.discordId !== PLACEHOLDER_ID){
-    // Will be updated by Lanyard; show placeholder until resolved
-    avatarInner = `<img class="discord-avatar-img" data-discord-id="${m.discordId}" src="" alt="${m.name}" loading="lazy" style="display:none">` + placeholderAvatar(i+1);
-  } else if(m.img){
-    avatarInner = `<img src="${m.img}" alt="${m.name}" loading="lazy">`;
-  } else {
-    avatarInner = placeholderAvatar(i+1);
-  }
+  const hasDiscord = m.discordId && m.discordId !== PLACEHOLDER_ID;
 
   card.innerHTML = `
-    ${bg}
-    <div class="shade"></div>
-    <div class="avatar-wrap">
-      <div class="avatar">${avatarInner}</div>
-      <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
-    </div>
-    <div class="info">
-      <div class="uname">${m.name}</div>
-      <div class="handle">${m.handle}</div>
-      <div class="tag">${m.tag}</div>
+    <div class="card-banner" data-discord-banner="${hasDiscord ? m.discordId : ''}"></div>
+    <div class="card-body">
+      <div class="avatar-wrap">
+        <div class="avatar">
+          ${hasDiscord
+            ? `<img class="discord-avatar-img" data-discord-id="${m.discordId}" src="" alt="${m.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
+            : (m.img ? `<img src="${m.img}" alt="${m.name}" loading="lazy">` : placeholderAvatar(i+1))
+          }
+          <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
+        </div>
+      </div>
+      <div class="info">
+        <div class="uname">${m.name}</div>
+        <div class="handle">${m.handle}</div>
+        <div class="tag">${m.tag}</div>
+      </div>
     </div>
   `;
   card.addEventListener('click', ()=>openProfile('member', m.slug));
@@ -1126,14 +1157,20 @@ HOF.forEach((h,i)=>{
   card.setAttribute('role','link');
   card.setAttribute('aria-label', h.name);
   card.style.setProperty('--reveal-delay', `${i * 90}ms`);
-  const bg = h.img
-    ? `<div class="bgimg" style="background-image:url('${h.img}')"></div>`
-    : `<div class="bgimg bgimg-empty">${placeholderAvatar(i+1)}</div>`;
+  const hasDiscord = h.discordId && h.discordId !== PLACEHOLDER_ID;
   card.innerHTML = `
-    ${bg}
+    <div class="bgimg bgimg-empty" data-discord-banner="${hasDiscord ? h.discordId : ''}"></div>
     <div class="grad"></div>
     <div class="rank">${String(i+1).padStart(2,'0')}</div>
     <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
+    <div class="hof-avatar-wrap">
+      <div class="hof-avatar">
+        ${hasDiscord
+          ? `<img class="discord-avatar-img" data-discord-id="${h.discordId}" src="" alt="${h.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
+          : (h.img ? `<img src="${h.img}" alt="${h.name}" loading="lazy">` : placeholderAvatar(i+1))
+        }
+      </div>
+    </div>
     <div class="name">${h.name}</div>
     <div class="role">${h.role}</div>
   `;
@@ -1151,16 +1188,20 @@ DAY1.forEach((d,i)=>{
   card.setAttribute('role','link');
   card.setAttribute('aria-label', d.name);
   card.style.setProperty('--reveal-delay', `${(i % 2) * 90}ms`);
-  const bg = d.img ? `<div class="bgimg" style="background-image:url('${d.img}')"></div>` : '<div class="bgimg bgimg-empty"></div>';
-  const pic = d.img ? `<img src="${d.img}" alt="${d.name}">` : placeholderAvatar(i+1);
+  const hasDiscord = d.discordId && d.discordId !== PLACEHOLDER_ID;
   card.innerHTML = `
-    ${bg}
+    <div class="bgimg bgimg-empty" data-discord-banner="${hasDiscord ? d.discordId : ''}"></div>
     <div class="grad"></div>
     <div class="label">
       <div class="d1-name">${d.name}</div>
       <div class="d1-tag">${d.tag}</div>
     </div>
-    <div class="pic">${pic}</div>
+    <div class="pic">
+      ${hasDiscord
+        ? `<img class="discord-avatar-img" data-discord-id="${d.discordId}" src="" alt="${d.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
+        : (d.img ? `<img src="${d.img}" alt="${d.name}">` : placeholderAvatar(i+1))
+      }
+    </div>
     <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
   `;
   card.addEventListener('click', ()=>openProfile('day1', d.slug));
@@ -1280,30 +1321,29 @@ async function renderProfileOnly(type, slug){
     avatarWrap.parentNode.insertBefore(bannerEl, avatarWrap);
   }
   if(lanyardData && lanyardData.discord_user && lanyardData.discord_user.banner){
-    const bannerHash = lanyardData.discord_user.banner;
-    const uid = m.discordId;
-    const ext = bannerHash.startsWith('a_') ? 'gif' : 'png';
-    bannerEl.style.backgroundImage = `url(https://cdn.discordapp.com/banners/${uid}/${bannerHash}.${ext}?size=480)`;
+    const bUrl = bannerUrl(m.discordId, lanyardData.discord_user.banner, 480);
+    bannerEl.style.backgroundImage = `url('${bUrl}')`;
     bannerEl.style.display = 'block';
   } else {
     bannerEl.style.display = 'none';
     bannerEl.style.backgroundImage = '';
   }
 
-  // Set avatar: prefer Discord CDN, else m.img, else placeholder
+  // Set avatar: prefer Discord CDN (GIF supported), else m.img, else placeholder
   if(lanyardData && lanyardData.discord_user && lanyardData.discord_user.avatar){
-    const avatarHash = lanyardData.discord_user.avatar;
-    const uid = m.discordId;
-    const ext = avatarHash.startsWith('a_') ? 'gif' : 'png';
-    avatarImg.src = `https://cdn.discordapp.com/avatars/${uid}/${avatarHash}.${ext}?size=160`;
+    const aUrl = avatarUrl(m.discordId, lanyardData.discord_user.avatar, 160);
+    avatarImg.src = aUrl;
+    avatarImg.setAttribute('data-discord-id', m.discordId);
     avatarImg.style.display = 'block';
     avatarWrap.style.background = '#111';
   } else if(m.img){
     avatarImg.src = m.img;
+    avatarImg.removeAttribute('data-discord-id');
     avatarImg.style.display = 'block';
     avatarWrap.style.background = '#111';
   } else {
     avatarImg.style.display = 'none';
+    avatarImg.removeAttribute('data-discord-id');
     avatarWrap.style.background = '#141414';
     const ph = document.createElement('div');
     ph.className = 'placeholder-avatar';
@@ -1471,52 +1511,133 @@ async function fetchLanyard(discordId){
   if(!discordId || discordId === PLACEHOLDER_ID) return null;
   if(lanyardCache.has(discordId)) return lanyardCache.get(discordId);
   try{
-    const res = await fetch(LANYARD_BASE + discordId);
-    if(!res.ok) throw new Error('lanyard fetch failed');
+    const res = await fetch(LANYARD_BASE + discordId, { mode: 'cors' });
+    if(!res.ok) throw new Error('bad status');
     const json = await res.json();
     if(!json.success) return null;
     lanyardCache.set(discordId, json.data);
     return json.data;
-  }catch(err){
-    console.warn('Lanyard lookup failed for', discordId, err);
+  } catch(err){
+    lanyardCache.set(discordId, null); // prevent retry spam
     return null;
+  }
+}
+
+/* ── helpers to build CDN urls with GIF support ── */
+function avatarUrl(id, hash, size=128){
+  if(!hash) return null;
+  const ext = hash.startsWith('a_') ? 'gif' : 'png';
+  return `https://cdn.discordapp.com/avatars/${id}/${hash}.${ext}?size=${size}`;
+}
+function bannerUrl(id, hash, size=480){
+  if(!hash) return null;
+  const ext = hash.startsWith('a_') ? 'gif' : 'png';
+  return `https://cdn.discordapp.com/banners/${id}/${hash}.${ext}?size=${size}`;
+}
+
+/* ── apply one Lanyard data blob to every matching DOM element ── */
+function applyLanyardData(data){
+  if(!data) return;
+  const id = data.discord_user && data.discord_user.id;
+  if(!id) return;
+  lanyardCache.set(id, data);
+
+  const aUrl = avatarUrl(id, data.discord_user.avatar);
+  const bUrl = bannerUrl(id, data.discord_user.banner);
+
+  /* status dots & activity labels */
+  document.querySelectorAll(`[data-discord-id="${id}"]`).forEach(el=>{
+    if(el.hasAttribute('data-lanyard-dot')){
+      el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g,'').trim();
+      el.classList.add('status', discordStatusToClass(data.discord_status||'offline'));
+    }
+    if(el.hasAttribute('data-lanyard-activity')){
+      const label = activityLabel(data);
+      el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
+    }
+    /* avatar <img> elements inside any card */
+    if(el.classList.contains('discord-avatar-img') && aUrl){
+      el.src = aUrl;
+      el.style.display = 'block';
+      const ph = el.parentElement && el.parentElement.querySelector('.placeholder-avatar');
+      if(ph) ph.style.display = 'none';
+    }
+  });
+
+  /* banner zones (card-banner, hof-bgimg, d1-bgimg) */
+  document.querySelectorAll(`[data-discord-banner="${id}"]`).forEach(el=>{
+    el.style.filter = '';
+    el.style.transform = '';
+    if(bUrl){
+      el.style.backgroundImage = `url('${bUrl}')`;
+    } else if(aUrl){
+      /* no banner → blurred avatar fallback */
+      el.style.backgroundImage = `url('${aUrl}')`;
+      el.style.filter = 'blur(18px) brightness(.45) saturate(1.6)';
+      el.style.transform = 'scale(1.18)';
+    }
+  });
+
+  /* profile modal — live-patch if currently showing this person */
+  const profileAvatarEl = document.getElementById('profileAvatar');
+  if(profileAvatarEl && profileAvatarEl.getAttribute('data-discord-id') === id){
+    if(aUrl){ profileAvatarEl.src = aUrl; profileAvatarEl.style.display='block'; }
+    const profileBannerEl = document.getElementById('profileBanner');
+    if(profileBannerEl){
+      if(bUrl){ profileBannerEl.style.backgroundImage=`url('${bUrl}')`; profileBannerEl.style.display='block'; }
+      else { profileBannerEl.style.display='none'; }
+    }
   }
 }
 
 async function refreshLanyardDOM(){
   const ids = new Set();
-  document.querySelectorAll('[data-lanyard-dot],[data-lanyard-activity],[data-discord-id]').forEach(el=>{
-    const id = el.getAttribute('data-discord-id');
+  document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
+    const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
     if(id && id !== PLACEHOLDER_ID) ids.add(id);
   });
-
   await Promise.all([...ids].map(async id=>{
     const data = await fetchLanyard(id);
-    document.querySelectorAll(`[data-discord-id="${id}"]`).forEach(el=>{
-      if(el.hasAttribute('data-lanyard-dot')){
-        el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g, '').trim();
-        el.classList.add('status', discordStatusToClass(data ? data.discord_status : 'offline'));
-      }
-      if(el.hasAttribute('data-lanyard-activity')){
-        const label = activityLabel(data);
-        el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
-      }
-      // Update Discord avatar imgs in cards
-      if(el.classList.contains('discord-avatar-img') && data && data.discord_user && data.discord_user.avatar){
-        const hash = data.discord_user.avatar;
-        const ext = hash.startsWith('a_') ? 'gif' : 'png';
-        el.src = `https://cdn.discordapp.com/avatars/${id}/${hash}.${ext}?size=128`;
-        el.style.display = 'block';
-        const ph = el.parentElement.querySelector('.placeholder-avatar');
-        if(ph) ph.style.display = 'none';
-      }
-    });
+    if(data) applyLanyardData(data);
   }));
 }
 
+/* ── WebSocket for real-time presence + initial avatar/banner ── */
+function connectLanyardWS(){
+  const allIds = new Set();
+  document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
+    const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
+    if(id && id !== PLACEHOLDER_ID) allIds.add(id);
+  });
+  if(!allIds.size) return;
 
-refreshLanyardDOM();
-setInterval(refreshLanyardDOM, 30000);
+  let heartbeatInterval = null;
+
+  function connect(){
+    const ws = new WebSocket('wss://api.lanyard.rest/socket');
+
+    ws.addEventListener('open', ()=>{
+      ws.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: [...allIds] } }));
+    });
+    ws.addEventListener('message', e=>{
+      let msg; try{ msg = JSON.parse(e.data); }catch{ return; }
+      if(msg.op === 1){
+        heartbeatInterval = setInterval(()=>{
+          if(ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ op: 3 }));
+        }, msg.d.heartbeat_interval);
+      }
+      if(msg.op === 0){
+        if(msg.t === 'INIT_STATE') Object.values(msg.d).forEach(applyLanyardData);
+        if(msg.t === 'PRESENCE_UPDATE') applyLanyardData(msg.d);
+      }
+    });
+    ws.addEventListener('close', ()=>{ clearInterval(heartbeatInterval); setTimeout(connect, 5000); });
+    ws.addEventListener('error', ()=>ws.close());
+  }
+  connect();
+}
+
+refreshLanyardDOM().finally(connectLanyardWS);
 </script>
 </body>
 </html>
