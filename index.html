@@ -1049,17 +1049,7 @@ const GLOW_CYCLE = [
   'rgba(40,40,50,.5)',  'rgba(10,10,70,.55)',
 ];
 
-/*
- * ─────────────────────────────────────────────
- *  DATA — just paste a discordId.
- *  Override name / handle / tag / role / glow
- *  only if you want something different from
- *  what Lanyard pulls from Discord.
- * ─────────────────────────────────────────────
- */
 
-/* helper: fill in defaults so renderers always
-   have slug, glow, and fallback text */
 function normalise(entry, prefix, i){
   return {
     slug:      entry.slug      || `${prefix}-${i+1}`,
@@ -1072,21 +1062,7 @@ function normalise(entry, prefix, i){
   };
 }
 
-/* ── MEMBERS — put as many objects as you want.
- *  Only discordId is required — avatar, banner & online
- *  status are pulled live from Discord automatically.
- *  name / handle / tag are optional overrides:
- *    name   -> bold title on the card (e.g. "WAY2KRAM")
- *    handle -> small cyan line (e.g. "@lvr.krammy")
- *    tag    -> bottom caption (e.g. "HIGH AUTHORITY")
- *  Leave any of them "" to fall back to a placeholder.
- *
- *  slug is the profile URL — e.g. slug:"threat" becomes
- *  t2s.com/threat (no /member or /hof prefix). Keep each
- *  slug unique across MEMBERS, HOF, and DAY1 combined, and
- *  avoid "hof", "day1", "members", "about" since those are
- *  reserved for the section pages.
- */
+
 const MEMBERS_RAW = [
   { slug: "member-1",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0],  discordId: "PUT_DISCORD_ID_HERE" },
   { slug: "member-2",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1],  discordId: "PUT_DISCORD_ID_HERE" },
@@ -1107,7 +1083,7 @@ const MEMBERS_RAW = [
 ];
 const MEMBERS = MEMBERS_RAW.map((e,i) => normalise(e, 'member', i));
 
-/* ── HALL OF FAME ── */
+
 const HOF_RAW = [
   {
     slug: "threat",
@@ -1139,16 +1115,16 @@ const HOF_RAW = [
 ];
 const HOF = HOF_RAW.map((e,i) => normalise(e, 'hof', i));
 
-/* ── DAY 1'S ── */
+
 const DAY1_RAW = [
-  { slug: "day1-1", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "day1-2", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "day1-3", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "day1-4", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "day1-5", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "day1-6", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5], discordId: "PUT_DISCORD_ID_HERE" },
+  { slug: "day1-1", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0], discordId: "1310763051636752415" },
+  { slug: "day1-2", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1], discordId: "1503083605444788235" },
+  { slug: "day1-3", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2], discordId: "1402292483584426134" },
+  { slug: "day1-4", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3], discordId: "1505254632979431474" },
+  { slug: "day1-5", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4], discordId: "1081132499767410688" },
+  { slug: "day1-6", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5], discordId: "1403234492419670038" },
 ];
-const DAY1 = DAY1_RAW.map((e,i) => normalise(e, 'day1', i));
+const DAY1 = DAY1_RAW.map((e,i) => normalise(e, 'day1', i)); 
 
 
 function placeholderAvatar(label){
@@ -1318,8 +1294,7 @@ const PROFILE_SOURCES = {
   day1:   { list: DAY1,    back: '/day1',    backLabel: "← BACK TO DAY 1'S" },
 };
 
-/* flat lookup so a bare /slug resolves to whichever list it belongs to —
-   no /member, /hof, /day1 prefix needed in the URL */
+
 const RESERVED_PATHS = ['hof','day1','members','about'];
 function findProfileBySlug(slug){
   for(const type in PROFILE_SOURCES){
@@ -1359,7 +1334,7 @@ async function renderProfileOnly(type, slug){
   const idx = src.list.indexOf(m);
   document.getElementById('profileGlow').style.setProperty('--glow-color', m.glow);
 
-  // Fetch Lanyard data for Discord avatar/banner
+  
   const lanyardData = m.discordId && m.discordId !== PLACEHOLDER_ID
     ? await fetchLanyard(m.discordId)
     : null;
@@ -1367,10 +1342,10 @@ async function renderProfileOnly(type, slug){
   const avatarImg = document.getElementById('profileAvatar');
   const avatarWrap = document.getElementById('profileAvatarWrap');
 
-  // Remove existing placeholder/banner
+
   avatarWrap.querySelectorAll('.placeholder-avatar').forEach(el => el.remove());
 
-  // Set Discord banner if available
+  
   let bannerEl = document.getElementById('profileBanner');
   if(!bannerEl){
     bannerEl = document.createElement('div');
@@ -1387,7 +1362,7 @@ async function renderProfileOnly(type, slug){
     bannerEl.style.backgroundImage = '';
   }
 
-  // Set avatar: prefer Discord CDN (GIF supported), else m.img, else placeholder
+  
   if(lanyardData && lanyardData.discord_user && lanyardData.discord_user.avatar){
     const aUrl = avatarUrl(m.discordId, lanyardData.discord_user.avatar, 256);
     avatarImg.src = aUrl;
@@ -1528,9 +1503,9 @@ observeReveals();
 
 window.addEventListener('resize', ()=>observeReveals());
 
-function closeMobileNav(){ /* no-op: hamburger removed */ }
+function closeMobileNav(){  }
 
-/* ── Scroll-spy: update active nav as sections enter viewport ── */
+
 const spySections = ['home','hof','day1','members'];
 const scrollSpyObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -1594,12 +1569,12 @@ async function fetchLanyard(discordId){
     lanyardCache.set(discordId, json.data);
     return json.data;
   } catch(err){
-    lanyardCache.set(discordId, null); // prevent retry spam
+    lanyardCache.set(discordId, null); 
     return null;
   }
 }
 
-/* ── helpers to build CDN urls with GIF support ── */
+
 function avatarUrl(id, hash, size=128){
   if(!hash) return null;
   const ext = hash.startsWith('a_') ? 'gif' : 'png';
@@ -1611,7 +1586,7 @@ function bannerUrl(id, hash, size=512){
   return `https://cdn.discordapp.com/banners/${id}/${hash}.${ext}?size=${size}`;
 }
 
-/* ── apply one Lanyard data blob to every matching DOM element ── */
+
 function applyLanyardData(data){
   if(!data) return;
   const id = data.discord_user && data.discord_user.id;
@@ -1621,7 +1596,7 @@ function applyLanyardData(data){
   const aUrl = avatarUrl(id, data.discord_user.avatar);
   const bUrl = bannerUrl(id, data.discord_user.banner);
 
-  /* status dots & activity labels */
+  
   document.querySelectorAll(`[data-discord-id="${id}"]`).forEach(el=>{
     if(el.hasAttribute('data-lanyard-dot')){
       el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g,'').trim();
@@ -1631,7 +1606,7 @@ function applyLanyardData(data){
       const label = activityLabel(data);
       el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
     }
-    /* avatar <img> elements inside any card */
+    
     if(el.classList.contains('discord-avatar-img') && aUrl){
       el.src = aUrl;
       el.style.display = 'block';
@@ -1640,16 +1615,16 @@ function applyLanyardData(data){
     }
   });
 
-  /* banner zones (card-banner, hof-bgimg, d1-bgimg) */
+  
   document.querySelectorAll(`[data-discord-banner="${id}"]`).forEach(el=>{
     el.style.filter = '';
     el.style.transform = '';
     if(bUrl){
-      /* remove bgimg-empty so its background shorthand doesn't override backgroundImage */
+      
       el.classList.remove('bgimg-empty');
       el.style.backgroundImage = `url('${bUrl}')`;
     } else if(aUrl){
-      /* no banner → blurred avatar fallback */
+      
       el.classList.remove('bgimg-empty');
       el.style.backgroundImage = `url('${aUrl}')`;
       el.style.filter = 'blur(18px) brightness(.45) saturate(1.6)';
@@ -1657,7 +1632,7 @@ function applyLanyardData(data){
     }
   });
 
-  /* profile modal — live-patch if currently showing this person */
+ 
   const profileAvatarEl = document.getElementById('profileAvatar');
   if(profileAvatarEl && profileAvatarEl.getAttribute('data-discord-id') === id){
     if(aUrl){ profileAvatarEl.src = aUrl; profileAvatarEl.style.display='block'; }
@@ -1681,7 +1656,7 @@ async function refreshLanyardDOM(){
   }));
 }
 
-/* ── WebSocket for real-time presence + initial avatar/banner ── */
+
 function connectLanyardWS(){
   const allIds = new Set();
   document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
