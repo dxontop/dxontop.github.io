@@ -232,7 +232,7 @@ nav a::after{
   transition:width .25s;
 }
 nav a:hover::after, nav a.active::after{width:100%;}
-.nav-toggle{display:none;}
+.nav-toggle{display:none !important;}
 
 
 #app{display:none;}
@@ -340,8 +340,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 
 
 .bgimg-empty{
-  background:
-    linear-gradient(135deg, #111 0%, #161616 100%);
+  background: linear-gradient(135deg, #111 0%, #161616 100%);
 }
 .placeholder-avatar{
   width:100%;height:100%;
@@ -356,16 +355,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   font-size:18px;
   letter-spacing:.5px;
 }
-.hof-card .bgimg-empty .placeholder-avatar{
-  width:72px;height:72px;
-  border-radius:50%;
-  border:1px solid #262626;
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  background:#171717;
-}
-.hof-card .bgimg-empty .placeholder-avatar span{font-size:26px;}
 
 
 .grid{
@@ -395,11 +384,17 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   flex:0 0 58%;
   background:#111;
   background-size:cover;
-  background-position:center;
+  background-position:center top;
+  overflow:hidden;
   transition:transform .6s cubic-bezier(.16,.8,.3,1);
   position:relative;
 }
 .card:hover .card-banner{transform:scale(1.05);}
+/* ensure any dynamically set bgImage on bgimg-empty covers correctly */
+[data-discord-banner]{
+  background-size:cover !important;
+  background-position:center top !important;
+}
 
 /* bottom info zone */
 .card .card-body{
@@ -866,6 +861,7 @@ footer{
 }
 @media (max-width:680px){
   header{padding:16px 20px;}
+  nav{
     position:fixed;
     top:0;right:0;
     height:100vh;
@@ -931,7 +927,6 @@ footer{
 
   <header id="siteHeader">
     <div class="brand"><span class="dot"></span>THREAT2SOCIETY</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <nav id="mainNav">
       <a href="#home" class="nav-link" data-view="home" data-anchor="home">Home</a>
       <a href="#hof" class="nav-link" data-view="home" data-anchor="hof">Hall of Fame</a>
@@ -1040,73 +1035,69 @@ const GLOW_CYCLE = [
   'rgba(40,40,50,.5)',  'rgba(10,10,70,.55)',
 ];
 
-function buildMembers(count){
-  return Array.from({length:count}, (_, i)=>({
-    slug: `member-${i+1}`,
-    name: `MEMBER ${i+1}`,
-    handle: '@handle',
-    tag: 'Tag goes here',
-    img: '',
-    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
-    discordId: 'PUT_DISCORD_ID_HERE',
-  }));
+/*
+ * ─────────────────────────────────────────────
+ *  DATA — just paste a discordId.
+ *  Override name / handle / tag / role / glow
+ *  only if you want something different from
+ *  what Lanyard pulls from Discord.
+ * ─────────────────────────────────────────────
+ */
+
+/* helper: fill in defaults so renderers always
+   have slug, glow, and fallback text */
+function normalise(entry, prefix, i){
+  return {
+    slug:      entry.slug      || `${prefix}-${i+1}`,
+    name:      entry.name      || `${prefix.toUpperCase()} ${i+1}`,
+    handle:    entry.handle    || '',
+    tag:       entry.tag       || '',
+    role:      entry.role      || '',
+    glow:      entry.glow      || GLOW_CYCLE[i % GLOW_CYCLE.length],
+    discordId: entry.discordId || PLACEHOLDER_ID,
+  };
 }
 
-function buildHOF(count){
-  return Array.from({length:count}, (_, i)=>({
-    slug: `hof-${i+1}`,
-    name: `HOF ${i+1}`,
-    handle: '@handle',
-    role: 'Role goes here',
-    img: '',
-    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
-    discordId: 'PUT_DISCORD_ID_HERE',
-  }));
-}
-
-function buildDay1(count){
-  return Array.from({length:count}, (_, i)=>({
-    slug: `day1-${i+1}`,
-    name: `DAY 1 — ${i+1}`,
-    handle: '@handle',
-    tag: 'Tag goes here',
-    img: '',
-    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
-    discordId: 'PUT_DISCORD_ID_HERE',
-  }));
-}
-
-const MEMBERS = buildMembers(16);
-const HOF = [
-{
-  slug: "threat",
-  name: "Threat",
-  handle: "@threat",
-  role: "Founder",
-  img: "",
-  glow: GLOW_CYCLE[0],
-  discordId: "1415996915329400872"
-},
-{
-  slug: "highcaliber",
-  name: "Highcaliber",
-  handle: "@highcaliber",
-  role: "Co-Founder",
-  img: "",
-  glow: GLOW_CYCLE[1],
-  discordId: "1512675755459612835"
-},
-{
-  slug: "mir",
-  name: "Mir",
-  handle: "@mir",
-  role: "Co-Founder",
-  img: "",
-  glow: GLOW_CYCLE[2],
-  discordId: "1511025106284183712"
-}
+/* ── MEMBERS — put as many objects as you want ── */
+const MEMBERS_RAW = [
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
 ];
-const DAY1 = buildDay1(6);
+const MEMBERS = MEMBERS_RAW.map((e,i) => normalise(e, 'member', i));
+
+/* ── HALL OF FAME ── */
+const HOF_RAW = [
+  { discordId: '1415996915329400872', name: 'Threat',      handle: '@threat',      role: 'Founder'    },
+  { discordId: '1512675755459612835', name: 'Highcaliber', handle: '@highcaliber', role: 'Co-Founder' },
+  { discordId: '1511025106284183712', name: 'Mir',         handle: '@mir',         role: 'Co-Founder' },
+];
+const HOF = HOF_RAW.map((e,i) => normalise(e, 'hof', i));
+
+/* ── DAY 1'S ── */
+const DAY1_RAW = [
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+  { discordId: 'PUT_DISCORD_ID_HERE' },
+];
+const DAY1 = DAY1_RAW.map((e,i) => normalise(e, 'day1', i));
+
 
 function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
@@ -1462,12 +1453,22 @@ observeReveals();
 
 window.addEventListener('resize', ()=>observeReveals());
 
-const navToggle = document.getElementById('navToggle');
-const mainNav = document.getElementById('mainNav');
-navToggle.addEventListener('click', ()=>{
-  mainNav.classList.toggle('open');
+function closeMobileNav(){ /* no-op: hamburger removed */ }
+
+/* ── Scroll-spy: update active nav as sections enter viewport ── */
+const spySections = ['home','hof','day1','members'];
+const scrollSpyObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      setActiveNav(entry.target.id);
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-80px 0px -20% 0px' });
+
+spySections.forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) scrollSpyObserver.observe(el);
 });
-function closeMobileNav(){ mainNav.classList.remove('open'); }
 
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = document.getElementById('musicLabel');
