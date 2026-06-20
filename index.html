@@ -1168,13 +1168,13 @@ MEMBERS.forEach((m,i)=>{
   const hasDiscord = m.discordId && m.discordId !== PLACEHOLDER_ID;
 
   card.innerHTML = `
-    <div class="card-banner" data-discord-banner="${hasDiscord ? m.discordId : ''}"></div>
+    ${hasDiscord ? `<div class="card-banner" data-discord-banner="${m.discordId}"></div>` : `<div class="card-banner bgimg-empty"></div>`}
     <div class="card-body">
       <div class="avatar-wrap">
         <div class="avatar">
           ${hasDiscord
-            ? `<img class="discord-avatar-img" data-discord-id="${m.discordId}" src="" alt="${m.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
-            : (m.img ? `<img src="${m.img}" alt="${m.name}" loading="lazy">` : placeholderAvatar(i+1))
+            ? `<img class="discord-avatar-img" data-discord-id="${m.discordId}" src="" alt="${m.name}" style="display:none">${placeholderAvatar(i+1)}`
+            : (m.img ? `<img src="${m.img}" alt="${m.name}">` : placeholderAvatar(i+1))
           }
           <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
         </div>
@@ -1202,15 +1202,15 @@ HOF.forEach((h,i)=>{
   card.style.setProperty('--reveal-delay', `${i * 90}ms`);
   const hasDiscord = h.discordId && h.discordId !== PLACEHOLDER_ID;
   card.innerHTML = `
-    <div class="bgimg bgimg-empty" data-discord-banner="${hasDiscord ? h.discordId : ''}"></div>
+    <div class="bgimg bgimg-empty" ${hasDiscord ? `data-discord-banner="${h.discordId}"` : ''}></div>
     <div class="grad"></div>
     <div class="rank">${String(i+1).padStart(2,'0')}</div>
     <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
     <div class="hof-avatar-wrap">
       <div class="hof-avatar">
         ${hasDiscord
-          ? `<img class="discord-avatar-img" data-discord-id="${h.discordId}" src="" alt="${h.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
-          : (h.img ? `<img src="${h.img}" alt="${h.name}" loading="lazy">` : placeholderAvatar(i+1))
+          ? `<img class="discord-avatar-img" data-discord-id="${h.discordId}" src="" alt="${h.name}" style="display:none">${placeholderAvatar(i+1)}`
+          : (h.img ? `<img src="${h.img}" alt="${h.name}">` : placeholderAvatar(i+1))
         }
       </div>
     </div>
@@ -1233,7 +1233,7 @@ DAY1.forEach((d,i)=>{
   card.style.setProperty('--reveal-delay', `${(i % 2) * 90}ms`);
   const hasDiscord = d.discordId && d.discordId !== PLACEHOLDER_ID;
   card.innerHTML = `
-    <div class="bgimg bgimg-empty" data-discord-banner="${hasDiscord ? d.discordId : ''}"></div>
+    <div class="bgimg bgimg-empty" ${hasDiscord ? `data-discord-banner="${d.discordId}"` : ''}></div>
     <div class="grad"></div>
     <div class="label">
       <div class="d1-name">${d.name}</div>
@@ -1241,7 +1241,7 @@ DAY1.forEach((d,i)=>{
     </div>
     <div class="pic">
       ${hasDiscord
-        ? `<img class="discord-avatar-img" data-discord-id="${d.discordId}" src="" alt="${d.name}" loading="lazy" style="display:none">${placeholderAvatar(i+1)}`
+        ? `<img class="discord-avatar-img" data-discord-id="${d.discordId}" src="" alt="${d.name}" style="display:none">${placeholderAvatar(i+1)}`
         : (d.img ? `<img src="${d.img}" alt="${d.name}">` : placeholderAvatar(i+1))
       }
     </div>
@@ -1645,9 +1645,12 @@ function applyLanyardData(data){
     el.style.filter = '';
     el.style.transform = '';
     if(bUrl){
+      /* remove bgimg-empty so its background shorthand doesn't override backgroundImage */
+      el.classList.remove('bgimg-empty');
       el.style.backgroundImage = `url('${bUrl}')`;
     } else if(aUrl){
       /* no banner → blurred avatar fallback */
+      el.classList.remove('bgimg-empty');
       el.style.backgroundImage = `url('${aUrl}')`;
       el.style.filter = 'blur(18px) brightness(.45) saturate(1.6)';
       el.style.transform = 'scale(1.18)';
@@ -1670,7 +1673,7 @@ async function refreshLanyardDOM(){
   const ids = new Set();
   document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
     const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
-    if(id && id !== PLACEHOLDER_ID) ids.add(id);
+    if(id && id.trim() && id !== PLACEHOLDER_ID) ids.add(id);
   });
   await Promise.all([...ids].map(async id=>{
     const data = await fetchLanyard(id);
@@ -1683,7 +1686,7 @@ function connectLanyardWS(){
   const allIds = new Set();
   document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
     const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
-    if(id && id !== PLACEHOLDER_ID) allIds.add(id);
+    if(id && id.trim() && id !== PLACEHOLDER_ID) allIds.add(id);
   });
   if(!allIds.size) return;
 
