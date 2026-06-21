@@ -45,7 +45,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 ::-webkit-scrollbar-thumb{background:#222;}
 ::-webkit-scrollbar-thumb:hover{background:var(--threat-dim);}
 
-
+/* ============ NOISE / SCANLINE LAYER ============ */
 .grain{
   position:fixed;inset:0;
   pointer-events:none;
@@ -74,7 +74,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
 }
 
-
+/* ============ SPLASH ============ */
 #splash{
   position:fixed;inset:0;
   background:#000;
@@ -175,7 +175,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   text-transform:uppercase;
 }
 
-
+/* ============ NAV ============ */
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -232,9 +232,9 @@ nav a::after{
   transition:width .25s;
 }
 nav a:hover::after, nav a.active::after{width:100%;}
-.nav-toggle{display:none !important;}
+.nav-toggle{display:none;}
 
-
+/* ============ MAIN VIEWS ============ */
 #app{display:none;}
 #app.show{display:block;}
 .view{display:none;}
@@ -244,7 +244,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
   to{opacity:1;transform:translateY(0);}
 }
 
-
+/* ============ HOME / HERO ============ */
 .hero-runway{
   position:relative;
   height:160vh;
@@ -325,22 +325,23 @@ nav a:hover::after, nav a.active::after{width:100%;}
 
 section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 
-
+/* ============ SCROLL REVEAL ============ */
 .reveal{
   opacity:0;
-  transform:translateY(32px);
-  transition:opacity .75s cubic-bezier(.16,.8,.3,1), transform .75s cubic-bezier(.16,.8,.3,1);
+  transform:translateY(28px);
+  transition:opacity .65s cubic-bezier(.16,.8,.3,1), transform .65s cubic-bezier(.16,.8,.3,1);
   transition-delay:var(--reveal-delay, 0ms);
 }
 .reveal.in-view{
   opacity:1;
   transform:translateY(0);
 }
-.card.reveal.in-view:hover{transform:translateY(-6px) scale(1.012);}
+.card.reveal.in-view:hover{transform:translateY(-6px) scale(1.015);}
 
-
+/* ============ PLACEHOLDER AVATAR (blank slot) ============ */
 .bgimg-empty{
-  background: linear-gradient(135deg, #111 0%, #161616 100%);
+  background:
+    linear-gradient(135deg, #111 0%, #161616 100%);
 }
 .placeholder-avatar{
   width:100%;height:100%;
@@ -355,8 +356,18 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   font-size:18px;
   letter-spacing:.5px;
 }
+.hof-card .bgimg-empty .placeholder-avatar{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:1px solid #262626;
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:#171717;
+}
+.hof-card .bgimg-empty .placeholder-avatar span{font-size:26px;}
 
-
+/* ============ MEMBERS GRID ============ */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -364,67 +375,43 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   max-width:1280px;
   margin:0 auto;
 }
-/* ── Member card — banner-style layout (matches reference: wide card, centered avatar) ── */
 .card{
   position:relative;
-  aspect-ratio:3/2;
+  aspect-ratio:4/5;
   border:1px solid var(--line);
   background:#0c0c0c;
   overflow:hidden;
   cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  transition:transform .4s cubic-bezier(.16,.8,.3,1), border-color .3s, box-shadow .4s;
+  transition:transform .45s cubic-bezier(.16,.8,.3,1), border-color .35s ease, box-shadow .45s ease;
 }
-.card:hover{transform:translateY(-6px) scale(1.012);border-color:#3a3a3a;box-shadow:0 16px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);}
-
-/* top banner zone */
-.card .card-banner{
-  width:100%;
-  flex:0 0 58%;
-  background:#111;
+.card:hover{
+  transform:translateY(-6px) scale(1.015);
+  border-color:#3a3a3a;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
+}
+.card .bgimg{
+  position:absolute;inset:0;
   background-size:cover;
-  background-position:center top;
-  overflow:hidden;
-  transition:transform .6s cubic-bezier(.16,.8,.3,1);
-  position:relative;
+  background-position:center;
+  opacity:.85;
+  transition:transform .6s cubic-bezier(.16,.8,.3,1), opacity .4s ease;
 }
-.card:hover .card-banner{transform:scale(1.05);}
-/* ensure any dynamically set bgImage on bgimg-empty covers correctly */
-[data-discord-banner]{
-  background-size:cover !important;
-  background-position:center top !important;
-}
-
-/* bottom info zone */
-.card .card-body{
-  flex:1;
-  background:#0c0c0c;
-  position:relative;
-  padding:0 10px 10px 10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-}
-
-/* avatar sits centered on the seam between banner and body */
-.card .avatar-wrap{
-  position:absolute;
-  left:50%;
-  top:-23px; /* half out of card-body, half in banner */
-  transform:translateX(-50%);
+.card:hover .bgimg{transform:scale(1.08);opacity:1;}
+.card .shade{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
 }
 .card .avatar{
-  width:46px;height:46px;
+  position:absolute;
+  left:50%;top:46%;
+  transform:translate(-50%,-50%);
+  width:54px;height:54px;
   border-radius:6px;
   overflow:hidden;
-  border:2px solid #0c0c0c;
+  border:1px solid rgba(255,255,255,.18);
   background:#222;
-  position:relative;
 }
-.card .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-
+.card .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s ease;}
 .status{
   display:inline-block;
   width:9px;height:9px;
@@ -434,53 +421,42 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .card .status{
   position:absolute;
-  right:-4px;bottom:-4px;
-  width:13px;height:13px;
-  border-radius:3px;
+  right:-3px;bottom:-3px;
 }
 .status-on{background:#3fd16a;box-shadow:0 0 6px rgba(63,209,106,.6);}
 .status-idle{background:#e7a33e;box-shadow:0 0 6px rgba(231,163,62,.6);}
 .status-dnd{background:#e0444b;box-shadow:0 0 6px rgba(224,68,75,.6);}
 .status-off{background:#5a5a58;box-shadow:none;}
+.avatar-wrap{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);}
 
-/* text info — centered, below avatar */
 .card .info{
-  padding-top:26px; /* clear the avatar */
+  position:absolute;
+  left:0;right:0;bottom:0;
+  padding:14px 14px 16px;
   text-align:center;
-  width:100%;
 }
 .card .uname{
   font-family:var(--disp);
-  font-size:13px;
+  font-size:14px;
   letter-spacing:.5px;
   color:#fff;
-  margin-bottom:2px;
-  line-height:1.1;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  margin-bottom:3px;
 }
 .card .handle{
-  font-size:9px;
+  font-size:10px;
   color:var(--cyan);
   letter-spacing:.5px;
-  margin-bottom:2px;
+  margin-bottom:3px;
   opacity:.85;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 .card .tag{
-  font-size:8px;
-  letter-spacing:1px;
+  font-size:9px;
+  letter-spacing:1.5px;
   color:var(--bone-dim);
   text-transform:uppercase;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 
-
+/* ============ HOF (cinematic vertical reveal cards) ============ */
 .hof-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -503,14 +479,18 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border:1px solid var(--line);
   cursor:pointer;
   background:#0a0a0a;
-  transition:border-color .3s;
+  transition:border-color .35s ease, transform .45s cubic-bezier(.16,.8,.3,1), box-shadow .45s ease;
 }
-.hof-card:hover{border-color:var(--threat-dim);box-shadow:0 14px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,43,43,.08);}
+.hof-card:hover{
+  border-color:var(--threat-dim);
+  transform:translateY(-6px) scale(1.015);
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
+}
 .hof-card .bgimg{
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   filter:grayscale(.5) brightness(.7);
-  transition:transform .7s cubic-bezier(.16,.8,.3,1), filter .4s;
+  transition:transform .6s cubic-bezier(.16,.8,.3,1), filter .45s ease;
 }
 .hof-card:hover .bgimg{transform:scale(1.08);filter:grayscale(0) brightness(.85);}
 .hof-card .grad{
@@ -537,22 +517,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   top:18px;right:18px;
   border:2px solid #0a0a0a;
 }
-.hof-avatar-wrap{
-  position:absolute;
-  left:16px;
-  bottom:52px;
-}
-.hof-avatar{
-  width:52px;height:52px;
-  border-radius:50%;
-  overflow:hidden;
-  border:2px solid rgba(255,255,255,.18);
-  background:#1a1a1a;
-  position:relative;
-}
-.hof-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-.hof-avatar .placeholder-avatar{width:100%;height:100%;border-radius:50%;}
-
 .hof-card .name{
   position:absolute;left:18px;bottom:20px;
   font-family:var(--disp);
@@ -568,7 +532,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-transform:uppercase;
 }
 
-
+/* ============ DAY1 (album-style tiles) ============ */
 .d1-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -586,14 +550,20 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   display:flex;
   align-items:center;
   cursor:pointer;
-  transition:border-color .3s, transform .3s;
+  transition:border-color .35s ease, transform .45s cubic-bezier(.16,.8,.3,1), box-shadow .45s ease;
 }
-.d1-card:hover{border-color:#444;transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.55);}
+.d1-card:hover{
+  border-color:#333;
+  transform:translateY(-5px) scale(1.01);
+  box-shadow:0 14px 32px -10px rgba(0,0,0,.55);
+}
 .d1-card .bgimg{
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   opacity:.5;
+  transition:transform .6s cubic-bezier(.16,.8,.3,1), opacity .4s ease;
 }
+.d1-card:hover .bgimg{transform:scale(1.06);opacity:.65;}
 .d1-card .grad{
   position:absolute;inset:0;
   background:linear-gradient(110deg, rgba(0,0,0,.92) 40%, rgba(0,0,0,.55) 100%);
@@ -625,7 +595,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   overflow:hidden;
   z-index:2;
 }
-.d1-card .pic img{width:100%;height:100%;object-fit:cover;}
+.d1-card .pic img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;}
 .d1-card .d1-status{
   position:absolute;
   right:18px;bottom:14px;
@@ -633,7 +603,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border:2px solid #0a0a0a;
 }
 
-
+/* ============ ABOUT ============ */
 .about-wrap{
   max-width:760px;
   margin:0 auto;
@@ -698,7 +668,7 @@ footer{
   color:#2c2c2c;
 }
 
-
+/* ============ MEMBER PROFILE VIEW ============ */
 .profile-view{
   min-height:100vh;
   display:flex;
@@ -726,6 +696,19 @@ footer{
   background-size:100% 100%;
   opacity:.7;
 }
+.profile-banner{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:280px;
+  z-index:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .5s ease;
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9) 0%, transparent 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.9) 0%, transparent 100%);
+}
+.profile-banner.has-banner{opacity:1;}
 .profile-card{
   position:relative;
   z-index:1;
@@ -734,23 +717,17 @@ footer{
   align-items:center;
   text-align:center;
 }
-.profile-banner{
-  width:100%;
-  max-width:420px;
-  height:130px;
-  border-radius:12px 12px 0 0;
-  background-size:cover;
-  background-position:center;
-  margin-bottom:-18px;
-  z-index:1;
-  position:relative;
-  display:none;
-  border:1px solid rgba(255,255,255,.1);
-  border-bottom:none;
-  animation:fadeIn .4s ease both;
+.eye-row{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  margin-bottom:-30px;
 }
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-
+.eye{
+  width:46px;height:26px;
+  position:relative;
+}
+.eye svg{width:100%;height:100%;filter:drop-shadow(0 0 12px var(--glow-color, rgba(255,43,43,.7)));}
 .profile-avatar{
   position:relative;
   width:90px;height:90px;
@@ -759,7 +736,7 @@ footer{
   background:#111;
   overflow:hidden;
 }
-.profile-avatar img{width:100%;height:100%;object-fit:cover;}
+.profile-avatar img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;}
 .profile-status{
   position:absolute;
   right:-4px;bottom:-4px;
@@ -802,24 +779,8 @@ footer{
   box-shadow:0 0 6px #3fd16a;
   flex-shrink:0;
 }
-.profile-socials{
-  display:flex;
-  gap:14px;
-  margin-top:30px;
-}
-.soc-btn{
-  width:42px;height:42px;
-  border:1px solid #2a2a2a;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:border-color .25s, background .25s;
-}
-.soc-btn:hover{border-color:var(--glow-color,var(--threat));background:rgba(255,255,255,.04);}
-.soc-btn svg{width:18px;height:18px;}
 .profile-back{
-  margin-top:60px;
+  margin-top:46px;
   font-size:11px;
   letter-spacing:2px;
   color:var(--mute);
@@ -837,7 +798,7 @@ footer{
   z-index:1;
 }
 
-
+/* ============ MUSIC TOGGLE ============ */
 .music-toggle{
   position:fixed;
   right:24px;bottom:24px;
@@ -869,7 +830,7 @@ footer{
   50%{height:100%;}
 }
 
-
+/* ============ RESPONSIVE ============ */
 @media (max-width:980px){
   .grid{grid-template-columns:repeat(3,1fr);}
   .d1-grid{grid-template-columns:1fr;}
@@ -904,12 +865,13 @@ footer{
   .grid{grid-template-columns:repeat(2,1fr);gap:10px;}
   .hof-card{height:280px;}
   .stat-row{gap:34px;}
+  .eye-row{gap:34px;}
 }
 @media (max-width:420px){
   .grid{grid-template-columns:repeat(2,1fr);}
 }
 
-
+/* reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
 }
@@ -926,7 +888,7 @@ footer{
 <div class="scanlines"></div>
 <div class="vignette"></div>
 
-
+<!-- SPLASH -->
 <div id="splash">
   <div class="wordmark flicker">
     <div class="wordmark-line">
@@ -937,21 +899,22 @@ footer{
   <div class="splash-sub">CLICK ANYWHERE TO CONTINUE</div>
 </div>
 
-
+<!-- APP -->
 <div id="app">
 
   <header id="siteHeader">
     <div class="brand"><span class="dot"></span>THREAT2SOCIETY</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <nav id="mainNav">
-      <a href="/" class="nav-link" data-view="home" data-anchor="home">Home</a>
-      <a href="/hof" class="nav-link" data-view="home" data-anchor="hof">Hall of Fame</a>
-      <a href="/day1" class="nav-link" data-view="home" data-anchor="day1">Day 1's</a>
-      <a href="/members" class="nav-link" data-view="home" data-anchor="members">Members</a>
-      <a href="/about" class="nav-link" data-view="about" data-anchor="">About</a>
+      <a href="#home" class="nav-link" data-view="home" data-anchor="home">Home</a>
+      <a href="#hof" class="nav-link" data-view="home" data-anchor="hof">Hall of Fame</a>
+      <a href="#day1" class="nav-link" data-view="home" data-anchor="day1">Day 1's</a>
+      <a href="#members" class="nav-link" data-view="home" data-anchor="members">Members</a>
+      <a href="#about" class="nav-link" data-view="about" data-anchor="">About</a>
     </nav>
   </header>
 
-
+  <!-- HOME VIEW -->
   <div class="view active" id="view-home">
     <section class="hero-runway" id="home">
       <div class="hero-stage">
@@ -963,7 +926,7 @@ footer{
         </div>
         <div class="cta-row" id="heroCta">
           <a class="cta" href="https://discord.gg/" target="_blank" rel="noopener">[ JOIN_T2S ]</a>
-          <a class="cta alt nav-link" href="/about" data-anchor="">[ ABOUT_US ]</a>
+          <a class="cta alt" href="#about">[ ABOUT_US ]</a>
         </div>
       </div>
     </section>
@@ -984,32 +947,35 @@ footer{
     </section>
   </div>
 
- 
+  <!-- ABOUT VIEW -->
   <div class="view" id="view-about">
     <section style="padding-top:160px;min-height:80vh;">
       <div class="about-wrap">
         <div class="about-eyebrow">Introducing Threat2Society</div>
         <div class="about-body">
           <strong>THREAT2SOCIETY</strong> is an underground digital crew built on loyalty, presence, and noise.
-          What started as a few names in the same server turned into a wall — a place where everyone knows
+          What started as a few names in the same group chat turned into a wall — a place where everyone knows
           everyone, and everyone moves the same. We don't chase clout, we build it. No fillers, no fronting —
           just a circle that shows up for each other on and off the screen.
         </div>
         <div class="stat-row">
+          <div class="stat"><div class="num">16+</div><div class="lab">Members</div></div>
+          <div class="stat"><div class="num">04</div><div class="lab">Hall of Famers</div></div>
           <div class="stat"><div class="num">∞</div><div class="lab">Loyalty</div></div>
-          <div class="stat"><div class="num">MAX</div><div class="lab">Threat Level</div></div>
         </div>
         <a class="join-btn" href="https://discord.gg/" target="_blank" rel="noopener">JOIN US!</a>
       </div>
     </section>
   </div>
 
-
+  <!-- PROFILE VIEW -->
   <div class="view" id="view-profile">
     <div class="profile-view">
       <div class="profile-bg-glow" id="profileGlow"></div>
       <div class="profile-stars"></div>
+      <div class="profile-banner" id="profileBanner"></div>
       <div class="profile-card">
+        <div class="eye-row" id="profileEyes"></div>
         <div class="profile-avatar" id="profileAvatarWrap">
           <img id="profileAvatar" src="" alt="">
           <span class="profile-status status-off" id="profileStatusDot"></span>
@@ -1018,8 +984,7 @@ footer{
         <div class="profile-handle" id="profileHandle"></div>
         <div class="profile-tag" id="profileTag"></div>
         <div class="profile-activity" id="profileActivity"></div>
-        <div class="profile-socials" id="profileSocials"></div>
-        <a class="profile-back" id="profileBack" href="/members">← BACK TO MEMBERS</a>
+        <a class="profile-back" id="profileBack" href="#members">← BACK TO MEMBERS</a>
       </div>
       <div class="profile-url" id="profileUrl"></div>
     </div>
@@ -1028,8 +993,8 @@ footer{
   <footer>THREAT2SOCIETY.COM</footer>
 </div>
 
-
-<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Ya%20Dig_%20Freestyle%20feat.%20gins%26melodies.mp3"></audio>
+<!-- Drop your track's URL into src="" below to enable music -->
+<audio id="bgMusic" loop preload="auto" src=""></audio>
 
 <button class="music-toggle paused" id="musicToggle">
   <span class="bars"><span></span><span></span><span></span></span>
@@ -1037,11 +1002,12 @@ footer{
 </button>
 
 <script>
-
-const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
-const lanyardCache = new Map();
-const PLACEHOLDER_ID = 'PUT_DISCORD_ID_HERE';
-
+/* ============================================================
+   DATA
+   Blank roster — every card is a placeholder labeled in order
+   (Member 1, Member 2, ...) so you can swap in real names,
+   handles, tags, photos, and Discord IDs as you build the crew.
+   ============================================================ */
 const GLOW_CYCLE = [
   'rgba(122,15,18,.5)', 'rgba(40,30,90,.5)', 'rgba(10,40,90,.5)', 'rgba(60,10,10,.5)',
   'rgba(20,20,20,.6)',  'rgba(60,5,5,.55)',  'rgba(15,15,15,.6)', 'rgba(90,10,50,.5)',
@@ -1049,89 +1015,53 @@ const GLOW_CYCLE = [
   'rgba(40,40,50,.5)',  'rgba(10,10,70,.55)',
 ];
 
-
-function normalise(entry, prefix, i){
-  return {
-    slug:      entry.slug      || `${prefix}-${i+1}`,
-    name:      entry.name      || `${prefix.toUpperCase()} ${i+1}`,
-    handle:    entry.handle    || '',
-    tag:       entry.tag       || '',
-    role:      entry.role      || '',
-    glow:      entry.glow      || GLOW_CYCLE[i % GLOW_CYCLE.length],
-    discordId: entry.discordId || PLACEHOLDER_ID,
-  };
+function buildMembers(count){
+  return Array.from({length:count}, (_, i)=>({
+    slug: `member-${i+1}`,
+    name: `MEMBER ${i+1}`,
+    handle: '@handle',
+    tag: 'Tag goes here',
+    img: '',
+    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
+    discordId: 'PUT_DISCORD_ID_HERE',
+  }));
 }
 
+function buildHOF(count){
+  return Array.from({length:count}, (_, i)=>({
+    slug: `hof-${i+1}`,
+    name: `HOF ${i+1}`,
+    handle: '@handle',
+    role: 'Role goes here',
+    img: '',
+    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
+    discordId: 'PUT_DISCORD_ID_HERE',
+  }));
+}
 
-const MEMBERS_RAW = [
-  { slug: "member-1",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-2",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-3",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-4",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-5",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-6",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-7",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[6],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-8",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[7],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-9",  name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[8],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-10", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[9],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-11", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[10], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-12", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[11], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-13", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[12], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-14", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[13], discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-15", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0],  discordId: "PUT_DISCORD_ID_HERE" },
-  { slug: "member-16", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1],  discordId: "PUT_DISCORD_ID_HERE" },
-];
-const MEMBERS = MEMBERS_RAW.map((e,i) => normalise(e, 'member', i));
+function buildDay1(count){
+  return Array.from({length:count}, (_, i)=>({
+    slug: `day1-${i+1}`,
+    name: `DAY 1 — ${i+1}`,
+    handle: '@handle',
+    tag: 'Tag goes here',
+    img: '',
+    glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
+    discordId: 'PUT_DISCORD_ID_HERE',
+  }));
+}
 
-
-const HOF_RAW = [
-  {
-    slug: "threat",
-    name: "Threat",
-    handle: "@threat",
-    role: "Founder",
-    img: "",
-    glow: GLOW_CYCLE[0],
-    discordId: "1415996915329400872"
-  },
-  {
-    slug: "highcaliber",
-    name: "Highcaliber",
-    handle: "@highcaliber",
-    role: "Co-Founder",
-    img: "",
-    glow: GLOW_CYCLE[1],
-    discordId: "1512675755459612835"
-  },
-  {
-    slug: "mir",
-    name: "Mir",
-    handle: "@mir",
-    role: "Co-Founder",
-    img: "",
-    glow: GLOW_CYCLE[2],
-    discordId: "1511025106284183712"
-  }
-];
-const HOF = HOF_RAW.map((e,i) => normalise(e, 'hof', i));
-
-
-const DAY1_RAW = [
-  { slug: "day1-1", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[0], discordId: "1310763051636752415" },
-  { slug: "day1-2", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[1], discordId: "1503083605444788235" },
-  { slug: "day1-3", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[2], discordId: "1402292483584426134" },
-  { slug: "day1-4", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[3], discordId: "1505254632979431474" },
-  { slug: "day1-5", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[4], discordId: "1081132499767410688" },
-  { slug: "day1-6", name: "", handle: "", tag: "", img: "", glow: GLOW_CYCLE[5], discordId: "1403234492419670038" },
-];
-const DAY1 = DAY1_RAW.map((e,i) => normalise(e, 'day1', i)); 
-
+const MEMBERS = buildMembers(16);
+const HOF = buildHOF(3);
+const DAY1 = buildDay1(6);
 
 function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
 }
 
-
+/* ============================================================
+   RENDER MEMBERS GRID
+   ============================================================ */
 const membersGrid = document.getElementById('membersGrid');
 MEMBERS.forEach((m,i)=>{
   const card = document.createElement('div');
@@ -1139,27 +1069,26 @@ MEMBERS.forEach((m,i)=>{
   card.tabIndex = 0;
   card.setAttribute('role','link');
   card.setAttribute('aria-label', m.name);
+  card.setAttribute('data-discord-card','');
+  card.setAttribute('data-discord-id', m.discordId);
   card.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
 
-  const hasDiscord = m.discordId && m.discordId !== PLACEHOLDER_ID;
+  const bg = m.img ? `<div class="bgimg" data-discord-bg style="background-image:url('${m.img}')"></div>` : '<div class="bgimg bgimg-empty" data-discord-bg></div>';
+  const avatarInner = m.img
+    ? `<img src="${m.img}" alt="${m.name}" loading="lazy" data-discord-avatar-img>`
+    : placeholderAvatar(i+1) + `<img alt="${m.name}" loading="lazy" data-discord-avatar-img style="display:none;">`;
 
   card.innerHTML = `
-    ${hasDiscord ? `<div class="card-banner" data-discord-banner="${m.discordId}"></div>` : `<div class="card-banner bgimg-empty"></div>`}
-    <div class="card-body">
-      <div class="avatar-wrap">
-        <div class="avatar">
-          ${hasDiscord
-            ? `<img class="discord-avatar-img" data-discord-id="${m.discordId}" src="" alt="${m.name}" style="display:none">${placeholderAvatar(i+1)}`
-            : (m.img ? `<img src="${m.img}" alt="${m.name}">` : placeholderAvatar(i+1))
-          }
-          <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
-        </div>
-      </div>
-      <div class="info">
-        <div class="uname">${m.name}</div>
-        <div class="handle">${m.handle}</div>
-        <div class="tag">${m.tag}</div>
-      </div>
+    ${bg}
+    <div class="shade"></div>
+    <div class="avatar-wrap">
+      <div class="avatar">${avatarInner}</div>
+      <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
+    </div>
+    <div class="info">
+      <div class="uname" data-discord-name>${m.name}</div>
+      <div class="handle" data-discord-handle>${m.handle}</div>
+      <div class="tag">${m.tag}</div>
     </div>
   `;
   card.addEventListener('click', ()=>openProfile('member', m.slug));
@@ -1167,7 +1096,9 @@ MEMBERS.forEach((m,i)=>{
   membersGrid.appendChild(card);
 });
 
-
+/* ============================================================
+   RENDER HOF GRID (3 only)
+   ============================================================ */
 const hofGrid = document.getElementById('hofGrid');
 HOF.forEach((h,i)=>{
   const card = document.createElement('div');
@@ -1175,22 +1106,18 @@ HOF.forEach((h,i)=>{
   card.tabIndex = 0;
   card.setAttribute('role','link');
   card.setAttribute('aria-label', h.name);
+  card.setAttribute('data-discord-card','');
+  card.setAttribute('data-discord-id', h.discordId);
   card.style.setProperty('--reveal-delay', `${i * 90}ms`);
-  const hasDiscord = h.discordId && h.discordId !== PLACEHOLDER_ID;
+  const bg = h.img
+    ? `<div class="bgimg" data-discord-bg style="background-image:url('${h.img}')"></div>`
+    : `<div class="bgimg bgimg-empty" data-discord-bg>${placeholderAvatar(i+1)}</div>`;
   card.innerHTML = `
-    <div class="bgimg bgimg-empty" ${hasDiscord ? `data-discord-banner="${h.discordId}"` : ''}></div>
+    ${bg}
     <div class="grad"></div>
     <div class="rank">${String(i+1).padStart(2,'0')}</div>
     <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
-    <div class="hof-avatar-wrap">
-      <div class="hof-avatar">
-        ${hasDiscord
-          ? `<img class="discord-avatar-img" data-discord-id="${h.discordId}" src="" alt="${h.name}" style="display:none">${placeholderAvatar(i+1)}`
-          : (h.img ? `<img src="${h.img}" alt="${h.name}">` : placeholderAvatar(i+1))
-        }
-      </div>
-    </div>
-    <div class="name">${h.name}</div>
+    <div class="name" data-discord-name>${h.name}</div>
     <div class="role">${h.role}</div>
   `;
   card.addEventListener('click', ()=>openProfile('hof', h.slug));
@@ -1198,7 +1125,9 @@ HOF.forEach((h,i)=>{
   hofGrid.appendChild(card);
 });
 
-
+/* ============================================================
+   RENDER DAY1 GRID
+   ============================================================ */
 const d1Grid = document.getElementById('d1Grid');
 DAY1.forEach((d,i)=>{
   const card = document.createElement('div');
@@ -1206,21 +1135,21 @@ DAY1.forEach((d,i)=>{
   card.tabIndex = 0;
   card.setAttribute('role','link');
   card.setAttribute('aria-label', d.name);
+  card.setAttribute('data-discord-card','');
+  card.setAttribute('data-discord-id', d.discordId);
   card.style.setProperty('--reveal-delay', `${(i % 2) * 90}ms`);
-  const hasDiscord = d.discordId && d.discordId !== PLACEHOLDER_ID;
+  const bg = d.img ? `<div class="bgimg" data-discord-bg style="background-image:url('${d.img}')"></div>` : '<div class="bgimg bgimg-empty" data-discord-bg></div>';
+  const pic = d.img
+    ? `<img src="${d.img}" alt="${d.name}" data-discord-avatar-img>`
+    : placeholderAvatar(i+1) + `<img alt="${d.name}" data-discord-avatar-img style="display:none;">`;
   card.innerHTML = `
-    <div class="bgimg bgimg-empty" ${hasDiscord ? `data-discord-banner="${d.discordId}"` : ''}></div>
+    ${bg}
     <div class="grad"></div>
     <div class="label">
-      <div class="d1-name">${d.name}</div>
+      <div class="d1-name" data-discord-name>${d.name}</div>
       <div class="d1-tag">${d.tag}</div>
     </div>
-    <div class="pic">
-      ${hasDiscord
-        ? `<img class="discord-avatar-img" data-discord-id="${d.discordId}" src="" alt="${d.name}" style="display:none">${placeholderAvatar(i+1)}`
-        : (d.img ? `<img src="${d.img}" alt="${d.name}">` : placeholderAvatar(i+1))
-      }
-    </div>
+    <div class="pic">${pic}</div>
     <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
   `;
   card.addEventListener('click', ()=>openProfile('day1', d.slug));
@@ -1228,7 +1157,9 @@ DAY1.forEach((d,i)=>{
   d1Grid.appendChild(card);
 });
 
-
+/* ============================================================
+   SPLASH -> APP
+   ============================================================ */
 const splash = document.getElementById('splash');
 const app = document.getElementById('app');
 const bgMusic = document.getElementById('bgMusic');
@@ -1237,20 +1168,21 @@ function enterSite(){
   if(splash.classList.contains('leaving')) return;
   splash.classList.add('leaving');
 
-
+  // This click is a real user gesture, so it's safe to start audio here —
+  // browsers block autoplay-with-sound until a gesture like this happens.
   if(bgMusic && bgMusic.getAttribute('src')){
     bgMusic.volume = 0.5;
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{ });
+    }).catch(()=>{ /* still blocked for some reason — toggle stays available */ });
   }
 
   setTimeout(()=>{
     splash.style.display='none';
     app.classList.add('show');
-    observeReveals(); 
-    updateHeroZoom(); 
+    observeReveals(); // cards were hidden (display:none) until now — recheck them
+    updateHeroZoom();  // hero runway had zero height until now — recalc once visible
   }, 600);
 }
 splash.addEventListener('click', enterSite);
@@ -1258,7 +1190,9 @@ window.addEventListener('keydown', e=>{
   if(e.key==='Enter' && app && !app.classList.contains('show')) enterSite();
 });
 
-
+/* ============================================================
+   ROUTING (hash-based)
+   ============================================================ */
 const views = {
   home:  document.getElementById('view-home'),
   about: document.getElementById('view-about'),
@@ -1278,46 +1212,36 @@ function showView(key){
   }
 }
 
-function navigateTo(path, replace=false){
-  if(replace) history.replaceState(null, '', path);
-  else history.pushState(null, '', path);
-  route();
+function openProfile(type, slug){
+  location.hash = `${type}/${slug}`;
 }
 
-function openProfile(type, slug){
-  navigateTo(`/${slug}`);
+function eyeSVG(){
+  return `<div class="eye"><svg viewBox="0 0 80 50"><path d="M2 25 C 20 0, 60 0, 78 25 C 60 50, 20 50, 2 25 Z" fill="#1a0202" stroke="var(--glow-color, #ff2b2b)" stroke-width="2"/><ellipse cx="40" cy="25" rx="7" ry="18" fill="var(--glow-color, #ff2b2b)"/></svg></div>`;
 }
 
 const PROFILE_SOURCES = {
-  member: { list: MEMBERS, back: '/members', backLabel: '← BACK TO MEMBERS' },
-  hof:    { list: HOF,     back: '/hof',     backLabel: '← BACK TO HALL OF FAME' },
-  day1:   { list: DAY1,    back: '/day1',    backLabel: "← BACK TO DAY 1'S" },
+  member: { list: MEMBERS, back: '#members', backLabel: '← BACK TO MEMBERS' },
+  hof:    { list: HOF,     back: '#hof',     backLabel: '← BACK TO HALL OF FAME' },
+  day1:   { list: DAY1,    back: '#day1',    backLabel: "← BACK TO DAY 1'S" },
 };
 
-
-const RESERVED_PATHS = ['hof','day1','members','about'];
-function findProfileBySlug(slug){
-  for(const type in PROFILE_SOURCES){
-    const person = PROFILE_SOURCES[type].list.find(x=>x.slug===slug);
-    if(person) return { type, person };
-  }
-  return null;
-}
-
 function route(){
-  const path = location.pathname.replace(/^\/+|\/+$/g, '');
-  if(path && !RESERVED_PATHS.includes(path)){
-    const found = findProfileBySlug(path);
-    if(found){ renderProfileOnly(found.type, path).then(()=>refreshLanyardDOM()); showView('profile'); return; }
+  const hash = location.hash.replace('#','');
+  const [maybeType, maybeSlug] = hash.split('/');
+  if(maybeSlug && PROFILE_SOURCES[maybeType]){
+    const src = PROFILE_SOURCES[maybeType];
+    const person = src.list.find(x=>x.slug===maybeSlug);
+    if(person){ renderProfileOnly(maybeType, maybeSlug); showView('profile'); return; }
   }
-  if(path==='about'){
+  if(hash==='about'){
     showView('about');
     setActiveNav('');
     return;
   }
- 
+  // home + anchors (home/hof/day1/members) all live in the home view
   showView('home');
-  const anchorKey = ['hof','day1','members'].includes(path) ? path : 'home';
+  const anchorKey = ['hof','day1','members'].includes(hash) ? hash : 'home';
   setActiveNav(anchorKey);
   if(anchorKey !== 'home'){
     requestAnimationFrame(()=>{
@@ -1326,68 +1250,50 @@ function route(){
     });
   }
 }
-async function renderProfileOnly(type, slug){
+function renderProfileOnly(type, slug){
   const src = PROFILE_SOURCES[type];
   if(!src) return;
   const m = src.list.find(x=>x.slug===slug);
   if(!m) return;
   const idx = src.list.indexOf(m);
   document.getElementById('profileGlow').style.setProperty('--glow-color', m.glow);
-
-  
-  const lanyardData = m.discordId && m.discordId !== PLACEHOLDER_ID
-    ? await fetchLanyard(m.discordId)
-    : null;
-
   const avatarImg = document.getElementById('profileAvatar');
   const avatarWrap = document.getElementById('profileAvatarWrap');
-
-
-  avatarWrap.querySelectorAll('.placeholder-avatar').forEach(el => el.remove());
-
-  
-  let bannerEl = document.getElementById('profileBanner');
-  if(!bannerEl){
-    bannerEl = document.createElement('div');
-    bannerEl.id = 'profileBanner';
-    bannerEl.className = 'profile-banner';
-    avatarWrap.parentNode.insertBefore(bannerEl, avatarWrap);
-  }
-  if(lanyardData && lanyardData.discord_user && lanyardData.discord_user.banner){
-    const bUrl = bannerUrl(m.discordId, lanyardData.discord_user.banner, 512);
-    bannerEl.style.backgroundImage = `url('${bUrl}')`;
-    bannerEl.style.display = 'block';
-  } else {
-    bannerEl.style.display = 'none';
-    bannerEl.style.backgroundImage = '';
-  }
-
-  
-  if(lanyardData && lanyardData.discord_user && lanyardData.discord_user.avatar){
-    const aUrl = avatarUrl(m.discordId, lanyardData.discord_user.avatar, 256);
-    avatarImg.src = aUrl;
-    avatarImg.setAttribute('data-discord-id', m.discordId);
-    avatarImg.style.display = 'block';
-    avatarWrap.style.background = '#111';
-  } else if(m.img){
+  avatarImg.setAttribute('data-discord-avatar-img','');
+  if(m.img){
     avatarImg.src = m.img;
-    avatarImg.removeAttribute('data-discord-id');
     avatarImg.style.display = 'block';
     avatarWrap.style.background = '#111';
+    let ph = avatarWrap.querySelector('.placeholder-avatar');
+    if(ph) ph.remove();
   } else {
     avatarImg.style.display = 'none';
-    avatarImg.removeAttribute('data-discord-id');
     avatarWrap.style.background = '#141414';
-    const ph = document.createElement('div');
-    ph.className = 'placeholder-avatar';
+    let ph = avatarWrap.querySelector('.placeholder-avatar');
+    if(!ph){
+      ph = document.createElement('div');
+      ph.className = 'placeholder-avatar';
+      avatarWrap.appendChild(ph);
+    }
     ph.innerHTML = `<span>${idx+1}</span>`;
-    avatarWrap.appendChild(ph);
   }
-
-  document.getElementById('profileName').textContent = m.name;
-  document.getElementById('profileHandle').textContent = m.handle || '';
+  const nameEl = document.getElementById('profileName');
+  const handleEl = document.getElementById('profileHandle');
+  nameEl.textContent = m.name;
+  nameEl.setAttribute('data-discord-name','');
+  handleEl.textContent = m.handle || '';
+  handleEl.setAttribute('data-discord-handle','');
   document.getElementById('profileTag').textContent = m.tag || m.role || '';
   document.getElementById('profileUrl').textContent = `threat2society.com/${type}/${m.slug}`;
+  document.getElementById('profileEyes').innerHTML = eyeSVG() + eyeSVG();
+
+  // reset the banner before re-checking — otherwise the previous
+  // profile's banner can flash/linger while the new one loads
+  const banner = document.getElementById('profileBanner');
+  banner.classList.remove('has-banner');
+  banner.style.backgroundImage = '';
+  banner.setAttribute('data-discord-banner','');
+  banner.setAttribute('data-discord-id', m.discordId || '');
 
   const profileStatusDot = document.getElementById('profileStatusDot');
   if(profileStatusDot){
@@ -1406,16 +1312,13 @@ async function renderProfileOnly(type, slug){
     profileBack.textContent = src.backLabel;
   }
 
-  // Only Discord link in socials
-  const socials = document.getElementById('profileSocials');
-  const discordUrl = m.discordId && m.discordId !== PLACEHOLDER_ID
-    ? `https://discord.com/users/${m.discordId}`
-    : '#';
-  socials.innerHTML = `
-    <a class="soc-btn" href="${discordUrl}" target="_blank" rel="noopener" aria-label="Discord" style="--glow-color:${m.glow}">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.3 4.4A18.6 18.6 0 0 0 15.9 3l-.3.6a13.6 13.6 0 0 1 3.9 1.6 15.6 15.6 0 0 0-13 0 13 13 0 0 1 4-1.6L10.1 3a18.7 18.7 0 0 0-4.4 1.4C3 8.6 2.3 12.7 2.6 16.7a13.9 13.9 0 0 0 4.6 2.4l.6-1a9.6 9.6 0 0 1-1.5-.8c.1-.1.3-.2.4-.3a13.7 13.7 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.5.8l.6 1a13.9 13.9 0 0 0 4.6-2.4c.4-4.6-.7-8.6-2.9-12.3zM9.4 14.4c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm5.2 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg>
-    </a>
-  `;
+  // The whole profile card carries the same discordId so the avatar/
+  // name/handle/banner/status/activity all resolve together in one pass.
+  document.getElementById('profileAvatarWrap').setAttribute('data-discord-id', m.discordId || '');
+  nameEl.setAttribute('data-discord-id', m.discordId || '');
+  handleEl.setAttribute('data-discord-id', m.discordId || '');
+  avatarImg.setAttribute('data-discord-id', m.discordId || '');
+
   refreshLanyardDOM();
 }
 
@@ -1423,34 +1326,32 @@ document.querySelectorAll('.nav-link').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
     const anchor = link.dataset.anchor;
-    const newPath = anchor === 'home' ? '/' : '/' + (anchor || 'about');
-    if(location.pathname.replace(/^\/+|\/+$/g,'') === newPath.replace(/^\/+|\/+$/g,'')){
+    const newHash = anchor ? anchor : 'about';
+    if(location.hash.replace('#','') === newHash){
       route();
     } else {
-      navigateTo(newPath);
+      location.hash = newHash;
     }
     closeMobileNav();
   });
 });
 
-const profileBackLink = document.getElementById('profileBack');
-if(profileBackLink){
-  profileBackLink.addEventListener('click', e=>{
-    e.preventDefault();
-    navigateTo(profileBackLink.getAttribute('href'));
-  });
-}
-
-window.addEventListener('popstate', route);
+window.addEventListener('hashchange', route);
 window.addEventListener('load', route);
 
-
+/* ============================================================
+   HEADER SCROLL STATE
+   ============================================================ */
 const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', ()=>{
   header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-
+/* ============================================================
+   HERO ZOOM — the wordmark grows larger as you scroll down
+   through the hero runway, peaking right as the HOF section
+   arrives, then fades out of the way.
+   ============================================================ */
 const heroRunway = document.querySelector('.hero-runway');
 const heroStage = document.querySelector('.hero-stage');
 let heroTicking = false;
@@ -1462,15 +1363,15 @@ function updateHeroZoom(){
   const runwayHeight = heroRunway.offsetHeight - window.innerHeight;
   if(runwayHeight <= 0) return;
 
-
+  // progress: 0 when runway top is at viewport top, 1 when runway is fully scrolled past
   let progress = -rect.top / runwayHeight;
   progress = Math.max(0, Math.min(1, progress));
 
+  // ease the whole curve so it feels deliberate, not linear
+  const eased = progress * progress * (3 - 2 * progress); // smoothstep
 
-  const eased = progress * progress * (3 - 2 * progress); 
-
-  const scale = 1 + eased * 0.9;        
-  const fade = 1 - eased;              
+  const scale = 1 + eased * 0.9;        // grows gently up to ~1.9x — stays readable, never flies off-frame
+  const fade = 1 - eased;               // dissolves in lockstep with the growth, finishing exactly as HOF arrives
 
   heroStage.style.setProperty('--hero-scale', scale.toFixed(3));
   heroStage.style.setProperty('--hero-fade', Math.max(0, Math.min(1, fade)).toFixed(3));
@@ -1486,7 +1387,9 @@ window.addEventListener('scroll', onHeroScroll, { passive: true });
 window.addEventListener('resize', onHeroScroll);
 updateHeroZoom();
 
-
+/* ============================================================
+   SCROLL REVEAL — cards fade + rise into place as they enter view
+   ============================================================ */
 const revealObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -1501,31 +1404,33 @@ function observeReveals(root = document){
 }
 observeReveals();
 
+// Safety net: re-attach observation whenever the app becomes visible or the
+// window resizes, so cards that were unmeasurable (parent was display:none)
+// at the time they were first observed still get checked once they have
+// real geometry. This does NOT force-reveal off-screen cards — it only
+// re-registers them so the normal scroll-triggered reveal can do its job.
 window.addEventListener('resize', ()=>observeReveals());
 
-function closeMobileNav(){  }
-
-
-const spySections = ['home','hof','day1','members'];
-const scrollSpyObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      setActiveNav(entry.target.id);
-    }
-  });
-}, { threshold: 0.25, rootMargin: '-80px 0px -20% 0px' });
-
-spySections.forEach(id=>{
-  const el = document.getElementById(id);
-  if(el) scrollSpyObserver.observe(el);
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+navToggle.addEventListener('click', ()=>{
+  mainNav.classList.toggle('open');
 });
+function closeMobileNav(){ mainNav.classList.remove('open'); }
 
+/* ============================================================
+   MUSIC TOGGLE — controls real playback once a track is set in
+   the <audio id="bgMusic"> src attribute up above
+   ============================================================ */
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = document.getElementById('musicLabel');
 let playing = false;
 musicToggle.addEventListener('click', ()=>{
   if(!bgMusic.getAttribute('src')){
-
+    // No track configured yet — keep the button visually inert.
     return;
   }
   if(playing){
@@ -1536,16 +1441,34 @@ musicToggle.addEventListener('click', ()=>{
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{});
+    }).catch(()=>{ /* blocked — user can try again, e.g. after another gesture */ });
   }
 });
 
+/* ============================================================
+   LANYARD — live Discord presence + identity for members,
+   HOF, and day 1's.
+   Docs: https://github.com/Phineas/lanyard
+
+   Each person needs: (1) a real Discord user ID dropped into
+   their `discordId` field above, and (2) to have joined the
+   Lanyard discord.gg/lanyard server at least once so the bot
+   can see + cache their presence.
+
+   Once a valid ID resolves, it OVERRIDES that card's avatar,
+   display name, and (when present) banner — live from Discord,
+   including animated/GIF avatars and custom banners.
+   ============================================================ */
+const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
+const DISCORD_CDN = 'https://cdn.discordapp.com';
+const lanyardCache = new Map(); // discordId -> full presence data
+const PLACEHOLDER_ID = 'PUT_DISCORD_ID_HERE';
 
 function discordStatusToClass(status){
   if(status==='online') return 'status-on';
   if(status==='idle') return 'status-idle';
   if(status==='dnd') return 'status-dnd';
-  return 'status-off'; 
+  return 'status-off'; // offline / invisible / unknown
 }
 
 function activityLabel(data){
@@ -1558,140 +1481,158 @@ function activityLabel(data){
   return '';
 }
 
+// Builds a Discord CDN avatar URL, auto-detecting animated (GIF) avatars.
+function discordAvatarUrl(user, size){
+  if(!user || !user.id) return '';
+  size = size || 256;
+  if(!user.avatar){
+    // default Discord avatar (no custom pfp set)
+    const idx = user.discriminator && user.discriminator !== '0'
+      ? Number(user.discriminator) % 5
+      : Number(BigInt(user.id) >> 22n) % 6;
+    return `${DISCORD_CDN}/embed/avatars/${idx}.png`;
+  }
+  const animated = user.avatar.startsWith('a_');
+  const ext = animated ? 'gif' : 'png';
+  return `${DISCORD_CDN}/avatars/${user.id}/${user.avatar}.${ext}?size=${size}`;
+}
+
+// Builds a Discord CDN banner URL when the user has a custom banner set.
+// Returns '' if no banner is set (most Lanyard responses won't include one
+// unless Lanyard has cached it from a recent presence update).
+function discordBannerUrl(user, size){
+  if(!user || !user.id || !user.banner) return '';
+  size = size || 600;
+  const animated = user.banner.startsWith('a_');
+  const ext = animated ? 'gif' : 'png';
+  return `${DISCORD_CDN}/banners/${user.id}/${user.banner}.${ext}?size=${size}`;
+}
+
+function discordDisplayName(user){
+  if(!user) return '';
+  return user.global_name || user.display_name || user.username || '';
+}
+
+function discordHandle(user){
+  if(!user) return '';
+  return user.username ? `@${user.username}` : '';
+}
+
 async function fetchLanyard(discordId){
   if(!discordId || discordId === PLACEHOLDER_ID) return null;
   if(lanyardCache.has(discordId)) return lanyardCache.get(discordId);
   try{
-    const res = await fetch(LANYARD_BASE + discordId, { mode: 'cors' });
-    if(!res.ok) throw new Error('bad status');
+    const res = await fetch(LANYARD_BASE + discordId);
+    if(!res.ok) throw new Error('lanyard fetch failed');
     const json = await res.json();
     if(!json.success) return null;
     lanyardCache.set(discordId, json.data);
     return json.data;
-  } catch(err){
-    lanyardCache.set(discordId, null); 
+  }catch(err){
+    console.warn('Lanyard lookup failed for', discordId, err);
     return null;
   }
 }
 
-
-function avatarUrl(id, hash, size=128){
-  if(!hash) return null;
-  const ext = hash.startsWith('a_') ? 'gif' : 'png';
-  return `https://cdn.discordapp.com/avatars/${id}/${hash}.${ext}?size=${size}`;
+// Applies live Discord identity (avatar/name/banner) onto a card element
+// once Lanyard resolves real data for that discordId. Cards keep their
+// manually-set img/name as a fallback until/unless this overrides them.
+function applyAvatarToBg(bgEl, avatarUrl){
+  if(!bgEl || !avatarUrl) return;
+  if(bgEl.getAttribute('data-applied-src') === avatarUrl) return; // already applied, skip re-trigger
+  bgEl.style.opacity = '0';
+  bgEl.style.backgroundImage = `url('${avatarUrl}')`;
+  bgEl.classList.remove('bgimg-empty');
+  bgEl.innerHTML = '';
+  bgEl.setAttribute('data-applied-src', avatarUrl);
+  requestAnimationFrame(()=>{ bgEl.style.opacity = ''; });
 }
-function bannerUrl(id, hash, size=512){
-  if(!hash) return null;
-  const ext = hash.startsWith('a_') ? 'gif' : 'png';
-  return `https://cdn.discordapp.com/banners/${id}/${hash}.${ext}?size=${size}`;
+function applyAvatarToImg(imgEl, avatarUrl, altText){
+  if(!imgEl || !avatarUrl) return;
+  if(imgEl.getAttribute('data-applied-src') === avatarUrl) return;
+  imgEl.style.opacity = '0';
+  imgEl.src = avatarUrl;
+  imgEl.style.display = 'block';
+  if(altText) imgEl.alt = altText;
+  imgEl.setAttribute('data-applied-src', avatarUrl);
+  const placeholder = imgEl.parentElement && imgEl.parentElement.querySelector('.placeholder-avatar');
+  if(placeholder) placeholder.remove();
+  const reveal = ()=>{ imgEl.style.opacity = ''; };
+  if(imgEl.complete) requestAnimationFrame(reveal);
+  else imgEl.addEventListener('load', reveal, { once:true });
 }
+function applyDiscordOverride(cardEl, data){
+  if(!cardEl || !data || !data.discord_user) return;
+  const user = data.discord_user;
+  const avatarUrl = discordAvatarUrl(user, 256);
+  const dn = discordDisplayName(user);
+  const handle = discordHandle(user);
 
+  applyAvatarToBg(cardEl.querySelector('[data-discord-bg]'), avatarUrl);
+  applyAvatarToImg(cardEl.querySelector('[data-discord-avatar-img]'), avatarUrl, dn);
 
-function applyLanyardData(data){
-  if(!data) return;
-  const id = data.discord_user && data.discord_user.id;
-  if(!id) return;
-  lanyardCache.set(id, data);
-
-  const aUrl = avatarUrl(id, data.discord_user.avatar);
-  const bUrl = bannerUrl(id, data.discord_user.banner);
-
-  
-  document.querySelectorAll(`[data-discord-id="${id}"]`).forEach(el=>{
-    if(el.hasAttribute('data-lanyard-dot')){
-      el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g,'').trim();
-      el.classList.add('status', discordStatusToClass(data.discord_status||'offline'));
-    }
-    if(el.hasAttribute('data-lanyard-activity')){
-      const label = activityLabel(data);
-      el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
-    }
-    
-    if(el.classList.contains('discord-avatar-img') && aUrl){
-      el.src = aUrl;
-      el.style.display = 'block';
-      const ph = el.parentElement && el.parentElement.querySelector('.placeholder-avatar');
-      if(ph) ph.style.display = 'none';
-    }
-  });
-
-  
-  document.querySelectorAll(`[data-discord-banner="${id}"]`).forEach(el=>{
-    el.style.filter = '';
-    el.style.transform = '';
-    if(bUrl){
-      
-      el.classList.remove('bgimg-empty');
-      el.style.backgroundImage = `url('${bUrl}')`;
-    } else if(aUrl){
-      
-      el.classList.remove('bgimg-empty');
-      el.style.backgroundImage = `url('${aUrl}')`;
-      el.style.filter = 'blur(18px) brightness(.45) saturate(1.6)';
-      el.style.transform = 'scale(1.18)';
-    }
-  });
-
- 
-  const profileAvatarEl = document.getElementById('profileAvatar');
-  if(profileAvatarEl && profileAvatarEl.getAttribute('data-discord-id') === id){
-    if(aUrl){ profileAvatarEl.src = aUrl; profileAvatarEl.style.display='block'; }
-    const profileBannerEl = document.getElementById('profileBanner');
-    if(profileBannerEl){
-      if(bUrl){ profileBannerEl.style.backgroundImage=`url('${bUrl}')`; profileBannerEl.style.display='block'; }
-      else { profileBannerEl.style.display='none'; }
-    }
-  }
+  const nameEl = cardEl.querySelector('[data-discord-name]');
+  if(nameEl && dn) nameEl.textContent = dn;
+  const handleEl = cardEl.querySelector('[data-discord-handle]');
+  if(handleEl && handle) handleEl.textContent = handle;
 }
 
 async function refreshLanyardDOM(){
   const ids = new Set();
-  document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
-    const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
-    if(id && id.trim() && id !== PLACEHOLDER_ID) ids.add(id);
+  document.querySelectorAll('[data-discord-id]').forEach(el=>{
+    const id = el.getAttribute('data-discord-id');
+    if(id && id !== PLACEHOLDER_ID) ids.add(id);
   });
+
   await Promise.all([...ids].map(async id=>{
     const data = await fetchLanyard(id);
-    if(data) applyLanyardData(data);
+    const user = data ? data.discord_user : null;
+    const avatarUrl = user ? discordAvatarUrl(user, 256) : '';
+    const dn = user ? discordDisplayName(user) : '';
+    const handle = user ? discordHandle(user) : '';
+
+    document.querySelectorAll(`[data-discord-id="${id}"]`).forEach(el=>{
+      if(el.hasAttribute('data-lanyard-dot')){
+        el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g, '').trim();
+        el.classList.add('status', discordStatusToClass(data ? data.discord_status : 'offline'));
+      }
+      if(el.hasAttribute('data-lanyard-activity')){
+        const label = activityLabel(data);
+        el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
+      }
+      // card wrapper case — find the relevant pieces inside it
+      if(el.hasAttribute('data-discord-card') && data){
+        applyDiscordOverride(el, data);
+      }
+      // standalone element cases (e.g. the profile page, where each
+      // piece carries its own data-discord-id rather than one wrapper)
+      if(el.hasAttribute('data-discord-bg') && avatarUrl){
+        applyAvatarToBg(el, avatarUrl);
+      }
+      if(el.hasAttribute('data-discord-avatar-img') && avatarUrl){
+        applyAvatarToImg(el, avatarUrl, dn);
+      }
+      if(el.hasAttribute('data-discord-name') && dn){
+        el.textContent = dn;
+      }
+      if(el.hasAttribute('data-discord-handle') && handle){
+        el.textContent = handle;
+      }
+      if(el.hasAttribute('data-discord-banner') && data){
+        const bannerUrl = discordBannerUrl(user, 600);
+        if(bannerUrl){
+          el.style.backgroundImage = `url('${bannerUrl}')`;
+          el.classList.add('has-banner');
+        }
+      }
+    });
   }));
 }
 
-
-function connectLanyardWS(){
-  const allIds = new Set();
-  document.querySelectorAll('[data-discord-id],[data-discord-banner]').forEach(el=>{
-    const id = el.getAttribute('data-discord-id') || el.getAttribute('data-discord-banner');
-    if(id && id.trim() && id !== PLACEHOLDER_ID) allIds.add(id);
-  });
-  if(!allIds.size) return;
-
-  let heartbeatInterval = null;
-
-  function connect(){
-    const ws = new WebSocket('wss://api.lanyard.rest/socket');
-
-    ws.addEventListener('open', ()=>{
-      ws.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: [...allIds] } }));
-    });
-    ws.addEventListener('message', e=>{
-      let msg; try{ msg = JSON.parse(e.data); }catch{ return; }
-      if(msg.op === 1){
-        heartbeatInterval = setInterval(()=>{
-          if(ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ op: 3 }));
-        }, msg.d.heartbeat_interval);
-      }
-      if(msg.op === 0){
-        if(msg.t === 'INIT_STATE') Object.values(msg.d).forEach(applyLanyardData);
-        if(msg.t === 'PRESENCE_UPDATE') applyLanyardData(msg.d);
-      }
-    });
-    ws.addEventListener('close', ()=>{ clearInterval(heartbeatInterval); setTimeout(connect, 5000); });
-    ws.addEventListener('error', ()=>ws.close());
-  }
-  connect();
-}
-
-refreshLanyardDOM().finally(connectLanyardWS);
+// Initial paint + background poll every 30s so dots, avatars, and
+// activity text stay live without a reload
+refreshLanyardDOM();
+setInterval(refreshLanyardDOM, 30000);
 </script>
 </body>
 </html>
