@@ -1213,7 +1213,9 @@ function showView(key){
 }
 
 function openProfile(type, slug){
-  location.hash = `${type}/${slug}`;
+  const path = type === 'member' ? `/${slug}` : `/${type}/${slug}`;
+  history.pushState({type, slug}, '', path);
+  route();
 }
 
 function eyeSVG(){
@@ -1221,19 +1223,35 @@ function eyeSVG(){
 }
 
 const PROFILE_SOURCES = {
-  member: { list: MEMBERS, back: '#members', backLabel: '← BACK TO MEMBERS' },
-  hof:    { list: HOF,     back: '#hof',     backLabel: '← BACK TO HALL OF FAME' },
-  day1:   { list: DAY1,    back: '#day1',    backLabel: "← BACK TO DAY 1'S" },
+  member: { list: MEMBERS, back: '/#members', backLabel: '← BACK TO MEMBERS' },
+  hof:    { list: HOF,     back: '/#hof',     backLabel: '← BACK TO HALL OF FAME' },
+  day1:   { list: DAY1,    back: '/#day1',    backLabel: "← BACK TO DAY 1'S" },
 };
+const PROFILE_SOURCES_TYPES = Object.keys(PROFILE_SOURCES);
+
+function parseProfilePath(){
+  // /kram                -> member profile, slug "kram"
+  // /hof/wxrcry           -> hof profile, slug "wxrcry"
+  // /day1/noxx            -> day1 profile, slug "noxx"
+  const parts = location.pathname.split('/').filter(Boolean);
+  if(parts.length === 0) return null;
+  if(parts.length === 1){
+    return { type:'member', slug: parts[0] };
+  }
+  if(parts.length === 2 && PROFILE_SOURCES_TYPES.includes(parts[0])){
+    return { type: parts[0], slug: parts[1] };
+  }
+  return null;
+}
 
 function route(){
-  const hash = location.hash.replace('#','');
-  const [maybeType, maybeSlug] = hash.split('/');
-  if(maybeSlug && PROFILE_SOURCES[maybeType]){
-    const src = PROFILE_SOURCES[maybeType];
-    const person = src.list.find(x=>x.slug===maybeSlug);
-    if(person){ renderProfileOnly(maybeType, maybeSlug); showView('profile'); return; }
+  const profilePath = parseProfilePath();
+  if(profilePath && PROFILE_SOURCES[profilePath.type]){
+    const src = PROFILE_SOURCES[profilePath.type];
+    const person = src.list.find(x=>x.slug===profilePath.slug);
+    if(person){ renderProfileOnly(profilePath.type, profilePath.slug); showView('profile'); return; }
   }
+  const hash = location.hash.replace('#','');
   if(hash==='about'){
     showView('about');
     setActiveNav('');
@@ -1322,11 +1340,25 @@ function renderProfileOnly(type, slug){
   refreshLanyardDOM();
 }
 
+document.getElementById('profileBack').addEventListener('click', e=>{
+  e.preventDefault();
+  const target = e.currentTarget.getAttribute('href'); // e.g. "/#members"
+  const [path, hash] = target.split('#');
+  history.pushState({}, '', path || '/');
+  location.hash = hash || '';
+  route();
+});
+
 document.querySelectorAll('.nav-link').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
     const anchor = link.dataset.anchor;
     const newHash = anchor ? anchor : 'about';
+    // nav links are always meant for the home page, so if we're currently
+    // on a clean profile path like /kram, hop back to root first
+    if(location.pathname !== '/' && location.pathname !== '/index.html'){
+      history.pushState({}, '', '/');
+    }
     if(location.hash.replace('#','') === newHash){
       route();
     } else {
@@ -1337,6 +1369,7 @@ document.querySelectorAll('.nav-link').forEach(link=>{
 });
 
 window.addEventListener('hashchange', route);
+window.addEventListener('popstate', route);
 window.addEventListener('load', route);
 
 /* ============================================================
