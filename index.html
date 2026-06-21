@@ -959,11 +959,10 @@ footer{
           just a circle that shows up for each other on and off the screen.
         </div>
         <div class="stat-row">
-          <div class="stat"><div class="num">16+</div><div class="lab">Members</div></div>
-          <div class="stat"><div class="num">04</div><div class="lab">Hall of Famers</div></div>
+          <div class="stat"><div class="num">Worldwide</div><div class="lab">Threat Level</div></div>
           <div class="stat"><div class="num">∞</div><div class="lab">Loyalty</div></div>
         </div>
-        <a class="join-btn" href="https://discord.gg/" target="_blank" rel="noopener">JOIN US!</a>
+        <a class="join-btn" href="https://discord.gg/tTrUrMFK83" target="_blank" rel="noopener">JOIN US!</a>
       </div>
     </section>
   </div>
@@ -1052,8 +1051,13 @@ function buildDay1(count){
 }
 
 const MEMBERS = buildMembers(16);
+MEMBERS[0].discordId = '1512675755459612835'; 
 const HOF = buildHOF(3);
+HOF[0].discordId = '1415996915329400872';
+HOF[1].discordId = '1512675755459612835';
+HOF[2].discordId = '1511025106284183712';
 const DAY1 = buildDay1(6);
+DAY1[0].discordId = '1512675755459612835';
 
 function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
