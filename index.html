@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THREAT2SOCIETY</title>
-<style> 
+<style>
 :root{
   --bg:#050505;
   --bg-soft:#0a0a0a;
@@ -19,15 +19,7 @@
   --mono: 'WTT Mono', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --disp: 'WTT Display', Impact, 'Arial Narrow', sans-serif;
 }
-/*
-/$$$$$$$$ /$$   /$$ /$$$$$$$  /$$$$$$$$  /$$$$$$  /$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ /$$$$$$$$ /$$$$$$$$ /$$     /$$
-|__  $$__/| $$  | $$| $$__  $$| $$_____/ /$$__  $$|__  $$__//$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$|_  $$_/| $$_____/|__  $$__/|  $$   /$$/
-   | $$   | $$  | $$| $$  \ $$| $$      | $$  \ $$   | $$  |__/  \ $$| $$  \__/| $$  \ $$| $$  \__/  | $$  | $$         | $$    \  $$ /$$/ 
-   | $$   | $$$$$$$$| $$$$$$$/| $$$$$   | $$$$$$$$   | $$    /$$$$$$/|  $$$$$$ | $$  | $$| $$        | $$  | $$$$$      | $$     \  $$$$/  
-   | $$   | $$__  $$| $$__  $$| $$__/   | $$__  $$   | $$   /$$____/  \____  $$| $$  | $$| $$        | $$  | $$__/      | $$      \  $$/   
-   | $$   | $$  | $$| $$  \ $$| $$      | $$  | $$   | $$  | $$       /$$  \ $$| $$  | $$| $$    $$  | $$  | $$         | $$       | $$    
-   | $$   | $$  | $$| $$  | $$| $$$$$$$$| $$  | $$   | $$  | $$$$$$$$|  $$$$$$/|  $$$$$$/|  $$$$$$/ /$$$$$$| $$$$$$$$   | $$       | $$    
-   |__/   |__/  |__/|__/  |__/|________/|__/  |__/   |__/  |________/ \______/  \______/  \______/ |______/|________/   |__/       |__/*/
+
 @font-face{
   font-family:'WTT Mono';
   src: local('JetBrains Mono');
@@ -53,7 +45,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 ::-webkit-scrollbar-thumb{background:#222;}
 ::-webkit-scrollbar-thumb:hover{background:var(--threat-dim);}
 
-
+/* ============ NOISE / SCANLINE LAYER ============ */
 .grain{
   position:fixed;inset:0;
   pointer-events:none;
@@ -82,7 +74,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
 }
 
-
+/* ============ SPLASH ============ */
 #splash{
   position:fixed;inset:0;
   background:#000;
@@ -183,7 +175,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   text-transform:uppercase;
 }
 
-
+/* ============ NAV ============ */
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -242,7 +234,7 @@ nav a::after{
 nav a:hover::after, nav a.active::after{width:100%;}
 .nav-toggle{display:none;}
 
-
+/* ============ MAIN VIEWS ============ */
 #app{display:none;}
 #app.show{display:block;}
 .view{display:none;}
@@ -252,7 +244,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
   to{opacity:1;transform:translateY(0);}
 }
 
-
+/* ============ HOME / HERO ============ */
 .hero-runway{
   position:relative;
   height:160vh;
@@ -333,7 +325,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
 
 section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 
-
+/* ============ SCROLL REVEAL ============ */
 .reveal{
   opacity:0;
   transform:translateY(28px);
@@ -346,7 +338,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .card.reveal.in-view:hover{transform:translateY(-6px) scale(1.015);}
 
-
+/* ============ PLACEHOLDER AVATAR (blank slot) ============ */
 .bgimg-empty{
   background:
     linear-gradient(135deg, #111 0%, #161616 100%);
@@ -375,7 +367,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .hof-card .bgimg-empty .placeholder-avatar span{font-size:26px;}
 
-
+/* ============ MEMBERS GRID ============ */
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -409,11 +401,15 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   position:absolute;inset:0;
   background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
 }
-.card .avatar{
+.avatar-wrap{
   position:absolute;
   left:50%;top:46%;
   transform:translate(-50%,-50%);
   width:54px;height:54px;
+}
+.card .avatar{
+  position:relative;
+  width:100%;height:100%;
   border-radius:6px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.18);
@@ -422,20 +418,21 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .card .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s ease;}
 .status{
   display:inline-block;
-  width:9px;height:9px;
-  border-radius:50%;
-  border:2px solid #0c0c0c;
+  width:13px;height:13px;
+  border-radius:4px;
+  border:2px solid var(--card-bg, #0c0c0c);
   transition:background .3s, box-shadow .3s;
+  box-sizing:border-box;
 }
 .card .status{
   position:absolute;
-  right:-3px;bottom:-3px;
+  right:-4px;bottom:-4px;
+  z-index:3;
 }
-.status-on{background:#3fd16a;box-shadow:0 0 6px rgba(63,209,106,.6);}
-.status-idle{background:#e7a33e;box-shadow:0 0 6px rgba(231,163,62,.6);}
-.status-dnd{background:#e0444b;box-shadow:0 0 6px rgba(224,68,75,.6);}
+.status-on{background:#3fd16a;box-shadow:0 0 8px rgba(63,209,106,.7);}
+.status-idle{background:#e7a33e;box-shadow:0 0 8px rgba(231,163,62,.7);}
+.status-dnd{background:#e0444b;box-shadow:0 0 8px rgba(224,68,75,.7);}
 .status-off{background:#5a5a58;box-shadow:none;}
-.avatar-wrap{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);}
 
 .card .info{
   position:absolute;
@@ -464,7 +461,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-transform:uppercase;
 }
 
-
+/* ============ HOF (cinematic vertical reveal cards) ============ */
 .hof-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -540,7 +537,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-transform:uppercase;
 }
 
-
+/* ============ DAY1 (album-style tiles) ============ */
 .d1-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -611,7 +608,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border:2px solid #0a0a0a;
 }
 
-
+/* ============ ABOUT ============ */
 .about-wrap{
   max-width:760px;
   margin:0 auto;
@@ -676,7 +673,7 @@ footer{
   color:#2c2c2c;
 }
 
-
+/* ============ MEMBER PROFILE VIEW ============ */
 .profile-view{
   min-height:100vh;
   display:flex;
@@ -717,6 +714,21 @@ footer{
   mask-image:linear-gradient(to bottom, rgba(0,0,0,.9) 0%, transparent 100%);
 }
 .profile-banner.has-banner{opacity:1;}
+.profile-custom-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .6s ease;
+}
+.profile-custom-bg.has-bg{opacity:1;}
+.profile-custom-bg::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,0,0,.25) 0%, rgba(0,0,0,.75) 100%);
+}
 .profile-card{
   position:relative;
   z-index:1;
@@ -725,17 +737,6 @@ footer{
   align-items:center;
   text-align:center;
 }
-.eye-row{
-  display:flex;
-  align-items:center;
-  gap:60px;
-  margin-bottom:-30px;
-}
-.eye{
-  width:46px;height:26px;
-  position:relative;
-}
-.eye svg{width:100%;height:100%;filter:drop-shadow(0 0 12px var(--glow-color, rgba(255,43,43,.7)));}
 .profile-avatar{
   position:relative;
   width:90px;height:90px;
@@ -743,6 +744,7 @@ footer{
   z-index:2;
   background:#111;
   overflow:hidden;
+  margin-top:10px;
 }
 .profile-avatar img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;}
 .profile-status{
@@ -806,7 +808,7 @@ footer{
   z-index:1;
 }
 
-
+/* ============ MUSIC TOGGLE ============ */
 .music-toggle{
   position:fixed;
   right:24px;bottom:24px;
@@ -838,7 +840,7 @@ footer{
   50%{height:100%;}
 }
 
-
+/* ============ RESPONSIVE ============ */
 @media (max-width:980px){
   .grid{grid-template-columns:repeat(3,1fr);}
   .d1-grid{grid-template-columns:1fr;}
@@ -873,13 +875,12 @@ footer{
   .grid{grid-template-columns:repeat(2,1fr);gap:10px;}
   .hof-card{height:280px;}
   .stat-row{gap:34px;}
-  .eye-row{gap:34px;}
 }
 @media (max-width:420px){
   .grid{grid-template-columns:repeat(2,1fr);}
 }
 
-
+/* reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
 }
@@ -896,7 +897,7 @@ footer{
 <div class="scanlines"></div>
 <div class="vignette"></div>
 
-
+<!-- SPLASH -->
 <div id="splash">
   <div class="wordmark flicker">
     <div class="wordmark-line">
@@ -907,7 +908,7 @@ footer{
   <div class="splash-sub">CLICK ANYWHERE TO CONTINUE</div>
 </div>
 
-
+<!-- APP -->
 <div id="app">
 
   <header id="siteHeader">
@@ -922,7 +923,7 @@ footer{
     </nav>
   </header>
 
-  
+  <!-- HOME VIEW -->
   <div class="view active" id="view-home">
     <section class="hero-runway" id="home">
       <div class="hero-stage">
@@ -955,7 +956,7 @@ footer{
     </section>
   </div>
 
- 
+  <!-- ABOUT VIEW -->
   <div class="view" id="view-about">
     <section style="padding-top:160px;min-height:80vh;">
       <div class="about-wrap">
@@ -976,10 +977,12 @@ footer{
     </section>
   </div>
 
+  <!-- PROFILE VIEW -->
   <div class="view" id="view-profile">
-    <div class="profile-view">
+    <div class="profile-view" id="profileViewRoot">
       <div class="profile-bg-glow" id="profileGlow"></div>
-      <div class="profile-stars"></div>
+      <div class="profile-stars" id="profileStars"></div>
+      <div class="profile-custom-bg" id="profileCustomBg"></div>
       <div class="profile-banner" id="profileBanner"></div>
       <div class="profile-card">
         <div class="profile-avatar" id="profileAvatarWrap">
@@ -999,8 +1002,8 @@ footer{
   <footer>THREAT2SOCIETY.COM</footer>
 </div>
 
-
-<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Ya%20Dig_%20Freestyle%20feat.%20gins%26melodies.mp3"></audio>
+<!-- Drop your track's URL into src="" below to enable music -->
+<audio id="bgMusic" loop preload="auto" src=""></audio>
 
 <button class="music-toggle paused" id="musicToggle">
   <span class="bars"><span></span><span></span><span></span></span>
@@ -1008,7 +1011,12 @@ footer{
 </button>
 
 <script>
-
+/* ============================================================
+   DATA
+   Blank roster — every card is a placeholder labeled in order
+   (Member 1, Member 2, ...) so you can swap in real names,
+   handles, tags, photos, and Discord IDs as you build the crew.
+   ============================================================ */
 const GLOW_CYCLE = [
   'rgba(122,15,18,.5)', 'rgba(40,30,90,.5)', 'rgba(10,40,90,.5)', 'rgba(60,10,10,.5)',
   'rgba(20,20,20,.6)',  'rgba(60,5,5,.55)',  'rgba(15,15,15,.6)', 'rgba(90,10,50,.5)',
@@ -1021,7 +1029,10 @@ function buildMembers(count){
     slug: `member-${i+1}`,
     name: `MEMBER ${i+1}`,
     handle: '@handle',
+    tag: 'Tag goes here',
     img: '',
+    bgImage: '',   // custom profile-page backdrop — leave blank to use the default glow background
+    music: '',     // custom profile-page background track URL — leave blank to use the site default
     glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
     discordId: 'PUT_DISCORD_ID_HERE',
   }));
@@ -1034,6 +1045,8 @@ function buildHOF(count){
     handle: '@handle',
     role: 'Role goes here',
     img: '',
+    bgImage: '',
+    music: '',
     glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
     discordId: 'PUT_DISCORD_ID_HERE',
   }));
@@ -1044,46 +1057,26 @@ function buildDay1(count){
     slug: `day1-${i+1}`,
     name: `DAY 1 — ${i+1}`,
     handle: '@handle',
+    tag: 'Tag goes here',
     img: '',
+    bgImage: '',
+    music: '',
     glow: GLOW_CYCLE[i % GLOW_CYCLE.length],
     discordId: 'PUT_DISCORD_ID_HERE',
   }));
 }
 
 const MEMBERS = buildMembers(16);
-HOF[0].discordId = '';
-HOF[1].discordId = '';
-HOF[2].discordId = '';
-HOF[3].discordId = '';
-HOF[4].discordId = '';
-HOF[5].discordId = '';
-HOF[6].discordId = '';
-HOF[7].discordId = '';
-HOF[8].discordId = '';
-HOF[9].discordId = '';
-HOF[10].discordId = '';
-HOF[11].discordId = '';
-HOF[12].discordId = '';
-HOF[13].discordId = '';
-HOF[14].discordId = '';
-HOF[15].discordId = '';
 const HOF = buildHOF(3);
-HOF[0].discordId = '';
-HOF[1].discordId = '';
-HOF[2].discordId = '';
 const DAY1 = buildDay1(6);
-DAY1[0].discordId = '';
-DAY1[1].discordId = '';
-DAY1[2].discordId = '';
-DAY1[3].discordId = '';
-DAY1[4].discordId = '';
-DAY1[5].discordId = '';
 
 function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
 }
 
-
+/* ============================================================
+   RENDER MEMBERS GRID
+   ============================================================ */
 const membersGrid = document.getElementById('membersGrid');
 MEMBERS.forEach((m,i)=>{
   const card = document.createElement('div');
@@ -1118,7 +1111,9 @@ MEMBERS.forEach((m,i)=>{
   membersGrid.appendChild(card);
 });
 
-
+/* ============================================================
+   RENDER HOF GRID (3 only)
+   ============================================================ */
 const hofGrid = document.getElementById('hofGrid');
 HOF.forEach((h,i)=>{
   const card = document.createElement('div');
@@ -1145,7 +1140,9 @@ HOF.forEach((h,i)=>{
   hofGrid.appendChild(card);
 });
 
-
+/* ============================================================
+   RENDER DAY1 GRID
+   ============================================================ */
 const d1Grid = document.getElementById('d1Grid');
 DAY1.forEach((d,i)=>{
   const card = document.createElement('div');
@@ -1175,7 +1172,9 @@ DAY1.forEach((d,i)=>{
   d1Grid.appendChild(card);
 });
 
-
+/* ============================================================
+   SPLASH -> APP
+   ============================================================ */
 const splash = document.getElementById('splash');
 const app = document.getElementById('app');
 const bgMusic = document.getElementById('bgMusic');
@@ -1184,20 +1183,21 @@ function enterSite(){
   if(splash.classList.contains('leaving')) return;
   splash.classList.add('leaving');
 
-
+  // This click is a real user gesture, so it's safe to start audio here —
+  // browsers block autoplay-with-sound until a gesture like this happens.
   if(bgMusic && bgMusic.getAttribute('src')){
     bgMusic.volume = 0.5;
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{});
+    }).catch(()=>{ /* still blocked for some reason — toggle stays available */ });
   }
 
   setTimeout(()=>{
     splash.style.display='none';
     app.classList.add('show');
-    observeReveals();
-    updateHeroZoom();
+    observeReveals(); // cards were hidden (display:none) until now — recheck them
+    updateHeroZoom();  // hero runway had zero height until now — recalc once visible
   }, 600);
 }
 splash.addEventListener('click', enterSite);
@@ -1205,6 +1205,9 @@ window.addEventListener('keydown', e=>{
   if(e.key==='Enter' && app && !app.classList.contains('show')) enterSite();
 });
 
+/* ============================================================
+   ROUTING (hash-based)
+   ============================================================ */
 const views = {
   home:  document.getElementById('view-home'),
   about: document.getElementById('view-about'),
@@ -1230,7 +1233,8 @@ function openProfile(type, slug){
     history.pushState({type, slug}, '', path);
     route();
   }catch(err){
-
+    // pushState blocked (e.g. file:// preview) — fall back to the legacy
+    // hash format so navigation still works everywhere
     location.hash = `${type}/${slug}`;
   }
 }
@@ -1243,6 +1247,9 @@ const PROFILE_SOURCES = {
 const PROFILE_SOURCES_TYPES = Object.keys(PROFILE_SOURCES);
 
 function parseProfilePath(){
+  // /kram                -> member profile, slug "kram"
+  // /hof/wxrcry           -> hof profile, slug "wxrcry"
+  // /day1/noxx            -> day1 profile, slug "noxx"
   const parts = location.pathname.split('/').filter(Boolean);
   if(parts.length === 1){
     return { type:'member', slug: parts[0] };
@@ -1253,7 +1260,9 @@ function parseProfilePath(){
   return null;
 }
 
-
+// Legacy fallback: older links/bookmarks may still use the old
+// #member/slug, #hof/slug, #day1/slug hash format. Recognize those too
+// so nothing silently 404s after switching to clean URLs.
 function parseLegacyHashProfile(){
   const hash = location.hash.replace('#','');
   const parts = hash.split('/').filter(Boolean);
@@ -1270,13 +1279,16 @@ function route(){
     const person = src.list.find(x=>x.slug===profilePath.slug);
     if(person){ renderProfileOnly(profilePath.type, profilePath.slug); showView('profile'); return; }
   }
+  // we're not landing on a profile — if a profile's own track was
+  // playing, hand control back to the site-wide default track
+  if(typeof restoreDefaultMusic === 'function') restoreDefaultMusic();
   const hash = location.hash.replace('#','');
   if(hash==='about'){
     showView('about');
     setActiveNav('');
     return;
   }
-
+  // home + anchors (home/hof/day1/members) all live in the home view
   showView('home');
   const anchorKey = ['hof','day1','members'].includes(hash) ? hash : 'home';
   setActiveNav(anchorKey);
@@ -1322,8 +1334,26 @@ function renderProfileOnly(type, slug){
   handleEl.setAttribute('data-discord-handle','');
   document.getElementById('profileTag').textContent = m.tag || m.role || '';
   document.getElementById('profileUrl').textContent = `threat2society.com/${type}/${m.slug}`;
-  document.getElementById('profileEyes').innerHTML = eyeSVG() + eyeSVG();
 
+  // custom background — each person can set their own bgImage; falls
+  // back to the default glow + starfield treatment when not set
+  const customBg = document.getElementById('profileCustomBg');
+  if(m.bgImage){
+    customBg.style.backgroundImage = `url('${m.bgImage}')`;
+    customBg.classList.add('has-bg');
+  } else {
+    customBg.style.backgroundImage = '';
+    customBg.classList.remove('has-bg');
+  }
+
+  // per-profile background music — switches the shared <audio> element
+  // to this person's track (if set) and plays it, since opening a
+  // profile is itself a click/gesture so autoplay is allowed here.
+  // Leaving the profile (back / nav) restores the site-wide track.
+  playProfileMusic(m.music);
+
+  // reset the banner before re-checking — otherwise the previous
+  // profile's banner can flash/linger while the new one loads
   const banner = document.getElementById('profileBanner');
   banner.classList.remove('has-banner');
   banner.style.backgroundImage = '';
@@ -1347,7 +1377,8 @@ function renderProfileOnly(type, slug){
     profileBack.textContent = src.backLabel;
   }
 
-
+  // The whole profile card carries the same discordId so the avatar/
+  // name/handle/banner/status/activity all resolve together in one pass.
   document.getElementById('profileAvatarWrap').setAttribute('data-discord-id', m.discordId || '');
   nameEl.setAttribute('data-discord-id', m.discordId || '');
   handleEl.setAttribute('data-discord-id', m.discordId || '');
@@ -1358,11 +1389,12 @@ function renderProfileOnly(type, slug){
 
 document.getElementById('profileBack').addEventListener('click', e=>{
   e.preventDefault();
-  const target = e.currentTarget.getAttribute('href'); 
+  const target = e.currentTarget.getAttribute('href'); // e.g. "/#members"
   try{
     history.pushState({}, '', target);
   }catch(err){
-    
+    // some environments (e.g. file:// previews) block pushState to a new
+    // path — fall back to a full navigation so the link still works
     location.href = target;
     return;
   }
@@ -1374,9 +1406,10 @@ document.querySelectorAll('.nav-link').forEach(link=>{
     e.preventDefault();
     const anchor = link.dataset.anchor;
     const newHash = anchor ? anchor : 'about';
-
+    // nav links are always meant for the home page, so if we're currently
+    // on a clean profile path like /kram, hop back to root first
     if(location.pathname !== '/' && location.pathname !== '/index.html'){
-      try{ history.pushState({}, '', '/'); }catch(err){}
+      try{ history.pushState({}, '', '/'); }catch(err){ /* file:// preview etc — ignore, hash nav below still works */ }
     }
     if(location.hash.replace('#','') === newHash){
       route();
@@ -1391,13 +1424,19 @@ window.addEventListener('hashchange', route);
 window.addEventListener('popstate', route);
 window.addEventListener('load', route);
 
-
+/* ============================================================
+   HEADER SCROLL STATE
+   ============================================================ */
 const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', ()=>{
   header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-
+/* ============================================================
+   HERO ZOOM — the wordmark grows larger as you scroll down
+   through the hero runway, peaking right as the HOF section
+   arrives, then fades out of the way.
+   ============================================================ */
 const heroRunway = document.querySelector('.hero-runway');
 const heroStage = document.querySelector('.hero-stage');
 let heroTicking = false;
@@ -1409,15 +1448,15 @@ function updateHeroZoom(){
   const runwayHeight = heroRunway.offsetHeight - window.innerHeight;
   if(runwayHeight <= 0) return;
 
-
+  // progress: 0 when runway top is at viewport top, 1 when runway is fully scrolled past
   let progress = -rect.top / runwayHeight;
   progress = Math.max(0, Math.min(1, progress));
 
+  // ease the whole curve so it feels deliberate, not linear
+  const eased = progress * progress * (3 - 2 * progress); // smoothstep
 
-  const eased = progress * progress * (3 - 2 * progress); 
-
-  const scale = 1 + eased * 0.9;
-  const fade = 1 - eased;
+  const scale = 1 + eased * 0.9;        // grows gently up to ~1.9x — stays readable, never flies off-frame
+  const fade = 1 - eased;               // dissolves in lockstep with the growth, finishing exactly as HOF arrives
 
   heroStage.style.setProperty('--hero-scale', scale.toFixed(3));
   heroStage.style.setProperty('--hero-fade', Math.max(0, Math.min(1, fade)).toFixed(3));
@@ -1433,6 +1472,9 @@ window.addEventListener('scroll', onHeroScroll, { passive: true });
 window.addEventListener('resize', onHeroScroll);
 updateHeroZoom();
 
+/* ============================================================
+   SCROLL REVEAL — cards fade + rise into place as they enter view
+   ============================================================ */
 const revealObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -1447,8 +1489,16 @@ function observeReveals(root = document){
 }
 observeReveals();
 
+// Safety net: re-attach observation whenever the app becomes visible or the
+// window resizes, so cards that were unmeasurable (parent was display:none)
+// at the time they were first observed still get checked once they have
+// real geometry. This does NOT force-reveal off-screen cards — it only
+// re-registers them so the normal scroll-triggered reveal can do its job.
 window.addEventListener('resize', ()=>observeReveals());
 
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
 const navToggle = document.getElementById('navToggle');
 const mainNav = document.getElementById('mainNav');
 navToggle.addEventListener('click', ()=>{
@@ -1456,12 +1506,56 @@ navToggle.addEventListener('click', ()=>{
 });
 function closeMobileNav(){ mainNav.classList.remove('open'); }
 
+/* ============================================================
+   MUSIC — site-wide default track via the music toggle, plus
+   optional per-profile tracks that take over while a profile is
+   open and hand control back to the default when you leave.
+   ============================================================ */
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = document.getElementById('musicLabel');
 let playing = false;
+let defaultMusicSrc = bgMusic.getAttribute('src') || '';   // the site-wide track, set once on load
+let currentProfileMusicSrc = null;                          // non-null while a profile's own track is active
+
+function playProfileMusic(trackUrl){
+  const target = trackUrl || defaultMusicSrc;
+  if(!target){
+    currentProfileMusicSrc = trackUrl || null;
+    return; // nothing to play at all (no per-profile track and no default)
+  }
+  currentProfileMusicSrc = trackUrl || null;
+  if(bgMusic.getAttribute('src') === target && playing) return; // already playing this track
+  bgMusic.setAttribute('src', target);
+  bgMusic.load();
+  bgMusic.volume = 0.5;
+  bgMusic.play().then(()=>{
+    playing = true;
+    musicToggle.classList.remove('paused');
+  }).catch(()=>{ /* blocked until another gesture happens — toggle stays available */ });
+}
+
+// Called when leaving a profile (back link / nav) to hand playback
+// back to the site-wide default track, if one is set.
+function restoreDefaultMusic(){
+  if(currentProfileMusicSrc === null) return; // wasn't playing a profile-specific track
+  currentProfileMusicSrc = null;
+  if(!defaultMusicSrc){
+    bgMusic.pause();
+    playing = false;
+    musicToggle.classList.add('paused');
+    return;
+  }
+  bgMusic.setAttribute('src', defaultMusicSrc);
+  bgMusic.load();
+  bgMusic.play().then(()=>{
+    playing = true;
+    musicToggle.classList.remove('paused');
+  }).catch(()=>{ /* blocked — fine, toggle still works on click */ });
+}
+
 musicToggle.addEventListener('click', ()=>{
   if(!bgMusic.getAttribute('src')){
-
+    // No track configured yet — keep the button visually inert.
     return;
   }
   if(playing){
@@ -1472,21 +1566,34 @@ musicToggle.addEventListener('click', ()=>{
     bgMusic.play().then(()=>{
       playing = true;
       musicToggle.classList.remove('paused');
-    }).catch(()=>{});
+    }).catch(()=>{ /* blocked — user can try again, e.g. after another gesture */ });
   }
 });
 
+/* ============================================================
+   LANYARD — live Discord presence + identity for members,
+   HOF, and day 1's.
+   Docs: https://github.com/Phineas/lanyard
 
+   Each person needs: (1) a real Discord user ID dropped into
+   their `discordId` field above, and (2) to have joined the
+   Lanyard discord.gg/lanyard server at least once so the bot
+   can see + cache their presence.
+
+   Once a valid ID resolves, it OVERRIDES that card's avatar,
+   display name, and (when present) banner — live from Discord,
+   including animated/GIF avatars and custom banners.
+   ============================================================ */
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const DISCORD_CDN = 'https://cdn.discordapp.com';
-const lanyardCache = new Map(); 
+const lanyardCache = new Map(); // discordId -> full presence data
 const PLACEHOLDER_ID = 'PUT_DISCORD_ID_HERE';
 
 function discordStatusToClass(status){
   if(status==='online') return 'status-on';
   if(status==='idle') return 'status-idle';
   if(status==='dnd') return 'status-dnd';
-  return 'status-off'; 
+  return 'status-off'; // offline / invisible / unknown
 }
 
 function activityLabel(data){
@@ -1499,12 +1606,12 @@ function activityLabel(data){
   return '';
 }
 
-
+// Builds a Discord CDN avatar URL, auto-detecting animated (GIF) avatars.
 function discordAvatarUrl(user, size){
   if(!user || !user.id) return '';
   size = size || 256;
   if(!user.avatar){
-   
+    // default Discord avatar (no custom pfp set)
     const idx = user.discriminator && user.discriminator !== '0'
       ? Number(user.discriminator) % 5
       : Number(BigInt(user.id) >> 22n) % 6;
@@ -1512,18 +1619,23 @@ function discordAvatarUrl(user, size){
   }
   const animated = user.avatar.startsWith('a_');
   const ext = animated ? 'gif' : 'png';
-
+  // IMPORTANT: Discord's CDN has a known bug where adding ?size= to an
+  // animated .gif avatar URL serves it frozen on the first frame. Static
+  // (.png) avatars are fine to resize, so only animated ones skip it.
   const sizeParam = animated ? '' : `?size=${size}`;
   return `${DISCORD_CDN}/avatars/${user.id}/${user.avatar}.${ext}${sizeParam}`;
 }
 
-
+// Builds a Discord CDN banner URL when the user has a custom banner set.
+// Returns '' if no banner is set (most Lanyard responses won't include one
+// unless Lanyard has cached it from a recent presence update).
 function discordBannerUrl(user, size){
   if(!user || !user.id || !user.banner) return '';
   size = size || 600;
   const animated = user.banner.startsWith('a_');
   const ext = animated ? 'gif' : 'png';
-
+  // Same Discord CDN quirk as avatars — a ?size= query param on an animated
+  // .gif banner serves it frozen on the first frame, so skip it for GIFs.
   const sizeParam = animated ? '' : `?size=${size}`;
   return `${DISCORD_CDN}/banners/${user.id}/${user.banner}.${ext}${sizeParam}`;
 }
@@ -1554,9 +1666,12 @@ async function fetchLanyard(discordId){
   }
 }
 
+// Applies live Discord identity (avatar/name/banner) onto a card element
+// once Lanyard resolves real data for that discordId. Cards keep their
+// manually-set img/name as a fallback until/unless this overrides them.
 function applyAvatarToBg(bgEl, avatarUrl){
   if(!bgEl || !avatarUrl) return;
-  if(bgEl.getAttribute('data-applied-src') === avatarUrl) return;
+  if(bgEl.getAttribute('data-applied-src') === avatarUrl) return; // already applied, skip re-trigger
   bgEl.style.opacity = '0';
   bgEl.style.backgroundImage = `url('${avatarUrl}')`;
   bgEl.classList.remove('bgimg-empty');
@@ -1617,9 +1732,12 @@ async function refreshLanyardDOM(){
         const label = activityLabel(data);
         el.innerHTML = label ? `<span class="live-blip"></span>${label}` : '';
       }
+      // card wrapper case — find the relevant pieces inside it
       if(el.hasAttribute('data-discord-card') && data){
         applyDiscordOverride(el, data);
       }
+      // standalone element cases (e.g. the profile page, where each
+      // piece carries its own data-discord-id rather than one wrapper)
       if(el.hasAttribute('data-discord-bg') && avatarUrl){
         applyAvatarToBg(el, avatarUrl);
       }
@@ -1643,7 +1761,8 @@ async function refreshLanyardDOM(){
   }));
 }
 
-
+// Initial paint + background poll every 30s so dots, avatars, and
+// activity text stay live without a reload
 refreshLanyardDOM();
 setInterval(refreshLanyardDOM, 30000);
 </script>
