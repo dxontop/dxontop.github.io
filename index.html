@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THREAT2SOCIETY</title>
+<script>
+  (function(){
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if(redirect && redirect !== location.href){
+      history.replaceState(null, null, redirect);
+    }
+  })();
+</script>
 <style>
 :root{
   --bg:#050505;
@@ -45,7 +54,6 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 ::-webkit-scrollbar-thumb{background:#222;}
 ::-webkit-scrollbar-thumb:hover{background:var(--threat-dim);}
 
-
 .grain{
   position:fixed;inset:0;
   pointer-events:none;
@@ -73,8 +81,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   z-index:9997;
   background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
 }
-
-
+  
 #splash{
   position:fixed;inset:0;
   background:#000;
@@ -174,8 +181,7 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
   color:#3a3a3a;
   text-transform:uppercase;
 }
-
-
+  
 header{
   position:fixed;
   top:0;left:0;right:0;
@@ -234,7 +240,6 @@ nav a::after{
 nav a:hover::after, nav a.active::after{width:100%;}
 .nav-toggle{display:none;}
 
-
 #app{display:none;}
 #app.show{display:block;}
 .view{display:none;}
@@ -243,7 +248,6 @@ nav a:hover::after, nav a.active::after{width:100%;}
   from{opacity:0;transform:translateY(14px);}
   to{opacity:1;transform:translateY(0);}
 }
-
 
 .hero-runway{
   position:relative;
@@ -324,7 +328,6 @@ nav a:hover::after, nav a.active::after{width:100%;}
 .section-label.threat::before,.section-label.threat::after{background:var(--threat-dim);}
 
 section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
-
 
 .reveal{
   opacity:0;
@@ -888,7 +891,6 @@ footer{
 <div class="scanlines"></div>
 <div class="vignette"></div>
 
-
 <div id="splash">
   <div class="wordmark flicker">
     <div class="wordmark-line">
@@ -898,7 +900,6 @@ footer{
   <div class="enter-box">[<span>&nbsp;</span>PRESS ENTER<span>&nbsp;</span>]</div>
   <div class="splash-sub">CLICK ANYWHERE TO CONTINUE</div>
 </div>
-
 
 <div id="app">
 
@@ -924,8 +925,8 @@ footer{
           </div>
         </div>
         <div class="cta-row" id="heroCta">
-          <a class="cta" href="https://discord.gg/" target="_blank" rel="noopener">[ JOIN_T2S ]</a>
-          <a class="cta alt" href="#about">[ ABOUT_US ]</a>
+          <a class="cta" href="https://discord.gg/t2sgk" target="_blank" rel="noopener">[ JOIN_T2S ]</a>
+          <a class="cta alt" href="/about" id="aboutCta">[ ABOUT_US ]</a>
         </div>
       </div>
     </section>
@@ -946,6 +947,7 @@ footer{
     </section>
   </div>
 
+  <!-- ABOUT VIEW -->
   <div class="view" id="view-about">
     <section style="padding-top:160px;min-height:80vh;">
       <div class="about-wrap">
@@ -989,7 +991,7 @@ footer{
   <footer>THREAT2SOCIETY.COM</footer>
 </div>
 
-<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Ya%20Dig_%20Freestyle%20feat.%20gins%26melodies.mp3"></audio>
+<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/T2S%20National%20Anthem.mp3"></audio>
 
 <button class="music-toggle paused" id="musicToggle">
   <span class="bars"><span></span><span></span><span></span></span>
@@ -997,7 +999,7 @@ footer{
 </button>
 
 <script>
-  
+
 const GLOW_CYCLE = [
   'rgba(122,15,18,.5)', 'rgba(40,30,90,.5)', 'rgba(10,40,90,.5)', 'rgba(60,10,10,.5)',
   'rgba(20,20,20,.6)',  'rgba(60,5,5,.55)',  'rgba(15,15,15,.6)', 'rgba(90,10,50,.5)',
@@ -1010,7 +1012,6 @@ function buildMembers(count){
     slug: `member-${i+1}`,
     name: `MEMBER ${i+1}`,
     handle: '@handle',
-    tag: 'Tag goes here',
     img: '',
     bgImage: '',
     music: '',
@@ -1024,7 +1025,6 @@ function buildHOF(count){
     slug: `hof-${i+1}`,
     name: `HOF ${i+1}`,
     handle: '@handle',
-    role: 'Role goes here',
     img: '',
     bgImage: '',
     music: '',
@@ -1038,7 +1038,6 @@ function buildDay1(count){
     slug: `day1-${i+1}`,
     name: `DAY 1 — ${i+1}`,
     handle: '@handle',
-    tag: 'Tag goes here',
     img: '',
     bgImage: '',
     music: '',
@@ -1046,36 +1045,21 @@ function buildDay1(count){
     discordId: 'PUT_DISCORD_ID_HERE',
   }));
 }
-
+/* TEMPLATE GGAGAGAGA
+MEMBERS[0].name = 'name';
+MEMBERS[0].slug = 'name ulit for link';
+MEMBERS[0].handle = 'dc name';
+MEMBERS[0].discordId = 'dc id mo';
+MEMBERS[0].music = 'dm niyo nalang sakin kanta niyo */
 const MEMBERS = buildMembers(16);
-MEMBERS[0].discordId = '1512675755459612835';
-MEMBERS[1].discordId = '';
-MEMBERS[2].discordId = '';
-MEMBERS[3].discordId = '';
-MEMBERS[4].discordId = '';
-MEMBERS[5].discordId = '';
-MEMBERS[6].discordId = '';
-MEMBERS[7].discordId = '';
-MEMBERS[8].discordId = '';
-MEMBERS[9].discordId = '';
-MEMBERS[10].discordId = '';
-MEMBERS[11].discordId = '';
-MEMBERS[12].discordId = '';
-MEMBERS[13].discordId = '';
-MEMBERS[14].discordId = '';
-MEMBERS[15].discordId = '';
 const HOF = buildHOF(3);
-HOF[0].discordId = '1512675755459612835';
-HOF[1].discordId = '';
-HOF[2].discordId = '';
+HOF[0].name = 'HIGHCALIBER'; // name to ah
+HOF[0].slug = 'highcaliber'; // name parin para sa link
+HOF[0].handle = '@highcaliber'; // dc name
+HOF[0].discordId = '1512675755459612835'; // obvious naman
+HOF[0].music = 'https://file.garden/ai-DmyV9Jgejpt9O/Hev%20Abi%20-%20Mossa%20Downtown%20feat.%20gins%26melodies%20(Official%20Music%20Video).mp3'; // obvious na obvious
 const DAY1 = buildDay1(6);
-DAY1[0].discordId = '1512675755459612835';
-DAY1[1].discordId = '';
-DAY1[2].discordId = '';
-DAY1[3].discordId = '';
-DAY1[4].discordId = '';
-DAY1[5].discordId = '';
-  
+
 function placeholderAvatar(label){
   return `<div class="placeholder-avatar"><span>${label}</span></div>`;
 }
@@ -1217,7 +1201,7 @@ function showView(key){
 }
 
 function openProfile(type, slug){
-  const path = type === 'member' ? `/${slug}` : `/${type}/${slug}`;
+  const path = `/${slug}`;
   try{
     history.pushState({type, slug}, '', path);
     route();
@@ -1227,22 +1211,29 @@ function openProfile(type, slug){
 }
 
 const PROFILE_SOURCES = {
-  member: { list: MEMBERS, back: '/#members', backLabel: '← BACK TO MEMBERS' },
-  hof:    { list: HOF,     back: '/#hof',     backLabel: '← BACK TO HALL OF FAME' },
-  day1:   { list: DAY1,    back: '/#day1',    backLabel: "← BACK TO DAY 1'S" },
+  member: { list: MEMBERS, back: '/members', backLabel: '← BACK TO MEMBERS' },
+  hof:    { list: HOF,     back: '/hof',     backLabel: '← BACK TO HALL OF FAME' },
+  day1:   { list: DAY1,    back: '/day1',    backLabel: "← BACK TO DAY 1'S" },
 };
 const PROFILE_SOURCES_TYPES = Object.keys(PROFILE_SOURCES);
 
-function parseProfilePath(){
-  
-  const parts = location.pathname.split('/').filter(Boolean);
-  if(parts.length === 1){
-    return { type:'member', slug: parts[0] };
-  }
-  if(parts.length === 2 && PROFILE_SOURCES_TYPES.includes(parts[0])){
-    return { type: parts[0], slug: parts[1] };
+function findProfileBySlug(slug){
+  for(const type of PROFILE_SOURCES_TYPES){
+    const person = PROFILE_SOURCES[type].list.find(x=>x.slug===slug);
+    if(person) return { type, slug, person };
   }
   return null;
+}
+
+const RESERVED_SECTION_PATHS = ['hof', 'day1', 'members', 'about', 'home'];
+
+function parseProfilePath(){
+  const parts = location.pathname.split('/').filter(Boolean);
+  if(parts.length !== 1) return null;
+  const slug = decodeURIComponent(parts[0]);
+  if(RESERVED_SECTION_PATHS.includes(slug)) return null;
+  const found = findProfileBySlug(slug);
+  return found ? { type: found.type, slug: found.slug } : null;
 }
 
 function parseLegacyHashProfile(){
@@ -1250,6 +1241,10 @@ function parseLegacyHashProfile(){
   const parts = hash.split('/').filter(Boolean);
   if(parts.length === 2 && PROFILE_SOURCES_TYPES.includes(parts[0])){
     return { type: parts[0], slug: parts[1] };
+  }
+  if(parts.length === 1){
+    const found = findProfileBySlug(decodeURIComponent(parts[0]));
+    if(found) return { type: found.type, slug: found.slug };
   }
   return null;
 }
@@ -1261,17 +1256,20 @@ function route(){
     const person = src.list.find(x=>x.slug===profilePath.slug);
     if(person){ renderProfileOnly(profilePath.type, profilePath.slug); showView('profile'); return; }
   }
-  
   if(typeof restoreDefaultMusic === 'function') restoreDefaultMusic();
-  const hash = location.hash.replace('#','');
-  if(hash==='about'){
+
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const pathSection = pathParts.length === 1 && RESERVED_SECTION_PATHS.includes(pathParts[0]) ? pathParts[0] : '';
+  const hashSection = location.hash.replace('#','');
+  const section = pathSection || hashSection;
+
+  if(section==='about'){
     showView('about');
     setActiveNav('');
     return;
   }
-
   showView('home');
-  const anchorKey = ['hof','day1','members'].includes(hash) ? hash : 'home';
+  const anchorKey = ['hof','day1','members'].includes(section) ? section : 'home';
   setActiveNav(anchorKey);
   if(anchorKey !== 'home'){
     requestAnimationFrame(()=>{
@@ -1314,7 +1312,7 @@ function renderProfileOnly(type, slug){
   handleEl.textContent = m.handle || '';
   handleEl.setAttribute('data-discord-handle','');
   document.getElementById('profileTag').textContent = m.tag || m.role || '';
-  document.getElementById('profileUrl').textContent = `threat2society.com/${type}/${m.slug}`;
+  document.getElementById('profileUrl').textContent = `threat2society.com/${m.slug}`;
 
   const customBg = document.getElementById('profileCustomBg');
   if(m.bgImage){
@@ -1370,19 +1368,28 @@ document.getElementById('profileBack').addEventListener('click', e=>{
   route();
 });
 
+document.getElementById('aboutCta').addEventListener('click', e=>{
+  e.preventDefault();
+  if(location.pathname === '/about'){ route(); return; }
+  try{ history.pushState({}, '', '/about'); route(); }
+  catch(err){ location.hash = 'about'; }
+});
+
 document.querySelectorAll('.nav-link').forEach(link=>{
   link.addEventListener('click', e=>{
     e.preventDefault();
     const anchor = link.dataset.anchor;
-    const newHash = anchor ? anchor : 'about';
-    
-    if(location.pathname !== '/' && location.pathname !== '/index.html'){
-      try{ history.pushState({}, '', '/'); }catch(err){}
-    }
-    if(location.hash.replace('#','') === newHash){
+    const section = anchor || 'about';
+    const newPath = section === 'home' ? '/' : `/${section}`;
+    if(location.pathname === newPath){
       route();
     } else {
-      location.hash = newHash;
+      try{
+        history.pushState({}, '', newPath);
+        route();
+      }catch(err){
+        location.hash = section;
+      }
     }
     closeMobileNav();
   });
@@ -1453,7 +1460,6 @@ navToggle.addEventListener('click', ()=>{
 });
 function closeMobileNav(){ mainNav.classList.remove('open'); }
 
-
 const musicToggle = document.getElementById('musicToggle');
 const musicLabel = document.getElementById('musicLabel');
 let playing = false;
@@ -1512,14 +1518,14 @@ musicToggle.addEventListener('click', ()=>{
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const DISCORD_CDN = 'https://cdn.discordapp.com';
-const lanyardCache = new Map(); 
+const lanyardCache = new Map();
 const PLACEHOLDER_ID = 'PUT_DISCORD_ID_HERE';
 
 function discordStatusToClass(status){
   if(status==='online') return 'status-on';
   if(status==='idle') return 'status-idle';
   if(status==='dnd') return 'status-dnd';
-  return 'status-off'; 
+  return 'status-off';
 }
 
 function activityLabel(data){
@@ -1532,6 +1538,7 @@ function activityLabel(data){
   return '';
 }
 
+
 function discordAvatarUrl(user, size){
   if(!user || !user.id) return '';
   size = size || 256;
@@ -1542,18 +1549,22 @@ function discordAvatarUrl(user, size){
     return `${DISCORD_CDN}/embed/avatars/${idx}.png`;
   }
   const animated = user.avatar.startsWith('a_');
-  const ext = animated ? 'gif' : 'png';
-  const sizeParam = animated ? '' : `?size=${size}`;
-  return `${DISCORD_CDN}/avatars/${user.id}/${user.avatar}.${ext}${sizeParam}`;
+
+  if(animated){
+    return `${DISCORD_CDN}/avatars/${user.id}/${user.avatar}.webp?size=${size}&animated=true`;
+  }
+  return `${DISCORD_CDN}/avatars/${user.id}/${user.avatar}.png?size=${size}`;
 }
 
 function discordBannerUrl(user, size){
   if(!user || !user.id || !user.banner) return '';
   size = size || 600;
   const animated = user.banner.startsWith('a_');
-  const ext = animated ? 'gif' : 'png';
-  const sizeParam = animated ? '' : `?size=${size}`;
-  return `${DISCORD_CDN}/banners/${user.id}/${user.banner}.${ext}${sizeParam}`;
+
+  if(animated){
+    return `${DISCORD_CDN}/banners/${user.id}/${user.banner}.webp?size=${size}&animated=true`;
+  }
+  return `${DISCORD_CDN}/banners/${user.id}/${user.banner}.png?size=${size}`;
 }
 
 function discordDisplayName(user){
@@ -1581,7 +1592,6 @@ async function fetchLanyard(discordId){
     return null;
   }
 }
-
 
 function applyAvatarToBg(bgEl, avatarUrl){
   if(!bgEl || !avatarUrl) return;
@@ -1677,13 +1687,3 @@ setInterval(refreshLanyardDOM, 30000);
 </script>
 </body>
 </html>
-
-made by : dx
-/$$$$$$$$ /$$   /$$ /$$$$$$$  /$$$$$$$$  /$$$$$$  /$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ /$$$$$$$$ /$$$$$$$$ /$$     /$$
-|__  $$__/| $$  | $$| $$__  $$| $$_____/ /$$__  $$|__  $$__//$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$|_  $$_/| $$_____/|__  $$__/|  $$   /$$/
-   | $$   | $$  | $$| $$  \ $$| $$      | $$  \ $$   | $$  |__/  \ $$| $$  \__/| $$  \ $$| $$  \__/  | $$  | $$         | $$    \  $$ /$$/ 
-   | $$   | $$$$$$$$| $$$$$$$/| $$$$$   | $$$$$$$$   | $$    /$$$$$$/|  $$$$$$ | $$  | $$| $$        | $$  | $$$$$      | $$     \  $$$$/  
-   | $$   | $$__  $$| $$__  $$| $$__/   | $$__  $$   | $$   /$$____/  \____  $$| $$  | $$| $$        | $$  | $$__/      | $$      \  $$/   
-   | $$   | $$  | $$| $$  \ $$| $$      | $$  | $$   | $$  | $$       /$$  \ $$| $$  | $$| $$    $$  | $$  | $$         | $$       | $$    
-   | $$   | $$  | $$| $$  | $$| $$$$$$$$| $$  | $$   | $$  | $$$$$$$$|  $$$$$$/|  $$$$$$/|  $$$$$$/ /$$$$$$| $$$$$$$$   | $$       | $$    
-   |__/   |__/  |__/|__/  |__/|________/|__/  |__/   |__/  |________/ \______/  \______/  \______/ |______/|________/   |__/       |__/
