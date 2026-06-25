@@ -368,6 +368,30 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   text-align:center;
   color:#fff;
   margin-bottom:50px;
+  filter:drop-shadow(0 0 16px rgba(255,43,43,.5));
+}
+.exclusive-heading .glitch-text{
+  position:relative;
+  display:inline-block;
+}
+.exclusive-heading .glitch-text::before,
+.exclusive-heading .glitch-text::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;top:0;
+  width:100%;
+  opacity:.7;
+  clip-path:inset(0 0 0 0);
+}
+.exclusive-heading .glitch-text::before{
+  color:var(--cyan);
+  mix-blend-mode:screen;
+  animation:glitchTop 3.2s infinite steps(1);
+}
+.exclusive-heading .glitch-text::after{
+  color:var(--threat);
+  mix-blend-mode:screen;
+  animation:glitchBot 2.6s infinite steps(1);
 }
 .exclusive-row{
   display:flex;
@@ -418,7 +442,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 #hof, #day1, #members, #about{
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* set to "scroll" if you don't want the parallax-ish pin effect */
+  background-attachment: fixed;
 }
 #hof::before, #day1::before, #members::before, #about::before{
   content:'';
@@ -426,7 +450,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   inset:0;
   z-index:0;
   pointer-events:none;
-  background:rgba(0,0,0,.72); /* darkens whatever background image is behind the content */
+  background:rgba(0,0,0,.72);
 }
 #hof > *, #day1 > *, #members > *, #about > *{
   position:relative;
@@ -655,6 +679,17 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   background:#1a1a1a;
 }
 .hof-card .ring-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.hof-avatar-decoration{
+  position:absolute;
+  width:135%;
+  height:135%;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:3;
+  object-fit:contain;
+  display:none;
+}
 .hof-card .reveal-info{
   position:relative;
   z-index:2;
@@ -1106,7 +1141,7 @@ footer{
     </section>
 
     <section id="exclusive">
-      <div class="exclusive-heading">Exclusive Threat</div>
+      <div class="exclusive-heading flicker"><span class="glitch-text" data-text="Exclusive Threat">Exclusive Threat</span></div>
       <div class="exclusive-row" id="exclusiveRow"></div>
     </section>
 
@@ -1416,6 +1451,7 @@ HOF.forEach((h,i)=>{
     <div class="grad"></div>
     <div class="hof-avatar-wrap">
       <div class="ring-avatar">${avatarInner}</div>
+      <img class="hof-avatar-decoration" data-discord-decoration alt="" loading="lazy">
       <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
     </div>
     <div class="reveal-info">
