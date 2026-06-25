@@ -412,20 +412,38 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border:none;
   padding:0;
 }
-.exclusive-avatar{
+.exclusive-avatar-wrap{
   position:relative;
   width:96px;height:96px;
+  transition:transform .35s cubic-bezier(.16,.8,.3,1);
+}
+.exclusive-item:hover .exclusive-avatar-wrap{
+  transform:scale(1.08);
+}
+.exclusive-avatar{
+  position:relative;
+  width:100%;height:100%;
   border-radius:50%;
   border:2px solid rgba(255,255,255,.7);
   overflow:hidden;
   background:#1a1a1a;
-  transition:transform .35s cubic-bezier(.16,.8,.3,1), border-color .3s ease;
+  transition:border-color .3s ease;
 }
 .exclusive-item:hover .exclusive-avatar{
-  transform:scale(1.08);
   border-color:var(--threat);
 }
 .exclusive-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.exclusive-avatar-decoration{
+  position:absolute;
+  width:135%;
+  height:135%;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:3;
+  object-fit:contain;
+  display:none;
+}
 .exclusive-status{
   position:absolute;
   right:2px;bottom:2px;
@@ -451,7 +469,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   inset:0;
   z-index:0;
   pointer-events:none;
-  background:rgba(0,0,0,.72);
+  background:rgba(0,0,0,.72); /* darkens whatever background image is behind the content */
 }
 #hof > *, #day1 > *, #members > *, #about > *{
   position:relative;
@@ -610,7 +628,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .card .handle:empty,
 .card .tag:empty,
 .hof-card .reveal-info .role:empty,
-.d1-card .d1-tag:empty,
 .profile-handle:empty,
 .profile-tag:empty{
   display:none;
@@ -737,6 +754,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   background:#0a0a0a;
   display:flex;
   align-items:center;
+  justify-content:center;
   cursor:pointer;
   transition:border-color .35s ease, transform .45s cubic-bezier(.16,.8,.3,1), box-shadow .45s ease;
 }
@@ -756,28 +774,21 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   position:absolute;inset:0;
   background:linear-gradient(110deg, rgba(0,0,0,.92) 40%, rgba(0,0,0,.55) 100%);
 }
-.d1-card .label{
+.d1-card .d1-center{
   position:relative;
   z-index:2;
-  padding:0 28px;
+  display:flex;
+  align-items:center;
+  gap:0;
+  transition:transform .45s cubic-bezier(.16,.8,.3,1);
 }
-.d1-card .d1-name{
-  font-family:var(--disp);
-  font-size:30px;
-  color:#fff;
-  letter-spacing:.5px;
-  margin-bottom:6px;
-}
-.d1-card .d1-tag{
-  font-size:11px;
-  color:var(--bone-dim);
-  letter-spacing:1px;
+.d1-card:hover .d1-center{
+  transform:translateX(-58px);
 }
 .d1-card .pic-wrap{
-  position:absolute;
-  right:18px;top:50%;
-  transform:translateY(-50%);
-  width:64px;height:64px;
+  position:relative;
+  width:72px;height:72px;
+  flex:0 0 auto;
   z-index:2;
 }
 .d1-card .pic{
@@ -785,6 +796,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   width:100%;height:100%;
   border-radius:50%;
   overflow:hidden;
+  border:2px solid rgba(255,255,255,.18);
 }
 .d1-card .pic img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;}
 .d1-avatar-decoration{
@@ -804,6 +816,44 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   z-index:4;
   border:2px solid #0a0a0a;
 }
+.d1-card .d1-info{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:18px;
+  white-space:nowrap;
+  opacity:0;
+  transform:translateX(-8px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.d1-card:hover .d1-info{
+  opacity:1;
+  transform:translateX(0);
+}
+.d1-card .d1-divider{
+  width:18px;height:1px;
+  background:var(--bone-dim);
+  flex:0 0 auto;
+}
+.d1-card .d1-status-text{
+  font-size:12px;
+  letter-spacing:.5px;
+  color:var(--bone-dim);
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.d1-card .d1-status-text::before{
+  content:'';
+  width:7px;height:7px;
+  border-radius:50%;
+  background:currentColor;
+  flex:0 0 auto;
+}
+.d1-card .d1-status-text.d1-text-on{color:#3fd16a;}
+.d1-card .d1-status-text.d1-text-idle{color:#e7a33e;}
+.d1-card .d1-status-text.d1-text-dnd{color:#e0444b;}
+.d1-card .d1-status-text.d1-text-off{color:var(--bone-dim);}
 .about-wrap{
   max-width:760px;
   margin:0 auto;
@@ -1424,8 +1474,11 @@ EXCLUSIVE.forEach((x,i)=>{
     : placeholderAvatar(i+1) + `<img alt="${x.name}" loading="lazy" data-discord-avatar-img style="display:none;">`;
 
   item.innerHTML = `
-    <div class="exclusive-avatar">
-      ${avatarInner}
+    <div class="exclusive-avatar-wrap">
+      <div class="exclusive-avatar">
+        ${avatarInner}
+      </div>
+      <img class="exclusive-avatar-decoration" data-discord-decoration alt="" loading="lazy">
       <span class="status status-off exclusive-status" data-lanyard-dot data-discord-id="${x.discordId}"></span>
     </div>
     <div class="exclusive-name" data-discord-name>${x.name}</div>
@@ -1481,14 +1534,16 @@ DAY1.forEach((d,i)=>{
   card.innerHTML = `
     ${bg}
     <div class="grad"></div>
-    <div class="label">
-      <div class="d1-name" data-discord-name>${d.name}</div>
-      <div class="d1-tag">${d.tag}</div>
-    </div>
-    <div class="pic-wrap">
-      <div class="pic">${pic}</div>
-      <img class="d1-avatar-decoration" data-discord-decoration alt="" loading="lazy">
-      <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
+    <div class="d1-center">
+      <div class="pic-wrap">
+        <div class="pic">${pic}</div>
+        <img class="d1-avatar-decoration" data-discord-decoration alt="" loading="lazy">
+        <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
+      </div>
+      <div class="d1-info">
+        <span class="d1-divider"></span>
+        <span class="d1-status-text d1-text-off" data-lanyard-status-text data-discord-id="${d.discordId}">Offline</span>
+      </div>
     </div>
   `;
   card.addEventListener('click', ()=>openProfile('day1', d.slug));
@@ -1889,6 +1944,20 @@ function discordStatusToClass(status){
   return 'status-off';
 }
 
+function discordStatusToTextClass(status){
+  if(status==='online') return 'd1-text-on';
+  if(status==='idle') return 'd1-text-idle';
+  if(status==='dnd') return 'd1-text-dnd';
+  return 'd1-text-off';
+}
+
+function discordStatusToLabel(status){
+  if(status==='online') return 'Online';
+  if(status==='idle') return 'Idle';
+  if(status==='dnd') return 'Do Not Disturb';
+  return 'Offline';
+}
+
 function activityLabel(data){
   if(!data) return '';
   if(data.listening_to_spotify && data.spotify){
@@ -2032,6 +2101,11 @@ async function refreshLanyardDOM(){
       if(el.hasAttribute('data-lanyard-dot')){
         el.className = el.className.replace(/\bstatus-(on|off|idle|dnd)\b/g, '').trim();
         el.classList.add('status', discordStatusToClass(data ? data.discord_status : 'offline'));
+      }
+      if(el.hasAttribute('data-lanyard-status-text')){
+        el.textContent = discordStatusToLabel(data ? data.discord_status : 'offline');
+        el.className = el.className.replace(/\bd1-text-(on|off|idle|dnd)\b/g, '').trim();
+        el.classList.add(discordStatusToTextClass(data ? data.discord_status : 'offline'));
       }
       if(el.hasAttribute('data-lanyard-activity')){
         const label = activityLabel(data);
