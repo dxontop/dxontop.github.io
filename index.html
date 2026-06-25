@@ -12,6 +12,7 @@
 <meta name="twitter:title" content="Threat2Society">
 <meta name="twitter:description" content="We don't chase clout, we build it.">
 <meta name="twitter:image" content="https://file.garden/ai-DmyV9Jgejpt9O/ttslogo.png">
+<meta name="theme-color" content="#260101">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THREAT2SOCIETY</title>
@@ -469,7 +470,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   inset:0;
   z-index:0;
   pointer-events:none;
-  background:rgba(0,0,0,.72); /* darkens whatever background image is behind the content */
+  background:rgba(0,0,0,.72);
 }
 #hof > *, #day1 > *, #members > *, #about > *{
   position:relative;
@@ -523,43 +524,32 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  max-width:1280px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:22px;
+  max-width:1100px;
   margin:0 auto;
 }
 .card{
   position:relative;
-  aspect-ratio:4/5;
-  border:1px solid var(--line);
-  background:#0c0c0c;
-  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  width:64px;
   cursor:pointer;
-  transition:transform .45s cubic-bezier(.16,.8,.3,1), border-color .35s ease, box-shadow .45s ease;
+  background:none;
+  border:none;
+  padding:0;
 }
-.card:hover{
-  transform:translateY(-6px) scale(1.015);
-  border-color:#3a3a3a;
-  box-shadow:0 18px 40px -12px rgba(0,0,0,.6);
-}
-.card .bgimg{
-  position:absolute;inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:.85;
-  transition:transform .6s cubic-bezier(.16,.8,.3,1), opacity .4s ease;
-}
-.card:hover .bgimg{transform:scale(1.08);opacity:1;}
-.card .shade{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.15) 100%);
+.card:hover .avatar-wrap{
+  transform:scale(1.08);
 }
 .avatar-wrap{
-  position:absolute;
-  left:50%;top:46%;
-  transform:translate(-50%,-50%);
-  width:54px;height:54px;
+  position:relative;
+  width:64px;height:64px;
+  transition:transform .35s cubic-bezier(.16,.8,.3,1);
 }
 .avatar-decoration{
   position:absolute;
@@ -576,10 +566,25 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   position:relative;
   width:100%;height:100%;
   border-radius:50%;
+  border:2px solid rgba(255,255,255,.7);
   overflow:hidden;
-  background:#222;
+  background:#1a1a1a;
+  transition:border-color .3s ease;
+}
+.card:hover .avatar{
+  border-color:var(--threat);
 }
 .card .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s ease;}
+.card .name{
+  font-size:11px;
+  letter-spacing:.4px;
+  color:var(--bone-dim);
+  text-align:center;
+  white-space:nowrap;
+  max-width:80px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 .status{
   display:inline-block;
   width:13px;height:13px;
@@ -592,41 +597,13 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   position:absolute;
   right:0;bottom:0;
   z-index:3;
+  border:2px solid #050505;
 }
 .status-on{background:#3fd16a;box-shadow:0 0 8px rgba(63,209,106,.7);}
 .status-idle{background:#e7a33e;box-shadow:0 0 8px rgba(231,163,62,.7);}
 .status-dnd{background:#e0444b;box-shadow:0 0 8px rgba(224,68,75,.7);}
 .status-off{background:#5a5a58;box-shadow:none;}
 
-.card .info{
-  position:absolute;
-  left:0;right:0;bottom:0;
-  padding:14px 14px 16px;
-  text-align:center;
-}
-.card .uname{
-  font-family:var(--disp);
-  font-size:14px;
-  letter-spacing:.5px;
-  color:#fff;
-  margin-bottom:3px;
-}
-.card .handle{
-  font-size:10px;
-  color:var(--cyan);
-  letter-spacing:.5px;
-  margin-bottom:3px;
-  opacity:.85;
-}
-.card .tag{
-  font-size:9px;
-  letter-spacing:1.5px;
-  color:var(--bone-dim);
-  text-transform:uppercase;
-}
-
-.card .handle:empty,
-.card .tag:empty,
 .hof-card .reveal-info .role:empty,
 .profile-handle:empty,
 .profile-tag:empty{
@@ -652,11 +629,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   cursor:pointer;
   background:rgba(10,8,8,.42);
   transition:border-color .35s ease, transform .45s cubic-bezier(.16,.8,.3,1), box-shadow .45s ease, background .35s ease, z-index 0s;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  padding-bottom:28px;
 }
 .hof-card:hover{
   border-color:var(--threat-dim);
@@ -668,6 +640,21 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .hof-card .grad{
   position:absolute;inset:0;
   background:linear-gradient(to top, rgba(0,0,0,.9) 5%, rgba(0,0,0,.1) 55%, transparent 80%);
+}
+.hof-card .hof-content{
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transform:translate(-50%,0);
+  transition:bottom .45s cubic-bezier(.16,.8,.3,1), transform .45s cubic-bezier(.16,.8,.3,1);
+}
+.hof-card:hover .hof-content{
+  bottom:50%;
+  transform:translate(-50%,50%);
 }
 .hof-card .hof-status{
   position:absolute;
@@ -752,9 +739,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   border-radius:10px;
   overflow:hidden;
   background:#0a0a0a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   cursor:pointer;
   transition:border-color .35s ease, transform .45s cubic-bezier(.16,.8,.3,1), box-shadow .45s ease;
 }
@@ -775,15 +759,19 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   background:linear-gradient(110deg, rgba(0,0,0,.92) 40%, rgba(0,0,0,.55) 100%);
 }
 .d1-card .d1-center{
-  position:relative;
+  position:absolute;
+  top:50%;
+  left:50%;
   z-index:2;
   display:flex;
   align-items:center;
   gap:0;
-  transition:transform .45s cubic-bezier(.16,.8,.3,1);
+  transform:translate(-50%,-50%);
+  transition:left .45s cubic-bezier(.16,.8,.3,1), transform .45s cubic-bezier(.16,.8,.3,1);
 }
 .d1-card:hover .d1-center{
-  transform:translateX(-58px);
+  left:24px;
+  transform:translate(0,-50%);
 }
 .d1-card .pic-wrap{
   position:relative;
@@ -819,7 +807,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .d1-card .d1-info{
   display:flex;
   align-items:center;
-  gap:10px;
   margin-left:18px;
   white-space:nowrap;
   opacity:0;
@@ -830,30 +817,14 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   opacity:1;
   transform:translateX(0);
 }
-.d1-card .d1-divider{
-  width:18px;height:1px;
-  background:var(--bone-dim);
-  flex:0 0 auto;
+.d1-card .d1-name{
+  font-family:var(--disp);
+  font-size:14px;
+  letter-spacing:1px;
+  color:var(--bone);
+  text-transform:uppercase;
+  white-space:nowrap;
 }
-.d1-card .d1-status-text{
-  font-size:12px;
-  letter-spacing:.5px;
-  color:var(--bone-dim);
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-.d1-card .d1-status-text::before{
-  content:'';
-  width:7px;height:7px;
-  border-radius:50%;
-  background:currentColor;
-  flex:0 0 auto;
-}
-.d1-card .d1-status-text.d1-text-on{color:#3fd16a;}
-.d1-card .d1-status-text.d1-text-idle{color:#e7a33e;}
-.d1-card .d1-status-text.d1-text-dnd{color:#e0444b;}
-.d1-card .d1-status-text.d1-text-off{color:var(--bone-dim);}
 .about-wrap{
   max-width:760px;
   margin:0 auto;
@@ -991,8 +962,8 @@ footer{
 }
 .profile-avatar-decoration{
   position:absolute;
-  width:135%;
-  height:135%;
+  width:190%;
+  height:190%;
   left:50%;top:50%;
   transform:translate(-50%,-50%);
   pointer-events:none;
@@ -1093,7 +1064,6 @@ footer{
   50%{height:100%;}
 }
 @media (max-width:980px){
-  .grid{grid-template-columns:repeat(3,1fr);}
   .d1-grid{grid-template-columns:1fr;}
 }
 @media (max-width:680px){
@@ -1123,15 +1093,12 @@ footer{
   }
   .nav-toggle span{height:1.5px;background:var(--bone);width:100%;transition:transform .25s, opacity .25s;}
   section{padding:70px 5vw;}
-  .grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .grid{gap:14px;}
   .hof-grid{gap:8px;}
   .hof-card{flex:1 1 0;min-width:0;height:260px;}
   .hof-card .hof-avatar-wrap{width:64px;height:64px;}
   .hof-card .ring-avatar{width:56px;height:56px;}
   .stat-row{gap:34px;}
-}
-@media (max-width:420px){
-  .grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -1435,24 +1402,17 @@ MEMBERS.forEach((m,i)=>{
   card.setAttribute('data-discord-id', m.discordId);
   card.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
 
-  const bg = m.img ? `<div class="bgimg" data-discord-bg style="background-image:url('${m.img}')"></div>` : '<div class="bgimg bgimg-empty" data-discord-bg></div>';
   const avatarInner = m.img
     ? `<img src="${m.img}" alt="${m.name}" loading="lazy" data-discord-avatar-img>`
     : placeholderAvatar(i+1) + `<img alt="${m.name}" loading="lazy" data-discord-avatar-img style="display:none;">`;
 
   card.innerHTML = `
-    ${bg}
-    <div class="shade"></div>
     <div class="avatar-wrap">
       <div class="avatar">${avatarInner}</div>
       <img class="avatar-decoration" data-discord-decoration alt="" loading="lazy">
       <span class="status status-off" data-lanyard-dot data-discord-id="${m.discordId}"></span>
     </div>
-    <div class="info">
-      <div class="uname" data-discord-name>${m.name}</div>
-      <div class="handle" data-discord-handle>${m.handle}</div>
-      <div class="tag">${m.tag}</div>
-    </div>
+    <div class="name" data-discord-name>${m.name}</div>
   `;
   card.addEventListener('click', ()=>openProfile('member', m.slug));
   card.addEventListener('keypress', e=>{ if(e.key==='Enter') openProfile('member', m.slug); });
@@ -1503,14 +1463,16 @@ HOF.forEach((h,i)=>{
     : placeholderAvatar(i+1) + `<img alt="${h.name}" loading="lazy" data-discord-avatar-img style="display:none;">`;
   card.innerHTML = `
     <div class="grad"></div>
-    <div class="hof-avatar-wrap">
-      <div class="ring-avatar">${avatarInner}</div>
-      <img class="hof-avatar-decoration" data-discord-decoration alt="" loading="lazy">
-      <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
-    </div>
-    <div class="reveal-info">
-      <div class="name" data-discord-name>${h.name}</div>
-      <div class="role">${h.role}</div>
+    <div class="hof-content">
+      <div class="hof-avatar-wrap">
+        <div class="ring-avatar">${avatarInner}</div>
+        <img class="hof-avatar-decoration" data-discord-decoration alt="" loading="lazy">
+        <span class="status status-off hof-status" data-lanyard-dot data-discord-id="${h.discordId}"></span>
+      </div>
+      <div class="reveal-info">
+        <div class="name" data-discord-name>${h.name}</div>
+        <div class="role">${h.role}</div>
+      </div>
     </div>
   `;
   card.addEventListener('click', ()=>openProfile('hof', h.slug));
@@ -1541,8 +1503,7 @@ DAY1.forEach((d,i)=>{
         <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
       </div>
       <div class="d1-info">
-        <span class="d1-divider"></span>
-        <span class="d1-status-text d1-text-off" data-lanyard-status-text data-discord-id="${d.discordId}">Offline</span>
+        <span class="d1-name">${d.name}</span>
       </div>
     </div>
   `;
