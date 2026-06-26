@@ -16,6 +16,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THREAT2SOCIETY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <script>
 
   (function(){
@@ -40,6 +43,7 @@
   --cyan:#3aa0ff;
   --mono: 'WTT Mono', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --disp: 'WTT Display', Impact, 'Arial Narrow', sans-serif;
+  --name-font: 'Rajdhani', 'Arial Narrow', sans-serif;
 }
 
 @font-face{
@@ -350,6 +354,12 @@ nav a:hover::after, nav a.active::after{width:100%;}
   color:var(--mute);
   text-transform:uppercase;
   margin-bottom:46px;
+  transition:opacity .4s ease, transform .4s ease;
+}
+.section-label.label-faded{
+  opacity:0;
+  transform:translateY(-8px);
+  pointer-events:none;
 }
 .section-label::before,.section-label::after{
   content:'';
@@ -371,6 +381,12 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   color:#fff;
   margin-bottom:50px;
   filter:drop-shadow(0 0 16px rgba(255,43,43,.5));
+  transition:opacity .4s ease, transform .4s ease;
+}
+.exclusive-heading.label-faded{
+  opacity:0;
+  transform:translateY(-8px);
+  pointer-events:none;
 }
 .exclusive-heading .glitch-text{
   position:relative;
@@ -454,8 +470,10 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   z-index:2;
 }
 .exclusive-name{
-  font-size:13px;
-  letter-spacing:.5px;
+  font-family:var(--name-font);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.8px;
   color:var(--bone-dim);
 }
 
@@ -587,8 +605,10 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 }
 .card .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s ease;}
 .card .name{
-  font-size:11px;
-  letter-spacing:.4px;
+  font-family:var(--name-font);
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.6px;
   color:var(--bone-dim);
   text-align:center;
   white-space:nowrap;
@@ -724,10 +744,11 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   max-height:80px;
 }
 .hof-card .reveal-info .name{
-  font-family:var(--disp);
-  font-size:16px;
+  font-family:var(--name-font);
+  font-weight:700;
+  font-size:19px;
   color:#fff;
-  letter-spacing:.5px;
+  letter-spacing:.6px;
 }
 .hof-card .reveal-info .role{
   font-size:10px;
@@ -829,9 +850,10 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   transform:translateX(0);
 }
 .d1-card .d1-name{
-  font-family:var(--disp);
-  font-size:14px;
-  letter-spacing:1px;
+  font-family:var(--name-font);
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:1.2px;
   color:var(--bone);
   text-transform:uppercase;
   white-space:nowrap;
@@ -993,9 +1015,10 @@ footer{
   z-index:5;
 }
 .profile-name{
-  font-family:var(--disp);
-  font-size:30px;
-  letter-spacing:1px;
+  font-family:var(--name-font);
+  font-weight:700;
+  font-size:34px;
+  letter-spacing:.8px;
   margin-top:26px;
   color:#fff;
 }
@@ -1826,10 +1849,9 @@ function updateUrlForSection(section){
   if(!scrollSpyEnabled) return;
   if(!views.home.classList.contains('active')) return;
   setActiveNav(section);
-  const newPath = section === 'home' ? '/' : `/${section}`;
-  if(location.pathname === newPath) return;
+  if(location.pathname === '/') return;
   try{
-    history.replaceState({}, '', newPath);
+    history.replaceState({}, '', '/');
   }catch(err){}
 }
 
@@ -1846,6 +1868,16 @@ const scrollSpyObserver = new IntersectionObserver((entries)=>{
 SCROLL_SPY_SECTIONS.forEach(id=>{
   const el = document.getElementById(id);
   if(el) scrollSpyObserver.observe(el);
+});
+
+const sectionLabelObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    entry.target.classList.toggle('label-faded', !entry.isIntersecting);
+  });
+}, { threshold: 0, rootMargin: '-90px 0px 0px 0px' });
+
+document.querySelectorAll('.section-label, .exclusive-heading').forEach(el=>{
+  sectionLabelObserver.observe(el);
 });
 
 function pauseScrollSpy(ms = 900){
