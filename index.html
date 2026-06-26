@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="https://file.garden/ai-DmyV9Jgejpt9O/ttslogo.png">
+<link rel="icon" type="image/png" href="">
 <meta property="og:title" content="Threat2Society">
 <meta property="og:description" content="We don't chase clout, we build it.">
-<meta property="og:image" content="https://file.garden/ai-DmyV9Jgejpt9O/ttslogo.png">
+<meta property="og:image" content="">
 <meta property="og:url" content="https://dxontop.github.io/">
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Threat2Society">
 <meta name="twitter:description" content="We don't chase clout, we build it.">
-<meta name="twitter:image" content="https://file.garden/ai-DmyV9Jgejpt9O/ttslogo.png">
+<meta name="twitter:image" content="">
 <meta name="theme-color" content="#0f0f0f">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -914,6 +914,94 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   color:#000;
 }
 
+.bloodlines-section{
+  margin-top:90px;
+  padding-top:60px;
+  border-top:1px solid var(--line);
+}
+.bloodlines-label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--mute);
+  text-transform:uppercase;
+  margin-bottom:42px;
+}
+.bloodlines-label::before,.bloodlines-label::after{
+  content:'';
+  width:34px;height:1px;
+  background:var(--line);
+}
+.bloodline-card{
+  position:relative;
+  flex:0 0 auto;
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding:28px 20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#0a0a0a;
+  text-align:center;
+  transition:border-color .3s ease, transform .35s cubic-bezier(.16,.8,.3,1), box-shadow .35s ease;
+}
+.bloodline-card:hover{
+  border-color:var(--threat-dim);
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.6);
+}
+.bloodline-icon{
+  width:64px;height:64px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#141414;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+}
+.bloodline-icon img{width:100%;height:100%;object-fit:cover;display:block;}
+.bloodline-icon span{
+  font-family:var(--name-font);
+  font-weight:700;
+  font-size:20px;
+  color:#3c3c3a;
+}
+.bloodline-name{
+  font-family:var(--name-font);
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:.5px;
+  color:#fff;
+}
+.bloodline-tag{
+  font-size:11px;
+  line-height:1.6;
+  color:var(--bone-dim);
+}
+.bloodline-join{
+  margin-top:6px;
+  display:inline-block;
+  border:1px solid var(--bone-dim);
+  border-radius:30px;
+  padding:8px 22px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--bone);
+  transition:all .25s;
+}
+.bloodline-join:hover{
+  background:var(--threat);
+  border-color:var(--threat);
+  color:#fff;
+}
+
 footer{
   text-align:center;
   padding:50px 24px 60px;
@@ -1237,6 +1325,12 @@ footer{
         </div>
         <a class="join-btn" href="https://discord.gg/t2sgk" target="_blank" rel="noopener">JOIN US!</a>
       </div>
+      <div class="bloodlines-section">
+        <div class="bloodlines-label">• BLOODLINES •</div>
+        <div class="carousel-viewport">
+          <div class="grid" id="bloodlinesGrid"></div>
+        </div>
+      </div>
     </section>
   </div>
   <div class="view" id="view-profile">
@@ -1464,6 +1558,40 @@ function buildMemberCard(m, i, isClone){
 }
 MEMBERS.forEach((m,i)=> membersGrid.appendChild(buildMemberCard(m, i, false)));
 MEMBERS.forEach((m,i)=> membersGrid.appendChild(buildMemberCard(m, i, true)));
+
+const BLOODLINES = [
+  { name: 'SERVER 1', tag: 'Affiliated server', icon: '', invite: '#' },
+  { name: 'SERVER 2', tag: 'Affiliated server', icon: '', invite: '#' },
+  { name: 'SERVER 3', tag: 'Affiliated server', icon: '', invite: '#' },
+  { name: 'SERVER 4', tag: 'Affiliated server', icon: '', invite: '#' },
+];
+
+const bloodlinesGrid = document.getElementById('bloodlinesGrid');
+function buildBloodlineCard(b, i, isClone){
+  const card = document.createElement('div');
+  card.className = 'bloodline-card reveal';
+  card.tabIndex = isClone ? -1 : 0;
+  card.setAttribute('role','link');
+  card.setAttribute('aria-label', b.name);
+  if(isClone) card.setAttribute('aria-hidden','true');
+  card.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
+
+  const iconInner = b.icon
+    ? `<img src="${b.icon}" alt="${b.name}" loading="lazy">`
+    : `<span>${b.name.charAt(0)}</span>`;
+
+  card.innerHTML = `
+    <div class="bloodline-icon">${iconInner}</div>
+    <div class="bloodline-name">${b.name}</div>
+    <div class="bloodline-tag">${b.tag}</div>
+    <a class="bloodline-join" href="${b.invite}" target="_blank" rel="noopener" tabindex="${isClone ? -1 : 0}">JOIN</a>
+  `;
+  return card;
+}
+if(bloodlinesGrid){
+  BLOODLINES.forEach((b,i)=> bloodlinesGrid.appendChild(buildBloodlineCard(b, i, false)));
+  BLOODLINES.forEach((b,i)=> bloodlinesGrid.appendChild(buildBloodlineCard(b, i, true)));
+}
 
 
 const exclusiveRow = document.getElementById('exclusiveRow');
