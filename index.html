@@ -12,7 +12,7 @@
 <meta name="twitter:title" content="Threat2Society">
 <meta name="twitter:description" content="We don't chase clout, we build it.">
 <meta name="twitter:image" content="https://file.garden/ai-DmyV9Jgejpt9O/ttslogo.png">
-<meta name="theme-color" content="#260101">
+<meta name="theme-color" content="#0f0f0f">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THREAT2SOCIETY</title>
@@ -503,7 +503,6 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
 .reveal.no-fade-in{
   transition:none !important;
 }
-.card.reveal.in-view:hover{transform:translateY(-6px) scale(1.015);}
 
 .bgimg-empty{
   background:
@@ -523,13 +522,24 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   letter-spacing:.5px;
 }
 
-.grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:22px;
+.carousel-viewport{
+  position:relative;
+  width:100%;
   max-width:1100px;
   margin:0 auto;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image:linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.grid{
+  display:flex;
+  flex-wrap:nowrap;
+  width:max-content;
+  gap:22px;
+  animation:carousel-scroll 24s linear infinite;
+}
+.carousel-viewport:hover .grid{
+  animation-play-state:paused;
 }
 .card{
   position:relative;
@@ -538,6 +548,7 @@ section{padding:90px 6vw;position:relative;scroll-margin-top:90px;}
   align-items:center;
   gap:10px;
   width:64px;
+  flex:0 0 auto;
   cursor:pointer;
   background:none;
   border:none;
@@ -962,8 +973,8 @@ footer{
 }
 .profile-avatar-decoration{
   position:absolute;
-  width:190%;
-  height:190%;
+  width:240%;
+  height:240%;
   left:50%;top:50%;
   transform:translate(-50%,-50%);
   pointer-events:none;
@@ -979,6 +990,7 @@ footer{
   width:14px;height:14px;
   border-radius:50%;
   border:2px solid #050505;
+  z-index:5;
 }
 .profile-name{
   font-family:var(--disp);
@@ -1062,6 +1074,10 @@ footer{
 @keyframes bar{
   0%,100%{height:30%;}
   50%{height:100%;}
+}
+@keyframes carousel-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
 }
 @media (max-width:980px){
   .d1-grid{grid-template-columns:1fr;}
@@ -1165,7 +1181,9 @@ footer{
 
     <section id="members">
       <div class="section-label">• MEMBERS •</div>
-      <div class="grid" id="membersGrid"></div>
+      <div class="carousel-viewport">
+        <div class="grid" id="membersGrid"></div>
+      </div>
     </section>
 
     <div class="logo-block logo-block-footer">
@@ -1334,7 +1352,7 @@ DAY1[2].discordId = '1377113691584991262';
 DAY1[2].music = '';
 
 DAY1[3].name = '';
-DAY1[3].slug = 'sxcred';
+DAY1[3].slug = 'faiyaz';
 DAY1[3].bgImage = '';
 DAY1[3].discordId = '1402292483584426134';
 DAY1[3].music = '';
@@ -1392,14 +1410,15 @@ function placeholderAvatar(label){
 }
 
 const membersGrid = document.getElementById('membersGrid');
-MEMBERS.forEach((m,i)=>{
+function buildMemberCard(m, i, isClone){
   const card = document.createElement('div');
   card.className='card reveal';
-  card.tabIndex = 0;
+  card.tabIndex = isClone ? -1 : 0;
   card.setAttribute('role','link');
   card.setAttribute('aria-label', m.name);
   card.setAttribute('data-discord-card','');
   card.setAttribute('data-discord-id', m.discordId);
+  if(isClone) card.setAttribute('aria-hidden','true');
   card.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
 
   const avatarInner = m.img
@@ -1414,10 +1433,15 @@ MEMBERS.forEach((m,i)=>{
     </div>
     <div class="name" data-discord-name>${m.name}</div>
   `;
-  card.addEventListener('click', ()=>openProfile('member', m.slug));
-  card.addEventListener('keypress', e=>{ if(e.key==='Enter') openProfile('member', m.slug); });
-  membersGrid.appendChild(card);
-});
+  if(!isClone){
+    card.addEventListener('click', ()=>openProfile('member', m.slug));
+    card.addEventListener('keypress', e=>{ if(e.key==='Enter') openProfile('member', m.slug); });
+  }
+  return card;
+}
+MEMBERS.forEach((m,i)=> membersGrid.appendChild(buildMemberCard(m, i, false)));
+MEMBERS.forEach((m,i)=> membersGrid.appendChild(buildMemberCard(m, i, true)));
+
 
 const exclusiveRow = document.getElementById('exclusiveRow');
 EXCLUSIVE.forEach((x,i)=>{
@@ -1503,7 +1527,7 @@ DAY1.forEach((d,i)=>{
         <span class="status status-off d1-status" data-lanyard-dot data-discord-id="${d.discordId}"></span>
       </div>
       <div class="d1-info">
-        <span class="d1-name">${d.name}</span>
+        <span class="d1-name" data-discord-name>${d.name}</span>
       </div>
     </div>
   `;
