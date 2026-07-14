@@ -1,163 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="">
-<meta property="og:title" content="Threat2Society">
-<meta property="og:description" content="We don't chase clout, we build it.">
-<meta property="og:image" content="">
-<meta property="og:url" content="https://dxontop.github.io/">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Threat2Society">
-<meta name="twitter:description" content="We don't chase clout, we build it.">
-<meta name="twitter:image" content="">
-<meta name="theme-color" content="#0f0f0f">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THREAT2SOCIETY</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-<script>
-
-  (function(){
-    var redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
-    if(redirect && redirect !== location.href){
-      history.replaceState(null, null, redirect);
-    }
-  })();
-</script>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLVED BY THREAT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            max-width: 1000px;
+        }
+        .ascii {
+            color: #ff0000;
+            font-size: 11px;
+            line-height: 1.15;
+            white-space: pre;
+            text-align: center;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        h1 {
+            color: #ff0000;
+            font-size: 52px;
+            letter-spacing: 8px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .sub {
+            color: #888888;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin: 5px 0;
+        }
+        .vuln-list {
+            color: #333333;
+            font-size: 11px;
+            margin-top: 20px;
+            border-top: 1px solid #111111;
+            padding-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .vuln-item { margin: 3px 0; }
+        .vuln-red { color: #ff0000; }
+        .vuln-gray { color: #444444; }
+        .timestamp {
+            color: #666;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <pre class="ascii">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⢰⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢡⠠⠀⠀⡇⣯⡄⢀⢀⢰⠢⡀⢣⠘⡄⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⢂⠑⡀⡇⢿⠐⡈⠪⠄⣧⣐⣄⠿⡱⢄⠀⢺⠤⢀⢰⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡤⣀⠀⠑⢦⡤⢤⣥⡬⢧⠼⢧⠬⠯⡙⣷⣖⠧⡙⣒⣧⠵⣀⠩⣢⢿⣌⢓⢄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢄⠳⡌⠙⠡⣍⡓⠦⣌⠭⢬⣤⣡⠐⢎⢼⠷⢞⣼⣬⣱⣽⣲⢫⢻⢕⣍⠣⡱⡽⡲⡠⣀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⡀⢕⡢⢈⠣⡾⢌⡃⠠⢘⣧⣋⠙⠦⡭⢭⡝⠶⣳⠷⢮⣽⣶⣷⣭⣹⢷⡷⣿⣯⣷⡨⢶⣿⣵⢌⡦⡀⠀⠀
+⠀⠀⠀⠀⠀⢀⢈⠢⣹⣢⣨⠖⢍⡒⠶⠨⣡⣒⣷⣶⣭⡗⣚⠚⡭⠝⠴⠦⣤⠍⣛⣓⢯⣬⣿⣽⣽⡿⣿⣿⣮⣾⡽⢷⣲⢱⡀⢀
+⠀⠀⠀⠀⠀⠈⢋⢼⢽⢯⢦⡙⣓⠞⡛⣳⣙⣾⣭⣧⣄⣀⠤⠐⠒⠉⠊⠙⢛⣿⣟⣯⣾⣭⣻⣮⣻⣿⣿⣿⣿⣿⣦⠘⣞⡌⡿⣼
+⠀⠀⠀⠀⠀⠀⠀⣱⢻⡔⢤⣉⣐⣤⣋⣥⡤⣽⡷⠒⠌⡀⢀⣠⡤⠚⢈⣉⡴⠯⠛⠻⢃⢛⣻⣿⣷⣿⣿⡿⣿⣿⣿⣧⣿⣶⣲⢻
+⠀⠀⠀⠀⠀⠀⠀⠀⠑⠺⢅⣝⣛⣥⣍⡁⢀⣉⣠⣴⠞⣋⣽⠡⢴⠾⣋⡡⢄⣲⣈⠭⠙⠛⣻⣿⣿⣷⣿⣿⣽⣿⣿⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠒⡤⢤⢶⠚⣋⡩⢤⣖⣍⣉⣾⢋⣬⣛⣷⡿⠋⣨⣕⣦⠓⠁⠀⣀⠴⢎⣉⠵⢛⣻⣩⣽⣿⣿⣿⣿⣿⣿⣋⣟
+⠀⠀⠀⠀⠀⠀⠀⠀⣴⣙⡽⣯⡝⣋⣡⣴⣤⢿⢡⣿⣿⡿⢊⣤⠾⠋⡩⠂⢀⣴⡫⠕⣊⠕⢁⠔⢁⡼⠋⠁⡁⣸⣿⣿⣿⣿⣛⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⡇⠀⠀⠀⢠⡀⢸⡻⡴⣷⣩⡟⠩⡠⢊⡠⣰⠟⢁⠄⠊⢀⡴⠋⠔⠉⠀⡘⢰⢀⣿⣿⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢡⢠⡄⠀⠀⡘⢩⠗⢪⢋⡟⣐⠥⠶⣹⠼⠑⢈⣀⣴⠜⢁⠀⠀⢠⡕⣽⠀⣟⣾⣿⢻⢻⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠚⡁⠋⠀⠠⡦⠢⠴⢥⣎⣜⣡⣶⣾⣶⣾⣿⣭⣽⣠⠴⢃⣔⣪⡞⣱⣷⠸⣼⣟⣧⣟⣼⣟⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⣷⡀⠀⠀⠀⣧⢠⡔⢋⣡⣾⣿⣿⢻⡏⠛⢻⣿⡟⢁⣴⣫⢻⣿⣲⣿⣾⡀⣷⣛⡟⣬⣿⢹⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⣛⠻⢿⣦⠀⠀⠈⠈⢡⡜⣿⡿⠟⡿⠃⠀⣄⢳⣿⡿⣿⢿⡿⣿⣽⣿⣿⡿⣧⣿⣿⣷⣿⠛⢸⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣡⠻⡷⣦⡿⠆⠀⠀⢠⣦⠀⢸⡅⠰⠃⠘⣦⡾⣧⡏⡄⢣⡄⣀⣿⣛⣬⡅⣶⣿⣿⣿⣿⢹⡄⣻⣿⣯⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⠀⢧⠀⣳⡀⠀⢠⣾⡿⠆⢈⣣⠀⠀⠀⡞⠃⠻⢀⠀⢾⣧⣉⣛⣉⣤⣶⣿⡟⠸⡌⢾⠀⣣⣿⡏⢫⡿
+⠀⠀⠀⠀⠀⠀⠀⣾⣀⠀⠀⠙⠃⠘⠃⠠⣼⡇⠀⠀⢨⡖⠀⠀⠀⠁⠀⠀⠈⠁⠈⠻⢿⣿⣿⣿⠟⡹⠶⠁⡓⡘⣆⠿⠡⢠⡏⡿
+⠀⠀⠀⠀⠀⠀⠀⠈⠺⢗⣦⣄⣀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠀⠀⠀⠀⣫⣿⣿⣿⠀⢧⢸⠀⡿⢰⢣⢸⡇⡜⣸⣼
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢮⣿⡟⡿⣿⡿⣿⡿⣿⠿⢻⡿⠟⢉⠀⠔⠁⠀⠀⠀⢿⣹⡟⣿⡄⣽⣿⢃⢣⢸⣮⢿⢼⢡⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢻⣧⣵⣾⣾⣿⠿⢻⠇⢀⠔⠁⠀⡜⠐⠀⠄⢐⣿⣎⣿⡹⢷⡄⣿⣿⣼⢿⡟⢹⢀⣡⡽⣽
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⠀⣠⡾⢁⣴⣏⡠⠊⠀⡠⠊⠀⠀⣄⣀⣼⣇⠫⢢⡧⢘⣧⡽⣬⢷⡞⡷⡠⢳⢾⠣⡼
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠖⠁⠀⢀⠟⡹⠋⠁⣴⠁⠀⠀⠀⣸⡟⠀⢦⣁⣬⢡⠷⣫⢵⡘⠸⠇⡷⠯⡍⠸⡔⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⡄⠀⠀⣼⣚⣁⣀⣞⣉⣀⣀⣴⣯⣾⣧⣴⣾⣿⣿⠊⠀⠈⠃⠹⠃⠀⠣⠀⠀⠀⢷⠤
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀
+⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀
+        </pre>
 
-<div class="grain"></div>
-<div class="scanlines"></div>
-<div class="vignette"></div>
-<div id="splash">
-  <div class="wordmark flicker">
-    <div class="wordmark-line">
-      <span class="threat-word" data-text="THREAT">THREAT</span><span data-text="2SOCIETY">2SOCIETY</span>
+        <h1>SOLVED BY THREAT</h1>
+        <div class="sub">0THREAT2SOCIETY</div>
+
+        <div class="vuln-list">
+            <div class="vuln-item vuln-red">SITE DEFACED BY 0THREAT2SOCIETY</div>
+            <div class="vuln-item vuln-gray">SECURITY TEST COMPLETE</div>
+            <div class="vuln-item vuln-gray">THIS SITE WAS VULNERABLE</div>
+        </div>
+
+        <div class="timestamp">
+            DEFACED <span id="time"></span>
+        </div>
     </div>
-  </div>
-  <div class="enter-box">[<span>&nbsp;</span>PRESS ENTER<span>&nbsp;</span>]</div>
-  <div class="splash-sub">CLICK ANYWHERE TO CONTINUE</div>
-</div>
-<div id="app">
 
-  <header id="siteHeader">
-    <div class="brand"><span class="dot"></span>THREAT2SOCIETY</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    <nav id="mainNav">
-      <a href="#hof" class="nav-link" data-view="home" data-anchor="hof">Hall of Fame</a>
-      <a href="#day1" class="nav-link" data-view="home" data-anchor="day1">Day 1's</a>
-      <a href="#exclusive" class="nav-link" data-view="home" data-anchor="exclusive">Exclusive</a>
-      <a href="#members" class="nav-link" data-view="home" data-anchor="members">Members</a>
-      <a href="#about" class="nav-link" data-view="about" data-anchor="">About</a>
-    </nav>
-  </header>
-  <div class="view active" id="view-home">
-    <div class="hof-backdrop">
-      <section class="logo-block-float" id="home">
-        <div class="wordmark flicker" id="heroWordmark">
-          <div class="wordmark-line">
-            <span class="threat-word" data-text="THREAT">THREAT</span><span data-text="2SOCIETY">2SOCIETY</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="hof">
-        <div class="hof-grid" id="hofGrid"></div>
-      </section>
-    </div>
-
-    <section id="day1">
-      <div class="section-label">• DAY 1'S •</div>
-      <div class="d1-grid" id="d1Grid"></div>
-    </section>
-
-    <section id="exclusive">
-      <div class="exclusive-heading flicker"><span class="glitch-text" data-text="Exclusive Threat">Exclusive Threat</span></div>
-      <div class="exclusive-row" id="exclusiveRow"></div>
-    </section>
-
-    <section id="members">
-      <div class="section-label">• MEMBERS •</div>
-      <div class="carousel-viewport">
-        <div class="grid" id="membersGrid"></div>
-      </div>
-    </section>
-
-    <div class="logo-block logo-block-footer">
-      <div class="wordmark flicker">
-        <div class="wordmark-line">
-          <span class="threat-word" data-text="THREAT">THREAT</span><span data-text="2SOCIETY">2SOCIETY</span>
-        </div>
-      </div>
-      <div class="cta-row">
-        <a class="cta" href="https://discord.gg/t2sgk" target="_blank" rel="noopener">[ JOIN_T2S ]</a>
-        <a class="cta alt" href="/about">[ ABOUT_US ]</a>
-        </div>
-      </div>
-  </div>
-  <div class="view" id="view-about">
-    <section id="about" style="padding-top:160px;min-height:80vh;">
-      <div class="about-wrap">
-        <div class="about-eyebrow">Introducing Threat2Society</div>
-        <div class="about-body">
-          <strong>THREAT2SOCIETY</strong> is an underground digital crew built on loyalty, presence, and noise.
-          What started as a few names in the same group chat turned into a wall — a place where everyone knows
-          everyone, and everyone moves the same. We don't chase clout, we build it. No fillers, no fronting —
-          just a circle that shows up for each other on and off the screen.
-        </div>
-        <div class="stat-row">
-          <div class="stat"><div class="num">Worldwide</div><div class="lab">Threat Level</div></div>
-          <div class="stat"><div class="num">∞</div><div class="lab">Loyalty</div></div>
-        </div>
-        <a class="join-btn" href="https://discord.gg/t2sgk" target="_blank" rel="noopener">JOIN US!</a>
-      </div>
-      <div class="bloodlines-section">
-        <div class="bloodlines-label">• BLOODLINES •</div>
-        <div class="carousel-viewport">
-          <div class="grid" id="bloodlinesGrid"></div>
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="view" id="view-profile">
-    <div class="profile-view" id="profileViewRoot">
-      <div class="profile-bg-glow" id="profileGlow"></div>
-      <div class="profile-stars" id="profileStars"></div>
-      <div class="profile-custom-bg" id="profileCustomBg"></div>
-      <div class="profile-banner" id="profileBanner"></div>
-      <div class="profile-card">
-        <div class="profile-avatar" id="profileAvatarWrap">
-          <img id="profileAvatar" src="" alt="">
-          <img class="profile-avatar-decoration" id="profileAvatarDecoration" data-discord-decoration alt="" loading="lazy">
-          <span class="profile-status status-off" id="profileStatusDot"></span>
-        </div>
-        <div class="profile-name" id="profileName"></div>
-        <div class="profile-handle" id="profileHandle"></div>
-        <div class="profile-tag" id="profileTag"></div>
-        <div class="profile-activity" id="profileActivity"></div>
-        <a class="profile-back" id="profileBack" href="#members">← BACK TO MEMBERS</a>
-      </div>
-      <div class="profile-url" id="profileUrl"></div>
-    </div>
-  </div>
-
-  <footer>THREAT2SOCIETY.COM</footer>
-</div>
-
-<audio id="bgMusic" loop preload="auto" src="https://file.garden/ai-DmyV9Jgejpt9O/T2S%20National%20Anthem.mp3"></audio>
-
-<button class="music-toggle paused" id="musicToggle">
-  <span class="bars"><span></span><span></span><span></span></span>
-  <span id="musicLabel">MUSIC</span>
-</button>
-
-<script src="script.js"></script>
+    <script>
+        document.getElementById('time').textContent = new Date().toISOString();
+        console.log('DEFACED BY 0THREAT2SOCIETY');
+    </script>
 </body>
 </html>
