@@ -563,207 +563,6 @@
             #audio-toggle { width: 38px; height: 38px; bottom: 16px; right: 16px; }
         }
 
-        /* ── click overlay ── */
-        #click-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 1000;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            overflow: hidden;
-        }
-
-        #click-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        /* ── gif background layer (replaces the old foreground <img class="user-gif">) ── */
-        #click-overlay .overlay-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        #click-overlay .overlay-bg.active {
-            opacity: 1;
-        }
-
-        #click-overlay .overlay-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            /* dark veil so text on top stays readable over the gif */
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.45), rgba(0,0,0,0.88) 75%);
-        }
-
-        #click-overlay .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            border-radius: 5px;
-            transition: background 0.2s ease;
-            outline: none;
-        }
-
-        #click-overlay .close-btn:hover,
-        #click-overlay .close-btn:focus {
-            background: rgba(255,255,255,0.2);
-        }
-
-        #click-overlay .user-info {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            text-align: center;
-        }
-
-        /* ── Overlay avatar + decoration ── */
-        #click-overlay .avatar-decoration-wrap {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            margin-bottom: 15px;
-        }
-
-        #click-overlay .avatar-large {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255,255,255,0.15);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            z-index: 2;
-            background: #111;
-        }
-
-        #click-overlay .avatar-decoration-large {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 4;
-            object-fit: contain;
-        }
-
-        #click-overlay .avatar-decoration-large.hidden {
-            display: none;
-        }
-
-        #click-overlay .display-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text);
-            letter-spacing: 2px;
-        }
-
-        #click-overlay .username {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--muted);
-            letter-spacing: 1px;
-        }
-
-        #click-overlay .status-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 5px;
-        }
-
-        #click-overlay .status-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #747f8d;
-            transition: background 0.3s ease;
-        }
-
-        #click-overlay .status-text {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--muted);
-            letter-spacing: 1px;
-            text-transform: lowercase;
-        }
-
-        #click-overlay .custom-status {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text);
-            letter-spacing: 1px;
-            margin-top: 3px;
-            max-width: 300px;
-            text-align: center;
-            min-height: 1.2em;
-        }
-
-        #click-overlay .presence-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--muted);
-            letter-spacing: 1px;
-            text-transform: lowercase;
-            margin-top: 3px;
-            min-height: 1.2em;
-        }
-
-        #click-overlay .redirect-btn {
-            margin-top: 15px;
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
-            text-decoration: none;
-            outline: none;
-        }
-
-        #click-overlay .redirect-btn:hover,
-        #click-overlay .redirect-btn:focus {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.05);
-        }
-
-        /* (the gif is now rendered via #click-overlay .overlay-bg, see above) */
-
-       
         /* ── loading skeleton ── */
         .skeleton-avatar {
             width: 100%;
@@ -825,13 +624,6 @@
             .member-decoration { width: 72px; height: 72px; }
             .member-status-dot { width: 10px; height: 10px; }
             #founders-grid { gap: 28px; }
-
-            #click-overlay .avatar-decoration-wrap { width: 130px; height: 130px; }
-            #click-overlay .avatar-large { width: 130px; height: 130px; }
-            #click-overlay .avatar-decoration-large { width: 130px; height: 130px; }
-            #click-overlay .display-name { font-size: 1.25rem; }
-            #click-overlay .username { font-size: 0.8rem; }
-            #click-overlay .redirect-btn { padding: 10px 20px; font-size: 0.65rem; }
         }
 
         @media (max-width: 380px) {
@@ -864,37 +656,11 @@
     <source src="/assets/music/ascendd.mp3" type="audio/mpeg">
 </audio>
 
-<!-- click overlay audio -->
-<audio id="click-audio" loop preload="none">
-    <source src="https://file.garden/akK66Ybqzxm58rPe/Shanti%20Dope%20-%20City%20Girl%20(Official%20Music%20Video).mp3" type="audio/mpeg">
-</audio>
-
 <!-- audio stopper -->
 <button id="audio-toggle" aria-label="Pause background music" title="music">
     <span class="audio-icon">❙❙</span>
 </button>
 
-
-<!-- click overlay -->
-<div id="click-overlay" role="dialog" aria-modal="true" aria-label="User profile overlay">
-    <div class="overlay-bg" id="overlay-bg" aria-hidden="true"></div>
-    <button class="close-btn" aria-label="Close profile">close</button>
-    <div class="user-info">
-        <div class="avatar-decoration-wrap">
-            <img class="avatar-large" src="" alt="user avatar">
-            <img class="avatar-decoration-large hidden" src="" alt="" aria-hidden="true">
-        </div>
-        <div class="display-name">display name</div>
-        <div class="username">@username</div>
-        <div class="status-info">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span class="status-text">offline</span>
-        </div>
-        <div class="custom-status"></div>
-        <div class="presence-indicator"></div>
-        <a href="#" class="redirect-btn" target="_blank" rel="noopener">visit profile &rarr;</a>
-    </div>
-</div>
 
     <!-- main -->
     <div id="main-content">
@@ -910,7 +676,7 @@
         </div>
         <div id="founders-grid">
             <!-- threat -->
-            <div class="founder-card" id="founder-1521890728094208122" tabindex="0" role="button" aria-label="View threat's profile">
+            <div class="founder-card" id="founder-1521890728094208122">
                 <div class="founder-avatar-wrap">
                     <img class="founder-avatar" src="" alt="threat's avatar">
                     <img class="founder-decoration hidden" src="" alt="" aria-hidden="true">
@@ -920,7 +686,7 @@
                 <div class="founder-tag">misery</div>
             </div>
 
-            <div class="founder-card" id="founder-1509891284536397935" tabindex="0" role="button" aria-label="View founder's profile">
+            <div class="founder-card" id="founder-1509891284536397935">
                 <div class="founder-avatar-wrap">
                     <img class="founder-avatar" src="" alt="founder's avatar">
                     <img class="founder-decoration hidden" src="" alt="" aria-hidden="true">
@@ -1016,94 +782,15 @@
 
     /* ── config ── */
     const FOUNDERS = [
-        { id: '1521890728094208122',  tag: 'asc daz'      },
+        { id: '1521890728094208122', tag: 'asc daz'    },
         { id: '1509891284536397935', tag: 'asc murder' },
-        { id: '1527288102811340880', tag: 'asc drey'         },
     ];
-
-
 
     const STATUS_COLORS = {
         online:  '#43b581',
         idle:    '#faa61a',
         dnd:     '#f04747',
         offline: '#747f8d',
-    };
-
-    // SPA routing: maps Discord id -> URL slug so every profile gets a clean
-    // shareable URL (threat2society.world/<slug>). CONTENT_MAP is NOT modified —
-    // all music/bg values stay exactly as written. This slug map is the only
-    // new config; edit it to change a profile's URL.
-    const SLUG_MAP = {
-        // founders
-        '1521890728094208122': 'daz',
-        '1512675755459612835': 'highcaliber',
-        '1280059534169210896': 'mir',
-        
-    };
-    const BY_SLUG = {};
-    Object.keys(SLUG_MAP).forEach(function(id) { BY_SLUG[SLUG_MAP[id]] = id; });
-
-    /* ════════════════════════════════════════════════════════════════
-       SPA ROUTING — path-based, no server round-trip needed
-       • open avatar  → history.pushState → URL becomes /<slug>
-       • close overlay → history.back()    → URL reverts to /
-       • deep link /<slug> (refresh/direct) → skip intro, open profile
-       • browser back button while overlay open → closes overlay
-       ════════════════════════════════════════════════════════════════ */
-    function pathToSlug(p) {
-        if (!p || p === '/') return null;
-        var parts = p.split('/').filter(Boolean);
-        if (parts.length === 1 && BY_SLUG[parts[0]]) return parts[0];
-        return null;
-    }
-
-    function showOverlayBySlug(slug) {
-        var id = BY_SLUG[slug];
-        if (id) showOverlay(id);
-    }
-
-    function openProfileRoute(slug) {
-        if (!BY_SLUG[slug]) return;
-        history.pushState({ view: 'profile', slug: slug }, '', '/' + slug);
-        showOverlayBySlug(slug);
-    }
-
-    function closeProfileRoute() {
-        if (history.state && history.state.view === 'profile') {
-            history.back();
-        } else {
-            hideOverlay();
-        }
-    }
-
-    window.addEventListener('popstate', function(e) {
-        var st = e.state;
-        if (st && st.view === 'profile' && st.slug) {
-            showOverlayBySlug(st.slug);
-        } else {
-            hideOverlay();
-        }
-    });
-
-    /* make a relative path root-relative so it resolves from /<slug> too */
-    function spaPath(url) {
-        if (!url) return url;
-        if (url.startsWith('http') || url.startsWith('//') || url.startsWith('/')) return url;
-        return '/' + url;
-    }
-
-    // remembers if the bg song was playing before an avatar's overlay opened,
-    // so closing the overlay can resume it
-    var bgAudioWasPlaying = false;
-
-    const CONTENT_MAP = {
-        '1521890728094208122': {
-            gif: 'assets/gifs/miseryopo.gif',
-            music: 'https://file.garden/akK66Ybqzxm58rPe/Nateman%20-%20Dapat%20Kitang%20Layuan%20(Visualizer)%20%5BnbqpD3lYank%5D.mp3'
-        },
-        
-        
     };
 
     const RETRY_DELAYS = [1000, 2000, 4000];
@@ -1260,17 +947,6 @@
         } else if (decEl) {
             decEl.classList.add('hidden');
         }
-
-        // Click + keyboard handler
-        var openOverlay = function() { openProfileRoute(SLUG_MAP[id] || id); };
-        card.style.cursor = 'pointer';
-        card.onclick = openOverlay;
-        card.onkeydown = function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openOverlay();
-            }
-        };
     }
 
     /* ── build + update a member card ── */
@@ -1281,8 +957,6 @@
         var card = document.createElement('div');
         card.className = 'member-card';
         card.id = 'member-' + id;
-        card.tabIndex = 0;
-        card.setAttribute('role', 'button');
         card.innerHTML =
             '<div class="member-avatar-wrap">' +
                 '<img class="member-avatar" src="" alt="' + (fallbackName || 'member') + '\'s avatar">' +
@@ -1317,182 +991,7 @@
         } else if (decEl) {
             decEl.classList.add('hidden');
         }
-
-        var openOverlay = function() { openProfileRoute(SLUG_MAP[id] || id); };
-        card.style.cursor = 'pointer';
-        card.onclick = openOverlay;
-        card.onkeydown = function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openOverlay();
-            }
-        };
     }
-
-    /* ── show overlay with gif and music ── */
-    async function showOverlay(id) {
-        var overlay = document.getElementById('click-overlay');
-        var audio = document.getElementById('click-audio');
-        var content = CONTENT_MAP[id] || { gif: '', music: '' };
-
-        // pause the background song while a profile overlay is open
-        var bgAudio = document.getElementById('bg-audio');
-        if (bgAudio) {
-            bgAudioWasPlaying = !bgAudio.paused;
-            if (!bgAudio.paused) bgAudio.pause();
-        }
-
-        // Fetch fresh user data
-        var data = await fetchUser(id);
-        if (!data || !data.discord_user) {
-            console.warn('Could not load overlay for user ' + id);
-            return;
-        }
-
-        var discord_user = data.discord_user;
-        var discord_status = data.discord_status;
-        var activities = data.activities || [];
-
-        // Update avatar
-        var avatarImg = overlay.querySelector('.avatar-large');
-        setAvatarWithFallback(avatarImg, discord_user, 256);
-
-        // Update avatar decoration
-        var decorationImg = overlay.querySelector('.avatar-decoration-large');
-        if (discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
-            decorationImg.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=256&passthrough=true';
-            decorationImg.classList.remove('hidden');
-            decorationImg.onerror = function() {
-                decorationImg.classList.add('hidden');
-            };
-        } else {
-            decorationImg.classList.add('hidden');
-        }
-
-        // Update display name and username
-        overlay.querySelector('.display-name').textContent = discord_user.global_name || discord_user.username;
-        overlay.querySelector('.username').textContent = '@' + discord_user.username;
-
-        // Update status
-        var statusDot = overlay.querySelector('.status-dot');
-        var statusText = overlay.querySelector('.status-text');
-        applyStatus(statusDot, discord_status);
-        statusText.textContent = discord_status || 'offline';
-
-        // Update custom status
-        var customStatusEl = overlay.querySelector('.custom-status');
-        var customActivity = activities.find(function(a) { return a.type === 4; });
-        if (customActivity && customActivity.state) {
-            customStatusEl.textContent = customActivity.state;
-            customStatusEl.style.display = 'block';
-        } else {
-            customStatusEl.textContent = '';
-            customStatusEl.style.display = 'none';
-        }
-
-        // Update presence indicator
-        var presenceEl = overlay.querySelector('.presence-indicator');
-        var mainActivity = activities.find(function(a) { return a.type !== 4; });
-        if (mainActivity) {
-            var presenceText = '';
-            if (mainActivity.type === 0) presenceText = 'playing ' + mainActivity.name;
-            else if (mainActivity.type === 1) presenceText = 'streaming ' + mainActivity.name;
-            else if (mainActivity.type === 2) presenceText = 'listening to ' + mainActivity.name;
-            else if (mainActivity.type === 3) presenceText = 'watching ' + mainActivity.name;
-            else if (mainActivity.type === 5) presenceText = 'competing in ' + mainActivity.name;
-
-            if (mainActivity.details && mainActivity.state) {
-                presenceText += ' \u2013 ' + mainActivity.details;
-            } else if (mainActivity.details) {
-                presenceText = mainActivity.details;
-            }
-
-            presenceEl.textContent = presenceText;
-            presenceEl.style.display = 'flex';
-        } else {
-            presenceEl.textContent = '';
-            presenceEl.style.display = 'none';
-        }
-
-        // ── custom background (gif from CONTENT_MAP, normalized to root-relative) ──
-        var bgEl = document.getElementById('overlay-bg');
-        if (content.gif) {
-            var gifUrl = spaPath(content.gif);
-            var preload = new Image();
-            preload.onload = function() {
-                bgEl.style.backgroundImage = "url('" + gifUrl + "')";
-                bgEl.classList.add('active');
-            };
-            preload.onerror = function() {
-                bgEl.style.backgroundImage = '';
-                bgEl.classList.remove('active');
-            };
-            preload.src = gifUrl;
-        } else {
-            bgEl.style.backgroundImage = '';
-            bgEl.classList.remove('active');
-        }
-
-        // ── redirect button (slug-based URL — works as a shareable deep link) ──
-        var redirectBtn = overlay.querySelector('.redirect-btn');
-        var slug = SLUG_MAP[id];
-        if (slug) {
-            redirectBtn.href = '/' + slug;
-            redirectBtn.style.display = 'inline-block';
-        } else {
-            redirectBtn.href = '#';
-            redirectBtn.style.display = 'none';
-        }
-
-        // Update and play music (from CONTENT_MAP, normalized to root-relative)
-        if (audio && content.music) {
-            audio.src = spaPath(content.music);
-            audio.volume = 0.5;
-            audio.play().catch(function() {});
-        }
-
-        // Show overlay
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        // Focus trap: focus close button
-        var closeBtn = overlay.querySelector('.close-btn');
-        if (closeBtn) closeBtn.focus();
-    }
-
-    /* ── hide overlay and stop music ── */
-    function hideOverlay() {
-        var overlay = document.getElementById('click-overlay');
-        var audio = document.getElementById('click-audio');
-        var bgEl = document.getElementById('overlay-bg');
-
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-        if (bgEl) bgEl.classList.remove('active');
-
-        if (audio) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
-
-        // resume the background song, but only if it was playing before
-        var bgAudio = document.getElementById('bg-audio');
-        if (bgAudio && bgAudioWasPlaying) {
-            bgAudio.play().catch(function() {});
-        }
-    }
-
-    /* ── overlay close button (routes through history so URL reverts) ── */
-    document.querySelector('.close-btn').addEventListener('click', closeProfileRoute);
-
-    /* ── close overlay on escape key or click outside ── */
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeProfileRoute();
-    });
-
-    document.getElementById('click-overlay').addEventListener('click', function(e) {
-        if (e.target === this) closeProfileRoute();
-    });
 
     /* ── refresh all ── */
     function refreshAll() {
@@ -1611,11 +1110,6 @@
             p.catch(function() {
                 var resume = function() {
                     bgAudioEl.play().catch(function() {});
-                    // also resume a profile song if a deep-link loaded one
-                    var clickAudio = document.getElementById('click-audio');
-                    if (clickAudio && clickAudio.getAttribute('src') && clickAudio.paused) {
-                        clickAudio.play().catch(function() {});
-                    }
                     document.removeEventListener('click', resume);
                     document.removeEventListener('keydown', resume);
                     document.removeEventListener('touchstart', resume);
@@ -1629,26 +1123,19 @@
     }
     attemptAutoplay();
 
-    /* ── intro click + on-load routing ── */
+    /* ── intro click ── */
     var introEl = document.getElementById('intro');
 
-    async function enterSite(skipIntro) {
+    async function enterSite() {
         var audio = document.getElementById('bg-audio');
 
-        if (skipIntro) {
-            // deep link: jump straight past the intro
+        if (audio) { audio.volume = 0.5; audio.play().catch(function() {}); }
+        if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
+        introEl.style.opacity = '0';
+        setTimeout(function() {
             introEl.style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
-            if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
-        } else {
-            if (audio) { audio.volume = 0.5; audio.play().catch(function() {}); }
-            if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
-            introEl.style.opacity = '0';
-            setTimeout(function() {
-                introEl.style.display = 'none';
-                document.getElementById('main-content').style.display = 'flex';
-            }, 900);
-        }
+        }, 900);
 
         /* load founders */
         FOUNDERS.forEach(function(f) { updateFounder(f.id); });
@@ -1672,26 +1159,11 @@
         });
     }
 
-    /* on load: deep link to /<slug> opens that profile (skipping intro);
-       otherwise show the intro and seed a home history entry so back-button
-       out of a profile lands on / instead of leaving the site. */
-    (function initRouting() {
-        var slug = pathToSlug(location.pathname);
-        if (slug && BY_SLUG[slug]) {
-            enterSite(true);
-            history.replaceState({ view: 'home' }, '', '/');
-            history.pushState({ view: 'profile', slug: slug }, '', '/' + slug);
-            showOverlayBySlug(slug);
-        } else {
-            history.replaceState({ view: 'home' }, '', location.pathname + location.search);
-        }
-    })();
-
-    introEl.addEventListener('click', function() { enterSite(false); });
+    introEl.addEventListener('click', function() { enterSite(); });
     introEl.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            enterSite(false);
+            enterSite();
         }
     });
 
