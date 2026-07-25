@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="The Exalted Ones">
     <meta name="theme-color" content="#080808">
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c318237f69bb0b89626b1d27cf304c&">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c318237f">
     <title>The Exalted Ones</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -38,7 +38,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ── starfield ── */
         #stars {
             position: fixed;
             inset: 0;
@@ -46,9 +45,6 @@
             pointer-events: none;
         }
 
-        /* ── main background ──
-           Drop your own image/gif in /assets/img/ and update the path below.
-           (jpg, png, gif, webp all work — just point the url() at it) */
         #main-bg {
             position: fixed;
             inset: 0;
@@ -68,7 +64,6 @@
             background: radial-gradient(ellipse at center, rgba(8,8,8,0.5), rgba(8,8,8,0.94) 78%);
         }
 
-        /* ── intro screen ── */
         #intro {
             position: fixed;
             inset: 0;
@@ -105,7 +100,6 @@
             animation: pulse 2.5s infinite;
         }
 
-        /* ── main wrapper ── */
         #main-content {
             display: none;
             flex-direction: column;
@@ -118,7 +112,6 @@
             animation: fadeIn 0.8s ease;
         }
 
-        /* ── site title ── */
         .site-title {
             font-family: 'Cinzel', serif;
             font-weight: 600;
@@ -133,7 +126,6 @@
             margin-bottom: 50px;
         }
 
-        /* ── FOUNDERS block ── */
         .founders-wrapper {
             width: 100%;
             max-width: 700px;
@@ -213,7 +205,6 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.8), 0 0 0 2px rgba(255,255,255,0.3);
         }
 
-        /* ── Avatar + Decoration wrapper ── */
         .founder-avatar-wrap {
             position: relative;
             width: 90px;
@@ -273,7 +264,6 @@
             letter-spacing: 1px;
         }
 
-        /* ── SERVERS carousel ── */
         .servers-wrapper {
             width: 100%;
             max-width: 900px;
@@ -420,7 +410,6 @@
             .carousel-track { gap: 14px; }
         }
 
-        /* ── DAY 1s section ── */
         .section-wrapper {
             width: 100%;
             max-width: 700px;
@@ -532,7 +521,6 @@
             white-space: nowrap;
         }
 
-        /* ── audio toggle (bottom right) ── */
         #audio-toggle {
             position: fixed;
             bottom: 22px;
@@ -573,7 +561,6 @@
             #audio-toggle { width: 38px; height: 38px; bottom: 16px; right: 16px; }
         }
 
-        /* ── loading skeleton ── */
         .skeleton-avatar {
             width: 100%;
             height: 100%;
@@ -599,7 +586,6 @@
             100% { background-position: -200% 0; }
         }
 
-        /* ── error state ── */
         .load-error {
             font-family: 'Space Mono', monospace;
             font-size: 0.6rem;
@@ -609,7 +595,6 @@
             padding: 20px;
         }
 
-        /* ── animations ── */
         @keyframes pulse {
             0%, 100% { opacity: 0.5; }
             50%       { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.4); }
@@ -620,11 +605,6 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-
-
-
-
-        /* ── mobile tweaks ── */
         @media (max-width: 600px) {
             .members-grid { grid-template-columns: repeat(3, 1fr); gap: 22px 14px; }
             .founder-avatar-wrap { width: 75px; height: 75px; }
@@ -647,36 +627,26 @@
 </head>
 <body>
 
-<!-- starfield canvas -->
 <canvas id="stars"></canvas>
 
-<!-- main background (swap in your own image at /assets/img/background.jpg) -->
 <div id="main-bg" aria-hidden="true"></div>
 
-<!-- intro -->
 <div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
     <div class="brand">THE EXALTED ONES</div>
     <h2>[ click to enter ]</h2>
 </div>
 
-
-
-<!-- audio -->
 <audio id="bg-audio" loop preload="auto">
     <source src="https://file.garden/amQoMeBMSROPxoxS/sadbai" type="audio/mpeg">
 </audio>
 
-<!-- audio stopper -->
 <button id="audio-toggle" aria-label="Pause background music" title="music">
     <span class="audio-icon">❙❙</span>
 </button>
 
-
-    <!-- main -->
-    <div id="main-content">
+<div id="main-content">
     <div class="site-title">THE EXALTED ONES</div>
 
-    <!-- FOUNDERS -->
     <div class="founders-wrapper">
         <div class="founders-header" id="founders-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="founders-grid">
             <div class="founders-label">
@@ -685,7 +655,6 @@
             </div>
         </div>
         <div id="founders-grid">
-            <!-- threat -->
             <div class="founder-card" id="founder-1521890728094208122">
                 <div class="founder-avatar-wrap">
                     <img class="founder-avatar" src="" alt="threat's avatar">
@@ -705,18 +674,9 @@
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">dx</div>
             </div>
-
         </div>
     </div>
 
-    <!-- SERVERS ── put each Discord server's Guild ID in the SERVERS config array
-         near the bottom of this file (search for "const SERVERS"). The name and
-         member count below are then pulled live from Discord — no need to type them in here.
-         NOTE: this only works for servers that have "Server Widget" turned on
-         (Server Settings → Widget → Enable Server Widget), since that's the only
-         Discord data Discord exposes without a bot.
-         The 4 cards are duplicated once immediately after so the scroll loops seamlessly —
-         both cards for the same server share the same data-guild-id and update together. -->
     <div class="servers-wrapper">
         <div class="servers-header">
             <div class="servers-label">we own ts</div>
@@ -724,7 +684,6 @@
 
         <div class="carousel">
             <div class="carousel-track">
-                <!-- set 1 -->
                 <div class="server-card" data-guild-id="1">
                     <div class="server-icon">--</div>
                     <div class="server-name">loading</div>
@@ -753,7 +712,6 @@
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <!-- set 2 (duplicate of set 1, required for seamless loop) -->
                 <div class="server-card" data-guild-id="1" aria-hidden="true">
                     <div class="server-icon">--</div>
                     <div class="server-name">loading</div>
@@ -785,24 +743,17 @@
             </div>
         </div>
     </div>
-
-
-  
+</div>
 
 <script>
 (function () {
     "use strict";
 
-    /* ── config ── */
     const FOUNDERS = [
-        { id: '1521890728094208122', tag: 'daz'    },
+        { id: '1521890728094208122', tag: 'daz' },
         { id: '1512675755459612835', tag: 'dx' },
     ];
 
-    /* Server carousel — put each server's Discord Guild ID as the "id" below.
-       Name + member count are then fetched live from Discord.
-       Requires that server to have Server Widget enabled:
-       Server Settings → Widget → Enable Server Widget. */
     const SERVERS = [
         { slot: '1', id: '1257204855072886784' },
         { slot: '2', id: '1499975367639695411' },
@@ -819,7 +770,6 @@
 
     const RETRY_DELAYS = [1000, 2000, 4000];
 
-    /* ── starfield ── */
     (function initStars() {
         const canvas = document.getElementById('stars');
         if (!canvas) return;
@@ -831,7 +781,6 @@
             w = canvas.width  = window.innerWidth;
             h = canvas.height = window.innerHeight;
         }
-
 
         function genStars(n) {
             stars = [];
@@ -870,11 +819,6 @@
         });
     })();
 
-    /* ── avatar url ──
-       NOTE: Discord's CDN only accepts powers of two (16, 32, 64, 128, 256, ...)
-       for the size param. Non-power-of-two values like 160 are inconsistently
-       tolerated for static PNGs but commonly fail for animated GIFs, which is
-       why gif avatars were silently falling back to the default icon. */
     function avatarUrl(user, size) {
         size = size || 128;
         if (!user || !user.avatar) {
@@ -884,11 +828,8 @@
         return 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.' + ext + '?size=' + size;
     }
 
-    /* ── default (no-custom-avatar) fallback url ── */
     function defaultAvatarUrl(user) {
         if (!user) return 'https://cdn.discordapp.com/embed/avatars/0.png';
-        // users migrated to the new username system have discriminator "0";
-        // their default avatar index is derived from the id instead
         if (!user.discriminator || user.discriminator === '0') {
             var idx = 0;
             try { idx = Number((BigInt(user.id) >> BigInt(22)) % BigInt(6)); } catch (e) { idx = 0; }
@@ -897,7 +838,6 @@
         return 'https://cdn.discordapp.com/embed/avatars/' + (user.discriminator % 5) + '.png';
     }
 
-    /* ── set an <img> avatar with a gif → animated webp → default fallback chain ── */
     function setAvatarWithFallback(imgEl, user, size) {
         if (!imgEl || !user) return;
         size = size || 128;
@@ -915,14 +855,12 @@
         };
     }
 
-    /* ── apply status color ── */
     function applyStatus(dotEl, status) {
         if (!dotEl) return;
         dotEl.style.background = STATUS_COLORS[status] || STATUS_COLORS.offline;
         dotEl.setAttribute('data-status', status || 'offline');
     }
 
-    /* ── fetch single user via Lanyard with retry ── */
     async function fetchUser(id, attempt) {
         attempt = attempt || 0;
         try {
@@ -941,8 +879,6 @@
         }
     }
 
-    /* ── fetch a guild's public widget (name, online count, invite) with retry ──
-       Only works if that server has Server Widget enabled. */
     async function fetchGuildWidget(guildId, attempt) {
         attempt = attempt || 0;
         try {
@@ -959,7 +895,6 @@
         }
     }
 
-    /* ── turn a server name into 1-2 letter icon initials ── */
     function serverInitials(name) {
         if (!name) return '?';
         var words = name.trim().split(/\s+/).filter(Boolean);
@@ -967,7 +902,6 @@
         return (words[0][0] + words[1][0]).toUpperCase();
     }
 
-    /* ── update every card (original + duplicate) for one server slot ── */
     function updateServerCard(slot, data) {
         var cards = document.querySelectorAll('.server-card[data-guild-id="' + slot + '"]');
         cards.forEach(function(card) {
@@ -989,7 +923,6 @@
         });
     }
 
-    /* ── load all server cards from their configured guild IDs ── */
     function loadServers() {
         SERVERS.forEach(function(s) {
             if (!s.id || s.id === 'YOUR_GUILD_ID_HERE') return;
@@ -997,7 +930,6 @@
         });
     }
 
-    /* ── update a founder card ── */
     async function updateFounder(id) {
         var data = await fetchUser(id);
         var card = document.getElementById('founder-' + id);
@@ -1029,7 +961,6 @@
         }
     }
 
-    /* ── build + update a member card ── */
     async function buildMember(id, gridId, fallbackName) {
         var grid = document.getElementById(gridId);
         if (!grid) return;
@@ -1073,191 +1004,71 @@
         }
     }
 
-    /* ── refresh all ── */
     function refreshAll() {
-        loadServers();
-
         FOUNDERS.forEach(function(f) {
-            fetchUser(f.id).then(function(data) {
-                if (!data || !data.discord_user) return;
-                var card = document.getElementById('founder-' + f.id);
-                if (!card) return;
-                var discord_user = data.discord_user;
-                var discord_status = data.discord_status;
-                var founderAvatar = card.querySelector('.founder-avatar');
-                setAvatarWithFallback(founderAvatar, discord_user, 128);
-                var nameEl = card.querySelector('.founder-name');
-                if (nameEl) nameEl.textContent = discord_user.global_name || discord_user.username;
-                applyStatus(card.querySelector('.founder-status-dot'), discord_status);
-                var decEl = card.querySelector('.founder-decoration');
-                if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
-                    decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
-                    decEl.classList.remove('hidden');
-                } else if (decEl) {
-                    decEl.classList.add('hidden');
-                }
-            });
+            updateFounder(f.id);
         });
-
-        Object.values(GROUPS).flat().forEach(function(id) {
-            fetchUser(id).then(function(data) {
-                if (!data || !data.discord_user) return;
-                var card = document.getElementById('member-' + id);
-                if (!card) return;
-                var discord_user = data.discord_user;
-                var discord_status = data.discord_status;
-                var memberAvatar = card.querySelector('.member-avatar');
-                setAvatarWithFallback(memberAvatar, discord_user, 128);
-                var nameEl = card.querySelector('.member-name');
-                if (nameEl) nameEl.textContent = discord_user.global_name || discord_user.username;
-                applyStatus(card.querySelector('.member-status-dot'), discord_status);
-                var decEl = card.querySelector('.member-decoration');
-                if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
-                    decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
-                    decEl.classList.remove('hidden');
-                } else if (decEl) {
-                    decEl.classList.add('hidden');
-                }
-            });
-        });
+        loadServers();
     }
 
-    /* ── founders toggle ── */
-    var foundersToggle = document.getElementById('founders-toggle');
-    foundersToggle.addEventListener('click', function() {
-        var grid  = document.getElementById('founders-grid');
-        var arrow = document.getElementById('founders-arrow');
-        var isCollapsed = grid.classList.toggle('collapsed');
-        arrow.classList.toggle('open');
-        foundersToggle.setAttribute('aria-expanded', String(!isCollapsed));
-    });
-    foundersToggle.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            foundersToggle.click();
-        }
-    });
-
-    /* ── title animation ── */
-    var fullTitle = 'threat2society.world';
-    var tIdx = 0, tDel = false;
-
-    function animTitle() {
-        if (!tDel) {
-            if (tIdx < fullTitle.length) { tIdx++; document.title = fullTitle.slice(0, tIdx); setTimeout(animTitle, 90); }
-            else { tDel = true; setTimeout(animTitle, 3000); }
-        } else {
-            if (tIdx > 0) { tIdx--; document.title = fullTitle.slice(0, tIdx) || '\u00B7'; setTimeout(animTitle, 45); }
-            else { tDel = false; setTimeout(animTitle, 500); }
-        }
-    }
-
-    /* ── audio stopper / toggle ── */
-    var audioToggleBtn = document.getElementById('audio-toggle');
-    var audioIconEl = audioToggleBtn ? audioToggleBtn.querySelector('.audio-icon') : null;
-    var bgAudioEl = document.getElementById('bg-audio');
-
-    function updateAudioIcon() {
-        if (!audioIconEl || !bgAudioEl) return;
-        var playing = !bgAudioEl.paused;
-        audioIconEl.textContent = playing ? '❙❙' : '►';
-        audioToggleBtn.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
-    }
-
-    if (bgAudioEl) {
-        bgAudioEl.addEventListener('play', updateAudioIcon);
-        bgAudioEl.addEventListener('pause', updateAudioIcon);
-    }
-
-    if (audioToggleBtn) {
-        audioToggleBtn.addEventListener('click', function() {
-            if (!bgAudioEl) return;
-            if (bgAudioEl.paused) {
-                bgAudioEl.play().catch(function() {});
-            } else {
-                bgAudioEl.pause();
-            }
-        });
-    }
-
-    /* ── attempt autoplay as soon as the page loads ──
-       Most browsers block unmuted autoplay before any user gesture, so this
-       is best-effort: if it's blocked, the song starts on the first click/
-       keypress/tap anywhere on the page (including the "click to enter" intro) */
-    function attemptAutoplay() {
-        if (!bgAudioEl) return;
-        bgAudioEl.volume = 0.5;
-        var p = bgAudioEl.play();
-        if (p && typeof p.catch === 'function') {
-            p.catch(function() {
-                var resume = function() {
-                    bgAudioEl.play().catch(function() {});
-                    document.removeEventListener('click', resume);
-                    document.removeEventListener('keydown', resume);
-                    document.removeEventListener('touchstart', resume);
-                };
-                document.addEventListener('click', resume, { once: true });
-                document.addEventListener('keydown', resume, { once: true });
-                document.addEventListener('touchstart', resume, { once: true });
-            });
-        }
-        updateAudioIcon();
-    }
-    attemptAutoplay();
-
-    /* ── intro click ── */
     var introEl = document.getElementById('intro');
+    var mainEl = document.getElementById('main-content');
+    var audioEl = document.getElementById('bg-audio');
+    var audioToggleEl = document.getElementById('audio-toggle');
+    var foundersToggleEl = document.getElementById('founders-toggle');
+    var foundersArrowEl = document.getElementById('founders-arrow');
+    var foundersGridEl = document.getElementById('founders-grid');
+    var isPlaying = false;
 
-    async function enterSite() {
-        var audio = document.getElementById('bg-audio');
+    function startAudio() {
+        if (!isPlaying) {
+            audioEl.play().catch(function() {});
+            isPlaying = true;
+        }
+    }
 
-        if (audio) { audio.volume = 0.5; audio.play().catch(function() {}); }
-        if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
+    function toggleAudio() {
+        if (isPlaying) {
+            audioEl.pause();
+            isPlaying = false;
+        } else {
+            audioEl.play().catch(function() {});
+            isPlaying = true;
+        }
+    }
+
+    introEl.addEventListener('click', function() {
         introEl.style.opacity = '0';
         setTimeout(function() {
             introEl.style.display = 'none';
-            document.getElementById('main-content').style.display = 'flex';
+            mainEl.style.display = 'flex';
+            audioToggleEl.style.display = 'flex';
+            startAudio();
+            refreshAll();
         }, 900);
+    });
 
-        /* load founders */
-        FOUNDERS.forEach(function(f) { updateFounder(f.id); });
-
-        /* load servers */
-        loadServers();
-
-        /* load all groups */
-        buildMemberGroup('doa-grid', GROUPS.doa);
-        buildMemberGroup('day1-grid', GROUPS.day1);
-        buildMemberGroup('steppaz-grid', GROUPS.Steppaz);
-        buildMemberGroup('exclsv-grid', GROUPS.exclsv);
-        buildMemberGroup('members-grid', GROUPS.members);
-
-        /* poll every 15s */
-        setInterval(refreshAll, 15000);
-
-        animTitle();
-    }
-
-    function buildMemberGroup(gridId, ids) {
-        ids.forEach(function(id) {
-            buildMember(id, gridId, id);
-        });
-    }
-
-    introEl.addEventListener('click', function() { enterSite(); });
     introEl.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            enterSite();
+        if (e.key === 'Enter') {
+            introEl.click();
         }
     });
 
-    /* ── devtools block ── */
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'F12') e.preventDefault();
-        if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) e.preventDefault();
+    audioToggleEl.addEventListener('click', toggleAudio);
+
+    foundersToggleEl.addEventListener('click', function() {
+        foundersGridEl.classList.toggle('collapsed');
+        foundersArrowEl.classList.toggle('open');
     });
+
+    foundersToggleEl.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            foundersToggleEl.click();
+        }
+    });
+
+    refreshAll();
+    setInterval(refreshAll, 30000);
 })();
 </script>
 </body>
