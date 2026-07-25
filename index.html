@@ -206,11 +206,28 @@
             cursor: pointer;
             transition: transform 0.2s ease;
             outline: none;
+            position: relative;
         }
 
         .founder-card:hover,
         .founder-card:focus {
             transform: scale(1.05);
+        }
+
+        .founder-card:hover .founder-links,
+        .founder-card:focus-within .founder-links,
+        .founder-card.spread .founder-links {
+            max-height: 120px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        .founder-card:hover .founder-link,
+        .founder-card:focus-within .founder-link,
+        .founder-card.spread .founder-link {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
         }
 
         .founder-card:focus .founder-avatar {
@@ -279,46 +296,31 @@
         /* ── founder social links: hidden, "spread" open on hover/focus/tap ── */
         .founder-links {
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            gap: 8px;
             max-height: 0;
             margin-top: 0;
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
-        }
-
-        .founder-card:hover .founder-links,
-        .founder-card:focus-within .founder-links,
-        .founder-card.spread .founder-links {
-            max-height: 40px;
-            opacity: 1;
-            margin-top: 2px;
+            align-items: center;
         }
 
         .founder-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.03);
             color: var(--muted);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.48rem;
-            letter-spacing: 0.5px;
             text-decoration: none;
             opacity: 0;
-            transform: translateY(8px) scale(0.7);
+            transform: scale(0.7);
             transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .founder-card:hover .founder-link,
-        .founder-card:focus-within .founder-link,
-        .founder-card.spread .founder-link {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+            pointer-events: none;
         }
 
         .founder-link:nth-child(1) { transition-delay: 0s; }
@@ -330,6 +332,13 @@
             color: #fff;
             border-color: rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.08);
+        }
+
+        .founder-link img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+            display: block;
         }
 
         .servers-wrapper {
@@ -683,11 +692,17 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">misery</div>
-                <!-- replace the # hrefs below with this founder's real profile links -->
+                <!-- Add social links below with invite URLs and optional icon src -->
                 <div class="founder-links">
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox">RBLX</a>
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify">SPT</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Add icon or text">
+                        <span>IG</span>
+                    </a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Add icon or text">
+                        <span>RBLX</span>
+                    </a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Add icon or text">
+                        <span>SPT</span>
+                    </a>
                 </div>
             </div>
 
@@ -699,11 +714,17 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">dx</div>
-                <!-- replace the # hrefs below with this founder's real profile links -->
+                <!-- Add social links below with invite URLs and optional icon src -->
                 <div class="founder-links">
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox">RBLX</a>
-                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify">SPT</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Add icon or text">
+                        <span>IG</span>
+                    </a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Add icon or text">
+                        <span>RBLX</span>
+                    </a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Add icon or text">
+                        <span>SPT</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -716,28 +737,30 @@
 
         <div class="carousel">
             <div class="carousel-track">
-                <a class="server-card" data-server-slot="1" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                <!-- Add invite links in href and icon/banner manually in .server-icon -->
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="2" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="3" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="4" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="1" href="#" tabindex="-1" aria-hidden="true">
+                <!-- Duplicates for seamless carousel loop -->
+                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="2" href="#" tabindex="-1" aria-hidden="true">
+                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="3" href="#" tabindex="-1" aria-hidden="true">
+                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
                 </a>
-                <a class="server-card" data-server-slot="4" href="#" tabindex="-1" aria-hidden="true">
+                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
                 </a>
             </div>
@@ -752,13 +775,6 @@
     const FOUNDERS = [
         { id: '1521890728094208122', tag: 'daz' },
         { id: '1512675755459612835', tag: 'dx' },
-    ];
-
-    const SERVERS = [
-        { slot: '1', id: '1257204855072886784' },
-        { slot: '2', id: '1499975367639695411' },
-        { slot: '3', id: 'YOUR_GUILD_ID_HERE' },
-        { slot: '4', id: 'YOUR_GUILD_ID_HERE' },
     ];
 
     const STATUS_COLORS = {
@@ -901,73 +917,6 @@
         }
     }
 
-    async function fetchGuildWidget(guildId, attempt) {
-        attempt = attempt || 0;
-        try {
-            var res = await fetch('https://discord.com/api/guilds/' + guildId + '/widget.json');
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            return await res.json();
-        } catch (err) {
-            if (attempt < RETRY_DELAYS.length) {
-                await new Promise(function(r) { setTimeout(r, RETRY_DELAYS[attempt]); });
-                return fetchGuildWidget(guildId, attempt + 1);
-            }
-            console.warn('Failed to fetch guild widget ' + guildId + ':', err.message);
-            return null;
-        }
-    }
-
-    function serverInitials(name) {
-        if (!name) return '?';
-        var words = name.trim().split(/\s+/).filter(Boolean);
-        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-        return (words[0][0] + words[1][0]).toUpperCase();
-    }
-
-    function guildIconUrl(guildId, icon, size) {
-        size = size || 128;
-        if (!icon) return '';
-        var ext = icon.startsWith('a_') ? 'gif' : 'png';
-        return 'https://cdn.discordapp.com/icons/' + guildId + '/' + icon + '.' + ext + '?size=' + size;
-    }
-
-    function updateServerCard(slot, data, guildId) {
-        var cards = document.querySelectorAll('.server-card[data-server-slot="' + slot + '"]');
-        cards.forEach(function(card) {
-            var iconEl = card.querySelector('.server-icon');
-
-            if (!data) {
-                if (iconEl) iconEl.innerHTML = '';
-                return;
-            }
-
-            if (iconEl) {
-                iconEl.innerHTML = '';
-                if (data.icon) {
-                    var iconImg = document.createElement('img');
-                    iconImg.src = guildIconUrl(guildId, data.icon, 256);
-                    iconImg.alt = data.name + ' icon';
-                    iconImg.onerror = function() {
-                        iconEl.textContent = serverInitials(data.name);
-                    };
-                    iconEl.appendChild(iconImg);
-                } else {
-                    iconEl.textContent = serverInitials(data.name);
-                }
-            }
-
-            if (data.instant_invite) card.href = data.instant_invite;
-            if (!card.hasAttribute('aria-hidden')) card.setAttribute('aria-label', 'Join ' + data.name);
-        });
-    }
-
-    function loadServers() {
-        SERVERS.forEach(function(s) {
-            if (!s.id || s.id === 'YOUR_GUILD_ID_HERE') return;
-            fetchGuildWidget(s.id).then(function(data) { updateServerCard(s.slot, data, s.id); });
-        });
-    }
-
     async function updateFounder(id) {
         var data = await fetchUser(id);
         var card = document.getElementById('founder-' + id);
@@ -999,113 +948,97 @@
         }
     }
 
-    async function buildMember(id, gridId, fallbackName) {
-        var grid = document.getElementById(gridId);
-        if (!grid) return;
+    function initFounderToggle() {
+        const toggle = document.getElementById('founders-toggle');
+        const grid = document.getElementById('founders-grid');
+        const arrow = document.getElementById('founders-arrow');
+        if (!toggle || !grid || !arrow) return;
 
-        var card = document.createElement('div');
-        card.className = 'member-card';
+        toggle.addEventListener('click', function() {
+            grid.classList.toggle('collapsed');
+            arrow.classList.toggle('open');
+            const isExpanded = !grid.classList.contains('collapsed');
+            toggle.setAttribute('aria-expanded', isExpanded);
+        });
 
-        var avatarWrap = document.createElement('div');
-        avatarWrap.className = 'member-avatar-wrap';
-        var avatar = document.createElement('img');
-        avatar.className = 'member-avatar';
-        avatar.alt = fallbackName + "'s avatar";
-        var decoration = document.createElement('img');
-        decoration.className = 'member-decoration hidden';
-        decoration.alt = '';
-        decoration.setAttribute('aria-hidden', 'true');
-        var statusDot = document.createElement('span');
-        statusDot.className = 'member-status-dot';
-        statusDot.setAttribute('aria-hidden', 'true');
-        avatarWrap.appendChild(avatar);
-        avatarWrap.appendChild(decoration);
-        avatarWrap.appendChild(statusDot);
+        toggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle.click();
+            }
+        });
+    }
 
-        var nameEl = document.createElement('div');
-        nameEl.className = 'member-name';
-        nameEl.textContent = 'loading';
+    function initFounderSpread() {
+        const cards = document.querySelectorAll('.founder-card');
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.founder-link')) return;
+                card.classList.toggle('spread');
+            });
 
-        card.appendChild(avatarWrap);
-        card.appendChild(nameEl);
-        grid.appendChild(card);
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('spread');
+                }
+            });
 
-        card.tabIndex = 0;
+            document.addEventListener('click', (e) => {
+                if (!card.contains(e.target)) {
+                    card.classList.remove('spread');
+                }
+            });
+        });
+    }
 
-        var userData = await fetchUser(id);
-        if (!userData || !userData.discord_user) {
-            nameEl.textContent = fallbackName;
-            return;
-        }
+    function initAudio() {
+        const audio = document.getElementById('bg-audio');
+        const toggle = document.getElementById('audio-toggle');
+        if (!audio || !toggle) return;
 
-        var user = userData.discord_user;
-        setAvatarWithFallback(avatar, user, 128);
-        nameEl.textContent = user.global_name || user.username;
-        applyStatus(statusDot, userData.discord_status);
-
-        if (user.avatar_decoration_data && user.avatar_decoration_data.asset) {
-            decoration.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
-            decoration.classList.remove('hidden');
-            decoration.onerror = function() { decoration.classList.add('hidden'); };
-        }
+        toggle.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play().catch(err => console.error('Audio play error:', err));
+                toggle.setAttribute('aria-label', 'Pause background music');
+            } else {
+                audio.pause();
+                toggle.setAttribute('aria-label', 'Play background music');
+            }
+        });
     }
 
     function playAudio() {
-        var audio = document.getElementById('bg-audio');
+        const audio = document.getElementById('bg-audio');
         if (audio) {
-            audio.play().catch(function(e) {
-                console.log('Autoplay prevented:', e);
-            });
+            audio.play().catch(err => console.error('Auto-play blocked or error:', err));
         }
     }
 
-    var audioToggle = document.getElementById('audio-toggle');
-    if (audioToggle) {
-        audioToggle.addEventListener('click', function() {
-            var audio = document.getElementById('bg-audio');
-            if (audio) {
-                if (audio.paused) {
-                    audio.play();
-                    audioToggle.setAttribute('aria-label', 'Pause background music');
-                } else {
-                    audio.pause();
-                    audioToggle.setAttribute('aria-label', 'Play background music');
-                }
-            }
+    function loadFounders() {
+        FOUNDERS.forEach(function(f) {
+            updateFounder(f.id);
         });
     }
-
-    var foundersToggle = document.getElementById('founders-toggle');
-    if (foundersToggle) {
-        foundersToggle.addEventListener('click', function() {
-            var grid = document.getElementById('founders-grid');
-            var arrow = document.getElementById('founders-arrow');
-            if (grid) {
-                grid.classList.toggle('collapsed');
-                if (arrow) arrow.classList.toggle('open');
-                foundersToggle.setAttribute('aria-expanded', !grid.classList.contains('collapsed'));
-            }
-        });
-        foundersToggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                foundersToggle.click();
-            }
-        });
-    }
-
-    // tap-to-reveal social links on touch devices (hover doesn't exist there)
-    document.querySelectorAll('.founder-card').forEach(function(card) {
-        card.addEventListener('click', function(e) {
-            if (e.target.closest('.founder-link')) return; // let the link navigate normally
-            card.classList.toggle('spread');
-        });
-    });
 
     // Initialize everything
-    initIntro();
-    loadServers();
-    FOUNDERS.forEach(function(f) { updateFounder(f.id); });
+    window.addEventListener('DOMContentLoaded', function() {
+        initIntro();
+        initFounderToggle();
+        initFounderSpread();
+        initAudio();
+        loadFounders();
+    });
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initIntro);
+    } else {
+        initIntro();
+        initFounderToggle();
+        initFounderSpread();
+        initAudio();
+        loadFounders();
+    }
 })();
 </script>
 
