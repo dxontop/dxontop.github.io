@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c318237f69bb0b89626b1d27cf304c&">
     <title>The Exalted Ones</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #080808;
@@ -84,11 +84,16 @@
         }
 
         #intro .brand {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
-            letter-spacing: 6px;
-            color: var(--muted);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2.6vw, 1.2rem);
+            letter-spacing: 4px;
             text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 55%, #888888 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 22px rgba(255,255,255,0.18);
         }
 
         #intro h2 {
@@ -115,11 +120,16 @@
 
         /* ── site title ── */
         .site-title {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(0.55rem, 1.8vw, 0.75rem);
-            letter-spacing: 10px;
-            color: var(--muted);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2.8vw, 1.4rem);
+            letter-spacing: 5px;
             text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 50%, #8f8f8f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 24px rgba(255,255,255,0.15);
             margin-bottom: 50px;
         }
 
@@ -645,7 +655,7 @@
 
 <!-- intro -->
 <div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
-    <div class="brand">T H E  E X A L T E D  O N E S</div>
+    <div class="brand">THE EXALTED ONES</div>
     <h2>[ click to enter ]</h2>
 </div>
 
@@ -653,7 +663,7 @@
 
 <!-- audio -->
 <audio id="bg-audio" loop preload="auto">
-    <source src="/assets/music/ascendd.mp3" type="audio/mpeg">
+    <source src="https://file.garden/amQoMeBMSROPxoxS/sadbai" type="audio/mpeg">
 </audio>
 
 <!-- audio stopper -->
@@ -664,7 +674,7 @@
 
     <!-- main -->
     <div id="main-content">
-    <div class="site-title">T H E  E X A L T E D  O N E S</div>
+    <div class="site-title">THE EXALTED ONES</div>
 
     <!-- FOUNDERS -->
     <div class="founders-wrapper">
@@ -699,81 +709,84 @@
         </div>
     </div>
 
-    <!-- SERVERS ── edit name / description / member count / invite link for each card below.
+    <!-- SERVERS ── put each Discord server's Guild ID in the SERVERS config array
+         near the bottom of this file (search for "const SERVERS"). The name and
+         member count below are then pulled live from Discord — no need to type them in here.
+         NOTE: this only works for servers that have "Server Widget" turned on
+         (Server Settings → Widget → Enable Server Widget), since that's the only
+         Discord data Discord exposes without a bot.
          The 4 cards are duplicated once immediately after so the scroll loops seamlessly —
-         keep both sets identical if you change anything. -->
+         both cards for the same server share the same data-guild-id and update together. -->
     <div class="servers-wrapper">
         <div class="servers-header">
-            <div class="servers-label">servers</div>
+            <div class="servers-label">we own ts</div>
         </div>
 
         <div class="carousel">
             <div class="carousel-track">
                 <!-- set 1 -->
-                <div class="server-card">
-                    <div class="server-icon">S1</div>
-                    <div class="server-name">Server One</div>
+                <div class="server-card" data-guild-id="1">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card">
-                    <div class="server-icon">S2</div>
-                    <div class="server-name">Server Two</div>
+                <div class="server-card" data-guild-id="2">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card">
-                    <div class="server-icon">S3</div>
-                    <div class="server-name">Server Three</div>
+                <div class="server-card" data-guild-id="3">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card">
-                    <div class="server-icon">S4</div>
-                    <div class="server-name">Server Four</div>
+                <div class="server-card" data-guild-id="4">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
                 <!-- set 2 (duplicate of set 1, required for seamless loop) -->
-                <div class="server-card" aria-hidden="true">
-                    <div class="server-icon">S1</div>
-                    <div class="server-name">Server One</div>
+                <div class="server-card" data-guild-id="1" aria-hidden="true">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" aria-hidden="true">
-                    <div class="server-icon">S2</div>
-                    <div class="server-name">Server Two</div>
+                <div class="server-card" data-guild-id="2" aria-hidden="true">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" aria-hidden="true">
-                    <div class="server-icon">S3</div>
-                    <div class="server-name">Server Three</div>
+                <div class="server-card" data-guild-id="3" aria-hidden="true">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" aria-hidden="true">
-                    <div class="server-icon">S4</div>
-                    <div class="server-name">Server Four</div>
+                <div class="server-card" data-guild-id="4" aria-hidden="true">
+                    <div class="server-icon">--</div>
+                    <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
-                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- DAY 1s -->
-    <!-- DOA -->
-   
+
   
 
 <script>
@@ -784,6 +797,17 @@
     const FOUNDERS = [
         { id: '1521890728094208122', tag: 'daz'    },
         { id: '1512675755459612835', tag: 'dx' },
+    ];
+
+    /* Server carousel — put each server's Discord Guild ID as the "id" below.
+       Name + member count are then fetched live from Discord.
+       Requires that server to have Server Widget enabled:
+       Server Settings → Widget → Enable Server Widget. */
+    const SERVERS = [
+        { slot: '1', id: '1257204855072886784' },
+        { slot: '2', id: '1499975367639695411' },
+        { slot: '3', id: 'YOUR_GUILD_ID_HERE' },
+        { slot: '4', id: 'YOUR_GUILD_ID_HERE' },
     ];
 
     const STATUS_COLORS = {
@@ -917,6 +941,62 @@
         }
     }
 
+    /* ── fetch a guild's public widget (name, online count, invite) with retry ──
+       Only works if that server has Server Widget enabled. */
+    async function fetchGuildWidget(guildId, attempt) {
+        attempt = attempt || 0;
+        try {
+            var res = await fetch('https://discord.com/api/guilds/' + guildId + '/widget.json');
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return await res.json();
+        } catch (err) {
+            if (attempt < RETRY_DELAYS.length) {
+                await new Promise(function(r) { setTimeout(r, RETRY_DELAYS[attempt]); });
+                return fetchGuildWidget(guildId, attempt + 1);
+            }
+            console.warn('Failed to fetch guild widget ' + guildId + ':', err.message);
+            return null;
+        }
+    }
+
+    /* ── turn a server name into 1-2 letter icon initials ── */
+    function serverInitials(name) {
+        if (!name) return '?';
+        var words = name.trim().split(/\s+/).filter(Boolean);
+        if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+        return (words[0][0] + words[1][0]).toUpperCase();
+    }
+
+    /* ── update every card (original + duplicate) for one server slot ── */
+    function updateServerCard(slot, data) {
+        var cards = document.querySelectorAll('.server-card[data-guild-id="' + slot + '"]');
+        cards.forEach(function(card) {
+            var iconEl  = card.querySelector('.server-icon');
+            var nameEl  = card.querySelector('.server-name');
+            var countEl = card.querySelector('.server-count');
+            var joinEl  = card.querySelector('.server-join');
+
+            if (!data) {
+                if (nameEl) nameEl.textContent = 'unavailable';
+                if (countEl) countEl.textContent = '--';
+                return;
+            }
+
+            if (iconEl) iconEl.textContent = serverInitials(data.name);
+            if (nameEl) nameEl.textContent = data.name;
+            if (countEl) countEl.textContent = (data.presence_count || 0) + ' online';
+            if (joinEl && data.instant_invite) joinEl.href = data.instant_invite;
+        });
+    }
+
+    /* ── load all server cards from their configured guild IDs ── */
+    function loadServers() {
+        SERVERS.forEach(function(s) {
+            if (!s.id || s.id === 'YOUR_GUILD_ID_HERE') return;
+            fetchGuildWidget(s.id).then(function(data) { updateServerCard(s.slot, data); });
+        });
+    }
+
     /* ── update a founder card ── */
     async function updateFounder(id) {
         var data = await fetchUser(id);
@@ -995,6 +1075,8 @@
 
     /* ── refresh all ── */
     function refreshAll() {
+        loadServers();
+
         FOUNDERS.forEach(function(f) {
             fetchUser(f.id).then(function(data) {
                 if (!data || !data.discord_user) return;
@@ -1139,6 +1221,9 @@
 
         /* load founders */
         FOUNDERS.forEach(function(f) { updateFounder(f.id); });
+
+        /* load servers */
+        loadServers();
 
         /* load all groups */
         buildMemberGroup('doa-grid', GROUPS.doa);
