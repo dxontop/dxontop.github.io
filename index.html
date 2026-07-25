@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="The Exalted Ones">
     <meta name="theme-color" content="#080808">
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c3182[...]
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c3182[...]">
     <title>The Exalted Ones</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -694,56 +694,56 @@
 
         <div class="carousel">
             <div class="carousel-track">
-                <div class="server-card" data-guild-id="1">
+                <div class="server-card" data-server-slot="1">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="2">
+                <div class="server-card" data-server-slot="2">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="3">
+                <div class="server-card" data-server-slot="3">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="4">
+                <div class="server-card" data-server-slot="4">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="1" aria-hidden="true">
+                <div class="server-card" data-server-slot="1" aria-hidden="true">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="2" aria-hidden="true">
+                <div class="server-card" data-server-slot="2" aria-hidden="true">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="3" aria-hidden="true">
+                <div class="server-card" data-server-slot="3" aria-hidden="true">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
                     <div class="server-meta"><span class="server-dot"></span><span class="server-count">--</span></div>
                     <a class="server-join" href="#" tabindex="-1">Join</a>
                 </div>
-                <div class="server-card" data-guild-id="4" aria-hidden="true">
+                <div class="server-card" data-server-slot="4" aria-hidden="true">
                     <div class="server-icon"></div>
                     <div class="server-name">loading</div>
                     <div class="server-desc">Add your server description here</div>
@@ -920,7 +920,7 @@
     }
 
     function updateServerCard(slot, data, guildId) {
-        var cards = document.querySelectorAll('.server-card[data-guild-id="' + slot + '"]');
+        var cards = document.querySelectorAll('.server-card[data-server-slot="' + slot + '"]');
         cards.forEach(function(card) {
             var iconEl  = card.querySelector('.server-icon');
             var nameEl  = card.querySelector('.server-name');
@@ -999,111 +999,117 @@
         var card = document.createElement('div');
         card.className = 'member-card';
         card.id = 'member-' + id;
-        card.innerHTML =
-            '<div class="member-avatar-wrap">' +
-                '<img class="member-avatar" src="" alt="' + (fallbackName || 'member') + '\'s avatar">' +
-                '<img class="member-decoration hidden" src="" alt="" aria-hidden="true">' +
-                '<span class="member-status-dot" aria-hidden="true"></span>' +
-            '</div>' +
-            '<div class="member-name">' + (fallbackName || '...') + '</div>';
+        card.tabIndex = 0;
+
+        var avatarWrap = document.createElement('div');
+        avatarWrap.className = 'member-avatar-wrap';
+
+        var avatar = document.createElement('img');
+        avatar.className = 'member-avatar skeleton-avatar';
+        avatar.alt = "member's avatar";
+
+        var decoration = document.createElement('img');
+        decoration.className = 'member-decoration hidden';
+        decoration.setAttribute('aria-hidden', 'true');
+
+        var statusDot = document.createElement('span');
+        statusDot.className = 'member-status-dot';
+        statusDot.setAttribute('aria-hidden', 'true');
+
+        avatarWrap.appendChild(avatar);
+        avatarWrap.appendChild(decoration);
+        avatarWrap.appendChild(statusDot);
+        card.appendChild(avatarWrap);
+
+        var nameEl = document.createElement('div');
+        nameEl.className = 'member-name skeleton-text';
+        card.appendChild(nameEl);
+
         grid.appendChild(card);
 
         var data = await fetchUser(id);
         if (!data || !data.discord_user) {
-            var nameEl = card.querySelector('.member-name');
-            if (nameEl) nameEl.textContent = fallbackName || 'unknown';
+            nameEl.textContent = 'unavailable';
+            avatar.classList.remove('skeleton-avatar');
             return;
         }
 
         var discord_user = data.discord_user;
         var discord_status = data.discord_status;
 
-        var memberAvatar = card.querySelector('.member-avatar');
-        setAvatarWithFallback(memberAvatar, discord_user, 128);
+        setAvatarWithFallback(avatar, discord_user, 128);
+        avatar.classList.remove('skeleton-avatar');
+        nameEl.textContent = discord_user.global_name || discord_user.username || fallbackName;
+        nameEl.classList.remove('skeleton-text');
+        applyStatus(statusDot, discord_status);
 
-        var memberName = card.querySelector('.member-name');
-        if (memberName) memberName.textContent = discord_user.global_name || discord_user.username;
-        applyStatus(card.querySelector('.member-status-dot'), discord_status);
-
-        var decEl = card.querySelector('.member-decoration');
-        if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
-            decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
-            decEl.classList.remove('hidden');
-            decEl.onerror = function() { decEl.classList.add('hidden'); };
-        } else if (decEl) {
-            decEl.classList.add('hidden');
+        if (decoration && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+            decoration.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
+            decoration.classList.remove('hidden');
+            decoration.onerror = function() { decoration.classList.add('hidden'); };
         }
     }
 
-    (function initFounders() {
-        FOUNDERS.forEach(function(f) { updateFounder(f.id); });
-    })();
+    var introShown = localStorage.getItem('introShown') === 'true';
+    if (introShown) {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('main-content').style.display = 'flex';
+        document.getElementById('audio-toggle').style.display = 'flex';
+        loadServers();
+        FOUNDERS.forEach(f => updateFounder(f.id));
+    } else {
+        document.getElementById('intro').addEventListener('click', function() {
+            localStorage.setItem('introShown', 'true');
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro').style.display = 'none';
+                document.getElementById('main-content').style.display = 'flex';
+                document.getElementById('audio-toggle').style.display = 'flex';
+                loadServers();
+                FOUNDERS.forEach(f => updateFounder(f.id));
+            }, 900);
+        });
 
-    (function initIntro() {
-        var introEl = document.getElementById('intro');
-        if (!introEl) return;
-
-        function hideIntro() {
-            introEl.style.opacity = '0';
-            introEl.style.pointerEvents = 'none';
-            var mainContent = document.getElementById('main-content');
-            if (mainContent) mainContent.style.display = 'flex';
-            var audioToggle = document.getElementById('audio-toggle');
-            if (audioToggle) audioToggle.style.display = 'flex';
-            playAudio();
-        }
-
-        introEl.addEventListener('click', hideIntro);
-        introEl.addEventListener('keydown', function(e) {
+        document.getElementById('intro').addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                hideIntro();
+                this.click();
             }
         });
-    })();
-
-    (function initAudio() {
-        var bgAudio = document.getElementById('bg-audio');
-        var audioToggle = document.getElementById('audio-toggle');
-        if (!bgAudio || !audioToggle) return;
-
-        audioToggle.addEventListener('click', function() {
-            if (bgAudio.paused) {
-                bgAudio.play();
-                audioToggle.setAttribute('aria-label', 'Pause background music');
-            } else {
-                bgAudio.pause();
-                audioToggle.setAttribute('aria-label', 'Play background music');
-            }
-        });
-    })();
-
-    function playAudio() {
-        var bgAudio = document.getElementById('bg-audio');
-        if (bgAudio) bgAudio.play().catch(function() { console.log('Audio autoplay prevented'); });
     }
 
-    (function initFoundersToggle() {
-        var toggle = document.getElementById('founders-toggle');
+    document.getElementById('founders-toggle').addEventListener('click', function() {
         var grid = document.getElementById('founders-grid');
         var arrow = document.getElementById('founders-arrow');
-        if (!toggle || !grid) return;
+        grid.classList.toggle('collapsed');
+        arrow.classList.toggle('open');
+        this.setAttribute('aria-expanded', grid.classList.contains('collapsed') ? 'false' : 'true');
+    });
 
-        toggle.addEventListener('click', function() {
-            grid.classList.toggle('collapsed');
-            arrow.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', grid.classList.contains('collapsed') ? 'false' : 'true');
-        });
+    document.getElementById('founders-toggle').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+        }
+    });
 
-        toggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggle.click();
-            }
-        });
-    })();
+    var audioEl = document.getElementById('bg-audio');
+    var toggleEl = document.getElementById('audio-toggle');
 
-    loadServers();
+    toggleEl.addEventListener('click', function() {
+        if (audioEl.paused) {
+            audioEl.play();
+            toggleEl.setAttribute('aria-label', 'Pause background music');
+        } else {
+            audioEl.pause();
+            toggleEl.setAttribute('aria-label', 'Play background music');
+        }
+    });
+
+    audioEl.volume = 0.25;
+    audioEl.play().catch(function() {
+        console.log('Autoplay prevented');
+    });
 })();
 </script>
 
