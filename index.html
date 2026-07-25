@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The Exalted Ones">
+    <meta name="theme-color" content="#080808">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c318237f69bb0b89626b1d27cf304c&">
+    <title>The Exalted Ones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --surface: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.07);
+            --text: #e8e8e8;
+            --muted: #555;
+            --dim: #333;
+            --accent: #ffffff;
+            --red: #c0392b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        html, body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── starfield ── */
+        #stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── main background ──
+           Drop your own image/gif in /assets/img/ and update the path below.
+           (jpg, png, gif, webp all work — just point the url() at it) */
+        #main-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background-image: url('/assets/img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.22;
+            pointer-events: none;
+        }
+
+        #main-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(8,8,8,0.5), rgba(8,8,8,0.94) 78%);
+        }
+
+        /* ── intro screen ── */
+        #intro {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: opacity 0.9s ease;
+            cursor: pointer;
+        }
+
+        #intro .brand {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            letter-spacing: 6px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        #intro h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.75rem, 2.5vw, 1rem);
+            letter-spacing: 8px;
+            text-transform: lowercase;
+            color: #fff;
+            animation: pulse 2.5s infinite;
+        }
+
+        /* ── main wrapper ── */
+        #main-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* ── site title ── */
+        .site-title {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.55rem, 1.8vw, 0.75rem);
+            letter-spacing: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        /* ── FOUNDERS block ── */
+        .founders-wrapper {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .founders-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            cursor: pointer;
+        }
+
+        .founders-header::before,
+        .founders-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .founders-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 6px;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            color: var(--dim);
+            font-size: 0.7rem;
+        }
+
+        .toggle-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        #founders-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            overflow: hidden;
+            max-height: 300px;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 1;
+        }
+
+        #founders-grid.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .founder-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            outline: none;
+        }
+
+        .founder-card:hover,
+        .founder-card:focus {
+            transform: scale(1.05);
+        }
+
+        .founder-card:focus .founder-avatar {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.8), 0 0 0 2px rgba(255,255,255,0.3);
+        }
+
+        /* ── Avatar + Decoration wrapper ── */
+        .founder-avatar-wrap {
+            position: relative;
+            width: 90px;
+            height: 90px;
+        }
+
+        .founder-avatar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.12);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.8);
+            background: #111;
+            z-index: 2;
+        }
+
+        .founder-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 4;
+            object-fit: contain;
+        }
+
+        .founder-status-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #747f8d;
+            border: 2px solid var(--bg);
+            z-index: 3;
+            transition: background 0.3s ease;
+        }
+
+        .founder-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: var(--muted);
+            text-transform: lowercase;
+            text-align: center;
+        }
+
+        .founder-tag {
+            font-size: 0.55rem;
+            color: var(--dim);
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        /* ── SERVERS carousel ── */
+        .servers-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 60px;
+        }
+
+        .servers-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .servers-header::before,
+        .servers-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .servers-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 6px;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            gap: 20px;
+            animation: carousel-scroll 26s linear infinite;
+        }
+
+        .carousel:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes carousel-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .server-card {
+            flex: 0 0 auto;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            padding: 24px 18px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .server-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .server-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(135deg, #2a2a2a, #111);
+            border: 1px solid var(--border);
+        }
+
+        .server-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .server-desc {
+            font-size: 0.7rem;
+            line-height: 1.5;
+            color: var(--muted);
+            min-height: 2.2em;
+        }
+
+        .server-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+
+        .server-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #43b581;
+            display: inline-block;
+        }
+
+        .server-join {
+            margin-top: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 7px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .server-join:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 480px) {
+            .server-card { width: 180px; padding: 20px 14px; }
+            .carousel-track { gap: 14px; }
+        }
+
+        /* ── DAY 1s section ── */
+        .section-wrapper {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-header::before,
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 6px;
+            color: var(--muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px 20px;
+            justify-items: center;
+        }
+
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            outline: none;
+        }
+
+        .member-card:hover,
+        .member-card:focus {
+            transform: scale(1.05);
+        }
+
+        .member-card:focus .member-avatar {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.7), 0 0 0 2px rgba(255,255,255,0.25);
+        }
+
+        .member-avatar-wrap {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .member-avatar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+            background: #111;
+            z-index: 2;
+        }
+
+        .member-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 4;
+            object-fit: contain;
+        }
+
+        .member-status-dot {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #747f8d;
+            border: 2px solid var(--bg);
+            z-index: 3;
+            transition: background 0.3s ease;
+        }
+
+        .member-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-transform: lowercase;
+            text-align: center;
+            max-width: 90px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── audio toggle (bottom right) ── */
+        #audio-toggle {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 50;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+            outline: none;
+        }
+
+        #audio-toggle:hover,
+        #audio-toggle:focus {
+            background: rgba(255,255,255,0.08);
+            color: var(--text);
+            border-color: rgba(255,255,255,0.18);
+            transform: scale(1.06);
+        }
+
+        #audio-toggle .audio-icon {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            #audio-toggle { width: 38px; height: 38px; bottom: 16px; right: 16px; }
+        }
+
+        /* ── click overlay ── */
+        #click-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        #click-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* ── gif background layer (replaces the old foreground <img class="user-gif">) ── */
+        #click-overlay .overlay-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        #click-overlay .overlay-bg.active {
+            opacity: 1;
+        }
+
+        #click-overlay .overlay-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /* dark veil so text on top stays readable over the gif */
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.45), rgba(0,0,0,0.88) 75%);
+        }
+
+        #click-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            transition: background 0.2s ease;
+            outline: none;
+        }
+
+        #click-overlay .close-btn:hover,
+        #click-overlay .close-btn:focus {
+            background: rgba(255,255,255,0.2);
+        }
+
+        #click-overlay .user-info {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        /* ── Overlay avatar + decoration ── */
+        #click-overlay .avatar-decoration-wrap {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        #click-overlay .avatar-large {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            z-index: 2;
+            background: #111;
+        }
+
+        #click-overlay .avatar-decoration-large {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 4;
+            object-fit: contain;
+        }
+
+        #click-overlay .avatar-decoration-large.hidden {
+            display: none;
+        }
+
+        #click-overlay .display-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 2px;
+        }
+
+        #click-overlay .username {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--muted);
+            letter-spacing: 1px;
+        }
+
+        #click-overlay .status-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        #click-overlay .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #747f8d;
+            transition: background 0.3s ease;
+        }
+
+        #click-overlay .status-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+
+        #click-overlay .custom-status {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text);
+            letter-spacing: 1px;
+            margin-top: 3px;
+            max-width: 300px;
+            text-align: center;
+            min-height: 1.2em;
+        }
+
+        #click-overlay .presence-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: lowercase;
+            margin-top: 3px;
+            min-height: 1.2em;
+        }
+
+        #click-overlay .redirect-btn {
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            text-decoration: none;
+            outline: none;
+        }
+
+        #click-overlay .redirect-btn:hover,
+        #click-overlay .redirect-btn:focus {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        /* (the gif is now rendered via #click-overlay .overlay-bg, see above) */
+
+       
+        /* ── loading skeleton ── */
+        .skeleton-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+        }
+
+        .skeleton-text {
+            height: 0.7rem;
+            width: 60px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+        }
+
+        .skeleton-text.short { width: 40px; }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── error state ── */
+        .load-error {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--red);
+            letter-spacing: 1px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ── animations ── */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50%       { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.4); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+
+
+        /* ── mobile tweaks ── */
+        @media (max-width: 600px) {
+            .members-grid { grid-template-columns: repeat(3, 1fr); gap: 22px 14px; }
+            .founder-avatar-wrap { width: 75px; height: 75px; }
+            .founder-decoration { width: 78px; height: 78px; }
+            .founder-status-dot { width: 12px; height: 12px; }
+            .member-avatar-wrap { width: 68px; height: 68px; }
+            .member-decoration { width: 72px; height: 72px; }
+            .member-status-dot { width: 10px; height: 10px; }
+            #founders-grid { gap: 28px; }
+
+            #click-overlay .avatar-decoration-wrap { width: 130px; height: 130px; }
+            #click-overlay .avatar-large { width: 130px; height: 130px; }
+            #click-overlay .avatar-decoration-large { width: 130px; height: 130px; }
+            #click-overlay .display-name { font-size: 1.25rem; }
+            #click-overlay .username { font-size: 0.8rem; }
+            #click-overlay .redirect-btn { padding: 10px 20px; font-size: 0.65rem; }
+        }
+
+        @media (max-width: 380px) {
+            .members-grid { grid-template-columns: repeat(2, 1fr); }
+            .founder-avatar-wrap { width: 65px; height: 65px; }
+            .founder-decoration { width: 66px; height: 66px; }
+            .member-avatar-wrap { width: 60px; height: 60px; }
+            .member-decoration { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- starfield canvas -->
+<canvas id="stars"></canvas>
+
+<!-- main background (swap in your own image at /assets/img/background.jpg) -->
+<div id="main-bg" aria-hidden="true"></div>
+
+<!-- intro -->
+<div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
+    <div class="brand">T H E  E X A L T E D  O N E S</div>
+    <h2>[ click to enter ]</h2>
+</div>
+
+
+
+<!-- audio -->
+<audio id="bg-audio" loop preload="auto">
+    <source src="/assets/music/ascendd.mp3" type="audio/mpeg">
+</audio>
+
+<!-- click overlay audio -->
+<audio id="click-audio" loop preload="none">
+    <source src="https://file.garden/akK66Ybqzxm58rPe/Shanti%20Dope%20-%20City%20Girl%20(Official%20Music%20Video).mp3" type="audio/mpeg">
+</audio>
+
+<!-- audio stopper -->
+<button id="audio-toggle" aria-label="Pause background music" title="music">
+    <span class="audio-icon">❙❙</span>
+</button>
+
+
+<!-- click overlay -->
+<div id="click-overlay" role="dialog" aria-modal="true" aria-label="User profile overlay">
+    <div class="overlay-bg" id="overlay-bg" aria-hidden="true"></div>
+    <button class="close-btn" aria-label="Close profile">close</button>
+    <div class="user-info">
+        <div class="avatar-decoration-wrap">
+            <img class="avatar-large" src="" alt="user avatar">
+            <img class="avatar-decoration-large hidden" src="" alt="" aria-hidden="true">
+        </div>
+        <div class="display-name">display name</div>
+        <div class="username">@username</div>
+        <div class="status-info">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-text">offline</span>
+        </div>
+        <div class="custom-status"></div>
+        <div class="presence-indicator"></div>
+        <a href="#" class="redirect-btn" target="_blank" rel="noopener">visit profile &rarr;</a>
+    </div>
+</div>
+
+    <!-- main -->
+    <div id="main-content">
+    <div class="site-title">T H E  E X A L T E D  O N E S</div>
+
+    <!-- FOUNDERS -->
+    <div class="founders-wrapper">
+        <div class="founders-header" id="founders-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="founders-grid">
+            <div class="founders-label">
+                Two of a Kind
+                <span class="toggle-arrow open" id="founders-arrow" aria-hidden="true">&#9650;</span>
+            </div>
+        </div>
+        <div id="founders-grid">
+            <!-- threat -->
+            <div class="founder-card" id="founder-1521890728094208122" tabindex="0" role="button" aria-label="View threat's profile">
+                <div class="founder-avatar-wrap">
+                    <img class="founder-avatar" src="" alt="threat's avatar">
+                    <img class="founder-decoration hidden" src="" alt="" aria-hidden="true">
+                    <span class="founder-status-dot" aria-hidden="true"></span>
+                </div>
+                <div class="founder-name">loading</div>
+                <div class="founder-tag">misery</div>
+            </div>
+
+            <div class="founder-card" id="founder-1509891284536397935" tabindex="0" role="button" aria-label="View founder's profile">
+                <div class="founder-avatar-wrap">
+                    <img class="founder-avatar" src="" alt="founder's avatar">
+                    <img class="founder-decoration hidden" src="" alt="" aria-hidden="true">
+                    <span class="founder-status-dot" aria-hidden="true"></span>
+                </div>
+                <div class="founder-name">loading</div>
+                <div class="founder-tag">sovereign</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SERVERS ── edit name / description / member count / invite link for each card below.
+         The 4 cards are duplicated once immediately after so the scroll loops seamlessly —
+         keep both sets identical if you change anything. -->
+    <div class="servers-wrapper">
+        <div class="servers-header">
+            <div class="servers-label">servers</div>
+        </div>
+
+        <div class="carousel">
+            <div class="carousel-track">
+                <!-- set 1 -->
+                <div class="server-card">
+                    <div class="server-icon">S1</div>
+                    <div class="server-name">Server One</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
+                </div>
+                <div class="server-card">
+                    <div class="server-icon">S2</div>
+                    <div class="server-name">Server Two</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
+                </div>
+                <div class="server-card">
+                    <div class="server-icon">S3</div>
+                    <div class="server-name">Server Three</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
+                </div>
+                <div class="server-card">
+                    <div class="server-icon">S4</div>
+                    <div class="server-name">Server Four</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
+                </div>
+                <!-- set 2 (duplicate of set 1, required for seamless loop) -->
+                <div class="server-card" aria-hidden="true">
+                    <div class="server-icon">S1</div>
+                    <div class="server-name">Server One</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" tabindex="-1">Join</a>
+                </div>
+                <div class="server-card" aria-hidden="true">
+                    <div class="server-icon">S2</div>
+                    <div class="server-name">Server Two</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" tabindex="-1">Join</a>
+                </div>
+                <div class="server-card" aria-hidden="true">
+                    <div class="server-icon">S3</div>
+                    <div class="server-name">Server Three</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" tabindex="-1">Join</a>
+                </div>
+                <div class="server-card" aria-hidden="true">
+                    <div class="server-icon">S4</div>
+                    <div class="server-name">Server Four</div>
+                    <div class="server-desc">Add your server description here</div>
+                    <div class="server-meta"><span class="server-dot"></span>000 members</div>
+                    <a class="server-join" href="#" tabindex="-1">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 1s -->
+    <!-- DOA -->
+   
+  
+
+<script>
+(function () {
+    "use strict";
+
+    /* ── config ── */
+    const FOUNDERS = [
+        { id: '1521890728094208122',  tag: 'asc daz'      },
+        { id: '1509891284536397935', tag: 'asc murder' },
+        { id: '1527288102811340880', tag: 'asc drey'         },
+    ];
+
+
+
+    const STATUS_COLORS = {
+        online:  '#43b581',
+        idle:    '#faa61a',
+        dnd:     '#f04747',
+        offline: '#747f8d',
+    };
+
+    // SPA routing: maps Discord id -> URL slug so every profile gets a clean
+    // shareable URL (threat2society.world/<slug>). CONTENT_MAP is NOT modified —
+    // all music/bg values stay exactly as written. This slug map is the only
+    // new config; edit it to change a profile's URL.
+    const SLUG_MAP = {
+        // founders
+        '1521890728094208122': 'daz',
+        '1512675755459612835': 'highcaliber',
+        '1280059534169210896': 'mir',
+        
+    };
+    const BY_SLUG = {};
+    Object.keys(SLUG_MAP).forEach(function(id) { BY_SLUG[SLUG_MAP[id]] = id; });
+
+    /* ════════════════════════════════════════════════════════════════
+       SPA ROUTING — path-based, no server round-trip needed
+       • open avatar  → history.pushState → URL becomes /<slug>
+       • close overlay → history.back()    → URL reverts to /
+       • deep link /<slug> (refresh/direct) → skip intro, open profile
+       • browser back button while overlay open → closes overlay
+       ════════════════════════════════════════════════════════════════ */
+    function pathToSlug(p) {
+        if (!p || p === '/') return null;
+        var parts = p.split('/').filter(Boolean);
+        if (parts.length === 1 && BY_SLUG[parts[0]]) return parts[0];
+        return null;
+    }
+
+    function showOverlayBySlug(slug) {
+        var id = BY_SLUG[slug];
+        if (id) showOverlay(id);
+    }
+
+    function openProfileRoute(slug) {
+        if (!BY_SLUG[slug]) return;
+        history.pushState({ view: 'profile', slug: slug }, '', '/' + slug);
+        showOverlayBySlug(slug);
+    }
+
+    function closeProfileRoute() {
+        if (history.state && history.state.view === 'profile') {
+            history.back();
+        } else {
+            hideOverlay();
+        }
+    }
+
+    window.addEventListener('popstate', function(e) {
+        var st = e.state;
+        if (st && st.view === 'profile' && st.slug) {
+            showOverlayBySlug(st.slug);
+        } else {
+            hideOverlay();
+        }
+    });
+
+    /* make a relative path root-relative so it resolves from /<slug> too */
+    function spaPath(url) {
+        if (!url) return url;
+        if (url.startsWith('http') || url.startsWith('//') || url.startsWith('/')) return url;
+        return '/' + url;
+    }
+
+    // remembers if the bg song was playing before an avatar's overlay opened,
+    // so closing the overlay can resume it
+    var bgAudioWasPlaying = false;
+
+    const CONTENT_MAP = {
+        '1521890728094208122': {
+            gif: 'assets/gifs/miseryopo.gif',
+            music: 'https://file.garden/akK66Ybqzxm58rPe/Nateman%20-%20Dapat%20Kitang%20Layuan%20(Visualizer)%20%5BnbqpD3lYank%5D.mp3'
+        },
+        
+        
+    };
+
+    const RETRY_DELAYS = [1000, 2000, 4000];
+
+    /* ── starfield ── */
+    (function initStars() {
+        const canvas = document.getElementById('stars');
+        if (!canvas) return;
+        const ctx    = canvas.getContext('2d');
+        let stars    = [];
+        let w, h;
+
+        function resize() {
+            w = canvas.width  = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+
+        function genStars(n) {
+            stars = [];
+            for (let i = 0; i < n; i++) {
+                stars.push({
+                    x:  Math.random() * w,
+                    y:  Math.random() * h,
+                    r:  Math.random() * 1.1 + 0.2,
+                    o:  Math.random() * 0.5 + 0.1,
+                    s:  (Math.random() - 0.5) * 0.003,
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            stars.forEach(s => {
+                s.o += s.s;
+                if (s.o <= 0.05 || s.o >= 0.65) s.s *= -1;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+
+        resize();
+        genStars(180);
+        draw();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { resize(); }, 150);
+        });
+    })();
+
+    /* ── avatar url ──
+       NOTE: Discord's CDN only accepts powers of two (16, 32, 64, 128, 256, ...)
+       for the size param. Non-power-of-two values like 160 are inconsistently
+       tolerated for static PNGs but commonly fail for animated GIFs, which is
+       why gif avatars were silently falling back to the default icon. */
+    function avatarUrl(user, size) {
+        size = size || 128;
+        if (!user || !user.avatar) {
+            return defaultAvatarUrl(user);
+        }
+        const ext = user.avatar.startsWith('a_') ? 'gif' : 'png';
+        return 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.' + ext + '?size=' + size;
+    }
+
+    /* ── default (no-custom-avatar) fallback url ── */
+    function defaultAvatarUrl(user) {
+        if (!user) return 'https://cdn.discordapp.com/embed/avatars/0.png';
+        // users migrated to the new username system have discriminator "0";
+        // their default avatar index is derived from the id instead
+        if (!user.discriminator || user.discriminator === '0') {
+            var idx = 0;
+            try { idx = Number((BigInt(user.id) >> BigInt(22)) % BigInt(6)); } catch (e) { idx = 0; }
+            return 'https://cdn.discordapp.com/embed/avatars/' + idx + '.png';
+        }
+        return 'https://cdn.discordapp.com/embed/avatars/' + (user.discriminator % 5) + '.png';
+    }
+
+    /* ── set an <img> avatar with a gif → animated webp → default fallback chain ── */
+    function setAvatarWithFallback(imgEl, user, size) {
+        if (!imgEl || !user) return;
+        size = size || 128;
+        var isAnimated = !!(user.avatar && user.avatar.startsWith('a_'));
+        var triedWebp = false;
+        imgEl.src = avatarUrl(user, size);
+        imgEl.onerror = function() {
+            if (isAnimated && !triedWebp) {
+                triedWebp = true;
+                imgEl.src = 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.webp?size=' + size + '&animated=true';
+                return;
+            }
+            imgEl.onerror = null;
+            imgEl.src = defaultAvatarUrl(user);
+        };
+    }
+
+    /* ── apply status color ── */
+    function applyStatus(dotEl, status) {
+        if (!dotEl) return;
+        dotEl.style.background = STATUS_COLORS[status] || STATUS_COLORS.offline;
+        dotEl.setAttribute('data-status', status || 'offline');
+    }
+
+    /* ── fetch single user via Lanyard with retry ── */
+    async function fetchUser(id, attempt) {
+        attempt = attempt || 0;
+        try {
+            var res  = await fetch('https://api.lanyard.rest/v1/users/' + id);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            var json = await res.json();
+            if (!json.success) throw new Error('API error');
+            return json.data;
+        } catch (err) {
+            if (attempt < RETRY_DELAYS.length) {
+                await new Promise(function(r) { setTimeout(r, RETRY_DELAYS[attempt]); });
+                return fetchUser(id, attempt + 1);
+            }
+            console.warn('Failed to fetch user ' + id + ':', err.message);
+            return null;
+        }
+    }
+
+    /* ── update a founder card ── */
+    async function updateFounder(id) {
+        var data = await fetchUser(id);
+        var card = document.getElementById('founder-' + id);
+        if (!card) return;
+
+        var nameEl = card.querySelector('.founder-name');
+
+        if (!data || !data.discord_user) {
+            if (nameEl) nameEl.textContent = 'unavailable';
+            return;
+        }
+
+        var discord_user = data.discord_user;
+        var discord_status = data.discord_status;
+
+        var founderAvatar = card.querySelector('.founder-avatar');
+        setAvatarWithFallback(founderAvatar, discord_user, 128);
+
+        if (nameEl) nameEl.textContent = discord_user.global_name || discord_user.username;
+        applyStatus(card.querySelector('.founder-status-dot'), discord_status);
+
+        var decEl = card.querySelector('.founder-decoration');
+        if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+            decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
+            decEl.classList.remove('hidden');
+            decEl.onerror = function() { decEl.classList.add('hidden'); };
+        } else if (decEl) {
+            decEl.classList.add('hidden');
+        }
+
+        // Click + keyboard handler
+        var openOverlay = function() { openProfileRoute(SLUG_MAP[id] || id); };
+        card.style.cursor = 'pointer';
+        card.onclick = openOverlay;
+        card.onkeydown = function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openOverlay();
+            }
+        };
+    }
+
+    /* ── build + update a member card ── */
+    async function buildMember(id, gridId, fallbackName) {
+        var grid = document.getElementById(gridId);
+        if (!grid) return;
+
+        var card = document.createElement('div');
+        card.className = 'member-card';
+        card.id = 'member-' + id;
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.innerHTML =
+            '<div class="member-avatar-wrap">' +
+                '<img class="member-avatar" src="" alt="' + (fallbackName || 'member') + '\'s avatar">' +
+                '<img class="member-decoration hidden" src="" alt="" aria-hidden="true">' +
+                '<span class="member-status-dot" aria-hidden="true"></span>' +
+            '</div>' +
+            '<div class="member-name">' + (fallbackName || '...') + '</div>';
+        grid.appendChild(card);
+
+        var data = await fetchUser(id);
+        if (!data || !data.discord_user) {
+            var nameEl = card.querySelector('.member-name');
+            if (nameEl) nameEl.textContent = fallbackName || 'unknown';
+            return;
+        }
+
+        var discord_user = data.discord_user;
+        var discord_status = data.discord_status;
+
+        var memberAvatar = card.querySelector('.member-avatar');
+        setAvatarWithFallback(memberAvatar, discord_user, 128);
+
+        var memberName = card.querySelector('.member-name');
+        if (memberName) memberName.textContent = discord_user.global_name || discord_user.username;
+        applyStatus(card.querySelector('.member-status-dot'), discord_status);
+
+        var decEl = card.querySelector('.member-decoration');
+        if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+            decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
+            decEl.classList.remove('hidden');
+            decEl.onerror = function() { decEl.classList.add('hidden'); };
+        } else if (decEl) {
+            decEl.classList.add('hidden');
+        }
+
+        var openOverlay = function() { openProfileRoute(SLUG_MAP[id] || id); };
+        card.style.cursor = 'pointer';
+        card.onclick = openOverlay;
+        card.onkeydown = function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openOverlay();
+            }
+        };
+    }
+
+    /* ── show overlay with gif and music ── */
+    async function showOverlay(id) {
+        var overlay = document.getElementById('click-overlay');
+        var audio = document.getElementById('click-audio');
+        var content = CONTENT_MAP[id] || { gif: '', music: '' };
+
+        // pause the background song while a profile overlay is open
+        var bgAudio = document.getElementById('bg-audio');
+        if (bgAudio) {
+            bgAudioWasPlaying = !bgAudio.paused;
+            if (!bgAudio.paused) bgAudio.pause();
+        }
+
+        // Fetch fresh user data
+        var data = await fetchUser(id);
+        if (!data || !data.discord_user) {
+            console.warn('Could not load overlay for user ' + id);
+            return;
+        }
+
+        var discord_user = data.discord_user;
+        var discord_status = data.discord_status;
+        var activities = data.activities || [];
+
+        // Update avatar
+        var avatarImg = overlay.querySelector('.avatar-large');
+        setAvatarWithFallback(avatarImg, discord_user, 256);
+
+        // Update avatar decoration
+        var decorationImg = overlay.querySelector('.avatar-decoration-large');
+        if (discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+            decorationImg.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=256&passthrough=true';
+            decorationImg.classList.remove('hidden');
+            decorationImg.onerror = function() {
+                decorationImg.classList.add('hidden');
+            };
+        } else {
+            decorationImg.classList.add('hidden');
+        }
+
+        // Update display name and username
+        overlay.querySelector('.display-name').textContent = discord_user.global_name || discord_user.username;
+        overlay.querySelector('.username').textContent = '@' + discord_user.username;
+
+        // Update status
+        var statusDot = overlay.querySelector('.status-dot');
+        var statusText = overlay.querySelector('.status-text');
+        applyStatus(statusDot, discord_status);
+        statusText.textContent = discord_status || 'offline';
+
+        // Update custom status
+        var customStatusEl = overlay.querySelector('.custom-status');
+        var customActivity = activities.find(function(a) { return a.type === 4; });
+        if (customActivity && customActivity.state) {
+            customStatusEl.textContent = customActivity.state;
+            customStatusEl.style.display = 'block';
+        } else {
+            customStatusEl.textContent = '';
+            customStatusEl.style.display = 'none';
+        }
+
+        // Update presence indicator
+        var presenceEl = overlay.querySelector('.presence-indicator');
+        var mainActivity = activities.find(function(a) { return a.type !== 4; });
+        if (mainActivity) {
+            var presenceText = '';
+            if (mainActivity.type === 0) presenceText = 'playing ' + mainActivity.name;
+            else if (mainActivity.type === 1) presenceText = 'streaming ' + mainActivity.name;
+            else if (mainActivity.type === 2) presenceText = 'listening to ' + mainActivity.name;
+            else if (mainActivity.type === 3) presenceText = 'watching ' + mainActivity.name;
+            else if (mainActivity.type === 5) presenceText = 'competing in ' + mainActivity.name;
+
+            if (mainActivity.details && mainActivity.state) {
+                presenceText += ' \u2013 ' + mainActivity.details;
+            } else if (mainActivity.details) {
+                presenceText = mainActivity.details;
+            }
+
+            presenceEl.textContent = presenceText;
+            presenceEl.style.display = 'flex';
+        } else {
+            presenceEl.textContent = '';
+            presenceEl.style.display = 'none';
+        }
+
+        // ── custom background (gif from CONTENT_MAP, normalized to root-relative) ──
+        var bgEl = document.getElementById('overlay-bg');
+        if (content.gif) {
+            var gifUrl = spaPath(content.gif);
+            var preload = new Image();
+            preload.onload = function() {
+                bgEl.style.backgroundImage = "url('" + gifUrl + "')";
+                bgEl.classList.add('active');
+            };
+            preload.onerror = function() {
+                bgEl.style.backgroundImage = '';
+                bgEl.classList.remove('active');
+            };
+            preload.src = gifUrl;
+        } else {
+            bgEl.style.backgroundImage = '';
+            bgEl.classList.remove('active');
+        }
+
+        // ── redirect button (slug-based URL — works as a shareable deep link) ──
+        var redirectBtn = overlay.querySelector('.redirect-btn');
+        var slug = SLUG_MAP[id];
+        if (slug) {
+            redirectBtn.href = '/' + slug;
+            redirectBtn.style.display = 'inline-block';
+        } else {
+            redirectBtn.href = '#';
+            redirectBtn.style.display = 'none';
+        }
+
+        // Update and play music (from CONTENT_MAP, normalized to root-relative)
+        if (audio && content.music) {
+            audio.src = spaPath(content.music);
+            audio.volume = 0.5;
+            audio.play().catch(function() {});
+        }
+
+        // Show overlay
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Focus trap: focus close button
+        var closeBtn = overlay.querySelector('.close-btn');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    /* ── hide overlay and stop music ── */
+    function hideOverlay() {
+        var overlay = document.getElementById('click-overlay');
+        var audio = document.getElementById('click-audio');
+        var bgEl = document.getElementById('overlay-bg');
+
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (bgEl) bgEl.classList.remove('active');
+
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        // resume the background song, but only if it was playing before
+        var bgAudio = document.getElementById('bg-audio');
+        if (bgAudio && bgAudioWasPlaying) {
+            bgAudio.play().catch(function() {});
+        }
+    }
+
+    /* ── overlay close button (routes through history so URL reverts) ── */
+    document.querySelector('.close-btn').addEventListener('click', closeProfileRoute);
+
+    /* ── close overlay on escape key or click outside ── */
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeProfileRoute();
+    });
+
+    document.getElementById('click-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeProfileRoute();
+    });
+
+    /* ── refresh all ── */
+    function refreshAll() {
+        FOUNDERS.forEach(function(f) {
+            fetchUser(f.id).then(function(data) {
+                if (!data || !data.discord_user) return;
+                var card = document.getElementById('founder-' + f.id);
+                if (!card) return;
+                var discord_user = data.discord_user;
+                var discord_status = data.discord_status;
+                var founderAvatar = card.querySelector('.founder-avatar');
+                setAvatarWithFallback(founderAvatar, discord_user, 128);
+                var nameEl = card.querySelector('.founder-name');
+                if (nameEl) nameEl.textContent = discord_user.global_name || discord_user.username;
+                applyStatus(card.querySelector('.founder-status-dot'), discord_status);
+                var decEl = card.querySelector('.founder-decoration');
+                if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+                    decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
+                    decEl.classList.remove('hidden');
+                } else if (decEl) {
+                    decEl.classList.add('hidden');
+                }
+            });
+        });
+
+        Object.values(GROUPS).flat().forEach(function(id) {
+            fetchUser(id).then(function(data) {
+                if (!data || !data.discord_user) return;
+                var card = document.getElementById('member-' + id);
+                if (!card) return;
+                var discord_user = data.discord_user;
+                var discord_status = data.discord_status;
+                var memberAvatar = card.querySelector('.member-avatar');
+                setAvatarWithFallback(memberAvatar, discord_user, 128);
+                var nameEl = card.querySelector('.member-name');
+                if (nameEl) nameEl.textContent = discord_user.global_name || discord_user.username;
+                applyStatus(card.querySelector('.member-status-dot'), discord_status);
+                var decEl = card.querySelector('.member-decoration');
+                if (decEl && discord_user.avatar_decoration_data && discord_user.avatar_decoration_data.asset) {
+                    decEl.src = 'https://cdn.discordapp.com/avatar-decoration-presets/' + discord_user.avatar_decoration_data.asset + '.png?size=128&passthrough=true';
+                    decEl.classList.remove('hidden');
+                } else if (decEl) {
+                    decEl.classList.add('hidden');
+                }
+            });
+        });
+    }
+
+    /* ── founders toggle ── */
+    var foundersToggle = document.getElementById('founders-toggle');
+    foundersToggle.addEventListener('click', function() {
+        var grid  = document.getElementById('founders-grid');
+        var arrow = document.getElementById('founders-arrow');
+        var isCollapsed = grid.classList.toggle('collapsed');
+        arrow.classList.toggle('open');
+        foundersToggle.setAttribute('aria-expanded', String(!isCollapsed));
+    });
+    foundersToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            foundersToggle.click();
+        }
+    });
+
+    /* ── title animation ── */
+    var fullTitle = 'threat2society.world';
+    var tIdx = 0, tDel = false;
+
+    function animTitle() {
+        if (!tDel) {
+            if (tIdx < fullTitle.length) { tIdx++; document.title = fullTitle.slice(0, tIdx); setTimeout(animTitle, 90); }
+            else { tDel = true; setTimeout(animTitle, 3000); }
+        } else {
+            if (tIdx > 0) { tIdx--; document.title = fullTitle.slice(0, tIdx) || '\u00B7'; setTimeout(animTitle, 45); }
+            else { tDel = false; setTimeout(animTitle, 500); }
+        }
+    }
+
+    /* ── audio stopper / toggle ── */
+    var audioToggleBtn = document.getElementById('audio-toggle');
+    var audioIconEl = audioToggleBtn ? audioToggleBtn.querySelector('.audio-icon') : null;
+    var bgAudioEl = document.getElementById('bg-audio');
+
+    function updateAudioIcon() {
+        if (!audioIconEl || !bgAudioEl) return;
+        var playing = !bgAudioEl.paused;
+        audioIconEl.textContent = playing ? '❙❙' : '►';
+        audioToggleBtn.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
+    }
+
+    if (bgAudioEl) {
+        bgAudioEl.addEventListener('play', updateAudioIcon);
+        bgAudioEl.addEventListener('pause', updateAudioIcon);
+    }
+
+    if (audioToggleBtn) {
+        audioToggleBtn.addEventListener('click', function() {
+            if (!bgAudioEl) return;
+            if (bgAudioEl.paused) {
+                bgAudioEl.play().catch(function() {});
+            } else {
+                bgAudioEl.pause();
+            }
+        });
+    }
+
+    /* ── attempt autoplay as soon as the page loads ──
+       Most browsers block unmuted autoplay before any user gesture, so this
+       is best-effort: if it's blocked, the song starts on the first click/
+       keypress/tap anywhere on the page (including the "click to enter" intro) */
+    function attemptAutoplay() {
+        if (!bgAudioEl) return;
+        bgAudioEl.volume = 0.5;
+        var p = bgAudioEl.play();
+        if (p && typeof p.catch === 'function') {
+            p.catch(function() {
+                var resume = function() {
+                    bgAudioEl.play().catch(function() {});
+                    // also resume a profile song if a deep-link loaded one
+                    var clickAudio = document.getElementById('click-audio');
+                    if (clickAudio && clickAudio.getAttribute('src') && clickAudio.paused) {
+                        clickAudio.play().catch(function() {});
+                    }
+                    document.removeEventListener('click', resume);
+                    document.removeEventListener('keydown', resume);
+                    document.removeEventListener('touchstart', resume);
+                };
+                document.addEventListener('click', resume, { once: true });
+                document.addEventListener('keydown', resume, { once: true });
+                document.addEventListener('touchstart', resume, { once: true });
+            });
+        }
+        updateAudioIcon();
+    }
+    attemptAutoplay();
+
+    /* ── intro click + on-load routing ── */
+    var introEl = document.getElementById('intro');
+
+    async function enterSite(skipIntro) {
+        var audio = document.getElementById('bg-audio');
+
+        if (skipIntro) {
+            // deep link: jump straight past the intro
+            introEl.style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex';
+            if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
+        } else {
+            if (audio) { audio.volume = 0.5; audio.play().catch(function() {}); }
+            if (audioToggleBtn) audioToggleBtn.style.display = 'flex';
+            introEl.style.opacity = '0';
+            setTimeout(function() {
+                introEl.style.display = 'none';
+                document.getElementById('main-content').style.display = 'flex';
+            }, 900);
+        }
+
+        /* load founders */
+        FOUNDERS.forEach(function(f) { updateFounder(f.id); });
+
+        /* load all groups */
+        buildMemberGroup('doa-grid', GROUPS.doa);
+        buildMemberGroup('day1-grid', GROUPS.day1);
+        buildMemberGroup('steppaz-grid', GROUPS.Steppaz);
+        buildMemberGroup('exclsv-grid', GROUPS.exclsv);
+        buildMemberGroup('members-grid', GROUPS.members);
+
+        /* poll every 15s */
+        setInterval(refreshAll, 15000);
+
+        animTitle();
+    }
+
+    function buildMemberGroup(gridId, ids) {
+        ids.forEach(function(id) {
+            buildMember(id, gridId, id);
+        });
+    }
+
+    /* on load: deep link to /<slug> opens that profile (skipping intro);
+       otherwise show the intro and seed a home history entry so back-button
+       out of a profile lands on / instead of leaving the site. */
+    (function initRouting() {
+        var slug = pathToSlug(location.pathname);
+        if (slug && BY_SLUG[slug]) {
+            enterSite(true);
+            history.replaceState({ view: 'home' }, '', '/');
+            history.pushState({ view: 'profile', slug: slug }, '', '/' + slug);
+            showOverlayBySlug(slug);
+        } else {
+            history.replaceState({ view: 'home' }, '', location.pathname + location.search);
+        }
+    })();
+
+    introEl.addEventListener('click', function() { enterSite(false); });
+    introEl.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            enterSite(false);
+        }
+    });
+
+    /* ── devtools block ── */
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12') e.preventDefault();
+        if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) e.preventDefault();
+    });
+})();
+</script>
+</body>
+</html>
