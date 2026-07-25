@@ -276,6 +276,62 @@
             letter-spacing: 1px;
         }
 
+        /* ── founder social links: hidden, "spread" open on hover/focus/tap ── */
+        .founder-links {
+            display: flex;
+            gap: 10px;
+            max-height: 0;
+            margin-top: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+        }
+
+        .founder-card:hover .founder-links,
+        .founder-card:focus-within .founder-links,
+        .founder-card.spread .founder-links {
+            max-height: 40px;
+            opacity: 1;
+            margin-top: 2px;
+        }
+
+        .founder-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(8px) scale(0.7);
+            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .founder-card:hover .founder-link,
+        .founder-card:focus-within .founder-link,
+        .founder-card.spread .founder-link {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .founder-link:nth-child(1) { transition-delay: 0s; }
+        .founder-link:nth-child(2) { transition-delay: 0.06s; }
+        .founder-link:nth-child(3) { transition-delay: 0.12s; }
+
+        .founder-link:hover,
+        .founder-link:focus {
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+        }
+
         .servers-wrapper {
             width: 100%;
             max-width: 900px;
@@ -332,93 +388,45 @@
 
         .server-card {
             flex: 0 0 auto;
-            width: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 16px;
-            padding: 24px 18px;
+            display: block;
+            width: 160px;
+            height: 160px;
+            border-radius: 18px;
+            overflow: hidden;
             border: 1px solid var(--border);
-            border-radius: 14px;
             background: var(--surface);
+            text-decoration: none;
             transition: transform 0.25s ease, border-color 0.25s ease;
         }
 
         .server-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255,255,255,0.25);
         }
 
         .server-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Space Mono', monospace;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 1.4rem;
             letter-spacing: 1px;
             color: #fff;
             background: linear-gradient(135deg, #2a2a2a, #111);
-            border: 1px solid var(--border);
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
         }
 
         .server-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .server-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .server-desc {
-            display: none;
-        }
-
-        .server-meta {
-            display: none;
-        }
-
-        .server-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #43b581;
-            display: inline-block;
-        }
-
-        .server-join {
-            margin-top: 4px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 7px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .server-join:hover {
-            background: #fff;
-            color: #000;
+            display: block;
         }
 
         @media (max-width: 480px) {
-            .server-card { width: 180px; padding: 20px 14px; }
+            .server-card { width: 120px; height: 120px; }
             .carousel-track { gap: 14px; }
         }
 
@@ -675,6 +683,12 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">misery</div>
+                <!-- replace the # hrefs below with this founder's real profile links -->
+                <div class="founder-links">
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox">RBLX</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify">SPT</a>
+                </div>
             </div>
 
             <div class="founder-card" id="founder-1512675755459612835">
@@ -685,6 +699,12 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">dx</div>
+                <!-- replace the # hrefs below with this founder's real profile links -->
+                <div class="founder-links">
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox">RBLX</a>
+                    <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify">SPT</a>
+                </div>
             </div>
         </div>
     </div>
@@ -696,46 +716,30 @@
 
         <div class="carousel">
             <div class="carousel-track">
-                <div class="server-card" data-server-slot="1">
+                <a class="server-card" data-server-slot="1" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="2">
+                </a>
+                <a class="server-card" data-server-slot="2" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="3">
+                </a>
+                <a class="server-card" data-server-slot="3" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="4">
+                </a>
+                <a class="server-card" data-server-slot="4" href="#" target="_blank" rel="noopener" aria-label="Join server">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" target="_blank" rel="noopener">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="1" aria-hidden="true">
+                </a>
+                <a class="server-card" data-server-slot="1" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" tabindex="-1">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="2" aria-hidden="true">
+                </a>
+                <a class="server-card" data-server-slot="2" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" tabindex="-1">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="3" aria-hidden="true">
+                </a>
+                <a class="server-card" data-server-slot="3" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" tabindex="-1">Join</a>
-                </div>
-                <div class="server-card" data-server-slot="4" aria-hidden="true">
+                </a>
+                <a class="server-card" data-server-slot="4" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"></div>
-                    <div class="server-name">loading</div>
-                    <a class="server-join" href="#" tabindex="-1">Join</a>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -930,12 +934,9 @@
     function updateServerCard(slot, data, guildId) {
         var cards = document.querySelectorAll('.server-card[data-server-slot="' + slot + '"]');
         cards.forEach(function(card) {
-            var iconEl  = card.querySelector('.server-icon');
-            var nameEl  = card.querySelector('.server-name');
-            var joinEl  = card.querySelector('.server-join');
+            var iconEl = card.querySelector('.server-icon');
 
             if (!data) {
-                if (nameEl) nameEl.textContent = 'unavailable';
                 if (iconEl) iconEl.innerHTML = '';
                 return;
             }
@@ -944,7 +945,7 @@
                 iconEl.innerHTML = '';
                 if (data.icon) {
                     var iconImg = document.createElement('img');
-                    iconImg.src = guildIconUrl(guildId, data.icon, 128);
+                    iconImg.src = guildIconUrl(guildId, data.icon, 256);
                     iconImg.alt = data.name + ' icon';
                     iconImg.onerror = function() {
                         iconEl.textContent = serverInitials(data.name);
@@ -954,8 +955,9 @@
                     iconEl.textContent = serverInitials(data.name);
                 }
             }
-            if (nameEl) nameEl.textContent = data.name;
-            if (joinEl && data.instant_invite) joinEl.href = data.instant_invite;
+
+            if (data.instant_invite) card.href = data.instant_invite;
+            if (!card.hasAttribute('aria-hidden')) card.setAttribute('aria-label', 'Join ' + data.name);
         });
     }
 
@@ -1091,6 +1093,14 @@
             }
         });
     }
+
+    // tap-to-reveal social links on touch devices (hover doesn't exist there)
+    document.querySelectorAll('.founder-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.founder-link')) return; // let the link navigate normally
+            card.classList.toggle('spread');
+        });
+    });
 
     // Initialize everything
     initIntro();
