@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="The Exalted Ones">
+    <meta name="description" content="we silently run everything.">
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c3182">
     <title>The Exalted Ones</title>
@@ -312,9 +312,9 @@
             justify-content: center;
             width: 32px;
             height: 32px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.03);
+            border-radius: 0;
+            border: none;
+            background: transparent;
             color: var(--muted);
             font-family: 'Space Mono', monospace;
             font-size: 0.4rem;
@@ -324,7 +324,7 @@
             text-decoration: none;
             opacity: 0;
             transform: scale(0.7);
-            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
             pointer-events: none;
         }
 
@@ -335,8 +335,7 @@
         .founder-link:hover,
         .founder-link:focus {
             color: #fff;
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.08);
+            transform: scale(1.15);
         }
 
         .founder-link img {
@@ -403,8 +402,8 @@
         .server-card {
             flex: 0 0 auto;
             display: block;
-            width: 480px;
-            height: 251px;
+            width: 340px;
+            height: 178px;
             border-radius: 0;
             overflow: visible;
             border: none;
@@ -438,8 +437,8 @@
 
         @media (max-width: 900px) {
             .server-card {
-                width: 380px;
-                height: 199px;
+                width: 270px;
+                height: 141px;
             }
         }
 
@@ -447,7 +446,7 @@
             .server-card {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 480 / 251;
+                aspect-ratio: 340 / 178;
             }
             .carousel-track { gap: 14px; }
         }
@@ -768,7 +767,7 @@
                 </a>
                 <!-- duplicates for seamless carousel loop -->
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/snl-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
+                    <div class="server-icon"><img src=https://file.garden/amQoMeBMSROPxoxS/snl-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/t2s-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
