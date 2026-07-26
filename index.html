@@ -1040,19 +1040,22 @@
                 console.log('Audio autoplay prevented:', error);
             });
         }
-        funtion disableDevTools() {
-            document.addEventListener('contextmenu', function(e) {
-            });
+    }
+
+    function disableDevTools() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
 
         document.addEventListener('keydown', function(e) {
-            var blocked = 
-                e.key === 'F12' || 
+            var blocked =
+                e.key === 'F12' ||
                 (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(e.key)) ||
                 (e.ctrlKey && (e.key === 'U' || e.key === 'u'));
 
             if (blocked) {
-                e.preventionDefault();
-    }
+                e.preventDefault();
+            }
         });
     }
 
