@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="we silently run everything.">
+    <meta name="description" content="The Exalted Ones">
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c3182">
     <title>The Exalted Ones</title>
@@ -343,6 +343,8 @@
             height: 18px;
             display: block;
             object-fit: contain;
+            mix-blend-mode: multiply;
+            filter: contrast(1.05);
         }
 
         .servers-wrapper {
@@ -387,7 +389,10 @@
             display: flex;
             width: max-content;
             gap: 20px;
-            animation: carousel-scroll 26s linear infinite;
+            animation: carousel-scroll 20s linear infinite;
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .carousel:hover .carousel-track {
@@ -395,8 +400,8 @@
         }
 
         @keyframes carousel-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(-50%, 0, 0); }
         }
 
         .server-card {
@@ -674,7 +679,7 @@
 
 <div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
     <div class="brand">THE EXALTED ONES</div>
-    <h2>click to enter</h2>
+    <h2>[ click to enter ]</h2>
 </div>
 
 <audio id="bg-audio" loop preload="auto">
@@ -707,13 +712,13 @@
                 <!-- Add social links below — drop your own logo image files in place of the placeholder src paths -->
                 <div class="founder-links">
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/ig" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
+                        <img src="/assets/icons/instagram.png" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Roblox">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/roblox" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
+                        <img src="/assets/icons/roblox.png" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/spotify" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
+                        <img src="/assets/icons/spotify.png" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
                     </a>
                 </div>
             </div>
@@ -729,13 +734,13 @@
                 <!-- Add social links below — drop your own logo image files in place of the placeholder src paths -->
                 <div class="founder-links">
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/ig" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
+                        <img src="/assets/icons/instagram.png" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Roblox">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/roblox" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
+                        <img src="/assets/icons/roblox.png" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
-                        <img src="https://file.garden/amQoMeBMSROPxoxS/spotify" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
+                        <img src="/assets/icons/spotify.png" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
                     </a>
                 </div>
             </div>
@@ -767,7 +772,7 @@
                 </a>
                 <!-- duplicates for seamless carousel loop -->
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"><img src=https://file.garden/amQoMeBMSROPxoxS/snl-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
+                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/snl-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
                     <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/t2s-removebg-preview.png" alt="" onerror="this.style.display='none'"></div>
