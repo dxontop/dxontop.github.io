@@ -316,6 +316,11 @@
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.03);
             color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.4rem;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 1;
             text-decoration: none;
             opacity: 0;
             transform: scale(0.7);
@@ -334,11 +339,11 @@
             background: rgba(255,255,255,0.08);
         }
 
-        .founder-link svg {
+        .founder-link img {
             width: 18px;
             height: 18px;
             display: block;
-            fill: currentColor;
+            object-fit: contain;
         }
 
         .servers-wrapper {
@@ -398,10 +403,10 @@
         .server-card {
             flex: 0 0 auto;
             display: block;
-            width: 800px;
-            height: 418px;
+            width: 900px;
+            height: 470px;
             border-radius: 0;
-            overflow: hidden;
+            overflow: visible;
             border: none;
             background: transparent;
             text-decoration: none;
@@ -412,31 +417,29 @@
             transform: translateY(-4px) scale(1.02);
         }
 
+        /* transparent by default — only the banner image itself will be visible */
         .server-icon {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            color: #fff;
-            background: linear-gradient(135deg, #2a2a2a, #111);
+            background: transparent;
         }
 
         .server-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
             display: block;
         }
 
         @media (max-width: 900px) {
             .server-card {
-                width: 600px;
-                height: 313px;
+                width: 640px;
+                height: 334px;
             }
         }
 
@@ -444,7 +447,7 @@
             .server-card {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 800 / 418;
+                aspect-ratio: 900 / 470;
             }
             .carousel-track { gap: 14px; }
         }
@@ -702,16 +705,16 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">misery</div>
-                <!-- Add social links below with invite URLs and optional icon src -->
+                <!-- Add social links below — drop your own logo image files in place of the placeholder src paths -->
                 <div class="founder-links">
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.204[...]
+                        <img src="/assets/icons/instagram.png" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Roblox">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 12.75L9 8.25V15.75L4.5 12.75M9 8.25H6.75C5.784 8.25 5 9.034 5 10V15C5 15.966 5.784 16.75 6.75 16.[...]
+                        <img src="/assets/icons/roblox.png" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.[...]
+                        <img src="/assets/icons/spotify.png" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
                     </a>
                 </div>
             </div>
@@ -724,16 +727,16 @@
                 </div>
                 <div class="founder-name">loading</div>
                 <div class="founder-tag">dx</div>
-                <!-- Add social links below with invite URLs and optional icon src -->
+                <!-- Add social links below — drop your own logo image files in place of the placeholder src paths -->
                 <div class="founder-links">
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 [...]
+                        <img src="/assets/icons/instagram.png" alt="" onerror="this.replaceWith(document.createTextNode('IG'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Roblox" title="Roblox">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 12.75L9 8.25V15.75L4.5 12.75M9 8.25H6.75C5.784 8.25 5 9.034 5 10V15C5 15.966 5.784 16.75 6.75 16.[...]
+                        <img src="/assets/icons/roblox.png" alt="" onerror="this.replaceWith(document.createTextNode('RBLX'))">
                     </a>
                     <a class="founder-link" href="#" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.[...]
+                        <img src="/assets/icons/spotify.png" alt="" onerror="this.replaceWith(document.createTextNode('SPT'))">
                     </a>
                 </div>
             </div>
@@ -747,31 +750,34 @@
 
         <div class="carousel">
             <div class="carousel-track">
-                <!-- Add invite links in href and icon/banner manually in .server-icon -->
+                <!-- For each server: set href to the invite link, and set the img src to your
+                     banner image (a transparent PNG works best — only the banner itself shows,
+                     no card/box behind it). Update BOTH the card here and its duplicate below
+                     (marked "seamless loop") identically. -->
                 <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
-                    <div class="server-icon"></div>
-                </a>
-                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
-                    <div class="server-icon"></div>
-                </a>
-                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
-                    <div class="server-icon"></div>
+                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/t2s.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
                 <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
-                    <div class="server-icon"></div>
+                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/snl.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
-                <!-- Duplicates for seamless carousel loop -->
-                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"></div>
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                    <div class="server-icon"><img src="YOUR_BANNER_IMAGE_HERE.png" alt="" onerror="this.style.display='none'"></div>
+                </a>
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                    <div class="server-icon"><img src="YOUR_BANNER_IMAGE_HERE.png" alt="" onerror="this.style.display='none'"></div>
+                </a>
+                <!-- duplicates for seamless carousel loop -->
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/t2s.png" alt="" onerror="this.style.display='none'"></div>
+                </a>
+                <a class="server-card" href="#" target="_blank" rel="noopener" aria-label="Join server">
+                    <div class="server-icon"><img src="https://file.garden/amQoMeBMSROPxoxS/snl.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"></div>
+                    <div class="server-icon"><img src="YOUR_BANNER_IMAGE_HERE.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
                 <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"></div>
-                </a>
-                <a class="server-card" href="#" tabindex="-1" aria-hidden="true">
-                    <div class="server-icon"></div>
+                    <div class="server-icon"><img src="YOUR_BANNER_IMAGE_HERE.png" alt="" onerror="this.style.display='none'"></div>
                 </a>
             </div>
         </div>
