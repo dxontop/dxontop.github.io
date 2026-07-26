@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="we run everything silently.">
     <meta name="theme-color" content="#080808">
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1509164528460632085/1519045796044079134/T2S.jpg?ex=6a3c2124&is=6a3acfa4&hm=44ad3fa4b258da8b62caf53fc8c9fe6457c3182">
+    <link rel="icon" type="image/png" href="">
     <title>The Exalted Ones</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #080808;
@@ -34,8 +34,21 @@
             color: var(--text);
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         #stars {
@@ -62,6 +75,26 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(ellipse at center, rgba(8,8,8,0.5), rgba(8,8,8,0.94) 78%);
+        }
+
+        #bg-flicker {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            background: rgba(255,255,255,0.35);
+            opacity: 0;
+            pointer-events: none;
+            animation: bg-flicker 7s infinite;
+        }
+
+        @keyframes bg-flicker {
+            0%, 90%, 100% { opacity: 0; }
+            91% { opacity: 0.75; }
+            92% { opacity: 0.1; }
+            93% { opacity: 0.9; }
+            94% { opacity: 0; }
+            95% { opacity: 0.55; }
+            96% { opacity: 0; }
         }
 
         #intro {
@@ -170,17 +203,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: color 0.35s ease, letter-spacing 0.35s ease;
         }
 
-        .toggle-arrow {
-            display: inline-block;
-            transition: transform 0.3s ease;
-            color: var(--dim);
-            font-size: 0.7rem;
-        }
-
-        .toggle-arrow.open {
-            transform: rotate(180deg);
+        .founders-header:hover .founders-label,
+        .founders-header:focus .founders-label {
+            color: var(--text);
+            letter-spacing: 7px;
         }
 
         #founders-grid {
@@ -189,7 +218,7 @@
             gap: 40px;
             overflow: hidden;
             max-height: 300px;
-            transition: max-height 0.5s ease, opacity 0.4s ease;
+            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
             opacity: 1;
         }
 
@@ -204,7 +233,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             outline: none;
             position: relative;
         }
@@ -415,11 +444,12 @@
             border: none;
             background: transparent;
             text-decoration: none;
-            transition: transform 0.25s ease;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
         }
 
         .server-card:hover {
-            transform: translateY(-4px) scale(1.02);
+            transform: translateY(-6px) scale(1.03);
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.45));
         }
 
         /* transparent by default — only the banner image itself will be visible */
@@ -455,6 +485,99 @@
                 aspect-ratio: 340 / 178;
             }
             .carousel-track { gap: 14px; }
+        }
+
+        .about-wrapper {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .about-card {
+            position: relative;
+            width: 100%;
+            padding: 60px 44px;
+            border-radius: 28px;
+            background:
+                radial-gradient(ellipse at top, rgba(255,255,255,0.05), transparent 60%),
+                rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.6s ease,
+                        box-shadow 0.6s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.14);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-style: normal;
+            font-weight: 800;
+            font-size: clamp(2.1rem, 5.6vw, 3rem);
+            letter-spacing: -0.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 50%, #8f8f8f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 24px rgba(255,255,255,0.15);
+            margin-bottom: 22px;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+        }
+
+        .about-divider {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            margin: 0 auto 30px;
+            transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+        }
+
+        .about-description {
+            font-family: 'Manrope', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: clamp(0.92rem, 2.1vw, 1.05rem);
+            letter-spacing: 0.2px;
+            line-height: 1.9;
+            color: var(--text);
+            opacity: 0.8;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .about-card.revealed .about-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card.revealed .about-divider {
+            width: 60px;
+        }
+
+        .typing-cursor {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 300;
+            color: var(--text);
+            margin-left: 2px;
+            animation: cursor-blink 0.9s steps(1) infinite;
+        }
+
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .about-card { padding: 44px 26px; border-radius: 20px; }
         }
 
         .section-wrapper {
@@ -499,7 +622,7 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             outline: none;
         }
 
@@ -584,7 +707,7 @@
             color: var(--muted);
             cursor: pointer;
             backdrop-filter: blur(8px);
-            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+            transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             outline: none;
         }
 
@@ -674,9 +797,19 @@
 </head>
 <body>
 
+<noscript>
+    <style>
+        .reveal, .about-title, .about-divider { opacity: 1 !important; transform: none !important; width: 60px !important; }
+        #main-content { display: flex !important; }
+        #intro { display: none !important; }
+    </style>
+</noscript>
+
 <canvas id="stars"></canvas>
 
 <div id="main-bg" aria-hidden="true"></div>
+
+<div id="bg-flicker" aria-hidden="true"></div>
 
 <div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
     <div class="brand">THE EXALTED ONES</div>
@@ -694,11 +827,10 @@
 <div id="main-content">
     <div class="site-title">THE EXALTED ONES</div>
 
-    <div class="founders-wrapper">
+    <div class="founders-wrapper reveal">
         <div class="founders-header" id="founders-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="founders-grid">
             <div class="founders-label">
                 Two of a Kind
-                <span class="toggle-arrow open" id="founders-arrow" aria-hidden="true">&#9650;</span>
             </div>
         </div>
         <div id="founders-grid">
@@ -748,7 +880,7 @@
         </div>
     </div>
 
-    <div class="servers-wrapper">
+    <div class="servers-wrapper reveal">
         <div class="servers-header">
             <div class="servers-label">we own ts</div>
         </div>
@@ -787,6 +919,14 @@
             </div>
         </div>
     </div>
+
+    <div class="about-wrapper reveal">
+        <div class="about-card">
+            <h2 class="about-title">About Us</h2>
+            <div class="about-divider"></div>
+            <p class="about-description"><span id="about-description-text"></span><span class="typing-cursor" id="about-cursor">|</span></p>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -806,6 +946,61 @@
     };
 
     const RETRY_DELAYS = [1000, 2000, 4000];
+
+    const ABOUT_TEXT = "We’re just two idiots who decided to team up and chase something bigger than ourselves. Our goal isn’t to be the loudest people in the room; it’s to quietly become one of the faces of this generation while staying humble every step of the way. Every move we make is planned carefully, and we’d rather run things silently and smoothly than seek attention. We approach every opportunity with confidence, determined to make our mark and take the power of whatever comes on our way through hard work, consistency, and results. In the end, if people remember the impact we made instead of the noise we created, then we’ve done it right."
+    let aboutTyped = false;
+    function initAboutTyping() {
+        if (aboutTyped) return;
+        aboutTyped = true;
+
+        const textEl = document.getElementById('about-description-text');
+        const cursorEl = document.getElementById('about-cursor');
+        if (!textEl) return;
+
+        let i = 0;
+        function type() {
+            if (i <= ABOUT_TEXT.length) {
+                textEl.textContent = ABOUT_TEXT.slice(0, i);
+                i++;
+                setTimeout(type, 28);
+            } else if (cursorEl) {
+                setTimeout(() => { cursorEl.style.display = 'none'; }, 1400);
+            }
+        }
+        type();
+    }
+
+    // Fades sections in as they scroll into view; the About card gets a
+    // staged reveal (title -> divider -> typewriter) once it appears.
+    function initScrollReveal() {
+        const revealEls = document.querySelectorAll('.reveal');
+        if (!revealEls.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            revealEls.forEach(el => el.classList.add('visible'));
+            const card = document.querySelector('.about-card');
+            if (card) card.classList.add('revealed');
+            initAboutTyping();
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+
+                if (entry.target.classList.contains('about-wrapper')) {
+                    const card = entry.target.querySelector('.about-card');
+                    if (card) card.classList.add('revealed');
+                    setTimeout(initAboutTyping, 550);
+                }
+
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+        revealEls.forEach(el => observer.observe(el));
+    }
 
     // Initialize splash screen
     function initIntro() {
@@ -850,6 +1045,9 @@
                     r:  Math.random() * 1.1 + 0.2,
                     o:  Math.random() * 0.5 + 0.1,
                     s:  (Math.random() - 0.5) * 0.003,
+                    vx: (Math.random() - 0.5) * 0.16,
+                    vy: 0.1 + Math.random() * 0.16,
+                    flicker: 0,
                 });
             }
         }
@@ -859,17 +1057,38 @@
             stars.forEach(s => {
                 s.o += s.s;
                 if (s.o <= 0.05 || s.o >= 0.65) s.s *= -1;
+
+                s.x += s.vx;
+                s.y += s.vy;
+
+                if (s.x < 0) s.x = w;
+                if (s.x > w) s.x = 0;
+                if (s.y < 0) s.y = h;
+                if (s.y > h) s.y = 0;
+
+                if (s.flicker > 0) s.flicker -= 0.045;
+
+                var brightness = Math.min(1, s.o + s.flicker);
+
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+                ctx.fillStyle = `rgba(255,255,255,${brightness})`;
                 ctx.fill();
             });
             requestAnimationFrame(draw);
         }
 
+        function flickerBurst() {
+            for (let i = 0; i < 20; i++) {
+                var idx = Math.floor(Math.random() * stars.length);
+                if (stars[idx]) stars[idx].flicker = 1;
+            }
+        }
+
         resize();
         genStars(180);
         draw();
+        setInterval(flickerBurst, 7000);
 
         let resizeTimer;
         window.addEventListener('resize', () => {
@@ -972,12 +1191,10 @@
     function initFounderToggle() {
         const toggle = document.getElementById('founders-toggle');
         const grid = document.getElementById('founders-grid');
-        const arrow = document.getElementById('founders-arrow');
-        if (!toggle || !grid || !arrow) return;
+        if (!toggle || !grid) return;
 
         toggle.addEventListener('click', function() {
             grid.classList.toggle('collapsed');
-            arrow.classList.toggle('open');
             const isExpanded = !grid.classList.contains('collapsed');
             toggle.setAttribute('aria-expanded', isExpanded);
         });
@@ -1064,6 +1281,7 @@
     });
 
     initIntro();
+    initScrollReveal();
     initFounderToggle();
     initFounderSpread();
     initAudio();
