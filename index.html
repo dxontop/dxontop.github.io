@@ -437,6 +437,10 @@
             -webkit-backface-visibility: hidden;
         }
 
+        body.red-mode .carousel-track {
+            animation-duration: 5s;
+        }
+
         .carousel:hover .carousel-track {
             animation-play-state: paused;
         }
@@ -492,9 +496,8 @@
 
         @media (max-width: 480px) {
             .server-card {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 340 / 178;
+                width: 200px;
+                height: 104px;
             }
             .carousel-track { gap: 14px; }
         }
@@ -743,6 +746,206 @@
             #audio-toggle { width: 38px; height: 38px; bottom: 16px; right: 16px; }
         }
 
+        /* ── red mode toggle ── */
+        /* ── red mode toggle ── */
+        #theme-toggle {
+            position: fixed;
+            top: 22px;
+            right: 22px;
+            z-index: 50;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.35s ease, border-color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        #theme-toggle:hover,
+        #theme-toggle:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.18);
+            transform: scale(1.08);
+        }
+
+        #theme-toggle .theme-icon {
+            width: 20px;
+            height: 20px;
+            color: #cfcfcf;
+            transition: color 0.35s ease, filter 0.35s ease;
+            transform-origin: 50% 50%;
+        }
+
+        @keyframes icon-spin {
+            0%   { transform: rotate(0deg) scale(1); }
+            35%  { transform: rotate(200deg) scale(1.2); }
+            65%  { transform: rotate(340deg) scale(0.9); }
+            100% { transform: rotate(720deg) scale(1); }
+        }
+
+        #theme-toggle .theme-icon.spinning {
+            animation: icon-spin 0.65s cubic-bezier(0.34, 1.56, 0.56, 1);
+        }
+
+        body.red-mode #theme-toggle .theme-icon {
+            color: var(--red);
+            filter: drop-shadow(0 0 6px rgba(224,60,50,0.85));
+        }
+
+        /* every piece of text on the page reads its color from these variables,
+           so overriding them here turns all of it red at once */
+        body.red-mode {
+            --text: #ff5548;
+            --muted: #c0392b;
+            --dim: #7a1f16;
+            --accent: #ff5548;
+        }
+
+        body.red-mode .site-title,
+        body.red-mode .about-title,
+        body.red-mode #intro .brand {
+            background: linear-gradient(180deg, #ff8a7a 0%, #e0392c 55%, #7a1f16 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 24px rgba(224,60,50,0.35);
+        }
+
+        body.red-mode .founder-link:hover,
+        body.red-mode .founder-link:focus,
+        body.red-mode #audio-toggle:hover,
+        body.red-mode #audio-toggle:focus {
+            color: #ff8a7a;
+        }
+
+        /* ── aggressive strobing flicker while red mode is active ── */
+        body.red-mode #bg-flicker {
+            background: rgba(224,60,50,0.55);
+            animation: bg-flicker-red 1.1s infinite;
+        }
+
+        @keyframes bg-flicker-red {
+            0%, 38%, 100% { opacity: 0; }
+            4%   { opacity: 0.95; }
+            7%   { opacity: 0.1; }
+            11%  { opacity: 1; }
+            14%  { opacity: 0; }
+            19%  { opacity: 0.7; }
+            22%  { opacity: 0; }
+            29%  { opacity: 0.85; }
+            32%  { opacity: 0; }
+        }
+
+        /* ── aggressive glitching text while red mode is active ── */
+        @keyframes text-glitch {
+            0%, 100% {
+                transform: translate(0, 0);
+                text-shadow: none;
+                clip-path: none;
+                filter: none;
+            }
+            2% {
+                transform: translate(-3px, 1px);
+                text-shadow: 3px 0 rgba(224,60,50,0.9), -3px 0 rgba(0,225,255,0.7);
+                clip-path: inset(10% 0 60% 0);
+            }
+            4% {
+                transform: translate(4px, -2px) skewX(4deg);
+                text-shadow: -4px 0 rgba(224,60,50,0.95), 4px 0 rgba(0,225,255,0.75);
+                clip-path: inset(55% 0 15% 0);
+                filter: brightness(1.7);
+            }
+            6% {
+                transform: translate(-2px, 0);
+                text-shadow: 2px 0 rgba(224,60,50,0.85), -2px 0 rgba(0,225,255,0.6);
+                clip-path: inset(20% 0 40% 0);
+            }
+            8%, 44% {
+                transform: translate(0, 0);
+                text-shadow: none;
+                clip-path: none;
+                filter: none;
+            }
+            46% {
+                transform: translate(4px, -1px) skewX(-5deg);
+                text-shadow: -3px 0 rgba(224,60,50,0.9), 3px 0 rgba(0,225,255,0.7);
+                clip-path: inset(0 0 70% 0);
+            }
+            48% {
+                transform: translate(-3px, 1px);
+                text-shadow: 3px 0 rgba(224,60,50,0.9), -3px 0 rgba(0,225,255,0.7);
+                clip-path: inset(65% 0 0 0);
+                filter: brightness(1.6);
+            }
+            50%, 89% {
+                transform: translate(0, 0);
+                text-shadow: none;
+                clip-path: none;
+                filter: none;
+            }
+            91% {
+                transform: translate(-3px, 2px) skewX(3deg);
+                text-shadow: 2px 0 rgba(224,60,50,0.85), -2px 0 rgba(0,225,255,0.6);
+                clip-path: inset(30% 0 30% 0);
+            }
+            93% {
+                transform: translate(3px, -1px);
+                text-shadow: -3px 0 rgba(224,60,50,0.9), 3px 0 rgba(0,225,255,0.7);
+                clip-path: inset(45% 0 10% 0);
+                filter: brightness(1.5);
+            }
+            95% {
+                transform: translate(0, 0);
+                text-shadow: none;
+                clip-path: none;
+                filter: none;
+            }
+        }
+
+        body.red-mode .site-title,
+        body.red-mode #intro .brand {
+            animation: text-glitch 2s infinite;
+        }
+
+        body.red-mode #intro h2 {
+            animation: text-glitch 2s infinite 0.2s;
+        }
+
+        body.red-mode .about-title {
+            animation: text-glitch 2.2s infinite 0.4s;
+        }
+
+        body.red-mode #about-description-text {
+            display: inline-block;
+            animation: text-glitch 2.4s infinite 0.6s;
+        }
+
+        body.red-mode .founders-label,
+        body.red-mode .servers-label,
+        body.red-mode .section-label {
+            animation: text-glitch 1.9s infinite 0.9s;
+        }
+
+        body.red-mode .founder-name,
+        body.red-mode .member-name {
+            animation: text-glitch 1.7s infinite 1.1s;
+        }
+
+        body.red-mode .founder-tag {
+            animation: text-glitch 1.7s infinite 1.4s;
+        }
+
+        @media (max-width: 600px) {
+            #theme-toggle { width: 38px; height: 38px; top: 16px; right: 16px; }
+            #theme-toggle .theme-icon { width: 18px; height: 18px; }
+        }
+
         .skeleton-avatar {
             width: 100%;
             height: 100%;
@@ -834,6 +1037,13 @@
 
 <button id="audio-toggle" aria-label="Pause background music" title="music">
     <span class="audio-icon">❙❙</span>
+</button>
+
+<button id="theme-toggle" aria-label="Enable red mode">
+    <svg class="theme-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- heart: default icon, shown while red mode is off -->
+        <path d="M12 20.5C12 20.5 3.8 15.2 3.8 9.2 3.8 5.9 6.2 3.5 9.4 3.5c1.7 0 3.2.9 3.9 2.3.7-1.4 2.2-2.3 3.9-2.3 3.2 0 5.6 2.4 5.6 5.7 0 6-8.2 11.3-8.2 11.3z" fill="currentColor"/>
+    </svg>
 </button>
 
 <div id="main-content">
@@ -1022,6 +1232,8 @@
             intro.classList.add('hidden');
             mainContent.classList.add('visible');
             document.getElementById('audio-toggle').style.display = 'flex';
+            var themeBtn = document.getElementById('theme-toggle');
+            if (themeBtn) themeBtn.style.display = 'flex';
             playAudio();
         }
 
@@ -1064,6 +1276,8 @@
 
         function draw() {
             ctx.clearRect(0, 0, w, h);
+            var isRed = document.body.classList.contains('red-mode');
+            var rgb = isRed ? '224,60,50' : '255,255,255';
             stars.forEach(s => {
                 s.o += s.s;
                 if (s.o <= 0.05 || s.o >= 0.65) s.s *= -1;
@@ -1082,7 +1296,7 @@
 
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255,255,255,${brightness})`;
+                ctx.fillStyle = `rgba(${rgb},${brightness})`;
                 ctx.fill();
             });
             requestAnimationFrame(draw);
@@ -1098,7 +1312,13 @@
         resize();
         genStars(180);
         draw();
-        setInterval(flickerBurst, 7000);
+        (function scheduleFlicker() {
+            var isRed = document.body.classList.contains('red-mode');
+            setTimeout(function() {
+                flickerBurst();
+                scheduleFlicker();
+            }, isRed ? 600 : 7000);
+        })();
 
         let resizeTimer;
         window.addEventListener('resize', () => {
@@ -1286,6 +1506,54 @@
         });
     }
 
+    // Song used normally vs. while red mode is active.
+    // Replace RED_MODE_SONG with your own track's URL.
+    const NORMAL_SONG   = 'https://file.garden/amQoMeBMSROPxoxS/sadbai';
+    const RED_MODE_SONG = 'https://file.garden/amQoMeBMSROPxoxS/fuck%20you';
+
+    // Icon markup swapped into the button's <svg class="theme-icon"> on toggle.
+    const HEART_ICON_SVG = '<path d="M12 20.5C12 20.5 3.8 15.2 3.8 9.2 3.8 5.9 6.2 3.5 9.4 3.5c1.7 0 3.2.9 3.9 2.3.7-1.4 2.2-2.3 3.9-2.3 3.2 0 5.6 2.4 5.6 5.7 0 6-8.2 11.3-8.2 11.3z" fill="currentColor"/>';
+    const SKULL_ICON_SVG = '<path d="M12 2C7.8 2 4.3 5.6 4.3 10c0 2.5 1.2 4.7 3.1 6.1h9.2c1.9-1.4 3.1-3.6 3.1-6.1C19.7 5.6 16.2 2 12 2z" fill="currentColor"/>' +
+        '<rect x="7.4" y="15.6" width="9.2" height="1.3" fill="currentColor"/>' +
+        '<path d="M7.4,16.9 L9.24,16.9 L8.32,19.9 Z M9.24,16.9 L11.08,16.9 L10.16,19.9 Z M11.08,16.9 L12.92,16.9 L12,19.9 Z M12.92,16.9 L14.76,16.9 L13.84,19.9 Z M14.76,16.9 L16.6,16.9 L15.68,19.9 Z" fill="currentColor"/>' +
+        '<ellipse cx="8.7" cy="9.3" rx="2.05" ry="2.55" fill="var(--bg)"/>' +
+        '<ellipse cx="15.3" cy="9.3" rx="2.05" ry="2.55" fill="var(--bg)"/>' +
+        '<path d="M12 10.9l-1.35 2.5h2.7z" fill="var(--bg)"/>';
+
+    function initThemeToggle() {
+        const btn = document.getElementById('theme-toggle');
+        const audio = document.getElementById('bg-audio');
+        const icon = btn ? btn.querySelector('.theme-icon') : null;
+        if (!btn) return;
+
+        if (icon) {
+            icon.addEventListener('animationend', function(e) {
+                if (e.animationName === 'icon-spin') icon.classList.remove('spinning');
+            });
+        }
+
+        btn.addEventListener('click', function() {
+            var redMode = document.body.classList.toggle('red-mode');
+            btn.setAttribute('aria-label', redMode ? 'Disable red mode' : 'Enable red mode');
+
+            if (icon) {
+                icon.classList.remove('spinning');
+                void icon.offsetWidth; // restart the animation even on rapid clicks
+                icon.innerHTML = redMode ? SKULL_ICON_SVG : HEART_ICON_SVG;
+                icon.classList.add('spinning');
+            }
+
+            if (audio) {
+                var wasPlaying = !audio.paused;
+                var nextSrc = redMode ? RED_MODE_SONG : NORMAL_SONG;
+                if (nextSrc && nextSrc !== 'YOUR_RED_MODE_SONG_URL_HERE') {
+                    audio.src = nextSrc;
+                    if (wasPlaying) audio.play().catch(function() {});
+                }
+            }
+        });
+    }
+
     FOUNDERS.forEach(founder => {
         updateFounder(founder.id);
     });
@@ -1296,6 +1564,7 @@
     initFounderSpread();
     initAudio();
     disableDevTools();
+    initThemeToggle();
 })();
 </script>
 
