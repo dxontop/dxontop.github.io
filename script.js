@@ -1,10 +1,6 @@
 (function () {
     "use strict";
 
-    /* ------------------------------------------------------------------ */
-    /*  ALL CONFIGURABLE DATA (every src / href used across the site)      */
-    /* ------------------------------------------------------------------ */
-
     const FAVICON_URL = 'https://file.garden/amQoMeBMSROPxoxS/icon1.jpg';
 
     const SOCIAL_ICONS = {
@@ -34,14 +30,13 @@
         ],
         liveLaughLove: [
             { href: 'https://discord.gg/86C4SQQgQ7',  icon: 'https://file.garden/amQoMeBMSROPxoxS/t2s-removebg-preview.png' },
-            { href: 'https://discord.gg/DjM8B4ZaZM',  icon: 'https://file.garden/amQoMeBMSROPxoxS/snl-removebg-preview.png' },
+            { href: 'https://discord.gg/3XTEtgEmS3',  icon: 'https://file.garden/amQoMeBMSROPxoxS/brt-removebg-preview.png' },
             { href: 'https://discord.gg/jPUJZV8uE',   icon: 'https://file.garden/amQoMeBMSROPxoxS/chicas.png' },
             { href: 'https://discord.gg/hNuGgSGw5U',  icon: 'https://file.garden/amQoMeBMSROPxoxS/feiren' },
-            { href: 'https://discord.gg/REPLACE_ME',  icon: 'https://file.garden/amQoMeBMSROPxoxS/t2s-removebg-preview.png' }, // TODO: replace with real invite + icon
+            { href: 'https://discord.gg/pyd52jhCvm',  icon: 'https://file.garden/amQoMeBMSROPxoxS/exodus-removebg-preview.png' },
         ],
     };
 
-    // Song used normally vs. while red mode is active.
     const NORMAL_SONG   = 'https://file.garden/amQoMeBMSROPxoxS/sadbai';
     const RED_MODE_SONG = 'https://file.garden/amQoMeBMSROPxoxS/fuck%20you';
 
@@ -56,7 +51,6 @@
 
     const ABOUT_TEXT = "We\u2019re just two idiots who decided to team up and chase something bigger than ourselves, quietly working to become one of the faces of this generation while staying humble every step of the way. Every move we make is calculated we run things silently, let our results speak louder than our names, and build a presence that commands respect without ever asking for it.";
 
-    // Icon markup swapped into the button's <svg class="theme-icon"> on toggle.
     const HEART_ICON_SVG = '<path d="M12 20.5C12 20.5 3.8 15.2 3.8 9.2 3.8 5.9 6.2 3.5 9.4 3.5c1.7 0 3.2.9 3.9 2.3.7-1.4 2.2-2.3 3.9-2.3 3.2 0 5.6 2.4 5.6 5.7 0 6-8.2 11.3-8.2 11.3z" fill="currentColor"/>';
     const SKULL_ICON_SVG = '<path d="M12 2C7.8 2 4.3 5.6 4.3 10c0 2.5 1.2 4.7 3.1 6.1h9.2c1.9-1.4 3.1-3.6 3.1-6.1C19.7 5.6 16.2 2 12 2z" fill="currentColor"/>' +
         '<rect x="7.4" y="15.6" width="9.2" height="1.3" fill="currentColor"/>' +
@@ -64,10 +58,6 @@
         '<ellipse cx="8.7" cy="9.3" rx="2.05" ry="2.55" fill="var(--bg)"/>' +
         '<ellipse cx="15.3" cy="9.3" rx="2.05" ry="2.55" fill="var(--bg)"/>' +
         '<path d="M12 10.9l-1.35 2.5h2.7z" fill="var(--bg)"/>';
-
-    /* ------------------------------------------------------------------ */
-    /*  RENDERING (builds DOM from the config above)                       */
-    /* ------------------------------------------------------------------ */
 
     function setFavicon() {
         const link = document.getElementById('favicon');
@@ -198,10 +188,6 @@
         if (audio) audio.src = NORMAL_SONG;
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  ABOUT TYPING EFFECT                                                */
-    /* ------------------------------------------------------------------ */
-
     let aboutTyped = false;
     function initAboutTyping() {
         if (aboutTyped) return;
@@ -223,10 +209,6 @@
         }
         type();
     }
-
-    /* ------------------------------------------------------------------ */
-    /*  SCROLL REVEAL                                                       */
-    /* ------------------------------------------------------------------ */
 
     function initScrollReveal() {
         const revealEls = document.querySelectorAll('.reveal');
@@ -258,10 +240,6 @@
         revealEls.forEach(el => observer.observe(el));
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  INTRO SPLASH SCREEN                                                 */
-    /* ------------------------------------------------------------------ */
-
     function initIntro() {
         const intro = document.getElementById('intro');
         const mainContent = document.getElementById('main-content');
@@ -285,9 +263,6 @@
         });
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  STARFIELD BACKGROUND                                                */
-    /* ------------------------------------------------------------------ */
 
     (function initStars() {
         const canvas = document.getElementById('stars');
@@ -370,9 +345,6 @@
         });
     })();
 
-    /* ------------------------------------------------------------------ */
-    /*  DISCORD LANYARD (avatar / status / decoration fetch)                */
-    /* ------------------------------------------------------------------ */
 
     function avatarUrl(user, size) {
         size = size || 128;
@@ -465,10 +437,6 @@
         }
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  FOUNDER CARD INTERACTIONS                                           */
-    /* ------------------------------------------------------------------ */
-
     function initFounderToggle() {
         const toggle = document.getElementById('founders-toggle');
         const grid = document.getElementById('founders-grid');
@@ -511,10 +479,6 @@
         });
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  AUDIO                                                               */
-    /* ------------------------------------------------------------------ */
-
     function initAudio() {
         const audio = document.getElementById('bg-audio');
         const toggle = document.getElementById('audio-toggle');
@@ -543,10 +507,6 @@
             });
         }
     }
-
-    /* ------------------------------------------------------------------ */
-    /*  MISC                                                                */
-    /* ------------------------------------------------------------------ */
 
     function disableDevTools() {
         document.addEventListener('contextmenu', function(e) {
@@ -583,7 +543,7 @@
 
             if (icon) {
                 icon.classList.remove('spinning');
-                void icon.offsetWidth; // restart the animation even on rapid clicks
+                void icon.offsetWidth;
                 icon.innerHTML = redMode ? SKULL_ICON_SVG : HEART_ICON_SVG;
                 icon.classList.add('spinning');
             }
@@ -598,10 +558,6 @@
             }
         });
     }
-
-    /* ------------------------------------------------------------------ */
-    /*  INIT                                                                */
-    /* ------------------------------------------------------------------ */
 
     setFavicon();
     setInitialAudioSrc();
