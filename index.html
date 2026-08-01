@@ -453,6 +453,18 @@
             to   { transform: translate3d(-50%, 0, 0); }
         }
 
+        .servers-wrapper[data-servers="main"] .carousel {
+            overflow: visible;
+            -webkit-mask-image: none;
+            mask-image: none;
+        }
+
+        .servers-wrapper[data-servers="main"] .carousel-track {
+            animation: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .server-card {
             flex: 0 0 auto;
             display: block;

@@ -177,7 +177,7 @@
         return a;
     }
 
-    function renderServerSection(key) {
+    function renderServerSection(key, loop) {
         const wrapper = document.querySelector('.servers-wrapper[data-servers="' + key + '"]');
         if (!wrapper) return;
         const track = wrapper.querySelector('.carousel-track');
@@ -187,8 +187,10 @@
         track.innerHTML = '';
         // visible set
         servers.forEach(function (s) { track.appendChild(createServerCard(s, false)); });
-        // duplicate set, for the seamless scrolling loop
-        servers.forEach(function (s) { track.appendChild(createServerCard(s, true)); });
+        // duplicate set, only needed for the seamless auto-scrolling loop
+        if (loop) {
+            servers.forEach(function (s) { track.appendChild(createServerCard(s, true)); });
+        }
     }
 
     function setInitialAudioSrc() {
@@ -604,8 +606,8 @@
     setFavicon();
     setInitialAudioSrc();
     renderFounders();
-    renderServerSection('main');
-    renderServerSection('liveLaughLove');
+    renderServerSection('main', false);
+    renderServerSection('liveLaughLove', true);
 
     FOUNDERS.forEach(founder => {
         updateFounder(founder.id);
