@@ -32,7 +32,7 @@
             { href: 'https://discord.gg/86C4SQQgQ7',  icon: 'https://file.garden/amQoMeBMSROPxoxS/t2s-removebg-preview.png' },
             { href: 'https://discord.gg/3XTEtgEmS3',  icon: 'https://file.garden/amQoMeBMSROPxoxS/brt-removebg-preview.png' },
             { href: 'https://discord.gg/jPUJZV8uE',   icon: 'https://file.garden/amQoMeBMSROPxoxS/chicas.png' },
-            { href: 'https://discord.gg/hNuGgSGw5U',  icon: 'https://file.garden/amQoMeBMSROPxoxS/feiren' },
+            { href: 'https://discord.gg/hNuGgSGw5U',  icon: 'https://file.garden/amQoMeBMSROPxoxS/feiren.png' },
             { href: 'https://discord.gg/pyd52jhCvm',  icon: 'https://file.garden/amQoMeBMSROPxoxS/exodus-removebg-preview.png' },
         ],
     };
