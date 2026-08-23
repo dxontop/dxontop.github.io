@@ -91,7 +91,7 @@ const CONFIG = {
     { name:'jong',  discordId:'1010028872282157106' },
     { name:'gun',  discordId:'1495036966360842260' },
     { name:'yuzuki',  discordId:'1518082674017701888' },
-    { name:'cholo', discordId:'1503083605444788235' },
+    { name:'rue', discordId:'1502126548096909353' },
     { name:'kio',  discordId:'751387160057217066' },
     { name:'hesu',  discordId:'795725566476812348' },
   ],
