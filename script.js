@@ -54,12 +54,12 @@ const CONFIG = {
   // Discord invite widget rendered below the terminal.
   discordInvite: {
     bannerText: 'threat2society',
-    banner: '',              // banner image url; falls back to the plain gradient
-    logo: '',                // circular logo/avatar image url; falls back to initials
+    banner: 'images/banner.gif',              // banner image url; falls back to the plain gradient
+    logo: 'images/logo.gif',                // circular logo/avatar image url; falls back to initials
     name: 'Threat2Society',
     tags: '',
     memberCount: null,      // number, or null to hide the member line
-    url: '',                // invite link
+    url: 'https://discord.gg/nNW8WBtxGw',                // invite link
   },
 
   asciiArt: `     s                                                         s                      .x+=:.                            .                    s                 
@@ -125,7 +125,7 @@ const CONFIG = {
 
   music: {
     url: 't2sontop_V1.mp3',
-    volume: 0.50,
+    volume: 0.80,
   },
 
   loadingAscii: `     s                      .x+=:.   
