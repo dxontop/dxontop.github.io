@@ -100,21 +100,21 @@ const CONFIG = {
     {
       name: 'CTRL',
       tag: '',
-      image: 'images/ctrl.jpg',
+      image: './ctrl.jpg',
       description: 'we hate larpers.',
       invite: 'https://discord.gg/ZjWacnA6YK',
     },
     {
       name: 'Nemesis',
       tag: '',
-      image: 'images/nemesis.png',
+      image: './nemesis.png',
       description: 'nemesis till i die.',
       invite: 'https://discord.gg/n3jacUmwrR',
     },
     {
       name:'EBK',
       tag: '',
-      image: 'images/ebk.gif',
+      image: './ebk.gif',
       description: 'everybody killa',
       invite: 'https://discord.gg/wHNEUrruSm',
     },
@@ -142,10 +142,10 @@ const CONFIG = {
 
   sectionBackgrounds: {
     home:         '',
-    mainthreats:  'images/main threats.jpg',
-    bigthreats:   'images/big threats.jpg',
-    about:        'images/about.jpg',
-    affiliations: 'images/associate.jpg',
+    mainthreats:  './main threats.jpg',
+    bigthreats:   './big threats.jpg',
+    about:        './about.jpg',
+    affiliations: './associate.jpg',
   },
 };
 
