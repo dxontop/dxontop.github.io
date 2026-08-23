@@ -1,946 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>The Exalted Ones</title>
-
-    <link id="favicon" rel="icon" type="image/png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ascendd.xyz/">
-    <meta property="og:title" content="The Exalted Ones">
-    <meta property="og:description" content="We run everything silently.">
-
-    <meta name="twitter:card" content="summary_small_image">
-    <meta name="twitter:title" content="The Exalted Ones">
-    <meta name="twitter:description" content="We run everything silently.">
-
-    <meta name="theme-color" content="#080808">
-
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #080808;
-            --surface: rgba(255,255,255,0.03);
-            --border: rgba(255,255,255,0.07);
-            --text: #e8e8e8;
-            --muted: #555;
-            --dim: #333;
-            --accent: #ffffff;
-            --red: #c0392b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        html, body {
-            min-height: 100vh;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #stars {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        #main-bg {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background-image: url('/assets/img/background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.22;
-            pointer-events: none;
-        }
-
-        #main-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(8,8,8,0.5), rgba(8,8,8,0.94) 78%);
-        }
-
-        #bg-flicker {
-            position: fixed;
-            inset: 0;
-            z-index: 2;
-            background: rgba(255,255,255,0.35);
-            opacity: 0;
-            pointer-events: none;
-            animation: bg-flicker 7s infinite;
-        }
-
-        @keyframes bg-flicker {
-            0%, 90%, 100% { opacity: 0; }
-            91% { opacity: 0.75; }
-            92% { opacity: 0.1; }
-            93% { opacity: 0.9; }
-            94% { opacity: 0; }
-            95% { opacity: 0.55; }
-            96% { opacity: 0; }
-        }
-
-        #intro {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: opacity 0.9s ease, visibility 0.9s ease;
-            cursor: pointer;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #intro.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        #intro .brand {
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: clamp(0.9rem, 2.6vw, 1.2rem);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 55%, #888888 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 22px rgba(255,255,255,0.18);
-        }
-
-        #intro h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: clamp(0.75rem, 2.5vw, 1rem);
-            letter-spacing: 8px;
-            text-transform: lowercase;
-            color: #fff;
-            animation: pulse 2.5s infinite;
-        }
-
-        #main-content {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            min-height: 100vh;
-            padding: 60px 20px 80px;
-            position: relative;
-            z-index: 10;
-            animation: fadeIn 0.8s ease;
-        }
-
-        #main-content.visible {
-            display: flex;
-        }
-
-        .site-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            font-size: clamp(0.95rem, 2.8vw, 1.4rem);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 50%, #8f8f8f 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 24px rgba(255,255,255,0.15);
-            margin-bottom: 50px;
-        }
-
-        .founders-wrapper {
-            width: 100%;
-            max-width: 700px;
-            margin-bottom: 60px;
-        }
-
-        .founders-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
-            cursor: pointer;
-        }
-
-        .founders-header::before,
-        .founders-header::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .founders-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 6px;
-            color: var(--muted);
-            text-transform: uppercase;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.35s ease, letter-spacing 0.35s ease;
-        }
-
-        .founders-header:hover .founders-label,
-        .founders-header:focus .founders-label {
-            color: var(--text);
-            letter-spacing: 7px;
-        }
-
-        #founders-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            overflow: hidden;
-            max-height: 300px;
-            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-            opacity: 1;
-        }
-
-        #founders-grid.collapsed {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .founder-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-            outline: none;
-            position: relative;
-        }
-
-        .founder-card:hover,
-        .founder-card:focus {
-            transform: scale(1.05);
-        }
-
-        .founder-card:hover .founder-links,
-        .founder-card:focus-within .founder-links,
-        .founder-card.spread .founder-links {
-            max-height: 48px;
-            opacity: 1;
-            margin-top: 8px;
-        }
-
-        .founder-card:hover .founder-link,
-        .founder-card:focus-within .founder-link,
-        .founder-card.spread .founder-link {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: all;
-        }
-
-        .founder-card:focus .founder-avatar {
-            box-shadow: 0 4px 30px rgba(0,0,0,0.8), 0 0 0 2px rgba(255,255,255,0.3);
-        }
-
-        .founder-avatar-wrap {
-            position: relative;
-            width: 90px;
-            height: 90px;
-        }
-
-        .founder-avatar {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.12);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.8);
-            background: #111;
-            z-index: 2;
-        }
-
-        .founder-decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 4;
-            object-fit: contain;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .founder-status-dot {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #747f8d;
-            border: 2px solid var(--bg);
-            z-index: 3;
-            transition: background 0.3s ease;
-        }
-
-        .founder-name {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
-            letter-spacing: 3px;
-            color: var(--muted);
-            text-transform: lowercase;
-            text-align: center;
-        }
-
-        .founder-tag {
-            font-size: 0.55rem;
-            color: var(--dim);
-            font-family: 'Space Mono', monospace;
-            letter-spacing: 1px;
-        }
-
-        .founder-links {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            max-height: 0;
-            margin-top: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .founder-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 0;
-            border: none;
-            background: transparent;
-            color: var(--muted);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.4rem;
-            letter-spacing: 0.5px;
-            text-align: center;
-            line-height: 1;
-            text-decoration: none;
-            opacity: 0;
-            transform: scale(0.7);
-            transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
-            pointer-events: none;
-        }
-
-        .founder-link:nth-child(1) { transition-delay: 0s; }
-        .founder-link:nth-child(2) { transition-delay: 0.06s; }
-        .founder-link:nth-child(3) { transition-delay: 0.12s; }
-
-        .founder-link:hover,
-        .founder-link:focus {
-            color: #fff;
-            transform: scale(1.15);
-        }
-
-        .founder-link img {
-            width: 18px;
-            height: 18px;
-            display: block;
-            object-fit: contain;
-            mix-blend-mode: multiply;
-            filter: contrast(1.05);
-        }
-
-        .servers-wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 60px;
-        }
-
-        .servers-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
-        }
-
-        .servers-header::before,
-        .servers-header::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .servers-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 6px;
-            color: var(--muted);
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-        }
-
-        .carousel-track {
-            display: flex;
-            width: max-content;
-            gap: 20px;
-            animation: carousel-scroll 20s linear infinite;
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        body.red-mode .carousel-track {
-            animation-duration: 5s;
-        }
-
-        .carousel:hover .carousel-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes carousel-scroll {
-            from { transform: translate3d(0, 0, 0); }
-            to   { transform: translate3d(-50%, 0, 0); }
-        }
-
-        .servers-wrapper[data-servers="main"] .carousel {
-            overflow: visible;
-            -webkit-mask-image: none;
-            mask-image: none;
-        }
-
-        .servers-wrapper[data-servers="main"] .carousel-track {
-            width: 100%;
-            animation: none;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .server-card {
-            flex: 0 0 auto;
-            display: block;
-            width: 340px;
-            height: 178px;
-            border-radius: 0;
-            overflow: visible;
-            border: none;
-            background: transparent;
-            text-decoration: none;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
-        }
-
-        .server-card:hover {
-            transform: translateY(-6px) scale(1.03);
-            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.45));
-        }
-
-        .server-icon {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-        }
-
-        .server-icon img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        @media (max-width: 900px) {
-            .server-card {
-                width: 270px;
-                height: 141px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .server-card {
-                width: 200px;
-                height: 104px;
-            }
-            .carousel-track { gap: 14px; }
-        }
-
-        .about-wrapper {
-            width: 100%;
-            max-width: 700px;
-            margin-bottom: 60px;
-        }
-
-        .about-card {
-            position: relative;
-            width: 100%;
-            padding: 60px 44px;
-            border-radius: 28px;
-            background:
-                radial-gradient(ellipse at top, rgba(255,255,255,0.05), transparent 60%),
-                rgba(255,255,255,0.02);
-            border: 1px solid var(--border);
-            text-align: center;
-            overflow: hidden;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.6s ease,
-                        box-shadow 0.6s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255,255,255,0.14);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .about-title {
-            font-family: 'Playfair Display', serif;
-            font-style: normal;
-            font-weight: 800;
-            font-size: clamp(2.1rem, 5.6vw, 3rem);
-            letter-spacing: -0.5px;
-            background: linear-gradient(180deg, #ffffff 0%, #d4d4d4 50%, #8f8f8f 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 24px rgba(255,255,255,0.15);
-            margin-bottom: 22px;
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
-        }
-
-        .about-divider {
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-            margin: 0 auto 30px;
-            transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
-        }
-
-        .about-description {
-            font-family: 'Manrope', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: clamp(0.92rem, 2.1vw, 1.05rem);
-            letter-spacing: 0.2px;
-            line-height: 1.9;
-            color: var(--text);
-            opacity: 0.8;
-            max-width: 560px;
-            margin: 0 auto;
-        }
-
-        .about-card.revealed .about-title {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-card.revealed .about-divider {
-            width: 60px;
-        }
-
-        .typing-cursor {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 300;
-            color: var(--text);
-            margin-left: 2px;
-            animation: cursor-blink 0.9s steps(1) infinite;
-        }
-
-        @keyframes cursor-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @media (max-width: 600px) {
-            .about-card { padding: 44px 26px; border-radius: 20px; }
-        }
-
-        #audio-toggle {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 50;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            color: var(--muted);
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            outline: none;
-        }
-
-        #audio-toggle:hover,
-        #audio-toggle:focus {
-            background: rgba(255,255,255,0.08);
-            color: var(--text);
-            border-color: rgba(255,255,255,0.18);
-            transform: scale(1.06);
-        }
-
-        #audio-toggle .audio-icon {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            line-height: 1;
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 600px) {
-            #audio-toggle { width: 38px; height: 38px; bottom: 16px; right: 16px; }
-        }
-
-        #theme-toggle {
-            position: fixed;
-            top: 22px;
-            right: 22px;
-            z-index: 50;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            transition: background 0.35s ease, border-color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            outline: none;
-        }
-
-        #theme-toggle:hover,
-        #theme-toggle:focus {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.18);
-            transform: scale(1.08);
-        }
-
-        #theme-toggle .theme-icon {
-            width: 20px;
-            height: 20px;
-            color: #cfcfcf;
-            transition: color 0.35s ease, filter 0.35s ease;
-            transform-origin: 50% 50%;
-        }
-
-        @keyframes icon-spin {
-            0%   { transform: rotate(0deg) scale(1); }
-            35%  { transform: rotate(200deg) scale(1.2); }
-            65%  { transform: rotate(340deg) scale(0.9); }
-            100% { transform: rotate(720deg) scale(1); }
-        }
-
-        #theme-toggle .theme-icon.spinning {
-            animation: icon-spin 0.65s cubic-bezier(0.34, 1.56, 0.56, 1);
-        }
-
-        body.red-mode #theme-toggle .theme-icon {
-            color: var(--red);
-            filter: drop-shadow(0 0 6px rgba(224,60,50,0.85));
-        }
-
-        body.red-mode {
-            --text: #ff5548;
-            --muted: #c0392b;
-            --dim: #7a1f16;
-            --accent: #ff5548;
-        }
-
-        body.red-mode .site-title,
-        body.red-mode .about-title,
-        body.red-mode #intro .brand {
-            background: linear-gradient(180deg, #ff8a7a 0%, #e0392c 55%, #7a1f16 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 24px rgba(224,60,50,0.35);
-        }
-
-        body.red-mode .founder-link:hover,
-        body.red-mode .founder-link:focus,
-        body.red-mode #audio-toggle:hover,
-        body.red-mode #audio-toggle:focus {
-            color: #ff8a7a;
-        }
-
-        body.red-mode #bg-flicker {
-            background: rgba(224,60,50,0.55);
-            animation: bg-flicker-red 1.1s infinite;
-        }
-
-        @keyframes bg-flicker-red {
-            0%, 38%, 100% { opacity: 0; }
-            4%   { opacity: 0.95; }
-            7%   { opacity: 0.1; }
-            11%  { opacity: 1; }
-            14%  { opacity: 0; }
-            19%  { opacity: 0.7; }
-            22%  { opacity: 0; }
-            29%  { opacity: 0.85; }
-            32%  { opacity: 0; }
-        }
-
-        @keyframes text-glitch {
-            0%, 100% {
-                transform: translate(0, 0);
-                text-shadow: none;
-                clip-path: none;
-                filter: none;
-            }
-            2% {
-                transform: translate(-3px, 1px);
-                text-shadow: 3px 0 rgba(224,60,50,0.9), -3px 0 rgba(0,225,255,0.7);
-                clip-path: inset(10% 0 60% 0);
-            }
-            4% {
-                transform: translate(4px, -2px) skewX(4deg);
-                text-shadow: -4px 0 rgba(224,60,50,0.95), 4px 0 rgba(0,225,255,0.75);
-                clip-path: inset(55% 0 15% 0);
-                filter: brightness(1.7);
-            }
-            6% {
-                transform: translate(-2px, 0);
-                text-shadow: 2px 0 rgba(224,60,50,0.85), -2px 0 rgba(0,225,255,0.6);
-                clip-path: inset(20% 0 40% 0);
-            }
-            8%, 44% {
-                transform: translate(0, 0);
-                text-shadow: none;
-                clip-path: none;
-                filter: none;
-            }
-            46% {
-                transform: translate(4px, -1px) skewX(-5deg);
-                text-shadow: -3px 0 rgba(224,60,50,0.9), 3px 0 rgba(0,225,255,0.7);
-                clip-path: inset(0 0 70% 0);
-            }
-            48% {
-                transform: translate(-3px, 1px);
-                text-shadow: 3px 0 rgba(224,60,50,0.9), -3px 0 rgba(0,225,255,0.7);
-                clip-path: inset(65% 0 0 0);
-                filter: brightness(1.6);
-            }
-            50%, 89% {
-                transform: translate(0, 0);
-                text-shadow: none;
-                clip-path: none;
-                filter: none;
-            }
-            91% {
-                transform: translate(-3px, 2px) skewX(3deg);
-                text-shadow: 2px 0 rgba(224,60,50,0.85), -2px 0 rgba(0,225,255,0.6);
-                clip-path: inset(30% 0 30% 0);
-            }
-            93% {
-                transform: translate(3px, -1px);
-                text-shadow: -3px 0 rgba(224,60,50,0.9), 3px 0 rgba(0,225,255,0.7);
-                clip-path: inset(45% 0 10% 0);
-                filter: brightness(1.5);
-            }
-            95% {
-                transform: translate(0, 0);
-                text-shadow: none;
-                clip-path: none;
-                filter: none;
-            }
-        }
-
-        body.red-mode .site-title,
-        body.red-mode #intro .brand {
-            animation: text-glitch 2s infinite;
-        }
-
-        body.red-mode #intro h2 {
-            animation: text-glitch 2s infinite 0.2s;
-        }
-
-        body.red-mode .about-title {
-            animation: text-glitch 2.2s infinite 0.4s;
-        }
-
-        body.red-mode #about-description-text {
-            display: inline-block;
-            animation: text-glitch 2.4s infinite 0.6s;
-        }
-
-        body.red-mode .founders-label,
-        body.red-mode .servers-label {
-            animation: text-glitch 1.9s infinite 0.9s;
-        }
-
-        body.red-mode .founder-name {
-            animation: text-glitch 1.7s infinite 1.1s;
-        }
-
-        body.red-mode .founder-tag {
-            animation: text-glitch 1.7s infinite 1.4s;
-        }
-
-        @media (max-width: 600px) {
-            #theme-toggle { width: 38px; height: 38px; top: 16px; right: 16px; }
-            #theme-toggle .theme-icon { width: 18px; height: 18px; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50%       { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.4); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .founder-avatar-wrap { width: 75px; height: 75px; }
-            .founder-decoration { width: 78px; height: 78px; }
-            .founder-status-dot { width: 12px; height: 12px; }
-            #founders-grid { gap: 28px; }
-        }
-
-        @media (max-width: 380px) {
-            .founder-avatar-wrap { width: 65px; height: 65px; }
-            .founder-decoration { width: 66px; height: 66px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>threat2society</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<noscript>
-    <style>
-        .reveal, .about-title, .about-divider { opacity: 1 !important; transform: none !important; width: 60px !important; }
-        #main-content { display: flex !important; }
-        #intro { display: none !important; }
-    </style>
-</noscript>
-
-<canvas id="stars"></canvas>
-
-<div id="main-bg" aria-hidden="true"></div>
-
-<div id="bg-flicker" aria-hidden="true"></div>
-
-<div id="intro" role="button" tabindex="0" aria-label="Click to enter website">
-    <div class="brand">THE EXALTED ONES</div>
-    <h2>click to enter</h2>
+<div id="splash">
+  <div class="stars" id="splashStars"></div>
+  <pre id="asciiArt" class="ascii-art"></pre>
+  <div class="splash-hint" id="splashHint">[ click to access ]</div>
 </div>
 
-<audio id="bg-audio" loop preload="auto"></audio>
+<div id="sectionLoader" class="section-loader">
+  <pre id="loaderAscii" class="loader-ascii"></pre>
+</div>
 
-<button id="audio-toggle" aria-label="Pause background music" title="music">
-    <span class="audio-icon">❙❙</span>
-</button>
+<audio id="bgMusicEl" preload="none" loop></audio>
 
-<button id="theme-toggle" aria-label="Enable red mode">
-    <svg class="theme-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 20.5C12 20.5 3.8 15.2 3.8 9.2 3.8 5.9 6.2 3.5 9.4 3.5c1.7 0 3.2.9 3.9 2.3.7-1.4 2.2-2.3 3.9-2.3 3.2 0 5.6 2.4 5.6 5.7 0 6-8.2 11.3-8.2 11.3z" fill="currentColor"/>
-    </svg>
-</button>
+<div id="app">
+  <nav>
+    <div class="logo display" id="navLogo" aria-label="Threat2Society"></div>
+    <div class="navlinks">
+      <a href="home" data-nav="home" class="active">home</a>
+      <a href="mainthreats" data-nav="mainthreats">main threats</a>
+      <a href="bigthreats" data-nav="bigthreats">big threats</a>
+      <a href="about" data-nav="about">about</a>
+      <a href="affiliations" data-nav="affiliations">affiliations</a>
+    </div>
+    <a href="about" class="nav-cta" id="navCta">&bull; join</a>
+  </nav>
 
-<div id="main-content">
-    <div class="site-title">THE EXALTED ONES</div>
+  <main>
+    <section class="page active" id="home">
+      <div class="glow-bg"><div class="stars" id="heroStars"></div></div>
+      <div class="hero">
+        <h1 class="display" id="heroTitle"></h1>
+        <div class="divider-label"><span id="heroTaglineText"></span></div>
+      </div>
+    </section>
+    <section class="page" id="mainthreats">
+      <div class="sec-head">
+        <h2 class="display">MAIN THREATS</h2>
+        <div class="divider-label"><span id="hofSubtitleText"></span></div>
+      </div>
+      <div class="main-threats-row" id="mainThreatsGrid"></div>
+    </section>
+    <section class="page" id="bigthreats">
+      <div class="sec-head">
+        <h2 class="display accent">BIG THREATS</h2>
+        <div class="divider-label"><span id="bigThreatsSubtitleText"></span></div>
+      </div>
+      <div class="big-threats-grid" id="bigThreatsGrid"></div>
+    </section>
+    <section class="page" id="about">
+      <div class="sec-head">
+        <h2 class="display" id="aboutHeading"></h2>
+      </div>
+      <div class="about-body">
+        <span class="tag-script script" id="aboutTagScript"></span>
+        <div class="terminal" id="aboutTerminal">
+          <div class="term-bar">
+            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+            <span class="term-title">terminal — about_us.cli</span>
+          </div>
+          <div class="term-body" id="termBody">
+            <pre id="aboutAscii" class="about-ascii"></pre>
+          </div>
+        </div>
 
-    <div class="founders-wrapper reveal">
-        <div class="founders-header" id="founders-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="founders-grid">
-            <div class="founders-label">
-                Two of a Kind
+        <div class="discord-invite" id="discordInvite">
+          <div class="discord-invite-banner">
+            <span class="discord-invite-banner-text" id="discordInviteBannerText"></span>
+          </div>
+          <div class="discord-invite-body">
+            <div class="discord-invite-icon-wrap" id="discordInviteIconWrap">
+              <span class="discord-invite-icon-fallback" id="discordInviteIconFallback"></span>
             </div>
+            <div class="discord-invite-name" id="discordInviteName"></div>
+            <div class="discord-invite-members" id="discordInviteMembers"></div>
+            <a class="discord-invite-btn" id="discordInviteBtn" target="_blank" rel="noopener noreferrer">join server</a>
+          </div>
         </div>
-        <div id="founders-grid"></div>
-    </div>
+      </div>
+    </section>
+    <section class="page" id="affiliations">
+      <div class="sec-head">
+        <h2 class="display">Affiliations</h2>
+        <div class="divider-label"><span id="affSubtitleText"></span></div>
+      </div>
+      <div class="aff-grid" id="affGrid"></div>
+    </section>
 
-    <div class="servers-wrapper reveal" data-servers="main">
-        <div class="servers-header">
-            <div class="servers-label">we run ts</div>
-        </div>
-
-        <div class="carousel">
-            <div class="carousel-track"></div>
-        </div>
-    </div>
-
-    <div class="servers-wrapper reveal" data-servers="liveLaughLove">
-        <div class="servers-header">
-            <div class="servers-label">live, laugh, love</div>
-        </div>
-
-        <div class="carousel">
-            <div class="carousel-track"></div>
-        </div>
-    </div>
-
-    <div class="about-wrapper reveal">
-        <div class="about-card">
-            <h2 class="about-title">About Us</h2>
-            <div class="about-divider"></div>
-            <p class="about-description"><span id="about-description-text"></span><span class="typing-cursor" id="about-cursor">|</span></p>
-        </div>
-    </div>
-
+  </main>
 </div>
 
-<script src="script.js"></script>
-
+<script src="script.js" defer></script>
 </body>
 </html>
