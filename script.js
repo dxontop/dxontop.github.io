@@ -37,7 +37,7 @@ const CONFIG = {
   // same shape as a shoutout/log feed. Use { divider:true } for a bare
   // "> ..." pause line, and quote:true to italicize/accent a closing line.
   terminal: {
-    command: 'cat about_us.t2s',
+    command: 'cat about_us.cli',
     lines: [
       { text:'ayaw ko sa mga feeling gods', name:'dx' },
       { text:'ayaw ko sa mga tanga', name:'daz' },
@@ -54,7 +54,8 @@ const CONFIG = {
   // Discord invite widget rendered below the terminal.
   discordInvite: {
     bannerText: 'threat2society',
-    icon: '',               // avatar image url; falls back to initials
+    banner: '',              // banner image url; falls back to the plain gradient
+    logo: '',                // circular logo/avatar image url; falls back to initials
     name: 'Threat2Society',
     tags: '',
     memberCount: null,      // number, or null to hide the member line
@@ -91,7 +92,7 @@ const CONFIG = {
     { name:'jong',  discordId:'1010028872282157106' },
     { name:'gun',  discordId:'1495036966360842260' },
     { name:'yuzuki',  discordId:'1518082674017701888' },
-    { name:'rue', discordId:'1502126548096909353' },
+    { name:'cholo', discordId:'1503083605444788235' },
     { name:'kio',  discordId:'751387160057217066' },
     { name:'hesu',  discordId:'795725566476812348' },
   ],
@@ -347,6 +348,12 @@ function renderDiscordInvite(){
   document.getElementById('discordInviteName').textContent =
     [cfg.name, cfg.tags].filter(Boolean).join('  ');
 
+  const bannerEl = document.querySelector('.discord-invite-banner');
+  if(cfg.banner && bannerEl){
+    bannerEl.style.backgroundImage = `url('${cfg.banner}')`;
+    bannerEl.classList.add('has-image');
+  }
+
   const membersEl = document.getElementById('discordInviteMembers');
   if(cfg.memberCount != null){
     membersEl.textContent = `${cfg.memberCount} member${cfg.memberCount === 1 ? '' : 's'}`;
@@ -357,10 +364,10 @@ function renderDiscordInvite(){
 
   const iconWrap = document.getElementById('discordInviteIconWrap');
   const fallback = document.getElementById('discordInviteIconFallback');
-  if(cfg.icon){
+  if(cfg.logo){
     const img = document.createElement('img');
     img.className = 'discord-invite-icon';
-    img.src = cfg.icon;
+    img.src = cfg.logo;
     img.alt = cfg.name || '';
     img.onload = () => fallback.replaceWith(img);
   }else{
@@ -536,7 +543,7 @@ splash.addEventListener('click', ()=>{
     splashRevealed = true;
     startAmbientAudio();
     enterSite();
-  }, { mode:'build', step:8, interval:14, holdAfter:650 });
+  }, { mode:'build', step:13, interval:9, holdAfter:450 });
 });
 
 window.addEventListener('resize', ()=>{
@@ -567,7 +574,6 @@ function go(id){
 async function navigateTo(id){
   const current = document.querySelector('.page.active');
   if(current && current.id === id) return;
-  history.replaceState(null,'','#'+id);
   await showLoader();
   go(id);
   hideLoader();
@@ -578,9 +584,10 @@ navLinks.forEach(a=>{
     navigateTo(a.dataset.nav);
   });
 });
-document.getElementById('navCta').addEventListener('click', e=>{
+document.getElementById('navCta').addEventListener('click', async e=>{
   e.preventDefault();
-  navigateTo('affiliations');
+  await navigateTo('about');
+  document.getElementById('discordInvite')?.scrollIntoView({ behavior:'smooth', block:'center' });
 });
 
 let aboutAnimated = false;
