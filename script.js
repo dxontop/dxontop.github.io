@@ -37,7 +37,7 @@ const CONFIG = {
   // same shape as a shoutout/log feed. Use { divider:true } for a bare
   // "> ..." pause line, and quote:true to italicize/accent a closing line.
   terminal: {
-    command: 'cat about_us.cli',
+    command: 'cat about_us.t2s',
     lines: [
       { text:'ayaw ko sa mga feeling gods', name:'dx' },
       { text:'ayaw ko sa mga tanga', name:'daz' },
@@ -100,21 +100,21 @@ const CONFIG = {
     {
       name: 'CTRL',
       tag: '',
-      image: './ctrl.jpg',
+      image: 'images/ctrl.jpg',
       description: 'we hate larpers.',
       invite: 'https://discord.gg/ZjWacnA6YK',
     },
     {
       name: 'Nemesis',
       tag: '',
-      image: './nemesis.png',
+      image: 'images/nemesis.png',
       description: 'nemesis till i die.',
       invite: 'https://discord.gg/n3jacUmwrR',
     },
     {
       name:'EBK',
       tag: '',
-      image: './ebk.gif',
+      image: 'images/ebk.gif',
       description: 'everybody killa',
       invite: 'https://discord.gg/wHNEUrruSm',
     },
@@ -142,10 +142,10 @@ const CONFIG = {
 
   sectionBackgrounds: {
     home:         '',
-    mainthreats:  './main threats.jpg',
-    bigthreats:   './big threats.jpg',
-    about:        './about.jpg',
-    affiliations: './associate.jpg',
+    mainthreats:  'images/main threats.jpg',
+    bigthreats:   'images/big threats.jpg',
+    about:        'images/about.jpg',
+    affiliations: 'images/associate.jpg',
   },
 };
 
