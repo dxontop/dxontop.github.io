@@ -473,11 +473,18 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
         const ext = du.avatar.startsWith('a_') ? 'gif' : 'png';
         const src = `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${ext}?size=128`;
         fallbacks.forEach(fb => {
+          if(!fb.isConnected) return; // element was already swapped out this render, skip
           const img = document.createElement('img');
           img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
           img.src = src;
           img.alt = du.username || '';
-          img.onload = () => fb.replaceWith(img);
+          img.onload = () => {
+            // Hide + insert next to the fallback instead of replaceWith, so the
+            // original fallback node (and its id) stays in the DOM for reuse
+            // the next time this same element is opened/refreshed.
+            fb.style.display = 'none';
+            fb.insertAdjacentElement('afterend', img);
+          };
         });
       }
       if(du.avatar_decoration_data && du.avatar_decoration_data.asset){
@@ -807,7 +814,9 @@ function slugify(str){
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 
-function openProfile(member){
+async function openProfile(member){
+  await showLoader();
+
   const slug = member.slug || slugify(member.name);
   currentProfileMember = member;
 
@@ -821,7 +830,8 @@ function openProfile(member){
   const roleEl = document.getElementById('profileModalRole');
   roleEl.textContent = member.role || '';
   roleEl.style.display = member.role ? '' : 'none';
-  document.getElementById('profileModalStatusText').textContent = 'connecting...';
+  const statusTextEl = document.getElementById('profileModalStatusText');
+  statusTextEl.textContent = 'connecting...';
   document.getElementById('profileModalStatusDot').dataset.status = 'offline';
 
   profileModal.style.backgroundImage = '';
@@ -829,7 +839,7 @@ function openProfile(member){
   if(member.background) applyBackground(profileModal, member.background);
 
   profileModal.classList.add('visible');
-  history.pushState({ profile:slug }, '', '/' + slug);
+  try{ history.pushState({ profile:slug }, '', '/' + slug); }catch(err){ console.warn('pushState failed', err); }
 
   const pm = document.getElementById('profileMusicEl');
   if(member.music){
@@ -839,12 +849,15 @@ function openProfile(member){
     pm.play().catch(()=>{});
   }
 
+  hideLoader();
+
   fetchLanyard(member, {
     dot: document.getElementById('profileModalStatusDot'),
     avatarWrap: avatarWrap,
     fallback: fallback,
     nameEl: document.getElementById('profileModalName'),
     kind: 'profile', size: 180,
+    tooltipStatusText: statusTextEl,
   });
 }
 function closeProfile(){
@@ -853,7 +866,9 @@ function closeProfile(){
   const pm = document.getElementById('profileMusicEl');
   if(!pm.paused) pm.pause();
   unduckSiteAudio();
-  if(location.pathname !== '/') history.pushState(null, '', '/');
+  if(location.pathname !== '/'){
+    try{ history.pushState(null, '', '/'); }catch(err){ console.warn('pushState failed', err); }
+  }
   currentProfileMember = null;
 }
 document.getElementById('profileModalClose').addEventListener('click', closeProfile);
