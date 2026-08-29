@@ -25,34 +25,28 @@ const CONFIG = {
 
   copy: {
     heroTitle:          'Threat2Society',
-    heroTagline:        'be careful who u mess with ;)',
-    hofSubtitle:         "bet you can't reach us",
+    heroTagline:        'they hate us cuz they aint us',
+    hofSubtitle:         "bet you can't be us",
     bigThreatsSubtitle:  'ingat sa mga to baka patayin ka nila',
     exclusiveThreatsSubtitle: 'hindi lahat kasali dito',
     aboutTagScript:      'all hail T2S',
     affSubtitle:         'nagsama sama mga tirador',
   },
 
-  // Terminal shown in the "about" section. `command` is typed next to the
-  // root@<site>:~$ prompt, then each line renders as "> text - name",
-  // same shape as a shoutout/log feed. Use { divider:true } for a bare
-  // "> ..." pause line, and quote:true to italicize/accent a closing line.
   terminal: {
-    command: 'cat about_us.cli',
+    command: 'whoami t2s',
     lines: [
       { text:'ayaw ko sa mga feeling gods', name:'dx' },
       { text:'ayaw ko sa mga tanga', name:'daz' },
       { text:'mahilig ako makipag esex', name:'faiyaz' },
-      { text:'i love ebk', name:'zowi' },
+      { text:'ayaw ko sa tangahin', name:'zowi' },
       { text:'allergic ako sa sinungaling', name:'sevi' },
       { text:'hi, sao nga pala', name:'sao' },
       { divider:true },
-      { divider:true },
-      { text:'"we don\'t repeat history. we rewrite it"', name:'prophecy', quote:true },
+      { text:'"we don\'t repeat history. we rewrite it"', name:'t2s', quote:true },
     ],
   },
-
-  // Discord invite widget rendered below the terminal.
+  
   discordInvite: {
     bannerText: 'threat2society',
     banner: 'images/banner.gif',              // banner image url; falls back to the plain gradient
@@ -90,8 +84,8 @@ const CONFIG = {
   //               their profile is open.
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
-    { name:'dx/caliber',   role:'', discordId:'1512675755459612835' },
-    { name:'faiyaz', role:'r', discordId:'1402292483584426134' },
+    { name:'caliber',   role:'', discordId:'1512675755459612835' },
+    { name:'faiyaz', role:'', discordId:'1402292483584426134' },
   ],
 
   bigThreats: [
@@ -138,36 +132,36 @@ const CONFIG = {
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
-      name: 'VOID',
+      name: 'ttt',
       tag: '',
       image: '',
-      description: 'wala kaming pake.',
+      description: '',
       invite: '',
     },
     {
-      name: 'WRAITH',
+      name: '',
       tag: '',
       image: '',
-      description: 'di mo kami makikita hanggang huli na.',
+      description: '',
       invite: '',
     },
     {
-      name: 'OMEN',
+      name: '',
       tag: '',
       image: '',
-      description: 'babala bago ang gulo.',
+      description: '',
       invite: '',
     },
     {
-      name: 'NEXUS',
+      name: '',
       tag: '',
       image: '',
-      description: 'lahat kami magkakonekta.',
+      description: '',
       invite: '',
     },
   ],
 
-  logo: 'T2S',
+  logo: ':3',
 
   music: {
     url: 'music/t2sontop_V1.mp3',
