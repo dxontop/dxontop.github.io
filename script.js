@@ -102,11 +102,11 @@ const CONFIG = {
   ],
 
   exclusiveThreats: [
-    { name:'ravyn',  discordId:'100000000000000101' },
-    { name:'nyxen',  discordId:'100000000000000102' },
-    { name:'vess',   discordId:'100000000000000103' },
-    { name:'krow',   discordId:'100000000000000104' },
-    { name:'obsid',  discordId:'100000000000000105' },
+    { name:'exil',  discordId:'1533371972241723589' },
+    { name:'jesko',  discordId:'' },
+    { name:'yori',   discordId:'' },
+    { name:'',   discordId:'' },
+    { name:'',  discordId:'' },
   ],
 
   affiliations: [
