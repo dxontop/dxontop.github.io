@@ -170,7 +170,7 @@ const CONFIG = {
   logo: 'T2S',
 
   music: {
-    url: 't2sontop_V1.mp3',
+    url: 'music/t2sontop_V1.mp3',
     volume: 0.80,
   },
 
