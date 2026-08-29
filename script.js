@@ -28,6 +28,7 @@ const CONFIG = {
     heroTagline:        'be careful who u mess with ;)',
     hofSubtitle:         "bet you can't reach us",
     bigThreatsSubtitle:  'ingat sa mga to baka patayin ka nila',
+    exclusiveThreatsSubtitle: 'hindi lahat kasali dito',
     aboutTagScript:      'all hail T2S',
     affSubtitle:         'nagsama sama mga tirador',
   },
@@ -78,6 +79,15 @@ const CONFIG = {
                 @%                                                                                                                                     ./"     
               :"                                                                                                                                      ~\``,
 
+  // Every member below can click through to their own full-screen profile.
+  // The URL becomes threat2society.world/<slug> once this is hosted there
+  // (locally it'll show your current origin + that path instead — that part
+  // is just how the browser works, not something a script can fake).
+  // Optional per-member fields (all safe to leave out):
+  //   slug:       url segment, e.g. 'ghost' → /ghost. defaults to the name, lowercased.
+  //   background: image/color/gradient shown behind their profile.
+  //   music:      audio file that plays (in place of the site music) while
+  //               their profile is open.
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
     { name:'dx/caliber',   role:'', discordId:'1512675755459612835' },
@@ -95,6 +105,14 @@ const CONFIG = {
     { name:'cholo', discordId:'1503083605444788235' },
     { name:'kio',  discordId:'751387160057217066' },
     { name:'hesu',  discordId:'795725566476812348' },
+  ],
+
+  exclusiveThreats: [
+    { name:'ravyn',  discordId:'100000000000000101' },
+    { name:'nyxen',  discordId:'100000000000000102' },
+    { name:'vess',   discordId:'100000000000000103' },
+    { name:'krow',   discordId:'100000000000000104' },
+    { name:'obsid',  discordId:'100000000000000105' },
   ],
 
   affiliations: [
@@ -118,6 +136,34 @@ const CONFIG = {
       image: 'images/ebk.gif',
       description: 'everybody killa',
       invite: 'https://discord.gg/wHNEUrruSm',
+    },
+    {
+      name: 'VOID',
+      tag: '',
+      image: '',
+      description: 'wala kaming pake.',
+      invite: '',
+    },
+    {
+      name: 'WRAITH',
+      tag: '',
+      image: '',
+      description: 'di mo kami makikita hanggang huli na.',
+      invite: '',
+    },
+    {
+      name: 'OMEN',
+      tag: '',
+      image: '',
+      description: 'babala bago ang gulo.',
+      invite: '',
+    },
+    {
+      name: 'NEXUS',
+      tag: '',
+      image: '',
+      description: 'lahat kami magkakonekta.',
+      invite: '',
     },
   ],
 
@@ -145,6 +191,7 @@ const CONFIG = {
     home:         '',
     mainthreats:  'images/main threats.jpg',
     bigthreats:   'images/big threats.jpg',
+    exclusivethreats: '',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
   },
@@ -182,6 +229,7 @@ function applyCopy(){
   document.getElementById('heroTaglineText').textContent = CONFIG.copy.heroTagline;
   document.getElementById('hofSubtitleText').textContent = CONFIG.copy.hofSubtitle;
   document.getElementById('bigThreatsSubtitleText').textContent = CONFIG.copy.bigThreatsSubtitle;
+  document.getElementById('exclusiveThreatsSubtitleText').textContent = CONFIG.copy.exclusiveThreatsSubtitle;
   document.getElementById('aboutHeading').textContent = 'about ' + CONFIG.siteName;
   document.getElementById('aboutTagScript').textContent = CONFIG.copy.aboutTagScript;
   document.getElementById('affSubtitleText').textContent = CONFIG.copy.affSubtitle;
@@ -198,19 +246,24 @@ function applyLogo(){
   }
 }
 
+function resolveBackgroundValue(val){
+  const v = (val || '').trim();
+  if(!v) return null;
+  if(/^(url\(|linear-gradient|radial-gradient|conic-gradient)/i.test(v)) return { type:'image', css:v };
+  if(/\.(png|jpe?g|gif|webp|avif|svg)$/i.test(v) || /^(https?:)?\//.test(v) || v.startsWith('data:')) return { type:'image', css:`url('${v}')` };
+  return { type:'color', css:v };
+}
+function applyBackground(el, val){
+  const resolved = resolveBackgroundValue(val);
+  if(!resolved) return;
+  if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
+  else el.style.backgroundColor = resolved.css;
+}
 function applySectionBackgrounds(){
   Object.entries(CONFIG.sectionBackgrounds || {}).forEach(([id, bg])=>{
-    if(!bg) return;
     const el = document.getElementById(id);
     if(!el) return;
-    const val = bg.trim();
-    if(/^(url\(|linear-gradient|radial-gradient|conic-gradient)/i.test(val)){
-      el.style.backgroundImage = val;
-    }else if(/\.(png|jpe?g|gif|webp|avif|svg)$/i.test(val) || /^(https?:)?\//.test(val) || val.startsWith('data:')){
-      el.style.backgroundImage = `url('${val}')`;
-    }else{
-      el.style.backgroundColor = val;
-    }
+    applyBackground(el, bg);
   });
 }
 
@@ -276,6 +329,7 @@ function buildMainCard(member){
     dot: dots, avatarWrap: avatarWraps, fallback: fallbacks, nameEl: nameEls,
     kind:'main', size:84, tooltipDot, tooltipStatusText
   });
+  card.addEventListener('click', () => openProfile(member));
   return card;
 }
 function buildBigAvatar(member){
@@ -303,6 +357,7 @@ function buildBigAvatar(member){
   const tooltipDot = item.querySelector('.mini-tooltip-dot');
   const tooltipStatusText = item.querySelector('.mini-tooltip-status-text');
   fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind:'mini', size:76, tooltipName, tooltipDot, tooltipStatusText });
+  item.addEventListener('click', () => openProfile(member));
   return item;
 }
 function renderRosters(){
@@ -310,6 +365,10 @@ function renderRosters(){
   CONFIG.mainThreats.forEach(m => mainWrap.appendChild(buildMainCard(m)));
   const bigWrap = document.getElementById('bigThreatsGrid');
   CONFIG.bigThreats.forEach(m => bigWrap.appendChild(buildBigAvatar(m)));
+  const exclusiveWrap = document.getElementById('exclusiveThreatsGrid');
+  if(exclusiveWrap){
+    (CONFIG.exclusiveThreats || []).forEach(m => exclusiveWrap.appendChild(buildBigAvatar(m)));
+  }
 }
 
 function buildAffCard(aff){
@@ -415,7 +474,7 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
         const src = `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${ext}?size=128`;
         fallbacks.forEach(fb => {
           const img = document.createElement('img');
-          img.className = kind === 'main' ? 'main-avatar-img' : 'mini-avatar-img';
+          img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
           img.src = src;
           img.alt = du.username || '';
           img.onload = () => fb.replaceWith(img);
@@ -665,7 +724,7 @@ function typeTerminalLines(){
   next();
 }
 
-let audioCtx, started = false;
+let audioCtx, started = false, masterGain = null, baseMasterVolume = 0.05;
 function startAmbientAudio(){
   if(started) return;
   started = true;
@@ -680,9 +739,10 @@ function startAmbientAudio(){
 
   try{
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const master = audioCtx.createGain();
-    master.gain.value = 0.05;
-    master.connect(audioCtx.destination);
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = baseMasterVolume;
+    masterGain.connect(audioCtx.destination);
+    const master = masterGain;
 
     const filter = audioCtx.createBiquadFilter();
     filter.type = 'lowpass';
@@ -728,6 +788,78 @@ function startAmbientAudio(){
   }catch(e){ console.warn('ambient audio unavailable', e); }
 }
 document.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); });
+
+function duckSiteAudio(){
+  const bg = document.getElementById('bgMusicEl');
+  if(bg && !bg.paused){ bg.dataset.wasPlaying = '1'; bg.pause(); }
+  if(masterGain && audioCtx){ masterGain.gain.setTargetAtTime(0.0008, audioCtx.currentTime, 0.25); }
+}
+function unduckSiteAudio(){
+  const bg = document.getElementById('bgMusicEl');
+  if(bg && bg.dataset.wasPlaying === '1'){ bg.play().catch(()=>{}); delete bg.dataset.wasPlaying; }
+  if(masterGain && audioCtx){ masterGain.gain.setTargetAtTime(baseMasterVolume, audioCtx.currentTime, 0.35); }
+}
+
+function slugify(str){
+  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
+}
+
+const profileModal = document.getElementById('profileModal');
+let currentProfileMember = null;
+
+function openProfile(member){
+  const slug = member.slug || slugify(member.name);
+  currentProfileMember = member;
+
+  const avatarWrap = document.getElementById('profileModalAvatarWrap');
+  avatarWrap.querySelectorAll('img').forEach(n => n.remove());
+  const fallback = document.getElementById('profileModalAvatarFallback');
+  fallback.style.display = '';
+  fallback.textContent = member.name[0].toUpperCase();
+
+  document.getElementById('profileModalName').textContent = member.name;
+  const roleEl = document.getElementById('profileModalRole');
+  roleEl.textContent = member.role || '';
+  roleEl.style.display = member.role ? '' : 'none';
+  document.getElementById('profileModalStatusText').textContent = 'connecting...';
+  document.getElementById('profileModalStatusDot').dataset.status = 'offline';
+
+  profileModal.style.backgroundImage = '';
+  profileModal.style.backgroundColor = '';
+  if(member.background) applyBackground(profileModal, member.background);
+
+  profileModal.classList.add('visible');
+  history.pushState({ profile:slug }, '', '/' + slug);
+
+  const pm = document.getElementById('profileMusicEl');
+  if(member.music){
+    duckSiteAudio();
+    pm.src = member.music;
+    pm.volume = 0.5;
+    pm.play().catch(()=>{});
+  }
+
+  fetchLanyard(member, {
+    dot: document.getElementById('profileModalStatusDot'),
+    avatarWrap: avatarWrap,
+    fallback: fallback,
+    nameEl: document.getElementById('profileModalName'),
+    kind: 'profile', size: 180,
+  });
+}
+function closeProfile(){
+  if(!profileModal.classList.contains('visible')) return;
+  profileModal.classList.remove('visible');
+  const pm = document.getElementById('profileMusicEl');
+  if(!pm.paused) pm.pause();
+  unduckSiteAudio();
+  if(location.pathname !== '/') history.pushState(null, '', '/');
+  currentProfileMember = null;
+}
+document.getElementById('profileModalClose').addEventListener('click', closeProfile);
+profileModal.addEventListener('click', e => { if(e.target === profileModal) closeProfile(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
+window.addEventListener('popstate', closeProfile);
 
 window.addEventListener('DOMContentLoaded', ()=>{
   applyTheme();
