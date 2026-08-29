@@ -167,6 +167,11 @@ const CONFIG = {
     volume: 0.80,
   },
 
+  hallOfShameMusic: {
+    url: '',
+    volume: 0.80,
+  },
+
   loadingAscii: `     s                      .x+=:.   
     :8      .--~*teu.      z\`    ^%  
    .88     dF     988Nx       .   <k 
@@ -651,10 +656,34 @@ function hideLoader(){
 
 const navLinks = document.querySelectorAll('.navlinks a');
 const pages = document.querySelectorAll('.page');
+let usingHofsMusic = false;
+function applyPageMusic(id){
+  const bg = document.getElementById('bgMusicEl');
+  const hofs = CONFIG.hallOfShameMusic;
+  if(id === 'hallofshame' && hofs && hofs.url){
+    if(usingHofsMusic) return;
+    usingHofsMusic = true;
+    bg.src = hofs.url;
+    bg.volume = hofs.volume ?? (CONFIG.music?.volume ?? 0.35);
+    bg.currentTime = 0;
+    bg.play().catch(()=>{});
+  }else if(usingHofsMusic){
+    usingHofsMusic = false;
+    if(CONFIG.music && CONFIG.music.url){
+      bg.src = CONFIG.music.url;
+      bg.volume = CONFIG.music.volume ?? 0.35;
+      bg.currentTime = 0;
+      bg.play().catch(()=>{});
+    }else{
+      bg.pause();
+    }
+  }
+}
 function go(id){
   pages.forEach(p => p.classList.toggle('active', p.id === id));
   navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
   if(id === 'about') typeAbout();
+  applyPageMusic(id);
 }
 async function navigateTo(id){
   const current = document.querySelector('.page.active');
@@ -669,10 +698,40 @@ navLinks.forEach(a=>{
     navigateTo(a.dataset.nav);
   });
 });
-document.getElementById('secretHofsButton').addEventListener('click', e=>{
-  e.preventDefault();
-  e.stopPropagation();
-  navigateTo('hallofshame');
+let secretBuffer = '';
+document.addEventListener('keydown', e => {
+  const about = document.getElementById('about');
+  if(!about.classList.contains('active')){ secretBuffer = ''; return; }
+  const active = document.activeElement;
+  if(active && ['INPUT','TEXTAREA'].includes(active.tagName)) return;
+
+  if(e.key === 'Enter'){
+    const attempt = secretBuffer.toLowerCase();
+    const typedEl = document.getElementById('termTypedText');
+    if(attempt === 'eww'){
+      navigateTo('hallofshame');
+    }else if(attempt){
+      const body = document.getElementById('termBody');
+      const inputLine = document.getElementById('termInputLine');
+      const resp = document.createElement('div');
+      resp.className = 'ln show';
+      resp.innerHTML = '<span class="chevron">&gt;</span>&nbsp;<span class="divider">engkk engot</span>';
+      if(inputLine) body.insertBefore(resp, inputLine);
+      else body.appendChild(resp);
+    }
+    secretBuffer = '';
+    if(typedEl) typedEl.textContent = '';
+    return;
+  }
+  if(e.key === 'Backspace'){
+    secretBuffer = secretBuffer.slice(0, -1);
+  }else if(e.key.length === 1 && /[a-z0-9]/i.test(e.key)){
+    secretBuffer = (secretBuffer + e.key).slice(-20);
+  }else{
+    return;
+  }
+  const typedEl = document.getElementById('termTypedText');
+  if(typedEl) typedEl.textContent = secretBuffer;
 });
 document.getElementById('navCta').addEventListener('click', async e=>{
   e.preventDefault();
@@ -741,7 +800,8 @@ function typeTerminalLines(){
     if(idx >= steps.length){
       const cur = document.createElement('div');
       cur.className = 'ln show';
-      cur.innerHTML = '<span class="prompt">$</span> <span class="cursor-blink">&nbsp;</span>';
+      cur.id = 'termInputLine';
+      cur.innerHTML = '<span class="prompt">$</span>&nbsp;<span class="out" id="termTypedText"></span><span class="cursor-blink">&nbsp;</span>';
       body.appendChild(cur);
       return;
     }
