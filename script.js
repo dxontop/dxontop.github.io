@@ -90,28 +90,28 @@ const CONFIG = {
     { name:'yuzuki',  discordId:'1518082674017701888' },
     { name:'cholo', discordId:'1503083605444788235' },
     { name:'kio',  discordId:'751387160057217066' },
-    { name:'hesu',  discordId:'795725566476812348' },
+    { name:'rue',  discordId:'1502126548096909353' },
   ],
 
   exclusiveThreats: [
     { name:'exil',  discordId:'1533371972241723589' },
     { name:'jesko',  discordId:'' },
     { name:'yori',   discordId:'' },
-    { name:'shade',  discordId:'' },
-    { name:'onyx',   discordId:'' },
+    { name:'jor',  discordId:'' },
+    { name:'',   discordId:'' },
   ],
 
   members: [
-    { name:'raze',    discordId:'' },
-    { name:'echo',    discordId:'' },
-    { name:'lumen',   discordId:'' },
-    { name:'briar',   discordId:'' },
-    { name:'thorn',   discordId:'' },
-    { name:'vale',    discordId:'' },
-    { name:'ember',   discordId:'' },
-    { name:'moss',    discordId:'' },
-    { name:'ash',     discordId:'' },
-    { name:'wren',    discordId:'' },
+    { name:'',    discordId:'' },
+    { name:'',    discordId:'' },
+    { name:'',   discordId:'' },
+    { name:'',   discordId:'' },
+    { name:'',   discordId:'' },
+    { name:'',    discordId:'' },
+    { name:'',   discordId:'' },
+    { name:'',    discordId:'' },
+    { name:'',     discordId:'' },
+    { name:'',    discordId:'' },
   ],
 
   hallOfShame: [
@@ -149,13 +149,6 @@ const CONFIG = {
       tag: '',
       image: '',
       description: 'wala kaming pake.',
-      invite: '',
-    },
-    {
-      name: 'WRAITH',
-      tag: '',
-      image: '',
-      description: 'di mo kami makikita hanggang huli na.',
       invite: '',
     },
   ],
@@ -348,7 +341,7 @@ function buildBigAvatar(member){
       <div class="mini-avatar-fallback">${member.name[0].toUpperCase()}</div>
       <span class="mini-status-dot" data-status="offline"></span>
     </div>
-    <div class="mini-name">loading...</div>
+    <div class="mini-name">loading</div>
   `;
   const dot = item.querySelector('.mini-status-dot');
   const avatarWrap = item.querySelector('.mini-avatar-wrap');
