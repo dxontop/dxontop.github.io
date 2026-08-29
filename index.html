@@ -28,10 +28,11 @@
   <nav>
     <div class="logo display" id="navLogo" aria-label="Threat2Society"></div>
     <div class="navlinks">
-      <a href="home" data-nav="home" class="active">home</a>
+      <a href="home" data-nav="home" class="active" id="navHome">home<span class="secret-dot" id="secretHofsButton" aria-hidden="true"></span></a>
       <a href="mainthreats" data-nav="mainthreats">main threats</a>
       <a href="bigthreats" data-nav="bigthreats">big threats</a>
       <a href="exclusivethreats" data-nav="exclusivethreats">exclusive threats</a>
+      <a href="members" data-nav="members">members</a>
       <a href="about" data-nav="about">about</a>
       <a href="affiliations" data-nav="affiliations">affiliations</a>
     </div>
@@ -66,6 +67,20 @@
         <div class="divider-label"><span id="exclusiveThreatsSubtitleText"></span></div>
       </div>
       <div class="big-threats-grid" id="exclusiveThreatsGrid"></div>
+    </section>
+    <section class="page" id="members">
+      <div class="sec-head">
+        <h2 class="display">MEMBERS</h2>
+        <div class="divider-label"><span id="membersSubtitleText"></span></div>
+      </div>
+      <div class="big-threats-grid" id="membersGrid"></div>
+    </section>
+    <section class="page" id="hallofshame">
+      <div class="sec-head">
+        <h2 class="display accent">HALL OF SHAME</h2>
+        <div class="divider-label"><span>you weren't supposed to find this</span></div>
+      </div>
+      <div class="shame-grid" id="shameGrid"></div>
     </section>
     <section class="page" id="about">
       <div class="sec-head">

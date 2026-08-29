@@ -29,6 +29,7 @@ const CONFIG = {
     hofSubtitle:         "bet you can't be us",
     bigThreatsSubtitle:  'ingat sa mga to baka patayin ka nila',
     exclusiveThreatsSubtitle: 'hindi lahat kasali dito',
+    membersSubtitle:     'ang dami na naming',
     aboutTagScript:      'all hail T2S',
     affSubtitle:         'nagsama sama mga tirador',
   },
@@ -105,8 +106,32 @@ const CONFIG = {
     { name:'exil',  discordId:'1533371972241723589' },
     { name:'jesko',  discordId:'' },
     { name:'yori',   discordId:'' },
-    { name:'',   discordId:'' },
-    { name:'',  discordId:'' },
+    { name:'shade',  discordId:'' },
+    { name:'onyx',   discordId:'' },
+  ],
+
+  members: [
+    { name:'raze',    discordId:'' },
+    { name:'echo',    discordId:'' },
+    { name:'lumen',   discordId:'' },
+    { name:'briar',   discordId:'' },
+    { name:'thorn',   discordId:'' },
+    { name:'vale',    discordId:'' },
+    { name:'ember',   discordId:'' },
+    { name:'moss',    discordId:'' },
+    { name:'ash',     discordId:'' },
+    { name:'wren',    discordId:'' },
+  ],
+
+  // Hall of Shame — 5 cards, each just a video clip + who it is.
+  // video: path/URL to an .mp4/.webm file. poster: optional thumbnail image
+  // shown before playback (leave blank to just show a black box until played).
+  hallOfShame: [
+    { name:'', discordName:'', video:'', poster:'' },
+    { name:'', discordName:'', video:'', poster:'' },
+    { name:'', discordName:'', video:'', poster:'' },
+    { name:'', discordName:'', video:'', poster:'' },
+    { name:'', discordName:'', video:'', poster:'' },
   ],
 
   affiliations: [
@@ -132,31 +157,17 @@ const CONFIG = {
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
-      name: 'ttt',
+      name: 'VOID',
       tag: '',
       image: '',
-      description: '',
+      description: 'wala kaming pake.',
       invite: '',
     },
     {
-      name: '',
+      name: 'WRAITH',
       tag: '',
       image: '',
-      description: '',
-      invite: '',
-    },
-    {
-      name: '',
-      tag: '',
-      image: '',
-      description: '',
-      invite: '',
-    },
-    {
-      name: '',
-      tag: '',
-      image: '',
-      description: '',
+      description: 'di mo kami makikita hanggang huli na.',
       invite: '',
     },
   ],
@@ -186,8 +197,10 @@ const CONFIG = {
     mainthreats:  'images/main threats.jpg',
     bigthreats:   'images/big threats.jpg',
     exclusivethreats: '',
+    members:      '',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
+    hallofshame:  '',
   },
 };
 
@@ -224,6 +237,7 @@ function applyCopy(){
   document.getElementById('hofSubtitleText').textContent = CONFIG.copy.hofSubtitle;
   document.getElementById('bigThreatsSubtitleText').textContent = CONFIG.copy.bigThreatsSubtitle;
   document.getElementById('exclusiveThreatsSubtitleText').textContent = CONFIG.copy.exclusiveThreatsSubtitle;
+  document.getElementById('membersSubtitleText').textContent = CONFIG.copy.membersSubtitle;
   document.getElementById('aboutHeading').textContent = 'about ' + CONFIG.siteName;
   document.getElementById('aboutTagScript').textContent = CONFIG.copy.aboutTagScript;
   document.getElementById('affSubtitleText').textContent = CONFIG.copy.affSubtitle;
@@ -355,14 +369,15 @@ function buildBigAvatar(member){
   return item;
 }
 function renderRosters(){
+  const validOnly = arr => (arr || []).filter(m => m && m.name && m.name.trim());
   const mainWrap = document.getElementById('mainThreatsGrid');
-  CONFIG.mainThreats.forEach(m => mainWrap.appendChild(buildMainCard(m)));
+  validOnly(CONFIG.mainThreats).forEach(m => mainWrap.appendChild(buildMainCard(m)));
   const bigWrap = document.getElementById('bigThreatsGrid');
-  CONFIG.bigThreats.forEach(m => bigWrap.appendChild(buildBigAvatar(m)));
+  validOnly(CONFIG.bigThreats).forEach(m => bigWrap.appendChild(buildBigAvatar(m)));
   const exclusiveWrap = document.getElementById('exclusiveThreatsGrid');
-  if(exclusiveWrap){
-    (CONFIG.exclusiveThreats || []).forEach(m => exclusiveWrap.appendChild(buildBigAvatar(m)));
-  }
+  if(exclusiveWrap) validOnly(CONFIG.exclusiveThreats).forEach(m => exclusiveWrap.appendChild(buildBigAvatar(m)));
+  const membersWrap = document.getElementById('membersGrid');
+  if(membersWrap) validOnly(CONFIG.members).forEach(m => membersWrap.appendChild(buildBigAvatar(m)));
 }
 
 function buildAffCard(aff){
@@ -388,7 +403,31 @@ function buildAffCard(aff){
 function renderAffiliations(){
   const wrap = document.getElementById('affGrid');
   if(!wrap) return;
-  (CONFIG.affiliations || []).forEach(a => wrap.appendChild(buildAffCard(a)));
+  (CONFIG.affiliations || []).filter(a => a && a.name && a.name.trim()).forEach(a => wrap.appendChild(buildAffCard(a)));
+}
+
+function buildShameCard(entry){
+  const card = document.createElement('div');
+  card.className = 'shame-card';
+  const name = escapeHtml(entry.name || 'unknown');
+  const discordName = escapeHtml(entry.discordName || '');
+  card.innerHTML = `
+    <div class="shame-video-wrap">
+      ${entry.video
+        ? `<video class="shame-video" controls preload="none"${entry.poster ? ` poster="${entry.poster}"` : ''}><source src="${entry.video}"></video>`
+        : `<div class="shame-video-empty">no clip yet</div>`}
+    </div>
+    <div class="shame-info">
+      <div class="shame-name">${name}</div>
+      ${discordName ? `<div class="shame-discord">@${discordName}</div>` : ''}
+    </div>
+  `;
+  return card;
+}
+function renderHallOfShame(){
+  const wrap = document.getElementById('shameGrid');
+  if(!wrap) return;
+  (CONFIG.hallOfShame || []).forEach(entry => wrap.appendChild(buildShameCard(entry)));
 }
 
 function renderDiscordInvite(){
@@ -595,6 +634,21 @@ function enterSite(){
   setTimeout(()=> splash.remove(), 1000);
 }
 
+function slugify(str){
+  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
+}
+function findMemberBySlug(slug){
+  const pools = [CONFIG.mainThreats, CONFIG.bigThreats, CONFIG.exclusiveThreats, CONFIG.members];
+  for(const pool of pools){
+    if(!pool) continue;
+    const found = pool.find(m => m && m.name && (m.slug || slugify(m.name)) === slug);
+    if(found) return found;
+  }
+  return null;
+}
+const pathSlug = location.pathname.replace(/^\/+|\/+$/g, '');
+const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
+
 splash.addEventListener('click', ()=>{
   if(splashTyping || splashRevealed) return;
   splashTyping = true;
@@ -603,6 +657,7 @@ splash.addEventListener('click', ()=>{
     splashRevealed = true;
     startAmbientAudio();
     enterSite();
+    if(deepLinkedProfile) openProfile(deepLinkedProfile);
   }, { mode:'build', step:13, interval:9, holdAfter:450 });
 });
 
@@ -643,6 +698,11 @@ navLinks.forEach(a=>{
     e.preventDefault();
     navigateTo(a.dataset.nav);
   });
+});
+document.getElementById('secretHofsButton').addEventListener('click', e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  navigateTo('hallofshame');
 });
 document.getElementById('navCta').addEventListener('click', async e=>{
   e.preventDefault();
@@ -801,10 +861,6 @@ function unduckSiteAudio(){
   if(masterGain && audioCtx){ masterGain.gain.setTargetAtTime(baseMasterVolume, audioCtx.currentTime, 0.35); }
 }
 
-function slugify(str){
-  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
-}
-
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 
@@ -882,6 +938,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   fitAsciiEl(loaderAsciiEl, CONFIG.loadingAscii, { maxFont:20, maxWidthRatio:.7, maxWidthPx:480 });
   renderRosters();
   renderAffiliations();
+  renderHallOfShame();
   renderDiscordInvite();
   const hash = location.hash.replace('#','') || 'home';
   go(document.getElementById(hash) ? hash : 'home');
