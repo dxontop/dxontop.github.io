@@ -50,12 +50,12 @@ const CONFIG = {
   
   discordInvite: {
     bannerText: 'threat2society',
-    banner: 'images/banner.gif',              // banner image url; falls back to the plain gradient
-    logo: 'images/logo.gif',                // circular logo/avatar image url; falls back to initials
+    banner: 'images/banner.gif',
+    logo: 'images/logo.gif',
     name: 'Threat2Society',
     tags: '',
-    memberCount: null,      // number, or null to hide the member line
-    url: 'https://discord.gg/nNW8WBtxGw',                // invite link
+    memberCount: null,
+    url: 'https://discord.gg/nNW8WBtxGw',
   },
 
   asciiArt: `     s                                                         s                      .x+=:.                            .                    s                 
@@ -74,15 +74,6 @@ const CONFIG = {
                 @%                                                                                                                                     ./"     
               :"                                                                                                                                      ~\``,
 
-  // Every member below can click through to their own full-screen profile.
-  // The URL becomes threat2society.world/<slug> once this is hosted there
-  // (locally it'll show your current origin + that path instead — that part
-  // is just how the browser works, not something a script can fake).
-  // Optional per-member fields (all safe to leave out):
-  //   slug:       url segment, e.g. 'ghost' → /ghost. defaults to the name, lowercased.
-  //   background: image/color/gradient shown behind their profile.
-  //   music:      audio file that plays (in place of the site music) while
-  //               their profile is open.
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
     { name:'caliber',   role:'', discordId:'1512675755459612835' },
@@ -123,9 +114,6 @@ const CONFIG = {
     { name:'wren',    discordId:'' },
   ],
 
-  // Hall of Shame — 5 cards, each just a video clip + who it is.
-  // video: path/URL to an .mp4/.webm file. poster: optional thumbnail image
-  // shown before playback (leave blank to just show a black box until played).
   hallOfShame: [
     { name:'', discordName:'', video:'', poster:'' },
     { name:'', discordName:'', video:'', poster:'' },
@@ -403,7 +391,7 @@ function buildAffCard(aff){
 function renderAffiliations(){
   const wrap = document.getElementById('affGrid');
   if(!wrap) return;
-  (CONFIG.affiliations || []).filter(a => a && a.name && a.name.trim()).forEach(a => wrap.appendChild(buildAffCard(a)));
+  (CONFIG.affiliations || []).filter(a => a && a.name && a.name.trim()).slice(0, 4).forEach(a => wrap.appendChild(buildAffCard(a)));
 }
 
 function buildShameCard(entry){
@@ -506,15 +494,12 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
         const ext = du.avatar.startsWith('a_') ? 'gif' : 'png';
         const src = `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${ext}?size=128`;
         fallbacks.forEach(fb => {
-          if(!fb.isConnected) return; // element was already swapped out this render, skip
+          if(!fb.isConnected) return;
           const img = document.createElement('img');
           img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
           img.src = src;
           img.alt = du.username || '';
           img.onload = () => {
-            // Hide + insert next to the fallback instead of replaceWith, so the
-            // original fallback node (and its id) stays in the DOM for reuse
-            // the next time this same element is opened/refreshed.
             fb.style.display = 'none';
             fb.insertAdjacentElement('afterend', img);
           };
@@ -574,21 +559,6 @@ function fitAsciiArt(){ fitAsciiEl(asciiEl, CONFIG.asciiArt, { maxFont:13, maxWi
 
 function escapeHtml(s){
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function guardContent(){
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('copy', e => e.preventDefault());
-  document.addEventListener('cut', e => e.preventDefault());
-  document.addEventListener('dragstart', e => e.preventDefault());
-  document.addEventListener('keydown', e => {
-    const k = e.key.toLowerCase();
-    const blockCombo =
-      (e.ctrlKey || e.metaKey) && ['u','s','c','x','p'].includes(k) ||
-      (e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].includes(k) ||
-      k === 'f12';
-    if(blockCombo) e.preventDefault();
-  });
 }
 
 function revealAscii(el, text, onComplete, { mode='sequential', step=5, interval=6, holdAfter=700 } = {}){
@@ -754,11 +724,8 @@ function typeTerminalLines(){
   const lines = term.lines || [];
 
   const steps = [
-    // root@<slug>:~$ <command>
     (next) => typeSegment(body, `<span class="prompt">root@${slug}:~$</span>&nbsp;`, term.command || '', 'out', next, 260),
-    // blank spacer line
     (next) => typeSegment(body, '&nbsp;', '', '', next, 140, 'spacer'),
-    // one step per shoutout / divider line
     ...lines.map(line => (next) => {
       if(line.divider){
         typeSegment(body, '<span class="chevron">&gt;</span>&nbsp;', '...', 'divider', next, 160);
@@ -930,7 +897,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   applyTheme();
   applyCopy();
   applyLogo();
-  guardContent();
   applySectionBackgrounds();
   buildStarfield(document.getElementById('splashStars'), 70);
   buildStarfield(document.getElementById('heroStars'), 50);
