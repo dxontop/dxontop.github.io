@@ -190,7 +190,9 @@ const CONFIG = {
   sectionBackgrounds: {
     home:         '',
     mainthreats:  'images/main threats.jpg',
-    bigthreats:   'images/big threats.jpg',
+    bigThreatsBlock:       'images/big threats.jpg',
+    exclusiveThreatsBlock: '',
+    membersBlock:          '',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
     hallofshame:  '',
@@ -260,13 +262,60 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-function applyPageBackground(id){
-  const layer = document.getElementById('bgImage');
-  if(!layer) return;
-  const bg = (CONFIG.sectionBackgrounds || {})[id];
-  layer.style.backgroundImage = '';
-  layer.style.backgroundColor = '';
-  if(bg) applyBackground(layer, bg);
+// The big-threats sub-sections render their backgrounds on dedicated sticky
+// layers (see #threatBgStack) instead of directly on the .threat-block
+// element, so they can crossfade into each other as the user scrolls.
+const BIG_THREATS_BG_LAYER_MAP = {
+  bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
+  exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
+  membersBlock:          'threatBgLayer-membersBlock',
+};
+function applySectionBackgrounds(){
+  Object.entries(CONFIG.sectionBackgrounds || {}).forEach(([id, bg])=>{
+    const targetId = BIG_THREATS_BG_LAYER_MAP[id] || id;
+    const el = document.getElementById(targetId);
+    if(!el) return;
+    applyBackground(el, bg);
+  });
+}
+
+// Crossfades the big-threats background layers based on how much of each
+// .threat-block is currently within the viewport. Because this is a pure
+// function of scroll position (not scroll direction), it automatically
+// reverses when the user scrolls back up.
+const BIG_THREATS_BLOCKS = Object.keys(BIG_THREATS_BG_LAYER_MAP);
+let threatCrossfadeQueued = false;
+function updateThreatCrossfade(){
+  const container = document.getElementById('bigthreats');
+  if(!container) return;
+  const viewportH = container.clientHeight || window.innerHeight;
+  const scrollTop = container.scrollTop;
+  BIG_THREATS_BLOCKS.forEach(blockId=>{
+    const blockEl = document.getElementById(blockId);
+    const layerEl = document.getElementById(BIG_THREATS_BG_LAYER_MAP[blockId]);
+    if(!blockEl || !layerEl) return;
+    const top = blockEl.offsetTop;
+    const bottom = top + blockEl.offsetHeight;
+    const overlapTop = Math.max(top, scrollTop);
+    const overlapBottom = Math.min(bottom, scrollTop + viewportH);
+    const overlap = Math.max(0, overlapBottom - overlapTop);
+    const span = Math.max(1, Math.min(viewportH, blockEl.offsetHeight));
+    const ratio = Math.max(0, Math.min(1, overlap / span));
+    layerEl.style.opacity = ratio;
+  });
+  threatCrossfadeQueued = false;
+}
+function queueThreatCrossfade(){
+  if(threatCrossfadeQueued) return;
+  threatCrossfadeQueued = true;
+  requestAnimationFrame(updateThreatCrossfade);
+}
+function initThreatCrossfade(){
+  const container = document.getElementById('bigthreats');
+  if(!container) return;
+  container.addEventListener('scroll', queueThreatCrossfade, { passive:true });
+  window.addEventListener('resize', queueThreatCrossfade);
+  queueThreatCrossfade();
 }
 
 function buildStarfield(container, count){
@@ -290,13 +339,14 @@ function buildStarfield(container, count){
 function buildMainCard(member){
   const card = document.createElement('div');
   card.className = 'main-card';
+  const initial = escapeHtml(member.name[0].toUpperCase());
   const displayName = escapeHtml(member.name);
   card.innerHTML = `
     <div class="main-card-inner">
 
       <div class="main-collapsed">
         <div class="main-avatar-wrap">
-          <div class="main-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
+          <div class="main-avatar-fallback">${initial}</div>
           <span class="main-status-dot" data-status="offline"></span>
         </div>
         <div class="main-id-row">
@@ -306,7 +356,7 @@ function buildMainCard(member){
 
       <div class="main-expanded">
         <div class="main-expanded-avatar">
-          <div class="main-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
+          <div class="main-avatar-fallback">${initial}</div>
           <span class="main-status-dot-lg" data-status="offline"></span>
         </div>
         <div class="main-expanded-info">
@@ -345,7 +395,7 @@ function buildBigAvatar(member){
           <span class="mini-tooltip-status-text">offline</span>
         </div>
       </div>
-      <div class="mini-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
+      <div class="mini-avatar-fallback">${member.name[0].toUpperCase()}</div>
       <span class="mini-status-dot" data-status="offline"></span>
     </div>
     <div class="mini-name">loading</div>
@@ -376,14 +426,17 @@ function renderRosters(){
 function buildAffCard(aff){
   const card = document.createElement('div');
   card.className = 'aff-card';
-  const iconContent = aff.image
-    ? `<img src="${aff.image}" alt="${escapeHtml(aff.name)}" class="aff-icon-img">`
-    : escapeHtml(aff.tag || aff.name.slice(0,6).toUpperCase());
+  const avatarContent = aff.image
+    ? `<img src="${aff.image}" alt="${escapeHtml(aff.name)}" class="aff-avatar-img">`
+    : `<div class="aff-avatar-fallback">${escapeHtml(aff.tag || aff.name.slice(0,2).toUpperCase())}</div>`;
+  const bannerStyle = aff.banner ? ` style="background-image:url('${aff.banner}')"` : '';
   card.innerHTML = `
-    <div class="aff-icon">
+    <div class="aff-banner"${bannerStyle}></div>
+    <div class="aff-avatar-wrap">
       <span class="aff-plus tl">+</span><span class="aff-plus tr">+</span>
-      ${iconContent}
+      ${avatarContent}
       <span class="aff-plus bl">+</span><span class="aff-plus br">+</span>
+      <span class="aff-status-dot" data-status="${aff.status || 'online'}"></span>
     </div>
     <div class="aff-info">
       <h3>${escapeHtml(aff.name)}</h3>
@@ -469,7 +522,6 @@ function renderDiscordInvite(){
 }
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
-const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
 const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
 
@@ -692,17 +744,9 @@ function go(id){
   pages.forEach(p => p.classList.toggle('active', p.id === id));
   navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
   if(id === 'about') typeAbout();
+  if(id === 'bigthreats') queueThreatCrossfade();
   applyPageMusic(id);
-  applyPageBackground(id);
-  document.documentElement.style.setProperty('--bg-scale', 1);
 }
-pages.forEach(p => {
-  p.addEventListener('scroll', () => {
-    const progress = Math.min(1, p.scrollTop / 600);
-    const scale = 1 - progress * 0.15;
-    document.documentElement.style.setProperty('--bg-scale', scale.toFixed(3));
-  }, { passive:true });
-});
 async function navigateTo(id){
   const current = document.querySelector('.page.active');
   if(current && current.id === id) return;
@@ -919,8 +963,7 @@ async function openProfile(member){
   avatarWrap.querySelectorAll('img').forEach(n => n.remove());
   const fallback = document.getElementById('profileModalAvatarFallback');
   fallback.style.display = '';
-  fallback.textContent = '';
-  fallback.style.backgroundImage = `url('${DISCORD_DEFAULT_AVATAR}')`;
+  fallback.textContent = member.name[0].toUpperCase();
 
   document.getElementById('profileModalName').textContent = member.name;
   const roleEl = document.getElementById('profileModalRole');
@@ -934,6 +977,10 @@ async function openProfile(member){
   profileModal.style.backgroundColor = '';
   const bgVal = member.background || (CONFIG.profileDefaults && CONFIG.profileDefaults.background) || '';
   if(bgVal) applyBackground(profileModal, bgVal);
+  // Dim the background whenever a member image (not just a flat color) is set,
+  // so the name stays readable on top of it.
+  const bgResolved = resolveBackgroundValue(bgVal);
+  profileModal.classList.toggle('has-image', !!(bgResolved && bgResolved.type === 'image'));
 
   profileModal.classList.add('visible');
   try{ history.pushState({ profile:slug }, '', '/' + slug); }catch(err){ console.warn('pushState failed', err); }
@@ -954,7 +1001,7 @@ async function openProfile(member){
     avatarWrap: avatarWrap,
     fallback: fallback,
     nameEl: document.getElementById('profileModalName'),
-    kind: 'profile', size: 180,
+    kind: 'profile', size: 128,
     tooltipStatusText: statusTextEl,
   });
 }
@@ -978,6 +1025,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   applyTheme();
   applyCopy();
   applyLogo();
+  applySectionBackgrounds();
   buildStarfield(document.getElementById('splashStars'), 70);
   buildStarfield(document.getElementById('heroStars'), 50);
   fitAsciiArt();
@@ -986,6 +1034,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   renderAffiliations();
   renderHallOfShame();
   renderDiscordInvite();
+  initThreatCrossfade();
   const hash = location.hash.replace('#','') || 'home';
   go(document.getElementById(hash) ? hash : 'home');
 });
