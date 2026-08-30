@@ -35,7 +35,7 @@ document.getElementById('root').innerHTML = `
     </section>
     <section class="page" id="mainthreats">
       <div class="sec-head">
-        <h2 class="display">MAIN THREATS</h2>
+        <h2 class="display">HOF</h2>
         <div class="divider-label"><span id="hofSubtitleText"></span></div>
       </div>
       <div class="main-threats-row" id="mainThreatsGrid"></div>
@@ -48,7 +48,7 @@ document.getElementById('root').innerHTML = `
       </div>
       <div class="threat-block" id="bigThreatsBlock">
         <div class="sec-head">
-          <h2 class="display accent">BIG THREATS</h2>
+          <h2 class="display accent">THREATS</h2>
           <div class="divider-label"><span id="bigThreatsSubtitleText"></span></div>
         </div>
         <div class="big-threats-grid" id="bigThreatsGrid"></div>
@@ -297,7 +297,7 @@ const CONFIG = {
     url: '',
     volume: 0.80,
   },
-
+  profileDefaults: {
     background: '',
     music: '',
   },
