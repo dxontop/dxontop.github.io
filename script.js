@@ -153,7 +153,7 @@ const CONFIG = {
     },
   ],
 
-  logo: 'images/logo.gif',
+  logo: ':3',
 
   music: {
     url: 'music/t2sontop_V1.mp3',
@@ -190,9 +190,7 @@ const CONFIG = {
   sectionBackgrounds: {
     home:         '',
     mainthreats:  'images/main threats.jpg',
-    bigThreatsBlock:       'images/big threats.jpg',
-    exclusiveThreatsBlock: '',
-    membersBlock:          '',
+    bigthreats:   'images/big threats.jpg',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
     hallofshame:  '',
@@ -262,12 +260,13 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-function applySectionBackgrounds(){
-  Object.entries(CONFIG.sectionBackgrounds || {}).forEach(([id, bg])=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-    applyBackground(el, bg);
-  });
+function applyPageBackground(id){
+  const layer = document.getElementById('bgImage');
+  if(!layer) return;
+  const bg = (CONFIG.sectionBackgrounds || {})[id];
+  layer.style.backgroundImage = '';
+  layer.style.backgroundColor = '';
+  if(bg) applyBackground(layer, bg);
 }
 
 function buildStarfield(container, count){
@@ -291,14 +290,13 @@ function buildStarfield(container, count){
 function buildMainCard(member){
   const card = document.createElement('div');
   card.className = 'main-card';
-  const initial = escapeHtml(member.name[0].toUpperCase());
   const displayName = escapeHtml(member.name);
   card.innerHTML = `
     <div class="main-card-inner">
 
       <div class="main-collapsed">
         <div class="main-avatar-wrap">
-          <div class="main-avatar-fallback">${initial}</div>
+          <div class="main-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
           <span class="main-status-dot" data-status="offline"></span>
         </div>
         <div class="main-id-row">
@@ -308,7 +306,7 @@ function buildMainCard(member){
 
       <div class="main-expanded">
         <div class="main-expanded-avatar">
-          <div class="main-avatar-fallback">${initial}</div>
+          <div class="main-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
           <span class="main-status-dot-lg" data-status="offline"></span>
         </div>
         <div class="main-expanded-info">
@@ -347,7 +345,7 @@ function buildBigAvatar(member){
           <span class="mini-tooltip-status-text">offline</span>
         </div>
       </div>
-      <div class="mini-avatar-fallback">${member.name[0].toUpperCase()}</div>
+      <div class="mini-avatar-fallback" style="background-image:url('${DISCORD_DEFAULT_AVATAR}')"></div>
       <span class="mini-status-dot" data-status="offline"></span>
     </div>
     <div class="mini-name">loading</div>
@@ -471,6 +469,7 @@ function renderDiscordInvite(){
 }
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
+const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/0.png';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
 const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
 
@@ -694,7 +693,16 @@ function go(id){
   navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
   if(id === 'about') typeAbout();
   applyPageMusic(id);
+  applyPageBackground(id);
+  document.documentElement.style.setProperty('--bg-scale', 1);
 }
+pages.forEach(p => {
+  p.addEventListener('scroll', () => {
+    const progress = Math.min(1, p.scrollTop / 600);
+    const scale = 1 - progress * 0.15;
+    document.documentElement.style.setProperty('--bg-scale', scale.toFixed(3));
+  }, { passive:true });
+});
 async function navigateTo(id){
   const current = document.querySelector('.page.active');
   if(current && current.id === id) return;
@@ -911,7 +919,8 @@ async function openProfile(member){
   avatarWrap.querySelectorAll('img').forEach(n => n.remove());
   const fallback = document.getElementById('profileModalAvatarFallback');
   fallback.style.display = '';
-  fallback.textContent = member.name[0].toUpperCase();
+  fallback.textContent = '';
+  fallback.style.backgroundImage = `url('${DISCORD_DEFAULT_AVATAR}')`;
 
   document.getElementById('profileModalName').textContent = member.name;
   const roleEl = document.getElementById('profileModalRole');
@@ -969,7 +978,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   applyTheme();
   applyCopy();
   applyLogo();
-  applySectionBackgrounds();
   buildStarfield(document.getElementById('splashStars'), 70);
   buildStarfield(document.getElementById('heroStars'), 50);
   fitAsciiArt();
