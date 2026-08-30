@@ -158,12 +158,6 @@ main{ position:relative; z-index:1; }
 }
 @media (max-width:640px){ .threat-block{ padding:4.5rem 1.2rem; } }
 
-/* Fixed, crossfading backgrounds for the big-threats sub-sections.
-   Each .threat-bg-layer covers the full viewport for as long as #bigthreats
-   is the active page; JS fades the layers in/out based on how much of each
-   .threat-block is in view, so the effect reverses automatically when
-   scrolling back up. Using position:fixed (rather than sticky) keeps it out
-   of the flex layout entirely, so it can't affect how the blocks size. */
 #bigthreats.page.active{ justify-content:flex-start; }
 .threat-bg-stack{
   position:fixed; inset:0;
