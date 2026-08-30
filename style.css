@@ -467,24 +467,27 @@ main{ position:relative; z-index:1; }
   position:relative; z-index:1;
 }
 .aff-card{
-  position:relative; display:flex; flex-direction:column; text-align:center;
+  position:relative;
   background:var(--surface); border:1px solid var(--border-strong); border-radius:16px;
   overflow:hidden;
   transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
 .aff-card:hover{ transform:translateY(-4px); box-shadow:0 20px 44px rgba(0,0,0,.4); border-color:var(--accent); }
+.aff-plus{ position:absolute; font-size:.9rem; color:var(--text-faint); z-index:2; pointer-events:none; }
+.aff-plus.tl{ top:.6rem; left:.7rem; } .aff-plus.tr{ top:.6rem; right:.7rem; }
+.aff-plus.bl{ bottom:.6rem; left:.7rem; } .aff-plus.br{ bottom:.6rem; right:.7rem; }
 .aff-banner{
-  position:relative; width:100%; aspect-ratio:1/1;
-  display:flex; align-items:center; justify-content:center; padding:1.5rem;
-  background:linear-gradient(150deg, color-mix(in srgb, var(--accent) 16%, var(--bg-alt)), var(--bg-alt) 80%);
+  position:relative; height:130px;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  font-family:var(--font-display); font-size:1.7rem; letter-spacing:.05em; color:var(--text);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, var(--bg-alt)), var(--bg-alt));
 }
-.aff-banner-img{ max-width:72%; max-height:72%; object-fit:contain; filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)); }
-.aff-banner-fallback{ font-family:var(--font-display); font-size:1.6rem; letter-spacing:.05em; color:var(--text-dim); }
-.aff-info{ padding:1rem 1.1rem 1.3rem; display:flex; flex-direction:column; align-items:center; gap:.35rem; }
+.aff-banner-img{ width:100%; height:100%; object-fit:cover; }
+.aff-info{ padding:1.1rem 1.3rem 1.3rem; text-align:left; }
 .aff-info h3{ font-family:var(--font-display); font-size:1rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; }
-.aff-info p{ font-size:.74rem; color:var(--text-dim); line-height:1.6; }
+.aff-info p{ margin-top:.4rem; font-size:.74rem; color:var(--text-dim); line-height:1.6; }
 .aff-join{
-  display:inline-flex; align-items:center; gap:.3rem; margin-top:.35rem;
+  display:inline-flex; align-items:center; gap:.3rem; margin-top:.6rem;
   font-family:var(--font-mono); font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
   color:var(--accent-3); transition:color .25s ease, transform .25s ease;
 }

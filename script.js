@@ -429,9 +429,11 @@ function buildAffCard(aff){
   const bannerSrc = aff.banner || aff.image || '';
   const bannerContent = bannerSrc
     ? `<img src="${bannerSrc}" alt="${escapeHtml(aff.name)}" class="aff-banner-img">`
-    : `<div class="aff-banner-fallback">${escapeHtml(aff.tag || aff.name.slice(0,2).toUpperCase())}</div>`;
+    : escapeHtml(aff.name);
   card.innerHTML = `
+    <span class="aff-plus tl">+</span><span class="aff-plus tr">+</span>
     <div class="aff-banner">${bannerContent}</div>
+    <span class="aff-plus bl">+</span><span class="aff-plus br">+</span>
     <div class="aff-info">
       <h3>${escapeHtml(aff.name)}</h3>
       <p>${aff.description || ''}</p>
