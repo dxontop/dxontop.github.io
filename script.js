@@ -48,7 +48,7 @@ document.getElementById('root').innerHTML = `
       </div>
       <div class="threat-block" id="bigThreatsBlock">
         <div class="sec-head">
-          <h2 class="display accent">THREATS</h2>
+          <h2 class="display accent">BIG THREATS</h2>
           <div class="divider-label"><span id="bigThreatsSubtitleText"></span></div>
         </div>
         <div class="big-threats-grid" id="bigThreatsGrid"></div>
