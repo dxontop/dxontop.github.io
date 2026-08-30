@@ -74,6 +74,19 @@ const CONFIG = {
                 @%                                                                                                                                     ./"     
               :"                                                                                                                                      ~\``,
 
+  // Every member entry below (mainThreats, bigThreats, exclusiveThreats,
+  // members) accepts these fields:
+  //   name       - display name (required)
+  //   role       - optional short label shown under the name on some cards
+  //   discordId  - Discord user ID used to pull live status/avatar via Lanyard
+  //   background - optional per-member profile modal background. Accepts an
+  //                image path/URL ('images/daz-bg.jpg'), a CSS gradient
+  //                ('linear-gradient(...)'), or a flat color ('#1a1a1a').
+  //                Overrides profileDefaults.background just for this member.
+  //   music      - optional per-member profile modal song, e.g. 'music/daz.mp3'.
+  //                Plays while their profile modal is open. Overrides
+  //                profileDefaults.music just for this member.
+  // Example: { name:'daz', role:'', discordId:'123', background:'images/daz-bg.jpg', music:'music/daz.mp3' }
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
     { name:'caliber',   role:'', discordId:'1512675755459612835' },
@@ -424,20 +437,18 @@ function renderRosters(){
 }
 
 function buildAffCard(aff){
-  const card = document.createElement('div');
+  const isLink = !!aff.invite;
+  const card = document.createElement(isLink ? 'a' : 'div');
   card.className = 'aff-card';
-  const bannerSrc = aff.banner || aff.image || '';
-  const bannerContent = bannerSrc
-    ? `<img src="${bannerSrc}" alt="${escapeHtml(aff.name)}" class="aff-banner-img">`
-    : escapeHtml(aff.name);
+  if(isLink){ card.href = aff.invite; card.target = '_blank'; card.rel = 'noopener noreferrer'; }
+  const bannerContent = aff.image
+    ? `<img src="${aff.image}" alt="${escapeHtml(aff.name)}" class="aff-banner-img">`
+    : `<div class="aff-banner-fallback">${escapeHtml(aff.tag || aff.name.slice(0,6).toUpperCase())}</div>`;
   card.innerHTML = `
-    <span class="aff-plus tl">+</span><span class="aff-plus tr">+</span>
     <div class="aff-banner">${bannerContent}</div>
-    <span class="aff-plus bl">+</span><span class="aff-plus br">+</span>
     <div class="aff-info">
       <h3>${escapeHtml(aff.name)}</h3>
       <p>${aff.description || ''}</p>
-      ${aff.invite ? `<a class="aff-join" href="${aff.invite}" target="_blank" rel="noopener noreferrer">join server &rarr;</a>` : ''}
     </div>
   `;
   return card;
@@ -578,14 +589,23 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
         avatarWraps.forEach(wrap => {
           const deco = document.createElement('img');
           deco.className = 'decoration';
-          const dsize = Math.round(size * 1.3);
-          deco.style.width = dsize + 'px';
-          deco.style.height = dsize + 'px';
-          deco.style.left = Math.round((size - dsize) / 2) + 'px';
-          deco.style.top = Math.round((size - dsize) / 2) + 'px';
           deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${du.avatar_decoration_data.asset}.png?size=160`;
           deco.alt = '';
           wrap.appendChild(deco);
+          // Size/center the decoration ring off the wrap's own *actual* rendered
+          // size rather than the passed-in `size` guess, so it always sticks
+          // correctly to the avatar even if a wrap's CSS size changes or (as
+          // with the main card's hover-expanded avatar) differs from the
+          // other wraps sharing this same fetchLanyard call.
+          const stickToAvatar = () => {
+            const base = wrap.offsetWidth || wrap.getBoundingClientRect().width || size;
+            const dsize = Math.round(base * 1.3);
+            deco.style.width = dsize + 'px';
+            deco.style.height = dsize + 'px';
+            deco.style.left = Math.round((base - dsize) / 2) + 'px';
+            deco.style.top = Math.round((base - dsize) / 2) + 'px';
+          };
+          if(deco.complete) stickToAvatar(); else deco.addEventListener('load', stickToAvatar, { once:true });
         });
       }
     }
