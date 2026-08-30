@@ -523,6 +523,20 @@ function renderDiscordInvite(){
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
+// Discord's own default avatar for users who never uploaded a custom one.
+// Legacy (discriminator-based) accounts use discriminator % 5; accounts on
+// the newer username system (discriminator "0") use (user_id >> 22) % 6.
+function discordDefaultAvatarUrl(du){
+  let index = 0;
+  try{
+    if(du.discriminator && du.discriminator !== '0'){
+      index = parseInt(du.discriminator, 10) % 5;
+    }else{
+      index = Number((BigInt(du.id) >> 22n) % 6n);
+    }
+  }catch(err){ index = 0; }
+  return `https://cdn.discordapp.com/embed/avatars/${index}.png`;
+}
 const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
 
 async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, size, tooltipName, tooltipDot, tooltipStatusText }){
@@ -548,21 +562,22 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
     if(du){
       resolvedName = du.global_name || du.username || member.name;
       if(tooltipName) tooltipName.textContent = resolvedName;
-      if(du.avatar){
-        const ext = du.avatar.startsWith('a_') ? 'gif' : 'png';
-        const src = `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${ext}?size=128`;
-        fallbacks.forEach(fb => {
-          if(!fb.isConnected) return;
-          const img = document.createElement('img');
-          img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
-          img.src = src;
-          img.alt = du.username || '';
-          img.onload = () => {
-            fb.style.display = 'none';
-            fb.insertAdjacentElement('afterend', img);
-          };
-        });
-      }
+      // Discord always has an avatar to show: a custom upload, or its own
+      // generated default (colored icon) when the user never set one.
+      const src = du.avatar
+        ? `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${du.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
+        : discordDefaultAvatarUrl(du);
+      fallbacks.forEach(fb => {
+        if(!fb.isConnected) return;
+        const img = document.createElement('img');
+        img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
+        img.src = src;
+        img.alt = du.username || '';
+        img.onload = () => {
+          fb.style.display = 'none';
+          fb.insertAdjacentElement('afterend', img);
+        };
+      });
       if(du.avatar_decoration_data && du.avatar_decoration_data.asset){
         avatarWraps.forEach(wrap => {
           const deco = document.createElement('img');
