@@ -165,6 +165,15 @@ const CONFIG = {
     volume: 0.80,
   },
 
+  // Applied to EVERY profile modal automatically — set these once instead of
+  // repeating background/music on every single member. Any member can still
+  // override either one individually by setting their own `background` or
+  // `music` field, which takes priority over these defaults.
+  profileDefaults: {
+    background: '',
+    music: '',
+  },
+
   loadingAscii: `     s                      .x+=:.   
     :8      .--~*teu.      z\`    ^%  
    .88     dF     988Nx       .   <k 
@@ -181,9 +190,9 @@ const CONFIG = {
   sectionBackgrounds: {
     home:         '',
     mainthreats:  'images/main threats.jpg',
-    bigthreats:   'images/big threats.jpg',
-    exclusivethreats: '',
-    members:      '',
+    bigThreatsBlock:       'images/big threats.jpg',
+    exclusiveThreatsBlock: '',
+    membersBlock:          '',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
     hallofshame:  '',
@@ -621,11 +630,19 @@ splash.addEventListener('click', ()=>{
   if(splashTyping || splashRevealed) return;
   splashTyping = true;
   hintEl.classList.add('hidden');
+
+  if(deepLinkedProfile){
+    splashRevealed = true;
+    startAmbientAudio();
+    enterSite();
+    openProfile(deepLinkedProfile);
+    return;
+  }
+
   revealAscii(asciiEl, CONFIG.asciiArt, ()=>{
     splashRevealed = true;
     startAmbientAudio();
     enterSite();
-    if(deepLinkedProfile) openProfile(deepLinkedProfile);
   }, { mode:'build', step:13, interval:9, holdAfter:450 });
 });
 
@@ -906,15 +923,17 @@ async function openProfile(member){
 
   profileModal.style.backgroundImage = '';
   profileModal.style.backgroundColor = '';
-  if(member.background) applyBackground(profileModal, member.background);
+  const bgVal = member.background || (CONFIG.profileDefaults && CONFIG.profileDefaults.background) || '';
+  if(bgVal) applyBackground(profileModal, bgVal);
 
   profileModal.classList.add('visible');
   try{ history.pushState({ profile:slug }, '', '/' + slug); }catch(err){ console.warn('pushState failed', err); }
 
   const pm = document.getElementById('profileMusicEl');
-  if(member.music){
+  const musicVal = member.music || (CONFIG.profileDefaults && CONFIG.profileDefaults.music) || '';
+  if(musicVal){
     duckSiteAudio();
-    pm.src = member.music;
+    pm.src = musicVal;
     pm.volume = 0.5;
     pm.play().catch(()=>{});
   }
