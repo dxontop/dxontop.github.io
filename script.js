@@ -17,8 +17,8 @@ document.getElementById('root').innerHTML = `
     <div class="logo display" id="navLogo" aria-label="Threat2Society"></div>
     <div class="navlinks">
       <a href="home" data-nav="home" class="active" id="navHome">home</a>
-      <a href="mainthreats" data-nav="mainthreats">hof</a>
-      <a href="bigthreats" data-nav="bigthreats">members</a>
+      <a href="mainthreats" data-nav="mainthreats">main threats</a>
+      <a href="bigthreats" data-nav="bigthreats">big threats</a>
       <a href="about" data-nav="about">about</a>
       <a href="affiliations" data-nav="affiliations">gengo</a>
     </div>
@@ -35,7 +35,7 @@ document.getElementById('root').innerHTML = `
     </section>
     <section class="page" id="mainthreats">
       <div class="sec-head">
-        <h2 class="display">MAIN THREATS</h2>
+        <h2 class="display">HOF</h2>
         <div class="divider-label"><span id="hofSubtitleText"></span></div>
       </div>
       <div class="main-threats-row" id="mainThreatsGrid"></div>
@@ -48,7 +48,7 @@ document.getElementById('root').innerHTML = `
       </div>
       <div class="threat-block" id="bigThreatsBlock">
         <div class="sec-head">
-          <h2 class="display accent">BIG THREATS</h2>
+          <h2 class="display accent">THREATS</h2>
           <div class="divider-label"><span id="bigThreatsSubtitleText"></span></div>
         </div>
         <div class="big-threats-grid" id="bigThreatsGrid"></div>
