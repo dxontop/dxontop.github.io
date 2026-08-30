@@ -17,8 +17,8 @@ document.getElementById('root').innerHTML = `
     <div class="logo display" id="navLogo" aria-label="Threat2Society"></div>
     <div class="navlinks">
       <a href="home" data-nav="home" class="active" id="navHome">home</a>
-      <a href="mainthreats" data-nav="mainthreats">main threats</a>
-      <a href="bigthreats" data-nav="bigthreats">big threats</a>
+      <a href="mainthreats" data-nav="mainthreats">hof</a>
+      <a href="bigthreats" data-nav="bigthreats">members</a>
       <a href="about" data-nav="about">about</a>
       <a href="affiliations" data-nav="affiliations">gengo</a>
     </div>
@@ -207,19 +207,6 @@ const CONFIG = {
                 @%                                                                                                                                     ./"     
               :"                                                                                                                                      ~\``,
 
-  // Every member entry below (mainThreats, bigThreats, exclusiveThreats,
-  // members) accepts these fields:
-  //   name       - display name (required)
-  //   role       - optional short label shown under the name on some cards
-  //   discordId  - Discord user ID used to pull live status/avatar via Lanyard
-  //   background - optional per-member profile modal background. Accepts an
-  //                image path/URL ('images/daz-bg.jpg'), a CSS gradient
-  //                ('linear-gradient(...)'), or a flat color ('#1a1a1a').
-  //                Overrides profileDefaults.background just for this member.
-  //   music      - optional per-member profile modal song, e.g. 'music/daz.mp3'.
-  //                Plays while their profile modal is open. Overrides
-  //                profileDefaults.music just for this member.
-  // Example: { name:'daz', role:'', discordId:'123', background:'images/daz-bg.jpg', music:'music/daz.mp3' }
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
     { name:'caliber',   role:'', discordId:'1512675755459612835' },
@@ -311,11 +298,6 @@ const CONFIG = {
     volume: 0.80,
   },
 
-  // Applied to EVERY profile modal automatically — set these once instead of
-  // repeating background/music on every single member. Any member can still
-  // override either one individually by setting their own `background` or
-  // `music` field, which takes priority over these defaults.
-  profileDefaults: {
     background: '',
     music: '',
   },
