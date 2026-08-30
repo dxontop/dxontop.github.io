@@ -153,7 +153,7 @@ const CONFIG = {
     },
   ],
 
-  logo: ':3',
+  logo: 'images/logo.gif',
 
   music: {
     url: 'music/t2sontop_V1.mp3',
