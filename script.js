@@ -35,7 +35,7 @@ document.getElementById('root').innerHTML = `
     </section>
     <section class="page" id="mainthreats">
       <div class="sec-head">
-        <h2 class="display">HOF</h2>
+        <h2 class="display">MAIN THREATS</h2>
         <div class="divider-label"><span id="hofSubtitleText"></span></div>
       </div>
       <div class="main-threats-row" id="mainThreatsGrid"></div>
