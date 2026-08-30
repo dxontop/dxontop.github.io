@@ -426,18 +426,12 @@ function renderRosters(){
 function buildAffCard(aff){
   const card = document.createElement('div');
   card.className = 'aff-card';
-  const avatarContent = aff.image
-    ? `<img src="${aff.image}" alt="${escapeHtml(aff.name)}" class="aff-avatar-img">`
-    : `<div class="aff-avatar-fallback">${escapeHtml(aff.tag || aff.name.slice(0,2).toUpperCase())}</div>`;
-  const bannerStyle = aff.banner ? ` style="background-image:url('${aff.banner}')"` : '';
+  const bannerSrc = aff.banner || aff.image || '';
+  const bannerContent = bannerSrc
+    ? `<img src="${bannerSrc}" alt="${escapeHtml(aff.name)}" class="aff-banner-img">`
+    : `<div class="aff-banner-fallback">${escapeHtml(aff.tag || aff.name.slice(0,2).toUpperCase())}</div>`;
   card.innerHTML = `
-    <div class="aff-banner"${bannerStyle}></div>
-    <div class="aff-avatar-wrap">
-      <span class="aff-plus tl">+</span><span class="aff-plus tr">+</span>
-      ${avatarContent}
-      <span class="aff-plus bl">+</span><span class="aff-plus br">+</span>
-      <span class="aff-status-dot" data-status="${aff.status || 'online'}"></span>
-    </div>
+    <div class="aff-banner">${bannerContent}</div>
     <div class="aff-info">
       <h3>${escapeHtml(aff.name)}</h3>
       <p>${aff.description || ''}</p>
