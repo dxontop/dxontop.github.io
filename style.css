@@ -567,6 +567,7 @@ main{ position:relative; z-index:1; }
 .profile-modal-content{
   position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;
   text-align:center; padding:2rem;
+  max-height:92vh; max-height:92dvh; overflow-y:auto; -webkit-overflow-scrolling:touch;
   animation:fadeUp .5s cubic-bezier(.19,1,.22,1);
 }
 .profile-modal-avatar-wrap{ position:relative; width:128px; height:128px; z-index:1; }
