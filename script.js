@@ -243,7 +243,7 @@ const CONFIG = {
     { name:'gun', spotify:'https://open.spotify.com/track/5mtTAScDytxMMqZj14NmlN?si=BsAhMwSeSQq0yidxidyEFQ&utm_source=copy-link', music:'pf/gun.mp3', background:'pf/gun.gif', discordId:'1495036966360842260' },
     { name:'yuzuki', spotify:'https://open.spotify.com/track/3hEfpBHxgieRLz4t3kLNEg?si=05f13e1472ed4956', music:'pf/yuzuki.mp3', background:'pf/yuzuki.gif', discordId:'1518082674017701888' },
     { name:'cholo', spotify:'', music:'', background:'', discordId:'1503083605444788235' },
-    { name:'kio', spotify:'', music:'', background:'',  discordId:'751387160057217066' },
+    { name:'kio', spotify:'https://open.spotify.com/track/2c2tlXfEmLgUNvxngIi1qL?si=e1264ebcc6844dea', music:'pf/kio.mp3', background:'pf/kio.gif',  discordId:'751387160057217066' },
     { name:'rue', spotify:'https://open.spotify.com/track/3tTpvK7QgjjQCKGnHt5xn3?si=at7oRgLVRI6YU--3oe0qtA&utm_source=copy-link', music:'pf/rue.mp3', background:'pf/rue.gif', discordId:'1502126548096909353' },
   ],
 
