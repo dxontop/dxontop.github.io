@@ -246,23 +246,23 @@ const CONFIG = {
 
   exclusiveThreats: [
     { name:'exil',  discordId:'1533371972241723589' },
-    { name:'blake', spotify:'', music:'', background:'',  discordId:'' },
-    { name:'yori',   discordId:'750277081476235304' },
+    { name:'blake', spotify:'', music:'pf/blake.mp3', background:'pf/blake.gif',  discordId:'1244678008175071263' },
+    { name:'hesu',   discordId:'795725566476812348' },
     { name:'jor', spotify:'https://open.spotify.com/track/6MKfYl08wrrIrH3a0MyGt6?si=2cGU_NDFQouXyTjsIuVxzQ&utm_source=copy-link&context=spotify%3Atrack%3A6MKfYl08wrrIrH3a0MyGt6', music:'pf/jor.mp3', background:'pf/jor.gif', discordId:'1403234492419670038' },
-    { name:'',   discordId:'' },
+    { name:'ryuzaki',   discordId:'1266998522151047192' },
   ],
 
   members: [
-    { name:'t',    discordId:'902804741883588619' },
-    { name:'t',    discordId:'1511980297149747246' },
-    { name:'t',   discordId:'900336233031540787' },
-    { name:'t',   discordId:'647377810339659786' },
-    { name:'t',   discordId:'1504530569613021255' },
-    { name:'t',    discordId:'1505315891087282176' },
-    { name:'t',   discordId:'1444205221814210700' },
-    { name:'t',    discordId:'1354728395740811416' },
-    { name:'t',     discordId:'1505594070565654778' },
-    { name:'t',    discordId:'1266998522151047192' },
+    { name:'tt',    discordId:'902804741883588619' },
+    { name:'ttt',    discordId:'1511980297149747246' },
+    { name:'tttt',   discordId:'900336233031540787' },
+    { name:'ttttt',   discordId:'647377810339659786' },
+    { name:'tttttt',   discordId:'1504530569613021255' },
+    { name:'ttttttt',    discordId:'1505315891087282176' },
+    { name:'tttttttt',   discordId:'1444205221814210700' },
+    { name:'ttttttttt',    discordId:'1354728395740811416' },
+    { name:'tttttttttt',     discordId:'1505594070565654778' },
+    { name:'ttttttttttt',    discordId:'1266998522151047192' },
   ],
 
   hallOfShame: [
