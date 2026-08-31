@@ -564,6 +564,9 @@ main{ position:relative; z-index:1; }
   transition:background .25s ease, border-color .25s ease, transform .2s ease;
 }
 .profile-modal-close:hover{ background:var(--accent); border-color:var(--accent-3); transform:rotate(90deg); }
+.profile-modal-trail-canvas{
+  position:absolute; inset:0; z-index:5; pointer-events:none;
+}
 .profile-modal-content{
   position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;
   text-align:center; padding:2rem;
@@ -639,6 +642,16 @@ main{ position:relative; z-index:1; }
   margin-top:.7rem; font-family:var(--font-mono); font-size:.64rem; letter-spacing:.04em;
   color:var(--text-dim); text-shadow:0 2px 8px rgba(0,0,0,.9);
 }
+.profile-modal-views{
+  position:relative; z-index:1;
+  display:flex; align-items:center; justify-content:center; gap:.4rem;
+  margin-top:1rem; padding-top:.75rem; width:100%; max-width:220px;
+  border-top:1px solid var(--border);
+  font-family:var(--font-mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--text-dim); text-shadow:0 2px 8px rgba(0,0,0,.9);
+}
+.profile-modal-views-icon{ display:inline-flex; align-items:center; color:var(--accent-3); }
+.profile-modal-views-count{ color:var(--text); font-weight:600; letter-spacing:.02em; }
 
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }

@@ -118,6 +118,7 @@ document.getElementById('root').innerHTML = `
 </div>
 
 <div id="profileModal" class="profile-modal">
+  <canvas id="profileTrailCanvas" class="profile-modal-trail-canvas"></canvas>
   <button class="profile-modal-close" id="profileModalClose" aria-label="Close profile">&times;</button>
   <div class="profile-modal-content">
     <div class="profile-modal-avatar-wrap" id="profileModalAvatarWrap">
@@ -134,6 +135,16 @@ document.getElementById('root').innerHTML = `
     </div>
     <div class="profile-modal-role" id="profileModalRole"></div>
     <div class="profile-modal-status-text" id="profileModalStatusText"></div>
+    <div class="profile-modal-views" id="profileModalViews">
+      <span class="profile-modal-views-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </span>
+      <span class="profile-modal-views-count" id="profileModalViewsCount">···</span>
+      <span class="profile-modal-views-label">views</span>
+    </div>
   </div>
 </div>
 `;
@@ -1118,6 +1129,39 @@ function unduckSiteAudio(){
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 
+// ---- profile view counter -------------------------------------------------
+// Uses countapi.xyz so the number is a real, shared count across every visitor
+// (not something random or per-browser). If the request fails — offline, the
+// service is down, the network blocks it — we fall back to a local tally
+// cached in this browser so the counter still shows *something* real.
+const VIEW_COUNTER_NAMESPACE = 'threat2society-site';
+async function bumpProfileViewCount(slug){
+  const key = `profile-${slug}`;
+  try{
+    const res = await fetch(`https://api.countapi.xyz/hit/${VIEW_COUNTER_NAMESPACE}/${key}`);
+    if(!res.ok) throw new Error(`countapi responded ${res.status}`);
+    const data = await res.json();
+    if(typeof data.value === 'number'){
+      try{
+        const cache = JSON.parse(localStorage.getItem('t2sProfileViewsCache') || '{}');
+        cache[slug] = data.value;
+        localStorage.setItem('t2sProfileViewsCache', JSON.stringify(cache));
+      }catch(err){ /* cache is best-effort only */ }
+      return data.value;
+    }
+    throw new Error('countapi returned no value');
+  }catch(err){
+    console.warn('view counter: shared count unavailable, falling back to a local tally', err);
+    try{
+      const cache = JSON.parse(localStorage.getItem('t2sProfileViewsCache') || '{}');
+      const next = (cache[slug] || 0) + 1;
+      cache[slug] = next;
+      localStorage.setItem('t2sProfileViewsCache', JSON.stringify(cache));
+      return next;
+    }catch(err2){ return null; }
+  }
+}
+
 const SPOTIFY_TALL_TYPES = new Set(['album', 'playlist', 'artist', 'show']);
 function spotifyEmbedInfo(link){
   if(!link) return null;
@@ -1202,6 +1246,15 @@ async function openProfile(member){
   // widget is shown for looks only — don't also autoplay its 30s preview on top of it.
   renderProfileSpotify(document.getElementById('profileModalMusicCard'), document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
 
+  const viewsCountEl = document.getElementById('profileModalViewsCount');
+  viewsCountEl.textContent = '···';
+  bumpProfileViewCount(slug).then(count => {
+    // the modal may have already moved on to a different member (or closed)
+    // by the time the count comes back — don't stomp on it in that case
+    if(currentProfileMember !== member) return;
+    viewsCountEl.textContent = typeof count === 'number' ? count.toLocaleString() : '—';
+  });
+
   hideLoader();
 
   fetchLanyard(member, {
@@ -1234,6 +1287,98 @@ function closeProfile(){
 document.getElementById('profileModalClose').addEventListener('click', closeProfile);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
 window.addEventListener('popstate', closeProfile);
+
+// ---- profile modal mouse trail ---------------------------------------------
+// A glowing trail that follows the cursor while a profile is open, cycling
+// through the site's palette: white -> red -> near-black -> white, on a loop.
+(function setupProfileMouseTrail(){
+  const canvas = document.getElementById('profileTrailCanvas');
+  if(!canvas || !canvas.getContext) return;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+
+  const ctx = canvas.getContext('2d');
+  const COLOR_STOPS = [
+    [255, 255, 255],  // white
+    [255, 59, 82],    // accent-3 (bright red)
+    [179, 24, 47],    // accent (deep red)
+    [12, 6, 6],        // near black
+  ];
+  const CYCLE_MS = 900; // how long one full white -> red -> black -> white loop takes
+  const LIFESPAN_MS = 650;
+  const MAX_PARTICLES = 160;
+
+  let particles = [];
+  let rafId = null;
+  let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+  function resizeCanvas(){
+    const rect = profileModal.getBoundingClientRect();
+    dpr = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.max(1, Math.round(rect.width * dpr));
+    canvas.height = Math.max(1, Math.round(rect.height * dpr));
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener('resize', resizeCanvas);
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function colorAt(tMs){
+    const segCount = COLOR_STOPS.length;
+    const pos = ((tMs % CYCLE_MS) / CYCLE_MS) * segCount;
+    const i = Math.floor(pos) % segCount;
+    const j = (i + 1) % segCount;
+    const localT = pos - Math.floor(pos);
+    const c0 = COLOR_STOPS[i], c1 = COLOR_STOPS[j];
+    const r = lerp(c0[0], c1[0], localT) | 0;
+    const g = lerp(c0[1], c1[1], localT) | 0;
+    const b = lerp(c0[2], c1[2], localT) | 0;
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const now = performance.now();
+    particles = particles.filter(p => now - p.born < LIFESPAN_MS);
+    for(const p of particles){
+      const age = (now - p.born) / LIFESPAN_MS;
+      const radius = lerp(10, 1, age);
+      const color = colorAt(p.born);
+      ctx.globalAlpha = (1 - age) * 0.85;
+      ctx.fillStyle = color;
+      ctx.shadowBlur = 16;
+      ctx.shadowColor = color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, Math.max(radius, 0), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+    if(particles.length){
+      rafId = requestAnimationFrame(draw);
+    }else{
+      rafId = null;
+    }
+  }
+
+  function onMove(e){
+    if(!profileModal.classList.contains('visible')) return;
+    const rect = profileModal.getBoundingClientRect();
+    particles.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, born: performance.now() });
+    if(particles.length > MAX_PARTICLES) particles.splice(0, particles.length - MAX_PARTICLES);
+    if(rafId === null) rafId = requestAnimationFrame(draw);
+  }
+  profileModal.addEventListener('mousemove', onMove);
+
+  // the modal is display:none-ish (opacity/visibility) while closed, so its
+  // size can't be measured until it becomes visible — resize right then
+  const visibilityObserver = new MutationObserver(() => {
+    if(profileModal.classList.contains('visible')) resizeCanvas();
+  });
+  visibilityObserver.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
+  resizeCanvas();
+})();
 
 window.addEventListener('DOMContentLoaded', ()=>{
   applyTheme();
