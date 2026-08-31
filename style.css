@@ -592,7 +592,7 @@ main{ position:relative; z-index:1; }
   color:#fff; text-shadow:0 4px 20px rgba(0,0,0,.9);
 }
 .profile-modal-spotify{
-  position:relative; z-index:1; width:100%; max-width:320px;
+  position:relative; z-index:1; width:100%; max-width:450px;
   margin-top:1rem; border-radius:12px; overflow:hidden;
   opacity:0; max-height:0; transition:opacity .35s ease, max-height .35s ease, margin-top .35s ease;
 }
