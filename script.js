@@ -1,5 +1,3 @@
-// wow na deobf congrats
-
 document.getElementById('root').innerHTML = `
 <div id="splash">
   <div class="stars" id="splashStars"></div>
@@ -320,7 +318,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
-    spotify: '',
+    spotify: '', // e.g. 'https://open.spotify.com/track/...' or a spotify: URI — shown as an embedded player in the profile modal
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -421,7 +419,9 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-
+// The big-threats sub-sections render their backgrounds on dedicated sticky
+// layers (see #threatBgStack) instead of directly on the .threat-block
+// element, so they can crossfade into each other as the user scrolls.
 const BIG_THREATS_BG_LAYER_MAP = {
   bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
   exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
@@ -436,6 +436,10 @@ function applySectionBackgrounds(){
   });
 }
 
+// Crossfades the big-threats background layers based on how much of each
+// .threat-block is currently within the viewport. Because this is a pure
+// function of scroll position (not scroll direction), it automatically
+// reverses when the user scrolls back up.
 const BIG_THREATS_BLOCKS = Object.keys(BIG_THREATS_BG_LAYER_MAP);
 let threatCrossfadeQueued = false;
 function updateThreatCrossfade(){
@@ -670,7 +674,9 @@ function renderDiscordInvite(){
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
-
+// Discord's own default avatar for users who never uploaded a custom one.
+// Legacy (discriminator-based) accounts use discriminator % 5; accounts on
+// the newer username system (discriminator "0") use (user_id >> 22) % 6.
 function discordDefaultAvatarUrl(du){
   let index = 0;
   try{
@@ -707,7 +713,8 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
     if(du){
       resolvedName = du.global_name || du.username || member.name;
       if(tooltipName) tooltipName.textContent = resolvedName;
-      
+      // Discord always has an avatar to show: a custom upload, or its own
+      // generated default (colored icon) when the user never set one.
       const src = du.avatar
         ? `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${du.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
         : discordDefaultAvatarUrl(du);
@@ -729,7 +736,11 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
           deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${du.avatar_decoration_data.asset}.png?size=160`;
           deco.alt = '';
           wrap.appendChild(deco);
-          
+          // Size/center the decoration ring off the wrap's own *actual* rendered
+          // size rather than the passed-in `size` guess, so it always sticks
+          // correctly to the avatar even if a wrap's CSS size changes or (as
+          // with the main card's hover-expanded avatar) differs from the
+          // other wraps sharing this same fetchLanyard call.
           const stickToAvatar = () => {
             const base = wrap.offsetWidth || wrap.getBoundingClientRect().width || size;
             const dsize = Math.round(base * 1.3);
@@ -848,7 +859,8 @@ splash.addEventListener('click', ()=>{
 
   if(deepLinkedProfile){
     splashRevealed = true;
-    
+    // don't start the default site music — openProfile() below will play this
+    // member's custom music/Spotify track instead
     enterSite();
     openProfile(deepLinkedProfile);
     return;
@@ -1117,6 +1129,11 @@ function unduckSiteAudio(){
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 
+// ---- profile view counter -------------------------------------------------
+// Uses countapi.xyz so the number is a real, shared count across every visitor
+// (not something random or per-browser). If the request fails — offline, the
+// service is down, the network blocks it — we fall back to a local tally
+// cached in this browser so the counter still shows *something* real.
 const VIEW_COUNTER_NAMESPACE = 'threat2society-site';
 async function bumpProfileViewCount(slug){
   const key = `profile-${slug}`;
@@ -1129,7 +1146,7 @@ async function bumpProfileViewCount(slug){
         const cache = JSON.parse(localStorage.getItem('t2sProfileViewsCache') || '{}');
         cache[slug] = data.value;
         localStorage.setItem('t2sProfileViewsCache', JSON.stringify(cache));
-      }catch(err){ }
+      }catch(err){ /* cache is best-effort only */ }
       return data.value;
     }
     throw new Error('countapi returned no value');
@@ -1207,7 +1224,8 @@ async function openProfile(member){
   profileModal.style.backgroundColor = '';
   const bgVal = member.background || (CONFIG.profileDefaults && CONFIG.profileDefaults.background) || '';
   if(bgVal) applyBackground(profileModal, bgVal);
-
+  // Dim the background whenever a member image (not just a flat color) is set,
+  // so the name stays readable on top of it.
   const bgResolved = resolveBackgroundValue(bgVal);
   profileModal.classList.toggle('has-image', !!(bgResolved && bgResolved.type === 'image'));
 
@@ -1224,13 +1242,15 @@ async function openProfile(member){
   }
 
   const spotifyVal = member.spotify || (CONFIG.profileDefaults && CONFIG.profileDefaults.spotify) || '';
-
+  // If a hosted mp3 is already set (and playing the full song above), the Spotify
+  // widget is shown for looks only — don't also autoplay its 30s preview on top of it.
   renderProfileSpotify(document.getElementById('profileModalMusicCard'), document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
 
   const viewsCountEl = document.getElementById('profileModalViewsCount');
   viewsCountEl.textContent = '···';
   bumpProfileViewCount(slug).then(count => {
-
+    // the modal may have already moved on to a different member (or closed)
+    // by the time the count comes back — don't stomp on it in that case
     if(currentProfileMember !== member) return;
     viewsCountEl.textContent = typeof count === 'number' ? count.toLocaleString() : '—';
   });
@@ -1255,7 +1275,8 @@ function closeProfile(){
   if(started){
     unduckSiteAudio();
   }else{
-
+    // arrived via a slug link, so the default track was never started — start it
+    // now that the profile (and its custom music) is being closed
     startAmbientAudio();
   }
   if(location.pathname !== '/'){
@@ -1267,6 +1288,9 @@ document.getElementById('profileModalClose').addEventListener('click', closeProf
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
 window.addEventListener('popstate', closeProfile);
 
+// ---- profile modal mouse trail ---------------------------------------------
+// A glowing trail that follows the cursor while a profile is open, cycling
+// through the site's palette: white -> red -> near-black -> white, on a loop.
 (function setupProfileMouseTrail(){
   const canvas = document.getElementById('profileTrailCanvas');
   if(!canvas || !canvas.getContext) return;
@@ -1275,16 +1299,16 @@ window.addEventListener('popstate', closeProfile);
 
   const ctx = canvas.getContext('2d');
   const COLOR_STOPS = [
-    [255, 255, 255],  
-    [255, 59, 82],    
-    [179, 24, 47],   
-    [12, 6, 6],       
+    [255, 255, 255],  // white
+    [255, 59, 82],    // accent-3 (bright red)
+    [179, 24, 47],    // accent (deep red)
+    [12, 6, 6],        // near black
   ];
-  const CYCLE_MS = 1400;
+  const CYCLE_MS = 1400; // how long one full white -> red -> black -> white loop takes
   const LIFESPAN_MS = 950;
   const MAX_PARTICLES = 90;
-  const MIN_RADIUS = 7; 
-  const MAX_RADIUS = 24;  
+  const MIN_RADIUS = 3;   // smallest glowing orb
+  const MAX_RADIUS = 10;  // largest glowing orb
 
   let particles = [];
   let rafId = null;
@@ -1320,8 +1344,12 @@ window.addEventListener('popstate', closeProfile);
     const now = performance.now();
     particles = particles.filter(p => now - p.born < LIFESPAN_MS);
 
+    // Render each point as a soft, blurred glowing orb (radial gradient that
+    // fades to fully transparent at its edge) rather than a hard-edged shape —
+    // clusters of these overlapping as the cursor moves gives the hazy,
+    // blood-cell-like blob look from the reference image.
     for(const p of particles){
-      const age = (now - p.born) / LIFESPAN_MS;
+      const age = (now - p.born) / LIFESPAN_MS; // 0 = fresh, 1 = about to vanish
       const radius = lerp(p.size, p.size * 0.4, age);
       const alpha = Math.pow(1 - age, 1.2);
       const [r, g, b] = colorAt(p.born).match(/\d+/g).map(Number);
@@ -1350,11 +1378,12 @@ window.addEventListener('popstate', closeProfile);
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const now = performance.now();
-    
+    // spawn a couple of jittered orbs per move so they overlap into loose
+    // clusters, rather than reading as a single clean line
     for(let n = 0; n < 2; n++){
       particles.push({
-        x: x + (Math.random() - 0.5) * 12,
-        y: y + (Math.random() - 0.5) * 12,
+        x: x + (Math.random() - 0.5) * 6,
+        y: y + (Math.random() - 0.5) * 6,
         size: MIN_RADIUS + Math.random() * (MAX_RADIUS - MIN_RADIUS),
         born: now,
       });
@@ -1364,6 +1393,8 @@ window.addEventListener('popstate', closeProfile);
   }
   profileModal.addEventListener('mousemove', onMove);
 
+  // the modal is display:none-ish (opacity/visibility) while closed, so its
+  // size can't be measured until it becomes visible — resize right then
   const visibilityObserver = new MutationObserver(() => {
     if(profileModal.classList.contains('visible')) resizeCanvas();
   });
