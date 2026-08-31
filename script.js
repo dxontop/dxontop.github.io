@@ -226,34 +226,34 @@ const CONFIG = {
               :"                                                                                                                                      ~\``,
 
   mainThreats: [
-    { name:'daz', role:'', discordId:'1521890728094208122' },
+    { name:'daz', spotify:'', music:'', background:'', discordId:'1521890728094208122' },
     { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=ef153006a2e64c3a', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
-    { name:'faiyaz', role:'', discordId:'1402292483584426134' },
+    { name:'faiyaz', spotify:'', music:'', background:'', discordId:'1402292483584426134' },
   ],
 
   bigThreats: [
-    { name:'zowi',  discordId:'1081132499767410688' },
-    { name:'sevi',   discordId:'769457309562568706' },
-    { name:'sao',  discordId:'747746641590616064' },
-    { name:'aeri', discordId:'992033485973880842' },
-    { name:'jong',  discordId:'1010028872282157106' },
-    { name:'gun',  discordId:'1495036966360842260' },
-    { name:'yuzuki',  discordId:'1518082674017701888' },
-    { name:'cholo', discordId:'1503083605444788235' },
-    { name:'kio',  discordId:'751387160057217066' },
-    { name:'rue',  discordId:'1502126548096909353' },
+    { name:'zowi', spotify:'', music:'', background:'', discordId:'1081132499767410688' },
+    { name:'sevi', spotify:'', music:'', background:'',  discordId:'769457309562568706' },
+    { name:'sao', spotify:'', music:'', background:'', discordId:'747746641590616064' },
+    { name:'aeri', spotify:'', music:'', background:'', discordId:'992033485973880842' },
+    { name:'jong', spotify:'', music:'', background:'', discordId:'1010028872282157106' },
+    { name:'gun', spotify:'', music:'', background:'', discordId:'1495036966360842260' },
+    { name:'yuzuki', spotify:'', music:'', background:'', discordId:'1518082674017701888' },
+    { name:'cholo', spotify:'', music:'', background:'', discordId:'1503083605444788235' },
+    { name:'kio', spotify:'', music:'', background:'',  discordId:'751387160057217066' },
+    { name:'rue', spotify:'', music:'', background:'', discordId:'1502126548096909353' },
   ],
 
   exclusiveThreats: [
     { name:'exil',  discordId:'1533371972241723589' },
-    { name:'jesko',  discordId:'' },
+    { name:'blake',  discordId:'' },
     { name:'yori',   discordId:'' },
     { name:'jor',  discordId:'' },
     { name:'',   discordId:'' },
   ],
 
   members: [
-    { name:'',    discordId:'' },
+    { name:'',    discordId:'902804741883588619' },
     { name:'',    discordId:'' },
     { name:'',   discordId:'' },
     { name:'',   discordId:'' },
