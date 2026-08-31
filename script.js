@@ -125,6 +125,7 @@ document.getElementById('root').innerHTML = `
       <span class="profile-modal-status-dot" id="profileModalStatusDot" data-status="offline"></span>
     </div>
     <h2 class="profile-modal-name display" id="profileModalName"></h2>
+    <div class="profile-modal-spotify" id="profileModalSpotify"></div>
     <div class="profile-modal-role" id="profileModalRole"></div>
     <div class="profile-modal-status-text" id="profileModalStatusText"></div>
   </div>
@@ -300,6 +301,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
+    spotify: '', // e.g. 'https://open.spotify.com/track/...' or a spotify: URI — shown as an embedded player in the profile modal
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -830,7 +832,8 @@ splash.addEventListener('click', ()=>{
 
   if(deepLinkedProfile){
     splashRevealed = true;
-    startAmbientAudio();
+    // don't start the default site music — openProfile() below will play this
+    // member's custom music/Spotify track instead
     enterSite();
     openProfile(deepLinkedProfile);
     return;
@@ -1099,6 +1102,43 @@ function unduckSiteAudio(){
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 
+const SPOTIFY_TALL_TYPES = new Set(['album', 'playlist', 'artist', 'show']);
+function spotifyEmbedInfo(link){
+  if(!link) return null;
+  let type, id;
+  const uriMatch = link.match(/^spotify:(track|album|artist|playlist|episode|show):([A-Za-z0-9]+)$/);
+  if(uriMatch){
+    type = uriMatch[1]; id = uriMatch[2];
+  }else{
+    try{
+      const url = new URL(link);
+      const parts = url.pathname.split('/').filter(Boolean);
+      const types = ['track','album','artist','playlist','episode','show'];
+      const typeIdx = parts.findIndex(p => types.includes(p));
+      if(typeIdx !== -1 && parts[typeIdx+1]){
+        type = parts[typeIdx];
+        id = parts[typeIdx+1].split('?')[0];
+      }
+    }catch(err){ return null; }
+  }
+  if(!type || !id) return null;
+  return {
+    type, id,
+    height: SPOTIFY_TALL_TYPES.has(type) ? 352 : 152,
+  };
+}
+function renderProfileSpotify(spotifyWrap, link, { autoplay = true } = {}){
+  const info = spotifyEmbedInfo(link);
+  if(!info){
+    spotifyWrap.innerHTML = '';
+    spotifyWrap.classList.remove('active');
+    return;
+  }
+  const src = `https://open.spotify.com/embed/${info.type}/${info.id}?utm_source=generator&theme=0${autoplay ? '&autoplay=1' : ''}`;
+  spotifyWrap.classList.add('active');
+  spotifyWrap.innerHTML = `<iframe src="${src}" width="100%" height="${info.height}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+}
+
 async function openProfile(member){
   await showLoader();
 
@@ -1140,6 +1180,9 @@ async function openProfile(member){
     pm.play().catch(()=>{});
   }
 
+  const spotifyVal = member.spotify || (CONFIG.profileDefaults && CONFIG.profileDefaults.spotify) || '';
+  renderProfileSpotify(document.getElementById('profileModalSpotify'), spotifyVal);
+
   hideLoader();
 
   fetchLanyard(member, {
@@ -1156,14 +1199,20 @@ function closeProfile(){
   profileModal.classList.remove('visible');
   const pm = document.getElementById('profileMusicEl');
   if(!pm.paused) pm.pause();
-  unduckSiteAudio();
+  renderProfileSpotify(document.getElementById('profileModalSpotify'), '');
+  if(started){
+    unduckSiteAudio();
+  }else{
+    // arrived via a slug link, so the default track was never started — start it
+    // now that the profile (and its custom music) is being closed
+    startAmbientAudio();
+  }
   if(location.pathname !== '/'){
     try{ history.pushState(null, '', '/'); }catch(err){ console.warn('pushState failed', err); }
   }
   currentProfileMember = null;
 }
 document.getElementById('profileModalClose').addEventListener('click', closeProfile);
-profileModal.addEventListener('click', e => { if(e.target === profileModal) closeProfile(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
 window.addEventListener('popstate', closeProfile);
 

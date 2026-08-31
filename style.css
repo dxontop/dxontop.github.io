@@ -590,6 +590,16 @@ main{ position:relative; z-index:1; }
   margin-top:1.15rem; font-size:clamp(1.2rem,3vw,1.9rem);
   color:#fff; text-shadow:0 4px 20px rgba(0,0,0,.9);
 }
+.profile-modal-spotify{
+  position:relative; z-index:1; width:100%; max-width:320px;
+  margin-top:1rem; border-radius:12px; overflow:hidden;
+  opacity:0; max-height:0; transition:opacity .35s ease, max-height .35s ease, margin-top .35s ease;
+}
+.profile-modal-spotify.active{
+  opacity:1; max-height:400px; margin-top:1rem;
+  box-shadow:0 12px 40px rgba(0,0,0,.55); border:1px solid var(--border-strong);
+}
+.profile-modal-spotify iframe{ display:block; border-radius:12px; }
 .profile-modal-role{
   position:relative; z-index:1;
   margin-top:.35rem; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
