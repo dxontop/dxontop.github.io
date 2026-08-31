@@ -1,3 +1,6 @@
+// wow na deobf mo idol
+// all hail caliber
+
 document.getElementById('root').innerHTML = `
 <div id="splash">
   <div class="stars" id="splashStars"></div>
@@ -256,13 +259,13 @@ const CONFIG = {
     { name:'louve',    discordId:'902804741883588619' },
     { name:'hunter',    discordId:'1511980297149747246' },
     { name:'ryokai',   discordId:'900336233031540787' },
-    { name:'ttttt',   discordId:'1248910763494473728' },
-    { name:'tttttt',   discordId:'1280059534169210896' },
+    { name:'zei',   discordId:'1248910763494473728' },
+    { name:'wiz',   discordId:'1280059534169210896' },
     { name:'forth',    discordId:'1505315891087282176' },
     { name:'mimi',   discordId:'1444205221814210700' },
-    { name:'ttttttttt',    discordId:'1446067102900551741' },
+    { name:'soul',    discordId:'1446067102900551741' },
     { name:'zy',     discordId:'1505594070565654778' },
-    { name:'ttttttttttt',    discordId:'748713264652746813' },
+    { name:'seia',    discordId:'748713264652746813' },
   ],
 
   hallOfShame: [
@@ -308,15 +311,15 @@ const CONFIG = {
 
   music: {
     url: 'music/t2sontop_V1.mp3',
-    volume: 0.80,
+    volume: 0.50,
   },
 
   hallOfShameMusic: {
     url: '',
-    volume: 0.80,
+    volume: 0.50,
   },
   profileDefaults: {
-    background: '',
+    background: 'images/banner.gif',
     music: '',
     spotify: '',
   },
