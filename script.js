@@ -125,7 +125,13 @@ document.getElementById('root').innerHTML = `
       <span class="profile-modal-status-dot" id="profileModalStatusDot" data-status="offline"></span>
     </div>
     <h2 class="profile-modal-name display" id="profileModalName"></h2>
-    <div class="profile-modal-spotify" id="profileModalSpotify"></div>
+    <div class="profile-modal-music-card" id="profileModalMusicCard">
+      <div class="profile-modal-nowplaying">
+        <span class="now-playing-label">now playing</span>
+        <div class="now-playing-wave">${buildWaveBarsHTML(28)}</div>
+      </div>
+      <div class="profile-modal-spotify" id="profileModalSpotify"></div>
+    </div>
     <div class="profile-modal-role" id="profileModalRole"></div>
     <div class="profile-modal-status-text" id="profileModalStatusText"></div>
   </div>
@@ -210,7 +216,7 @@ const CONFIG = {
 
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
-    { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=554358a787274e08', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
+    { name:'caliber', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
     { name:'faiyaz', role:'', discordId:'1402292483584426134' },
   ],
 
@@ -279,7 +285,7 @@ const CONFIG = {
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
-      name: 'heavensent',
+      name: 'VOID',
       tag: '',
       image: '',
       description: 'wala kaming pake.',
@@ -301,7 +307,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
-    spotify: '',
+    spotify: '', // e.g. 'https://open.spotify.com/track/...' or a spotify: URI — shown as an embedded player in the profile modal
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -321,8 +327,8 @@ const CONFIG = {
     home:         '',
     mainthreats:  'images/main threats.jpg',
     bigThreatsBlock:       'images/big threats.jpg',
-    exclusiveThreatsBlock: '',
-    membersBlock:          '',
+    exclusiveThreatsBlock: 'images/big threats.jpg',
+    membersBlock:          'images/big threats.jpg',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
     hallofshame:  '',
@@ -377,6 +383,16 @@ function applyLogo(){
   }else{
     el.textContent = val;
   }
+}
+
+function buildWaveBarsHTML(count){
+  let html = '';
+  for(let i = 0; i < count; i++){
+    const delay = (Math.random() * 1.1).toFixed(2);
+    const dur = (0.6 + Math.random() * 0.7).toFixed(2);
+    html += `<span style="animation-delay:${delay}s; animation-duration:${dur}s;"></span>`;
+  }
+  return html;
 }
 
 function resolveBackgroundValue(val){
@@ -1127,16 +1143,16 @@ function spotifyEmbedInfo(link){
     height: SPOTIFY_TALL_TYPES.has(type) ? 352 : 152,
   };
 }
-function renderProfileSpotify(spotifyWrap, link, { autoplay = true } = {}){
+function renderProfileSpotify(cardEl, spotifyWrap, link, { autoplay = true } = {}){
   const info = spotifyEmbedInfo(link);
   if(!info){
     if(link) console.warn('Spotify link could not be parsed into an embed (need an open.spotify.com/track|album|playlist|artist|episode|show/... link, not a shortened spotify.link share link):', link);
     spotifyWrap.innerHTML = '';
-    spotifyWrap.classList.remove('active');
+    cardEl.classList.remove('active');
     return;
   }
   const src = `https://open.spotify.com/embed/${info.type}/${info.id}?utm_source=generator&theme=0${autoplay ? '&autoplay=1' : ''}`;
-  spotifyWrap.classList.add('active');
+  cardEl.classList.add('active');
   spotifyWrap.innerHTML = `<iframe src="${src}" width="100%" height="${info.height}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
 }
 
@@ -1184,7 +1200,7 @@ async function openProfile(member){
   const spotifyVal = member.spotify || (CONFIG.profileDefaults && CONFIG.profileDefaults.spotify) || '';
   // If a hosted mp3 is already set (and playing the full song above), the Spotify
   // widget is shown for looks only — don't also autoplay its 30s preview on top of it.
-  renderProfileSpotify(document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
+  renderProfileSpotify(document.getElementById('profileModalMusicCard'), document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
 
   hideLoader();
 
@@ -1202,7 +1218,7 @@ function closeProfile(){
   profileModal.classList.remove('visible');
   const pm = document.getElementById('profileMusicEl');
   if(!pm.paused) pm.pause();
-  renderProfileSpotify(document.getElementById('profileModalSpotify'), '');
+  renderProfileSpotify(document.getElementById('profileModalMusicCard'), document.getElementById('profileModalSpotify'), '');
   if(started){
     unduckSiteAudio();
   }else{
