@@ -253,16 +253,16 @@ const CONFIG = {
   ],
 
   members: [
-    { name:'tt',    discordId:'902804741883588619' },
-    { name:'ttt',    discordId:'1511980297149747246' },
-    { name:'tttt',   discordId:'900336233031540787' },
-    { name:'ttttt',   discordId:'647377810339659786' },
-    { name:'tttttt',   discordId:'1504530569613021255' },
-    { name:'ttttttt',    discordId:'1505315891087282176' },
-    { name:'tttttttt',   discordId:'1444205221814210700' },
-    { name:'ttttttttt',    discordId:'1354728395740811416' },
-    { name:'tttttttttt',     discordId:'1505594070565654778' },
-    { name:'ttttttttttt',    discordId:'1266998522151047192' },
+    { name:'louve',    discordId:'902804741883588619' },
+    { name:'hunter',    discordId:'1511980297149747246' },
+    { name:'ryokai',   discordId:'900336233031540787' },
+    { name:'ttttt',   discordId:'1248910763494473728' },
+    { name:'tttttt',   discordId:'1280059534169210896' },
+    { name:'forth',    discordId:'1505315891087282176' },
+    { name:'mimi',   discordId:'1444205221814210700' },
+    { name:'ttttttttt',    discordId:'1446067102900551741' },
+    { name:'zy',     discordId:'1505594070565654778' },
+    { name:'ttttttttttt',    discordId:'748713264652746813' },
   ],
 
   hallOfShame: [
@@ -296,15 +296,15 @@ const CONFIG = {
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
-      name: 'VOID',
+      name: 'heavensxnt',
       tag: '',
-      image: '',
-      description: 'wala kaming pake.',
-      invite: '',
+      image: 'images/heavensent.gif',
+      description: 'sa ngalan ng, heavensxnt Amen',
+      invite: 'https://discord.gg/GuVSYxGyZq',
     },
   ],
 
-  logo: ':3',
+  logo: ':p',
 
   music: {
     url: 'music/t2sontop_V1.mp3',
@@ -318,7 +318,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
-    spotify: '', // e.g. 'https://open.spotify.com/track/...' or a spotify: URI — shown as an embedded player in the profile modal
+    spotify: '',
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -419,9 +419,6 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-// The big-threats sub-sections render their backgrounds on dedicated sticky
-// layers (see #threatBgStack) instead of directly on the .threat-block
-// element, so they can crossfade into each other as the user scrolls.
 const BIG_THREATS_BG_LAYER_MAP = {
   bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
   exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
@@ -436,10 +433,6 @@ function applySectionBackgrounds(){
   });
 }
 
-// Crossfades the big-threats background layers based on how much of each
-// .threat-block is currently within the viewport. Because this is a pure
-// function of scroll position (not scroll direction), it automatically
-// reverses when the user scrolls back up.
 const BIG_THREATS_BLOCKS = Object.keys(BIG_THREATS_BG_LAYER_MAP);
 let threatCrossfadeQueued = false;
 function updateThreatCrossfade(){
@@ -674,9 +667,7 @@ function renderDiscordInvite(){
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
-// Discord's own default avatar for users who never uploaded a custom one.
-// Legacy (discriminator-based) accounts use discriminator % 5; accounts on
-// the newer username system (discriminator "0") use (user_id >> 22) % 6.
+
 function discordDefaultAvatarUrl(du){
   let index = 0;
   try{
@@ -713,8 +704,6 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
     if(du){
       resolvedName = du.global_name || du.username || member.name;
       if(tooltipName) tooltipName.textContent = resolvedName;
-      // Discord always has an avatar to show: a custom upload, or its own
-      // generated default (colored icon) when the user never set one.
       const src = du.avatar
         ? `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${du.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
         : discordDefaultAvatarUrl(du);
