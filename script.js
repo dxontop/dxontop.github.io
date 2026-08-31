@@ -253,16 +253,16 @@ const CONFIG = {
   ],
 
   members: [
-    { name:'',    discordId:'902804741883588619' },
-    { name:'',    discordId:'1511980297149747246' },
-    { name:'',   discordId:'900336233031540787' },
-    { name:'',   discordId:'647377810339659786' },
-    { name:'',   discordId:'1504530569613021255' },
-    { name:'',    discordId:'1505315891087282176' },
-    { name:'',   discordId:'1444205221814210700' },
-    { name:'',    discordId:'1354728395740811416' },
-    { name:'',     discordId:'1505594070565654778' },
-    { name:'',    discordId:'1266998522151047192' },
+    { name:'t',    discordId:'902804741883588619' },
+    { name:'t',    discordId:'1511980297149747246' },
+    { name:'t',   discordId:'900336233031540787' },
+    { name:'t',   discordId:'647377810339659786' },
+    { name:'t',   discordId:'1504530569613021255' },
+    { name:'t',    discordId:'1505315891087282176' },
+    { name:'t',   discordId:'1444205221814210700' },
+    { name:'t',    discordId:'1354728395740811416' },
+    { name:'t',     discordId:'1505594070565654778' },
+    { name:'t',    discordId:'1266998522151047192' },
   ],
 
   hallOfShame: [
