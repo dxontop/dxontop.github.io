@@ -567,6 +567,7 @@ main{ position:relative; z-index:1; }
 .profile-modal-content{
   position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;
   text-align:center; padding:2rem;
+  width:100%; max-width:560px;
   max-height:92vh; max-height:92dvh; overflow-y:auto; -webkit-overflow-scrolling:touch;
   animation:fadeUp .5s cubic-bezier(.19,1,.22,1);
 }
@@ -600,7 +601,7 @@ main{ position:relative; z-index:1; }
   opacity:1; max-height:400px; margin-top:1rem;
   box-shadow:0 12px 40px rgba(0,0,0,.55); border:1px solid var(--border-strong);
 }
-.profile-modal-spotify iframe{ display:block; border-radius:12px; }
+.profile-modal-spotify iframe{ display:block; width:100%; border:0; border-radius:12px; }
 .profile-modal-role{
   position:relative; z-index:1;
   margin-top:.35rem; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
