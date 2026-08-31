@@ -592,16 +592,43 @@ main{ position:relative; z-index:1; }
   margin-top:1.15rem; font-size:clamp(1.2rem,3vw,1.9rem);
   color:#fff; text-shadow:0 4px 20px rgba(0,0,0,.9);
 }
-.profile-modal-spotify{
+.profile-modal-music-card{
   position:relative; z-index:1; width:100%; max-width:450px;
   margin-top:1rem; border-radius:12px; overflow:hidden;
+  background:#0a0505; border:1px solid var(--border-strong);
   opacity:0; max-height:0; transition:opacity .35s ease, max-height .35s ease, margin-top .35s ease;
 }
-.profile-modal-spotify.active{
-  opacity:1; max-height:400px; margin-top:1rem;
-  box-shadow:0 12px 40px rgba(0,0,0,.55); border:1px solid var(--border-strong);
+.profile-modal-music-card.active{
+  opacity:1; max-height:520px; margin-top:1rem;
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
 }
-.profile-modal-spotify iframe{ display:block; width:100%; border:0; border-radius:12px; }
+.profile-modal-nowplaying{
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+  padding:.55rem .85rem; background:#0a0505;
+  border-bottom:1px solid var(--border);
+}
+.now-playing-label{
+  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--text-dim); white-space:nowrap;
+}
+.now-playing-wave{
+  display:flex; align-items:center; gap:2px; height:14px; flex:1;
+  justify-content:flex-end; overflow:hidden;
+}
+.now-playing-wave span{
+  display:block; width:2px; min-width:2px; height:100%;
+  background:var(--accent-3); border-radius:1px; transform-origin:center;
+  animation-name:nowPlayingBounce; animation-iteration-count:infinite; animation-timing-function:ease-in-out;
+}
+@keyframes nowPlayingBounce{
+  0%, 100%{ transform:scaleY(.2); opacity:.55; }
+  50%{ transform:scaleY(1); opacity:1; }
+}
+.profile-modal-spotify{ width:100%; }
+.profile-modal-spotify iframe{ display:block; width:100%; border:0; }
+@media (prefers-reduced-motion: reduce){
+  .now-playing-wave span{ animation:none; transform:scaleY(.6); }
+}
 .profile-modal-role{
   position:relative; z-index:1;
   margin-top:.35rem; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
