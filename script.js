@@ -210,7 +210,7 @@ const CONFIG = {
 
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
-    { name:'caliber', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
+    { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=dceceb0865f14170', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
     { name:'faiyaz', role:'', discordId:'1402292483584426134' },
   ],
 
