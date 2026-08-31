@@ -210,7 +210,7 @@ const CONFIG = {
 
   mainThreats: [
     { name:'daz', role:'', discordId:'1521890728094208122' },
-    { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=24a93e292d0042d6', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
+    { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=554358a787274e08', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
     { name:'faiyaz', role:'', discordId:'1402292483584426134' },
   ],
 
@@ -279,7 +279,7 @@ const CONFIG = {
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
-      name: 'VOID',
+      name: 'heavensent',
       tag: '',
       image: '',
       description: 'wala kaming pake.',
@@ -301,7 +301,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
-    spotify: '', 
+    spotify: '',
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -392,7 +392,9 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-
+// The big-threats sub-sections render their backgrounds on dedicated sticky
+// layers (see #threatBgStack) instead of directly on the .threat-block
+// element, so they can crossfade into each other as the user scrolls.
 const BIG_THREATS_BG_LAYER_MAP = {
   bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
   exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
@@ -406,6 +408,11 @@ function applySectionBackgrounds(){
     applyBackground(el, bg);
   });
 }
+
+// Crossfades the big-threats background layers based on how much of each
+// .threat-block is currently within the viewport. Because this is a pure
+// function of scroll position (not scroll direction), it automatically
+// reverses when the user scrolls back up.
 const BIG_THREATS_BLOCKS = Object.keys(BIG_THREATS_BG_LAYER_MAP);
 let threatCrossfadeQueued = false;
 function updateThreatCrossfade(){
@@ -640,7 +647,9 @@ function renderDiscordInvite(){
 
 const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
 const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
-
+// Discord's own default avatar for users who never uploaded a custom one.
+// Legacy (discriminator-based) accounts use discriminator % 5; accounts on
+// the newer username system (discriminator "0") use (user_id >> 22) % 6.
 function discordDefaultAvatarUrl(du){
   let index = 0;
   try{
@@ -677,6 +686,8 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
     if(du){
       resolvedName = du.global_name || du.username || member.name;
       if(tooltipName) tooltipName.textContent = resolvedName;
+      // Discord always has an avatar to show: a custom upload, or its own
+      // generated default (colored icon) when the user never set one.
       const src = du.avatar
         ? `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${du.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
         : discordDefaultAvatarUrl(du);
@@ -698,7 +709,11 @@ async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, s
           deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${du.avatar_decoration_data.asset}.png?size=160`;
           deco.alt = '';
           wrap.appendChild(deco);
-          
+          // Size/center the decoration ring off the wrap's own *actual* rendered
+          // size rather than the passed-in `size` guess, so it always sticks
+          // correctly to the avatar even if a wrap's CSS size changes or (as
+          // with the main card's hover-expanded avatar) differs from the
+          // other wraps sharing this same fetchLanyard call.
           const stickToAvatar = () => {
             const base = wrap.offsetWidth || wrap.getBoundingClientRect().width || size;
             const dsize = Math.round(base * 1.3);
@@ -817,7 +832,8 @@ splash.addEventListener('click', ()=>{
 
   if(deepLinkedProfile){
     splashRevealed = true;
-    
+    // don't start the default site music — openProfile() below will play this
+    // member's custom music/Spotify track instead
     enterSite();
     openProfile(deepLinkedProfile);
     return;
@@ -1148,6 +1164,8 @@ async function openProfile(member){
   profileModal.style.backgroundColor = '';
   const bgVal = member.background || (CONFIG.profileDefaults && CONFIG.profileDefaults.background) || '';
   if(bgVal) applyBackground(profileModal, bgVal);
+  // Dim the background whenever a member image (not just a flat color) is set,
+  // so the name stays readable on top of it.
   const bgResolved = resolveBackgroundValue(bgVal);
   profileModal.classList.toggle('has-image', !!(bgResolved && bgResolved.type === 'image'));
 
@@ -1164,7 +1182,9 @@ async function openProfile(member){
   }
 
   const spotifyVal = member.spotify || (CONFIG.profileDefaults && CONFIG.profileDefaults.spotify) || '';
-  renderProfileSpotify(document.getElementById('profileModalSpotify'), spotifyVal);
+  // If a hosted mp3 is already set (and playing the full song above), the Spotify
+  // widget is shown for looks only — don't also autoplay its 30s preview on top of it.
+  renderProfileSpotify(document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
 
   hideLoader();
 
@@ -1186,7 +1206,8 @@ function closeProfile(){
   if(started){
     unduckSiteAudio();
   }else{
-    
+    // arrived via a slug link, so the default track was never started — start it
+    // now that the profile (and its custom music) is being closed
     startAmbientAudio();
   }
   if(location.pathname !== '/'){
