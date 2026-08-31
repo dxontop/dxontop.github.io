@@ -318,7 +318,7 @@ const CONFIG = {
   profileDefaults: {
     background: '',
     music: '',
-    spotify: '', // e.g. 'https://open.spotify.com/track/...' or a spotify: URI — shown as an embedded player in the profile modal
+    spotify: '', 
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -419,9 +419,7 @@ function applyBackground(el, val){
   if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
   else el.style.backgroundColor = resolved.css;
 }
-// The big-threats sub-sections render their backgrounds on dedicated sticky
-// layers (see #threatBgStack) instead of directly on the .threat-block
-// element, so they can crossfade into each other as the user scrolls.
+
 const BIG_THREATS_BG_LAYER_MAP = {
   bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
   exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
