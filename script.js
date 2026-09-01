@@ -285,9 +285,9 @@ const CONFIG = {
       invite: 'https://discord.gg/ZjWacnA6YK',
     },
     {
-      name: 'Finest',
+      name: 'NV$',
       tag: '',
-      image: 'images/finest.png',
+      image: 'images/nvs.png',
       description: 'loudest in asia.',
       invite: 'https://discord.gg/n3jacUmwrR',
     },
