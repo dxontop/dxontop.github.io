@@ -289,7 +289,7 @@ const CONFIG = {
       tag: '',
       image: 'images/nvs.png',
       description: 'loudest in asia.',
-      invite: 'https://discord.gg/n3jacUmwrR',
+      invite: 'https://discord.gg/SrhEmsKfcS',
     },
     {
       name:'EBK',
