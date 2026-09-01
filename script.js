@@ -242,7 +242,7 @@ const CONFIG = {
     { name:'jon', spotify:'https://open.spotify.com/track/1QrbZhFYlViXd60g130vw1?si=LMQOdp47TJaVevTbsV2udA&utm_source=copy-link', music:'pf/jon.mp3', background:'pf/jon.gif', discordId:'1010028872282157106' },
     { name:'gun', spotify:'https://open.spotify.com/track/5mtTAScDytxMMqZj14NmlN?si=BsAhMwSeSQq0yidxidyEFQ&utm_source=copy-link', music:'pf/gun.mp3', background:'pf/gun.gif', discordId:'1495036966360842260' },
     { name:'yuzuki', spotify:'https://open.spotify.com/track/3hEfpBHxgieRLz4t3kLNEg?si=05f13e1472ed4956', music:'pf/yuzuki.mp3', background:'pf/yuzuki.gif', discordId:'1518082674017701888' },
-    { name:'cholo', spotify:'', music:'', background:'', discordId:'1503083605444788235' },
+    { name:'zy', spotify:'https://open.spotify.com/track/6deBk1BSZkEO7WxvXKnqOZ?si=afa7c9db66d34a4f', music:'pf/zy.mp3', background:'pf/zy.gif', discordId:'1245749945353375766' },
     { name:'kio', spotify:'https://open.spotify.com/track/2c2tlXfEmLgUNvxngIi1qL?si=e1264ebcc6844dea', music:'pf/kio.mp3', background:'pf/kio.gif',  discordId:'751387160057217066' },
     { name:'rue', spotify:'https://open.spotify.com/track/3tTpvK7QgjjQCKGnHt5xn3?si=at7oRgLVRI6YU--3oe0qtA&utm_source=copy-link', music:'pf/rue.mp3', background:'pf/rue.gif', discordId:'1502126548096909353' },
   ],
@@ -264,7 +264,7 @@ const CONFIG = {
     { name:'forth',    discordId:'1505315891087282176' },
     { name:'mimi',   discordId:'1444205221814210700' },
     { name:'soul',    discordId:'1446067102900551741' },
-    { name:'zy',     discordId:'1505594070565654778' },
+    { name:'cho',     discordId:'1503083605444788235' },
     { name:'seia',    discordId:'748713264652746813' },
   ],
 
