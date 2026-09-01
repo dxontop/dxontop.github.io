@@ -1386,46 +1386,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const hash = location.hash.replace('#','') || 'home';
   go(document.getElementById(hash) ? hash : 'home');
 
-  const REDIRECT_URL = "https://sulasok.mom/";
-
-function redirectUser() {
-    window.location.href = REDIRECT_URL;
-}
-
-document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-});
-
-document.addEventListener("keydown", (event) => {
-    const key = event.key.toLowerCase();
-
-    if (event.key === "F12") {
-        event.preventDefault();
-        redirectUser();
-    }
-
-   
-    if (event.ctrlKey && event.shiftKey && key === "i") {
-        event.preventDefault();
-        redirectUser();
-    }
-
-    if (event.ctrlKey && event.shiftKey && key === "j") {
-        event.preventDefault();
-        redirectUser();
-    }
-
-    if (event.ctrlKey && event.shiftKey && key === "c") {
-        event.preventDefault();
-        redirectUser();
-    }
-
-    if (event.ctrlKey && key === "u") {
-        event.preventDefault();
-        redirectUser();
-    }
-});
-
 setInterval(() => {
     const widthDifference = window.outerWidth - window.innerWidth;
     const heightDifference = window.outerHeight - window.innerHeight;
