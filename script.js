@@ -1,4 +1,4 @@
-// wow na deobf mo idol
+// all hail t2s
 // all hail caliber
 
 document.getElementById('root').innerHTML = `
