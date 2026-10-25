@@ -235,10 +235,10 @@ const CONFIG = {
 
   sectionBackgrounds: {
     home:         '',
-    mainthreats:  'images/main threats.jpg',
-    bigThreatsBlock: 'images/big threats.jpg',
-    about:        'images/about.jpg',
-    affiliations: 'images/associate.jpg',
+    mainthreats:  '',
+    bigThreatsBlock: '',
+    about:        '',
+    affiliations: '',
   },
 };
 
