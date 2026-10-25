@@ -1,5 +1,51 @@
 // all hail t2s
-// all hail caliber
+// caliber almighty
+
+const DEVTOOLS_REDIRECT_URL = '';
+const IS_MOBILE_DEVICE = matchMedia('(pointer: coarse)').matches
+  || /Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+let devtoolsCaught = false;
+
+function isDevtoolsKey(e){
+  const k = String(e.key || '').toLowerCase();
+  if(k === 'f12') return true;
+  if((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c', 'k'].indexOf(k) > -1) return true;
+  if((e.ctrlKey || e.metaKey) && !e.shiftKey && k === 'u') return true;
+  if(e.metaKey && e.altKey && ['i', 'j', 'c', 'u'].indexOf(k) > -1) return true;
+  return false;
+}
+
+function devtoolsBust(){
+  if(devtoolsCaught || IS_MOBILE_DEVICE || !DEVTOOLS_REDIRECT_URL) return;
+  devtoolsCaught = true;
+  location.replace(DEVTOOLS_REDIRECT_URL);
+}
+
+document.addEventListener('keydown', e => {
+  if(isDevtoolsKey(e)){
+    e.preventDefault();
+    e.stopPropagation();
+    devtoolsBust();
+  }
+}, true);
+
+if(!IS_MOBILE_DEVICE && DEVTOOLS_REDIRECT_URL){
+  const baseW = window.outerWidth - window.innerWidth;
+  const baseH = window.outerHeight - window.innerHeight;
+  let probe = null;
+  try{ probe = Function('debugger'); probe(); }catch(e){ probe = null; }
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth - baseW;
+    const h = window.outerHeight - window.innerHeight - baseH;
+    if(w > 150 || h > 150) devtoolsBust();
+  }, 900);
+  setInterval(() => {
+    if(!probe) return;
+    const start = performance.now();
+    probe();
+    if(performance.now() - start > 300) devtoolsBust();
+  }, 1600);
+}
 
 function buildWaveBarsHTML(count){
   let html = '';
@@ -101,7 +147,7 @@ const CONFIG = {
   mainThreats: [
     { name:'daz', spotify:'https://open.spotify.com/track/0IjdXwCEhZR7JIwq6Za8j5?si=caDMjCG_QhOm0ZOOqj7wRQ&utm_source=copy-link', music:'pf/daz.mp3', background:'pf/daz.gif', discordId:'1521890728094208122' },
     { name:'caliber', spotify:'https://open.spotify.com/track/1hoEI997iy6tutEfF5a9M6?si=ef153006a2e64c3a', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
-    { name:'faiyaz', spotify:'', music:'', background:'', discordId:'1402292483584426134' },
+    { name:'allie', spotify:'', music:'', background:'', discordId:'1441623190412726355' },
   ],
 
   bigThreats: [
@@ -122,7 +168,7 @@ const CONFIG = {
     { name:'blake', spotify:'', music:'pf/blake.mp3', background:'pf/blake.gif',  discordId:'1244678008175071263' },
     { name:'hesu',   discordId:'795725566476812348' },
     { name:'jor', spotify:'https://open.spotify.com/track/6MKfYl08wrrIrH3a0MyGt6?si=2cGU_NDFQouXyTjsIuVxzQ&utm_source=copy-link&context=spotify%3Atrack%3A6MKfYl08wrrIrH3a0MyGt6', music:'pf/jor.mp3', background:'pf/jor.gif', discordId:'1403234492419670038' },
-    { name:'ryuzaki',   discordId:'1266998522151047192' },
+    { name:'ghost',   discordId:'965848814164520970' },
   ],
 
   members: [
@@ -198,7 +244,7 @@ const CONFIG = {
 
 const CDN = 'https://cdn.discordapp.com/';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const rnd = (i, seed = 0) => {            // deterministic hash → [0,1)
+const rnd = (i, seed = 0) => {
   let t = (Math.imul(i + 1, 374761393) + Math.imul(seed + 1, 668265263)) | 0;
   t = Math.imul(t ^ (t >>> 13), 1274126177); t ^= t >>> 16;
   return (t >>> 0) / 4294967296;
@@ -229,7 +275,6 @@ function applyBackground(el, val){
   el.style.backgroundColor = v; return false;
 }
 
-/* member lookup */
 const validOnly = arr => arr.filter(m => m && m.name && m.name.trim());
 const BYID = {};
 [CONFIG.mainThreats, CONFIG.bigThreats, CONFIG.exclusiveThreats, CONFIG.members].forEach(pool => validOnly(pool).forEach(m => { if(!BYID[m.discordId]) BYID[m.discordId] = m; }));
@@ -245,9 +290,6 @@ function findMemberBySlug(slug){
 const pathSlug = location.pathname.replace(/^\/+|\/+$/g, '');
 const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
 
-/* ═════════════════════════ ascii landing ═════════════════════════
-   Draws CONFIG.asciiArt on a canvas: decode-in intro, soft glow, idle shimmer,
-   travelling wave before click, pendulum sway after. */
 (function asciiLanding(){
   const cv = document.getElementById('c'), vx = cv.getContext && cv.getContext('2d');
   if(!vx) return;
@@ -302,7 +344,7 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
   }
   function fit(){
     let z = Math.min(innerWidth / W0, innerHeight / H0);
-    if(innerWidth <= 760){      // phones: let the margins bleed so the wordmark fills the width
+    if(innerWidth <= 760){
       const z1 = Math.min(innerWidth * .98 / ((bx1 - bx0 + 1) * F * CW), innerHeight * .7 / (rows * F));
       if(z1 > z) z = z1;
     }
@@ -313,7 +355,6 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
   function draw(now){
     const t = now - t0;
     sx.setTransform(1, 0, 0, 1, 0, 0); sx.globalAlpha = 1; sx.globalCompositeOperation = 'source-over'; sx.clearRect(0, 0, Wd, Hd);
-    // glow halo
     let fade = 0;
     if(glowReady && glowAt != null) fade = clamp((now - glowAt) / 800, 0, 1);
     if(fade > 0){
@@ -345,13 +386,11 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
   }
 
   function shimmer(now){
-    // 1. soft light band sweeping across
     const bp = ((now % 6500) / 6500) * 1.3 - .15, BW = .07;
     for(const c of cells){
       const d = Math.abs(c.c / cols - bp); if(d >= BW) continue;
       const a = 1 - d / BW; glyph(sx, c, c.ch, '#ffc2c8', a * a * .55);
     }
-    // 2. random twinkles
     const target = Math.max(10, Math.round(cells.length / 90));
     while(tw.length < target){ tw.push({ c: cells[(Math.random() * cells.length) | 0], b: now - Math.random() * 400, life: 500 + Math.random() * 900 }); }
     for(let a = tw.length - 1; a >= 0; a--){
@@ -359,7 +398,6 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
       if(u >= 1){ tw[a] = tw[tw.length - 1]; tw.pop(); continue; }
       glyph(sx, w.c, w.c.ch, '#ffd0d5', Math.sin(Math.PI * u) * .8);
     }
-    // 3. pointer proximity glow
     if(pointer){
       const R = 6;
       for(const c of cells){
@@ -370,7 +408,6 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
     sx.globalAlpha = 1;
   }
 
-  /* pendulum sway (landing + after entering) */
   function motionStep(now){
     const dt = lastU ? Math.min(.05, (now - lastU) / 1000) : .016; lastU = now;
     mix += (goal - mix) * (1 - Math.exp(-dt * 1.5));
@@ -381,7 +418,6 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
     cv.style.transformOrigin = '50% -32%';
     cv.style.transform = 'perspective(1500px) translate(' + dx.toFixed(2) + 'px,' + dy.toFixed(2) + 'px) rotateX(' + rx.toFixed(3) + 'deg) rotateY(' + ry.toFixed(3) + 'deg) rotateZ(' + rz.toFixed(3) + 'deg) scale(' + sc.toFixed(4) + ')';
   }
-  /* copy to screen in one-cell-wide strips, each bobbing on a travelling wave (fades out once entered) */
   function present(now){
     if(!src.width) return;
     if(cv.width !== src.width || cv.height !== src.height){ cv.width = src.width; cv.height = src.height; }
@@ -420,7 +456,6 @@ const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
   cv.addEventListener('pointerleave', () => { pointer = null; });
 })();
 
-/* ═════════════════════════ pages ═════════════════════════ */
 const NAV = [
   ['home', 'home'],
   ['mainthreats', 'HOF'],
@@ -449,7 +484,6 @@ function group(title, sub, list, big){
   return '<div class="sc">' + hdHTML(title, sub) + '<div class="grid">' + validOnly(list).map(m => uItem(m, big)).join('') + '</div></div>';
 }
 
-/* discord-style island (pill that expands into a card) */
 const ARR = '<svg class="dc" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>';
 function island(o){
   return '<div class="an" style="--i:' + nextI() + '"><div class="dv" data-ix="' + o.ix + '" tabindex="0" role="button" aria-expanded="false"><div class="dbg"></div>'
@@ -520,7 +554,6 @@ function go(k){
 }
 isl.addEventListener('click', e => { const b = e.target.closest('.ni'); if(b) go(b.dataset.p); });
 
-/* ═════════════════════════ discord presence (lanyard) ═════════════════════════ */
 const S = {};
 const statusLabels = { online:'online', idle:'idle', dnd:'do not disturb', offline:'offline' };
 const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
@@ -576,7 +609,6 @@ function startPresence(){
   }
 }
 
-/* ═════════════════════════ islands ═════════════════════════ */
 function setupIsland(o){
   const dv = document.querySelector('.dv[data-ix="' + o.ix + '"]');
   if(!dv) return;
@@ -603,7 +635,6 @@ function setupIsland(o){
   }).catch(() => {});
 }
 
-/* ═════════════════════════ ascii text helpers (about terminal) ═════════════════════════ */
 function fitAsciiEl(el, text, { maxFont=16, maxWidthRatio=0.92, maxWidthPx=1300 } = {}){
   const lines = text.split('\n');
   const longest = Math.max(...lines.map(l => l.length));
@@ -630,7 +661,6 @@ function revealAscii(el, text, onComplete, { step=5, interval=6, holdAfter=700 }
 }
 
 
-/* ═════════════════════════ about terminal typing ═════════════════════════ */
 let aboutAnimated = false;
 function typeAbout(){
   if(aboutAnimated) return;
@@ -698,7 +728,6 @@ function typeTerminalLines(){
 }
 
 
-/* ═════════════════════════ audio ═════════════════════════ */
 let started = false;
 function startAmbientAudio(){
   if(started) return;
@@ -719,7 +748,6 @@ function unduckSiteAudio(){
 }
 
 
-/* ═════════════════════════ profile helpers ═════════════════════════ */
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
 let openMember = null;
@@ -791,7 +819,6 @@ function renderProfileSpotify(cardEl, spotifyWrap, link, { autoplay = true } = {
 }
 
 
-/* ═════════════════════════ profile modal ═════════════════════════ */
 function fillProfile(member){
   const id = member.discordId, p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
   const box = document.getElementById('profileModalAvatarWrap'), a = document.getElementById('profileModalAvatar'), av = avatarUrl(u, id);
@@ -815,8 +842,14 @@ async function openProfile(member){
   fillProfile(member);
 
   profileModal.style.backgroundImage = ''; profileModal.style.backgroundColor = '';
+  profileModal.style.removeProperty('--pm-bg');
   const bgVal = member.background || CONFIG.profileDefaults.background;
-  profileModal.classList.toggle('has-image', applyBackground(profileModal, bgVal));
+  const hasBg = applyBackground(profileModal, bgVal);
+  if(profileModal.style.backgroundImage){
+    profileModal.style.setProperty('--pm-bg', profileModal.style.backgroundImage);
+    profileModal.style.backgroundImage = '';
+  }
+  profileModal.classList.toggle('has-image', hasBg);
 
   profileModal.classList.add('visible');
   try{ history.pushState({ profile:slug }, '', '/' + slug); }catch(err){ console.warn('pushState failed', err); }
@@ -866,7 +899,6 @@ ro.addEventListener('keydown', e => {
   }
 });
 
-/* ═════════════════════════ enter + boot ═════════════════════════ */
 function enter(){
   if(entered) return;
   entered = true;
@@ -889,7 +921,6 @@ setupIsland(INV);
 AFFS.forEach(setupIsland);
 startPresence();
 
-/* ═════════════════════════ cursor trail (profile) ═════════════════════════ */
 (function setupProfileMouseTrail(){
   const canvas = document.getElementById('profileTrailCanvas');
   if(!canvas || !canvas.getContext) return;
