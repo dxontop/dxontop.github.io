@@ -1,189 +1,66 @@
 // all hail t2s
 // all hail caliber
 
-document.getElementById('root').innerHTML = `
-<div id="splash">
-  <div class="stars" id="splashStars"></div>
-  <pre id="asciiArt" class="ascii-art"></pre>
-  <div class="splash-hint" id="splashHint">[ click to access ]</div>
-</div>
+function buildWaveBarsHTML(count){
+  let html = '';
+  for(let i = 0; i < count; i++){
+    const delay = (Math.random() * 1.1).toFixed(2);
+    const dur = (0.6 + Math.random() * 0.7).toFixed(2);
+    html += `<span style="animation-delay:${delay}s; animation-duration:${dur}s;"></span>`;
+  }
+  return html;
+}
 
-<div id="sectionLoader" class="section-loader">
-  <pre id="loaderAscii" class="loader-ascii"></pre>
-</div>
+document.getElementById('root').innerHTML = `
+<canvas id="c"></canvas>
+<div id="hint">click to enter<span class="cur">_</span></div>
+
+<div id="bgs"></div>
+<div id="ro"></div>
+<div id="nv"><div id="isl"></div></div>
 
 <audio id="bgMusicEl" preload="none" loop></audio>
 <audio id="profileMusicEl" preload="none" loop></audio>
 
-<div id="app">
-  <nav>
-    <div class="logo display" id="navLogo" aria-label="Threat2Society"></div>
-    <div class="navlinks">
-      <a href="home" data-nav="home" class="active" id="navHome">home</a>
-      <a href="mainthreats" data-nav="mainthreats">main threats</a>
-      <a href="bigthreats" data-nav="bigthreats">big threats</a>
-      <a href="about" data-nav="about">about</a>
-      <a href="affiliations" data-nav="affiliations">gengo</a>
+<div id="profileModal">
+  <canvas id="profileTrailCanvas" class="pm-trail"></canvas>
+  <button class="pm-x" id="profileModalClose" aria-label="Close profile">&times;</button>
+  <div class="pm-card">
+    <div class="mh">
+      <div class="u xl offline" id="profileModalAvatarWrap"><img class="a" id="profileModalAvatar" src="" alt=""><span class="s"></span></div>
+      <div class="mn" id="profileModalName"></div>
+      <div class="mu" id="profileModalHandle"></div>
     </div>
-    <a href="about" class="nav-cta" id="navCta">&bull; join</a>
-  </nav>
-
-  <main>
-    <section class="page active" id="home">
-      <div class="glow-bg"><div class="stars" id="heroStars"></div></div>
-      <div class="hero">
-        <h1 class="display" id="heroTitle"></h1>
-        <div class="divider-label"><span id="heroTaglineText"></span></div>
-      </div>
-    </section>
-    <section class="page" id="mainthreats">
-      <div class="sec-head">
-        <h2 class="display">HOF</h2>
-        <div class="divider-label"><span id="hofSubtitleText"></span></div>
-      </div>
-      <div class="main-threats-row" id="mainThreatsGrid"></div>
-    </section>
-    <section class="page" id="bigthreats">
-      <div class="threat-bg-stack" id="threatBgStack">
-        <div class="threat-bg-layer" id="threatBgLayer-bigThreatsBlock"></div>
-        <div class="threat-bg-layer" id="threatBgLayer-exclusiveThreatsBlock"></div>
-        <div class="threat-bg-layer" id="threatBgLayer-membersBlock"></div>
-      </div>
-      <div class="threat-block" id="bigThreatsBlock">
-        <div class="sec-head">
-          <h2 class="display accent">THREATS</h2>
-          <div class="divider-label"><span id="bigThreatsSubtitleText"></span></div>
-        </div>
-        <div class="big-threats-grid" id="bigThreatsGrid"></div>
-      </div>
-      <div class="threat-block" id="exclusiveThreatsBlock">
-        <div class="sec-head">
-          <h2 class="display accent">EXCLUSIVE THREATS</h2>
-          <div class="divider-label"><span id="exclusiveThreatsSubtitleText"></span></div>
-        </div>
-        <div class="big-threats-grid" id="exclusiveThreatsGrid"></div>
-      </div>
-      <div class="threat-block" id="membersBlock">
-        <div class="sec-head">
-          <h2 class="display">MEMBERS</h2>
-          <div class="divider-label"><span id="membersSubtitleText"></span></div>
-        </div>
-        <div class="big-threats-grid" id="membersGrid"></div>
-      </div>
-    </section>
-    <section class="page" id="hallofshame">
-      <div class="sec-head">
-        <h2 class="display accent">HALL OF SHAME</h2>
-        <div class="divider-label"><span>you weren't supposed to find this</span></div>
-      </div>
-      <div class="shame-grid" id="shameGrid"></div>
-    </section>
-    <section class="page" id="about">
-      <div class="sec-head">
-        <h2 class="display" id="aboutHeading"></h2>
-      </div>
-      <div class="about-body">
-        <span class="tag-script script" id="aboutTagScript"></span>
-        <div class="terminal" id="aboutTerminal">
-          <div class="term-bar">
-            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-            <span class="term-title">terminal — about_us.cli</span>
-          </div>
-          <div class="term-body" id="termBody">
-            <pre id="aboutAscii" class="about-ascii"></pre>
-          </div>
-        </div>
-
-        <div class="discord-invite" id="discordInvite">
-          <div class="discord-invite-banner">
-            <span class="discord-invite-banner-text" id="discordInviteBannerText"></span>
-          </div>
-          <div class="discord-invite-body">
-            <div class="discord-invite-icon-wrap" id="discordInviteIconWrap">
-              <span class="discord-invite-icon-fallback" id="discordInviteIconFallback"></span>
-            </div>
-            <div class="discord-invite-name" id="discordInviteName"></div>
-            <div class="discord-invite-members" id="discordInviteMembers"></div>
-            <a class="discord-invite-btn" id="discordInviteBtn" target="_blank" rel="noopener noreferrer">join server</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="page" id="affiliations">
-      <div class="sec-head">
-        <h2 class="display">Gengo</h2>
-        <div class="divider-label"><span id="affSubtitleText"></span></div>
-      </div>
-      <div class="aff-grid" id="affGrid"></div>
-    </section>
-
-  </main>
-</div>
-
-<div id="profileModal" class="profile-modal">
-  <canvas id="profileTrailCanvas" class="profile-modal-trail-canvas"></canvas>
-  <button class="profile-modal-close" id="profileModalClose" aria-label="Close profile">&times;</button>
-  <div class="profile-modal-content">
-    <div class="profile-modal-avatar-wrap" id="profileModalAvatarWrap">
-      <div class="profile-modal-avatar-fallback" id="profileModalAvatarFallback"></div>
-      <span class="profile-modal-status-dot" id="profileModalStatusDot" data-status="offline"></span>
+    <div class="sec">
+      <div class="lb">status</div>
+      <div class="st offline" id="profileModalStatus"><i></i><span>offline</span></div>
+      <div class="cs" id="profileModalStatusText"></div>
     </div>
-    <h2 class="profile-modal-name display" id="profileModalName"></h2>
-    <div class="profile-modal-music-card" id="profileModalMusicCard">
-      <div class="profile-modal-nowplaying">
-        <span class="now-playing-label">now playing</span>
-        <div class="now-playing-wave">${buildWaveBarsHTML(28)}</div>
-      </div>
-      <div class="profile-modal-spotify" id="profileModalSpotify"></div>
+    <div class="pm-music" id="profileModalMusicCard">
+      <div class="pm-np"><span class="lb">now playing</span><div class="wave">${buildWaveBarsHTML(28)}</div></div>
+      <div id="profileModalSpotify"></div>
     </div>
-    <div class="profile-modal-role" id="profileModalRole"></div>
-    <div class="profile-modal-status-text" id="profileModalStatusText"></div>
-    <div class="profile-modal-views" id="profileModalViews">
-      <span class="profile-modal-views-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-      </span>
-      <span class="profile-modal-views-count" id="profileModalViewsCount">···</span>
-      <span class="profile-modal-views-label">views</span>
+    <div class="sec">
+      <div class="lb">views</div>
+      <div class="vw">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        <b id="profileModalViewsCount">···</b>
+      </div>
     </div>
   </div>
 </div>
 `;
 
+
 const CONFIG = {
-
-  theme: {
-    bg:            '#050505',
-    bgAlt:         '#0b0707',
-    surface:       '#120a0a',
-    border:        'rgba(255,255,255,.08)',
-    borderStrong:  'rgba(255,60,70,.35)',
-    text:          '#f3efe9',
-    textDim:       '#a08e8e',
-    textFaint:     '#5c4d4d',
-    accent:        '#b3182f',
-    accent2:       '#7a0f22',
-    accent3:       '#ff3b52',
-  },
-
-  fonts: {
-    display:   "'Cinzel', serif",
-    mono:      "'JetBrains Mono', monospace",
-    script:    "'Cormorant Garamond', serif",
-    signature: "'Alex Brush', cursive",
-  },
-
   siteName: 'Threat2Society',
 
   copy: {
-    heroTitle:          'Threat2Society',
     heroTagline:        'they hate us cuz they aint us',
     hofSubtitle:         "bet you can't be us",
     bigThreatsSubtitle:  'ingat sa mga to baka patayin ka nila',
     exclusiveThreatsSubtitle: 'hindi lahat kasali dito',
-    membersSubtitle:     'ang dami na naming',
+    membersSubtitle:     'mga bawal batahin',
     aboutTagScript:      'all hail T2S',
     affSubtitle:         'nagsama sama mga tirador',
   },
@@ -191,12 +68,7 @@ const CONFIG = {
   terminal: {
     command: 'whoami t2s',
     lines: [
-      { text:'ayaw ko sa mga feeling gods', name:'dx' },
-      { text:'ayaw ko sa mga tanga', name:'daz' },
-      { text:'mahilig ako makipag esex', name:'faiyaz' },
-      { text:'ayaw ko sa tangahin', name:'zowi' },
-      { text:'allergic ako sa sinungaling', name:'sevi' },
-      { text:'hi, sao nga pala', name:'sao' },
+      { text:'wala kaming sinasanto kinginaniyo', name:'dx/daz' },
       { divider:true },
       { text:'"we don\'t repeat history. we rewrite it"', name:'t2s', quote:true },
     ],
@@ -207,8 +79,6 @@ const CONFIG = {
     banner: 'images/banner.gif',
     logo: 'images/logo.gif',
     name: 'Threat2Society',
-    tags: '',
-    memberCount: null,
     url: 'https://discord.gg/nNW8WBtxGw',
   },
 
@@ -268,60 +138,40 @@ const CONFIG = {
     { name:'seia',    discordId:'748713264652746813' },
   ],
 
-  hallOfShame: [
-    { name:'', discordName:'', video:'', poster:'' },
-    { name:'', discordName:'', video:'', poster:'' },
-    { name:'', discordName:'', video:'', poster:'' },
-    { name:'', discordName:'', video:'', poster:'' },
-    { name:'', discordName:'', video:'', poster:'' },
-  ],
-
   affiliations: [
     {
       name: 'CTRL',
-      tag: '',
       image: 'images/ctrl.jpg',
       description: 'we hate larpers.',
       invite: 'https://discord.gg/ZjWacnA6YK',
     },
     {
       name: 'NV$',
-      tag: '',
       image: 'images/nvs.png',
       description: 'loudest in asia.',
       invite: 'https://discord.gg/SrhEmsKfcS',
     },
     {
       name:'EBK',
-      tag: '',
       image: 'images/ebk.gif',
       description: 'everybody killa',
       invite: 'https://discord.gg/wHNEUrruSm',
     },
     {
       name: 'heavensxnt',
-      tag: '',
       image: 'images/heavensent.gif',
       description: 'sa ngalan ng, heavensxnt Amen.',
       invite: 'https://discord.gg/GuVSYxGyZq',
     },
   ],
 
-  logo: ':p',
-
   music: {
     url: 'music/t2sontop_V1.mp3',
     volume: 0.50,
   },
 
-  hallOfShameMusic: {
-    url: '',
-    volume: 0.50,
-  },
   profileDefaults: {
     background: 'images/banner.gif',
-    music: '',
-    spotify: '',
   },
 
   loadingAscii: `     s                      .x+=:.   
@@ -340,434 +190,420 @@ const CONFIG = {
   sectionBackgrounds: {
     home:         '',
     mainthreats:  'images/main threats.jpg',
-    bigThreatsBlock:       'images/big threats.jpg',
-    exclusiveThreatsBlock: 'images/big threats.jpg',
-    membersBlock:          'images/big threats.jpg',
+    bigThreatsBlock: 'images/big threats.jpg',
     about:        'images/about.jpg',
     affiliations: 'images/associate.jpg',
-    hallofshame:  '',
   },
 };
 
-function applyTheme(){
-  const r = document.documentElement.style;
-  const t = CONFIG.theme;
-  r.setProperty('--bg', t.bg);
-  r.setProperty('--bg-alt', t.bgAlt);
-  r.setProperty('--surface', t.surface);
-  r.setProperty('--border', t.border);
-  r.setProperty('--border-strong', t.borderStrong);
-  r.setProperty('--text', t.text);
-  r.setProperty('--text-dim', t.textDim);
-  r.setProperty('--text-faint', t.textFaint);
-  r.setProperty('--accent', t.accent);
-  r.setProperty('--accent-2', t.accent2);
-  r.setProperty('--accent-3', t.accent3);
-  r.setProperty('--glow-accent', `0 0 26px ${hexToRgba(t.accent, .45)}`);
-  r.setProperty('--font-display', CONFIG.fonts.display);
-  r.setProperty('--font-mono', CONFIG.fonts.mono);
-  r.setProperty('--font-script', CONFIG.fonts.script);
-  r.setProperty('--font-signature', CONFIG.fonts.signature);
+const CDN = 'https://cdn.discordapp.com/';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rnd = (i, seed = 0) => {            // deterministic hash → [0,1)
+  let t = (Math.imul(i + 1, 374761393) + Math.imul(seed + 1, 668265263)) | 0;
+  t = Math.imul(t ^ (t >>> 13), 1274126177); t ^= t >>> 16;
+  return (t >>> 0) / 4294967296;
+};
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+function slugify(str){
+  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
 }
-function hexToRgba(hex, a){
-  const n = hex.replace('#','');
-  const bigint = parseInt(n.length === 3 ? n.split('').map(c=>c+c).join('') : n, 16);
-  const r = (bigint >> 16) & 255, g = (bigint >> 8) & 255, b = bigint & 255;
-  return `rgba(${r},${g},${b},${a})`;
+function def(id){
+  try{ return CDN + 'embed/avatars/' + Number((BigInt(id) >> 22n) % 6n) + '.png'; }
+  catch(e){ return CDN + 'embed/avatars/0.png'; }
 }
-
-function applyCopy(){
-  document.getElementById('heroTitle').textContent = CONFIG.copy.heroTitle;
-  document.getElementById('heroTaglineText').textContent = CONFIG.copy.heroTagline;
-  document.getElementById('hofSubtitleText').textContent = CONFIG.copy.hofSubtitle;
-  document.getElementById('bigThreatsSubtitleText').textContent = CONFIG.copy.bigThreatsSubtitle;
-  document.getElementById('exclusiveThreatsSubtitleText').textContent = CONFIG.copy.exclusiveThreatsSubtitle;
-  document.getElementById('membersSubtitleText').textContent = CONFIG.copy.membersSubtitle;
-  document.getElementById('aboutHeading').textContent = 'about ' + CONFIG.siteName;
-  document.getElementById('aboutTagScript').textContent = CONFIG.copy.aboutTagScript;
-  document.getElementById('affSubtitleText').textContent = CONFIG.copy.affSubtitle;
+function avatarUrl(u, id){
+  if(!u) return def(id);
+  return u.avatar
+    ? CDN + 'avatars/' + u.id + '/' + u.avatar + '.' + (u.avatar.indexOf('a_') === 0 ? 'gif' : 'png') + '?size=256'
+    : def(u.id);
 }
-
-function applyLogo(){
-  const el = document.getElementById('navLogo');
-  const val = (CONFIG.logo || '').trim();
-  const looksLikeImage = /^(https?:)?\/\//.test(val) || val.startsWith('data:') || /\.(png|jpe?g|gif|webp|avif|svg)$/i.test(val);
-  if(looksLikeImage){
-    el.innerHTML = `<img src="${val}" alt="${CONFIG.siteName}" class="logo-img">`;
-  }else{
-    el.textContent = val;
-  }
-}
-
-function buildWaveBarsHTML(count){
-  let html = '';
-  for(let i = 0; i < count; i++){
-    const delay = (Math.random() * 1.1).toFixed(2);
-    const dur = (0.6 + Math.random() * 0.7).toFixed(2);
-    html += `<span style="animation-delay:${delay}s; animation-duration:${dur}s;"></span>`;
-  }
-  return html;
-}
-
-function resolveBackgroundValue(val){
-  const v = (val || '').trim();
-  if(!v) return null;
-  if(/^(url\(|linear-gradient|radial-gradient|conic-gradient)/i.test(v)) return { type:'image', css:v };
-  if(/\.(png|jpe?g|gif|webp|avif|svg)$/i.test(v) || /^(https?:)?\//.test(v) || v.startsWith('data:')) return { type:'image', css:`url('${v}')` };
-  return { type:'color', css:v };
+function decoUrl(u){
+  const dc = u && u.avatar_decoration_data;
+  return dc && dc.asset ? CDN + 'avatar-decoration-presets/' + dc.asset + '.png?size=128&passthrough=true' : '';
 }
 function applyBackground(el, val){
-  const resolved = resolveBackgroundValue(val);
-  if(!resolved) return;
-  if(resolved.type === 'image') el.style.backgroundImage = resolved.css;
-  else el.style.backgroundColor = resolved.css;
-}
-const BIG_THREATS_BG_LAYER_MAP = {
-  bigThreatsBlock:       'threatBgLayer-bigThreatsBlock',
-  exclusiveThreatsBlock: 'threatBgLayer-exclusiveThreatsBlock',
-  membersBlock:          'threatBgLayer-membersBlock',
-};
-function applySectionBackgrounds(){
-  Object.entries(CONFIG.sectionBackgrounds || {}).forEach(([id, bg])=>{
-    const targetId = BIG_THREATS_BG_LAYER_MAP[id] || id;
-    const el = document.getElementById(targetId);
-    if(!el) return;
-    applyBackground(el, bg);
-  });
+  const v = (val || '').trim();
+  if(!v) return false;
+  if(/^(url\(|linear-gradient|radial-gradient|conic-gradient)/i.test(v)){ el.style.backgroundImage = v; return true; }
+  if(/\.(png|jpe?g|gif|webp|avif|svg)$/i.test(v) || /^(https?:)?\//.test(v) || v.startsWith('data:')){ el.style.backgroundImage = 'url("' + v + '")'; return true; }
+  el.style.backgroundColor = v; return false;
 }
 
-const BIG_THREATS_BLOCKS = Object.keys(BIG_THREATS_BG_LAYER_MAP);
-let threatCrossfadeQueued = false;
-function updateThreatCrossfade(){
-  const container = document.getElementById('bigthreats');
-  if(!container) return;
-  const viewportH = container.clientHeight || window.innerHeight;
-  const scrollTop = container.scrollTop;
-  BIG_THREATS_BLOCKS.forEach(blockId=>{
-    const blockEl = document.getElementById(blockId);
-    const layerEl = document.getElementById(BIG_THREATS_BG_LAYER_MAP[blockId]);
-    if(!blockEl || !layerEl) return;
-    const top = blockEl.offsetTop;
-    const bottom = top + blockEl.offsetHeight;
-    const overlapTop = Math.max(top, scrollTop);
-    const overlapBottom = Math.min(bottom, scrollTop + viewportH);
-    const overlap = Math.max(0, overlapBottom - overlapTop);
-    const span = Math.max(1, Math.min(viewportH, blockEl.offsetHeight));
-    const ratio = Math.max(0, Math.min(1, overlap / span));
-    layerEl.style.opacity = ratio;
-  });
-  threatCrossfadeQueued = false;
-}
-function queueThreatCrossfade(){
-  if(threatCrossfadeQueued) return;
-  threatCrossfadeQueued = true;
-  requestAnimationFrame(updateThreatCrossfade);
-}
-function initThreatCrossfade(){
-  const container = document.getElementById('bigthreats');
-  if(!container) return;
-  container.addEventListener('scroll', queueThreatCrossfade, { passive:true });
-  window.addEventListener('resize', queueThreatCrossfade);
-  queueThreatCrossfade();
-}
-
-function buildStarfield(container, count){
-  for(let i=0;i<count;i++){
-    const s = document.createElement('span');
-    s.className = 'star';
-    s.style.top = Math.random()*100+'%';
-    s.style.left = Math.random()*100+'%';
-    const size = (Math.random()*2+1).toFixed(1);
-    s.style.width = size+'px';
-    s.style.height = size+'px';
-    s.style.animationDelay = (Math.random()*4).toFixed(2)+'s';
-    s.style.setProperty('--tw-dur', (3+Math.random()*3).toFixed(2)+'s');
-    s.style.setProperty('--dr-dur', (6+Math.random()*8).toFixed(2)+'s');
-    s.style.setProperty('--dx', (Math.random()*30-15).toFixed(1)+'px');
-    s.style.setProperty('--dy', (Math.random()*30-15).toFixed(1)+'px');
-    container.appendChild(s);
+/* member lookup */
+const validOnly = arr => arr.filter(m => m && m.name && m.name.trim());
+const BYID = {};
+[CONFIG.mainThreats, CONFIG.bigThreats, CONFIG.exclusiveThreats, CONFIG.members].forEach(pool => validOnly(pool).forEach(m => { if(!BYID[m.discordId]) BYID[m.discordId] = m; }));
+const ALL = Object.keys(BYID);
+function findMemberBySlug(slug){
+  const pools = [CONFIG.mainThreats, CONFIG.bigThreats, CONFIG.exclusiveThreats, CONFIG.members];
+  for(const pool of pools){
+    const found = pool.find(m => m && m.name && slugify(m.name) === slug);
+    if(found) return found;
   }
+  return null;
 }
+const pathSlug = location.pathname.replace(/^\/+|\/+$/g, '');
+const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
 
-function buildMainCard(member){
-  const card = document.createElement('div');
-  card.className = 'main-card';
-  const initial = escapeHtml(member.name[0].toUpperCase());
-  const displayName = escapeHtml(member.name);
-  card.innerHTML = `
-    <div class="main-card-inner">
-
-      <div class="main-collapsed">
-        <div class="main-avatar-wrap">
-          <div class="main-avatar-fallback">${initial}</div>
-          <span class="main-status-dot" data-status="offline"></span>
-        </div>
-        <div class="main-id-row">
-          <span class="main-id-name">${displayName}</span>
-        </div>
-      </div>
-
-      <div class="main-expanded">
-        <div class="main-expanded-avatar">
-          <div class="main-avatar-fallback">${initial}</div>
-          <span class="main-status-dot-lg" data-status="offline"></span>
-        </div>
-        <div class="main-expanded-info">
-          <div class="main-expanded-name">${displayName}</div>
-          <div class="main-status-line">
-            <span class="main-mini-dot" data-status="offline"></span>
-            <span class="main-status-text">Offline</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  `;
-  const fallbacks = Array.from(card.querySelectorAll('.main-avatar-fallback'));
-  const avatarWraps = [card.querySelector('.main-avatar-wrap'), card.querySelector('.main-expanded-avatar')];
-  const dots = [card.querySelector('.main-status-dot'), card.querySelector('.main-status-dot-lg')];
-  const tooltipDot = card.querySelector('.main-mini-dot');
-  const tooltipStatusText = card.querySelector('.main-status-text');
-  const nameEls = [card.querySelector('.main-id-name'), card.querySelector('.main-expanded-name')];
-  fetchLanyard(member, {
-    dot: dots, avatarWrap: avatarWraps, fallback: fallbacks, nameEl: nameEls,
-    kind:'main', size:84, tooltipDot, tooltipStatusText
-  });
-  card.addEventListener('click', () => openProfile(member));
-  return card;
-}
-function buildBigAvatar(member){
-  const item = document.createElement('div');
-  item.className = 'mini-badge';
-  item.innerHTML = `
-    <div class="mini-avatar-wrap">
-      <div class="mini-tooltip">
-        <div class="mini-tooltip-name">${escapeHtml(member.name)}</div>
-        <div class="mini-tooltip-status">
-          <span class="mini-tooltip-dot" data-status="offline"></span>
-          <span class="mini-tooltip-status-text">offline</span>
-        </div>
-      </div>
-      <div class="mini-avatar-fallback">${member.name[0].toUpperCase()}</div>
-      <span class="mini-status-dot" data-status="offline"></span>
-    </div>
-    <div class="mini-name">loading</div>
-  `;
-  const dot = item.querySelector('.mini-status-dot');
-  const avatarWrap = item.querySelector('.mini-avatar-wrap');
-  const fallback = item.querySelector('.mini-avatar-fallback');
-  const nameEl = item.querySelector('.mini-name');
-  const tooltipName = item.querySelector('.mini-tooltip-name');
-  const tooltipDot = item.querySelector('.mini-tooltip-dot');
-  const tooltipStatusText = item.querySelector('.mini-tooltip-status-text');
-  fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind:'mini', size:76, tooltipName, tooltipDot, tooltipStatusText });
-  item.addEventListener('click', () => openProfile(member));
-  return item;
-}
-function renderRosters(){
-  const validOnly = arr => (arr || []).filter(m => m && m.name && m.name.trim());
-  const mainWrap = document.getElementById('mainThreatsGrid');
-  validOnly(CONFIG.mainThreats).forEach(m => mainWrap.appendChild(buildMainCard(m)));
-  const bigWrap = document.getElementById('bigThreatsGrid');
-  validOnly(CONFIG.bigThreats).forEach(m => bigWrap.appendChild(buildBigAvatar(m)));
-  const exclusiveWrap = document.getElementById('exclusiveThreatsGrid');
-  if(exclusiveWrap) validOnly(CONFIG.exclusiveThreats).forEach(m => exclusiveWrap.appendChild(buildBigAvatar(m)));
-  const membersWrap = document.getElementById('membersGrid');
-  if(membersWrap) validOnly(CONFIG.members).forEach(m => membersWrap.appendChild(buildBigAvatar(m)));
-}
-
-function buildAffCard(aff){
-  const isLink = !!aff.invite;
-  const card = document.createElement(isLink ? 'a' : 'div');
-  card.className = 'aff-card';
-  if(isLink){ card.href = aff.invite; card.target = '_blank'; card.rel = 'noopener noreferrer'; }
-  const bannerContent = aff.image
-    ? `<img src="${aff.image}" alt="${escapeHtml(aff.name)}" class="aff-banner-img">`
-    : `<div class="aff-banner-fallback">${escapeHtml(aff.tag || aff.name.slice(0,6).toUpperCase())}</div>`;
-  card.innerHTML = `
-    <div class="aff-banner">${bannerContent}</div>
-    <div class="aff-info">
-      <h3>${escapeHtml(aff.name)}</h3>
-      <p>${aff.description || ''}</p>
-    </div>
-  `;
-  return card;
-}
-function renderAffiliations(){
-  const wrap = document.getElementById('affGrid');
-  if(!wrap) return;
-  (CONFIG.affiliations || []).filter(a => a && a.name && a.name.trim()).slice(0, 4).forEach(a => wrap.appendChild(buildAffCard(a)));
-}
-
-function buildShameCard(entry){
-  const card = document.createElement('div');
-  card.className = 'shame-card';
-  const name = escapeHtml(entry.name || 'unknown');
-  const discordName = escapeHtml(entry.discordName || '');
-  card.innerHTML = `
-    <div class="shame-video-wrap">
-      ${entry.video
-        ? `<video class="shame-video" controls preload="none"${entry.poster ? ` poster="${entry.poster}"` : ''}><source src="${entry.video}"></video>`
-        : `<div class="shame-video-empty">no clip yet</div>`}
-    </div>
-    <div class="shame-info">
-      <div class="shame-name">${name}</div>
-      ${discordName ? `<div class="shame-discord">@${discordName}</div>` : ''}
-    </div>
-  `;
-  return card;
-}
-function renderHallOfShame(){
-  const wrap = document.getElementById('shameGrid');
-  if(!wrap) return;
-  (CONFIG.hallOfShame || []).forEach(entry => wrap.appendChild(buildShameCard(entry)));
-}
-
-function renderDiscordInvite(){
-  const cfg = CONFIG.discordInvite;
-  if(!cfg) return;
-  const wrap = document.getElementById('discordInvite');
-  if(!wrap) return;
-
-  document.getElementById('discordInviteBannerText').textContent = cfg.bannerText || cfg.name || '';
-  document.getElementById('discordInviteName').textContent =
-    [cfg.name, cfg.tags].filter(Boolean).join('  ');
-
-  const bannerEl = document.querySelector('.discord-invite-banner');
-  if(cfg.banner && bannerEl){
-    bannerEl.style.backgroundImage = `url('${cfg.banner}')`;
-    bannerEl.classList.add('has-image');
-  }
-
-  const membersEl = document.getElementById('discordInviteMembers');
-  if(cfg.memberCount != null){
-    membersEl.textContent = `${cfg.memberCount} member${cfg.memberCount === 1 ? '' : 's'}`;
-    membersEl.style.display = '';
-  }else{
-    membersEl.style.display = 'none';
-  }
-
-  const iconWrap = document.getElementById('discordInviteIconWrap');
-  const fallback = document.getElementById('discordInviteIconFallback');
-  if(cfg.logo){
-    const img = document.createElement('img');
-    img.className = 'discord-invite-icon';
-    img.src = cfg.logo;
-    img.alt = cfg.name || '';
-    img.onload = () => fallback.replaceWith(img);
-  }else{
-    fallback.textContent = (cfg.name || '?').trim()[0]?.toUpperCase() || '?';
-  }
-
-  const btn = document.getElementById('discordInviteBtn');
-  if(cfg.url){
-    btn.href = cfg.url;
-  }else{
-    btn.href = '#';
-    btn.addEventListener('click', e => e.preventDefault());
-  }
-}
-
-const LANYARD_BASE = 'https://api.lanyard.rest/v1/users/';
-const statusLabels = { online:'Online', idle:'Idle', dnd:'Do Not Disturb', offline:'Offline' };
-
-function discordDefaultAvatarUrl(du){
-  let index = 0;
-  try{
-    if(du.discriminator && du.discriminator !== '0'){
-      index = parseInt(du.discriminator, 10) % 5;
-    }else{
-      index = Number((BigInt(du.id) >> 22n) % 6n);
+/* ═════════════════════════ ascii landing ═════════════════════════
+   Draws CONFIG.asciiArt on a canvas: decode-in intro, soft glow, idle shimmer,
+   travelling wave before click, pendulum sway after. */
+(function asciiLanding(){
+  const cv = document.getElementById('c'), vx = cv.getContext && cv.getContext('2d');
+  if(!vx) return;
+  const motion = !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const FONT = 'ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace';
+  const F = 14, CW = .6, PAD = F * 1.5, POOL = Array.from('◆◇♦⋄·'), T = 3200;
+  const lines = CONFIG.asciiArt.replace(/\r/g, '').split('\n');
+  const rows = lines.length, cols = Math.max.apply(null, lines.map(l => l.length));
+  const cells = []; let bx0 = cols, bx1 = 0;
+  const LIGHT = '.\'`,:;"-_^~', MID = '+=*!?/|\\()<>';
+  lines.forEach((ln, r) => {
+    for(let c = 0; c < ln.length; c++){
+      const ch = ln[c]; if(ch === ' ') continue;
+      const i = r * cols + c;
+      cells.push({ c, r, i, ch, a: LIGHT.indexOf(ch) > -1 ? .55 : MID.indexOf(ch) > -1 ? .78 : .95, d: (rnd(i, 5) * .66 + rnd(i, 1) * .1) * T, s: T * (.14 + rnd(i, 2) * .12) });
+      if(c < bx0) bx0 = c; if(c > bx1) bx1 = c;
     }
-  }catch(err){ index = 0; }
-  return `https://cdn.discordapp.com/embed/avatars/${index}.png`;
-}
-const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
+  });
+  if(!cells.length) return;
 
-async function fetchLanyard(member, { dot, avatarWrap, fallback, nameEl, kind, size, tooltipName, tooltipDot, tooltipStatusText }){
-  const avatarWraps = (Array.isArray(avatarWrap) ? avatarWrap : [avatarWrap]).filter(Boolean);
-  const fallbacks = (Array.isArray(fallback) ? fallback : [fallback]).filter(Boolean);
-  const nameEls = (Array.isArray(nameEl) ? nameEl : [nameEl]).filter(Boolean);
-  const dots = (Array.isArray(dot) ? dot : [dot]).filter(Boolean);
-  let resolvedName = member.name;
-  try{
-    const res = await fetch(LANYARD_BASE + member.discordId);
-    if(!res.ok) throw new Error('not linked');
-    const json = await res.json();
-    if(!json.success) throw new Error('not linked');
+  const src = document.createElement('canvas'), sx = src.getContext('2d');
+  const lay = document.createElement('canvas'), lx = lay.getContext('2d');
+  const glo = document.createElement('canvas'), gx = glo.getContext('2d');
+  const W0 = cols * F * CW + PAD * 2, H0 = rows * F + PAD * 2;
+  const HAS_FILTER = typeof CanvasRenderingContext2D !== 'undefined' && 'filter' in CanvasRenderingContext2D.prototype;
+  const done = new Uint8Array(cols * rows);
+  let k = 1, Wd = 2, Hd = 2, cwD = 1, chD = 1, padD = 0, fontPx = 10, xs = [0, 2];
+  let introDone = !motion, glowAt = null, glowReady = false, t0 = performance.now(), last = 0;
+  let tw = [], pointer = null, mix = 0, goal = 0, lastU = 0, tx = 0, ty0 = 0, px = 0, py = 0;
+  window.asciiKick = () => { goal = 1; };
 
-    const data = json.data;
-    const status = data.discord_status || data.status || 'offline';
-    dots.forEach(d => d.dataset.status = status);
-    const activityDesc = describeActivity(data, status);
-    if(tooltipDot) tooltipDot.dataset.status = status;
-    if(tooltipStatusText) tooltipStatusText.textContent = activityDesc;
+  function prep(ctx){ ctx.font = fontPx + 'px ' + FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; }
+  function geom(kk){
+    k = kk; cwD = F * CW * k; chD = F * k; padD = PAD * k; fontPx = Math.max(1, Math.round(F * k * .98));
+    Wd = Math.max(2, Math.round(W0 * k / 2) * 2); Hd = Math.max(2, Math.round(H0 * k / 2) * 2);
+    src.width = lay.width = glo.width = Wd; src.height = lay.height = glo.height = Hd;
+    prep(sx); prep(lx);
+    xs = [0]; for(let c = 0; c <= cols; c++) xs.push(Math.round(padD + c * cwD)); xs.push(Wd);
+  }
+  function glyph(ctx, cell, ch, fill, alpha){
+    ctx.globalAlpha = alpha; ctx.fillStyle = fill;
+    ctx.fillText(ch, padD + (cell.c + .5) * cwD, padD + (cell.r + .5) * chD);
+  }
+  function repaint(){
+    lx.setTransform(1, 0, 0, 1, 0, 0); lx.clearRect(0, 0, Wd, Hd); prep(lx);
+    for(const c of cells) if(done[c.i]) glyph(lx, c, c.ch, '#ff3b52', c.a);
+    lx.globalAlpha = 1;
+  }
+  function buildGlow(){
+    gx.setTransform(1, 0, 0, 1, 0, 0); gx.clearRect(0, 0, Wd, Hd);
+    if(HAS_FILTER){ gx.filter = 'blur(' + (F * k * 1.1).toFixed(1) + 'px)'; gx.drawImage(lay, 0, 0); gx.filter = 'none'; glowReady = true; }
+  }
+  function fit(){
+    let z = Math.min(innerWidth / W0, innerHeight / H0);
+    if(innerWidth <= 760){      // phones: let the margins bleed so the wordmark fills the width
+      const z1 = Math.min(innerWidth * .98 / ((bx1 - bx0 + 1) * F * CW), innerHeight * .7 / (rows * F));
+      if(z1 > z) z = z1;
+    }
+    cv.style.width = (W0 * z) + 'px'; cv.style.height = (H0 * z) + 'px';
+    return Math.min(z * Math.min(2, window.devicePixelRatio || 1), 6);
+  }
 
-    const du = data.discord_user;
-    if(du){
-      resolvedName = du.global_name || du.username || member.name;
-      if(tooltipName) tooltipName.textContent = resolvedName;
-      const src = du.avatar
-        ? `https://cdn.discordapp.com/avatars/${du.id}/${du.avatar}.${du.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
-        : discordDefaultAvatarUrl(du);
-      fallbacks.forEach(fb => {
-        if(!fb.isConnected) return;
-        const img = document.createElement('img');
-        img.className = kind === 'main' ? 'main-avatar-img' : kind === 'profile' ? 'profile-modal-avatar-img' : 'mini-avatar-img';
-        img.src = src;
-        img.alt = du.username || '';
-        img.onload = () => {
-          fb.style.display = 'none';
-          fb.insertAdjacentElement('afterend', img);
-        };
-      });
-      if(du.avatar_decoration_data && du.avatar_decoration_data.asset){
-        avatarWraps.forEach(wrap => {
-          const deco = document.createElement('img');
-          deco.className = 'decoration';
-          deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${du.avatar_decoration_data.asset}.png?size=160`;
-          deco.alt = '';
-          wrap.appendChild(deco);
+  function draw(now){
+    const t = now - t0;
+    sx.setTransform(1, 0, 0, 1, 0, 0); sx.globalAlpha = 1; sx.globalCompositeOperation = 'source-over'; sx.clearRect(0, 0, Wd, Hd);
+    // glow halo
+    let fade = 0;
+    if(glowReady && glowAt != null) fade = clamp((now - glowAt) / 800, 0, 1);
+    if(fade > 0){
+      sx.globalCompositeOperation = 'lighter';
+      sx.globalAlpha = .92 * fade * (1 + .08 * Math.sin(now / 1300));
+      sx.drawImage(glo, 0, 0);
+      sx.globalCompositeOperation = 'source-over'; sx.globalAlpha = 1;
+    }
+    if(!introDone){
+      let pending = 0; const live = [];
+      for(const c of cells){
+        if(done[c.i]) continue;
+        if(t < c.d){ pending++; continue; }
+        if(t >= c.d + c.s){ done[c.i] = 1; glyph(lx, c, c.ch, '#ff3b52', c.a); continue; }
+        pending++; live.push(c);
+      }
+      sx.drawImage(lay, 0, 0);
+      for(const c of live){
+        const u = (t - c.d) / c.s;
+        if(u < .7) glyph(sx, c, POOL[Math.floor(rnd(c.i, Math.floor(t / 60) + 3) * POOL.length)], '#ff7a8a', .55 + .4 * (1 - u / .7));
+        else { glyph(sx, c, c.ch, '#ff3b52', c.a); glyph(sx, c, c.ch, '#ffb3bc', (1 - (u - .7) / .3) * .7); }
+      }
+      if(!pending){ introDone = true; buildGlow(); glowAt = now; }
+    }else{
+      sx.drawImage(lay, 0, 0);
+      if(motion) shimmer(now);
+    }
+    sx.globalAlpha = 1;
+  }
 
-          const stickToAvatar = () => {
-            const base = wrap.offsetWidth || wrap.getBoundingClientRect().width || size;
-            const dsize = Math.round(base * 1.3);
-            deco.style.width = dsize + 'px';
-            deco.style.height = dsize + 'px';
-            deco.style.left = Math.round((base - dsize) / 2) + 'px';
-            deco.style.top = Math.round((base - dsize) / 2) + 'px';
-          };
-          if(deco.complete) stickToAvatar(); else deco.addEventListener('load', stickToAvatar, { once:true });
-        });
+  function shimmer(now){
+    // 1. soft light band sweeping across
+    const bp = ((now % 6500) / 6500) * 1.3 - .15, BW = .07;
+    for(const c of cells){
+      const d = Math.abs(c.c / cols - bp); if(d >= BW) continue;
+      const a = 1 - d / BW; glyph(sx, c, c.ch, '#ffc2c8', a * a * .55);
+    }
+    // 2. random twinkles
+    const target = Math.max(10, Math.round(cells.length / 90));
+    while(tw.length < target){ tw.push({ c: cells[(Math.random() * cells.length) | 0], b: now - Math.random() * 400, life: 500 + Math.random() * 900 }); }
+    for(let a = tw.length - 1; a >= 0; a--){
+      const w = tw[a], u = (now - w.b) / w.life;
+      if(u >= 1){ tw[a] = tw[tw.length - 1]; tw.pop(); continue; }
+      glyph(sx, w.c, w.c.ch, '#ffd0d5', Math.sin(Math.PI * u) * .8);
+    }
+    // 3. pointer proximity glow
+    if(pointer){
+      const R = 6;
+      for(const c of cells){
+        const d = Math.hypot(c.c - pointer.c, c.r - pointer.r); if(d >= R) continue;
+        const a = 1 - d / R; glyph(sx, c, c.ch, '#ffd0d5', a * a * .9);
       }
     }
-  }catch(err){
-    dots.forEach(d => d.dataset.status = 'offline');
-    if(tooltipDot) tooltipDot.dataset.status = 'offline';
-    if(tooltipStatusText) tooltipStatusText.textContent = 'Offline';
+    sx.globalAlpha = 1;
   }
-  nameEls.forEach(el => {
-    el.textContent = kind === 'mini' ? resolvedName.toLowerCase() : resolvedName;
+
+  /* pendulum sway (landing + after entering) */
+  function motionStep(now){
+    const dt = lastU ? Math.min(.05, (now - lastU) / 1000) : .016; lastU = now;
+    mix += (goal - mix) * (1 - Math.exp(-dt * 1.5));
+    px += (tx - px) * (1 - Math.exp(-dt * 4)); py += (ty0 - py) * (1 - Math.exp(-dt * 4));
+    const t = now / 1000, m = mix, sw = Math.sin(t * 2 * Math.PI / 8.5), vw = Math.min(1.4, Math.max(.45, innerWidth / 1000)), amp = (1 + .35 * m) * Math.min(1, Math.max(.3, innerWidth / 900));
+    const rz = -3.2 * sw * amp, dx = 34 * sw * amp * vw + px * 8 * m, dy = -sw * sw * 7 * amp + Math.sin(t * .55) * 3 * m;
+    const ry = 6 * sw * amp + px * 5 * m, rx = -py * 4.5 * m, sc = 1 + m * (.04 + .01 * Math.sin(t * .5));
+    cv.style.transformOrigin = '50% -32%';
+    cv.style.transform = 'perspective(1500px) translate(' + dx.toFixed(2) + 'px,' + dy.toFixed(2) + 'px) rotateX(' + rx.toFixed(3) + 'deg) rotateY(' + ry.toFixed(3) + 'deg) rotateZ(' + rz.toFixed(3) + 'deg) scale(' + sc.toFixed(4) + ')';
+  }
+  /* copy to screen in one-cell-wide strips, each bobbing on a travelling wave (fades out once entered) */
+  function present(now){
+    if(!src.width) return;
+    if(cv.width !== src.width || cv.height !== src.height){ cv.width = src.width; cv.height = src.height; }
+    vx.setTransform(1, 0, 0, 1, 0, 0); vx.clearRect(0, 0, cv.width, cv.height);
+    const wv = 1 - mix;
+    if(!motion || wv < .01){ vx.drawImage(src, 0, 0); return; }
+    const t = now / 1000, W = src.width, H = src.height;
+    const A = chD * .55 * wv, sp = 1.7, tilt = chD * 1.6 * Math.sin(t * .9) * wv;
+    for(let q = 0; q < xs.length - 1; q++){
+      const x0 = xs[q], x1 = xs[q + 1]; if(x1 <= x0) continue;
+      const u = (x0 + x1) / 2 / W;
+      const dy = Math.round(A * (Math.sin(u * 6.5 - t * sp) * .62 + Math.sin(u * 13.5 + t * sp * .65) * .38) + tilt * (u - .5) * 2);
+      vx.drawImage(src, x0, 0, x1 - x0, H, x0, dy, x1 - x0, H);
+    }
+  }
+  function loop(now){
+    requestAnimationFrame(loop);
+    if(document.hidden) return;
+    if(motion) motionStep(now);
+    if(now - last >= 30 || !introDone){ last = now; draw(now); }
+    present(now);
+  }
+
+  geom(fit());
+  if(!motion){ cells.forEach(c => { done[c.i] = 1; }); repaint(); buildGlow(); glowAt = -1e9; introDone = true; }
+  else{ repaint(); }
+  draw(performance.now()); present(performance.now());
+  requestAnimationFrame(loop);
+  addEventListener('resize', () => { geom(fit()); repaint(); if(introDone) buildGlow(); });
+  document.addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty0 = e.clientY / innerHeight - .5; });
+  cv.addEventListener('pointermove', e => {
+    const r = cv.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width * Wd, y = (e.clientY - r.top) / r.height * Hd;
+    pointer = { c: Math.floor((x - padD) / cwD), r: Math.floor((y - padD) / chD) };
   });
+  cv.addEventListener('pointerleave', () => { pointer = null; });
+})();
+
+/* ═════════════════════════ pages ═════════════════════════ */
+const NAV = [
+  ['home', 'home'],
+  ['mainthreats', 'HOF'],
+  ['bigthreats', 'Members'],
+  ['about', 'about'],
+  ['affiliations', 'gengo'],
+];
+const PAGE_IDS = NAV.map(n => n[0]);
+const PAGEBG = {
+  home: CONFIG.sectionBackgrounds.home, mainthreats: CONFIG.sectionBackgrounds.mainthreats,
+  bigthreats: CONFIG.sectionBackgrounds.bigThreatsBlock,
+  about: CONFIG.sectionBackgrounds.about, affiliations: CONFIG.sectionBackgrounds.affiliations,
+};
+let seq = 0;
+const nextI = () => Math.min(seq++, 16);
+const hdHTML = (title, sub) => '<div class="hd an" style="--i:' + nextI() + '"><b>' + esc(title) + '</b>' + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</div>';
+
+function uItem(m, big){
+  const id = m.discordId;
+  return '<div class="ui an' + (big ? ' hof' : '') + '" tabindex="0" role="button" data-id="' + esc(id) + '" style="--i:' + nextI() + '">'
+    + '<div class="u offline' + (big ? ' lg' : '') + '"><img class="a" src="' + def(id) + '" alt=""><span class="s"></span></div>'
+    + '<div class="nm">' + esc(m.name.toLowerCase()) + '</div>'
+    + (big ? '<div class="ss offline"><i></i><span>offline</span></div>' : '') + '</div>';
 }
+function group(title, sub, list, big){
+  return '<div class="sc">' + hdHTML(title, sub) + '<div class="grid">' + validOnly(list).map(m => uItem(m, big)).join('') + '</div></div>';
+}
+
+/* discord-style island (pill that expands into a card) */
+const ARR = '<svg class="dc" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>';
+function island(o){
+  return '<div class="an" style="--i:' + nextI() + '"><div class="dv" data-ix="' + o.ix + '" tabindex="0" role="button" aria-expanded="false"><div class="dbg"></div>'
+    + '<div class="dh"><span class="di">' + (o.icon ? '<img src="' + esc(o.icon) + '" alt="">' : esc(o.name.charAt(0).toUpperCase())) + '</span><span class="dn">' + esc(o.name) + '</span><span class="dd"></span>' + ARR + '</div>'
+    + '<div class="dx"><div class="dy">' + (o.desc ? '<p class="dt" style="--k:0">' + o.desc + '</p>' : '') + '<div class="ds" style="--k:1"></div>'
+    + (o.inv ? '<a class="dj" style="--k:2" href="' + esc(o.inv) + '" target="_blank" rel="noopener noreferrer">join server</a>' : '<span class="dj off" style="--k:2">no invite yet</span>')
+    + '</div></div></div></div>';
+}
+const inviteCode = url => ((url || '').match(/discord(?:app)?\.(?:gg|com\/invite)\/([\w-]+)/i) || [])[1] || '';
+const INV = {
+  ix: 0, name: CONFIG.discordInvite.name, icon: CONFIG.discordInvite.logo, bg: CONFIG.discordInvite.banner,
+  desc: CONFIG.discordInvite.bannerText, inv: CONFIG.discordInvite.url,
+  code: inviteCode(CONFIG.discordInvite.url),
+};
+const AFFS = validOnly(CONFIG.affiliations).map((a, k) => ({
+  ix: k + 1, name: a.name, icon: a.image, bg: a.image, desc: a.description, inv: a.invite, code: inviteCode(a.invite),
+}));
+
+const C = CONFIG.copy;
+const pageHTML = {
+  home: () => { seq = 0; return '<div class="aw"><p class="tx an" style="--i:0">' + esc(C.heroTagline) + '</p></div>'; },
+  mainthreats: () => { seq = 0; return '<div class="aw">' + group('hof', C.hofSubtitle, CONFIG.mainThreats, true) + '</div>'; },
+  bigthreats: () => { seq = 0; return '<div class="aw gr">'
+    + group('threats', C.bigThreatsSubtitle, CONFIG.bigThreats)
+    + group('exclusive threats', C.exclusiveThreatsSubtitle, CONFIG.exclusiveThreats)
+    + group('members', C.membersSubtitle, CONFIG.members) + '</div>'; },
+  about: () => { seq = 0; return '<div class="aw">' + hdHTML('about ' + CONFIG.siteName, C.aboutTagScript)
+    + '<div class="term an" style="--i:' + nextI() + '"><div class="term-h">terminal — about_us.cli</div><div class="term-b" id="termBody"><pre id="aboutAscii" class="about-ascii"></pre></div></div>'
+    + island(INV) + '</div>'; },
+  affiliations: () => { seq = 0; return '<div class="aw gl">' + hdHTML('gengo', C.affSubtitle) + AFFS.map(island).join('') + '</div>'; },
+};
+
+const ro = document.getElementById('ro'), isl = document.getElementById('isl'), bgs = document.getElementById('bgs');
+const initialHash = location.hash.replace('#', '');
+let cur = NAV.some(n => n[0] === initialHash) ? initialHash : 'home';
+let busy = false, entered = false;
+
+ro.innerHTML = PAGE_IDS.map(id => '<section class="pg' + (id === cur ? ' on' : '') + '" id="p-' + id + '">' + pageHTML[id]() + '</section>').join('');
+bgs.innerHTML = PAGE_IDS.map(id => '<div class="bgl" data-p="' + id + '"></div>').join('');
+PAGE_IDS.forEach(id => { const l = bgs.querySelector('[data-p="' + id + '"]'); if(l) applyBackground(l, PAGEBG[id]); });
+isl.innerHTML = '<i id="pl"></i>' + NAV.map((n, i) => '<button class="ni' + (n[0] === cur ? ' on' : '') + '" data-p="' + n[0] + '" style="--i:' + i + '">' + n[1] + '</button>').join('');
+
+const pl = document.getElementById('pl');
+function pill(){
+  const b = isl.querySelector('.ni.on');
+  if(!b){ pl.style.width = '0px'; return; }
+  pl.style.width = b.offsetWidth + 'px'; pl.style.transform = 'translateX(' + b.offsetLeft + 'px)';
+  if(entered) b.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+}
+function setBg(k){
+  bgs.querySelectorAll('.bgl').forEach(l => l.classList.toggle('on', l.dataset.p === k && !!PAGEBG[k].trim()));
+  document.body.classList.toggle('hasbg', !!PAGEBG[k].trim());
+}
+
+function go(k){
+  if(busy || k === cur || !document.getElementById('p-' + k)) return;
+  busy = true;
+  const a = document.getElementById('p-' + cur), b = document.getElementById('p-' + k);
+  isl.classList.remove('sq'); void isl.offsetWidth; isl.classList.add('sq');
+  isl.querySelectorAll('.ni').forEach(n => n.classList.toggle('on', n.dataset.p === k)); pill();
+  setBg(k);
+  a.classList.remove('in'); a.classList.add('out');
+  setTimeout(() => {
+    a.classList.remove('on', 'out'); b.classList.add('on'); b.scrollTop = 0; void b.offsetWidth; b.classList.add('in');
+    cur = k; busy = false;
+    if(k === 'about') typeAbout();
+  }, 520);
+}
+isl.addEventListener('click', e => { const b = e.target.closest('.ni'); if(b) go(b.dataset.p); });
+
+/* ═════════════════════════ discord presence (lanyard) ═════════════════════════ */
+const S = {};
+const statusLabels = { online:'online', idle:'idle', dnd:'do not disturb', offline:'offline' };
+const activityTypeLabel = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
 function describeActivity(data, status){
-  const custom = (data.activities||[]).find(a => a.type === 4);
+  if(!data) return statusLabels[status] || status;
+  const custom = (data.activities || []).find(a => a.type === 4);
   if(custom && custom.state) return custom.state;
   if(data.listening_to_spotify && data.spotify){
-    return `listening to ${data.spotify.song || data.spotify.track_name} — ${data.spotify.artist || data.spotify.artist_name}`;
+    return 'listening to ' + (data.spotify.song || data.spotify.track_name) + ' — ' + (data.spotify.artist || data.spotify.artist_name);
   }
-  const act = (data.activities||[]).find(a => a.type !== 4);
-  if(act) return (activityTypeLabel[act.type]||'') + act.name;
+  const act = (data.activities || []).find(a => a.type !== 4);
+  if(act) return (activityTypeLabel[act.type] || '') + act.name;
   return statusLabels[status] || status;
 }
+const ST = ['online', 'idle', 'dnd', 'offline'];
+function setSt(el, st){ ST.forEach(s => el.classList.toggle(s, s === st)); }
+function setDeco(box, ds){
+  let d = box.querySelector('.d');
+  if(ds){
+    if(!d){ d = document.createElement('img'); d.className = 'd'; d.alt = ''; box.insertBefore(d, box.querySelector('.s')); }
+    if(d.getAttribute('src') !== ds) d.src = ds;
+  }else if(d) d.remove();
+}
+function render(id){
+  const p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
+  const av = avatarUrl(u, id), ds = decoUrl(u), nm = u ? (u.display_name || u.global_name || u.username) : '';
+  document.querySelectorAll('.ui[data-id="' + id + '"]').forEach(el => {
+    const box = el.querySelector('.u'), a = box.querySelector('.a');
+    setSt(box, st);
+    if(a.getAttribute('src') !== av) a.src = av;
+    setDeco(box, ds);
+    if(nm) el.querySelector('.nm').textContent = nm.toLowerCase();
+    el.title = (nm || (BYID[id] && BYID[id].name) || id) + ' · ' + st;
+    const ss = el.querySelector('.ss');
+    if(ss){ setSt(ss, st); ss.querySelector('span').textContent = describeActivity(p, st); }
+  });
+  if(openMember && openMember.discordId === id) fillProfile(openMember);
+}
+function startPresence(){
+  Promise.all(ALL.map(id =>
+    fetch('https://api.lanyard.rest/v1/users/' + id).then(r => r.json()).then(j => { if(j.success){ S[id] = j.data; render(id); } }).catch(() => {})
+  )).then(socket);
+  function socket(){
+    let w, hb;
+    try{ w = new WebSocket('wss://api.lanyard.rest/socket'); }catch(e){ return; }
+    w.onmessage = m => {
+      const j = JSON.parse(m.data);
+      if(j.op === 1){ w.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: ALL } })); hb = setInterval(() => { if(w.readyState === 1) w.send('{"op":3}'); }, j.d.heartbeat_interval); }
+      else if(j.op === 0 && j.t === 'INIT_STATE'){ for(const key in j.d) if(j.d[key] && j.d[key].discord_user){ S[key] = j.d[key]; render(key); } }
+      else if(j.op === 0 && j.t === 'PRESENCE_UPDATE' && j.d && j.d.discord_user){ S[j.d.discord_user.id] = j.d; render(j.d.discord_user.id); }
+    };
+    w.onclose = () => { clearInterval(hb); setTimeout(socket, 5000); };
+  }
+}
 
-const splash = document.getElementById('splash');
-const app = document.getElementById('app');
-const asciiEl = document.getElementById('asciiArt');
-const hintEl = document.getElementById('splashHint');
-let splashTyping = false;
-let splashRevealed = false;
+/* ═════════════════════════ islands ═════════════════════════ */
+function setupIsland(o){
+  const dv = document.querySelector('.dv[data-ix="' + o.ix + '"]');
+  if(!dv) return;
+  if(o.bg) dv.querySelector('.dbg').style.backgroundImage = 'url("' + o.bg + '")';
+  function dToggle(x){
+    const want = x === undefined ? !dv.classList.contains('open') : x;
+    if(want === dv.classList.contains('open')) return;
+    dv.classList.remove('sq'); void dv.offsetWidth; dv.classList.add('sq');
+    dv.classList.toggle('open', want); dv.setAttribute('aria-expanded', want);
+  }
+  dv.addEventListener('click', e => { if(e.target.closest('.dj')) return; if(dv.classList.contains('open') && !e.target.closest('.dh')) return; dToggle(); });
+  dv.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); e.stopPropagation(); dToggle(); } });
+  document.addEventListener('click', e => { if(!dv.contains(e.target)) dToggle(false); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') dToggle(false); });
+  const stats = (on, m) => {
+    let h = '';
+    if(on != null) h += '<span><i></i><b>' + Number(on).toLocaleString() + '</b> online</span>';
+    if(m != null) h += '<span><i class="g"></i><b>' + Number(m).toLocaleString() + '</b> members</span>';
+    dv.querySelector('.ds').innerHTML = h;
+  };
+  if(!o.code) return;
+  fetch('https://discord.com/api/v10/invites/' + o.code + '?with_counts=true').then(r => r.json()).then(j => {
+    if(j && (j.approximate_member_count != null || j.approximate_presence_count != null)) stats(j.approximate_presence_count, j.approximate_member_count);
+  }).catch(() => {});
+}
 
+/* ═════════════════════════ ascii text helpers (about terminal) ═════════════════════════ */
 function fitAsciiEl(el, text, { maxFont=16, maxWidthRatio=0.92, maxWidthPx=1300 } = {}){
   const lines = text.split('\n');
   const longest = Math.max(...lines.map(l => l.length));
@@ -776,201 +612,32 @@ function fitAsciiEl(el, text, { maxFont=16, maxWidthRatio=0.92, maxWidthPx=1300 
   fontSize = Math.max(3, Math.min(fontSize, maxFont));
   el.style.fontSize = fontSize + 'px';
 }
-function fitAsciiArt(){ fitAsciiEl(asciiEl, CONFIG.asciiArt, { maxFont:13, maxWidthRatio:.92, maxWidthPx:1300 }); }
-
-function escapeHtml(s){
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function revealAscii(el, text, onComplete, { mode='sequential', step=5, interval=6, holdAfter=700 } = {}){
+function revealAscii(el, text, onComplete, { step=5, interval=6, holdAfter=700 } = {}){
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){
     el.textContent = text;
     setTimeout(onComplete, Math.min(holdAfter, 300));
     return;
   }
-  if(mode === 'build'){
-    const chars = text.split('');
-    const order = [];
-    chars.forEach((c,i)=>{ if(c !== '\n') order.push(i); });
-    for(let i=order.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [order[i], order[j]] = [order[j], order[i]];
-    }
-    const revealed = new Array(chars.length).fill(false);
-    chars.forEach((c,i)=>{ if(c === '\n') revealed[i] = true; });
-    let p = 0;
-    function tick(){
-      for(let k=0; k<step && p<order.length; k++, p++){ revealed[order[p]] = true; }
-      el.textContent = chars.map((c,i)=> revealed[i] ? c : (c === '\n' ? '\n' : ' ')).join('');
-      if(p < order.length){ setTimeout(tick, interval); }
-      else{ el.textContent = text; setTimeout(onComplete, holdAfter); }
-    }
-    tick();
-  }else{
-    let i = 0;
-    function tick(){
-      i = Math.min(text.length, i + step);
-      el.innerHTML = escapeHtml(text.slice(0, i)) + '<span class="cursor-blink">&nbsp;</span>';
-      if(i < text.length){ setTimeout(tick, interval); }
-      else{ el.innerHTML = escapeHtml(text); setTimeout(onComplete, holdAfter); }
-    }
-    tick();
+  let i = 0;
+  function tick(){
+    i = Math.min(text.length, i + step);
+    el.innerHTML = esc(text.slice(0, i)) + '<span class="cursor-blink">&nbsp;</span>';
+    if(i < text.length){ setTimeout(tick, interval); }
+    else{ el.innerHTML = esc(text); setTimeout(onComplete, holdAfter); }
   }
+  tick();
 }
 
-function enterSite(){
-  splash.classList.add('hidden');
-  app.classList.add('ready');
-  setTimeout(()=> splash.remove(), 1000);
-}
 
-function slugify(str){
-  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
-}
-function findMemberBySlug(slug){
-  const pools = [CONFIG.mainThreats, CONFIG.bigThreats, CONFIG.exclusiveThreats, CONFIG.members];
-  for(const pool of pools){
-    if(!pool) continue;
-    const found = pool.find(m => m && m.name && (m.slug || slugify(m.name)) === slug);
-    if(found) return found;
-  }
-  return null;
-}
-const pathSlug = location.pathname.replace(/^\/+|\/+$/g, '');
-const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
-
-splash.addEventListener('click', ()=>{
-  if(splashTyping || splashRevealed) return;
-  splashTyping = true;
-  hintEl.classList.add('hidden');
-
-  if(deepLinkedProfile){
-    splashRevealed = true;
-
-    enterSite();
-    openProfile(deepLinkedProfile);
-    return;
-  }
-
-  revealAscii(asciiEl, CONFIG.asciiArt, ()=>{
-    splashRevealed = true;
-    startAmbientAudio();
-    enterSite();
-  }, { mode:'build', step:13, interval:9, holdAfter:450 });
-});
-
-window.addEventListener('resize', ()=>{
-  fitAsciiArt();
-  fitAsciiEl(document.getElementById('loaderAscii'), CONFIG.loadingAscii, { maxFont:20, maxWidthRatio:.7, maxWidthPx:480 });
-});
-
-const sectionLoader = document.getElementById('sectionLoader');
-const loaderAsciiEl = document.getElementById('loaderAscii');
-function showLoader(){
-  fitAsciiEl(loaderAsciiEl, CONFIG.loadingAscii, { maxFont:20, maxWidthRatio:.7, maxWidthPx:480 });
-  sectionLoader.classList.add('visible');
-  return new Promise(resolve=>{
-    revealAscii(loaderAsciiEl, CONFIG.loadingAscii, resolve, { mode:'sequential', step:4, interval:7, holdAfter:220 });
-  });
-}
-function hideLoader(){
-  sectionLoader.classList.remove('visible');
-}
-
-const navLinks = document.querySelectorAll('.navlinks a');
-const pages = document.querySelectorAll('.page');
-let usingHofsMusic = false;
-function applyPageMusic(id){
-  const bg = document.getElementById('bgMusicEl');
-  const hofs = CONFIG.hallOfShameMusic;
-  if(id === 'hallofshame' && hofs && hofs.url){
-    if(usingHofsMusic) return;
-    usingHofsMusic = true;
-    bg.src = hofs.url;
-    bg.volume = hofs.volume ?? (CONFIG.music?.volume ?? 0.35);
-    bg.currentTime = 0;
-    bg.play().catch(()=>{});
-  }else if(usingHofsMusic){
-    usingHofsMusic = false;
-    if(CONFIG.music && CONFIG.music.url){
-      bg.src = CONFIG.music.url;
-      bg.volume = CONFIG.music.volume ?? 0.35;
-      bg.currentTime = 0;
-      bg.play().catch(()=>{});
-    }else{
-      bg.pause();
-    }
-  }
-}
-function go(id){
-  pages.forEach(p => p.classList.toggle('active', p.id === id));
-  navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
-  if(id === 'about') typeAbout();
-  if(id === 'bigthreats') queueThreatCrossfade();
-  applyPageMusic(id);
-}
-async function navigateTo(id){
-  const current = document.querySelector('.page.active');
-  if(current && current.id === id) return;
-  await showLoader();
-  go(id);
-  hideLoader();
-}
-navLinks.forEach(a=>{
-  a.addEventListener('click', e=>{
-    e.preventDefault();
-    navigateTo(a.dataset.nav);
-  });
-});
-let secretBuffer = '';
-document.addEventListener('keydown', e => {
-  const about = document.getElementById('about');
-  if(!about.classList.contains('active')){ secretBuffer = ''; return; }
-  const active = document.activeElement;
-  if(active && ['INPUT','TEXTAREA'].includes(active.tagName)) return;
-
-  if(e.key === 'Enter'){
-    const attempt = secretBuffer.toLowerCase();
-    const typedEl = document.getElementById('termTypedText');
-    if(attempt === 'eww'){
-      navigateTo('hallofshame');
-    }else if(attempt){
-      const body = document.getElementById('termBody');
-      const inputLine = document.getElementById('termInputLine');
-      const resp = document.createElement('div');
-      resp.className = 'ln show';
-      resp.innerHTML = '<span class="chevron">&gt;</span>&nbsp;<span class="divider">engkk engot</span>';
-      if(inputLine) body.insertBefore(resp, inputLine);
-      else body.appendChild(resp);
-    }
-    secretBuffer = '';
-    if(typedEl) typedEl.textContent = '';
-    return;
-  }
-  if(e.key === 'Backspace'){
-    secretBuffer = secretBuffer.slice(0, -1);
-  }else if(e.key.length === 1 && /[a-z0-9]/i.test(e.key)){
-    secretBuffer = (secretBuffer + e.key).slice(-20);
-  }else{
-    return;
-  }
-  const typedEl = document.getElementById('termTypedText');
-  if(typedEl) typedEl.textContent = secretBuffer;
-});
-document.getElementById('navCta').addEventListener('click', async e=>{
-  e.preventDefault();
-  await navigateTo('about');
-  document.getElementById('discordInvite')?.scrollIntoView({ behavior:'smooth', block:'center' });
-});
-
+/* ═════════════════════════ about terminal typing ═════════════════════════ */
 let aboutAnimated = false;
 function typeAbout(){
   if(aboutAnimated) return;
   aboutAnimated = true;
   const el = document.getElementById('aboutAscii');
   fitAsciiEl(el, CONFIG.loadingAscii, { maxFont:15, maxWidthRatio:.82, maxWidthPx:640 });
-  revealAscii(el, CONFIG.loadingAscii, typeTerminalLines, { mode:'sequential', step:4, interval:9, holdAfter:350 });
+  revealAscii(el, CONFIG.loadingAscii, typeTerminalLines, { step:4, interval:9, holdAfter:350 });
 }
 function typeSegment(container, prefixHTML, text, cls, onDone, holdAfter=320, extraClass=''){
   const div = document.createElement('div');
@@ -983,7 +650,7 @@ function typeSegment(container, prefixHTML, text, cls, onDone, holdAfter=320, ex
     return;
   }
   if(reduced){
-    div.innerHTML = prefixHTML + `<span class="${cls}">${escapeHtml(text)}</span>`;
+    div.innerHTML = prefixHTML + `<span class="${cls}">${esc(text)}</span>`;
     setTimeout(onDone, 120);
     return;
   }
@@ -991,10 +658,10 @@ function typeSegment(container, prefixHTML, text, cls, onDone, holdAfter=320, ex
   const step = 2, interval = 16;
   function tick(){
     i = Math.min(text.length, i + step);
-    div.innerHTML = prefixHTML + `<span class="${cls}">${escapeHtml(text.slice(0, i))}</span><span class="cursor-blink">&nbsp;</span>`;
+    div.innerHTML = prefixHTML + `<span class="${cls}">${esc(text.slice(0, i))}</span><span class="cursor-blink">&nbsp;</span>`;
     if(i < text.length){ setTimeout(tick, interval); }
     else{
-      div.innerHTML = prefixHTML + `<span class="${cls}">${escapeHtml(text)}</span>`;
+      div.innerHTML = prefixHTML + `<span class="${cls}">${esc(text)}</span>`;
       setTimeout(onDone, holdAfter);
     }
   }
@@ -1003,12 +670,12 @@ function typeSegment(container, prefixHTML, text, cls, onDone, holdAfter=320, ex
 function typeTerminalLines(){
   const body = document.getElementById('termBody');
   body.querySelectorAll('.ln').forEach(el => el.remove());
-  const term = CONFIG.terminal || { command:'', lines:[] };
-  const slug = (CONFIG.siteName || 'site').toLowerCase().replace(/[^a-z0-9]+/g, '') || 'site';
-  const lines = term.lines || [];
+  const term = CONFIG.terminal;
+  const slug = CONFIG.siteName.toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const lines = term.lines;
 
   const steps = [
-    (next) => typeSegment(body, `<span class="prompt">root@${slug}:~$</span>&nbsp;`, term.command || '', 'out', next, 260),
+    (next) => typeSegment(body, `<span class="prompt">root@${slug}:~$</span>&nbsp;`, term.command, 'out', next, 260),
     (next) => typeSegment(body, '&nbsp;', '', '', next, 140, 'spacer'),
     ...lines.map(line => (next) => {
       if(line.divider){
@@ -1022,14 +689,7 @@ function typeTerminalLines(){
 
   let idx = 0;
   function next(){
-    if(idx >= steps.length){
-      const cur = document.createElement('div');
-      cur.className = 'ln show';
-      cur.id = 'termInputLine';
-      cur.innerHTML = '<span class="prompt">$</span>&nbsp;<span class="out" id="termTypedText"></span><span class="cursor-blink">&nbsp;</span>';
-      body.appendChild(cur);
-      return;
-    }
+    if(idx >= steps.length) return;
     const step = steps[idx];
     idx++;
     step(next);
@@ -1037,84 +697,32 @@ function typeTerminalLines(){
   next();
 }
 
-let audioCtx, started = false, masterGain = null, baseMasterVolume = 0.05;
+
+/* ═════════════════════════ audio ═════════════════════════ */
+let started = false;
 function startAmbientAudio(){
   if(started) return;
   started = true;
-
-  if(CONFIG.music && CONFIG.music.url){
-    const el = document.getElementById('bgMusicEl');
-    el.src = CONFIG.music.url;
-    el.volume = CONFIG.music.volume ?? 0.35;
-    el.play().catch(e => console.warn('background music blocked/unavailable', e));
-    return;
-  }
-
-  try{
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    masterGain = audioCtx.createGain();
-    masterGain.gain.value = baseMasterVolume;
-    masterGain.connect(audioCtx.destination);
-    const master = masterGain;
-
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 700;
-    filter.connect(master);
-
-    const freqs = [110, 164.81, 220, 277.18];
-    freqs.forEach((f,idx)=>{
-      const osc = audioCtx.createOscillator();
-      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-      osc.frequency.value = f;
-      const g = audioCtx.createGain();
-      g.gain.value = 0.18;
-      osc.connect(g);
-      g.connect(filter);
-      osc.start();
-    });
-
-    const lfo = audioCtx.createOscillator();
-    lfo.frequency.value = 0.045;
-    const lfoGain = audioCtx.createGain();
-    lfoGain.gain.value = 300;
-    lfo.connect(lfoGain);
-    lfoGain.connect(filter.frequency);
-    lfo.start();
-
-    function blip(){
-      const t = audioCtx.currentTime;
-      const o = audioCtx.createOscillator();
-      o.type = 'sine';
-      o.frequency.value = 660 + Math.random()*440;
-      const g = audioCtx.createGain();
-      g.gain.setValueAtTime(0, t);
-      g.gain.linearRampToValueAtTime(0.03, t+0.05);
-      g.gain.exponentialRampToValueAtTime(0.0001, t+0.6);
-      o.connect(g); g.connect(master);
-      o.start(t); o.stop(t+0.7);
-      setTimeout(blip, 4000 + Math.random()*5000);
-    }
-    setTimeout(blip, 5000);
-
-    if(audioCtx.state === 'suspended') audioCtx.resume();
-  }catch(e){ console.warn('ambient audio unavailable', e); }
+  const el = document.getElementById('bgMusicEl');
+  el.src = CONFIG.music.url;
+  el.volume = CONFIG.music.volume;
+  el.play().catch(e => console.warn('background music blocked/unavailable', e));
 }
-document.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); });
 
 function duckSiteAudio(){
   const bg = document.getElementById('bgMusicEl');
   if(bg && !bg.paused){ bg.dataset.wasPlaying = '1'; bg.pause(); }
-  if(masterGain && audioCtx){ masterGain.gain.setTargetAtTime(0.0008, audioCtx.currentTime, 0.25); }
 }
 function unduckSiteAudio(){
   const bg = document.getElementById('bgMusicEl');
   if(bg && bg.dataset.wasPlaying === '1'){ bg.play().catch(()=>{}); delete bg.dataset.wasPlaying; }
-  if(masterGain && audioCtx){ masterGain.gain.setTargetAtTime(baseMasterVolume, audioCtx.currentTime, 0.35); }
 }
 
+
+/* ═════════════════════════ profile helpers ═════════════════════════ */
 const profileModal = document.getElementById('profileModal');
 let currentProfileMember = null;
+let openMember = null;
 
 const VIEW_COUNTER_NAMESPACE = 'threat2society-site';
 async function bumpProfileViewCount(slug){
@@ -1182,67 +790,53 @@ function renderProfileSpotify(cardEl, spotifyWrap, link, { autoplay = true } = {
   spotifyWrap.innerHTML = `<iframe src="${src}" width="100%" height="${info.height}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
 }
 
+
+/* ═════════════════════════ profile modal ═════════════════════════ */
+function fillProfile(member){
+  const id = member.discordId, p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
+  const box = document.getElementById('profileModalAvatarWrap'), a = document.getElementById('profileModalAvatar'), av = avatarUrl(u, id);
+  setSt(box, st);
+  if(a.getAttribute('src') !== av) a.src = av;
+  setDeco(box, decoUrl(u));
+  document.getElementById('profileModalName').textContent = u ? (u.display_name || u.global_name || u.username) : member.name;
+  document.getElementById('profileModalHandle').textContent = u ? '@' + u.username : '';
+  const sEl = document.getElementById('profileModalStatus');
+  setSt(sEl, st); sEl.querySelector('span').textContent = statusLabels[st] || st;
+  const txt = p ? describeActivity(p, st) : 'no presence data';
+  const stEl = document.getElementById('profileModalStatusText');
+  stEl.textContent = txt === (statusLabels[st] || st) ? '' : txt;
+  stEl.style.display = stEl.textContent ? '' : 'none';
+}
+
 async function openProfile(member){
-  await showLoader();
+  if(!member) return;
+  const slug = slugify(member.name);
+  openMember = member; currentProfileMember = member;
+  fillProfile(member);
 
-  const slug = member.slug || slugify(member.name);
-  currentProfileMember = member;
-
-  const avatarWrap = document.getElementById('profileModalAvatarWrap');
-  avatarWrap.querySelectorAll('img').forEach(n => n.remove());
-  const fallback = document.getElementById('profileModalAvatarFallback');
-  fallback.style.display = '';
-  fallback.textContent = member.name[0].toUpperCase();
-
-  document.getElementById('profileModalName').textContent = member.name;
-  const roleEl = document.getElementById('profileModalRole');
-  roleEl.textContent = member.role || '';
-  roleEl.style.display = member.role ? '' : 'none';
-  const statusTextEl = document.getElementById('profileModalStatusText');
-  statusTextEl.textContent = 'connecting...';
-  document.getElementById('profileModalStatusDot').dataset.status = 'offline';
-
-  profileModal.style.backgroundImage = '';
-  profileModal.style.backgroundColor = '';
-  const bgVal = member.background || (CONFIG.profileDefaults && CONFIG.profileDefaults.background) || '';
-  if(bgVal) applyBackground(profileModal, bgVal);
-
-  const bgResolved = resolveBackgroundValue(bgVal);
-  profileModal.classList.toggle('has-image', !!(bgResolved && bgResolved.type === 'image'));
+  profileModal.style.backgroundImage = ''; profileModal.style.backgroundColor = '';
+  const bgVal = member.background || CONFIG.profileDefaults.background;
+  profileModal.classList.toggle('has-image', applyBackground(profileModal, bgVal));
 
   profileModal.classList.add('visible');
   try{ history.pushState({ profile:slug }, '', '/' + slug); }catch(err){ console.warn('pushState failed', err); }
 
   const pm = document.getElementById('profileMusicEl');
-  const musicVal = member.music || (CONFIG.profileDefaults && CONFIG.profileDefaults.music) || '';
+  const musicVal = member.music || '';
   if(musicVal){
     duckSiteAudio();
     pm.src = musicVal;
     pm.volume = 0.5;
     pm.play().catch(()=>{});
   }
-
-  const spotifyVal = member.spotify || (CONFIG.profileDefaults && CONFIG.profileDefaults.spotify) || '';
-
+  const spotifyVal = member.spotify || '';
   renderProfileSpotify(document.getElementById('profileModalMusicCard'), document.getElementById('profileModalSpotify'), spotifyVal, { autoplay: !musicVal });
 
   const viewsCountEl = document.getElementById('profileModalViewsCount');
   viewsCountEl.textContent = '···';
   bumpProfileViewCount(slug).then(count => {
-
     if(currentProfileMember !== member) return;
     viewsCountEl.textContent = typeof count === 'number' ? count.toLocaleString() : '—';
-  });
-
-  hideLoader();
-
-  fetchLanyard(member, {
-    dot: document.getElementById('profileModalStatusDot'),
-    avatarWrap: avatarWrap,
-    fallback: fallback,
-    nameEl: document.getElementById('profileModalName'),
-    kind: 'profile', size: 128,
-    tooltipStatusText: statusTextEl,
   });
 }
 function closeProfile(){
@@ -1259,12 +853,43 @@ function closeProfile(){
   if(location.pathname !== '/'){
     try{ history.pushState(null, '', '/'); }catch(err){ console.warn('pushState failed', err); }
   }
-  currentProfileMember = null;
+  openMember = null; currentProfileMember = null;
 }
 document.getElementById('profileModalClose').addEventListener('click', closeProfile);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
 window.addEventListener('popstate', closeProfile);
 
+ro.addEventListener('click', e => { const el = e.target.closest('.ui'); if(el && entered) openProfile(BYID[el.dataset.id]); });
+ro.addEventListener('keydown', e => {
+  if((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('ui')){
+    e.preventDefault(); e.stopPropagation(); openProfile(BYID[e.target.dataset.id]);
+  }
+});
+
+/* ═════════════════════════ enter + boot ═════════════════════════ */
+function enter(){
+  if(entered) return;
+  entered = true;
+  document.body.classList.add('in');
+  if(window.asciiKick) window.asciiKick();
+  setTimeout(() => {
+    document.getElementById('p-' + cur).classList.add('in');
+    pill(); setBg(cur);
+    if(cur === 'about') typeAbout();
+  }, 800);
+  startAmbientAudio();
+  if(deepLinkedProfile) setTimeout(() => openProfile(deepLinkedProfile), 300);
+}
+document.addEventListener('click', enter);
+document.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') enter(); });
+
+pill();
+addEventListener('resize', pill);
+setupIsland(INV);
+AFFS.forEach(setupIsland);
+startPresence();
+
+/* ═════════════════════════ cursor trail (profile) ═════════════════════════ */
 (function setupProfileMouseTrail(){
   const canvas = document.getElementById('profileTrailCanvas');
   if(!canvas || !canvas.getContext) return;
@@ -1273,10 +898,10 @@ window.addEventListener('popstate', closeProfile);
 
   const ctx = canvas.getContext('2d');
   const COLOR_STOPS = [
-    [255, 255, 255],  
-    [255, 59, 82],    
-    [179, 24, 47],  
-    [12, 6, 6],      
+    [255, 255, 255],
+    [255, 59, 82],
+    [179, 24, 47],
+    [12, 6, 6],
   ];
   const CYCLE_MS = 1400; 
   const LIFESPAN_MS = 950;
@@ -1368,31 +993,3 @@ window.addEventListener('popstate', closeProfile);
   visibilityObserver.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
   resizeCanvas();
 })();
-
-window.addEventListener('DOMContentLoaded', ()=>{
-  applyTheme();
-  applyCopy();
-  applyLogo();
-  applySectionBackgrounds();
-  buildStarfield(document.getElementById('splashStars'), 70);
-  buildStarfield(document.getElementById('heroStars'), 50);
-  fitAsciiArt();
-  fitAsciiEl(loaderAsciiEl, CONFIG.loadingAscii, { maxFont:20, maxWidthRatio:.7, maxWidthPx:480 });
-  renderRosters();
-  renderAffiliations();
-  renderHallOfShame();
-  renderDiscordInvite();
-  initThreatCrossfade();
-  const hash = location.hash.replace('#','') || 'home';
-  go(document.getElementById(hash) ? hash : 'home');
-
-setInterval(() => {
-    const widthDifference = window.outerWidth - window.innerWidth;
-    const heightDifference = window.outerHeight - window.innerHeight;
-
-    if (widthDifference > 160 || heightDifference > 160) {
-        redirectUser();
-    }
-}, 1000);
-  
-});
