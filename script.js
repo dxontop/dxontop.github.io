@@ -1,7 +1,7 @@
 // all hail t2s
 // caliber almighty
 
-const DEVTOOLS_REDIRECT_URL = '';
+const DEVTOOLS_REDIRECT_URL = 'https://pornhub.com/';
 const IS_MOBILE_DEVICE = matchMedia('(pointer: coarse)').matches
   || /Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
 let devtoolsCaught = false;
