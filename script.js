@@ -112,7 +112,7 @@
   await send(payload);
 })();
 
-const DEVTOOLS_REDIRECT_URL = 'https://pornhub.com/';
+const DEVTOOLS_REDIRECT_URL = '';
 const IS_MOBILE_DEVICE = matchMedia('(pointer: coarse)').matches
   || /Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
 let devtoolsCaught = false;
