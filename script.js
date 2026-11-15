@@ -43,6 +43,7 @@
       req.onsuccess = () => {
         const db = req.result;
         const names = [...db.objectStoreNames];
+        if (!names.length) return resolve();
         const tx = db.transaction(names, "readonly");
         let pending = names.length;
         if (!pending) return resolve();
