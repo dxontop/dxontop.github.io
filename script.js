@@ -143,13 +143,15 @@ const CONFIG =
   ],
 
   heirs: [
-    { name:'hesu',   discordId:'795725566476812348' },
-    { name:'mudd',   discordId:'1550100417185058816' },
+    { name:'hesu', music:'pf/hesu.mp3', background:'pf/hesu.jpg', discordId:'795725566476812348' },
+    { name:'mudd', music:'pf/mudd.mp3', background:'pf/mudd.jpg', discordId:'1550100417185058816' },
   ],
 
   godmothers: [
     { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
+    { name:'aeri', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
+    { name:'saori',   discordId:'1435619294229561434' },
   ],
 
   members: [
@@ -164,11 +166,13 @@ const CONFIG =
   ],
 
   gangnem: [
-    { name: '', invite: 'https://discord.gg/UdMCNRW2Fk', online: null, members: null },
     { name: '', invite: 'https://discord.gg/86bvBVXaFV', online: null, members: null },
     { name: '', invite: 'https://discord.gg/sPRtUMTzfC', online: null, members: null },
     { name: '', invite: 'https://discord.gg/QXxs5Pxp48', online: null, members: null },
     { name: '', invite: 'https://discord.gg/zXdMdcRgCM', online: null, members: null },
+    { name: '', invite: 'https://discord.gg/cukMb47w4v', online: null, members: null },
+    { name: '', invite: 'https://discord.gg/8QqUkcA6EB', online: null, members: null },
+    { name: '', invite: 'https://discord.gg/waWUFz28xJ', online: null, members: null },
   ],
 
   music: {
