@@ -158,7 +158,7 @@ const CONFIG =
   ],
 
   heirs: [
-    { name:'hesu', music:'pf/hesu.mp3', background:'pf/hesu.jpg', discordId:'795725566476812348' },
+    { name:'jamal', music:'pf/jamal.mp3', background:'pf/jamal.gif', discordId:'795725566476812348' },
     { name:'mudd', music:'pf/mudd.mp3', background:'pf/mudd.jpg', discordId:'1550100417185058816' },
   ],
 
