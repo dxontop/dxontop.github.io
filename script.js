@@ -1,6 +1,3 @@
-// oo t2s ako eh ano naman sayo
-// caliber be like
-
 (() => {
 'use strict';
 
@@ -151,7 +148,7 @@ const CONFIG =
   ],
 
   godmothers: [
-    { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'747746641590616064' },
+    { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
   ],
 
@@ -631,13 +628,39 @@ const FETCH_ART = `     s                      .x+=:.
    'Y"     8:  "888888*  \`   ^"F
            ""    "**"\``;
 
+// Server clock: read the host's own Date header so the terminal shows the server's time (UTC).
+// Falls back to the visitor's clock if the request fails (e.g. opened from a local file).
+const SERVER_BOOT = Date.parse('2026-11-01T00:00:00Z'); // when the "box" came up; edit to taste
+let serverOffset = 0;
+const serverNow = () => Date.now() + serverOffset;
+(function syncServerClock(){
+  try{
+    const t0 = Date.now();
+    fetch(location.href, { method: 'HEAD', cache: 'no-store' }).then(res => {
+      const h = res.headers.get('date');
+      const srv = h ? Date.parse(h) : NaN;
+      if(isFinite(srv)) serverOffset = srv - (t0 + Date.now()) / 2;
+    }).catch(() => {});
+  }catch(e){}
+})();
+const upSecs = () => Math.max(0, Math.floor((serverNow() - SERVER_BOOT) / 1000));
+const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
+function uptimeLong(){
+  const t = upSecs();
+  return plural(Math.floor(t / 86400), 'day') + ', ' + plural(Math.floor(t % 86400 / 3600), 'hour') + ', ' + plural(Math.floor(t % 3600 / 60), 'min');
+}
+function uptimeShort(){
+  const t = upSecs(), d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60);
+  return (d ? plural(d, 'day') + ',  ' : '') + h + ':' + String(m).padStart(2, '0');
+}
+
 const FETCH_SPECS = [
   ['OS', 'Kali GNU/Linux Rolling x86_64'],
   ['Host', 'ASUS ROG Zephyrus G14 (GA402RJ)'],
   ['Board', 'ASUSTeK COMPUTER INC. GA402RJ'],
   ['BIOS', 'American Megatrends GA402RJ.325'],
   ['Kernel', '6.9.7-amd64'],
-  ['Uptime', '3 days, 7 hours, 12 mins'],
+  ['Uptime', () => uptimeLong()],
   ['Packages', '2894 (dpkg), 12 (snap)'],
   ['Shell', 'zsh 5.9'],
   ['Resolution', '2560x1600 @ 120Hz'],
@@ -740,7 +763,7 @@ function termFetch(){
     k.textContent = key + ': ';
     const v = document.createElement('span');
     v.className = 'text-blood-soft';
-    v.textContent = value;
+    v.textContent = typeof value === 'function' ? value() : value;
     row.append(k, v);
     info.appendChild(row);
   }
@@ -889,7 +912,7 @@ const searchsploit = term => [
 ];
 
 const nmap = host => [
-  'Starting Nmap 7.94SVN ( https://nmap.org ) at ' + new Date().toLocaleString('en-GB'),
+  'Starting Nmap 7.94SVN ( https://nmap.org ) at ' + new Date(serverNow()).toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC',
   'Nmap scan report for ' + host,
   'Host is up (0.018s latency).',
   'Not shown: 996 closed tcp ports (reset)',
@@ -988,15 +1011,14 @@ function termRun(raw){
       termPrint(box, [TERM.host]);
       break;
     case 'date': {
-      const d = new Date();
+      const d = new Date(serverNow());
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const mons = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      const zone = (new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' }).formatToParts(d).find(p => p.type === 'timeZoneName') || {}).value || 'UTC';
-      termPrint(box, [days[d.getDay()] + ' ' + mons[d.getMonth()] + ' ' + d.getDate() + ' ' + d.toTimeString().slice(0, 8) + ' ' + zone + ' ' + d.getFullYear()]);
+      termPrint(box, [days[d.getUTCDay()] + ' ' + mons[d.getUTCMonth()] + ' ' + d.getUTCDate() + ' ' + d.toISOString().slice(11, 19) + ' UTC ' + d.getUTCFullYear()]);
       break;
     }
     case 'uptime':
-      termPrint(box, [' ' + new Date().toTimeString().slice(0, 8) + ' up 3 days,  7:12,  1 user,  load average: 0.42, 0.31, 0.27']);
+      termPrint(box, [' ' + new Date(serverNow()).toISOString().slice(11, 19) + ' up ' + uptimeShort() + ',  1 user,  load average: 0.42, 0.31, 0.27']);
       break;
     case 'uname':
       if(arg === '-a' || arg === '--all'){
@@ -1611,31 +1633,39 @@ let openMember = null;
 let cmdTimer = 0;
 let runTimer = 0;
 
+const VIEW_API = 'https://abacus.jasoncameron.dev';
 const VIEW_COUNTER_NAMESPACE = 'threat2society-site';
 const VIEW_CACHE_KEY = 't2sProfileViewsCache';
+const VIEW_SEEN_KEY = 't2sProfileViewsSeen';
 
-function cacheView(slug, count){
-  try{
-    const cache = JSON.parse(localStorage.getItem(VIEW_CACHE_KEY) || '{}');
-    cache[slug] = count;
-    localStorage.setItem(VIEW_CACHE_KEY, JSON.stringify(cache));
-  }catch(e){}
+function readStore(key){
+  try{ return JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ return {}; }
 }
+function writeStore(key, obj){
+  try{ localStorage.setItem(key, JSON.stringify(obj)); }catch(e){}
+}
+async function viewCounter(op, slug){
+  const res = await fetch(VIEW_API + '/' + op + '/' + VIEW_COUNTER_NAMESPACE + '/profile-' + encodeURIComponent(slug), { cache: 'no-store' });
+  if(res.status === 404 && op === 'get') return 0;
+  if(!res.ok) throw new Error('view counter responded ' + res.status);
+  const n = Number((await res.json()).value);
+  if(!isFinite(n)) throw new Error('view counter returned no value');
+  return n;
+}
+// One view per browser per profile: the first open adds 1 to the shared total, later opens only read it.
 async function bumpProfileViewCount(slug){
+  const seen = readStore(VIEW_SEEN_KEY);
+  const first = !seen[slug];
   try{
-    const res = await fetch('https://api.countapi.xyz/hit/' + VIEW_COUNTER_NAMESPACE + '/profile-' + slug);
-    if(!res.ok) throw new Error('countapi responded ' + res.status);
-    const data = await res.json();
-    if(typeof data.value !== 'number') throw new Error('countapi returned no value');
-    cacheView(slug, data.value);
-    return data.value;
+    const n = await viewCounter(first ? 'hit' : 'get', slug);
+    if(first){ seen[slug] = 1; writeStore(VIEW_SEEN_KEY, seen); }
+    const cache = readStore(VIEW_CACHE_KEY);
+    cache[slug] = n;
+    writeStore(VIEW_CACHE_KEY, cache);
+    return n;
   }catch(err){
-    try{
-      const cache = JSON.parse(localStorage.getItem(VIEW_CACHE_KEY) || '{}');
-      const next = (cache[slug] || 0) + 1;
-      cacheView(slug, next);
-      return next;
-    }catch(err2){ return null; }
+    const cached = readStore(VIEW_CACHE_KEY)[slug];
+    return typeof cached === 'number' ? cached : null;
   }
 }
 
