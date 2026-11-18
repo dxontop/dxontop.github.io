@@ -150,7 +150,7 @@ const CONFIG =
   godmothers: [
     { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
-    { name:'aeri', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
+    { name:'juls', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
     { name:'saori',   discordId:'1435619294229561434' },
   ],
 
