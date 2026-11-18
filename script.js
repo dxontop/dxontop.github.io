@@ -151,7 +151,7 @@ const CONFIG =
     { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
     { name:'juls', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
-    { name:'saori',   discordId:'1435619294229561434' },
+    { name:'saori', music:'pf/saori.mp3', background:'pf/saori.gif' discordId:'1435619294229561434' },
   ],
 
   members: [
@@ -163,6 +163,19 @@ const CONFIG =
     { name:'mimi',   discordId:'1444205221814210700' },
     { name:'seia',    discordId:'748713264652746813' },
     { name:'ghost',   discordId:'965848814164520970' },
+    { name:'achilles',    discordId:'1267509727877791835' },
+    { name:'mira',    discordId:'1389643555726823464' },
+    { name:'xin',    discordId:'1566896874609311744' },
+    { name:'fade',    discordId:'1124369205727330346' },
+    { name:'finxsse',    discordId:'1459878964838531208' },
+    { name:'ck',    discordId:'1459977412216487958' },
+    { name:'dope',    discordId:'1530686788824469646' },
+    { name:'chi',    discordId:'1482182490025234533' },
+    { name:'boogsy',    discordId:'1311600356907814923' },
+    { name:'tetsu',    discordId:'1210622671922925578' },
+    { name:'rian',    discordId:'1147462845315952690' },
+    { name:'kei',    discordId:'1331628794305314837' },
+    { name:'allie',    discordId:'1441623190412726355' },
   ],
 
   gangnem: [
