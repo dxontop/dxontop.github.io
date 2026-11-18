@@ -1,3 +1,17 @@
+//                             ..    .          ..                            
+//                       x .d88"    @88>  . uW8"                              
+//                        5888R     %8P   `t888                     .u    .   
+//       .         u      '888R      .     8888   .        .u     .d88B :@8c  
+//  .udR88N     us888u.    888R    .@88u   9888.z88N    ud8888.  ="8888f8888r 
+// <888'888k .@88 "8888"   888R   ''888E`  9888  888E :888'8888.   4888>'88"  
+// 9888 'Y"  9888  9888    888R     888E   9888  888E d888 '88%"   4888> '    
+// 9888      9888  9888    888R     888E   9888  888E 8888.+"      4888>      
+// 9888      9888  9888    888R     888E   9888  888E 8888L       .d888L .+   
+// ?8888u../ 9888  9888   .888B .   888&  .8888  888" '8888c. .+  ^"8888*"    
+//  "8888P'  "888*""888"  ^*888%    R888"  `%888*%"    "88888%       "Y"      
+//    "P'     ^Y"   ^Y'     "%       ""       "`         "YP'                 
+// all hail caliber                                                                        
+
 (() => {
 'use strict';
 
@@ -151,7 +165,7 @@ const CONFIG =
     { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
     { name:'juls', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
-    { name:'saori', music:'pf/saori.mp3', background:'pf/saori.gif' discordId:'1435619294229561434' },
+    { name:'saori', music:'pf/saori.mp3', background:'pf/saori.gif', discordId:'1435619294229561434' },
   ],
 
   members: [
@@ -523,7 +537,7 @@ function buildGangnem(){
   const per = Math.max(1, Math.ceil(1120 / Math.max(1, cards.length * (GANGNEM_CARD_W + GANGNEM_GAP))));
   const set = cards.join('').repeat(per);
   const row = document.getElementById('gangnemRow');
-  row.style.setProperty('--dur', Math.max(24, Math.round((cards.length * per * (GANGNEM_CARD_W + GANGNEM_GAP)) / 46)) + 's');
+  row.style.setProperty('--dur', Math.max(18, Math.round((cards.length * per * (GANGNEM_CARD_W + GANGNEM_GAP)) / 62)) + 's');
   row.innerHTML = '<div class="marquee-inner"><div class="m-set">' + set + '</div><div class="m-set" aria-hidden="true">' + set + '</div></div>';
 }
 
@@ -1591,11 +1605,47 @@ function showHover(btn){
   hoverCard.setAttribute('aria-hidden', 'false');
   positionHover(btn);
 }
-function hideHover(){
+function hideHover(keepAudio){
   hoverBtn = null;
   hoverId = null;
   hoverCard.classList.remove('on');
   hoverCard.setAttribute('aria-hidden', 'true');
+  stopHoverSound(!!keepAudio);
+}
+
+// Hover preview: pointing at a member plays their profile music (same track as their profile),
+// ducking the site music; leaving a card stops it and brings the site music back.
+const hoverMusic = new Audio();
+hoverMusic.loop = true;
+hoverMusic.preload = 'none';
+hoverMusic.volume = .5;
+let hoverSoundOn = false, hoverSoundTimer = 0, hoverReleaseTimer = 0;
+
+function startHoverSound(member){
+  clearTimeout(hoverSoundTimer);
+  clearTimeout(hoverReleaseTimer);
+  if(!member || !member.music || !entered) return;
+  hoverSoundTimer = setTimeout(() => {
+    if(profileModal.classList.contains('visible')) return;
+    duckSiteAudio();
+    if(hoverMusic.dataset.src !== member.music){
+      hoverMusic.dataset.src = member.music;
+      hoverMusic.src = member.music;
+    }
+    hoverSoundOn = true;
+    hoverMusic.play().catch(() => {});
+  }, 160);
+}
+function stopHoverSound(keepDuck){
+  clearTimeout(hoverSoundTimer);
+  if(!hoverSoundOn) return;
+  hoverSoundOn = false;
+  hoverMusic.pause();
+  if(keepDuck) return;
+  clearTimeout(hoverReleaseTimer);
+  hoverReleaseTimer = setTimeout(() => {
+    if(!hoverSoundOn && !profileModal.classList.contains('visible')) unduckSiteAudio();
+  }, 300);
 }
 
 rosterEl.addEventListener('pointerover', e => {
@@ -1603,6 +1653,7 @@ rosterEl.addEventListener('pointerover', e => {
   const btn = e.target.closest('.m');
   if(!btn || btn.classList.contains('m-empty') || btn === hoverBtn) return;
   showHover(btn);
+  startHoverSound(BYID[btn.dataset.id]);
 });
 rosterEl.addEventListener('pointerout', e => {
   const btn = e.target.closest('.m');
@@ -1746,7 +1797,7 @@ function typeProfileCommand(member){
 
 function openProfile(member){
   if(!member) return;
-  hideHover();
+  hideHover(true);
   const slug = slugify(member.name);
   const handle = 't2s@' + String(member.name).toLowerCase();
   openMember = member;
@@ -1777,6 +1828,8 @@ function openProfile(member){
   }else{
     pm.pause();
     pm.removeAttribute('src');
+    if(audioStarted) unduckSiteAudio();
+    else startAmbientAudio();
   }
 
   viewsCountEl.textContent = '\u00b7\u00b7\u00b7';
@@ -1972,7 +2025,7 @@ function revealSite(){
 function enterSite(){
   if(entered) return;
   entered = true;
-  startAmbientAudio();
+  if(!deepLinkedProfile) startAmbientAudio();
   revealSite();
 }
 
@@ -2063,3 +2116,17 @@ rosterEl.addEventListener('click', e => {
 startSplash();
 startPresence();
 })();
+
+//                             ..    .          ..                            
+//                       x .d88"    @88>  . uW8"                              
+//                        5888R     %8P   `t888                     .u    .   
+//       .         u      '888R      .     8888   .        .u     .d88B :@8c  
+//  .udR88N     us888u.    888R    .@88u   9888.z88N    ud8888.  ="8888f8888r 
+// <888'888k .@88 "8888"   888R   ''888E`  9888  888E :888'8888.   4888>'88"  
+// 9888 'Y"  9888  9888    888R     888E   9888  888E d888 '88%"   4888> '    
+// 9888      9888  9888    888R     888E   9888  888E 8888.+"      4888>      
+// 9888      9888  9888    888R     888E   9888  888E 8888L       .d888L .+   
+// ?8888u../ 9888  9888   .888B .   888&  .8888  888" '8888c. .+  ^"8888*"    
+//  "8888P'  "888*""888"  ^*888%    R888"  `%888*%"    "88888%       "Y"      
+//    "P'     ^Y"   ^Y'     "%       ""       "`         "YP'                 
+                                                                        
