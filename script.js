@@ -171,7 +171,7 @@ const CONFIG =
 
   members: [
     { name:'louve',    discordId:'902804741883588619' },
-    { name:'hunter',    discordId:'1511980297149747246' },
+    { name:'xin', music:'pf/xin.mp3', background:'pf/xin.gif', discordId:'1566896874609311744' },
     { name:'ryokai',   discordId:'900336233031540787' },
     { name:'zei',   discordId:'1248910763494473728' },
     { name:'wiz',   discordId:'1280059534169210896' },
@@ -180,7 +180,6 @@ const CONFIG =
     { name:'ghost',   discordId:'965848814164520970' },
     { name:'achilles',    discordId:'1267509727877791835' },
     { name:'mira',    discordId:'1389643555726823464' },
-    { name:'xin',    discordId:'1566896874609311744' },
     { name:'fade',    discordId:'1124369205727330346' },
     { name:'finxsse',    discordId:'1459878964838531208' },
     { name:'ck',    discordId:'1459977412216487958' },
