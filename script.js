@@ -154,6 +154,7 @@ const CONFIG =
     { name:'soul',    discordId:'1446067102900551741' },
     { name:'blake', music:'pf/blake.mp3', background:'pf/blake.gif',  discordId:'1244678008175071263' },
     { name:'jor', music:'pf/jor.mp3', background:'pf/jor.gif', discordId:'1403234492419670038' },
+    { name:'fenzi', music:'pf/fenzi.mp3', background:'pf/fenzi.gif', discordId:'909977852378763264' },
   ],
 
   heirs: [
