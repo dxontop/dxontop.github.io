@@ -200,6 +200,7 @@ const CONFIG =
     { name: '', invite: 'https://discord.gg/cukMb47w4v', online: null, members: null },
     { name: '', invite: 'https://discord.gg/8QqUkcA6EB', online: null, members: null },
     { name: '', invite: 'https://discord.gg/waWUFz28xJ', online: null, members: null },
+    { name: '', invite: 'https://discord.gg/wRgPQzz5Px', online: null, members: null },
   ],
 
   music: {
