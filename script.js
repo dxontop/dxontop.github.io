@@ -167,6 +167,7 @@ const CONFIG =
     { name:'aeri', music:'pf/aeri.mp3', background:'pf/aeri.gif', discordId:'992033485973880842' },
     { name:'juls', music:'pf/juls.mp3', background:'pf/juls.gif', discordId:'1499499066932068454' },
     { name:'saori', music:'pf/saori.mp3', background:'pf/saori.gif', discordId:'1435619294229561434' },
+    { name:'riri', music:'pf/riri.mp3', background:'pf/riri.gif', discordId:'1005743967423438879' },
   ],
 
   members: [
